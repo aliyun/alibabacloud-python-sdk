@@ -96,12 +96,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.AddDataForApiSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDataForApiSource',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.AddDataForApiSourceResponse(),
-            self.do_rpcrequest('AddDataForApiSource', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_data_for_api_source_with_options_async(
@@ -110,12 +128,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.AddDataForApiSourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDataForApiSource',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.AddDataForApiSourceResponse(),
-            await self.do_rpcrequest_async('AddDataForApiSource', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_data_for_api_source(
@@ -138,12 +174,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddDeviceGroupRelationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device):
+            query['Device'] = request.device
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchAddDeviceGroupRelations',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchAddDeviceGroupRelationsResponse(),
-            self.do_rpcrequest('BatchAddDeviceGroupRelations', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_add_device_group_relations_with_options_async(
@@ -152,12 +206,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddDeviceGroupRelationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device):
+            query['Device'] = request.device
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchAddDeviceGroupRelations',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchAddDeviceGroupRelationsResponse(),
-            await self.do_rpcrequest_async('BatchAddDeviceGroupRelations', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_add_device_group_relations(
@@ -180,12 +252,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddThingTopoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gw_device_name):
+            query['GwDeviceName'] = request.gw_device_name
+        if not UtilClient.is_unset(request.gw_product_key):
+            query['GwProductKey'] = request.gw_product_key
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.topo_add_item):
+            query['TopoAddItem'] = request.topo_add_item
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchAddThingTopo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchAddThingTopoResponse(),
-            self.do_rpcrequest('BatchAddThingTopo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_add_thing_topo_with_options_async(
@@ -194,12 +286,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchAddThingTopoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gw_device_name):
+            query['GwDeviceName'] = request.gw_device_name
+        if not UtilClient.is_unset(request.gw_product_key):
+            query['GwProductKey'] = request.gw_product_key
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.topo_add_item):
+            query['TopoAddItem'] = request.topo_add_item
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchAddThingTopo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchAddThingTopoResponse(),
-            await self.do_rpcrequest_async('BatchAddThingTopo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_add_thing_topo(
@@ -216,60 +328,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_thing_topo_with_options_async(request, runtime)
 
-    def batch_bind_devices_into_project_with_options(
-        self,
-        request: iot_20180120_models.BatchBindDevicesIntoProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> iot_20180120_models.BatchBindDevicesIntoProjectResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            iot_20180120_models.BatchBindDevicesIntoProjectResponse(),
-            self.do_rpcrequest('BatchBindDevicesIntoProject', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def batch_bind_devices_into_project_with_options_async(
-        self,
-        request: iot_20180120_models.BatchBindDevicesIntoProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> iot_20180120_models.BatchBindDevicesIntoProjectResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            iot_20180120_models.BatchBindDevicesIntoProjectResponse(),
-            await self.do_rpcrequest_async('BatchBindDevicesIntoProject', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def batch_bind_devices_into_project(
-        self,
-        request: iot_20180120_models.BatchBindDevicesIntoProjectRequest,
-    ) -> iot_20180120_models.BatchBindDevicesIntoProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.batch_bind_devices_into_project_with_options(request, runtime)
-
-    async def batch_bind_devices_into_project_async(
-        self,
-        request: iot_20180120_models.BatchBindDevicesIntoProjectRequest,
-    ) -> iot_20180120_models.BatchBindDevicesIntoProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.batch_bind_devices_into_project_with_options_async(request, runtime)
-
     def batch_bind_device_to_edge_instance_with_driver_with_options(
         self,
         request: iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchBindDeviceToEdgeInstanceWithDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverResponse(),
-            self.do_rpcrequest('BatchBindDeviceToEdgeInstanceWithDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_bind_device_to_edge_instance_with_driver_with_options_async(
@@ -278,12 +368,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchBindDeviceToEdgeInstanceWithDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchBindDeviceToEdgeInstanceWithDriverResponse(),
-            await self.do_rpcrequest_async('BatchBindDeviceToEdgeInstanceWithDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_bind_device_to_edge_instance_with_driver(
@@ -300,6 +410,70 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_bind_device_to_edge_instance_with_driver_with_options_async(request, runtime)
 
+    def batch_bind_devices_into_project_with_options(
+        self,
+        request: iot_20180120_models.BatchBindDevicesIntoProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchBindDevicesIntoProjectResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=request.devices
+        )
+        params = open_api_models.Params(
+            action='BatchBindDevicesIntoProject',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchBindDevicesIntoProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_bind_devices_into_project_with_options_async(
+        self,
+        request: iot_20180120_models.BatchBindDevicesIntoProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.BatchBindDevicesIntoProjectResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            body=request.devices
+        )
+        params = open_api_models.Params(
+            action='BatchBindDevicesIntoProject',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.BatchBindDevicesIntoProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_bind_devices_into_project(
+        self,
+        request: iot_20180120_models.BatchBindDevicesIntoProjectRequest,
+    ) -> iot_20180120_models.BatchBindDevicesIntoProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_bind_devices_into_project_with_options(request, runtime)
+
+    async def batch_bind_devices_into_project_async(
+        self,
+        request: iot_20180120_models.BatchBindDevicesIntoProjectRequest,
+    ) -> iot_20180120_models.BatchBindDevicesIntoProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_bind_devices_into_project_with_options_async(request, runtime)
+
     def batch_bind_products_into_project_with_options(
         self,
         request: iot_20180120_models.BatchBindProductsIntoProjectRequest,
@@ -307,11 +481,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchBindProductsIntoProjectResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='BatchBindProductsIntoProject',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchBindProductsIntoProjectResponse(),
-            self.do_rpcrequest('BatchBindProductsIntoProject', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_bind_products_into_project_with_options_async(
@@ -321,11 +506,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchBindProductsIntoProjectResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='BatchBindProductsIntoProject',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchBindProductsIntoProjectResponse(),
-            await self.do_rpcrequest_async('BatchBindProductsIntoProject', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_bind_products_into_project(
@@ -348,12 +544,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchCheckDeviceNamesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.device_name_list):
+            query['DeviceNameList'] = request.device_name_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCheckDeviceNames',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchCheckDeviceNamesResponse(),
-            self.do_rpcrequest('BatchCheckDeviceNames', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_check_device_names_with_options_async(
@@ -362,12 +578,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchCheckDeviceNamesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.device_name_list):
+            query['DeviceNameList'] = request.device_name_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchCheckDeviceNames',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchCheckDeviceNamesResponse(),
-            await self.do_rpcrequest_async('BatchCheckDeviceNames', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_check_device_names(
@@ -390,12 +626,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchClearEdgeInstanceDeviceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchClearEdgeInstanceDeviceConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchClearEdgeInstanceDeviceConfigResponse(),
-            self.do_rpcrequest('BatchClearEdgeInstanceDeviceConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_clear_edge_instance_device_config_with_options_async(
@@ -404,12 +658,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchClearEdgeInstanceDeviceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchClearEdgeInstanceDeviceConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchClearEdgeInstanceDeviceConfigResponse(),
-            await self.do_rpcrequest_async('BatchClearEdgeInstanceDeviceConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_clear_edge_instance_device_config(
@@ -432,12 +704,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchDeleteDeviceGroupRelationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device):
+            query['Device'] = request.device
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteDeviceGroupRelations',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchDeleteDeviceGroupRelationsResponse(),
-            self.do_rpcrequest('BatchDeleteDeviceGroupRelations', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_delete_device_group_relations_with_options_async(
@@ -446,12 +736,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchDeleteDeviceGroupRelationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device):
+            query['Device'] = request.device
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteDeviceGroupRelations',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchDeleteDeviceGroupRelationsResponse(),
-            await self.do_rpcrequest_async('BatchDeleteDeviceGroupRelations', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_delete_device_group_relations(
@@ -474,12 +782,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchDeleteEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_ids):
+            query['ChannelIds'] = request.channel_ids
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchDeleteEdgeInstanceChannelResponse(),
-            self.do_rpcrequest('BatchDeleteEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_delete_edge_instance_channel_with_options_async(
@@ -488,12 +816,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchDeleteEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_ids):
+            query['ChannelIds'] = request.channel_ids
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchDeleteEdgeInstanceChannelResponse(),
-            await self.do_rpcrequest_async('BatchDeleteEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_delete_edge_instance_channel(
@@ -516,12 +864,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetDeviceBindStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetDeviceBindStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetDeviceBindStatusResponse(),
-            self.do_rpcrequest('BatchGetDeviceBindStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_get_device_bind_status_with_options_async(
@@ -530,12 +894,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetDeviceBindStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetDeviceBindStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetDeviceBindStatusResponse(),
-            await self.do_rpcrequest_async('BatchGetDeviceBindStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_get_device_bind_status(
@@ -558,12 +938,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetDeviceStateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetDeviceState',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetDeviceStateResponse(),
-            self.do_rpcrequest('BatchGetDeviceState', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_get_device_state_with_options_async(
@@ -572,12 +972,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetDeviceStateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetDeviceState',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetDeviceStateResponse(),
-            await self.do_rpcrequest_async('BatchGetDeviceState', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_get_device_state(
@@ -600,12 +1020,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_ids):
+            query['DriverIds'] = request.driver_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeDriverResponse(),
-            self.do_rpcrequest('BatchGetEdgeDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_get_edge_driver_with_options_async(
@@ -614,12 +1050,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_ids):
+            query['DriverIds'] = request.driver_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeDriverResponse(),
-            await self.do_rpcrequest_async('BatchGetEdgeDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_get_edge_driver(
@@ -642,12 +1094,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_ids):
+            query['ChannelIds'] = request.channel_ids
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceChannelResponse(),
-            self.do_rpcrequest('BatchGetEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_get_edge_instance_channel_with_options_async(
@@ -656,12 +1128,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_ids):
+            query['ChannelIds'] = request.channel_ids
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceChannelResponse(),
-            await self.do_rpcrequest_async('BatchGetEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_get_edge_instance_channel(
@@ -684,12 +1176,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceDeviceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceDeviceChannelResponse(),
-            self.do_rpcrequest('BatchGetEdgeInstanceDeviceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_get_edge_instance_device_channel_with_options_async(
@@ -698,12 +1210,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceDeviceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceDeviceChannelResponse(),
-            await self.do_rpcrequest_async('BatchGetEdgeInstanceDeviceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_get_edge_instance_device_channel(
@@ -726,12 +1258,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceDeviceConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceDeviceConfigResponse(),
-            self.do_rpcrequest('BatchGetEdgeInstanceDeviceConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_get_edge_instance_device_config_with_options_async(
@@ -740,12 +1290,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceDeviceConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceDeviceConfigResponse(),
-            await self.do_rpcrequest_async('BatchGetEdgeInstanceDeviceConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_get_edge_instance_device_config(
@@ -768,12 +1336,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceDeviceDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceDeviceDriverResponse(),
-            self.do_rpcrequest('BatchGetEdgeInstanceDeviceDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_get_edge_instance_device_driver_with_options_async(
@@ -782,12 +1368,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDeviceDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceDeviceDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceDeviceDriverResponse(),
-            await self.do_rpcrequest_async('BatchGetEdgeInstanceDeviceDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_get_edge_instance_device_driver(
@@ -810,12 +1414,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDriverConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_ids):
+            query['DriverIds'] = request.driver_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceDriverConfigs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceDriverConfigsResponse(),
-            self.do_rpcrequest('BatchGetEdgeInstanceDriverConfigs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_get_edge_instance_driver_configs_with_options_async(
@@ -824,12 +1446,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchGetEdgeInstanceDriverConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_ids):
+            query['DriverIds'] = request.driver_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetEdgeInstanceDriverConfigs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchGetEdgeInstanceDriverConfigsResponse(),
-            await self.do_rpcrequest_async('BatchGetEdgeInstanceDriverConfigs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_get_edge_instance_driver_configs(
@@ -852,12 +1492,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchPubResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.message_content):
+            query['MessageContent'] = request.message_content
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
+        if not UtilClient.is_unset(request.topic_short_name):
+            query['TopicShortName'] = request.topic_short_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchPub',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchPubResponse(),
-            self.do_rpcrequest('BatchPub', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_pub_with_options_async(
@@ -866,12 +1530,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchPubResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.message_content):
+            query['MessageContent'] = request.message_content
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
+        if not UtilClient.is_unset(request.topic_short_name):
+            query['TopicShortName'] = request.topic_short_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchPub',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchPubResponse(),
-            await self.do_rpcrequest_async('BatchPub', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_pub(
@@ -894,12 +1582,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchQueryDeviceDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryDeviceDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchQueryDeviceDetailResponse(),
-            self.do_rpcrequest('BatchQueryDeviceDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_query_device_detail_with_options_async(
@@ -908,12 +1614,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchQueryDeviceDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryDeviceDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchQueryDeviceDetailResponse(),
-            await self.do_rpcrequest_async('BatchQueryDeviceDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_query_device_detail(
@@ -936,12 +1660,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchRegisterDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchRegisterDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchRegisterDeviceResponse(),
-            self.do_rpcrequest('BatchRegisterDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_register_device_with_options_async(
@@ -950,12 +1692,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchRegisterDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchRegisterDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchRegisterDeviceResponse(),
-            await self.do_rpcrequest_async('BatchRegisterDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_register_device(
@@ -978,12 +1738,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchRegisterDeviceWithApplyIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchRegisterDeviceWithApplyId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchRegisterDeviceWithApplyIdResponse(),
-            self.do_rpcrequest('BatchRegisterDeviceWithApplyId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_register_device_with_apply_id_with_options_async(
@@ -992,12 +1770,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchRegisterDeviceWithApplyIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchRegisterDeviceWithApplyId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchRegisterDeviceWithApplyIdResponse(),
-            await self.do_rpcrequest_async('BatchRegisterDeviceWithApplyId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_register_device_with_apply_id(
@@ -1020,12 +1816,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchSetEdgeInstanceDeviceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchSetEdgeInstanceDeviceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchSetEdgeInstanceDeviceChannelResponse(),
-            self.do_rpcrequest('BatchSetEdgeInstanceDeviceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_set_edge_instance_device_channel_with_options_async(
@@ -1034,12 +1852,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchSetEdgeInstanceDeviceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchSetEdgeInstanceDeviceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchSetEdgeInstanceDeviceChannelResponse(),
-            await self.do_rpcrequest_async('BatchSetEdgeInstanceDeviceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_set_edge_instance_device_channel(
@@ -1062,12 +1902,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchSetEdgeInstanceDeviceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_configs):
+            query['DeviceConfigs'] = request.device_configs
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchSetEdgeInstanceDeviceConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchSetEdgeInstanceDeviceConfigResponse(),
-            self.do_rpcrequest('BatchSetEdgeInstanceDeviceConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_set_edge_instance_device_config_with_options_async(
@@ -1076,12 +1934,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchSetEdgeInstanceDeviceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_configs):
+            query['DeviceConfigs'] = request.device_configs
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchSetEdgeInstanceDeviceConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchSetEdgeInstanceDeviceConfigResponse(),
-            await self.do_rpcrequest_async('BatchSetEdgeInstanceDeviceConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_set_edge_instance_device_config(
@@ -1104,12 +1980,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchUnbindDeviceFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceResponse(),
-            self.do_rpcrequest('BatchUnbindDeviceFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_unbind_device_from_edge_instance_with_options_async(
@@ -1118,12 +2012,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_ids):
+            query['IotIds'] = request.iot_ids
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchUnbindDeviceFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchUnbindDeviceFromEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('BatchUnbindDeviceFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_unbind_device_from_edge_instance(
@@ -1147,11 +2059,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchUnbindProjectDevicesResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.devices
+        )
+        params = open_api_models.Params(
+            action='BatchUnbindProjectDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchUnbindProjectDevicesResponse(),
-            self.do_rpcrequest('BatchUnbindProjectDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_unbind_project_devices_with_options_async(
@@ -1161,11 +2084,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchUnbindProjectDevicesResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.devices
+        )
+        params = open_api_models.Params(
+            action='BatchUnbindProjectDevices',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchUnbindProjectDevicesResponse(),
-            await self.do_rpcrequest_async('BatchUnbindProjectDevices', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_unbind_project_devices(
@@ -1189,11 +2123,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchUnbindProjectProductsResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='BatchUnbindProjectProducts',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchUnbindProjectProductsResponse(),
-            self.do_rpcrequest('BatchUnbindProjectProducts', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_unbind_project_products_with_options_async(
@@ -1203,11 +2148,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BatchUnbindProjectProductsResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='BatchUnbindProjectProducts',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchUnbindProjectProductsResponse(),
-            await self.do_rpcrequest_async('BatchUnbindProjectProducts', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_unbind_project_products(
@@ -1230,12 +2186,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchUpdateDeviceNicknameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_nickname_info):
+            query['DeviceNicknameInfo'] = request.device_nickname_info
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchUpdateDeviceNickname',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchUpdateDeviceNicknameResponse(),
-            self.do_rpcrequest('BatchUpdateDeviceNickname', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def batch_update_device_nickname_with_options_async(
@@ -1244,12 +2216,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BatchUpdateDeviceNicknameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_nickname_info):
+            query['DeviceNicknameInfo'] = request.device_nickname_info
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchUpdateDeviceNickname',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BatchUpdateDeviceNicknameResponse(),
-            await self.do_rpcrequest_async('BatchUpdateDeviceNickname', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_update_device_nickname(
@@ -1272,12 +2260,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindApplicationToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_version):
+            query['ApplicationVersion'] = request.application_version
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindApplicationToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindApplicationToEdgeInstanceResponse(),
-            self.do_rpcrequest('BindApplicationToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def bind_application_to_edge_instance_with_options_async(
@@ -1286,12 +2294,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindApplicationToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.application_version):
+            query['ApplicationVersion'] = request.application_version
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindApplicationToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindApplicationToEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('BindApplicationToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def bind_application_to_edge_instance(
@@ -1314,12 +2342,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindDriverToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindDriverToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindDriverToEdgeInstanceResponse(),
-            self.do_rpcrequest('BindDriverToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def bind_driver_to_edge_instance_with_options_async(
@@ -1328,12 +2378,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindDriverToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindDriverToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindDriverToEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('BindDriverToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def bind_driver_to_edge_instance(
@@ -1356,12 +2428,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindGatewayToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindGatewayToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindGatewayToEdgeInstanceResponse(),
-            self.do_rpcrequest('BindGatewayToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def bind_gateway_to_edge_instance_with_options_async(
@@ -1370,12 +2464,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindGatewayToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindGatewayToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindGatewayToEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('BindGatewayToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def bind_gateway_to_edge_instance(
@@ -1398,12 +2514,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindRoleToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindRoleToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindRoleToEdgeInstanceResponse(),
-            self.do_rpcrequest('BindRoleToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def bind_role_to_edge_instance_with_options_async(
@@ -1412,12 +2548,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindRoleToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindRoleToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindRoleToEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('BindRoleToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def bind_role_to_edge_instance(
@@ -1440,12 +2596,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindSceneRuleToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindSceneRuleToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindSceneRuleToEdgeInstanceResponse(),
-            self.do_rpcrequest('BindSceneRuleToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def bind_scene_rule_to_edge_instance_with_options_async(
@@ -1454,12 +2628,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.BindSceneRuleToEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindSceneRuleToEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.BindSceneRuleToEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('BindSceneRuleToEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def bind_scene_rule_to_edge_instance(
@@ -1482,12 +2674,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelJobResponse(),
-            self.do_rpcrequest('CancelJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_job_with_options_async(
@@ -1496,12 +2704,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelJobResponse(),
-            await self.do_rpcrequest_async('CancelJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_job(
@@ -1524,12 +2748,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTAStrategyByJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelOTAStrategyByJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelOTAStrategyByJobResponse(),
-            self.do_rpcrequest('CancelOTAStrategyByJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_otastrategy_by_job_with_options_async(
@@ -1538,12 +2778,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTAStrategyByJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelOTAStrategyByJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelOTAStrategyByJobResponse(),
-            await self.do_rpcrequest_async('CancelOTAStrategyByJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_otastrategy_by_job(
@@ -1566,12 +2822,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTATaskByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelOTATaskByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelOTATaskByDeviceResponse(),
-            self.do_rpcrequest('CancelOTATaskByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_otatask_by_device_with_options_async(
@@ -1580,12 +2858,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTATaskByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelOTATaskByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelOTATaskByDeviceResponse(),
-            await self.do_rpcrequest_async('CancelOTATaskByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_otatask_by_device(
@@ -1608,12 +2908,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTATaskByJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cancel_in_progress_task):
+            query['CancelInProgressTask'] = request.cancel_in_progress_task
+        if not UtilClient.is_unset(request.cancel_notified_task):
+            query['CancelNotifiedTask'] = request.cancel_notified_task
+        if not UtilClient.is_unset(request.cancel_queued_task):
+            query['CancelQueuedTask'] = request.cancel_queued_task
+        if not UtilClient.is_unset(request.cancel_scheduled_task):
+            query['CancelScheduledTask'] = request.cancel_scheduled_task
+        if not UtilClient.is_unset(request.cancel_unconfirmed_task):
+            query['CancelUnconfirmedTask'] = request.cancel_unconfirmed_task
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelOTATaskByJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelOTATaskByJobResponse(),
-            self.do_rpcrequest('CancelOTATaskByJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_otatask_by_job_with_options_async(
@@ -1622,12 +2948,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelOTATaskByJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cancel_in_progress_task):
+            query['CancelInProgressTask'] = request.cancel_in_progress_task
+        if not UtilClient.is_unset(request.cancel_notified_task):
+            query['CancelNotifiedTask'] = request.cancel_notified_task
+        if not UtilClient.is_unset(request.cancel_queued_task):
+            query['CancelQueuedTask'] = request.cancel_queued_task
+        if not UtilClient.is_unset(request.cancel_scheduled_task):
+            query['CancelScheduledTask'] = request.cancel_scheduled_task
+        if not UtilClient.is_unset(request.cancel_unconfirmed_task):
+            query['CancelUnconfirmedTask'] = request.cancel_unconfirmed_task
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelOTATaskByJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelOTATaskByJobResponse(),
-            await self.do_rpcrequest_async('CancelOTATaskByJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_otatask_by_job(
@@ -1650,12 +3002,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelReleaseProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelReleaseProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelReleaseProductResponse(),
-            self.do_rpcrequest('CancelReleaseProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_release_product_with_options_async(
@@ -1664,12 +3032,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CancelReleaseProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelReleaseProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CancelReleaseProductResponse(),
-            await self.do_rpcrequest_async('CancelReleaseProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_release_product(
@@ -1692,12 +3076,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ClearEdgeInstanceDriverConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearEdgeInstanceDriverConfigs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ClearEdgeInstanceDriverConfigsResponse(),
-            self.do_rpcrequest('ClearEdgeInstanceDriverConfigs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def clear_edge_instance_driver_configs_with_options_async(
@@ -1706,12 +3108,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ClearEdgeInstanceDriverConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearEdgeInstanceDriverConfigs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ClearEdgeInstanceDriverConfigsResponse(),
-            await self.do_rpcrequest_async('ClearEdgeInstanceDriverConfigs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def clear_edge_instance_driver_configs(
@@ -1734,12 +3154,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CloseEdgeInstanceDeploymentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseEdgeInstanceDeployment',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CloseEdgeInstanceDeploymentResponse(),
-            self.do_rpcrequest('CloseEdgeInstanceDeployment', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def close_edge_instance_deployment_with_options_async(
@@ -1748,12 +3184,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CloseEdgeInstanceDeploymentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseEdgeInstanceDeployment',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CloseEdgeInstanceDeploymentResponse(),
-            await self.do_rpcrequest_async('CloseEdgeInstanceDeployment', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def close_edge_instance_deployment(
@@ -1776,12 +3228,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ConfirmOTATaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfirmOTATask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ConfirmOTATaskResponse(),
-            self.do_rpcrequest('ConfirmOTATask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def confirm_otatask_with_options_async(
@@ -1790,12 +3258,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ConfirmOTATaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfirmOTATask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ConfirmOTATaskResponse(),
-            await self.do_rpcrequest_async('ConfirmOTATask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def confirm_otatask(
@@ -1818,12 +3302,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CopyThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.source_model_version):
+            query['SourceModelVersion'] = request.source_model_version
+        if not UtilClient.is_unset(request.source_product_key):
+            query['SourceProductKey'] = request.source_product_key
+        if not UtilClient.is_unset(request.target_product_key):
+            query['TargetProductKey'] = request.target_product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CopyThingModelResponse(),
-            self.do_rpcrequest('CopyThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def copy_thing_model_with_options_async(
@@ -1832,12 +3338,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CopyThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.source_model_version):
+            query['SourceModelVersion'] = request.source_model_version
+        if not UtilClient.is_unset(request.source_product_key):
+            query['SourceProductKey'] = request.source_product_key
+        if not UtilClient.is_unset(request.target_product_key):
+            query['TargetProductKey'] = request.target_product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CopyThingModelResponse(),
-            await self.do_rpcrequest_async('CopyThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def copy_thing_model(
@@ -1860,12 +3388,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateConsumerGroupResponse(),
-            self.do_rpcrequest('CreateConsumerGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_consumer_group_with_options_async(
@@ -1874,12 +3418,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateConsumerGroupResponse(),
-            await self.do_rpcrequest_async('CreateConsumerGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_consumer_group(
@@ -1902,12 +3462,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateConsumerGroupSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerGroupSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateConsumerGroupSubscribeRelationResponse(),
-            self.do_rpcrequest('CreateConsumerGroupSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_consumer_group_subscribe_relation_with_options_async(
@@ -1916,12 +3494,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateConsumerGroupSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerGroupSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateConsumerGroupSubscribeRelationResponse(),
-            await self.do_rpcrequest_async('CreateConsumerGroupSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_consumer_group_subscribe_relation(
@@ -1945,11 +3541,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateDataAPIServiceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.api_path
+        )
+        params = open_api_models.Params(
+            action='CreateDataAPIService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateDataAPIServiceResponse(),
-            self.do_rpcrequest('CreateDataAPIService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_data_apiservice_with_options_async(
@@ -1959,11 +3566,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateDataAPIServiceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.api_path
+        )
+        params = open_api_models.Params(
+            action='CreateDataAPIService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateDataAPIServiceResponse(),
-            await self.do_rpcrequest_async('CreateDataAPIService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_data_apiservice(
@@ -1987,11 +3605,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateDeviceDistributeJobResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.device_name
+        )
+        params = open_api_models.Params(
+            action='CreateDeviceDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateDeviceDistributeJobResponse(),
-            self.do_rpcrequest('CreateDeviceDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_device_distribute_job_with_options_async(
@@ -2001,11 +3630,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateDeviceDistributeJobResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.device_name
+        )
+        params = open_api_models.Params(
+            action='CreateDeviceDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateDeviceDistributeJobResponse(),
-            await self.do_rpcrequest_async('CreateDeviceDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_device_distribute_job(
@@ -2028,12 +3668,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_desc):
+            query['GroupDesc'] = request.group_desc
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.super_group_id):
+            query['SuperGroupId'] = request.super_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateDeviceGroupResponse(),
-            self.do_rpcrequest('CreateDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_device_group_with_options_async(
@@ -2042,12 +3702,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_desc):
+            query['GroupDesc'] = request.group_desc
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.super_group_id):
+            query['SuperGroupId'] = request.super_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateDeviceGroupResponse(),
-            await self.do_rpcrequest_async('CreateDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_device_group(
@@ -2070,12 +3750,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_arch):
+            query['CpuArch'] = request.cpu_arch
+        if not UtilClient.is_unset(request.driver_name):
+            query['DriverName'] = request.driver_name
+        if not UtilClient.is_unset(request.driver_protocol):
+            query['DriverProtocol'] = request.driver_protocol
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.is_built_in):
+            query['IsBuiltIn'] = request.is_built_in
+        if not UtilClient.is_unset(request.runtime):
+            query['Runtime'] = request.runtime
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeDriverResponse(),
-            self.do_rpcrequest('CreateEdgeDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_edge_driver_with_options_async(
@@ -2084,12 +3788,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_arch):
+            query['CpuArch'] = request.cpu_arch
+        if not UtilClient.is_unset(request.driver_name):
+            query['DriverName'] = request.driver_name
+        if not UtilClient.is_unset(request.driver_protocol):
+            query['DriverProtocol'] = request.driver_protocol
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.is_built_in):
+            query['IsBuiltIn'] = request.is_built_in
+        if not UtilClient.is_unset(request.runtime):
+            query['Runtime'] = request.runtime
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeDriverResponse(),
-            await self.do_rpcrequest_async('CreateEdgeDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_edge_driver(
@@ -2112,12 +3840,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.argument):
+            query['Argument'] = request.argument
+        if not UtilClient.is_unset(request.config_check_rule):
+            query['ConfigCheckRule'] = request.config_check_rule
+        if not UtilClient.is_unset(request.container_config):
+            query['ContainerConfig'] = request.container_config
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.driver_config):
+            query['DriverConfig'] = request.driver_config
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.edge_version):
+            query['EdgeVersion'] = request.edge_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.source_config):
+            query['SourceConfig'] = request.source_config
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeDriverVersionResponse(),
-            self.do_rpcrequest('CreateEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_edge_driver_version_with_options_async(
@@ -2126,12 +3886,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.argument):
+            query['Argument'] = request.argument
+        if not UtilClient.is_unset(request.config_check_rule):
+            query['ConfigCheckRule'] = request.config_check_rule
+        if not UtilClient.is_unset(request.container_config):
+            query['ContainerConfig'] = request.container_config
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.driver_config):
+            query['DriverConfig'] = request.driver_config
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.edge_version):
+            query['EdgeVersion'] = request.edge_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.source_config):
+            query['SourceConfig'] = request.source_config
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeDriverVersionResponse(),
-            await self.do_rpcrequest_async('CreateEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_edge_driver_version(
@@ -2154,12 +3946,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeInstanceResponse(),
-            self.do_rpcrequest('CreateEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_edge_instance_with_options_async(
@@ -2168,12 +3980,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('CreateEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_edge_instance(
@@ -2196,12 +4028,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not UtilClient.is_unset(request.configs):
+            query['Configs'] = request.configs
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeInstanceChannelResponse(),
-            self.do_rpcrequest('CreateEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_edge_instance_channel_with_options_async(
@@ -2210,12 +4064,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not UtilClient.is_unset(request.configs):
+            query['Configs'] = request.configs
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeInstanceChannelResponse(),
-            await self.do_rpcrequest_async('CreateEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_edge_instance_channel(
@@ -2238,12 +4114,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceDeploymentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeInstanceDeployment',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeInstanceDeploymentResponse(),
-            self.do_rpcrequest('CreateEdgeInstanceDeployment', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_edge_instance_deployment_with_options_async(
@@ -2252,12 +4146,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceDeploymentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeInstanceDeployment',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeInstanceDeploymentResponse(),
-            await self.do_rpcrequest_async('CreateEdgeInstanceDeployment', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_edge_instance_deployment(
@@ -2280,12 +4192,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_data):
+            query['SourceData'] = request.source_data
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.target_data):
+            query['TargetData'] = request.target_data
+        if not UtilClient.is_unset(request.target_iot_hub_qos):
+            query['TargetIotHubQos'] = request.target_iot_hub_qos
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.topic_filter):
+            query['TopicFilter'] = request.topic_filter
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeInstanceMessageRoutingResponse(),
-            self.do_rpcrequest('CreateEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_edge_instance_message_routing_with_options_async(
@@ -2294,12 +4236,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_data):
+            query['SourceData'] = request.source_data
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.target_data):
+            query['TargetData'] = request.target_data
+        if not UtilClient.is_unset(request.target_iot_hub_qos):
+            query['TargetIotHubQos'] = request.target_iot_hub_qos
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.topic_filter):
+            query['TopicFilter'] = request.topic_filter
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeInstanceMessageRoutingResponse(),
-            await self.do_rpcrequest_async('CreateEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_edge_instance_message_routing(
@@ -2322,12 +4294,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeOssPreSignedAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_version):
+            query['ResourceVersion'] = request.resource_version
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeOssPreSignedAddress',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeOssPreSignedAddressResponse(),
-            self.do_rpcrequest('CreateEdgeOssPreSignedAddress', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_edge_oss_pre_signed_address_with_options_async(
@@ -2336,12 +4332,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateEdgeOssPreSignedAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_version):
+            query['ResourceVersion'] = request.resource_version
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEdgeOssPreSignedAddress',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateEdgeOssPreSignedAddressResponse(),
-            await self.do_rpcrequest_async('CreateEdgeOssPreSignedAddress', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_edge_oss_pre_signed_address(
@@ -2364,12 +4384,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_document):
+            query['JobDocument'] = request.job_document
+        if not UtilClient.is_unset(request.job_file):
+            query['JobFile'] = request.job_file
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.rollout_config):
+            query['RolloutConfig'] = request.rollout_config
+        if not UtilClient.is_unset(request.scheduled_time):
+            query['ScheduledTime'] = request.scheduled_time
+        if not UtilClient.is_unset(request.target_config):
+            query['TargetConfig'] = request.target_config
+        if not UtilClient.is_unset(request.timeout_config):
+            query['TimeoutConfig'] = request.timeout_config
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateJobResponse(),
-            self.do_rpcrequest('CreateJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_job_with_options_async(
@@ -2378,12 +4430,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_document):
+            query['JobDocument'] = request.job_document
+        if not UtilClient.is_unset(request.job_file):
+            query['JobFile'] = request.job_file
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.rollout_config):
+            query['RolloutConfig'] = request.rollout_config
+        if not UtilClient.is_unset(request.scheduled_time):
+            query['ScheduledTime'] = request.scheduled_time
+        if not UtilClient.is_unset(request.target_config):
+            query['TargetConfig'] = request.target_config
+        if not UtilClient.is_unset(request.timeout_config):
+            query['TimeoutConfig'] = request.timeout_config
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateJobResponse(),
-            await self.do_rpcrequest_async('CreateJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_job(
@@ -2406,12 +4490,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateLoRaNodesTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_info):
+            query['DeviceInfo'] = request.device_info
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoRaNodesTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateLoRaNodesTaskResponse(),
-            self.do_rpcrequest('CreateLoRaNodesTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_lo_ra_nodes_task_with_options_async(
@@ -2420,12 +4522,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateLoRaNodesTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_info):
+            query['DeviceInfo'] = request.device_info
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLoRaNodesTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateLoRaNodesTaskResponse(),
-            await self.do_rpcrequest_async('CreateLoRaNodesTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_lo_ra_nodes_task(
@@ -2448,12 +4568,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTADynamicUpgradeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dynamic_mode):
+            query['DynamicMode'] = request.dynamic_mode
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.maximum_per_minute):
+            query['MaximumPerMinute'] = request.maximum_per_minute
+        if not UtilClient.is_unset(request.need_confirm):
+            query['NeedConfirm'] = request.need_confirm
+        if not UtilClient.is_unset(request.need_push):
+            query['NeedPush'] = request.need_push
+        if not UtilClient.is_unset(request.overwrite_mode):
+            query['OverwriteMode'] = request.overwrite_mode
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.retry_count):
+            query['RetryCount'] = request.retry_count
+        if not UtilClient.is_unset(request.retry_interval):
+            query['RetryInterval'] = request.retry_interval
+        if not UtilClient.is_unset(request.src_version):
+            query['SrcVersion'] = request.src_version
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTADynamicUpgradeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTADynamicUpgradeJobResponse(),
-            self.do_rpcrequest('CreateOTADynamicUpgradeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_otadynamic_upgrade_job_with_options_async(
@@ -2462,12 +4620,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTADynamicUpgradeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dynamic_mode):
+            query['DynamicMode'] = request.dynamic_mode
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.maximum_per_minute):
+            query['MaximumPerMinute'] = request.maximum_per_minute
+        if not UtilClient.is_unset(request.need_confirm):
+            query['NeedConfirm'] = request.need_confirm
+        if not UtilClient.is_unset(request.need_push):
+            query['NeedPush'] = request.need_push
+        if not UtilClient.is_unset(request.overwrite_mode):
+            query['OverwriteMode'] = request.overwrite_mode
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.retry_count):
+            query['RetryCount'] = request.retry_count
+        if not UtilClient.is_unset(request.retry_interval):
+            query['RetryInterval'] = request.retry_interval
+        if not UtilClient.is_unset(request.src_version):
+            query['SrcVersion'] = request.src_version
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTADynamicUpgradeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTADynamicUpgradeJobResponse(),
-            await self.do_rpcrequest_async('CreateOTADynamicUpgradeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_otadynamic_upgrade_job(
@@ -2490,12 +4686,52 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dest_version):
+            query['DestVersion'] = request.dest_version
+        if not UtilClient.is_unset(request.firmware_desc):
+            query['FirmwareDesc'] = request.firmware_desc
+        if not UtilClient.is_unset(request.firmware_name):
+            query['FirmwareName'] = request.firmware_name
+        if not UtilClient.is_unset(request.firmware_sign):
+            query['FirmwareSign'] = request.firmware_sign
+        if not UtilClient.is_unset(request.firmware_size):
+            query['FirmwareSize'] = request.firmware_size
+        if not UtilClient.is_unset(request.firmware_url):
+            query['FirmwareUrl'] = request.firmware_url
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.need_to_verify):
+            query['NeedToVerify'] = request.need_to_verify
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.sign_method):
+            query['SignMethod'] = request.sign_method
+        if not UtilClient.is_unset(request.src_version):
+            query['SrcVersion'] = request.src_version
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.udi):
+            query['Udi'] = request.udi
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTAFirmwareResponse(),
-            self.do_rpcrequest('CreateOTAFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_otafirmware_with_options_async(
@@ -2504,12 +4740,52 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dest_version):
+            query['DestVersion'] = request.dest_version
+        if not UtilClient.is_unset(request.firmware_desc):
+            query['FirmwareDesc'] = request.firmware_desc
+        if not UtilClient.is_unset(request.firmware_name):
+            query['FirmwareName'] = request.firmware_name
+        if not UtilClient.is_unset(request.firmware_sign):
+            query['FirmwareSign'] = request.firmware_sign
+        if not UtilClient.is_unset(request.firmware_size):
+            query['FirmwareSize'] = request.firmware_size
+        if not UtilClient.is_unset(request.firmware_url):
+            query['FirmwareUrl'] = request.firmware_url
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.need_to_verify):
+            query['NeedToVerify'] = request.need_to_verify
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.sign_method):
+            query['SignMethod'] = request.sign_method
+        if not UtilClient.is_unset(request.src_version):
+            query['SrcVersion'] = request.src_version
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.udi):
+            query['Udi'] = request.udi
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTAFirmwareResponse(),
-            await self.do_rpcrequest_async('CreateOTAFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_otafirmware(
@@ -2532,12 +4808,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAModuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTAModule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTAModuleResponse(),
-            self.do_rpcrequest('CreateOTAModule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_otamodule_with_options_async(
@@ -2546,12 +4844,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAModuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTAModule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTAModuleResponse(),
-            await self.do_rpcrequest_async('CreateOTAModule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_otamodule(
@@ -2574,12 +4894,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAStaticUpgradeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dn_list_file_url):
+            query['DnListFileUrl'] = request.dn_list_file_url
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.gray_percent):
+            query['GrayPercent'] = request.gray_percent
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.maximum_per_minute):
+            query['MaximumPerMinute'] = request.maximum_per_minute
+        if not UtilClient.is_unset(request.need_confirm):
+            query['NeedConfirm'] = request.need_confirm
+        if not UtilClient.is_unset(request.need_push):
+            query['NeedPush'] = request.need_push
+        if not UtilClient.is_unset(request.overwrite_mode):
+            query['OverwriteMode'] = request.overwrite_mode
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.retry_count):
+            query['RetryCount'] = request.retry_count
+        if not UtilClient.is_unset(request.retry_interval):
+            query['RetryInterval'] = request.retry_interval
+        if not UtilClient.is_unset(request.schedule_finish_time):
+            query['ScheduleFinishTime'] = request.schedule_finish_time
+        if not UtilClient.is_unset(request.schedule_time):
+            query['ScheduleTime'] = request.schedule_time
+        if not UtilClient.is_unset(request.src_version):
+            query['SrcVersion'] = request.src_version
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_device_name):
+            query['TargetDeviceName'] = request.target_device_name
+        if not UtilClient.is_unset(request.target_selection):
+            query['TargetSelection'] = request.target_selection
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTAStaticUpgradeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTAStaticUpgradeJobResponse(),
-            self.do_rpcrequest('CreateOTAStaticUpgradeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_otastatic_upgrade_job_with_options_async(
@@ -2588,12 +4956,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAStaticUpgradeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dn_list_file_url):
+            query['DnListFileUrl'] = request.dn_list_file_url
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.gray_percent):
+            query['GrayPercent'] = request.gray_percent
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.maximum_per_minute):
+            query['MaximumPerMinute'] = request.maximum_per_minute
+        if not UtilClient.is_unset(request.need_confirm):
+            query['NeedConfirm'] = request.need_confirm
+        if not UtilClient.is_unset(request.need_push):
+            query['NeedPush'] = request.need_push
+        if not UtilClient.is_unset(request.overwrite_mode):
+            query['OverwriteMode'] = request.overwrite_mode
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.retry_count):
+            query['RetryCount'] = request.retry_count
+        if not UtilClient.is_unset(request.retry_interval):
+            query['RetryInterval'] = request.retry_interval
+        if not UtilClient.is_unset(request.schedule_finish_time):
+            query['ScheduleFinishTime'] = request.schedule_finish_time
+        if not UtilClient.is_unset(request.schedule_time):
+            query['ScheduleTime'] = request.schedule_time
+        if not UtilClient.is_unset(request.src_version):
+            query['SrcVersion'] = request.src_version
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_device_name):
+            query['TargetDeviceName'] = request.target_device_name
+        if not UtilClient.is_unset(request.target_selection):
+            query['TargetSelection'] = request.target_selection
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTAStaticUpgradeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTAStaticUpgradeJobResponse(),
-            await self.do_rpcrequest_async('CreateOTAStaticUpgradeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_otastatic_upgrade_job(
@@ -2616,12 +5032,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAVerifyJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.need_confirm):
+            query['NeedConfirm'] = request.need_confirm
+        if not UtilClient.is_unset(request.need_push):
+            query['NeedPush'] = request.need_push
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.target_device_name):
+            query['TargetDeviceName'] = request.target_device_name
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTAVerifyJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTAVerifyJobResponse(),
-            self.do_rpcrequest('CreateOTAVerifyJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_otaverify_job_with_options_async(
@@ -2630,12 +5072,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateOTAVerifyJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.need_confirm):
+            query['NeedConfirm'] = request.need_confirm
+        if not UtilClient.is_unset(request.need_push):
+            query['NeedPush'] = request.need_push
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.target_device_name):
+            query['TargetDeviceName'] = request.target_device_name
+        if not UtilClient.is_unset(request.timeout_in_minutes):
+            query['TimeoutInMinutes'] = request.timeout_in_minutes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOTAVerifyJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateOTAVerifyJobResponse(),
-            await self.do_rpcrequest_async('CreateOTAVerifyJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_otaverify_job(
@@ -2658,12 +5126,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_commodity_code):
+            query['AliyunCommodityCode'] = request.aliyun_commodity_code
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.category_key):
+            query['CategoryKey'] = request.category_key
+        if not UtilClient.is_unset(request.data_format):
+            query['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id_2):
+            query['Id2'] = request.id_2
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.join_permission_id):
+            query['JoinPermissionId'] = request.join_permission_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.publish_auto):
+            query['PublishAuto'] = request.publish_auto
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.validate_type):
+            query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateProductResponse(),
-            self.do_rpcrequest('CreateProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_product_with_options_async(
@@ -2672,12 +5182,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_commodity_code):
+            query['AliyunCommodityCode'] = request.aliyun_commodity_code
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.category_key):
+            query['CategoryKey'] = request.category_key
+        if not UtilClient.is_unset(request.data_format):
+            query['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.id_2):
+            query['Id2'] = request.id_2
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.join_permission_id):
+            query['JoinPermissionId'] = request.join_permission_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.protocol_type):
+            query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.publish_auto):
+            query['PublishAuto'] = request.publish_auto
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.validate_type):
+            query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateProductResponse(),
-            await self.do_rpcrequest_async('CreateProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_product(
@@ -2700,12 +5252,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.target_aliyun_id):
+            query['TargetAliyunId'] = request.target_aliyun_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_uid):
+            query['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProductDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateProductDistributeJobResponse(),
-            self.do_rpcrequest('CreateProductDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_product_distribute_job_with_options_async(
@@ -2714,12 +5288,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.target_aliyun_id):
+            query['TargetAliyunId'] = request.target_aliyun_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_uid):
+            query['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProductDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateProductDistributeJobResponse(),
-            await self.do_rpcrequest_async('CreateProductDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_product_distribute_job(
@@ -2742,12 +5338,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.product_tag):
+            query['ProductTag'] = request.product_tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProductTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateProductTagsResponse(),
-            self.do_rpcrequest('CreateProductTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_product_tags_with_options_async(
@@ -2756,12 +5370,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.product_tag):
+            query['ProductTag'] = request.product_tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProductTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateProductTagsResponse(),
-            await self.do_rpcrequest_async('CreateProductTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_product_tags(
@@ -2784,12 +5416,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductTopicResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_short_name):
+            query['TopicShortName'] = request.topic_short_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProductTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateProductTopicResponse(),
-            self.do_rpcrequest('CreateProductTopic', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_product_topic_with_options_async(
@@ -2798,12 +5452,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateProductTopicResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_short_name):
+            query['TopicShortName'] = request.topic_short_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProductTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateProductTopicResponse(),
-            await self.do_rpcrequest_async('CreateProductTopic', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_product_topic(
@@ -2826,12 +5502,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_desc):
+            query['RuleDesc'] = request.rule_desc
+        if not UtilClient.is_unset(request.select):
+            query['Select'] = request.select
+        if not UtilClient.is_unset(request.short_topic):
+            query['ShortTopic'] = request.short_topic
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_type):
+            query['TopicType'] = request.topic_type
+        if not UtilClient.is_unset(request.where):
+            query['Where'] = request.where
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateRuleResponse(),
-            self.do_rpcrequest('CreateRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_rule_with_options_async(
@@ -2840,12 +5550,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_desc):
+            query['RuleDesc'] = request.rule_desc
+        if not UtilClient.is_unset(request.select):
+            query['Select'] = request.select
+        if not UtilClient.is_unset(request.short_topic):
+            query['ShortTopic'] = request.short_topic
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_type):
+            query['TopicType'] = request.topic_type
+        if not UtilClient.is_unset(request.where):
+            query['Where'] = request.where
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateRuleResponse(),
-            await self.do_rpcrequest_async('CreateRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_rule(
@@ -2868,12 +5612,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRuleActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.configuration):
+            query['Configuration'] = request.configuration
+        if not UtilClient.is_unset(request.error_action_flag):
+            query['ErrorActionFlag'] = request.error_action_flag
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRuleAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateRuleActionResponse(),
-            self.do_rpcrequest('CreateRuleAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_rule_action_with_options_async(
@@ -2882,12 +5648,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRuleActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.configuration):
+            query['Configuration'] = request.configuration
+        if not UtilClient.is_unset(request.error_action_flag):
+            query['ErrorActionFlag'] = request.error_action_flag
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRuleAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateRuleActionResponse(),
-            await self.do_rpcrequest_async('CreateRuleAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_rule_action(
@@ -2910,12 +5698,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRulengDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRulengDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateRulengDistributeJobResponse(),
-            self.do_rpcrequest('CreateRulengDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_ruleng_distribute_job_with_options_async(
@@ -2924,12 +5730,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateRulengDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRulengDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateRulengDistributeJobResponse(),
-            await self.do_rpcrequest_async('CreateRulengDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_ruleng_distribute_job(
@@ -2952,12 +5776,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_content):
+            query['RuleContent'] = request.rule_content
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateSceneRuleResponse(),
-            self.do_rpcrequest('CreateSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_scene_rule_with_options_async(
@@ -2966,12 +5810,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_content):
+            query['RuleContent'] = request.rule_content
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateSceneRuleResponse(),
-            await self.do_rpcrequest_async('CreateSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_scene_rule(
@@ -2995,11 +5859,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.biz_code
+        )
+        params = open_api_models.Params(
+            action='CreateSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateSpeechResponse(),
-            self.do_rpcrequest('CreateSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_speech_with_options_async(
@@ -3009,11 +5884,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.biz_code
+        )
+        params = open_api_models.Params(
+            action='CreateSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateSpeechResponse(),
-            await self.do_rpcrequest_async('CreateSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_speech(
@@ -3037,11 +5923,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateStudioAppDomainOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='CreateStudioAppDomainOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateStudioAppDomainOpenResponse(),
-            self.do_rpcrequest('CreateStudioAppDomainOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_studio_app_domain_open_with_options_async(
@@ -3051,11 +5948,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateStudioAppDomainOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='CreateStudioAppDomainOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateStudioAppDomainOpenResponse(),
-            await self.do_rpcrequest_async('CreateStudioAppDomainOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_studio_app_domain_open(
@@ -3078,12 +5986,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_ids):
+            query['ConsumerGroupIds'] = request.consumer_group_ids
+        if not UtilClient.is_unset(request.device_data_flag):
+            query['DeviceDataFlag'] = request.device_data_flag
+        if not UtilClient.is_unset(request.device_life_cycle_flag):
+            query['DeviceLifeCycleFlag'] = request.device_life_cycle_flag
+        if not UtilClient.is_unset(request.device_status_change_flag):
+            query['DeviceStatusChangeFlag'] = request.device_status_change_flag
+        if not UtilClient.is_unset(request.device_tag_flag):
+            query['DeviceTagFlag'] = request.device_tag_flag
+        if not UtilClient.is_unset(request.device_topo_life_cycle_flag):
+            query['DeviceTopoLifeCycleFlag'] = request.device_topo_life_cycle_flag
+        if not UtilClient.is_unset(request.found_device_list_flag):
+            query['FoundDeviceListFlag'] = request.found_device_list_flag
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.mns_configuration):
+            query['MnsConfiguration'] = request.mns_configuration
+        if not UtilClient.is_unset(request.ota_event_flag):
+            query['OtaEventFlag'] = request.ota_event_flag
+        if not UtilClient.is_unset(request.ota_job_flag):
+            query['OtaJobFlag'] = request.ota_job_flag
+        if not UtilClient.is_unset(request.ota_version_flag):
+            query['OtaVersionFlag'] = request.ota_version_flag
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.thing_history_flag):
+            query['ThingHistoryFlag'] = request.thing_history_flag
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateSubscribeRelationResponse(),
-            self.do_rpcrequest('CreateSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_subscribe_relation_with_options_async(
@@ -3092,12 +6042,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_ids):
+            query['ConsumerGroupIds'] = request.consumer_group_ids
+        if not UtilClient.is_unset(request.device_data_flag):
+            query['DeviceDataFlag'] = request.device_data_flag
+        if not UtilClient.is_unset(request.device_life_cycle_flag):
+            query['DeviceLifeCycleFlag'] = request.device_life_cycle_flag
+        if not UtilClient.is_unset(request.device_status_change_flag):
+            query['DeviceStatusChangeFlag'] = request.device_status_change_flag
+        if not UtilClient.is_unset(request.device_tag_flag):
+            query['DeviceTagFlag'] = request.device_tag_flag
+        if not UtilClient.is_unset(request.device_topo_life_cycle_flag):
+            query['DeviceTopoLifeCycleFlag'] = request.device_topo_life_cycle_flag
+        if not UtilClient.is_unset(request.found_device_list_flag):
+            query['FoundDeviceListFlag'] = request.found_device_list_flag
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.mns_configuration):
+            query['MnsConfiguration'] = request.mns_configuration
+        if not UtilClient.is_unset(request.ota_event_flag):
+            query['OtaEventFlag'] = request.ota_event_flag
+        if not UtilClient.is_unset(request.ota_job_flag):
+            query['OtaJobFlag'] = request.ota_job_flag
+        if not UtilClient.is_unset(request.ota_version_flag):
+            query['OtaVersionFlag'] = request.ota_version_flag
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.thing_history_flag):
+            query['ThingHistoryFlag'] = request.thing_history_flag
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateSubscribeRelationResponse(),
-            await self.do_rpcrequest_async('CreateSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_subscribe_relation(
@@ -3120,12 +6112,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.function_block_name):
+            query['FunctionBlockName'] = request.function_block_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.thing_model_json):
+            query['ThingModelJson'] = request.thing_model_json
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateThingModelResponse(),
-            self.do_rpcrequest('CreateThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_thing_model_with_options_async(
@@ -3134,12 +6148,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.function_block_name):
+            query['FunctionBlockName'] = request.function_block_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.thing_model_json):
+            query['ThingModelJson'] = request.thing_model_json
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateThingModelResponse(),
-            await self.do_rpcrequest_async('CreateThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_thing_model(
@@ -3162,12 +6198,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateThingScriptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.script_content):
+            query['ScriptContent'] = request.script_content
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateThingScript',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateThingScriptResponse(),
-            self.do_rpcrequest('CreateThingScript', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_thing_script_with_options_async(
@@ -3176,12 +6232,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateThingScriptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.script_content):
+            query['ScriptContent'] = request.script_content
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateThingScript',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateThingScriptResponse(),
-            await self.do_rpcrequest_async('CreateThingScript', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_thing_script(
@@ -3204,12 +6280,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateTopicRouteTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_topic):
+            query['DstTopic'] = request.dst_topic
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.src_topic):
+            query['SrcTopic'] = request.src_topic
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTopicRouteTable',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateTopicRouteTableResponse(),
-            self.do_rpcrequest('CreateTopicRouteTable', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_topic_route_table_with_options_async(
@@ -3218,12 +6312,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.CreateTopicRouteTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_topic):
+            query['DstTopic'] = request.dst_topic
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.src_topic):
+            query['SrcTopic'] = request.src_topic
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTopicRouteTable',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.CreateTopicRouteTableResponse(),
-            await self.do_rpcrequest_async('CreateTopicRouteTable', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_topic_route_table(
@@ -3246,12 +6358,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteConsumerGroupResponse(),
-            self.do_rpcrequest('DeleteConsumerGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_consumer_group_with_options_async(
@@ -3260,12 +6388,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteConsumerGroupResponse(),
-            await self.do_rpcrequest_async('DeleteConsumerGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_consumer_group(
@@ -3288,12 +6432,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteConsumerGroupSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerGroupSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteConsumerGroupSubscribeRelationResponse(),
-            self.do_rpcrequest('DeleteConsumerGroupSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_consumer_group_subscribe_relation_with_options_async(
@@ -3302,12 +6464,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteConsumerGroupSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerGroupSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteConsumerGroupSubscribeRelationResponse(),
-            await self.do_rpcrequest_async('DeleteConsumerGroupSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_consumer_group_subscribe_relation(
@@ -3330,12 +6510,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDeviceResponse(),
-            self.do_rpcrequest('DeleteDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_device_with_options_async(
@@ -3344,12 +6544,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDeviceResponse(),
-            await self.do_rpcrequest_async('DeleteDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_device(
@@ -3372,12 +6592,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeviceDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDeviceDistributeJobResponse(),
-            self.do_rpcrequest('DeleteDeviceDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_device_distribute_job_with_options_async(
@@ -3386,12 +6620,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeviceDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDeviceDistributeJobResponse(),
-            await self.do_rpcrequest_async('DeleteDeviceDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_device_distribute_job(
@@ -3414,12 +6662,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeviceFile',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDeviceFileResponse(),
-            self.do_rpcrequest('DeleteDeviceFile', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_device_file_with_options_async(
@@ -3428,12 +6698,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeviceFile',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDeviceFileResponse(),
-            await self.do_rpcrequest_async('DeleteDeviceFile', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_device_file(
@@ -3456,12 +6748,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDeviceGroupResponse(),
-            self.do_rpcrequest('DeleteDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_device_group_with_options_async(
@@ -3470,12 +6778,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDeviceGroupResponse(),
-            await self.do_rpcrequest_async('DeleteDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_device_group(
@@ -3498,12 +6822,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDevicePropResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.prop_key):
+            query['PropKey'] = request.prop_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeviceProp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDevicePropResponse(),
-            self.do_rpcrequest('DeleteDeviceProp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_device_prop_with_options_async(
@@ -3512,12 +6858,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteDevicePropResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.prop_key):
+            query['PropKey'] = request.prop_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDeviceProp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteDevicePropResponse(),
-            await self.do_rpcrequest_async('DeleteDeviceProp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_device_prop(
@@ -3540,12 +6908,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteEdgeDriverResponse(),
-            self.do_rpcrequest('DeleteEdgeDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_edge_driver_with_options_async(
@@ -3554,12 +6938,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteEdgeDriverResponse(),
-            await self.do_rpcrequest_async('DeleteEdgeDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_edge_driver(
@@ -3582,12 +6982,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteEdgeDriverVersionResponse(),
-            self.do_rpcrequest('DeleteEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_edge_driver_version_with_options_async(
@@ -3596,12 +7014,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteEdgeDriverVersionResponse(),
-            await self.do_rpcrequest_async('DeleteEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_edge_driver_version(
@@ -3624,12 +7060,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteEdgeInstanceResponse(),
-            self.do_rpcrequest('DeleteEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_edge_instance_with_options_async(
@@ -3638,12 +7090,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('DeleteEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_edge_instance(
@@ -3666,12 +7134,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteEdgeInstanceMessageRoutingResponse(),
-            self.do_rpcrequest('DeleteEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_edge_instance_message_routing_with_options_async(
@@ -3680,12 +7166,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteEdgeInstanceMessageRoutingResponse(),
-            await self.do_rpcrequest_async('DeleteEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_edge_instance_message_routing(
@@ -3708,12 +7212,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteJobResponse(),
-            self.do_rpcrequest('DeleteJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_job_with_options_async(
@@ -3722,12 +7242,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteJobResponse(),
-            await self.do_rpcrequest_async('DeleteJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_job(
@@ -3750,12 +7286,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteOTAFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteOTAFirmwareResponse(),
-            self.do_rpcrequest('DeleteOTAFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_otafirmware_with_options_async(
@@ -3764,12 +7316,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteOTAFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteOTAFirmwareResponse(),
-            await self.do_rpcrequest_async('DeleteOTAFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_otafirmware(
@@ -3792,12 +7360,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteOTAModuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOTAModule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteOTAModuleResponse(),
-            self.do_rpcrequest('DeleteOTAModule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_otamodule_with_options_async(
@@ -3806,12 +7392,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteOTAModuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOTAModule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteOTAModuleResponse(),
-            await self.do_rpcrequest_async('DeleteOTAModule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_otamodule(
@@ -3834,12 +7438,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteProductResponse(),
-            self.do_rpcrequest('DeleteProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_product_with_options_async(
@@ -3848,12 +7468,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteProductResponse(),
-            await self.do_rpcrequest_async('DeleteProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_product(
@@ -3876,12 +7512,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.product_tag_key):
+            query['ProductTagKey'] = request.product_tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProductTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteProductTagsResponse(),
-            self.do_rpcrequest('DeleteProductTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_product_tags_with_options_async(
@@ -3890,12 +7544,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.product_tag_key):
+            query['ProductTagKey'] = request.product_tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProductTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteProductTagsResponse(),
-            await self.do_rpcrequest_async('DeleteProductTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_product_tags(
@@ -3918,12 +7590,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductTopicResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.topic_id):
+            query['TopicId'] = request.topic_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProductTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteProductTopicResponse(),
-            self.do_rpcrequest('DeleteProductTopic', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_product_topic_with_options_async(
@@ -3932,12 +7620,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteProductTopicResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.topic_id):
+            query['TopicId'] = request.topic_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProductTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteProductTopicResponse(),
-            await self.do_rpcrequest_async('DeleteProductTopic', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_product_topic(
@@ -3960,12 +7664,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteRuleResponse(),
-            self.do_rpcrequest('DeleteRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_rule_with_options_async(
@@ -3974,12 +7694,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteRuleResponse(),
-            await self.do_rpcrequest_async('DeleteRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_rule(
@@ -4002,12 +7738,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteRuleActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_id):
+            query['ActionId'] = request.action_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRuleAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteRuleActionResponse(),
-            self.do_rpcrequest('DeleteRuleAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_rule_action_with_options_async(
@@ -4016,12 +7768,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteRuleActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_id):
+            query['ActionId'] = request.action_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRuleAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteRuleActionResponse(),
-            await self.do_rpcrequest_async('DeleteRuleAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_rule_action(
@@ -4044,12 +7812,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteSceneRuleResponse(),
-            self.do_rpcrequest('DeleteSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_scene_rule_with_options_async(
@@ -4058,12 +7842,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteSceneRuleResponse(),
-            await self.do_rpcrequest_async('DeleteSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_scene_rule(
@@ -4087,11 +7887,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.DeleteSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='DeleteSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteSpeechResponse(),
-            self.do_rpcrequest('DeleteSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_speech_with_options_async(
@@ -4101,11 +7912,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.DeleteSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='DeleteSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteSpeechResponse(),
-            await self.do_rpcrequest_async('DeleteSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_speech(
@@ -4129,11 +7951,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.DeleteStudioAppDomainOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='DeleteStudioAppDomainOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteStudioAppDomainOpenResponse(),
-            self.do_rpcrequest('DeleteStudioAppDomainOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_studio_app_domain_open_with_options_async(
@@ -4143,11 +7976,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.DeleteStudioAppDomainOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='DeleteStudioAppDomainOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteStudioAppDomainOpenResponse(),
-            await self.do_rpcrequest_async('DeleteStudioAppDomainOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_studio_app_domain_open(
@@ -4170,12 +8014,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteSubscribeRelationResponse(),
-            self.do_rpcrequest('DeleteSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_subscribe_relation_with_options_async(
@@ -4184,12 +8046,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteSubscribeRelationResponse(),
-            await self.do_rpcrequest_async('DeleteSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_subscribe_relation(
@@ -4212,12 +8092,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_identifier):
+            query['EventIdentifier'] = request.event_identifier
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.property_identifier):
+            query['PropertyIdentifier'] = request.property_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.service_identifier):
+            query['ServiceIdentifier'] = request.service_identifier
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteThingModelResponse(),
-            self.do_rpcrequest('DeleteThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_thing_model_with_options_async(
@@ -4226,12 +8132,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_identifier):
+            query['EventIdentifier'] = request.event_identifier
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.property_identifier):
+            query['PropertyIdentifier'] = request.property_identifier
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.service_identifier):
+            query['ServiceIdentifier'] = request.service_identifier
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteThingModelResponse(),
-            await self.do_rpcrequest_async('DeleteThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_thing_model(
@@ -4254,12 +8186,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteTopicRouteTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_topic):
+            query['DstTopic'] = request.dst_topic
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.src_topic):
+            query['SrcTopic'] = request.src_topic
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTopicRouteTable',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteTopicRouteTableResponse(),
-            self.do_rpcrequest('DeleteTopicRouteTable', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_topic_route_table_with_options_async(
@@ -4268,12 +8218,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DeleteTopicRouteTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dst_topic):
+            query['DstTopic'] = request.dst_topic
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.src_topic):
+            query['SrcTopic'] = request.src_topic
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTopicRouteTable',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DeleteTopicRouteTableResponse(),
-            await self.do_rpcrequest_async('DeleteTopicRouteTable', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_topic_route_table(
@@ -4296,12 +8264,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableDeviceTunnelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDeviceTunnel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DisableDeviceTunnelResponse(),
-            self.do_rpcrequest('DisableDeviceTunnel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_device_tunnel_with_options_async(
@@ -4310,12 +8296,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableDeviceTunnelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDeviceTunnel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DisableDeviceTunnelResponse(),
-            await self.do_rpcrequest_async('DisableDeviceTunnel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_device_tunnel(
@@ -4338,12 +8342,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableDeviceTunnelShareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDeviceTunnelShare',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DisableDeviceTunnelShareResponse(),
-            self.do_rpcrequest('DisableDeviceTunnelShare', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_device_tunnel_share_with_options_async(
@@ -4352,12 +8374,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableDeviceTunnelShareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDeviceTunnelShare',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DisableDeviceTunnelShareResponse(),
-            await self.do_rpcrequest_async('DisableDeviceTunnelShare', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_device_tunnel_share(
@@ -4380,12 +8420,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DisableSceneRuleResponse(),
-            self.do_rpcrequest('DisableSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_scene_rule_with_options_async(
@@ -4394,12 +8450,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DisableSceneRuleResponse(),
-            await self.do_rpcrequest_async('DisableSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_scene_rule(
@@ -4422,12 +8494,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableThingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableThing',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DisableThingResponse(),
-            self.do_rpcrequest('DisableThing', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_thing_with_options_async(
@@ -4436,12 +8528,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.DisableThingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableThing',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.DisableThingResponse(),
-            await self.do_rpcrequest_async('DisableThing', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_thing(
@@ -4464,12 +8576,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableDeviceTunnelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDeviceTunnel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.EnableDeviceTunnelResponse(),
-            self.do_rpcrequest('EnableDeviceTunnel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_device_tunnel_with_options_async(
@@ -4478,12 +8608,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableDeviceTunnelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDeviceTunnel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.EnableDeviceTunnelResponse(),
-            await self.do_rpcrequest_async('EnableDeviceTunnel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_device_tunnel(
@@ -4506,12 +8654,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableDeviceTunnelShareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDeviceTunnelShare',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.EnableDeviceTunnelShareResponse(),
-            self.do_rpcrequest('EnableDeviceTunnelShare', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_device_tunnel_share_with_options_async(
@@ -4520,12 +8686,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableDeviceTunnelShareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDeviceTunnelShare',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.EnableDeviceTunnelShareResponse(),
-            await self.do_rpcrequest_async('EnableDeviceTunnelShare', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_device_tunnel_share(
@@ -4548,12 +8732,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.EnableSceneRuleResponse(),
-            self.do_rpcrequest('EnableSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_scene_rule_with_options_async(
@@ -4562,12 +8762,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.EnableSceneRuleResponse(),
-            await self.do_rpcrequest_async('EnableSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_scene_rule(
@@ -4590,12 +8806,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableThingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableThing',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.EnableThingResponse(),
-            self.do_rpcrequest('EnableThing', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def enable_thing_with_options_async(
@@ -4604,12 +8840,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.EnableThingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableThing',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.EnableThingResponse(),
-            await self.do_rpcrequest_async('EnableThing', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_thing(
@@ -4632,12 +8888,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateDeviceNameListURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateDeviceNameListURL',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GenerateDeviceNameListURLResponse(),
-            self.do_rpcrequest('GenerateDeviceNameListURL', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def generate_device_name_list_urlwith_options_async(
@@ -4646,12 +8916,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateDeviceNameListURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateDeviceNameListURL',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GenerateDeviceNameListURLResponse(),
-            await self.do_rpcrequest_async('GenerateDeviceNameListURL', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def generate_device_name_list_url(
@@ -4674,12 +8958,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateFileUploadURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_suffix):
+            query['FileSuffix'] = request.file_suffix
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateFileUploadURL',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GenerateFileUploadURLResponse(),
-            self.do_rpcrequest('GenerateFileUploadURL', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def generate_file_upload_urlwith_options_async(
@@ -4688,12 +8992,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateFileUploadURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_suffix):
+            query['FileSuffix'] = request.file_suffix
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateFileUploadURL',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GenerateFileUploadURLResponse(),
-            await self.do_rpcrequest_async('GenerateFileUploadURL', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def generate_file_upload_url(
@@ -4716,12 +9040,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateOTAUploadURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_suffix):
+            query['FileSuffix'] = request.file_suffix
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateOTAUploadURL',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GenerateOTAUploadURLResponse(),
-            self.do_rpcrequest('GenerateOTAUploadURL', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def generate_otaupload_urlwith_options_async(
@@ -4730,12 +9070,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GenerateOTAUploadURLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_suffix):
+            query['FileSuffix'] = request.file_suffix
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateOTAUploadURL',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GenerateOTAUploadURLResponse(),
-            await self.do_rpcrequest_async('GenerateOTAUploadURL', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def generate_otaupload_url(
@@ -4759,11 +9115,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.GetDataAPIServiceDetailResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.api_srn
+        )
+        params = open_api_models.Params(
+            action='GetDataAPIServiceDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDataAPIServiceDetailResponse(),
-            self.do_rpcrequest('GetDataAPIServiceDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_data_apiservice_detail_with_options_async(
@@ -4773,11 +9140,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.GetDataAPIServiceDetailResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.api_srn
+        )
+        params = open_api_models.Params(
+            action='GetDataAPIServiceDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDataAPIServiceDetailResponse(),
-            await self.do_rpcrequest_async('GetDataAPIServiceDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_data_apiservice_detail(
@@ -4800,12 +9178,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceShadowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceShadow',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDeviceShadowResponse(),
-            self.do_rpcrequest('GetDeviceShadow', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_device_shadow_with_options_async(
@@ -4814,12 +9210,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceShadowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceShadow',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDeviceShadowResponse(),
-            await self.do_rpcrequest_async('GetDeviceShadow', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_device_shadow(
@@ -4842,12 +9256,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDeviceStatusResponse(),
-            self.do_rpcrequest('GetDeviceStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_device_status_with_options_async(
@@ -4856,12 +9290,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDeviceStatusResponse(),
-            await self.do_rpcrequest_async('GetDeviceStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_device_status(
@@ -4884,12 +9338,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceTunnelShareStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceTunnelShareStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDeviceTunnelShareStatusResponse(),
-            self.do_rpcrequest('GetDeviceTunnelShareStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_device_tunnel_share_status_with_options_async(
@@ -4898,12 +9370,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceTunnelShareStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceTunnelShareStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDeviceTunnelShareStatusResponse(),
-            await self.do_rpcrequest_async('GetDeviceTunnelShareStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_device_tunnel_share_status(
@@ -4926,12 +9416,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceTunnelStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceTunnelStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDeviceTunnelStatusResponse(),
-            self.do_rpcrequest('GetDeviceTunnelStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_device_tunnel_status_with_options_async(
@@ -4940,12 +9448,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetDeviceTunnelStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceTunnelStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetDeviceTunnelStatusResponse(),
-            await self.do_rpcrequest_async('GetDeviceTunnelStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_device_tunnel_status(
@@ -4968,12 +9494,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetEdgeDriverVersionResponse(),
-            self.do_rpcrequest('GetEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_edge_driver_version_with_options_async(
@@ -4982,12 +9526,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetEdgeDriverVersionResponse(),
-            await self.do_rpcrequest_async('GetEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_edge_driver_version(
@@ -5010,12 +9572,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetEdgeInstanceResponse(),
-            self.do_rpcrequest('GetEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_edge_instance_with_options_async(
@@ -5024,12 +9602,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('GetEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_edge_instance(
@@ -5052,12 +9646,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceDeploymentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['DeploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeInstanceDeployment',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetEdgeInstanceDeploymentResponse(),
-            self.do_rpcrequest('GetEdgeInstanceDeployment', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_edge_instance_deployment_with_options_async(
@@ -5066,12 +9678,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceDeploymentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['DeploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeInstanceDeployment',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetEdgeInstanceDeploymentResponse(),
-            await self.do_rpcrequest_async('GetEdgeInstanceDeployment', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_edge_instance_deployment(
@@ -5094,12 +9724,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetEdgeInstanceMessageRoutingResponse(),
-            self.do_rpcrequest('GetEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_edge_instance_message_routing_with_options_async(
@@ -5108,12 +9756,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetEdgeInstanceMessageRoutingResponse(),
-            await self.do_rpcrequest_async('GetEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_edge_instance_message_routing(
@@ -5136,12 +9802,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetGatewayBySubDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGatewayBySubDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetGatewayBySubDeviceResponse(),
-            self.do_rpcrequest('GetGatewayBySubDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_gateway_by_sub_device_with_options_async(
@@ -5150,12 +9836,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetGatewayBySubDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGatewayBySubDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetGatewayBySubDeviceResponse(),
-            await self.do_rpcrequest_async('GetGatewayBySubDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_gateway_by_sub_device(
@@ -5178,12 +9884,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetLoraNodesTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLoraNodesTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetLoraNodesTaskResponse(),
-            self.do_rpcrequest('GetLoraNodesTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_lora_nodes_task_with_options_async(
@@ -5192,12 +9914,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetLoraNodesTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLoraNodesTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetLoraNodesTaskResponse(),
-            await self.do_rpcrequest_async('GetLoraNodesTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_lora_nodes_task(
@@ -5220,12 +9958,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetNodesAddingTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNodesAddingTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetNodesAddingTaskResponse(),
-            self.do_rpcrequest('GetNodesAddingTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_nodes_adding_task_with_options_async(
@@ -5234,12 +9988,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetNodesAddingTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNodesAddingTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetNodesAddingTaskResponse(),
-            await self.do_rpcrequest_async('GetNodesAddingTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_nodes_adding_task(
@@ -5262,12 +10032,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetRuleResponse(),
-            self.do_rpcrequest('GetRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_rule_with_options_async(
@@ -5276,12 +10062,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetRuleResponse(),
-            await self.do_rpcrequest_async('GetRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_rule(
@@ -5304,12 +10106,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetRuleActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_id):
+            query['ActionId'] = request.action_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRuleAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetRuleActionResponse(),
-            self.do_rpcrequest('GetRuleAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_rule_action_with_options_async(
@@ -5318,12 +10136,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetRuleActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_id):
+            query['ActionId'] = request.action_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRuleAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetRuleActionResponse(),
-            await self.do_rpcrequest_async('GetRuleAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_rule_action(
@@ -5346,12 +10180,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetSceneRuleResponse(),
-            self.do_rpcrequest('GetSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_scene_rule_with_options_async(
@@ -5360,12 +10210,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetSceneRuleResponse(),
-            await self.do_rpcrequest_async('GetSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_scene_rule(
@@ -5387,9 +10253,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetSpeechVoiceResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetSpeechVoice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             iot_20180120_models.GetSpeechVoiceResponse(),
-            self.do_rpcrequest('GetSpeechVoice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_speech_voice_with_options_async(
@@ -5397,9 +10274,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetSpeechVoiceResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetSpeechVoice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             iot_20180120_models.GetSpeechVoiceResponse(),
-            await self.do_rpcrequest_async('GetSpeechVoice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_speech_voice(self) -> iot_20180120_models.GetSpeechVoiceResponse:
@@ -5417,11 +10305,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.GetStudioAppTokenOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='GetStudioAppTokenOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetStudioAppTokenOpenResponse(),
-            self.do_rpcrequest('GetStudioAppTokenOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_studio_app_token_open_with_options_async(
@@ -5431,11 +10330,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.GetStudioAppTokenOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='GetStudioAppTokenOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetStudioAppTokenOpenResponse(),
-            await self.do_rpcrequest_async('GetStudioAppTokenOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_studio_app_token_open(
@@ -5458,12 +10368,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingModelTslResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.simple):
+            query['Simple'] = request.simple
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingModelTsl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingModelTslResponse(),
-            self.do_rpcrequest('GetThingModelTsl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_thing_model_tsl_with_options_async(
@@ -5472,12 +10404,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingModelTslResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.simple):
+            query['Simple'] = request.simple
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingModelTsl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingModelTslResponse(),
-            await self.do_rpcrequest_async('GetThingModelTsl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_thing_model_tsl(
@@ -5500,12 +10454,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingModelTslPublishedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.simple):
+            query['Simple'] = request.simple
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingModelTslPublished',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingModelTslPublishedResponse(),
-            self.do_rpcrequest('GetThingModelTslPublished', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_thing_model_tsl_published_with_options_async(
@@ -5514,12 +10492,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingModelTslPublishedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.simple):
+            query['Simple'] = request.simple
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingModelTslPublished',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingModelTslPublishedResponse(),
-            await self.do_rpcrequest_async('GetThingModelTslPublished', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_thing_model_tsl_published(
@@ -5542,12 +10544,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingScriptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingScript',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingScriptResponse(),
-            self.do_rpcrequest('GetThingScript', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_thing_script_with_options_async(
@@ -5556,12 +10574,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingScriptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingScript',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingScriptResponse(),
-            await self.do_rpcrequest_async('GetThingScript', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_thing_script(
@@ -5584,12 +10618,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_key):
+            query['CategoryKey'] = request.category_key
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingTemplateResponse(),
-            self.do_rpcrequest('GetThingTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_thing_template_with_options_async(
@@ -5598,12 +10650,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingTemplateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_key):
+            query['CategoryKey'] = request.category_key
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingTemplateResponse(),
-            await self.do_rpcrequest_async('GetThingTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_thing_template(
@@ -5626,12 +10696,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingTopoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingTopo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingTopoResponse(),
-            self.do_rpcrequest('GetThingTopo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_thing_topo_with_options_async(
@@ -5640,12 +10734,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.GetThingTopoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingTopo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.GetThingTopoResponse(),
-            await self.do_rpcrequest_async('GetThingTopo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_thing_topo(
@@ -5668,12 +10786,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ImportThingModelTslResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.function_block_name):
+            query['FunctionBlockName'] = request.function_block_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tsl_str):
+            query['TslStr'] = request.tsl_str
+        if not UtilClient.is_unset(request.tsl_url):
+            query['TslUrl'] = request.tsl_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportThingModelTsl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ImportThingModelTslResponse(),
-            self.do_rpcrequest('ImportThingModelTsl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def import_thing_model_tsl_with_options_async(
@@ -5682,12 +10826,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ImportThingModelTslResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.function_block_name):
+            query['FunctionBlockName'] = request.function_block_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tsl_str):
+            query['TslStr'] = request.tsl_str
+        if not UtilClient.is_unset(request.tsl_url):
+            query['TslUrl'] = request.tsl_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportThingModelTsl',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ImportThingModelTslResponse(),
-            await self.do_rpcrequest_async('ImportThingModelTsl', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def import_thing_model_tsl(
@@ -5711,11 +10881,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.InvokeDataAPIServiceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=UtilClient.to_array(request.api_srn)
+        )
+        params = open_api_models.Params(
+            action='InvokeDataAPIService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.InvokeDataAPIServiceResponse(),
-            self.do_rpcrequest('InvokeDataAPIService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def invoke_data_apiservice_with_options_async(
@@ -5725,11 +10906,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.InvokeDataAPIServiceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=UtilClient.to_array(request.api_srn)
+        )
+        params = open_api_models.Params(
+            action='InvokeDataAPIService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.InvokeDataAPIServiceResponse(),
-            await self.do_rpcrequest_async('InvokeDataAPIService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def invoke_data_apiservice(
@@ -5752,12 +10944,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.InvokeThingServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.args):
+            query['Args'] = request.args
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InvokeThingService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.InvokeThingServiceResponse(),
-            self.do_rpcrequest('InvokeThingService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def invoke_thing_service_with_options_async(
@@ -5766,12 +10982,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.InvokeThingServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.args):
+            query['Args'] = request.args
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InvokeThingService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.InvokeThingServiceResponse(),
-            await self.do_rpcrequest_async('InvokeThingService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def invoke_thing_service(
@@ -5794,12 +11034,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.InvokeThingsServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.args):
+            query['Args'] = request.args
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InvokeThingsService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.InvokeThingsServiceResponse(),
-            self.do_rpcrequest('InvokeThingsService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def invoke_things_service_with_options_async(
@@ -5808,12 +11070,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.InvokeThingsServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.args):
+            query['Args'] = request.args
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InvokeThingsService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.InvokeThingsServiceResponse(),
-            await self.do_rpcrequest_async('InvokeThingsService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def invoke_things_service(
@@ -5836,12 +11120,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListAnalyticsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_path):
+            query['ApiPath'] = request.api_path
+        if not UtilClient.is_unset(request.condition):
+            query['Condition'] = request.condition
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.iso_id):
+            query['IsoId'] = request.iso_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAnalyticsData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListAnalyticsDataResponse(),
-            self.do_rpcrequest('ListAnalyticsData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_analytics_data_with_options_async(
@@ -5850,12 +11158,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListAnalyticsDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_path):
+            query['ApiPath'] = request.api_path
+        if not UtilClient.is_unset(request.condition):
+            query['Condition'] = request.condition
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.iso_id):
+            query['IsoId'] = request.iso_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAnalyticsData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListAnalyticsDataResponse(),
-            await self.do_rpcrequest_async('ListAnalyticsData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_analytics_data(
@@ -5878,12 +11210,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDeviceDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.target_uid):
+            query['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=request.job_id
+        )
+        params = open_api_models.Params(
+            action='ListDeviceDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListDeviceDistributeJobResponse(),
-            self.do_rpcrequest('ListDeviceDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_device_distribute_job_with_options_async(
@@ -5892,12 +11247,35 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDeviceDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.target_uid):
+            query['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=request.job_id
+        )
+        params = open_api_models.Params(
+            action='ListDeviceDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListDeviceDistributeJobResponse(),
-            await self.do_rpcrequest_async('ListDeviceDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_device_distribute_job(
@@ -5920,12 +11298,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDistributedDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.target_uid):
+            query['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDistributedDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListDistributedDeviceResponse(),
-            self.do_rpcrequest('ListDistributedDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_distributed_device_with_options_async(
@@ -5934,12 +11336,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDistributedDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.target_uid):
+            query['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDistributedDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListDistributedDeviceResponse(),
-            await self.do_rpcrequest_async('ListDistributedDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_distributed_device(
@@ -5962,12 +11388,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDistributedProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_uid):
+            query['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDistributedProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListDistributedProductResponse(),
-            self.do_rpcrequest('ListDistributedProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_distributed_product_with_options_async(
@@ -5976,12 +11426,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListDistributedProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_uid):
+            query['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDistributedProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListDistributedProductResponse(),
-            await self.do_rpcrequest_async('ListDistributedProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_distributed_product(
@@ -6004,12 +11478,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListJobResponse(),
-            self.do_rpcrequest('ListJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_job_with_options_async(
@@ -6018,12 +11512,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListJobResponse(),
-            await self.do_rpcrequest_async('ListJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_job(
@@ -6046,12 +11560,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dest_version):
+            query['DestVersion'] = request.dest_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAFirmwareResponse(),
-            self.do_rpcrequest('ListOTAFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_otafirmware_with_options_async(
@@ -6060,12 +11596,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.dest_version):
+            query['DestVersion'] = request.dest_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAFirmwareResponse(),
-            await self.do_rpcrequest_async('ListOTAFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_otafirmware(
@@ -6088,12 +11646,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAJobByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAJobByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAJobByDeviceResponse(),
-            self.do_rpcrequest('ListOTAJobByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_otajob_by_device_with_options_async(
@@ -6102,12 +11684,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAJobByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAJobByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAJobByDeviceResponse(),
-            await self.do_rpcrequest_async('ListOTAJobByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_otajob_by_device(
@@ -6130,12 +11736,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAJobByFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAJobByFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAJobByFirmwareResponse(),
-            self.do_rpcrequest('ListOTAJobByFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_otajob_by_firmware_with_options_async(
@@ -6144,12 +11770,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAJobByFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAJobByFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAJobByFirmwareResponse(),
-            await self.do_rpcrequest_async('ListOTAJobByFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_otajob_by_firmware(
@@ -6174,11 +11820,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAModuleByProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAModuleByProductResponse(),
-            self.do_rpcrequest('ListOTAModuleByProduct', '2018-01-20', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_otamodule_by_product_with_options_async(
@@ -6189,11 +11846,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAModuleByProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAModuleByProductResponse(),
-            await self.do_rpcrequest_async('ListOTAModuleByProduct', '2018-01-20', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_otamodule_by_product(
@@ -6216,12 +11884,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAModuleVersionsByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAModuleVersionsByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAModuleVersionsByDeviceResponse(),
-            self.do_rpcrequest('ListOTAModuleVersionsByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_otamodule_versions_by_device_with_options_async(
@@ -6230,12 +11922,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAModuleVersionsByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAModuleVersionsByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAModuleVersionsByDeviceResponse(),
-            await self.do_rpcrequest_async('ListOTAModuleVersionsByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_otamodule_versions_by_device(
@@ -6258,12 +11974,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTATaskByJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_names):
+            query['DeviceNames'] = request.device_names
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_status):
+            query['TaskStatus'] = request.task_status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTATaskByJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTATaskByJobResponse(),
-            self.do_rpcrequest('ListOTATaskByJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_otatask_by_job_with_options_async(
@@ -6272,12 +12012,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTATaskByJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_names):
+            query['DeviceNames'] = request.device_names
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_status):
+            query['TaskStatus'] = request.task_status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTATaskByJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTATaskByJobResponse(),
-            await self.do_rpcrequest_async('ListOTATaskByJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_otatask_by_job(
@@ -6300,12 +12064,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAUnfinishedTaskByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.task_status):
+            query['TaskStatus'] = request.task_status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAUnfinishedTaskByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAUnfinishedTaskByDeviceResponse(),
-            self.do_rpcrequest('ListOTAUnfinishedTaskByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_otaunfinished_task_by_device_with_options_async(
@@ -6314,12 +12102,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListOTAUnfinishedTaskByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.task_status):
+            query['TaskStatus'] = request.task_status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOTAUnfinishedTaskByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListOTAUnfinishedTaskByDeviceResponse(),
-            await self.do_rpcrequest_async('ListOTAUnfinishedTaskByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_otaunfinished_task_by_device(
@@ -6342,12 +12154,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListProductByTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_tag):
+            query['ProductTag'] = request.product_tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProductByTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListProductByTagsResponse(),
-            self.do_rpcrequest('ListProductByTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_product_by_tags_with_options_async(
@@ -6356,12 +12188,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListProductByTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_tag):
+            query['ProductTag'] = request.product_tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProductByTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListProductByTagsResponse(),
-            await self.do_rpcrequest_async('ListProductByTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_product_by_tags(
@@ -6384,12 +12236,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListProductTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProductTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListProductTagsResponse(),
-            self.do_rpcrequest('ListProductTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_product_tags_with_options_async(
@@ -6398,12 +12266,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListProductTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProductTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListProductTagsResponse(),
-            await self.do_rpcrequest_async('ListProductTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_product_tags(
@@ -6426,12 +12310,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListRuleResponse(),
-            self.do_rpcrequest('ListRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_rule_with_options_async(
@@ -6440,12 +12344,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListRuleResponse(),
-            await self.do_rpcrequest_async('ListRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_rule(
@@ -6468,12 +12392,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListRuleActionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRuleActions',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListRuleActionsResponse(),
-            self.do_rpcrequest('ListRuleActions', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_rule_actions_with_options_async(
@@ -6482,12 +12422,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListRuleActionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRuleActions',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListRuleActionsResponse(),
-            await self.do_rpcrequest_async('ListRuleActions', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_rule_actions(
@@ -6510,12 +12466,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device):
+            query['Device'] = request.device
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListTaskResponse(),
-            self.do_rpcrequest('ListTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_task_with_options_async(
@@ -6524,12 +12504,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device):
+            query['Device'] = request.device
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListTaskResponse(),
-            await self.do_rpcrequest_async('ListTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_task(
@@ -6552,12 +12556,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListTaskByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device):
+            query['Device'] = request.device
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListTaskByPageResponse(),
-            self.do_rpcrequest('ListTaskByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_task_by_page_with_options_async(
@@ -6566,12 +12598,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListTaskByPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device):
+            query['Device'] = request.device
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskByPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListTaskByPageResponse(),
-            await self.do_rpcrequest_async('ListTaskByPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_task_by_page(
@@ -6594,12 +12654,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListThingModelVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListThingModelVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListThingModelVersionResponse(),
-            self.do_rpcrequest('ListThingModelVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_thing_model_version_with_options_async(
@@ -6608,12 +12684,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListThingModelVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListThingModelVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListThingModelVersionResponse(),
-            await self.do_rpcrequest_async('ListThingModelVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_thing_model_version(
@@ -6636,12 +12728,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListThingTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListThingTemplates',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListThingTemplatesResponse(),
-            self.do_rpcrequest('ListThingTemplates', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_thing_templates_with_options_async(
@@ -6650,12 +12756,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ListThingTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListThingTemplates',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ListThingTemplatesResponse(),
-            await self.do_rpcrequest_async('ListThingTemplates', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_thing_templates(
@@ -6678,12 +12798,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.NotifyAddThingTopoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list_str):
+            query['DeviceListStr'] = request.device_list_str
+        if not UtilClient.is_unset(request.gw_device_name):
+            query['GwDeviceName'] = request.gw_device_name
+        if not UtilClient.is_unset(request.gw_iot_id):
+            query['GwIotId'] = request.gw_iot_id
+        if not UtilClient.is_unset(request.gw_product_key):
+            query['GwProductKey'] = request.gw_product_key
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='NotifyAddThingTopo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.NotifyAddThingTopoResponse(),
-            self.do_rpcrequest('NotifyAddThingTopo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def notify_add_thing_topo_with_options_async(
@@ -6692,12 +12834,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.NotifyAddThingTopoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list_str):
+            query['DeviceListStr'] = request.device_list_str
+        if not UtilClient.is_unset(request.gw_device_name):
+            query['GwDeviceName'] = request.gw_device_name
+        if not UtilClient.is_unset(request.gw_iot_id):
+            query['GwIotId'] = request.gw_iot_id
+        if not UtilClient.is_unset(request.gw_product_key):
+            query['GwProductKey'] = request.gw_product_key
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='NotifyAddThingTopo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.NotifyAddThingTopoResponse(),
-            await self.do_rpcrequest_async('NotifyAddThingTopo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def notify_add_thing_topo(
@@ -6720,12 +12884,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.OpenIotServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenIotService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.OpenIotServiceResponse(),
-            self.do_rpcrequest('OpenIotService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def open_iot_service_with_options_async(
@@ -6734,12 +12912,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.OpenIotServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenIotService',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.OpenIotServiceResponse(),
-            await self.do_rpcrequest_async('OpenIotService', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def open_iot_service(
@@ -6763,11 +12955,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.PrintByTemplateResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.device_name
+        )
+        params = open_api_models.Params(
+            action='PrintByTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PrintByTemplateResponse(),
-            self.do_rpcrequest('PrintByTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def print_by_template_with_options_async(
@@ -6777,11 +12980,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.PrintByTemplateResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.device_name
+        )
+        params = open_api_models.Params(
+            action='PrintByTemplate',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PrintByTemplateResponse(),
-            await self.do_rpcrequest_async('PrintByTemplate', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def print_by_template(
@@ -6804,12 +13018,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PubResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.correlation_data):
+            query['CorrelationData'] = request.correlation_data
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.message_content):
+            query['MessageContent'] = request.message_content
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
+        if not UtilClient.is_unset(request.response_topic):
+            query['ResponseTopic'] = request.response_topic
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
+        if not UtilClient.is_unset(request.user_prop):
+            query['UserProp'] = request.user_prop
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Pub',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PubResponse(),
-            self.do_rpcrequest('Pub', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def pub_with_options_async(
@@ -6818,12 +13060,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PubResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.correlation_data):
+            query['CorrelationData'] = request.correlation_data
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.message_content):
+            query['MessageContent'] = request.message_content
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.qos):
+            query['Qos'] = request.qos
+        if not UtilClient.is_unset(request.response_topic):
+            query['ResponseTopic'] = request.response_topic
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
+        if not UtilClient.is_unset(request.user_prop):
+            query['UserProp'] = request.user_prop
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Pub',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PubResponse(),
-            await self.do_rpcrequest_async('Pub', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def pub(
@@ -6846,12 +13116,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PubBroadcastResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.message_content):
+            query['MessageContent'] = request.message_content
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PubBroadcast',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PubBroadcastResponse(),
-            self.do_rpcrequest('PubBroadcast', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def pub_broadcast_with_options_async(
@@ -6860,12 +13150,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PubBroadcastResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.message_content):
+            query['MessageContent'] = request.message_content
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.topic_full_name):
+            query['TopicFullName'] = request.topic_full_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PubBroadcast',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PubBroadcastResponse(),
-            await self.do_rpcrequest_async('PubBroadcast', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def pub_broadcast(
@@ -6889,11 +13199,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.PublishStudioAppResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='PublishStudioApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PublishStudioAppResponse(),
-            self.do_rpcrequest('PublishStudioApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_studio_app_with_options_async(
@@ -6903,11 +13224,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.PublishStudioAppResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='PublishStudioApp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PublishStudioAppResponse(),
-            await self.do_rpcrequest_async('PublishStudioApp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_studio_app(
@@ -6930,12 +13262,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PublishThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PublishThingModelResponse(),
-            self.do_rpcrequest('PublishThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_thing_model_with_options_async(
@@ -6944,12 +13298,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PublishThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PublishThingModelResponse(),
-            await self.do_rpcrequest_async('PublishThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_thing_model(
@@ -6972,12 +13348,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PushSpeechResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=request.device_name
+        )
+        params = open_api_models.Params(
+            action='PushSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PushSpeechResponse(),
-            self.do_rpcrequest('PushSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def push_speech_with_options_async(
@@ -6986,12 +13377,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.PushSpeechResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=request.device_name
+        )
+        params = open_api_models.Params(
+            action='PushSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.PushSpeechResponse(),
-            await self.do_rpcrequest_async('PushSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def push_speech(
@@ -7014,12 +13420,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryAppDeviceListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.category_key_list):
+            query['CategoryKeyList'] = request.category_key_list
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key_list):
+            query['ProductKeyList'] = request.product_key_list
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAppDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryAppDeviceListResponse(),
-            self.do_rpcrequest('QueryAppDeviceList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_app_device_list_with_options_async(
@@ -7028,12 +13460,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryAppDeviceListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.category_key_list):
+            query['CategoryKeyList'] = request.category_key_list
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key_list):
+            query['ProductKeyList'] = request.product_key_list
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAppDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryAppDeviceListResponse(),
-            await self.do_rpcrequest_async('QueryAppDeviceList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_app_device_list(
@@ -7056,12 +13514,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryBatchRegisterDeviceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryBatchRegisterDeviceStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryBatchRegisterDeviceStatusResponse(),
-            self.do_rpcrequest('QueryBatchRegisterDeviceStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_batch_register_device_status_with_options_async(
@@ -7070,12 +13546,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryBatchRegisterDeviceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryBatchRegisterDeviceStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryBatchRegisterDeviceStatusResponse(),
-            await self.do_rpcrequest_async('QueryBatchRegisterDeviceStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_batch_register_device_status(
@@ -7098,12 +13592,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryCertUrlByApplyIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCertUrlByApplyId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryCertUrlByApplyIdResponse(),
-            self.do_rpcrequest('QueryCertUrlByApplyId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_cert_url_by_apply_id_with_options_async(
@@ -7112,12 +13622,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryCertUrlByApplyIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCertUrlByApplyId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryCertUrlByApplyIdResponse(),
-            await self.do_rpcrequest_async('QueryCertUrlByApplyId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_cert_url_by_apply_id(
@@ -7140,12 +13666,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupByGroupIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryConsumerGroupByGroupId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryConsumerGroupByGroupIdResponse(),
-            self.do_rpcrequest('QueryConsumerGroupByGroupId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_consumer_group_by_group_id_with_options_async(
@@ -7154,12 +13696,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupByGroupIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryConsumerGroupByGroupId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryConsumerGroupByGroupIdResponse(),
-            await self.do_rpcrequest_async('QueryConsumerGroupByGroupId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_consumer_group_by_group_id(
@@ -7182,12 +13740,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.fuzzy):
+            query['Fuzzy'] = request.fuzzy
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryConsumerGroupList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryConsumerGroupListResponse(),
-            self.do_rpcrequest('QueryConsumerGroupList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_consumer_group_list_with_options_async(
@@ -7196,12 +13776,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.fuzzy):
+            query['Fuzzy'] = request.fuzzy
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryConsumerGroupList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryConsumerGroupListResponse(),
-            await self.do_rpcrequest_async('QueryConsumerGroupList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_consumer_group_list(
@@ -7224,12 +13826,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryConsumerGroupStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryConsumerGroupStatusResponse(),
-            self.do_rpcrequest('QueryConsumerGroupStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_consumer_group_status_with_options_async(
@@ -7238,12 +13856,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryConsumerGroupStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryConsumerGroupStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryConsumerGroupStatusResponse(),
-            await self.do_rpcrequest_async('QueryConsumerGroupStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_consumer_group_status(
@@ -7266,12 +13900,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDetailSceneRuleLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.trace_id):
+            query['TraceId'] = request.trace_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDetailSceneRuleLog',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDetailSceneRuleLogResponse(),
-            self.do_rpcrequest('QueryDetailSceneRuleLog', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_detail_scene_rule_log_with_options_async(
@@ -7280,12 +13940,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDetailSceneRuleLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.trace_id):
+            query['TraceId'] = request.trace_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDetailSceneRuleLog',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDetailSceneRuleLogResponse(),
-            await self.do_rpcrequest_async('QueryDetailSceneRuleLog', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_detail_scene_rule_log(
@@ -7308,12 +13994,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceResponse(),
-            self.do_rpcrequest('QueryDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_with_options_async(
@@ -7322,12 +14030,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceResponse(),
-            await self.do_rpcrequest_async('QueryDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device(
@@ -7350,12 +14080,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceBySQLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.sql):
+            query['SQL'] = request.sql
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceBySQL',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceBySQLResponse(),
-            self.do_rpcrequest('QueryDeviceBySQL', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_by_sqlwith_options_async(
@@ -7364,12 +14110,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceBySQLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.sql):
+            query['SQL'] = request.sql
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceBySQL',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceBySQLResponse(),
-            await self.do_rpcrequest_async('QueryDeviceBySQL', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_by_sql(
@@ -7392,12 +14154,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceByStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceByStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceByStatusResponse(),
-            self.do_rpcrequest('QueryDeviceByStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_by_status_with_options_async(
@@ -7406,12 +14192,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceByStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceByStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceByStatusResponse(),
-            await self.do_rpcrequest_async('QueryDeviceByStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_by_status(
@@ -7434,12 +14244,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceByTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceByTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceByTagsResponse(),
-            self.do_rpcrequest('QueryDeviceByTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_by_tags_with_options_async(
@@ -7448,12 +14278,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceByTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceByTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceByTagsResponse(),
-            await self.do_rpcrequest_async('QueryDeviceByTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_by_tags(
@@ -7476,12 +14326,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceCertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceCert',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceCertResponse(),
-            self.do_rpcrequest('QueryDeviceCert', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_cert_with_options_async(
@@ -7490,12 +14358,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceCertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceCert',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceCertResponse(),
-            await self.do_rpcrequest_async('QueryDeviceCert', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_cert(
@@ -7518,12 +14404,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDesiredPropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceDesiredProperty',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceDesiredPropertyResponse(),
-            self.do_rpcrequest('QueryDeviceDesiredProperty', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_desired_property_with_options_async(
@@ -7532,12 +14442,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDesiredPropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceDesiredProperty',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceDesiredPropertyResponse(),
-            await self.do_rpcrequest_async('QueryDeviceDesiredProperty', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_desired_property(
@@ -7560,12 +14494,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceDetailResponse(),
-            self.do_rpcrequest('QueryDeviceDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_detail_with_options_async(
@@ -7574,12 +14528,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceDetailResponse(),
-            await self.do_rpcrequest_async('QueryDeviceDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_detail(
@@ -7602,12 +14576,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDistributeDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceDistributeDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceDistributeDetailResponse(),
-            self.do_rpcrequest('QueryDeviceDistributeDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_distribute_detail_with_options_async(
@@ -7616,12 +14604,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDistributeDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceDistributeDetail',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceDistributeDetailResponse(),
-            await self.do_rpcrequest_async('QueryDeviceDistributeDetail', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_distribute_detail(
@@ -7644,12 +14646,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceDistributeJobResponse(),
-            self.do_rpcrequest('QueryDeviceDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_distribute_job_with_options_async(
@@ -7658,12 +14674,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceDistributeJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceDistributeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceDistributeJobResponse(),
-            await self.do_rpcrequest_async('QueryDeviceDistributeJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_distribute_job(
@@ -7686,12 +14716,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceEventDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceEventData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceEventDataResponse(),
-            self.do_rpcrequest('QueryDeviceEventData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_event_data_with_options_async(
@@ -7700,12 +14762,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceEventDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceEventData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceEventDataResponse(),
-            await self.do_rpcrequest_async('QueryDeviceEventData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_event_data(
@@ -7728,12 +14822,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceFile',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceFileResponse(),
-            self.do_rpcrequest('QueryDeviceFile', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_file_with_options_async(
@@ -7742,12 +14858,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceFileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceFile',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceFileResponse(),
-            await self.do_rpcrequest_async('QueryDeviceFile', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_file(
@@ -7770,12 +14908,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceFileListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceFileList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceFileListResponse(),
-            self.do_rpcrequest('QueryDeviceFileList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_file_list_with_options_async(
@@ -7784,12 +14946,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceFileListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceFileList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceFileListResponse(),
-            await self.do_rpcrequest_async('QueryDeviceFileList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_file_list(
@@ -7812,12 +14998,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupByDeviceResponse(),
-            self.do_rpcrequest('QueryDeviceGroupByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_group_by_device_with_options_async(
@@ -7826,12 +15030,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupByDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupByDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupByDeviceResponse(),
-            await self.do_rpcrequest_async('QueryDeviceGroupByDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_group_by_device(
@@ -7854,12 +15076,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupByTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupByTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupByTagsResponse(),
-            self.do_rpcrequest('QueryDeviceGroupByTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_group_by_tags_with_options_async(
@@ -7868,12 +15110,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupByTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupByTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupByTagsResponse(),
-            await self.do_rpcrequest_async('QueryDeviceGroupByTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_group_by_tags(
@@ -7896,12 +15158,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupInfoResponse(),
-            self.do_rpcrequest('QueryDeviceGroupInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_group_info_with_options_async(
@@ -7910,12 +15188,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupInfoResponse(),
-            await self.do_rpcrequest_async('QueryDeviceGroupInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_group_info(
@@ -7938,12 +15232,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.super_group_id):
+            query['SuperGroupId'] = request.super_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupListResponse(),
-            self.do_rpcrequest('QueryDeviceGroupList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_group_list_with_options_async(
@@ -7952,12 +15268,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.super_group_id):
+            query['SuperGroupId'] = request.super_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupListResponse(),
-            await self.do_rpcrequest_async('QueryDeviceGroupList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_group_list(
@@ -7980,12 +15318,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupTagListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupTagList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupTagListResponse(),
-            self.do_rpcrequest('QueryDeviceGroupTagList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_group_tag_list_with_options_async(
@@ -7994,12 +15348,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceGroupTagListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceGroupTagList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceGroupTagListResponse(),
-            await self.do_rpcrequest_async('QueryDeviceGroupTagList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_group_tag_list(
@@ -8022,12 +15392,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceInfoResponse(),
-            self.do_rpcrequest('QueryDeviceInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_info_with_options_async(
@@ -8036,12 +15426,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceInfoResponse(),
-            await self.do_rpcrequest_async('QueryDeviceInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_info(
@@ -8064,12 +15474,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceListByDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceListByDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceListByDeviceGroupResponse(),
-            self.do_rpcrequest('QueryDeviceListByDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_list_by_device_group_with_options_async(
@@ -8078,12 +15508,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceListByDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceListByDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceListByDeviceGroupResponse(),
-            await self.do_rpcrequest_async('QueryDeviceListByDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_list_by_device_group(
@@ -8106,12 +15556,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalEventDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceOriginalEventData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceOriginalEventDataResponse(),
-            self.do_rpcrequest('QueryDeviceOriginalEventData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_original_event_data_with_options_async(
@@ -8120,12 +15602,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalEventDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceOriginalEventData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceOriginalEventDataResponse(),
-            await self.do_rpcrequest_async('QueryDeviceOriginalEventData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_original_event_data(
@@ -8148,12 +15662,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceOriginalPropertyData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceOriginalPropertyDataResponse(),
-            self.do_rpcrequest('QueryDeviceOriginalPropertyData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_original_property_data_with_options_async(
@@ -8162,12 +15708,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceOriginalPropertyData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceOriginalPropertyDataResponse(),
-            await self.do_rpcrequest_async('QueryDeviceOriginalPropertyData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_original_property_data(
@@ -8190,12 +15768,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceOriginalPropertyStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceOriginalPropertyStatusResponse(),
-            self.do_rpcrequest('QueryDeviceOriginalPropertyStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_original_property_status_with_options_async(
@@ -8204,12 +15808,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalPropertyStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceOriginalPropertyStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceOriginalPropertyStatusResponse(),
-            await self.do_rpcrequest_async('QueryDeviceOriginalPropertyStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_original_property_status(
@@ -8232,12 +15862,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalServiceDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceOriginalServiceData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceOriginalServiceDataResponse(),
-            self.do_rpcrequest('QueryDeviceOriginalServiceData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_original_service_data_with_options_async(
@@ -8246,12 +15908,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceOriginalServiceDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceOriginalServiceData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceOriginalServiceDataResponse(),
-            await self.do_rpcrequest_async('QueryDeviceOriginalServiceData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_original_service_data(
@@ -8274,12 +15968,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceProp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDevicePropResponse(),
-            self.do_rpcrequest('QueryDeviceProp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_prop_with_options_async(
@@ -8288,12 +16002,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceProp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDevicePropResponse(),
-            await self.do_rpcrequest_async('QueryDeviceProp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_prop(
@@ -8316,12 +16050,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertiesDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicePropertiesData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDevicePropertiesDataResponse(),
-            self.do_rpcrequest('QueryDevicePropertiesData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_properties_data_with_options_async(
@@ -8330,12 +16094,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertiesDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicePropertiesData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDevicePropertiesDataResponse(),
-            await self.do_rpcrequest_async('QueryDevicePropertiesData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_properties_data(
@@ -8358,12 +16152,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertyDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicePropertyData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDevicePropertyDataResponse(),
-            self.do_rpcrequest('QueryDevicePropertyData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_property_data_with_options_async(
@@ -8372,12 +16196,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertyDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicePropertyData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDevicePropertyDataResponse(),
-            await self.do_rpcrequest_async('QueryDevicePropertyData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_property_data(
@@ -8400,12 +16254,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertyStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicePropertyStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDevicePropertyStatusResponse(),
-            self.do_rpcrequest('QueryDevicePropertyStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_property_status_with_options_async(
@@ -8414,12 +16290,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDevicePropertyStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicePropertyStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDevicePropertyStatusResponse(),
-            await self.do_rpcrequest_async('QueryDevicePropertyStatus', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_property_status(
@@ -8442,12 +16340,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceServiceDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceServiceData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceServiceDataResponse(),
-            self.do_rpcrequest('QueryDeviceServiceData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_service_data_with_options_async(
@@ -8456,12 +16384,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceServiceDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceServiceData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceServiceDataResponse(),
-            await self.do_rpcrequest_async('QueryDeviceServiceData', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_service_data(
@@ -8484,12 +16442,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceStatisticsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceStatistics',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceStatisticsResponse(),
-            self.do_rpcrequest('QueryDeviceStatistics', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_device_statistics_with_options_async(
@@ -8498,12 +16474,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryDeviceStatisticsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceStatistics',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryDeviceStatisticsResponse(),
-            await self.do_rpcrequest_async('QueryDeviceStatistics', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_device_statistics(
@@ -8526,12 +16520,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.driver_name):
+            query['DriverName'] = request.driver_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeDriverResponse(),
-            self.do_rpcrequest('QueryEdgeDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_driver_with_options_async(
@@ -8540,12 +16556,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.driver_name):
+            query['DriverName'] = request.driver_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeDriverResponse(),
-            await self.do_rpcrequest_async('QueryEdgeDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_driver(
@@ -8568,12 +16606,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.version_state):
+            query['VersionState'] = request.version_state
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeDriverVersionResponse(),
-            self.do_rpcrequest('QueryEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_driver_version_with_options_async(
@@ -8582,12 +16644,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.version_state):
+            query['VersionState'] = request.version_state
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeDriverVersionResponse(),
-            await self.do_rpcrequest_async('QueryEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_driver_version(
@@ -8610,12 +16696,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceResponse(),
-            self.do_rpcrequest('QueryEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_instance_with_options_async(
@@ -8624,12 +16730,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('QueryEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_instance(
@@ -8652,12 +16778,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceChannelResponse(),
-            self.do_rpcrequest('QueryEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_instance_channel_with_options_async(
@@ -8666,12 +16816,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceChannelResponse(),
-            await self.do_rpcrequest_async('QueryEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_instance_channel(
@@ -8694,12 +16868,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceDeviceResponse(),
-            self.do_rpcrequest('QueryEdgeInstanceDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_instance_device_with_options_async(
@@ -8708,12 +16902,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceDeviceResponse(),
-            await self.do_rpcrequest_async('QueryEdgeInstanceDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_instance_device(
@@ -8736,12 +16950,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDeviceByDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceDeviceByDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceDeviceByDriverResponse(),
-            self.do_rpcrequest('QueryEdgeInstanceDeviceByDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_instance_device_by_driver_with_options_async(
@@ -8750,12 +16988,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDeviceByDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceDeviceByDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceDeviceByDriverResponse(),
-            await self.do_rpcrequest_async('QueryEdgeInstanceDeviceByDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_instance_device_by_driver(
@@ -8778,12 +17040,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceDriverResponse(),
-            self.do_rpcrequest('QueryEdgeInstanceDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_instance_driver_with_options_async(
@@ -8792,12 +17074,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceDriverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceDriver',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceDriverResponse(),
-            await self.do_rpcrequest_async('QueryEdgeInstanceDriver', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_instance_driver(
@@ -8820,12 +17122,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceGatewayResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceGateway',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceGatewayResponse(),
-            self.do_rpcrequest('QueryEdgeInstanceGateway', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_instance_gateway_with_options_async(
@@ -8834,12 +17152,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceGatewayResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceGateway',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceGatewayResponse(),
-            await self.do_rpcrequest_async('QueryEdgeInstanceGateway', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_instance_gateway(
@@ -8862,12 +17196,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceHistoricDeploymentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceHistoricDeployment',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceHistoricDeploymentResponse(),
-            self.do_rpcrequest('QueryEdgeInstanceHistoricDeployment', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_instance_historic_deployment_with_options_async(
@@ -8876,12 +17234,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceHistoricDeploymentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceHistoricDeployment',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceHistoricDeploymentResponse(),
-            await self.do_rpcrequest_async('QueryEdgeInstanceHistoricDeployment', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_instance_historic_deployment(
@@ -8904,12 +17286,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceMessageRoutingResponse(),
-            self.do_rpcrequest('QueryEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_instance_message_routing_with_options_async(
@@ -8918,12 +17320,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceMessageRoutingResponse(),
-            await self.do_rpcrequest_async('QueryEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_instance_message_routing(
@@ -8946,12 +17368,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceSceneRuleResponse(),
-            self.do_rpcrequest('QueryEdgeInstanceSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_edge_instance_scene_rule_with_options_async(
@@ -8960,12 +17402,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryEdgeInstanceSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEdgeInstanceSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryEdgeInstanceSceneRuleResponse(),
-            await self.do_rpcrequest_async('QueryEdgeInstanceSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_edge_instance_scene_rule(
@@ -8988,12 +17450,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryJobResponse(),
-            self.do_rpcrequest('QueryJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_job_with_options_async(
@@ -9002,12 +17480,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryJobResponse(),
-            await self.do_rpcrequest_async('QueryJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_job(
@@ -9032,11 +17526,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryJobStatistics',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryJobStatisticsResponse(),
-            self.do_rpcrequest('QueryJobStatistics', '2018-01-20', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_job_statistics_with_options_async(
@@ -9047,11 +17552,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryJobStatistics',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryJobStatisticsResponse(),
-            await self.do_rpcrequest_async('QueryJobStatistics', '2018-01-20', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_job_statistics(
@@ -9074,12 +17590,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryLoRaJoinPermissionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLoRaJoinPermissions',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryLoRaJoinPermissionsResponse(),
-            self.do_rpcrequest('QueryLoRaJoinPermissions', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_lo_ra_join_permissions_with_options_async(
@@ -9088,12 +17618,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryLoRaJoinPermissionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLoRaJoinPermissions',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryLoRaJoinPermissionsResponse(),
-            await self.do_rpcrequest_async('QueryLoRaJoinPermissions', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_lo_ra_join_permissions(
@@ -9116,12 +17660,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryMessageInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.uni_msg_id):
+            query['UniMsgId'] = request.uni_msg_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMessageInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryMessageInfoResponse(),
-            self.do_rpcrequest('QueryMessageInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_message_info_with_options_async(
@@ -9130,12 +17690,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryMessageInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.uni_msg_id):
+            query['UniMsgId'] = request.uni_msg_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMessageInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryMessageInfoResponse(),
-            await self.do_rpcrequest_async('QueryMessageInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_message_info(
@@ -9158,12 +17734,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryOTAFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryOTAFirmwareResponse(),
-            self.do_rpcrequest('QueryOTAFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_otafirmware_with_options_async(
@@ -9172,12 +17764,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryOTAFirmwareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.firmware_id):
+            query['FirmwareId'] = request.firmware_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryOTAFirmware',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryOTAFirmwareResponse(),
-            await self.do_rpcrequest_async('QueryOTAFirmware', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_otafirmware(
@@ -9200,12 +17808,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryOTAJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryOTAJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryOTAJobResponse(),
-            self.do_rpcrequest('QueryOTAJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_otajob_with_options_async(
@@ -9214,12 +17838,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryOTAJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryOTAJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryOTAJobResponse(),
-            await self.do_rpcrequest_async('QueryOTAJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_otajob(
@@ -9242,12 +17882,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryPageByApplyIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryPageByApplyId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryPageByApplyIdResponse(),
-            self.do_rpcrequest('QueryPageByApplyId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_page_by_apply_id_with_options_async(
@@ -9256,12 +17916,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryPageByApplyIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.apply_id):
+            query['ApplyId'] = request.apply_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryPageByApplyId',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryPageByApplyIdResponse(),
-            await self.do_rpcrequest_async('QueryPageByApplyId', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_page_by_apply_id(
@@ -9284,12 +17964,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryProductResponse(),
-            self.do_rpcrequest('QueryProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_product_with_options_async(
@@ -9298,12 +17994,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryProductResponse(),
-            await self.do_rpcrequest_async('QueryProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_product(
@@ -9326,12 +18038,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductCertInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProductCertInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryProductCertInfoResponse(),
-            self.do_rpcrequest('QueryProductCertInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_product_cert_info_with_options_async(
@@ -9340,12 +18068,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductCertInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProductCertInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryProductCertInfoResponse(),
-            await self.do_rpcrequest_async('QueryProductCertInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_product_cert_info(
@@ -9368,12 +18112,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_commodity_code):
+            query['AliyunCommodityCode'] = request.aliyun_commodity_code
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProductList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryProductListResponse(),
-            self.do_rpcrequest('QueryProductList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_product_list_with_options_async(
@@ -9382,12 +18148,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_commodity_code):
+            query['AliyunCommodityCode'] = request.aliyun_commodity_code
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProductList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryProductListResponse(),
-            await self.do_rpcrequest_async('QueryProductList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_product_list(
@@ -9410,12 +18198,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductTopicResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProductTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryProductTopicResponse(),
-            self.do_rpcrequest('QueryProductTopic', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_product_topic_with_options_async(
@@ -9424,12 +18228,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryProductTopicResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProductTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryProductTopicResponse(),
-            await self.do_rpcrequest_async('QueryProductTopic', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_product_topic(
@@ -9452,12 +18272,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySceneRuleResponse(),
-            self.do_rpcrequest('QuerySceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_scene_rule_with_options_async(
@@ -9466,12 +18306,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySceneRuleResponse(),
-            await self.do_rpcrequest_async('QuerySceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_scene_rule(
@@ -9494,12 +18354,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySolutionDeviceGroupPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fuzzy_group_name):
+            query['FuzzyGroupName'] = request.fuzzy_group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            query['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_code):
+            query['ProjectCode'] = request.project_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySolutionDeviceGroupPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySolutionDeviceGroupPageResponse(),
-            self.do_rpcrequest('QuerySolutionDeviceGroupPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_solution_device_group_page_with_options_async(
@@ -9508,12 +18390,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySolutionDeviceGroupPageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fuzzy_group_name):
+            query['FuzzyGroupName'] = request.fuzzy_group_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            query['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_code):
+            query['ProjectCode'] = request.project_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySolutionDeviceGroupPage',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySolutionDeviceGroupPageResponse(),
-            await self.do_rpcrequest_async('QuerySolutionDeviceGroupPage', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_solution_device_group_page(
@@ -9537,11 +18441,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QuerySpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechResponse(),
-            self.do_rpcrequest('QuerySpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_speech_with_options_async(
@@ -9551,11 +18466,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QuerySpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechResponse(),
-            await self.do_rpcrequest_async('QuerySpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_speech(
@@ -9579,11 +18505,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechListResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechListResponse(),
-            self.do_rpcrequest('QuerySpeechList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_speech_list_with_options_async(
@@ -9593,11 +18530,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechListResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechListResponse(),
-            await self.do_rpcrequest_async('QuerySpeechList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_speech_list(
@@ -9620,12 +18568,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySpeechPushJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_code):
+            query['JobCode'] = request.job_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechPushJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechPushJobResponse(),
-            self.do_rpcrequest('QuerySpeechPushJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_speech_push_job_with_options_async(
@@ -9634,12 +18597,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySpeechPushJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_code):
+            query['JobCode'] = request.job_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechPushJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechPushJobResponse(),
-            await self.do_rpcrequest_async('QuerySpeechPushJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_speech_push_job(
@@ -9663,11 +18641,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechPushJobDeviceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.device_name
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechPushJobDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechPushJobDeviceResponse(),
-            self.do_rpcrequest('QuerySpeechPushJobDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_speech_push_job_device_with_options_async(
@@ -9677,11 +18666,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechPushJobDeviceResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.device_name
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechPushJobDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechPushJobDeviceResponse(),
-            await self.do_rpcrequest_async('QuerySpeechPushJobDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_speech_push_job_device(
@@ -9705,11 +18705,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechPushJobSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechPushJobSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechPushJobSpeechResponse(),
-            self.do_rpcrequest('QuerySpeechPushJobSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_speech_push_job_speech_with_options_async(
@@ -9719,11 +18730,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechPushJobSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechPushJobSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySpeechPushJobSpeechResponse(),
-            await self.do_rpcrequest_async('QuerySpeechPushJobSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_speech_push_job_speech(
@@ -9747,11 +18769,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QueryStudioAppDomainListOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='QueryStudioAppDomainListOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryStudioAppDomainListOpenResponse(),
-            self.do_rpcrequest('QueryStudioAppDomainListOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_studio_app_domain_list_open_with_options_async(
@@ -9761,11 +18794,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QueryStudioAppDomainListOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='QueryStudioAppDomainListOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryStudioAppDomainListOpenResponse(),
-            await self.do_rpcrequest_async('QueryStudioAppDomainListOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_studio_app_domain_list_open(
@@ -9789,11 +18833,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QueryStudioAppListResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.fuzzy_name
+        )
+        params = open_api_models.Params(
+            action='QueryStudioAppList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryStudioAppListResponse(),
-            self.do_rpcrequest('QueryStudioAppList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_studio_app_list_with_options_async(
@@ -9803,11 +18858,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QueryStudioAppListResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.fuzzy_name
+        )
+        params = open_api_models.Params(
+            action='QueryStudioAppList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryStudioAppListResponse(),
-            await self.do_rpcrequest_async('QueryStudioAppList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_studio_app_list(
@@ -9831,11 +18897,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QueryStudioAppPageListOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='QueryStudioAppPageListOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryStudioAppPageListOpenResponse(),
-            self.do_rpcrequest('QueryStudioAppPageListOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_studio_app_page_list_open_with_options_async(
@@ -9845,11 +18922,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QueryStudioAppPageListOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='QueryStudioAppPageListOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryStudioAppPageListOpenResponse(),
-            await self.do_rpcrequest_async('QueryStudioAppPageListOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_studio_app_page_list_open(
@@ -9873,11 +18961,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QueryStudioProjectListResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QueryStudioProjectList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryStudioProjectListResponse(),
-            self.do_rpcrequest('QueryStudioProjectList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_studio_project_list_with_options_async(
@@ -9887,11 +18986,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QueryStudioProjectListResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='QueryStudioProjectList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryStudioProjectListResponse(),
-            await self.do_rpcrequest_async('QueryStudioProjectList', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_studio_project_list(
@@ -9914,12 +19024,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySubscribeRelationResponse(),
-            self.do_rpcrequest('QuerySubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_subscribe_relation_with_options_async(
@@ -9928,12 +19056,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySubscribeRelationResponse(),
-            await self.do_rpcrequest_async('QuerySubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_subscribe_relation(
@@ -9956,12 +19102,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySummarySceneRuleLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySummarySceneRuleLog',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySummarySceneRuleLogResponse(),
-            self.do_rpcrequest('QuerySummarySceneRuleLog', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_summary_scene_rule_log_with_options_async(
@@ -9970,12 +19142,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySummarySceneRuleLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySummarySceneRuleLog',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySummarySceneRuleLogResponse(),
-            await self.do_rpcrequest_async('QuerySummarySceneRuleLog', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_summary_scene_rule_log(
@@ -9998,12 +19196,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySuperDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySuperDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySuperDeviceGroupResponse(),
-            self.do_rpcrequest('QuerySuperDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_super_device_group_with_options_async(
@@ -10012,12 +19226,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QuerySuperDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySuperDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QuerySuperDeviceGroupResponse(),
-            await self.do_rpcrequest_async('QuerySuperDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_super_device_group(
@@ -10040,12 +19270,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryTaskResponse(),
-            self.do_rpcrequest('QueryTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_task_with_options_async(
@@ -10054,12 +19300,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTaskResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTask',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryTaskResponse(),
-            await self.do_rpcrequest_async('QueryTask', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_task(
@@ -10082,12 +19344,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryThingModelResponse(),
-            self.do_rpcrequest('QueryThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_thing_model_with_options_async(
@@ -10096,12 +19380,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryThingModelResponse(),
-            await self.do_rpcrequest_async('QueryThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_thing_model(
@@ -10124,12 +19430,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelExtendConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryThingModelExtendConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryThingModelExtendConfigResponse(),
-            self.do_rpcrequest('QueryThingModelExtendConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_thing_model_extend_config_with_options_async(
@@ -10138,12 +19466,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelExtendConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryThingModelExtendConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryThingModelExtendConfigResponse(),
-            await self.do_rpcrequest_async('QueryThingModelExtendConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_thing_model_extend_config(
@@ -10166,12 +19516,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelExtendConfigPublishedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryThingModelExtendConfigPublished',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryThingModelExtendConfigPublishedResponse(),
-            self.do_rpcrequest('QueryThingModelExtendConfigPublished', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_thing_model_extend_config_published_with_options_async(
@@ -10180,12 +19550,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelExtendConfigPublishedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryThingModelExtendConfigPublished',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryThingModelExtendConfigPublishedResponse(),
-            await self.do_rpcrequest_async('QueryThingModelExtendConfigPublished', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_thing_model_extend_config_published(
@@ -10208,12 +19598,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelPublishedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryThingModelPublished',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryThingModelPublishedResponse(),
-            self.do_rpcrequest('QueryThingModelPublished', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_thing_model_published_with_options_async(
@@ -10222,12 +19634,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryThingModelPublishedResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryThingModelPublished',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryThingModelPublishedResponse(),
-            await self.do_rpcrequest_async('QueryThingModelPublished', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_thing_model_published(
@@ -10250,12 +19684,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTopicReverseRouteTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTopicReverseRouteTable',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryTopicReverseRouteTableResponse(),
-            self.do_rpcrequest('QueryTopicReverseRouteTable', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_topic_reverse_route_table_with_options_async(
@@ -10264,12 +19716,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTopicReverseRouteTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTopicReverseRouteTable',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryTopicReverseRouteTableResponse(),
-            await self.do_rpcrequest_async('QueryTopicReverseRouteTable', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_topic_reverse_route_table(
@@ -10292,12 +19762,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTopicRouteTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTopicRouteTable',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryTopicRouteTableResponse(),
-            self.do_rpcrequest('QueryTopicRouteTable', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_topic_route_table_with_options_async(
@@ -10306,12 +19792,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.QueryTopicRouteTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTopicRouteTable',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.QueryTopicRouteTableResponse(),
-            await self.do_rpcrequest_async('QueryTopicRouteTable', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_topic_route_table(
@@ -10328,18 +19830,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_topic_route_table_with_options_async(request, runtime)
 
+    def r_rpc_with_options(
+        self,
+        request: iot_20180120_models.RRpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.RRpcResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.request_base_64byte):
+            query['RequestBase64Byte'] = request.request_base_64byte
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RRpc',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.RRpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def r_rpc_with_options_async(
+        self,
+        request: iot_20180120_models.RRpcRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.RRpcResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.request_base_64byte):
+            query['RequestBase64Byte'] = request.request_base_64byte
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RRpc',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.RRpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def r_rpc(
+        self,
+        request: iot_20180120_models.RRpcRequest,
+    ) -> iot_20180120_models.RRpcResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.r_rpc_with_options(request, runtime)
+
+    async def r_rpc_async(
+        self,
+        request: iot_20180120_models.RRpcRequest,
+    ) -> iot_20180120_models.RRpcResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.r_rpc_with_options_async(request, runtime)
+
     def refresh_device_tunnel_share_password_with_options(
         self,
         request: iot_20180120_models.RefreshDeviceTunnelSharePasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RefreshDeviceTunnelSharePasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshDeviceTunnelSharePassword',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RefreshDeviceTunnelSharePasswordResponse(),
-            self.do_rpcrequest('RefreshDeviceTunnelSharePassword', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def refresh_device_tunnel_share_password_with_options_async(
@@ -10348,12 +19958,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RefreshDeviceTunnelSharePasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshDeviceTunnelSharePassword',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RefreshDeviceTunnelSharePasswordResponse(),
-            await self.do_rpcrequest_async('RefreshDeviceTunnelSharePassword', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def refresh_device_tunnel_share_password(
@@ -10377,11 +20005,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.RefreshStudioAppTokenOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='RefreshStudioAppTokenOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RefreshStudioAppTokenOpenResponse(),
-            self.do_rpcrequest('RefreshStudioAppTokenOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def refresh_studio_app_token_open_with_options_async(
@@ -10391,11 +20030,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.RefreshStudioAppTokenOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='RefreshStudioAppTokenOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RefreshStudioAppTokenOpenResponse(),
-            await self.do_rpcrequest_async('RefreshStudioAppTokenOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def refresh_studio_app_token_open(
@@ -10418,12 +20068,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RegisterDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.dev_eui):
+            query['DevEui'] = request.dev_eui
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.join_eui):
+            query['JoinEui'] = request.join_eui
+        if not UtilClient.is_unset(request.lora_node_type):
+            query['LoraNodeType'] = request.lora_node_type
+        if not UtilClient.is_unset(request.nickname):
+            query['Nickname'] = request.nickname
+        if not UtilClient.is_unset(request.pin_code):
+            query['PinCode'] = request.pin_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RegisterDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RegisterDeviceResponse(),
-            self.do_rpcrequest('RegisterDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def register_device_with_options_async(
@@ -10432,12 +20112,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RegisterDeviceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.dev_eui):
+            query['DevEui'] = request.dev_eui
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.join_eui):
+            query['JoinEui'] = request.join_eui
+        if not UtilClient.is_unset(request.lora_node_type):
+            query['LoraNodeType'] = request.lora_node_type
+        if not UtilClient.is_unset(request.nickname):
+            query['Nickname'] = request.nickname
+        if not UtilClient.is_unset(request.pin_code):
+            query['PinCode'] = request.pin_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RegisterDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RegisterDeviceResponse(),
-            await self.do_rpcrequest_async('RegisterDevice', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def register_device(
@@ -10460,12 +20170,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReleaseEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ReleaseEdgeDriverVersionResponse(),
-            self.do_rpcrequest('ReleaseEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def release_edge_driver_version_with_options_async(
@@ -10474,12 +20202,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReleaseEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ReleaseEdgeDriverVersionResponse(),
-            await self.do_rpcrequest_async('ReleaseEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def release_edge_driver_version(
@@ -10502,12 +20248,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReleaseProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ReleaseProductResponse(),
-            self.do_rpcrequest('ReleaseProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def release_product_with_options_async(
@@ -10516,12 +20278,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReleaseProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ReleaseProductResponse(),
-            await self.do_rpcrequest_async('ReleaseProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def release_product(
@@ -10544,12 +20322,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RemoveThingTopoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveThingTopo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RemoveThingTopoResponse(),
-            self.do_rpcrequest('RemoveThingTopo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_thing_topo_with_options_async(
@@ -10558,12 +20356,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RemoveThingTopoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveThingTopo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RemoveThingTopoResponse(),
-            await self.do_rpcrequest_async('RemoveThingTopo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_thing_topo(
@@ -10586,12 +20404,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReplaceEdgeInstanceGatewayResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_gateway_id):
+            query['CurrentGatewayId'] = request.current_gateway_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.new_gateway_id):
+            query['NewGatewayId'] = request.new_gateway_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReplaceEdgeInstanceGateway',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ReplaceEdgeInstanceGatewayResponse(),
-            self.do_rpcrequest('ReplaceEdgeInstanceGateway', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def replace_edge_instance_gateway_with_options_async(
@@ -10600,12 +20438,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ReplaceEdgeInstanceGatewayResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_gateway_id):
+            query['CurrentGatewayId'] = request.current_gateway_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.new_gateway_id):
+            query['NewGatewayId'] = request.new_gateway_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReplaceEdgeInstanceGateway',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ReplaceEdgeInstanceGatewayResponse(),
-            await self.do_rpcrequest_async('ReplaceEdgeInstanceGateway', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def replace_edge_instance_gateway(
@@ -10628,12 +20486,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RerunJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RerunJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RerunJobResponse(),
-            self.do_rpcrequest('RerunJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def rerun_job_with_options_async(
@@ -10642,12 +20516,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.RerunJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RerunJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.RerunJobResponse(),
-            await self.do_rpcrequest_async('RerunJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def rerun_job(
@@ -10670,12 +20560,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ResetConsumerGroupPositionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetConsumerGroupPosition',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ResetConsumerGroupPositionResponse(),
-            self.do_rpcrequest('ResetConsumerGroupPosition', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def reset_consumer_group_position_with_options_async(
@@ -10684,12 +20590,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ResetConsumerGroupPositionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetConsumerGroupPosition',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ResetConsumerGroupPositionResponse(),
-            await self.do_rpcrequest_async('ResetConsumerGroupPosition', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_consumer_group_position(
@@ -10712,12 +20634,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ResetThingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetThing',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ResetThingResponse(),
-            self.do_rpcrequest('ResetThing', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def reset_thing_with_options_async(
@@ -10726,12 +20668,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.ResetThingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetThing',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.ResetThingResponse(),
-            await self.do_rpcrequest_async('ResetThing', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_thing(
@@ -10748,60 +20710,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_thing_with_options_async(request, runtime)
 
-    def r_rpc_with_options(
-        self,
-        request: iot_20180120_models.RRpcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> iot_20180120_models.RRpcResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            iot_20180120_models.RRpcResponse(),
-            self.do_rpcrequest('RRpc', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def r_rpc_with_options_async(
-        self,
-        request: iot_20180120_models.RRpcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> iot_20180120_models.RRpcResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            iot_20180120_models.RRpcResponse(),
-            await self.do_rpcrequest_async('RRpc', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def r_rpc(
-        self,
-        request: iot_20180120_models.RRpcRequest,
-    ) -> iot_20180120_models.RRpcResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.r_rpc_with_options(request, runtime)
-
-    async def r_rpc_async(
-        self,
-        request: iot_20180120_models.RRpcRequest,
-    ) -> iot_20180120_models.RRpcResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.r_rpc_with_options_async(request, runtime)
-
     def save_device_prop_with_options(
         self,
         request: iot_20180120_models.SaveDevicePropRequest,
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SaveDevicePropResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.props):
+            query['Props'] = request.props
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveDeviceProp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SaveDevicePropResponse(),
-            self.do_rpcrequest('SaveDeviceProp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def save_device_prop_with_options_async(
@@ -10810,12 +20752,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SaveDevicePropResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.props):
+            query['Props'] = request.props
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveDeviceProp',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SaveDevicePropResponse(),
-            await self.do_rpcrequest_async('SaveDeviceProp', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def save_device_prop(
@@ -10838,12 +20802,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDeviceDesiredPropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDeviceDesiredProperty',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetDeviceDesiredPropertyResponse(),
-            self.do_rpcrequest('SetDeviceDesiredProperty', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_device_desired_property_with_options_async(
@@ -10852,12 +20840,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDeviceDesiredPropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDeviceDesiredProperty',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetDeviceDesiredPropertyResponse(),
-            await self.do_rpcrequest_async('SetDeviceDesiredProperty', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_device_desired_property(
@@ -10880,12 +20892,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDeviceGroupTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.tag_string):
+            query['TagString'] = request.tag_string
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDeviceGroupTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetDeviceGroupTagsResponse(),
-            self.do_rpcrequest('SetDeviceGroupTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_device_group_tags_with_options_async(
@@ -10894,12 +20924,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDeviceGroupTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.tag_string):
+            query['TagString'] = request.tag_string
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDeviceGroupTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetDeviceGroupTagsResponse(),
-            await self.do_rpcrequest_async('SetDeviceGroupTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_device_group_tags(
@@ -10922,12 +20970,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDevicePropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDeviceProperty',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetDevicePropertyResponse(),
-            self.do_rpcrequest('SetDeviceProperty', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_device_property_with_options_async(
@@ -10936,12 +21006,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDevicePropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDeviceProperty',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetDevicePropertyResponse(),
-            await self.do_rpcrequest_async('SetDeviceProperty', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_device_property(
@@ -10964,12 +21056,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDevicesPropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDevicesProperty',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetDevicesPropertyResponse(),
-            self.do_rpcrequest('SetDevicesProperty', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_devices_property_with_options_async(
@@ -10978,12 +21090,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetDevicesPropertyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDevicesProperty',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetDevicesPropertyResponse(),
-            await self.do_rpcrequest_async('SetDevicesProperty', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_devices_property(
@@ -11006,12 +21138,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetEdgeInstanceDriverConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.configs):
+            query['Configs'] = request.configs
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetEdgeInstanceDriverConfigs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetEdgeInstanceDriverConfigsResponse(),
-            self.do_rpcrequest('SetEdgeInstanceDriverConfigs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_edge_instance_driver_configs_with_options_async(
@@ -11020,12 +21172,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetEdgeInstanceDriverConfigsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.configs):
+            query['Configs'] = request.configs
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetEdgeInstanceDriverConfigs',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetEdgeInstanceDriverConfigsResponse(),
-            await self.do_rpcrequest_async('SetEdgeInstanceDriverConfigs', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_edge_instance_driver_configs(
@@ -11048,12 +21220,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetProductCertInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.issue_model):
+            query['IssueModel'] = request.issue_model
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetProductCertInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetProductCertInfoResponse(),
-            self.do_rpcrequest('SetProductCertInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_product_cert_info_with_options_async(
@@ -11062,12 +21252,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.SetProductCertInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.issue_model):
+            query['IssueModel'] = request.issue_model
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetProductCertInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetProductCertInfoResponse(),
-            await self.do_rpcrequest_async('SetProductCertInfo', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_product_cert_info(
@@ -11091,11 +21299,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.SetStudioProjectCooperationResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='SetStudioProjectCooperation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetStudioProjectCooperationResponse(),
-            self.do_rpcrequest('SetStudioProjectCooperation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_studio_project_cooperation_with_options_async(
@@ -11105,11 +21324,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.SetStudioProjectCooperationResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='SetStudioProjectCooperation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetStudioProjectCooperationResponse(),
-            await self.do_rpcrequest_async('SetStudioProjectCooperation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def set_studio_project_cooperation(
@@ -11133,11 +21363,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.SetupStudioAppAuthModeOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='SetupStudioAppAuthModeOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetupStudioAppAuthModeOpenResponse(),
-            self.do_rpcrequest('SetupStudioAppAuthModeOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def setup_studio_app_auth_mode_open_with_options_async(
@@ -11147,11 +21388,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.SetupStudioAppAuthModeOpenResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.app_id
+        )
+        params = open_api_models.Params(
+            action='SetupStudioAppAuthModeOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SetupStudioAppAuthModeOpenResponse(),
-            await self.do_rpcrequest_async('SetupStudioAppAuthModeOpen', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def setup_studio_app_auth_mode_open(
@@ -11175,11 +21427,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.SpeechByCombinationResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.combination_list
+        )
+        params = open_api_models.Params(
+            action='SpeechByCombination',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SpeechByCombinationResponse(),
-            self.do_rpcrequest('SpeechByCombination', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def speech_by_combination_with_options_async(
@@ -11189,11 +21452,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.SpeechByCombinationResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.combination_list
+        )
+        params = open_api_models.Params(
+            action='SpeechByCombination',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SpeechByCombinationResponse(),
-            await self.do_rpcrequest_async('SpeechByCombination', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def speech_by_combination(
@@ -11216,12 +21490,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StartCpuResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.target_value):
+            query['TargetValue'] = request.target_value
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartCpu',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.StartCpuResponse(),
-            self.do_rpcrequest('StartCpu', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_cpu_with_options_async(
@@ -11230,12 +21522,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StartCpuResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.target_value):
+            query['TargetValue'] = request.target_value
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartCpu',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.StartCpuResponse(),
-            await self.do_rpcrequest_async('StartCpu', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_cpu(
@@ -11258,12 +21568,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StartRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.StartRuleResponse(),
-            self.do_rpcrequest('StartRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_rule_with_options_async(
@@ -11272,12 +21598,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StartRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.StartRuleResponse(),
-            await self.do_rpcrequest_async('StartRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_rule(
@@ -11300,12 +21642,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StopRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.StopRuleResponse(),
-            self.do_rpcrequest('StopRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_rule_with_options_async(
@@ -11314,12 +21672,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.StopRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.StopRuleResponse(),
-            await self.do_rpcrequest_async('StopRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_rule(
@@ -11343,11 +21717,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.SyncSpeechByCombinationResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.combination_list
+        )
+        params = open_api_models.Params(
+            action='SyncSpeechByCombination',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SyncSpeechByCombinationResponse(),
-            self.do_rpcrequest('SyncSpeechByCombination', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def sync_speech_by_combination_with_options_async(
@@ -11357,11 +21742,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.SyncSpeechByCombinationResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.combination_list
+        )
+        params = open_api_models.Params(
+            action='SyncSpeechByCombination',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.SyncSpeechByCombinationResponse(),
-            await self.do_rpcrequest_async('SyncSpeechByCombination', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def sync_speech_by_combination(
@@ -11385,11 +21781,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.TestSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='TestSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.TestSpeechResponse(),
-            self.do_rpcrequest('TestSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def test_speech_with_options_async(
@@ -11399,11 +21806,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.TestSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='TestSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.TestSpeechResponse(),
-            await self.do_rpcrequest_async('TestSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def test_speech(
@@ -11426,12 +21844,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.TriggerSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TriggerSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.TriggerSceneRuleResponse(),
-            self.do_rpcrequest('TriggerSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def trigger_scene_rule_with_options_async(
@@ -11440,12 +21876,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.TriggerSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TriggerSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.TriggerSceneRuleResponse(),
-            await self.do_rpcrequest_async('TriggerSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def trigger_scene_rule(
@@ -11468,12 +21922,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindApplicationFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindApplicationFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UnbindApplicationFromEdgeInstanceResponse(),
-            self.do_rpcrequest('UnbindApplicationFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def unbind_application_from_edge_instance_with_options_async(
@@ -11482,12 +21954,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindApplicationFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindApplicationFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UnbindApplicationFromEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('UnbindApplicationFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def unbind_application_from_edge_instance(
@@ -11510,12 +22000,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindDriverFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindDriverFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UnbindDriverFromEdgeInstanceResponse(),
-            self.do_rpcrequest('UnbindDriverFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def unbind_driver_from_edge_instance_with_options_async(
@@ -11524,12 +22032,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindDriverFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindDriverFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UnbindDriverFromEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('UnbindDriverFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def unbind_driver_from_edge_instance(
@@ -11552,12 +22078,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindRoleFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindRoleFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UnbindRoleFromEdgeInstanceResponse(),
-            self.do_rpcrequest('UnbindRoleFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def unbind_role_from_edge_instance_with_options_async(
@@ -11566,12 +22108,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindRoleFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindRoleFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UnbindRoleFromEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('UnbindRoleFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def unbind_role_from_edge_instance(
@@ -11594,12 +22152,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindSceneRuleFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindSceneRuleFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UnbindSceneRuleFromEdgeInstanceResponse(),
-            self.do_rpcrequest('UnbindSceneRuleFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def unbind_scene_rule_from_edge_instance_with_options_async(
@@ -11608,12 +22184,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UnbindSceneRuleFromEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindSceneRuleFromEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UnbindSceneRuleFromEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('UnbindSceneRuleFromEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def unbind_scene_rule_from_edge_instance(
@@ -11636,12 +22230,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.new_group_name):
+            query['NewGroupName'] = request.new_group_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConsumerGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateConsumerGroupResponse(),
-            self.do_rpcrequest('UpdateConsumerGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_consumer_group_with_options_async(
@@ -11650,12 +22262,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.new_group_name):
+            query['NewGroupName'] = request.new_group_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConsumerGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateConsumerGroupResponse(),
-            await self.do_rpcrequest_async('UpdateConsumerGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_consumer_group(
@@ -11678,12 +22308,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_desc):
+            query['GroupDesc'] = request.group_desc
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateDeviceGroupResponse(),
-            self.do_rpcrequest('UpdateDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_device_group_with_options_async(
@@ -11692,12 +22340,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateDeviceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_desc):
+            query['GroupDesc'] = request.group_desc
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeviceGroup',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateDeviceGroupResponse(),
-            await self.do_rpcrequest_async('UpdateDeviceGroup', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_device_group(
@@ -11720,12 +22386,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateDeviceShadowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delta_update):
+            query['DeltaUpdate'] = request.delta_update
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.shadow_message):
+            query['ShadowMessage'] = request.shadow_message
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeviceShadow',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateDeviceShadowResponse(),
-            self.do_rpcrequest('UpdateDeviceShadow', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_device_shadow_with_options_async(
@@ -11734,12 +22422,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateDeviceShadowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delta_update):
+            query['DeltaUpdate'] = request.delta_update
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.shadow_message):
+            query['ShadowMessage'] = request.shadow_message
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeviceShadow',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateDeviceShadowResponse(),
-            await self.do_rpcrequest_async('UpdateDeviceShadow', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_device_shadow(
@@ -11762,12 +22472,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.argument):
+            query['Argument'] = request.argument
+        if not UtilClient.is_unset(request.config_check_rule):
+            query['ConfigCheckRule'] = request.config_check_rule
+        if not UtilClient.is_unset(request.container_config):
+            query['ContainerConfig'] = request.container_config
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.driver_config):
+            query['DriverConfig'] = request.driver_config
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.edge_version):
+            query['EdgeVersion'] = request.edge_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.source_config):
+            query['SourceConfig'] = request.source_config
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateEdgeDriverVersionResponse(),
-            self.do_rpcrequest('UpdateEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_edge_driver_version_with_options_async(
@@ -11776,12 +22518,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeDriverVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.argument):
+            query['Argument'] = request.argument
+        if not UtilClient.is_unset(request.config_check_rule):
+            query['ConfigCheckRule'] = request.config_check_rule
+        if not UtilClient.is_unset(request.container_config):
+            query['ContainerConfig'] = request.container_config
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.driver_config):
+            query['DriverConfig'] = request.driver_config
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.driver_version):
+            query['DriverVersion'] = request.driver_version
+        if not UtilClient.is_unset(request.edge_version):
+            query['EdgeVersion'] = request.edge_version
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.source_config):
+            query['SourceConfig'] = request.source_config
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeDriverVersion',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateEdgeDriverVersionResponse(),
-            await self.do_rpcrequest_async('UpdateEdgeDriverVersion', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_edge_driver_version(
@@ -11804,12 +22578,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_enable):
+            query['BizEnable'] = request.biz_enable
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateEdgeInstanceResponse(),
-            self.do_rpcrequest('UpdateEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_edge_instance_with_options_async(
@@ -11818,12 +22616,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_enable):
+            query['BizEnable'] = request.biz_enable
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.spec):
+            query['Spec'] = request.spec
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeInstance',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateEdgeInstanceResponse(),
-            await self.do_rpcrequest_async('UpdateEdgeInstance', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_edge_instance(
@@ -11846,12 +22668,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not UtilClient.is_unset(request.configs):
+            query['Configs'] = request.configs
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateEdgeInstanceChannelResponse(),
-            self.do_rpcrequest('UpdateEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_edge_instance_channel_with_options_async(
@@ -11860,12 +22706,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeInstanceChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not UtilClient.is_unset(request.configs):
+            query['Configs'] = request.configs
+        if not UtilClient.is_unset(request.driver_id):
+            query['DriverId'] = request.driver_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeInstanceChannel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateEdgeInstanceChannelResponse(),
-            await self.do_rpcrequest_async('UpdateEdgeInstanceChannel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_edge_instance_channel(
@@ -11888,12 +22758,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.source_data):
+            query['SourceData'] = request.source_data
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.target_data):
+            query['TargetData'] = request.target_data
+        if not UtilClient.is_unset(request.target_iot_hub_qos):
+            query['TargetIotHubQos'] = request.target_iot_hub_qos
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.topic_filter):
+            query['TopicFilter'] = request.topic_filter
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateEdgeInstanceMessageRoutingResponse(),
-            self.do_rpcrequest('UpdateEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_edge_instance_message_routing_with_options_async(
@@ -11902,12 +22804,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateEdgeInstanceMessageRoutingResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        if not UtilClient.is_unset(request.source_data):
+            query['SourceData'] = request.source_data
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.target_data):
+            query['TargetData'] = request.target_data
+        if not UtilClient.is_unset(request.target_iot_hub_qos):
+            query['TargetIotHubQos'] = request.target_iot_hub_qos
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.topic_filter):
+            query['TopicFilter'] = request.topic_filter
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEdgeInstanceMessageRouting',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateEdgeInstanceMessageRoutingResponse(),
-            await self.do_rpcrequest_async('UpdateEdgeInstanceMessageRouting', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_edge_instance_message_routing(
@@ -11930,12 +22864,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.rollout_config):
+            query['RolloutConfig'] = request.rollout_config
+        if not UtilClient.is_unset(request.timeout_config):
+            query['TimeoutConfig'] = request.timeout_config
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateJobResponse(),
-            self.do_rpcrequest('UpdateJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_job_with_options_async(
@@ -11944,12 +22900,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.rollout_config):
+            query['RolloutConfig'] = request.rollout_config
+        if not UtilClient.is_unset(request.timeout_config):
+            query['TimeoutConfig'] = request.timeout_config
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateJobResponse(),
-            await self.do_rpcrequest_async('UpdateJob', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_job(
@@ -11972,12 +22950,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateOTAModuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOTAModule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateOTAModuleResponse(),
-            self.do_rpcrequest('UpdateOTAModule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_otamodule_with_options_async(
@@ -11986,12 +22986,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateOTAModuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOTAModule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateOTAModuleResponse(),
-            await self.do_rpcrequest_async('UpdateOTAModule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_otamodule(
@@ -12014,12 +23036,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateProductResponse(),
-            self.do_rpcrequest('UpdateProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_product_with_options_async(
@@ -12028,12 +23070,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProduct',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateProductResponse(),
-            await self.do_rpcrequest_async('UpdateProduct', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_product(
@@ -12056,12 +23118,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductFilterConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.property_timestamp_filter):
+            query['PropertyTimestampFilter'] = request.property_timestamp_filter
+        if not UtilClient.is_unset(request.property_value_filter):
+            query['PropertyValueFilter'] = request.property_value_filter
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProductFilterConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateProductFilterConfigResponse(),
-            self.do_rpcrequest('UpdateProductFilterConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_product_filter_config_with_options_async(
@@ -12070,12 +23152,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductFilterConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.property_timestamp_filter):
+            query['PropertyTimestampFilter'] = request.property_timestamp_filter
+        if not UtilClient.is_unset(request.property_value_filter):
+            query['PropertyValueFilter'] = request.property_value_filter
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProductFilterConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateProductFilterConfigResponse(),
-            await self.do_rpcrequest_async('UpdateProductFilterConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_product_filter_config(
@@ -12098,12 +23200,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.product_tag):
+            query['ProductTag'] = request.product_tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProductTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateProductTagsResponse(),
-            self.do_rpcrequest('UpdateProductTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_product_tags_with_options_async(
@@ -12112,12 +23232,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.product_tag):
+            query['ProductTag'] = request.product_tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProductTags',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateProductTagsResponse(),
-            await self.do_rpcrequest_async('UpdateProductTags', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_product_tags(
@@ -12140,12 +23278,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductTopicResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.topic_id):
+            query['TopicId'] = request.topic_id
+        if not UtilClient.is_unset(request.topic_short_name):
+            query['TopicShortName'] = request.topic_short_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProductTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateProductTopicResponse(),
-            self.do_rpcrequest('UpdateProductTopic', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_product_topic_with_options_async(
@@ -12154,12 +23314,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateProductTopicResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        if not UtilClient.is_unset(request.topic_id):
+            query['TopicId'] = request.topic_id
+        if not UtilClient.is_unset(request.topic_short_name):
+            query['TopicShortName'] = request.topic_short_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProductTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateProductTopicResponse(),
-            await self.do_rpcrequest_async('UpdateProductTopic', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_product_topic(
@@ -12182,12 +23364,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.rule_desc):
+            query['RuleDesc'] = request.rule_desc
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.select):
+            query['Select'] = request.select
+        if not UtilClient.is_unset(request.short_topic):
+            query['ShortTopic'] = request.short_topic
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_type):
+            query['TopicType'] = request.topic_type
+        if not UtilClient.is_unset(request.where):
+            query['Where'] = request.where
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateRuleResponse(),
-            self.do_rpcrequest('UpdateRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_rule_with_options_async(
@@ -12196,12 +23410,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.rule_desc):
+            query['RuleDesc'] = request.rule_desc
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.select):
+            query['Select'] = request.select
+        if not UtilClient.is_unset(request.short_topic):
+            query['ShortTopic'] = request.short_topic
+        if not UtilClient.is_unset(request.topic):
+            query['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_type):
+            query['TopicType'] = request.topic_type
+        if not UtilClient.is_unset(request.where):
+            query['Where'] = request.where
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateRuleResponse(),
-            await self.do_rpcrequest_async('UpdateRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_rule(
@@ -12224,12 +23470,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateRuleActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_id):
+            query['ActionId'] = request.action_id
+        if not UtilClient.is_unset(request.configuration):
+            query['Configuration'] = request.configuration
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRuleAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateRuleActionResponse(),
-            self.do_rpcrequest('UpdateRuleAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_rule_action_with_options_async(
@@ -12238,12 +23504,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateRuleActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_id):
+            query['ActionId'] = request.action_id
+        if not UtilClient.is_unset(request.configuration):
+            query['Configuration'] = request.configuration
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRuleAction',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateRuleActionResponse(),
-            await self.do_rpcrequest_async('UpdateRuleAction', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_rule_action(
@@ -12266,12 +23552,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_content):
+            query['RuleContent'] = request.rule_content
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateSceneRuleResponse(),
-            self.do_rpcrequest('UpdateSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_scene_rule_with_options_async(
@@ -12280,12 +23588,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateSceneRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.rule_content):
+            query['RuleContent'] = request.rule_content
+        if not UtilClient.is_unset(request.rule_description):
+            query['RuleDescription'] = request.rule_description
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSceneRule',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateSceneRuleResponse(),
-            await self.do_rpcrequest_async('UpdateSceneRule', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_scene_rule(
@@ -12309,11 +23639,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.UpdateSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='UpdateSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateSpeechResponse(),
-            self.do_rpcrequest('UpdateSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_speech_with_options_async(
@@ -12323,11 +23664,22 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.UpdateSpeechResponse:
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=request.iot_instance_id
+        )
+        params = open_api_models.Params(
+            action='UpdateSpeech',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateSpeechResponse(),
-            await self.do_rpcrequest_async('UpdateSpeech', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_speech(
@@ -12350,12 +23702,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_ids):
+            query['ConsumerGroupIds'] = request.consumer_group_ids
+        if not UtilClient.is_unset(request.device_data_flag):
+            query['DeviceDataFlag'] = request.device_data_flag
+        if not UtilClient.is_unset(request.device_life_cycle_flag):
+            query['DeviceLifeCycleFlag'] = request.device_life_cycle_flag
+        if not UtilClient.is_unset(request.device_status_change_flag):
+            query['DeviceStatusChangeFlag'] = request.device_status_change_flag
+        if not UtilClient.is_unset(request.device_tag_flag):
+            query['DeviceTagFlag'] = request.device_tag_flag
+        if not UtilClient.is_unset(request.device_topo_life_cycle_flag):
+            query['DeviceTopoLifeCycleFlag'] = request.device_topo_life_cycle_flag
+        if not UtilClient.is_unset(request.found_device_list_flag):
+            query['FoundDeviceListFlag'] = request.found_device_list_flag
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.mns_configuration):
+            query['MnsConfiguration'] = request.mns_configuration
+        if not UtilClient.is_unset(request.ota_event_flag):
+            query['OtaEventFlag'] = request.ota_event_flag
+        if not UtilClient.is_unset(request.ota_job_flag):
+            query['OtaJobFlag'] = request.ota_job_flag
+        if not UtilClient.is_unset(request.ota_version_flag):
+            query['OtaVersionFlag'] = request.ota_version_flag
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.thing_history_flag):
+            query['ThingHistoryFlag'] = request.thing_history_flag
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateSubscribeRelationResponse(),
-            self.do_rpcrequest('UpdateSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_subscribe_relation_with_options_async(
@@ -12364,12 +23758,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateSubscribeRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_ids):
+            query['ConsumerGroupIds'] = request.consumer_group_ids
+        if not UtilClient.is_unset(request.device_data_flag):
+            query['DeviceDataFlag'] = request.device_data_flag
+        if not UtilClient.is_unset(request.device_life_cycle_flag):
+            query['DeviceLifeCycleFlag'] = request.device_life_cycle_flag
+        if not UtilClient.is_unset(request.device_status_change_flag):
+            query['DeviceStatusChangeFlag'] = request.device_status_change_flag
+        if not UtilClient.is_unset(request.device_tag_flag):
+            query['DeviceTagFlag'] = request.device_tag_flag
+        if not UtilClient.is_unset(request.device_topo_life_cycle_flag):
+            query['DeviceTopoLifeCycleFlag'] = request.device_topo_life_cycle_flag
+        if not UtilClient.is_unset(request.found_device_list_flag):
+            query['FoundDeviceListFlag'] = request.found_device_list_flag
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.mns_configuration):
+            query['MnsConfiguration'] = request.mns_configuration
+        if not UtilClient.is_unset(request.ota_event_flag):
+            query['OtaEventFlag'] = request.ota_event_flag
+        if not UtilClient.is_unset(request.ota_job_flag):
+            query['OtaJobFlag'] = request.ota_job_flag
+        if not UtilClient.is_unset(request.ota_version_flag):
+            query['OtaVersionFlag'] = request.ota_version_flag
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.thing_history_flag):
+            query['ThingHistoryFlag'] = request.thing_history_flag
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubscribeRelation',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateSubscribeRelationResponse(),
-            await self.do_rpcrequest_async('UpdateSubscribeRelation', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_subscribe_relation(
@@ -12392,12 +23828,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.function_block_name):
+            query['FunctionBlockName'] = request.function_block_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.thing_model_json):
+            query['ThingModelJson'] = request.thing_model_json
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateThingModelResponse(),
-            self.do_rpcrequest('UpdateThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_thing_model_with_options_async(
@@ -12406,12 +23866,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingModelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_block_id):
+            query['FunctionBlockId'] = request.function_block_id
+        if not UtilClient.is_unset(request.function_block_name):
+            query['FunctionBlockName'] = request.function_block_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.thing_model_json):
+            query['ThingModelJson'] = request.thing_model_json
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateThingModel',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateThingModelResponse(),
-            await self.do_rpcrequest_async('UpdateThingModel', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_thing_model(
@@ -12434,12 +23918,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingModelValidationConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.validate_type):
+            query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateThingModelValidationConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateThingModelValidationConfigResponse(),
-            self.do_rpcrequest('UpdateThingModelValidationConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_thing_model_validation_config_with_options_async(
@@ -12448,12 +23950,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingModelValidationConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.validate_type):
+            query['ValidateType'] = request.validate_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateThingModelValidationConfig',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateThingModelValidationConfigResponse(),
-            await self.do_rpcrequest_async('UpdateThingModelValidationConfig', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_thing_model_validation_config(
@@ -12476,12 +23996,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingScriptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.script_content):
+            query['ScriptContent'] = request.script_content
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateThingScript',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateThingScriptResponse(),
-            self.do_rpcrequest('UpdateThingScript', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_thing_script_with_options_async(
@@ -12490,12 +24030,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> iot_20180120_models.UpdateThingScriptResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.script_content):
+            query['ScriptContent'] = request.script_content
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateThingScript',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             iot_20180120_models.UpdateThingScriptResponse(),
-            await self.do_rpcrequest_async('UpdateThingScript', '2018-01-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_thing_script(
