@@ -1946,12 +1946,16 @@ class DetailSubSceneResponseBody(TeaModel):
         gmt_create: int = None,
         gmt_modified: int = None,
         id: str = None,
+        image_url: str = None,
+        layout_data: str = None,
         message: str = None,
         name: str = None,
+        origin_url: str = None,
         request_id: str = None,
         resource_id: str = None,
         status: int = None,
         success: bool = None,
+        type: str = None,
         url: str = None,
     ):
         # 返回码
@@ -1966,10 +1970,16 @@ class DetailSubSceneResponseBody(TeaModel):
         self.gmt_modified = gmt_modified
         # 子场景id
         self.id = id
+        # 矫正后图的路径
+        self.image_url = image_url
+        # 墙线标注数据
+        self.layout_data = layout_data
         # 错误消息
         self.message = message
         # 子场景名称
         self.name = name
+        # 原图路径
+        self.origin_url = origin_url
         # 请求ID，与入参requestId对应
         self.request_id = request_id
         # 图片ID/视频ID
@@ -1978,6 +1988,8 @@ class DetailSubSceneResponseBody(TeaModel):
         self.status = status
         # 是否请求成功
         self.success = success
+        # 资源类型
+        self.type = type
         # 图片路径/视频路径
         self.url = url
 
@@ -2002,10 +2014,16 @@ class DetailSubSceneResponseBody(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.id is not None:
             result['Id'] = self.id
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.layout_data is not None:
+            result['LayoutData'] = self.layout_data
         if self.message is not None:
             result['Message'] = self.message
         if self.name is not None:
             result['Name'] = self.name
+        if self.origin_url is not None:
+            result['OriginUrl'] = self.origin_url
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.resource_id is not None:
@@ -2014,6 +2032,8 @@ class DetailSubSceneResponseBody(TeaModel):
             result['Status'] = self.status
         if self.success is not None:
             result['Success'] = self.success
+        if self.type is not None:
+            result['Type'] = self.type
         if self.url is not None:
             result['Url'] = self.url
         return result
@@ -2032,10 +2052,16 @@ class DetailSubSceneResponseBody(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('LayoutData') is not None:
+            self.layout_data = m.get('LayoutData')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OriginUrl') is not None:
+            self.origin_url = m.get('OriginUrl')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResourceId') is not None:
@@ -2044,6 +2070,8 @@ class DetailSubSceneResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         return self

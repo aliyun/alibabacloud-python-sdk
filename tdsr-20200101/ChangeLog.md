@@ -1,3 +1,6 @@
+2022-01-06 Version: 3.0.5
+- Modify DetailSubScene interface API Response Field.
+
 2021-12-24 Version: 3.0.4
 - Add addRoomPlan interface.
 
