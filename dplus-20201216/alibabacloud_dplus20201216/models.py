@@ -1266,3 +1266,179 @@ class ReplaceBackgroundResponse(TeaModel):
         return self
 
 
+class TbPredictCategoryRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url: str = None,
+    ):
+        self.pic_url = pic_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        return self
+
+
+class TbPredictCategoryAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url_object: BinaryIO = None,
+    ):
+        self.pic_url_object = pic_url_object
+
+    def validate(self):
+        self.validate_required(self.pic_url_object, 'pic_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url_object is not None:
+            result['PicUrlObject'] = self.pic_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrlObject') is not None:
+            self.pic_url_object = m.get('PicUrlObject')
+        return self
+
+
+class TbPredictCategoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class TbPropRecRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url: str = None,
+    ):
+        self.pic_url = pic_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url is not None:
+            result['PicUrl'] = self.pic_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrl') is not None:
+            self.pic_url = m.get('PicUrl')
+        return self
+
+
+class TbPropRecAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        pic_url_object: BinaryIO = None,
+    ):
+        self.pic_url_object = pic_url_object
+
+    def validate(self):
+        self.validate_required(self.pic_url_object, 'pic_url_object')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pic_url_object is not None:
+            result['PicUrlObject'] = self.pic_url_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PicUrlObject') is not None:
+            self.pic_url_object = m.get('PicUrlObject')
+        return self
+
+
+class TbPropRecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: dict = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
