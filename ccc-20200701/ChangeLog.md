@@ -1,3 +1,6 @@
+2022-01-06 Version: 2.2.1
+- Generated python 2020-07-01 for CCC.
+
 2022-01-05 Version: 2.2.0
 - Generated python 2020-07-01 for CCC.
 
