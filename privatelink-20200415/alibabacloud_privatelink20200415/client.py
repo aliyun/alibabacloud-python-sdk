@@ -48,12 +48,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.AddUserToVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -80,12 +86,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.AddUserToVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -126,14 +138,22 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.AddZoneToVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['VSwitchId'] = request.v_switch_id
-        query['ZoneId'] = request.zone_id
-        query['ip'] = request.ip
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.ip):
+            query['ip'] = request.ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -160,14 +180,22 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.AddZoneToVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['VSwitchId'] = request.v_switch_id
-        query['ZoneId'] = request.zone_id
-        query['ip'] = request.ip
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.ip):
+            query['ip'] = request.ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -208,13 +236,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.AttachResourceToVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -241,13 +276,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.AttachResourceToVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -288,12 +330,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.AttachSecurityGroupToVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -320,12 +368,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.AttachSecurityGroupToVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -416,20 +470,34 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.CreateVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointDescription'] = request.endpoint_description
-        query['EndpointName'] = request.endpoint_name
-        query['EndpointType'] = request.endpoint_type
-        query['ProtectedEnabled'] = request.protected_enabled
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['SecurityGroupId'] = request.security_group_id
-        query['ServiceId'] = request.service_id
-        query['ServiceName'] = request.service_name
-        query['VpcId'] = request.vpc_id
-        query['Zone'] = request.zone
-        query['ZonePrivateIpAddressCount'] = request.zone_private_ip_address_count
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_description):
+            query['EndpointDescription'] = request.endpoint_description
+        if not UtilClient.is_unset(request.endpoint_name):
+            query['EndpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.protected_enabled):
+            query['ProtectedEnabled'] = request.protected_enabled
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone):
+            query['Zone'] = request.zone
+        if not UtilClient.is_unset(request.zone_private_ip_address_count):
+            query['ZonePrivateIpAddressCount'] = request.zone_private_ip_address_count
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -456,20 +524,34 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.CreateVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointDescription'] = request.endpoint_description
-        query['EndpointName'] = request.endpoint_name
-        query['EndpointType'] = request.endpoint_type
-        query['ProtectedEnabled'] = request.protected_enabled
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['SecurityGroupId'] = request.security_group_id
-        query['ServiceId'] = request.service_id
-        query['ServiceName'] = request.service_name
-        query['VpcId'] = request.vpc_id
-        query['Zone'] = request.zone
-        query['ZonePrivateIpAddressCount'] = request.zone_private_ip_address_count
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_description):
+            query['EndpointDescription'] = request.endpoint_description
+        if not UtilClient.is_unset(request.endpoint_name):
+            query['EndpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.protected_enabled):
+            query['ProtectedEnabled'] = request.protected_enabled
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone):
+            query['Zone'] = request.zone
+        if not UtilClient.is_unset(request.zone_private_ip_address_count):
+            query['ZonePrivateIpAddressCount'] = request.zone_private_ip_address_count
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -510,16 +592,26 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.CreateVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoAcceptEnabled'] = request.auto_accept_enabled
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Payer'] = request.payer
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['Resource'] = request.resource
-        query['ServiceDescription'] = request.service_description
-        query['ServiceResourceType'] = request.service_resource_type
-        query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
+        if not UtilClient.is_unset(request.auto_accept_enabled):
+            query['AutoAcceptEnabled'] = request.auto_accept_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.payer):
+            query['Payer'] = request.payer
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_resource_type):
+            query['ServiceResourceType'] = request.service_resource_type
+        if not UtilClient.is_unset(request.zone_affinity_enabled):
+            query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -546,16 +638,26 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.CreateVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoAcceptEnabled'] = request.auto_accept_enabled
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Payer'] = request.payer
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['Resource'] = request.resource
-        query['ServiceDescription'] = request.service_description
-        query['ServiceResourceType'] = request.service_resource_type
-        query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
+        if not UtilClient.is_unset(request.auto_accept_enabled):
+            query['AutoAcceptEnabled'] = request.auto_accept_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.payer):
+            query['Payer'] = request.payer
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_resource_type):
+            query['ServiceResourceType'] = request.service_resource_type
+        if not UtilClient.is_unset(request.zone_affinity_enabled):
+            query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -596,11 +698,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DeleteVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -627,11 +734,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DeleteVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -672,11 +784,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DeleteVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -703,11 +820,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DeleteVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -748,8 +870,10 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -776,8 +900,10 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -818,8 +944,10 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DescribeZonesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -846,8 +974,10 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DescribeZonesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -888,13 +1018,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DetachResourceFromVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -921,13 +1058,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DetachResourceFromVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -968,12 +1112,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DetachSecurityGroupFromVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1000,12 +1150,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DetachSecurityGroupFromVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1046,12 +1202,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DisableVpcEndpointConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1078,12 +1240,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.DisableVpcEndpointConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1117,6 +1285,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_vpc_endpoint_connection_with_options_async(request, runtime)
 
+    def disable_vpc_endpoint_zone_connection_with_options(
+        self,
+        request: privatelink_20200415_models.DisableVpcEndpointZoneConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replaced_resource):
+            query['ReplacedResource'] = request.replaced_resource
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableVpcEndpointZoneConnection',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_vpc_endpoint_zone_connection_with_options_async(
+        self,
+        request: privatelink_20200415_models.DisableVpcEndpointZoneConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replaced_resource):
+            query['ReplacedResource'] = request.replaced_resource
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableVpcEndpointZoneConnection',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_vpc_endpoint_zone_connection(
+        self,
+        request: privatelink_20200415_models.DisableVpcEndpointZoneConnectionRequest,
+    ) -> privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_vpc_endpoint_zone_connection_with_options(request, runtime)
+
+    async def disable_vpc_endpoint_zone_connection_async(
+        self,
+        request: privatelink_20200415_models.DisableVpcEndpointZoneConnectionRequest,
+    ) -> privatelink_20200415_models.DisableVpcEndpointZoneConnectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_vpc_endpoint_zone_connection_with_options_async(request, runtime)
+
     def enable_vpc_endpoint_connection_with_options(
         self,
         request: privatelink_20200415_models.EnableVpcEndpointConnectionRequest,
@@ -1124,13 +1390,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.EnableVpcEndpointConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1157,13 +1430,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.EnableVpcEndpointConnectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1197,6 +1477,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_vpc_endpoint_connection_with_options_async(request, runtime)
 
+    def enable_vpc_endpoint_zone_connection_with_options(
+        self,
+        request: privatelink_20200415_models.EnableVpcEndpointZoneConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableVpcEndpointZoneConnection',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_vpc_endpoint_zone_connection_with_options_async(
+        self,
+        request: privatelink_20200415_models.EnableVpcEndpointZoneConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableVpcEndpointZoneConnection',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_vpc_endpoint_zone_connection(
+        self,
+        request: privatelink_20200415_models.EnableVpcEndpointZoneConnectionRequest,
+    ) -> privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_vpc_endpoint_zone_connection_with_options(request, runtime)
+
+    async def enable_vpc_endpoint_zone_connection_async(
+        self,
+        request: privatelink_20200415_models.EnableVpcEndpointZoneConnectionRequest,
+    ) -> privatelink_20200415_models.EnableVpcEndpointZoneConnectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_vpc_endpoint_zone_connection_with_options_async(request, runtime)
+
     def get_vpc_endpoint_attribute_with_options(
         self,
         request: privatelink_20200415_models.GetVpcEndpointAttributeRequest,
@@ -1204,9 +1578,12 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.GetVpcEndpointAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1233,9 +1610,12 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.GetVpcEndpointAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1276,9 +1656,12 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.GetVpcEndpointServiceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1305,9 +1688,12 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.GetVpcEndpointServiceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1348,15 +1734,28 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointConnectionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionStatus'] = request.connection_status
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointOwnerId'] = request.endpoint_owner_id
-        query['EniId'] = request.eni_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.connection_status):
+            query['ConnectionStatus'] = request.connection_status
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.endpoint_owner_id):
+            query['EndpointOwnerId'] = request.endpoint_owner_id
+        if not UtilClient.is_unset(request.eni_id):
+            query['EniId'] = request.eni_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replaced_resource_id):
+            query['ReplacedResourceId'] = request.replaced_resource_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1383,15 +1782,28 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointConnectionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionStatus'] = request.connection_status
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointOwnerId'] = request.endpoint_owner_id
-        query['EniId'] = request.eni_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.connection_status):
+            query['ConnectionStatus'] = request.connection_status
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.endpoint_owner_id):
+            query['EndpointOwnerId'] = request.endpoint_owner_id
+        if not UtilClient.is_unset(request.eni_id):
+            query['EniId'] = request.eni_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.replaced_resource_id):
+            query['ReplacedResourceId'] = request.replaced_resource_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1432,11 +1844,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointSecurityGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1463,11 +1880,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointSecurityGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1508,11 +1930,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointServiceResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1539,11 +1966,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointServiceResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1584,12 +2016,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointServiceUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1616,12 +2054,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointServiceUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1662,17 +2106,28 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointServicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoAcceptEnabled'] = request.auto_accept_enabled
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceBusinessStatus'] = request.service_business_status
-        query['ServiceId'] = request.service_id
-        query['ServiceName'] = request.service_name
-        query['ServiceResourceType'] = request.service_resource_type
-        query['ServiceStatus'] = request.service_status
-        query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
+        if not UtilClient.is_unset(request.auto_accept_enabled):
+            query['AutoAcceptEnabled'] = request.auto_accept_enabled
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_business_status):
+            query['ServiceBusinessStatus'] = request.service_business_status
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_resource_type):
+            query['ServiceResourceType'] = request.service_resource_type
+        if not UtilClient.is_unset(request.service_status):
+            query['ServiceStatus'] = request.service_status
+        if not UtilClient.is_unset(request.zone_affinity_enabled):
+            query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1699,17 +2154,28 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointServicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoAcceptEnabled'] = request.auto_accept_enabled
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceBusinessStatus'] = request.service_business_status
-        query['ServiceId'] = request.service_id
-        query['ServiceName'] = request.service_name
-        query['ServiceResourceType'] = request.service_resource_type
-        query['ServiceStatus'] = request.service_status
-        query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
+        if not UtilClient.is_unset(request.auto_accept_enabled):
+            query['AutoAcceptEnabled'] = request.auto_accept_enabled
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_business_status):
+            query['ServiceBusinessStatus'] = request.service_business_status
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_resource_type):
+            query['ServiceResourceType'] = request.service_resource_type
+        if not UtilClient.is_unset(request.service_status):
+            query['ServiceStatus'] = request.service_status
+        if not UtilClient.is_unset(request.zone_affinity_enabled):
+            query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1750,13 +2216,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointServicesByEndUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
-        query['ServiceName'] = request.service_name
-        query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1783,13 +2256,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointServicesByEndUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
-        query['ServiceName'] = request.service_name
-        query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1830,11 +2310,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointZonesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1861,11 +2346,16 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointZonesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointId'] = request.endpoint_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1906,17 +2396,28 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionStatus'] = request.connection_status
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointName'] = request.endpoint_name
-        query['EndpointStatus'] = request.endpoint_status
-        query['EndpointType'] = request.endpoint_type
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.connection_status):
+            query['ConnectionStatus'] = request.connection_status
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.endpoint_name):
+            query['EndpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.endpoint_status):
+            query['EndpointStatus'] = request.endpoint_status
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1943,17 +2444,28 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.ListVpcEndpointsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionStatus'] = request.connection_status
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointName'] = request.endpoint_name
-        query['EndpointStatus'] = request.endpoint_status
-        query['EndpointType'] = request.endpoint_type
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceName'] = request.service_name
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.connection_status):
+            query['ConnectionStatus'] = request.connection_status
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.endpoint_name):
+            query['EndpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.endpoint_status):
+            query['EndpointStatus'] = request.endpoint_status
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1994,7 +2506,8 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.OpenPrivateLinkServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2021,7 +2534,8 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.OpenPrivateLinkServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2062,12 +2576,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.RemoveUserFromVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2094,12 +2614,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.RemoveUserFromVpcEndpointServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2140,12 +2666,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.RemoveZoneFromVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2172,12 +2704,18 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.RemoveZoneFromVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2218,13 +2756,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.UpdateVpcEndpointAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointDescription'] = request.endpoint_description
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointName'] = request.endpoint_name
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_description):
+            query['EndpointDescription'] = request.endpoint_description
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.endpoint_name):
+            query['EndpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2251,13 +2796,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.UpdateVpcEndpointAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointDescription'] = request.endpoint_description
-        query['EndpointId'] = request.endpoint_id
-        query['EndpointName'] = request.endpoint_name
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_description):
+            query['EndpointDescription'] = request.endpoint_description
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.endpoint_name):
+            query['EndpointName'] = request.endpoint_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2298,13 +2850,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.UpdateVpcEndpointConnectionAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2331,13 +2890,20 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.UpdateVpcEndpointConnectionAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['EndpointId'] = request.endpoint_id
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2378,15 +2944,24 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoAcceptEnabled'] = request.auto_accept_enabled
-        query['ClientToken'] = request.client_token
-        query['ConnectBandwidth'] = request.connect_bandwidth
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceDescription'] = request.service_description
-        query['ServiceId'] = request.service_id
-        query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
+        if not UtilClient.is_unset(request.auto_accept_enabled):
+            query['AutoAcceptEnabled'] = request.auto_accept_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connect_bandwidth):
+            query['ConnectBandwidth'] = request.connect_bandwidth
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.zone_affinity_enabled):
+            query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2413,15 +2988,24 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoAcceptEnabled'] = request.auto_accept_enabled
-        query['ClientToken'] = request.client_token
-        query['ConnectBandwidth'] = request.connect_bandwidth
-        query['DryRun'] = request.dry_run
-        query['RegionId'] = request.region_id
-        query['RegionId'] = request.region_id
-        query['ServiceDescription'] = request.service_description
-        query['ServiceId'] = request.service_id
-        query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
+        if not UtilClient.is_unset(request.auto_accept_enabled):
+            query['AutoAcceptEnabled'] = request.auto_accept_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connect_bandwidth):
+            query['ConnectBandwidth'] = request.connect_bandwidth
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.zone_affinity_enabled):
+            query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2454,3 +3038,207 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.UpdateVpcEndpointServiceAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_vpc_endpoint_service_attribute_with_options_async(request, runtime)
+
+    def update_vpc_endpoint_service_resource_attribute_with_options(
+        self,
+        request: privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_allocated_enabled):
+            query['AutoAllocatedEnabled'] = request.auto_allocated_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateVpcEndpointServiceResourceAttribute',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_vpc_endpoint_service_resource_attribute_with_options_async(
+        self,
+        request: privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_allocated_enabled):
+            query['AutoAllocatedEnabled'] = request.auto_allocated_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateVpcEndpointServiceResourceAttribute',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_vpc_endpoint_service_resource_attribute(
+        self,
+        request: privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeRequest,
+    ) -> privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_vpc_endpoint_service_resource_attribute_with_options(request, runtime)
+
+    async def update_vpc_endpoint_service_resource_attribute_async(
+        self,
+        request: privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeRequest,
+    ) -> privatelink_20200415_models.UpdateVpcEndpointServiceResourceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_vpc_endpoint_service_resource_attribute_with_options_async(request, runtime)
+
+    def update_vpc_endpoint_zone_connection_resource_attribute_with_options(
+        self,
+        request: privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_allocate_mode):
+            query['ResourceAllocateMode'] = request.resource_allocate_mode
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_replace_mode):
+            query['ResourceReplaceMode'] = request.resource_replace_mode
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateVpcEndpointZoneConnectionResourceAttribute',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_vpc_endpoint_zone_connection_resource_attribute_with_options_async(
+        self,
+        request: privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_allocate_mode):
+            query['ResourceAllocateMode'] = request.resource_allocate_mode
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_replace_mode):
+            query['ResourceReplaceMode'] = request.resource_replace_mode
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateVpcEndpointZoneConnectionResourceAttribute',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_vpc_endpoint_zone_connection_resource_attribute(
+        self,
+        request: privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeRequest,
+    ) -> privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_vpc_endpoint_zone_connection_resource_attribute_with_options(request, runtime)
+
+    async def update_vpc_endpoint_zone_connection_resource_attribute_async(
+        self,
+        request: privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeRequest,
+    ) -> privatelink_20200415_models.UpdateVpcEndpointZoneConnectionResourceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_vpc_endpoint_zone_connection_resource_attribute_with_options_async(request, runtime)
