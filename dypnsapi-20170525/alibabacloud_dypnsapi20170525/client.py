@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dypnsapi20170525 import models as dypnsapi_20170525_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -40,102 +41,48 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def get_authorization_url_with_options(
-        self,
-        request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetAuthorizationUrlResponse(),
-            self.do_rpcrequest('GetAuthorizationUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_authorization_url_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetAuthorizationUrlResponse(),
-            await self.do_rpcrequest_async('GetAuthorizationUrl', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_authorization_url(
-        self,
-        request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
-    ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_authorization_url_with_options(request, runtime)
-
-    async def get_authorization_url_async(
-        self,
-        request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
-    ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_authorization_url_with_options_async(request, runtime)
-
-    def get_sms_auth_tokens_with_options(
-        self,
-        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetSmsAuthTokensResponse(),
-            self.do_rpcrequest('GetSmsAuthTokens', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_sms_auth_tokens_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetSmsAuthTokensResponse(),
-            await self.do_rpcrequest_async('GetSmsAuthTokens', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_sms_auth_tokens(
-        self,
-        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
-    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_sms_auth_tokens_with_options(request, runtime)
-
-    async def get_sms_auth_tokens_async(
-        self,
-        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
-    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_sms_auth_tokens_with_options_async(request, runtime)
-
     def create_verify_scheme_with_options(
         self,
         request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pack_name):
+            query['PackName'] = request.pack_name
+        if not UtilClient.is_unset(request.pack_sign):
+            query['PackSign'] = request.pack_sign
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVerifyScheme',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.CreateVerifySchemeResponse(),
-            self.do_rpcrequest('CreateVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_verify_scheme_with_options_async(
@@ -144,12 +91,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pack_name):
+            query['PackName'] = request.pack_name
+        if not UtilClient.is_unset(request.pack_sign):
+            query['PackSign'] = request.pack_sign
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVerifyScheme',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.CreateVerifySchemeResponse(),
-            await self.do_rpcrequest_async('CreateVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_verify_scheme(
@@ -166,60 +143,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_verify_scheme_with_options_async(request, runtime)
 
-    def verify_sms_code_with_options(
-        self,
-        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.VerifySmsCodeResponse(),
-            self.do_rpcrequest('VerifySmsCode', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def verify_sms_code_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.VerifySmsCodeResponse(),
-            await self.do_rpcrequest_async('VerifySmsCode', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def verify_sms_code(
-        self,
-        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
-    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.verify_sms_code_with_options(request, runtime)
-
-    async def verify_sms_code_async(
-        self,
-        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
-    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.verify_sms_code_with_options_async(request, runtime)
-
     def delete_verify_scheme_with_options(
         self,
         request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_code):
+            query['SchemeCode'] = request.scheme_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVerifyScheme',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.DeleteVerifySchemeResponse(),
-            self.do_rpcrequest('DeleteVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_verify_scheme_with_options_async(
@@ -228,12 +185,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_code):
+            query['SchemeCode'] = request.scheme_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVerifyScheme',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.DeleteVerifySchemeResponse(),
-            await self.do_rpcrequest_async('DeleteVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_verify_scheme(
@@ -250,186 +229,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_verify_scheme_with_options_async(request, runtime)
 
-    def verify_phone_with_token_with_options(
-        self,
-        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.VerifyPhoneWithTokenResponse(),
-            self.do_rpcrequest('VerifyPhoneWithToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def verify_phone_with_token_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.VerifyPhoneWithTokenResponse(),
-            await self.do_rpcrequest_async('VerifyPhoneWithToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def verify_phone_with_token(
-        self,
-        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
-    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.verify_phone_with_token_with_options(request, runtime)
-
-    async def verify_phone_with_token_async(
-        self,
-        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
-    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.verify_phone_with_token_with_options_async(request, runtime)
-
-    def get_mobile_with_options(
-        self,
-        request: dypnsapi_20170525_models.GetMobileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetMobileResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetMobileResponse(),
-            self.do_rpcrequest('GetMobile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_mobile_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.GetMobileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetMobileResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetMobileResponse(),
-            await self.do_rpcrequest_async('GetMobile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_mobile(
-        self,
-        request: dypnsapi_20170525_models.GetMobileRequest,
-    ) -> dypnsapi_20170525_models.GetMobileResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_mobile_with_options(request, runtime)
-
-    async def get_mobile_async(
-        self,
-        request: dypnsapi_20170525_models.GetMobileRequest,
-    ) -> dypnsapi_20170525_models.GetMobileResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_mobile_with_options_async(request, runtime)
-
-    def twice_tel_verify_with_options(
-        self,
-        request: dypnsapi_20170525_models.TwiceTelVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.TwiceTelVerifyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.TwiceTelVerifyResponse(),
-            self.do_rpcrequest('TwiceTelVerify', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def twice_tel_verify_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.TwiceTelVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.TwiceTelVerifyResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.TwiceTelVerifyResponse(),
-            await self.do_rpcrequest_async('TwiceTelVerify', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def twice_tel_verify(
-        self,
-        request: dypnsapi_20170525_models.TwiceTelVerifyRequest,
-    ) -> dypnsapi_20170525_models.TwiceTelVerifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.twice_tel_verify_with_options(request, runtime)
-
-    async def twice_tel_verify_async(
-        self,
-        request: dypnsapi_20170525_models.TwiceTelVerifyRequest,
-    ) -> dypnsapi_20170525_models.TwiceTelVerifyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.twice_tel_verify_with_options_async(request, runtime)
-
-    def get_certify_result_with_options(
-        self,
-        request: dypnsapi_20170525_models.GetCertifyResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetCertifyResultResponse(),
-            self.do_rpcrequest('GetCertifyResult', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_certify_result_with_options_async(
-        self,
-        request: dypnsapi_20170525_models.GetCertifyResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dypnsapi_20170525_models.GetCertifyResultResponse(),
-            await self.do_rpcrequest_async('GetCertifyResult', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_certify_result(
-        self,
-        request: dypnsapi_20170525_models.GetCertifyResultRequest,
-    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_certify_result_with_options(request, runtime)
-
-    async def get_certify_result_async(
-        self,
-        request: dypnsapi_20170525_models.GetCertifyResultRequest,
-    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_certify_result_with_options_async(request, runtime)
-
     def describe_verify_scheme_with_options(
         self,
         request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_code):
+            query['SchemeCode'] = request.scheme_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyScheme',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.DescribeVerifySchemeResponse(),
-            self.do_rpcrequest('DescribeVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_verify_scheme_with_options_async(
@@ -438,12 +271,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.customer_id):
+            query['CustomerId'] = request.customer_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_code):
+            query['SchemeCode'] = request.scheme_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVerifyScheme',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.DescribeVerifySchemeResponse(),
-            await self.do_rpcrequest_async('DescribeVerifyScheme', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_scheme(
@@ -466,12 +321,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuthToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.GetAuthTokenResponse(),
-            self.do_rpcrequest('GetAuthToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_auth_token_with_options_async(
@@ -480,12 +357,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuthToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.GetAuthTokenResponse(),
-            await self.do_rpcrequest_async('GetAuthToken', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_auth_token(
@@ -502,18 +401,602 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_auth_token_with_options_async(request, runtime)
 
+    def get_authorization_url_with_options(
+        self,
+        request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no):
+            query['PhoneNo'] = request.phone_no
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_id):
+            query['SchemeId'] = request.scheme_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuthorizationUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetAuthorizationUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_authorization_url_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_no):
+            query['PhoneNo'] = request.phone_no
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_id):
+            query['SchemeId'] = request.scheme_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuthorizationUrl',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetAuthorizationUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_authorization_url(
+        self,
+        request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
+    ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_authorization_url_with_options(request, runtime)
+
+    async def get_authorization_url_async(
+        self,
+        request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
+    ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_authorization_url_with_options_async(request, runtime)
+
+    def get_certify_result_with_options(
+        self,
+        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCertifyResult',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetCertifyResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_certify_result_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCertifyResult',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetCertifyResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_certify_result(
+        self,
+        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_certify_result_with_options(request, runtime)
+
+    async def get_certify_result_async(
+        self,
+        request: dypnsapi_20170525_models.GetCertifyResultRequest,
+    ) -> dypnsapi_20170525_models.GetCertifyResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_certify_result_with_options_async(request, runtime)
+
+    def get_mobile_with_options(
+        self,
+        request: dypnsapi_20170525_models.GetMobileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetMobileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMobile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetMobileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mobile_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.GetMobileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetMobileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMobile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetMobileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mobile(
+        self,
+        request: dypnsapi_20170525_models.GetMobileRequest,
+    ) -> dypnsapi_20170525_models.GetMobileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_mobile_with_options(request, runtime)
+
+    async def get_mobile_async(
+        self,
+        request: dypnsapi_20170525_models.GetMobileRequest,
+    ) -> dypnsapi_20170525_models.GetMobileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_mobile_with_options_async(request, runtime)
+
+    def get_sms_auth_tokens_with_options(
+        self,
+        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.expire):
+            query['Expire'] = request.expire
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.package_name):
+            query['PackageName'] = request.package_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sms_code_expire):
+            query['SmsCodeExpire'] = request.sms_code_expire
+        if not UtilClient.is_unset(request.sms_template_code):
+            query['SmsTemplateCode'] = request.sms_template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSmsAuthTokens',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetSmsAuthTokensResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sms_auth_tokens_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.expire):
+            query['Expire'] = request.expire
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.package_name):
+            query['PackageName'] = request.package_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sms_code_expire):
+            query['SmsCodeExpire'] = request.sms_code_expire
+        if not UtilClient.is_unset(request.sms_template_code):
+            query['SmsTemplateCode'] = request.sms_template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSmsAuthTokens',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetSmsAuthTokensResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sms_auth_tokens(
+        self,
+        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
+    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sms_auth_tokens_with_options(request, runtime)
+
+    async def get_sms_auth_tokens_async(
+        self,
+        request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
+    ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sms_auth_tokens_with_options_async(request, runtime)
+
+    def query_gate_verify_billing_public_with_options(
+        self,
+        request: dypnsapi_20170525_models.QueryGateVerifyBillingPublicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_type):
+            query['AuthenticationType'] = request.authentication_type
+        if not UtilClient.is_unset(request.month):
+            query['Month'] = request.month
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryGateVerifyBillingPublic',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_gate_verify_billing_public_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.QueryGateVerifyBillingPublicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_type):
+            query['AuthenticationType'] = request.authentication_type
+        if not UtilClient.is_unset(request.month):
+            query['Month'] = request.month
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryGateVerifyBillingPublic',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_gate_verify_billing_public(
+        self,
+        request: dypnsapi_20170525_models.QueryGateVerifyBillingPublicRequest,
+    ) -> dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_gate_verify_billing_public_with_options(request, runtime)
+
+    async def query_gate_verify_billing_public_async(
+        self,
+        request: dypnsapi_20170525_models.QueryGateVerifyBillingPublicRequest,
+    ) -> dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_gate_verify_billing_public_with_options_async(request, runtime)
+
+    def query_gate_verify_statistic_public_with_options(
+        self,
+        request: dypnsapi_20170525_models.QueryGateVerifyStatisticPublicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_type):
+            query['AuthenticationType'] = request.authentication_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryGateVerifyStatisticPublic',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_gate_verify_statistic_public_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.QueryGateVerifyStatisticPublicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authentication_type):
+            query['AuthenticationType'] = request.authentication_type
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryGateVerifyStatisticPublic',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_gate_verify_statistic_public(
+        self,
+        request: dypnsapi_20170525_models.QueryGateVerifyStatisticPublicRequest,
+    ) -> dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_gate_verify_statistic_public_with_options(request, runtime)
+
+    async def query_gate_verify_statistic_public_async(
+        self,
+        request: dypnsapi_20170525_models.QueryGateVerifyStatisticPublicRequest,
+    ) -> dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_gate_verify_statistic_public_with_options_async(request, runtime)
+
     def verify_mobile_with_options(
         self,
         request: dypnsapi_20170525_models.VerifyMobileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.VerifyMobileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_code):
+            query['AccessCode'] = request.access_code
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyMobile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.VerifyMobileResponse(),
-            self.do_rpcrequest('VerifyMobile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def verify_mobile_with_options_async(
@@ -522,12 +1005,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.VerifyMobileResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_code):
+            query['AccessCode'] = request.access_code
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyMobile',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dypnsapi_20170525_models.VerifyMobileResponse(),
-            await self.do_rpcrequest_async('VerifyMobile', '2017-05-25', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def verify_mobile(
@@ -543,3 +1050,167 @@ class Client(OpenApiClient):
     ) -> dypnsapi_20170525_models.VerifyMobileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.verify_mobile_with_options_async(request, runtime)
+
+    def verify_phone_with_token_with_options(
+        self,
+        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sp_token):
+            query['SpToken'] = request.sp_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyPhoneWithToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifyPhoneWithTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_phone_with_token_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sp_token):
+            query['SpToken'] = request.sp_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyPhoneWithToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifyPhoneWithTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_phone_with_token(
+        self,
+        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_phone_with_token_with_options(request, runtime)
+
+    async def verify_phone_with_token_async(
+        self,
+        request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
+    ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_phone_with_token_with_options_async(request, runtime)
+
+    def verify_sms_code_with_options(
+        self,
+        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.sms_code):
+            query['SmsCode'] = request.sms_code
+        if not UtilClient.is_unset(request.sms_token):
+            query['SmsToken'] = request.sms_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifySmsCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifySmsCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_sms_code_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.sms_code):
+            query['SmsCode'] = request.sms_code
+        if not UtilClient.is_unset(request.sms_token):
+            query['SmsToken'] = request.sms_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifySmsCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.VerifySmsCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_sms_code(
+        self,
+        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
+    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_sms_code_with_options(request, runtime)
+
+    async def verify_sms_code_async(
+        self,
+        request: dypnsapi_20170525_models.VerifySmsCodeRequest,
+    ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_sms_code_with_options_async(request, runtime)
