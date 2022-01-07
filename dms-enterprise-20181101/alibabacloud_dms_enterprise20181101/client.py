@@ -48,10 +48,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RouteExpr'] = request.route_expr
-        query['RouteKey'] = request.route_key
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.route_expr):
+            query['RouteExpr'] = request.route_expr
+        if not UtilClient.is_unset(request.route_key):
+            query['RouteKey'] = request.route_key
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -78,10 +82,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RouteExpr'] = request.route_expr
-        query['RouteKey'] = request.route_key
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.route_expr):
+            query['RouteExpr'] = request.route_expr
+        if not UtilClient.is_unset(request.route_key):
+            query['RouteKey'] = request.route_key
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -122,10 +130,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ApprovalType'] = request.approval_type
-        query['Comment'] = request.comment
-        query['Tid'] = request.tid
-        query['WorkflowInstanceId'] = request.workflow_instance_id
+        if not UtilClient.is_unset(request.approval_type):
+            query['ApprovalType'] = request.approval_type
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workflow_instance_id):
+            query['WorkflowInstanceId'] = request.workflow_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -152,10 +164,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ApprovalType'] = request.approval_type
-        query['Comment'] = request.comment
-        query['Tid'] = request.tid
-        query['WorkflowInstanceId'] = request.workflow_instance_id
+        if not UtilClient.is_unset(request.approval_type):
+            query['ApprovalType'] = request.approval_type
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workflow_instance_id):
+            query['WorkflowInstanceId'] = request.workflow_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -196,13 +212,20 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ChangeColumnSecLevelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ColumnName'] = request.column_name
-        query['DbId'] = request.db_id
-        query['IsLogic'] = request.is_logic
-        query['NewLevel'] = request.new_level
-        query['SchemaName'] = request.schema_name
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.is_logic):
+            query['IsLogic'] = request.is_logic
+        if not UtilClient.is_unset(request.new_level):
+            query['NewLevel'] = request.new_level
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -229,13 +252,20 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ChangeColumnSecLevelResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ColumnName'] = request.column_name
-        query['DbId'] = request.db_id
-        query['IsLogic'] = request.is_logic
-        query['NewLevel'] = request.new_level
-        query['SchemaName'] = request.schema_name
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.is_logic):
+            query['IsLogic'] = request.is_logic
+        if not UtilClient.is_unset(request.new_level):
+            query['NewLevel'] = request.new_level
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -276,9 +306,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CloseOrderResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CloseReason'] = request.close_reason
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.close_reason):
+            query['CloseReason'] = request.close_reason
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -305,9 +338,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CloseOrderResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CloseReason'] = request.close_reason
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.close_reason):
+            query['CloseReason'] = request.close_reason
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -354,11 +390,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -391,11 +432,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -442,11 +488,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -479,11 +530,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -530,11 +586,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -567,11 +628,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -618,11 +684,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -655,11 +726,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -704,9 +780,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.database_ids):
             request.database_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.database_ids, 'DatabaseIds', 'json')
         query = {}
-        query['Alias'] = request.alias
-        query['DatabaseIds'] = request.database_ids_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.alias):
+            query['Alias'] = request.alias
+        if not UtilClient.is_unset(request.database_ids_shrink):
+            query['DatabaseIds'] = request.database_ids_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -737,9 +816,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.database_ids):
             request.database_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.database_ids, 'DatabaseIds', 'json')
         query = {}
-        query['Alias'] = request.alias
-        query['DatabaseIds'] = request.database_ids_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.alias):
+            query['Alias'] = request.alias
+        if not UtilClient.is_unset(request.database_ids_shrink):
+            query['DatabaseIds'] = request.database_ids_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -784,11 +866,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.plugin_param):
             request.plugin_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plugin_param, 'PluginParam', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['PluginType'] = request.plugin_type
-        query['RelatedUserList'] = request.related_user_list
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not UtilClient.is_unset(request.related_user_list):
+            query['RelatedUserList'] = request.related_user_list
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         body = {}
         if not UtilClient.is_unset(request.plugin_param_shrink):
             body['PluginParam'] = request.plugin_param_shrink
@@ -823,11 +910,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.plugin_param):
             request.plugin_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.plugin_param, 'PluginParam', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['PluginType'] = request.plugin_type
-        query['RelatedUserList'] = request.related_user_list
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not UtilClient.is_unset(request.related_user_list):
+            query['RelatedUserList'] = request.related_user_list
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         body = {}
         if not UtilClient.is_unset(request.plugin_param_shrink):
             body['PluginParam'] = request.plugin_param_shrink
@@ -872,10 +964,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateProxyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Password'] = request.password
-        query['Tid'] = request.tid
-        query['Username'] = request.username
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -902,10 +998,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateProxyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Password'] = request.password
-        query['Tid'] = request.tid
-        query['Username'] = request.username
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -946,11 +1046,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IndepAccount'] = request.indep_account
-        query['IndepPassword'] = request.indep_password
-        query['ProxyId'] = request.proxy_id
-        query['Tid'] = request.tid
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.indep_account):
+            query['IndepAccount'] = request.indep_account
+        if not UtilClient.is_unset(request.indep_password):
+            query['IndepPassword'] = request.indep_password
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -977,11 +1082,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IndepAccount'] = request.indep_account
-        query['IndepPassword'] = request.indep_password
-        query['ProxyId'] = request.proxy_id
-        query['Tid'] = request.tid
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.indep_account):
+            query['IndepAccount'] = request.indep_account
+        if not UtilClient.is_unset(request.indep_password):
+            query['IndepPassword'] = request.indep_password
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1022,12 +1132,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreatePublishGroupTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['OrderId'] = request.order_id
-        query['PlanTime'] = request.plan_time
-        query['PublishStrategy'] = request.publish_strategy
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.plan_time):
+            query['PlanTime'] = request.plan_time
+        if not UtilClient.is_unset(request.publish_strategy):
+            query['PublishStrategy'] = request.publish_strategy
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1054,12 +1170,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreatePublishGroupTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['OrderId'] = request.order_id
-        query['PlanTime'] = request.plan_time
-        query['PublishStrategy'] = request.publish_strategy
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.plan_time):
+            query['PlanTime'] = request.plan_time
+        if not UtilClient.is_unset(request.publish_strategy):
+            query['PublishStrategy'] = request.publish_strategy
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1106,10 +1228,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1142,10 +1268,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1192,11 +1322,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1229,11 +1364,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
-        query['AttachmentKey'] = request.attachment_key
-        query['Comment'] = request.comment
-        query['Param'] = request.param_shrink
-        query['RelatedUserList'] = request.related_user_list_shrink
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1274,10 +1414,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateUploadFileJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileName'] = request.file_name
-        query['FileSource'] = request.file_source
-        query['Tid'] = request.tid
-        query['UploadURL'] = request.upload_url
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_source):
+            query['FileSource'] = request.file_source
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.upload_url):
+            query['UploadURL'] = request.upload_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1304,10 +1448,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateUploadFileJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileName'] = request.file_name
-        query['FileSource'] = request.file_source
-        query['Tid'] = request.tid
-        query['UploadURL'] = request.upload_url
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_source):
+            query['FileSource'] = request.file_source
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.upload_url):
+            query['UploadURL'] = request.upload_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1352,10 +1500,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.upload_target):
             request.upload_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.upload_target), 'UploadTarget', 'json')
         query = {}
-        query['FileName'] = request.file_name
-        query['FileSource'] = request.file_source
-        query['Tid'] = request.tid
-        query['UploadTarget'] = request.upload_target_shrink
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_source):
+            query['FileSource'] = request.file_source
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.upload_target_shrink):
+            query['UploadTarget'] = request.upload_target_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1386,10 +1538,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.upload_target):
             request.upload_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.upload_target), 'UploadTarget', 'json')
         query = {}
-        query['FileName'] = request.file_name
-        query['FileSource'] = request.file_source
-        query['Tid'] = request.tid
-        query['UploadTarget'] = request.upload_target_shrink
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_source):
+            query['FileSource'] = request.file_source
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.upload_target_shrink):
+            query['UploadTarget'] = request.upload_target_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1430,10 +1586,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Host'] = request.host
-        query['Port'] = request.port
-        query['Sid'] = request.sid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1460,10 +1620,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Host'] = request.host
-        query['Port'] = request.port
-        query['Sid'] = request.sid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1504,8 +1668,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteLogicDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LogicDbId'] = request.logic_db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.logic_db_id):
+            query['LogicDbId'] = request.logic_db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1532,8 +1698,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteLogicDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LogicDbId'] = request.logic_db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.logic_db_id):
+            query['LogicDbId'] = request.logic_db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1574,9 +1742,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RouteKey'] = request.route_key
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.route_key):
+            query['RouteKey'] = request.route_key
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1603,9 +1774,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RouteKey'] = request.route_key
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.route_key):
+            query['RouteKey'] = request.route_key
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1646,8 +1820,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProxyId'] = request.proxy_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1674,8 +1850,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProxyId'] = request.proxy_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1716,8 +1894,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProxyAccessId'] = request.proxy_access_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.proxy_access_id):
+            query['ProxyAccessId'] = request.proxy_access_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1744,8 +1924,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProxyAccessId'] = request.proxy_access_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.proxy_access_id):
+            query['ProxyAccessId'] = request.proxy_access_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1786,8 +1968,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1814,8 +1998,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1856,8 +2042,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DisableUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1884,8 +2072,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DisableUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1930,10 +2120,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.database_ids):
             request.database_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.database_ids, 'DatabaseIds', 'json')
         query = {}
-        query['Alias'] = request.alias
-        query['DatabaseIds'] = request.database_ids_shrink
-        query['LogicDbId'] = request.logic_db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.alias):
+            query['Alias'] = request.alias
+        if not UtilClient.is_unset(request.database_ids_shrink):
+            query['DatabaseIds'] = request.database_ids_shrink
+        if not UtilClient.is_unset(request.logic_db_id):
+            query['LogicDbId'] = request.logic_db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1964,10 +2158,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.database_ids):
             request.database_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.database_ids, 'DatabaseIds', 'json')
         query = {}
-        query['Alias'] = request.alias
-        query['DatabaseIds'] = request.database_ids_shrink
-        query['LogicDbId'] = request.logic_db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.alias):
+            query['Alias'] = request.alias
+        if not UtilClient.is_unset(request.database_ids_shrink):
+            query['DatabaseIds'] = request.database_ids_shrink
+        if not UtilClient.is_unset(request.logic_db_id):
+            query['LogicDbId'] = request.logic_db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2008,8 +2206,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.EnableUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2036,8 +2236,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.EnableUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2082,9 +2284,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
         query = {}
-        query['ActionDetail'] = request.action_detail_shrink
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.action_detail_shrink):
+            query['ActionDetail'] = request.action_detail_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2115,9 +2320,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
         query = {}
-        query['ActionDetail'] = request.action_detail_shrink
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.action_detail_shrink):
+            query['ActionDetail'] = request.action_detail_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2162,9 +2370,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
         query = {}
-        query['ActionDetail'] = request.action_detail_shrink
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.action_detail_shrink):
+            query['ActionDetail'] = request.action_detail_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2195,9 +2406,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
         query = {}
-        query['ActionDetail'] = request.action_detail_shrink
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.action_detail_shrink):
+            query['ActionDetail'] = request.action_detail_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2238,10 +2452,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ExecuteScriptResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['Script'] = request.script
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.script):
+            query['Script'] = request.script
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2268,10 +2486,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ExecuteScriptResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['Script'] = request.script
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.script):
+            query['Script'] = request.script
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2312,8 +2534,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2340,8 +2564,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2382,8 +2608,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['WorkflowInstanceId'] = request.workflow_instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workflow_instance_id):
+            query['WorkflowInstanceId'] = request.workflow_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2410,8 +2638,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['WorkflowInstanceId'] = request.workflow_instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.workflow_instance_id):
+            query['WorkflowInstanceId'] = request.workflow_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2452,8 +2682,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2480,8 +2712,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2522,8 +2756,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDBTopologyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LogicDbId'] = request.logic_db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.logic_db_id):
+            query['LogicDbId'] = request.logic_db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2550,8 +2786,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDBTopologyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LogicDbId'] = request.logic_db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.logic_db_id):
+            query['LogicDbId'] = request.logic_db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2596,9 +2834,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
         query = {}
-        query['ActionDetail'] = request.action_detail_shrink
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.action_detail_shrink):
+            query['ActionDetail'] = request.action_detail_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2629,9 +2870,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.action_detail):
             request.action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_detail, 'ActionDetail', 'json')
         query = {}
-        query['ActionDetail'] = request.action_detail_shrink
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.action_detail_shrink):
+            query['ActionDetail'] = request.action_detail_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2672,8 +2916,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2700,8 +2946,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2742,8 +2990,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2770,8 +3020,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2812,8 +3064,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2840,8 +3094,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2882,10 +3138,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2912,10 +3172,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2956,8 +3220,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2984,8 +3250,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3026,7 +3294,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataExportOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         body = {}
         if not UtilClient.is_unset(request.order_id):
             body['OrderId'] = request.order_id
@@ -3057,7 +3326,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataExportOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         body = {}
         if not UtilClient.is_unset(request.order_id):
             body['OrderId'] = request.order_id
@@ -3102,11 +3372,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Host'] = request.host
-        query['Port'] = request.port
-        query['SchemaName'] = request.schema_name
-        query['Sid'] = request.sid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3133,11 +3408,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Host'] = request.host
-        query['Port'] = request.port
-        query['SchemaName'] = request.schema_name
-        query['Sid'] = request.sid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3178,10 +3458,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Host'] = request.host
-        query['Port'] = request.port
-        query['Sid'] = request.sid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3208,10 +3492,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Host'] = request.host
-        query['Port'] = request.port
-        query['Sid'] = request.sid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3252,8 +3540,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetLogicDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3280,8 +3570,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetLogicDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3322,8 +3614,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableGuid'] = request.table_guid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3350,8 +3644,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableGuid'] = request.table_guid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3392,8 +3688,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableGuid'] = request.table_guid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3420,8 +3718,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableGuid'] = request.table_guid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3462,12 +3762,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetOpLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Module'] = request.module
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3494,12 +3800,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetOpLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Module'] = request.module
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3540,8 +3852,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetOrderBaseInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3568,8 +3882,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetOrderBaseInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3610,8 +3926,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3638,8 +3956,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3680,8 +4000,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3708,8 +4030,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3750,8 +4074,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3778,8 +4104,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3820,9 +4148,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ProxyId'] = request.proxy_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3849,9 +4180,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ProxyId'] = request.proxy_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3892,8 +4226,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3920,8 +4256,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3962,8 +4300,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SQLReviewQueryKey'] = request.sqlreview_query_key
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.sqlreview_query_key):
+            query['SQLReviewQueryKey'] = request.sqlreview_query_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3990,8 +4330,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SQLReviewQueryKey'] = request.sqlreview_query_key
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.sqlreview_query_key):
+            query['SQLReviewQueryKey'] = request.sqlreview_query_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4025,6 +4367,302 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_sqlreview_optimize_detail_with_options_async(request, runtime)
 
+    def get_spark_job_detail_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSparkJobDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSparkJobDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSparkJobDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_spark_job_detail_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSparkJobDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSparkJobDetail',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSparkJobDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_spark_job_detail(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetSparkJobDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_spark_job_detail_with_options(request, runtime)
+
+    async def get_spark_job_detail_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobDetailRequest,
+    ) -> dms_enterprise_20181101_models.GetSparkJobDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_spark_job_detail_with_options_async(request, runtime)
+
+    def get_spark_job_driver_log_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobDriverLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSparkJobDriverLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSparkJobDriverLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSparkJobDriverLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_spark_job_driver_log_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobDriverLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSparkJobDriverLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSparkJobDriverLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSparkJobDriverLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_spark_job_driver_log(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobDriverLogRequest,
+    ) -> dms_enterprise_20181101_models.GetSparkJobDriverLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_spark_job_driver_log_with_options(request, runtime)
+
+    async def get_spark_job_driver_log_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobDriverLogRequest,
+    ) -> dms_enterprise_20181101_models.GetSparkJobDriverLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_spark_job_driver_log_with_options_async(request, runtime)
+
+    def get_spark_job_executor_logs_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobExecutorLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSparkJobExecutorLogs',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_spark_job_executor_logs_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobExecutorLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSparkJobExecutorLogs',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_spark_job_executor_logs(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobExecutorLogsRequest,
+    ) -> dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_spark_job_executor_logs_with_options(request, runtime)
+
+    async def get_spark_job_executor_logs_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobExecutorLogsRequest,
+    ) -> dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_spark_job_executor_logs_with_options_async(request, runtime)
+
+    def get_spark_job_log_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSparkJobLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSparkJobLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSparkJobLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_spark_job_log_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetSparkJobLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSparkJobLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetSparkJobLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_spark_job_log(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobLogRequest,
+    ) -> dms_enterprise_20181101_models.GetSparkJobLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_spark_job_log_with_options(request, runtime)
+
+    async def get_spark_job_log_async(
+        self,
+        request: dms_enterprise_20181101_models.GetSparkJobLogRequest,
+    ) -> dms_enterprise_20181101_models.GetSparkJobLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_spark_job_log_with_options_async(request, runtime)
+
     def get_struct_sync_exec_sql_detail_with_options(
         self,
         request: dms_enterprise_20181101_models.GetStructSyncExecSqlDetailRequest,
@@ -4032,10 +4670,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4062,10 +4704,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4106,11 +4752,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CompareType'] = request.compare_type
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.compare_type):
+            query['CompareType'] = request.compare_type
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4137,11 +4788,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CompareType'] = request.compare_type
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.compare_type):
+            query['CompareType'] = request.compare_type
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4182,8 +4838,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetStructSyncJobDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4210,8 +4868,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetStructSyncJobDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4252,8 +4912,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4280,8 +4942,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4322,8 +4986,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetTableDBTopologyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableGuid'] = request.table_guid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4350,8 +5016,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetTableDBTopologyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableGuid'] = request.table_guid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4392,8 +5060,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableGuid'] = request.table_guid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4420,8 +5090,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableGuid'] = request.table_guid
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_guid):
+            query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4462,9 +5134,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4491,9 +5166,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4534,7 +5212,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4561,7 +5240,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4602,8 +5282,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetUserUploadFileJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobKey'] = request.job_key
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.job_key):
+            query['JobKey'] = request.job_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4630,8 +5312,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetUserUploadFileJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobKey'] = request.job_key
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.job_key):
+            query['JobKey'] = request.job_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4672,16 +5356,26 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GrantUserPermissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['DsType'] = request.ds_type
-        query['ExpireDate'] = request.expire_date
-        query['InstanceId'] = request.instance_id
-        query['Logic'] = request.logic
-        query['PermTypes'] = request.perm_types
-        query['TableId'] = request.table_id
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.ds_type):
+            query['DsType'] = request.ds_type
+        if not UtilClient.is_unset(request.expire_date):
+            query['ExpireDate'] = request.expire_date
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.perm_types):
+            query['PermTypes'] = request.perm_types
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4708,16 +5402,26 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GrantUserPermissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['DsType'] = request.ds_type
-        query['ExpireDate'] = request.expire_date
-        query['InstanceId'] = request.instance_id
-        query['Logic'] = request.logic
-        query['PermTypes'] = request.perm_types
-        query['TableId'] = request.table_id
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.ds_type):
+            query['DsType'] = request.ds_type
+        if not UtilClient.is_unset(request.expire_date):
+            query['ExpireDate'] = request.expire_date
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.perm_types):
+            query['PermTypes'] = request.perm_types
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4758,8 +5462,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProxyAccessId'] = request.proxy_access_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.proxy_access_id):
+            query['ProxyAccessId'] = request.proxy_access_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4786,8 +5492,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProxyAccessId'] = request.proxy_access_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.proxy_access_id):
+            query['ProxyAccessId'] = request.proxy_access_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4821,6 +5529,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.inspect_proxy_access_secret_with_options_async(request, runtime)
 
+    def kill_spark_job_with_options(
+        self,
+        request: dms_enterprise_20181101_models.KillSparkJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.KillSparkJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='KillSparkJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.KillSparkJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def kill_spark_job_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.KillSparkJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.KillSparkJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='KillSparkJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.KillSparkJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def kill_spark_job(
+        self,
+        request: dms_enterprise_20181101_models.KillSparkJobRequest,
+    ) -> dms_enterprise_20181101_models.KillSparkJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.kill_spark_job_with_options(request, runtime)
+
+    async def kill_spark_job_async(
+        self,
+        request: dms_enterprise_20181101_models.KillSparkJobRequest,
+    ) -> dms_enterprise_20181101_models.KillSparkJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.kill_spark_job_with_options_async(request, runtime)
+
     def list_columns_with_options(
         self,
         request: dms_enterprise_20181101_models.ListColumnsRequest,
@@ -4828,9 +5610,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Logic'] = request.logic
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4857,9 +5642,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Logic'] = request.logic
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4900,10 +5688,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBTaskGroupId'] = request.dbtask_group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.dbtask_group_id):
+            query['DBTaskGroupId'] = request.dbtask_group_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4930,10 +5722,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBTaskGroupId'] = request.dbtask_group_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.dbtask_group_id):
+            query['DBTaskGroupId'] = request.dbtask_group_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4974,10 +5770,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5004,10 +5804,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5048,8 +5852,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5076,8 +5882,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5118,10 +5926,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5148,10 +5960,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5192,11 +6008,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5223,11 +6044,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['OrderId'] = request.order_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5268,13 +6094,20 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PermType'] = request.perm_type
-        query['Tid'] = request.tid
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.perm_type):
+            query['PermType'] = request.perm_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5301,13 +6134,20 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PermType'] = request.perm_type
-        query['Tid'] = request.tid
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.perm_type):
+            query['PermType'] = request.perm_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5348,10 +6188,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDatabasesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5378,10 +6222,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDatabasesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5422,9 +6270,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListIndexesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Logic'] = request.logic
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5451,9 +6302,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListIndexesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Logic'] = request.logic
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5494,13 +6348,20 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OpUserName'] = request.op_user_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchName'] = request.search_name
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.op_user_name):
+            query['OpUserName'] = request.op_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5527,13 +6388,20 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OpUserName'] = request.op_user_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchName'] = request.search_name
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.op_user_name):
+            query['OpUserName'] = request.op_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5574,11 +6442,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5605,11 +6478,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
-        query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5650,15 +6528,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbType'] = request.db_type
-        query['EnvType'] = request.env_type
-        query['InstanceSource'] = request.instance_source
-        query['InstanceState'] = request.instance_state
-        query['NetType'] = request.net_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchKey'] = request.search_key
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_state):
+            query['InstanceState'] = request.instance_state
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5685,15 +6572,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbType'] = request.db_type
-        query['EnvType'] = request.env_type
-        query['InstanceSource'] = request.instance_source
-        query['InstanceState'] = request.instance_state
-        query['NetType'] = request.net_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchKey'] = request.search_key
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_state):
+            query['InstanceState'] = request.instance_state
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5734,9 +6630,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListLogicDatabasesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5763,9 +6662,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListLogicDatabasesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5806,8 +6708,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5834,8 +6738,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TableId'] = request.table_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5876,12 +6782,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListLogicTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatabaseId'] = request.database_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ReturnGuid'] = request.return_guid
-        query['SearchName'] = request.search_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.return_guid):
+            query['ReturnGuid'] = request.return_guid
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5908,12 +6820,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListLogicTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatabaseId'] = request.database_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ReturnGuid'] = request.return_guid
-        query['SearchName'] = request.search_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.return_guid):
+            query['ReturnGuid'] = request.return_guid
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5954,16 +6872,26 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListOrdersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OrderResultType'] = request.order_result_type
-        query['OrderStatus'] = request.order_status
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PluginType'] = request.plugin_type
-        query['SearchContent'] = request.search_content
-        query['SearchDateType'] = request.search_date_type
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.order_result_type):
+            query['OrderResultType'] = request.order_result_type
+        if not UtilClient.is_unset(request.order_status):
+            query['OrderStatus'] = request.order_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not UtilClient.is_unset(request.search_content):
+            query['SearchContent'] = request.search_content
+        if not UtilClient.is_unset(request.search_date_type):
+            query['SearchDateType'] = request.search_date_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5990,16 +6918,26 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListOrdersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OrderResultType'] = request.order_result_type
-        query['OrderStatus'] = request.order_status
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PluginType'] = request.plugin_type
-        query['SearchContent'] = request.search_content
-        query['SearchDateType'] = request.search_date_type
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.order_result_type):
+            query['OrderResultType'] = request.order_result_type
+        if not UtilClient.is_unset(request.order_status):
+            query['OrderStatus'] = request.order_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not UtilClient.is_unset(request.search_content):
+            query['SearchContent'] = request.search_content
+        if not UtilClient.is_unset(request.search_date_type):
+            query['SearchDateType'] = request.search_date_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6040,7 +6978,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListProxiesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6067,7 +7006,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListProxiesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6108,8 +7048,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProxyId'] = request.proxy_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6136,8 +7078,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProxyId'] = request.proxy_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6178,15 +7122,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['ExecState'] = request.exec_state
-        query['OpUserName'] = request.op_user_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SQLType'] = request.sqltype
-        query['SearchName'] = request.search_name
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.exec_state):
+            query['ExecState'] = request.exec_state
+        if not UtilClient.is_unset(request.op_user_name):
+            query['OpUserName'] = request.op_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sqltype):
+            query['SQLType'] = request.sqltype
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6213,15 +7166,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['ExecState'] = request.exec_state
-        query['OpUserName'] = request.op_user_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SQLType'] = request.sqltype
-        query['SearchName'] = request.search_name
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.exec_state):
+            query['ExecState'] = request.exec_state
+        if not UtilClient.is_unset(request.op_user_name):
+            query['OpUserName'] = request.op_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sqltype):
+            query['SQLType'] = request.sqltype
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6262,15 +7224,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListSQLExecAuditLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['ExecState'] = request.exec_state
-        query['OpUserName'] = request.op_user_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchName'] = request.search_name
-        query['SqlType'] = request.sql_type
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.exec_state):
+            query['ExecState'] = request.exec_state
+        if not UtilClient.is_unset(request.op_user_name):
+            query['OpUserName'] = request.op_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6297,15 +7268,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListSQLExecAuditLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['ExecState'] = request.exec_state
-        query['OpUserName'] = request.op_user_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchName'] = request.search_name
-        query['SqlType'] = request.sql_type
-        query['StartTime'] = request.start_time
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.exec_state):
+            query['ExecState'] = request.exec_state
+        if not UtilClient.is_unset(request.op_user_name):
+            query['OpUserName'] = request.op_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6350,9 +7330,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.order_action_detail):
             request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.order_action_detail), 'OrderActionDetail', 'json')
         query = {}
-        query['OrderActionDetail'] = request.order_action_detail_shrink
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_action_detail_shrink):
+            query['OrderActionDetail'] = request.order_action_detail_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6383,9 +7366,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.order_action_detail):
             request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.order_action_detail), 'OrderActionDetail', 'json')
         query = {}
-        query['OrderActionDetail'] = request.order_action_detail_shrink
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_action_detail_shrink):
+            query['OrderActionDetail'] = request.order_action_detail_shrink
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6426,15 +7412,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ColumnName'] = request.column_name
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SchemaName'] = request.schema_name
-        query['SecurityLevel'] = request.security_level
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.security_level):
+            query['SecurityLevel'] = request.security_level
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6461,15 +7456,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ColumnName'] = request.column_name
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SchemaName'] = request.schema_name
-        query['SecurityLevel'] = request.security_level
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.security_level):
+            query['SecurityLevel'] = request.security_level
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6510,12 +7514,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ColumnName'] = request.column_name
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['SchemaName'] = request.schema_name
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6542,12 +7552,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ColumnName'] = request.column_name
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['SchemaName'] = request.schema_name
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6588,12 +7604,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatabaseId'] = request.database_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ReturnGuid'] = request.return_guid
-        query['SearchName'] = request.search_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.return_guid):
+            query['ReturnGuid'] = request.return_guid
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6620,12 +7642,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatabaseId'] = request.database_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ReturnGuid'] = request.return_guid
-        query['SearchName'] = request.search_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.database_id):
+            query['DatabaseId'] = request.database_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.return_guid):
+            query['ReturnGuid'] = request.return_guid
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6666,16 +7694,26 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListUserPermissionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatabaseName'] = request.database_name
-        query['DbType'] = request.db_type
-        query['EnvType'] = request.env_type
-        query['Logic'] = request.logic
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PermType'] = request.perm_type
-        query['SearchKey'] = request.search_key
-        query['Tid'] = request.tid
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.perm_type):
+            query['PermType'] = request.perm_type
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6702,16 +7740,26 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListUserPermissionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatabaseName'] = request.database_name
-        query['DbType'] = request.db_type
-        query['EnvType'] = request.env_type
-        query['Logic'] = request.logic
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['PermType'] = request.perm_type
-        query['SearchKey'] = request.search_key
-        query['Tid'] = request.tid
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.perm_type):
+            query['PermType'] = request.perm_type
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6752,7 +7800,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6779,7 +7828,8 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6820,12 +7870,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Role'] = request.role
-        query['SearchKey'] = request.search_key
-        query['Tid'] = request.tid
-        query['UserState'] = request.user_state
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_state):
+            query['UserState'] = request.user_state
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6852,12 +7908,18 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListUsersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Role'] = request.role
-        query['SearchKey'] = request.search_key
-        query['Tid'] = request.tid
-        query['UserState'] = request.user_state
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_state):
+            query['UserState'] = request.user_state
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6898,8 +7960,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListWorkFlowNodesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SearchName'] = request.search_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6926,8 +7990,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListWorkFlowNodesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SearchName'] = request.search_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6968,8 +8034,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SearchName'] = request.search_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6996,8 +8064,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SearchName'] = request.search_name
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.search_name):
+            query['SearchName'] = request.search_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7038,9 +8108,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ExecSQL'] = request.exec_sql
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.exec_sql):
+            query['ExecSQL'] = request.exec_sql
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7067,9 +8140,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ExecSQL'] = request.exec_sql
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.exec_sql):
+            query['ExecSQL'] = request.exec_sql
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7110,28 +8186,50 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DataLinkName'] = request.data_link_name
-        query['DatabasePassword'] = request.database_password
-        query['DatabaseUser'] = request.database_user
-        query['DbaUid'] = request.dba_uid
-        query['DdlOnline'] = request.ddl_online
-        query['EcsInstanceId'] = request.ecs_instance_id
-        query['EcsRegion'] = request.ecs_region
-        query['EnvType'] = request.env_type
-        query['ExportTimeout'] = request.export_timeout
-        query['Host'] = request.host
-        query['InstanceAlias'] = request.instance_alias
-        query['InstanceSource'] = request.instance_source
-        query['InstanceType'] = request.instance_type
-        query['NetworkType'] = request.network_type
-        query['Port'] = request.port
-        query['QueryTimeout'] = request.query_timeout
-        query['SafeRule'] = request.safe_rule
-        query['Sid'] = request.sid
-        query['SkipTest'] = request.skip_test
-        query['Tid'] = request.tid
-        query['UseDsql'] = request.use_dsql
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.data_link_name):
+            query['DataLinkName'] = request.data_link_name
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.dba_uid):
+            query['DbaUid'] = request.dba_uid
+        if not UtilClient.is_unset(request.ddl_online):
+            query['DdlOnline'] = request.ddl_online
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.ecs_region):
+            query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.export_timeout):
+            query['ExportTimeout'] = request.export_timeout
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.query_timeout):
+            query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.safe_rule):
+            query['SafeRule'] = request.safe_rule
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.skip_test):
+            query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.use_dsql):
+            query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7158,28 +8256,50 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DataLinkName'] = request.data_link_name
-        query['DatabasePassword'] = request.database_password
-        query['DatabaseUser'] = request.database_user
-        query['DbaUid'] = request.dba_uid
-        query['DdlOnline'] = request.ddl_online
-        query['EcsInstanceId'] = request.ecs_instance_id
-        query['EcsRegion'] = request.ecs_region
-        query['EnvType'] = request.env_type
-        query['ExportTimeout'] = request.export_timeout
-        query['Host'] = request.host
-        query['InstanceAlias'] = request.instance_alias
-        query['InstanceSource'] = request.instance_source
-        query['InstanceType'] = request.instance_type
-        query['NetworkType'] = request.network_type
-        query['Port'] = request.port
-        query['QueryTimeout'] = request.query_timeout
-        query['SafeRule'] = request.safe_rule
-        query['Sid'] = request.sid
-        query['SkipTest'] = request.skip_test
-        query['Tid'] = request.tid
-        query['UseDsql'] = request.use_dsql
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.data_link_name):
+            query['DataLinkName'] = request.data_link_name
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.dba_uid):
+            query['DbaUid'] = request.dba_uid
+        if not UtilClient.is_unset(request.ddl_online):
+            query['DdlOnline'] = request.ddl_online
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.ecs_region):
+            query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.export_timeout):
+            query['ExportTimeout'] = request.export_timeout
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.query_timeout):
+            query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.safe_rule):
+            query['SafeRule'] = request.safe_rule
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.skip_test):
+            query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.use_dsql):
+            query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7220,11 +8340,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RegisterUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Mobile'] = request.mobile
-        query['RoleNames'] = request.role_names
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
-        query['UserNick'] = request.user_nick
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.role_names):
+            query['RoleNames'] = request.role_names
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.user_nick):
+            query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7251,11 +8376,16 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RegisterUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Mobile'] = request.mobile
-        query['RoleNames'] = request.role_names
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
-        query['UserNick'] = request.user_nick
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.role_names):
+            query['RoleNames'] = request.role_names
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.user_nick):
+            query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7296,8 +8426,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7324,8 +8456,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7366,16 +8500,26 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['DsType'] = request.ds_type
-        query['InstanceId'] = request.instance_id
-        query['Logic'] = request.logic
-        query['PermTypes'] = request.perm_types
-        query['TableId'] = request.table_id
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
-        query['UserAccessId'] = request.user_access_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.ds_type):
+            query['DsType'] = request.ds_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.perm_types):
+            query['PermTypes'] = request.perm_types
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_access_id):
+            query['UserAccessId'] = request.user_access_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7402,16 +8546,26 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['DsType'] = request.ds_type
-        query['InstanceId'] = request.instance_id
-        query['Logic'] = request.logic
-        query['PermTypes'] = request.perm_types
-        query['TableId'] = request.table_id
-        query['TableName'] = request.table_name
-        query['Tid'] = request.tid
-        query['UserAccessId'] = request.user_access_id
-        query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.ds_type):
+            query['DsType'] = request.ds_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.perm_types):
+            query['PermTypes'] = request.perm_types
+        if not UtilClient.is_unset(request.table_id):
+            query['TableId'] = request.table_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.user_access_id):
+            query['UserAccessId'] = request.user_access_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7452,14 +8606,22 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SearchDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbType'] = request.db_type
-        query['EnvType'] = request.env_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchKey'] = request.search_key
-        query['SearchRange'] = request.search_range
-        query['SearchTarget'] = request.search_target
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.search_range):
+            query['SearchRange'] = request.search_range
+        if not UtilClient.is_unset(request.search_target):
+            query['SearchTarget'] = request.search_target
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7486,14 +8648,22 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SearchDatabaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbType'] = request.db_type
-        query['EnvType'] = request.env_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SearchKey'] = request.search_key
-        query['SearchRange'] = request.search_range
-        query['SearchTarget'] = request.search_target
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.search_range):
+            query['SearchRange'] = request.search_range
+        if not UtilClient.is_unset(request.search_target):
+            query['SearchTarget'] = request.search_target
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7534,15 +8704,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbType'] = request.db_type
-        query['EnvType'] = request.env_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ReturnGuid'] = request.return_guid
-        query['SearchKey'] = request.search_key
-        query['SearchRange'] = request.search_range
-        query['SearchTarget'] = request.search_target
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.return_guid):
+            query['ReturnGuid'] = request.return_guid
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.search_range):
+            query['SearchRange'] = request.search_range
+        if not UtilClient.is_unset(request.search_target):
+            query['SearchTarget'] = request.search_target
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7569,15 +8748,24 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbType'] = request.db_type
-        query['EnvType'] = request.env_type
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ReturnGuid'] = request.return_guid
-        query['SearchKey'] = request.search_key
-        query['SearchRange'] = request.search_range
-        query['SearchTarget'] = request.search_target
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.return_guid):
+            query['ReturnGuid'] = request.return_guid
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.search_range):
+            query['SearchRange'] = request.search_range
+        if not UtilClient.is_unset(request.search_target):
+            query['SearchTarget'] = request.search_target
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7618,10 +8806,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SetOwnersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerIds'] = request.owner_ids
-        query['OwnerType'] = request.owner_type
-        query['ResourceId'] = request.resource_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.owner_ids):
+            query['OwnerIds'] = request.owner_ids
+        if not UtilClient.is_unset(request.owner_type):
+            query['OwnerType'] = request.owner_type
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7648,10 +8840,14 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SetOwnersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerIds'] = request.owner_ids
-        query['OwnerType'] = request.owner_type
-        query['ResourceId'] = request.resource_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.owner_ids):
+            query['OwnerIds'] = request.owner_ids
+        if not UtilClient.is_unset(request.owner_type):
+            query['OwnerType'] = request.owner_type
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7692,8 +8888,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SubmitOrderApprovalResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7720,8 +8918,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SubmitOrderApprovalResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7755,6 +8955,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_order_approval_with_options_async(request, runtime)
 
+    def submit_spark_job_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.SubmitSparkJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SubmitSparkJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.SubmitSparkJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.arguments):
+            request.arguments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.arguments, 'Arguments', 'json')
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
+        if not UtilClient.is_unset(tmp_req.files):
+            request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        if not UtilClient.is_unset(tmp_req.oss_info):
+            request.oss_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.oss_info), 'OssInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        body = {}
+        if not UtilClient.is_unset(request.app_code):
+            body['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.arguments_shrink):
+            body['Arguments'] = request.arguments_shrink
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
+        if not UtilClient.is_unset(request.files_shrink):
+            body['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.main_class):
+            body['MainClass'] = request.main_class
+        if not UtilClient.is_unset(request.main_file):
+            body['MainFile'] = request.main_file
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_info_shrink):
+            body['OssInfo'] = request.oss_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSparkJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SubmitSparkJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_spark_job_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.SubmitSparkJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SubmitSparkJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.SubmitSparkJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.arguments):
+            request.arguments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.arguments, 'Arguments', 'json')
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
+        if not UtilClient.is_unset(tmp_req.files):
+            request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        if not UtilClient.is_unset(tmp_req.oss_info):
+            request.oss_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.oss_info), 'OssInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        body = {}
+        if not UtilClient.is_unset(request.app_code):
+            body['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.arguments_shrink):
+            body['Arguments'] = request.arguments_shrink
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
+        if not UtilClient.is_unset(request.files_shrink):
+            body['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.main_class):
+            body['MainClass'] = request.main_class
+        if not UtilClient.is_unset(request.main_file):
+            body['MainFile'] = request.main_file
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_info_shrink):
+            body['OssInfo'] = request.oss_info_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitSparkJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SubmitSparkJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_spark_job(
+        self,
+        request: dms_enterprise_20181101_models.SubmitSparkJobRequest,
+    ) -> dms_enterprise_20181101_models.SubmitSparkJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_spark_job_with_options(request, runtime)
+
+    async def submit_spark_job_async(
+        self,
+        request: dms_enterprise_20181101_models.SubmitSparkJobRequest,
+    ) -> dms_enterprise_20181101_models.SubmitSparkJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_spark_job_with_options_async(request, runtime)
+
     def submit_struct_sync_order_approval_with_options(
         self,
         request: dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalRequest,
@@ -7762,8 +9088,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7790,8 +9118,10 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OrderId'] = request.order_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7832,9 +9162,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SyncDatabaseMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7861,9 +9194,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SyncDatabaseMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbId'] = request.db_id
-        query['Logic'] = request.logic
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.logic):
+            query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7904,9 +9240,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IgnoreTable'] = request.ignore_table
-        query['InstanceId'] = request.instance_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.ignore_table):
+            query['IgnoreTable'] = request.ignore_table
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7933,9 +9272,12 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IgnoreTable'] = request.ignore_table
-        query['InstanceId'] = request.instance_id
-        query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.ignore_table):
+            query['IgnoreTable'] = request.ignore_table
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7976,28 +9318,50 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DataLinkName'] = request.data_link_name
-        query['DatabasePassword'] = request.database_password
-        query['DatabaseUser'] = request.database_user
-        query['DbaId'] = request.dba_id
-        query['DdlOnline'] = request.ddl_online
-        query['EcsInstanceId'] = request.ecs_instance_id
-        query['EcsRegion'] = request.ecs_region
-        query['EnvType'] = request.env_type
-        query['ExportTimeout'] = request.export_timeout
-        query['Host'] = request.host
-        query['InstanceAlias'] = request.instance_alias
-        query['InstanceId'] = request.instance_id
-        query['InstanceSource'] = request.instance_source
-        query['InstanceType'] = request.instance_type
-        query['Port'] = request.port
-        query['QueryTimeout'] = request.query_timeout
-        query['SafeRuleId'] = request.safe_rule_id
-        query['Sid'] = request.sid
-        query['SkipTest'] = request.skip_test
-        query['Tid'] = request.tid
-        query['UseDsql'] = request.use_dsql
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.data_link_name):
+            query['DataLinkName'] = request.data_link_name
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.dba_id):
+            query['DbaId'] = request.dba_id
+        if not UtilClient.is_unset(request.ddl_online):
+            query['DdlOnline'] = request.ddl_online
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.ecs_region):
+            query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.export_timeout):
+            query['ExportTimeout'] = request.export_timeout
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.query_timeout):
+            query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.safe_rule_id):
+            query['SafeRuleId'] = request.safe_rule_id
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.skip_test):
+            query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.use_dsql):
+            query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8024,28 +9388,50 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DataLinkName'] = request.data_link_name
-        query['DatabasePassword'] = request.database_password
-        query['DatabaseUser'] = request.database_user
-        query['DbaId'] = request.dba_id
-        query['DdlOnline'] = request.ddl_online
-        query['EcsInstanceId'] = request.ecs_instance_id
-        query['EcsRegion'] = request.ecs_region
-        query['EnvType'] = request.env_type
-        query['ExportTimeout'] = request.export_timeout
-        query['Host'] = request.host
-        query['InstanceAlias'] = request.instance_alias
-        query['InstanceId'] = request.instance_id
-        query['InstanceSource'] = request.instance_source
-        query['InstanceType'] = request.instance_type
-        query['Port'] = request.port
-        query['QueryTimeout'] = request.query_timeout
-        query['SafeRuleId'] = request.safe_rule_id
-        query['Sid'] = request.sid
-        query['SkipTest'] = request.skip_test
-        query['Tid'] = request.tid
-        query['UseDsql'] = request.use_dsql
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.data_link_name):
+            query['DataLinkName'] = request.data_link_name
+        if not UtilClient.is_unset(request.database_password):
+            query['DatabasePassword'] = request.database_password
+        if not UtilClient.is_unset(request.database_user):
+            query['DatabaseUser'] = request.database_user
+        if not UtilClient.is_unset(request.dba_id):
+            query['DbaId'] = request.dba_id
+        if not UtilClient.is_unset(request.ddl_online):
+            query['DdlOnline'] = request.ddl_online
+        if not UtilClient.is_unset(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
+        if not UtilClient.is_unset(request.ecs_region):
+            query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.env_type):
+            query['EnvType'] = request.env_type
+        if not UtilClient.is_unset(request.export_timeout):
+            query['ExportTimeout'] = request.export_timeout
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.instance_alias):
+            query['InstanceAlias'] = request.instance_alias
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.query_timeout):
+            query['QueryTimeout'] = request.query_timeout
+        if not UtilClient.is_unset(request.safe_rule_id):
+            query['SafeRuleId'] = request.safe_rule_id
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.skip_test):
+            query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.use_dsql):
+            query['UseDsql'] = request.use_dsql
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8086,13 +9472,20 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.UpdateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxExecuteCount'] = request.max_execute_count
-        query['MaxResultCount'] = request.max_result_count
-        query['Mobile'] = request.mobile
-        query['RoleNames'] = request.role_names
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
-        query['UserNick'] = request.user_nick
+        if not UtilClient.is_unset(request.max_execute_count):
+            query['MaxExecuteCount'] = request.max_execute_count
+        if not UtilClient.is_unset(request.max_result_count):
+            query['MaxResultCount'] = request.max_result_count
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.role_names):
+            query['RoleNames'] = request.role_names
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.user_nick):
+            query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8119,13 +9512,20 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.UpdateUserResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxExecuteCount'] = request.max_execute_count
-        query['MaxResultCount'] = request.max_result_count
-        query['Mobile'] = request.mobile
-        query['RoleNames'] = request.role_names
-        query['Tid'] = request.tid
-        query['Uid'] = request.uid
-        query['UserNick'] = request.user_nick
+        if not UtilClient.is_unset(request.max_execute_count):
+            query['MaxExecuteCount'] = request.max_execute_count
+        if not UtilClient.is_unset(request.max_result_count):
+            query['MaxResultCount'] = request.max_result_count
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.role_names):
+            query['RoleNames'] = request.role_names
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        if not UtilClient.is_unset(request.user_nick):
+            query['UserNick'] = request.user_nick
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
