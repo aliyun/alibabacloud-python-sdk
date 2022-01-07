@@ -805,6 +805,7 @@ class CreateClusterRequest(TeaModel):
         proxy_mode: str = None,
         rds_instances: List[str] = None,
         region_id: str = None,
+        resource_group_id: str = None,
         runtime: Runtime = None,
         security_group_id: str = None,
         service_account_issuer: str = None,
@@ -943,6 +944,8 @@ class CreateClusterRequest(TeaModel):
         self.rds_instances = rds_instances
         # 地域ID
         self.region_id = region_id
+        # 集群所属资源组ID
+        self.resource_group_id = resource_group_id
         self.runtime = runtime
         # 安全组ID，和is_enterprise_security_group二选一
         self.security_group_id = security_group_id
@@ -1137,6 +1140,8 @@ class CreateClusterRequest(TeaModel):
             result['rds_instances'] = self.rds_instances
         if self.region_id is not None:
             result['region_id'] = self.region_id
+        if self.resource_group_id is not None:
+            result['resource_group_id'] = self.resource_group_id
         if self.runtime is not None:
             result['runtime'] = self.runtime.to_map()
         if self.security_group_id is not None:
@@ -1316,6 +1321,8 @@ class CreateClusterRequest(TeaModel):
             self.rds_instances = m.get('rds_instances')
         if m.get('region_id') is not None:
             self.region_id = m.get('region_id')
+        if m.get('resource_group_id') is not None:
+            self.resource_group_id = m.get('resource_group_id')
         if m.get('runtime') is not None:
             temp_model = Runtime()
             self.runtime = temp_model.from_map(m['runtime'])
@@ -1899,6 +1906,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         compensate_with_on_demand: bool = None,
         data_disks: List[DataDisk] = None,
         deploymentset_id: str = None,
+        desired_size: int = None,
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
@@ -1937,6 +1945,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.data_disks = data_disks
         # 部署集ID。
         self.deploymentset_id = deploymentset_id
+        # 姐弟池期望节点数
+        self.desired_size = desired_size
         # 自定义镜像。
         self.image_id = image_id
         # 操作系统镜像类型，和platform二选一
@@ -2024,6 +2034,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
                 result['data_disks'].append(k.to_map() if k else None)
         if self.deploymentset_id is not None:
             result['deploymentset_id'] = self.deploymentset_id
+        if self.desired_size is not None:
+            result['desired_size'] = self.desired_size
         if self.image_id is not None:
             result['image_id'] = self.image_id
         if self.image_type is not None:
@@ -2099,6 +2111,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
                 self.data_disks.append(temp_model.from_map(k))
         if m.get('deploymentset_id') is not None:
             self.deploymentset_id = m.get('deploymentset_id')
+        if m.get('desired_size') is not None:
+            self.desired_size = m.get('desired_size')
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')
         if m.get('image_type') is not None:
@@ -5082,6 +5096,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         compensate_with_on_demand: bool = None,
         data_disks: List[DataDisk] = None,
         deploymentset_id: str = None,
+        desired_size: int = None,
         image_id: str = None,
         instance_charge_type: str = None,
         instance_types: List[str] = None,
@@ -5121,6 +5136,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.data_disks = data_disks
         # 部署集ID。
         self.deploymentset_id = deploymentset_id
+        # 节点池期望节点数
+        self.desired_size = desired_size
         # 自定义镜像ID。
         self.image_id = image_id
         # 节点付费类型。
@@ -5210,6 +5227,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
                 result['data_disks'].append(k.to_map() if k else None)
         if self.deploymentset_id is not None:
             result['deploymentset_id'] = self.deploymentset_id
+        if self.desired_size is not None:
+            result['desired_size'] = self.desired_size
         if self.image_id is not None:
             result['image_id'] = self.image_id
         if self.instance_charge_type is not None:
@@ -5287,6 +5306,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
                 self.data_disks.append(temp_model.from_map(k))
         if m.get('deploymentset_id') is not None:
             self.deploymentset_id = m.get('deploymentset_id')
+        if m.get('desired_size') is not None:
+            self.desired_size = m.get('desired_size')
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')
         if m.get('instance_charge_type') is not None:
@@ -6041,6 +6062,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         compensate_with_on_demand: bool = None,
         data_disks: List[DataDisk] = None,
         deploymentset_id: str = None,
+        desired_size: int = None,
         image_id: str = None,
         instance_charge_type: str = None,
         instance_types: List[str] = None,
@@ -6080,6 +6102,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.data_disks = data_disks
         # 部署集ID。
         self.deploymentset_id = deploymentset_id
+        # 节点池期望节点数
+        self.desired_size = desired_size
         # 镜像ID	
         self.image_id = image_id
         # 节点付费类型	
@@ -6169,6 +6193,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
                 result['data_disks'].append(k.to_map() if k else None)
         if self.deploymentset_id is not None:
             result['deploymentset_id'] = self.deploymentset_id
+        if self.desired_size is not None:
+            result['desired_size'] = self.desired_size
         if self.image_id is not None:
             result['image_id'] = self.image_id
         if self.instance_charge_type is not None:
@@ -6246,6 +6272,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
                 self.data_disks.append(temp_model.from_map(k))
         if m.get('deploymentset_id') is not None:
             self.deploymentset_id = m.get('deploymentset_id')
+        if m.get('desired_size') is not None:
+            self.desired_size = m.get('desired_size')
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')
         if m.get('instance_charge_type') is not None:
@@ -12905,6 +12933,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         auto_renew_period: int = None,
         compensate_with_on_demand: bool = None,
         data_disks: List[DataDisk] = None,
+        desired_size: int = None,
         image_id: str = None,
         instance_charge_type: str = None,
         instance_types: List[str] = None,
@@ -12938,6 +12967,8 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         self.compensate_with_on_demand = compensate_with_on_demand
         # 数据盘配置。
         self.data_disks = data_disks
+        # 节点池期望节点数
+        self.desired_size = desired_size
         # 自定义镜像
         self.image_id = image_id
         # 节点付费类型。
@@ -13017,6 +13048,8 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         if self.data_disks is not None:
             for k in self.data_disks:
                 result['data_disks'].append(k.to_map() if k else None)
+        if self.desired_size is not None:
+            result['desired_size'] = self.desired_size
         if self.image_id is not None:
             result['image_id'] = self.image_id
         if self.instance_charge_type is not None:
@@ -13084,6 +13117,8 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
             for k in m.get('data_disks'):
                 temp_model = DataDisk()
                 self.data_disks.append(temp_model.from_map(k))
+        if m.get('desired_size') is not None:
+            self.desired_size = m.get('desired_size')
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')
         if m.get('instance_charge_type') is not None:

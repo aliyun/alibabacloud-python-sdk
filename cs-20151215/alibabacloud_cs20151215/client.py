@@ -662,6 +662,8 @@ class Client(OpenApiClient):
             body['rds_instances'] = request.rds_instances
         if not UtilClient.is_unset(request.region_id):
             body['region_id'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resource_group_id'] = request.resource_group_id
         if not UtilClient.is_unset(request.runtime):
             body['runtime'] = request.runtime
         if not UtilClient.is_unset(request.security_group_id):
@@ -856,6 +858,8 @@ class Client(OpenApiClient):
             body['rds_instances'] = request.rds_instances
         if not UtilClient.is_unset(request.region_id):
             body['region_id'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resource_group_id'] = request.resource_group_id
         if not UtilClient.is_unset(request.runtime):
             body['runtime'] = request.runtime
         if not UtilClient.is_unset(request.security_group_id):

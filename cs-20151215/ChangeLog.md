@@ -1,3 +1,6 @@
+2022-01-07 Version: 3.0.5
+- The node pool supports the desired number of nodes.
+
 2021-12-17 Version: 3.0.4
 - CreateClusterNodePool support user-defined node names .
 
