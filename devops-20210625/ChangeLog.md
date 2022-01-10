@@ -1,3 +1,6 @@
+2022-01-10 Version: 1.1.8
+- Add CreateSprint Api.
+
 2021-12-30 Version: 1.1.7
 - Add GeyPipelinArtifactUrl Api.
 
