@@ -9,11 +9,9 @@ class CancelArtifactBuildTaskRequest(TeaModel):
         self,
         build_task_id: str = None,
         instance_id: str = None,
-        region_id: str = None,
     ):
         self.build_task_id = build_task_id
         self.instance_id = instance_id
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -28,8 +26,6 @@ class CancelArtifactBuildTaskRequest(TeaModel):
             result['BuildTaskId'] = self.build_task_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -38,8 +34,6 @@ class CancelArtifactBuildTaskRequest(TeaModel):
             self.build_task_id = m.get('BuildTaskId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -124,12 +118,10 @@ class CancelRepoBuildRecordRequest(TeaModel):
         self,
         build_record_id: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.build_record_id = build_record_id
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -145,8 +137,6 @@ class CancelRepoBuildRecordRequest(TeaModel):
             result['BuildRecordId'] = self.build_record_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -157,8 +147,6 @@ class CancelRepoBuildRecordRequest(TeaModel):
             self.build_record_id = m.get('BuildRecordId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -245,12 +233,10 @@ class CreateBuildRecordByRuleRequest(TeaModel):
         self,
         build_rule_id: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.build_rule_id = build_rule_id
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -266,8 +252,6 @@ class CreateBuildRecordByRuleRequest(TeaModel):
             result['BuildRuleId'] = self.build_rule_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -278,8 +262,6 @@ class CreateBuildRecordByRuleRequest(TeaModel):
             self.build_rule_id = m.get('BuildRuleId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -374,7 +356,6 @@ class CreateChainRequest(TeaModel):
         description: str = None,
         instance_id: str = None,
         name: str = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
@@ -382,7 +363,6 @@ class CreateChainRequest(TeaModel):
         self.description = description
         self.instance_id = instance_id
         self.name = name
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
 
@@ -403,8 +383,6 @@ class CreateChainRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.name is not None:
             result['Name'] = self.name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -421,8 +399,6 @@ class CreateChainRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -519,13 +495,11 @@ class CreateChartNamespaceRequest(TeaModel):
         default_repo_type: str = None,
         instance_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.default_repo_type = default_repo_type
         self.instance_id = instance_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -544,8 +518,6 @@ class CreateChartNamespaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -558,8 +530,6 @@ class CreateChartNamespaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -643,14 +613,12 @@ class CreateChartRepositoryRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
         repo_type: str = None,
         summary: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
         self.repo_type = repo_type
@@ -667,8 +635,6 @@ class CreateChartRepositoryRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -683,8 +649,6 @@ class CreateChartRepositoryRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -786,14 +750,12 @@ class CreateInstanceEndpointAclPolicyRequest(TeaModel):
         entry: str = None,
         instance_id: str = None,
         module_name: str = None,
-        region_id: str = None,
     ):
         self.comment = comment
         self.endpoint_type = endpoint_type
         self.entry = entry
         self.instance_id = instance_id
         self.module_name = module_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -814,8 +776,6 @@ class CreateInstanceEndpointAclPolicyRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -830,8 +790,6 @@ class CreateInstanceEndpointAclPolicyRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -914,15 +872,15 @@ class CreateInstanceEndpointAclPolicyResponse(TeaModel):
 class CreateInstanceVpcEndpointLinkedVpcRequest(TeaModel):
     def __init__(
         self,
+        enable_create_dnsrecord_in_pvzt: bool = None,
         instance_id: str = None,
         module_name: str = None,
-        region_id: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        self.enable_create_dnsrecord_in_pvzt = enable_create_dnsrecord_in_pvzt
         self.instance_id = instance_id
         self.module_name = module_name
-        self.region_id = region_id
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
 
@@ -935,12 +893,12 @@ class CreateInstanceVpcEndpointLinkedVpcRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_create_dnsrecord_in_pvzt is not None:
+            result['EnableCreateDNSRecordInPvzt'] = self.enable_create_dnsrecord_in_pvzt
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
@@ -949,12 +907,12 @@ class CreateInstanceVpcEndpointLinkedVpcRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableCreateDNSRecordInPvzt') is not None:
+            self.enable_create_dnsrecord_in_pvzt = m.get('EnableCreateDNSRecordInPvzt')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
@@ -1045,13 +1003,11 @@ class CreateNamespaceRequest(TeaModel):
         default_repo_type: str = None,
         instance_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.default_repo_type = default_repo_type
         self.instance_id = instance_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1070,8 +1026,6 @@ class CreateNamespaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1084,8 +1038,6 @@ class CreateNamespaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -1174,7 +1126,6 @@ class CreateRepoBuildRuleRequest(TeaModel):
         instance_id: str = None,
         push_name: str = None,
         push_type: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.dockerfile_location = dockerfile_location
@@ -1183,7 +1134,6 @@ class CreateRepoBuildRuleRequest(TeaModel):
         self.instance_id = instance_id
         self.push_name = push_name
         self.push_type = push_type
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -1207,8 +1157,6 @@ class CreateRepoBuildRuleRequest(TeaModel):
             result['PushName'] = self.push_name
         if self.push_type is not None:
             result['PushType'] = self.push_type
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -1227,8 +1175,6 @@ class CreateRepoBuildRuleRequest(TeaModel):
             self.push_name = m.get('PushName')
         if m.get('PushType') is not None:
             self.push_type = m.get('PushType')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -1326,7 +1272,6 @@ class CreateRepoSourceCodeRepoRequest(TeaModel):
         disable_cache_build: bool = None,
         instance_id: str = None,
         oversea_build: bool = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.auto_build = auto_build
@@ -1336,7 +1281,6 @@ class CreateRepoSourceCodeRepoRequest(TeaModel):
         self.disable_cache_build = disable_cache_build
         self.instance_id = instance_id
         self.oversea_build = oversea_build
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -1362,8 +1306,6 @@ class CreateRepoSourceCodeRepoRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.oversea_build is not None:
             result['OverseaBuild'] = self.oversea_build
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -1384,8 +1326,6 @@ class CreateRepoSourceCodeRepoRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('OverseaBuild') is not None:
             self.oversea_build = m.get('OverseaBuild')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -1472,7 +1412,6 @@ class CreateRepoSyncRuleRequest(TeaModel):
         self,
         instance_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
         repo_name: str = None,
         sync_rule_name: str = None,
         sync_scope: str = None,
@@ -1486,7 +1425,6 @@ class CreateRepoSyncRuleRequest(TeaModel):
     ):
         self.instance_id = instance_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
         self.repo_name = repo_name
         self.sync_rule_name = sync_rule_name
         self.sync_scope = sync_scope
@@ -1511,8 +1449,6 @@ class CreateRepoSyncRuleRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.sync_rule_name is not None:
@@ -1541,8 +1477,6 @@ class CreateRepoSyncRuleRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('SyncRuleName') is not None:
@@ -1653,7 +1587,6 @@ class CreateRepoSyncTaskRequest(TeaModel):
         self,
         instance_id: str = None,
         override: bool = None,
-        region_id: str = None,
         repo_id: str = None,
         tag: str = None,
         target_instance_id: str = None,
@@ -1665,7 +1598,6 @@ class CreateRepoSyncTaskRequest(TeaModel):
     ):
         self.instance_id = instance_id
         self.override = override
-        self.region_id = region_id
         self.repo_id = repo_id
         self.tag = tag
         self.target_instance_id = target_instance_id
@@ -1688,8 +1620,6 @@ class CreateRepoSyncTaskRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.override is not None:
             result['Override'] = self.override
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.tag is not None:
@@ -1714,8 +1644,6 @@ class CreateRepoSyncTaskRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Override') is not None:
             self.override = m.get('Override')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('Tag') is not None:
@@ -1821,13 +1749,11 @@ class CreateRepoSyncTaskByRuleRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         sync_rule_id: str = None,
         tag: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.sync_rule_id = sync_rule_id
         self.tag = tag
@@ -1843,8 +1769,6 @@ class CreateRepoSyncTaskByRuleRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.sync_rule_id is not None:
@@ -1857,8 +1781,6 @@ class CreateRepoSyncTaskByRuleRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('SyncRuleId') is not None:
@@ -1956,14 +1878,12 @@ class CreateRepoTagRequest(TeaModel):
         from_tag: str = None,
         instance_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
         repo_name: str = None,
         to_tag: str = None,
     ):
         self.from_tag = from_tag
         self.instance_id = instance_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
         self.repo_name = repo_name
         self.to_tag = to_tag
 
@@ -1982,8 +1902,6 @@ class CreateRepoTagRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.to_tag is not None:
@@ -1998,8 +1916,6 @@ class CreateRepoTagRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('ToTag') is not None:
@@ -2088,14 +2004,12 @@ class CreateRepoTagScanTaskRequest(TeaModel):
         self,
         digest: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         scan_service: str = None,
         tag: str = None,
     ):
         self.digest = digest
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.scan_service = scan_service
         self.tag = tag
@@ -2113,8 +2027,6 @@ class CreateRepoTagScanTaskRequest(TeaModel):
             result['Digest'] = self.digest
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.scan_service is not None:
@@ -2129,8 +2041,6 @@ class CreateRepoTagScanTaskRequest(TeaModel):
             self.digest = m.get('Digest')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('ScanService') is not None:
@@ -2220,7 +2130,6 @@ class CreateRepoTriggerRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         trigger_name: str = None,
         trigger_tag: str = None,
@@ -2228,7 +2137,6 @@ class CreateRepoTriggerRequest(TeaModel):
         trigger_url: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.trigger_name = trigger_name
         self.trigger_tag = trigger_tag
@@ -2246,8 +2154,6 @@ class CreateRepoTriggerRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.trigger_name is not None:
@@ -2264,8 +2170,6 @@ class CreateRepoTriggerRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('TriggerName') is not None:
@@ -2366,7 +2270,6 @@ class CreateRepositoryRequest(TeaModel):
         self,
         detail: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
         repo_type: str = None,
@@ -2375,7 +2278,6 @@ class CreateRepositoryRequest(TeaModel):
     ):
         self.detail = detail
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
         self.repo_type = repo_type
@@ -2395,8 +2297,6 @@ class CreateRepositoryRequest(TeaModel):
             result['Detail'] = self.detail
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -2415,8 +2315,6 @@ class CreateRepositoryRequest(TeaModel):
             self.detail = m.get('Detail')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -2517,11 +2415,9 @@ class DeleteChainRequest(TeaModel):
         self,
         chain_id: str = None,
         instance_id: str = None,
-        region_id: str = None,
     ):
         self.chain_id = chain_id
         self.instance_id = instance_id
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2536,8 +2432,6 @@ class DeleteChainRequest(TeaModel):
             result['ChainId'] = self.chain_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2546,8 +2440,6 @@ class DeleteChainRequest(TeaModel):
             self.chain_id = m.get('ChainId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2632,11 +2524,9 @@ class DeleteChartNamespaceRequest(TeaModel):
         self,
         instance_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2651,8 +2541,6 @@ class DeleteChartNamespaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2661,8 +2549,6 @@ class DeleteChartNamespaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2747,14 +2633,12 @@ class DeleteChartReleaseRequest(TeaModel):
         self,
         chart: str = None,
         instance_id: str = None,
-        region_id: str = None,
         release: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
         self.chart = chart
         self.instance_id = instance_id
-        self.region_id = region_id
         self.release = release
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
@@ -2772,8 +2656,6 @@ class DeleteChartReleaseRequest(TeaModel):
             result['Chart'] = self.chart
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.release is not None:
             result['Release'] = self.release
         if self.repo_name is not None:
@@ -2788,8 +2670,6 @@ class DeleteChartReleaseRequest(TeaModel):
             self.chart = m.get('Chart')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('Release') is not None:
             self.release = m.get('Release')
         if m.get('RepoName') is not None:
@@ -2879,12 +2759,10 @@ class DeleteChartRepositoryRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
 
@@ -2899,8 +2777,6 @@ class DeleteChartRepositoryRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -2911,8 +2787,6 @@ class DeleteChartRepositoryRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -3000,11 +2874,9 @@ class DeleteEventCenterRuleRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         rule_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.rule_id = rule_id
 
     def validate(self):
@@ -3018,8 +2890,6 @@ class DeleteEventCenterRuleRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         return result
@@ -3028,8 +2898,6 @@ class DeleteEventCenterRuleRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         return self
@@ -3113,13 +2981,11 @@ class DeleteInstanceEndpointAclPolicyRequest(TeaModel):
         entry: str = None,
         instance_id: str = None,
         module_name: str = None,
-        region_id: str = None,
     ):
         self.endpoint_type = endpoint_type
         self.entry = entry
         self.instance_id = instance_id
         self.module_name = module_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3138,8 +3004,6 @@ class DeleteInstanceEndpointAclPolicyRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3152,8 +3016,6 @@ class DeleteInstanceEndpointAclPolicyRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -3238,13 +3100,11 @@ class DeleteInstanceVpcEndpointLinkedVpcRequest(TeaModel):
         self,
         instance_id: str = None,
         module_name: str = None,
-        region_id: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
         self.instance_id = instance_id
         self.module_name = module_name
-        self.region_id = region_id
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
 
@@ -3261,8 +3121,6 @@ class DeleteInstanceVpcEndpointLinkedVpcRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
@@ -3275,8 +3133,6 @@ class DeleteInstanceVpcEndpointLinkedVpcRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
@@ -3365,11 +3221,9 @@ class DeleteNamespaceRequest(TeaModel):
         self,
         instance_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3384,8 +3238,6 @@ class DeleteNamespaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3394,8 +3246,6 @@ class DeleteNamespaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -3480,12 +3330,10 @@ class DeleteRepoBuildRuleRequest(TeaModel):
         self,
         build_rule_id: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.build_rule_id = build_rule_id
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -3501,8 +3349,6 @@ class DeleteRepoBuildRuleRequest(TeaModel):
             result['BuildRuleId'] = self.build_rule_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -3513,8 +3359,6 @@ class DeleteRepoBuildRuleRequest(TeaModel):
             self.build_rule_id = m.get('BuildRuleId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -3600,11 +3444,9 @@ class DeleteRepoSyncRuleRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         sync_rule_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.sync_rule_id = sync_rule_id
 
     def validate(self):
@@ -3618,8 +3460,6 @@ class DeleteRepoSyncRuleRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.sync_rule_id is not None:
             result['SyncRuleId'] = self.sync_rule_id
         return result
@@ -3628,8 +3468,6 @@ class DeleteRepoSyncRuleRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('SyncRuleId') is not None:
             self.sync_rule_id = m.get('SyncRuleId')
         return self
@@ -3715,12 +3553,10 @@ class DeleteRepoTagRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         tag: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.tag = tag
 
@@ -3735,8 +3571,6 @@ class DeleteRepoTagRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.tag is not None:
@@ -3747,8 +3581,6 @@ class DeleteRepoTagRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('Tag') is not None:
@@ -3836,12 +3668,10 @@ class DeleteRepoTriggerRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         trigger_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.trigger_id = trigger_id
 
@@ -3856,8 +3686,6 @@ class DeleteRepoTriggerRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.trigger_id is not None:
@@ -3868,8 +3696,6 @@ class DeleteRepoTriggerRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('TriggerId') is not None:
@@ -3957,11 +3783,9 @@ class DeleteRepositoryRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -3975,8 +3799,6 @@ class DeleteRepositoryRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -3985,8 +3807,6 @@ class DeleteRepositoryRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -4073,11 +3893,9 @@ class GetArtifactBuildTaskRequest(TeaModel):
         self,
         build_task_id: str = None,
         instance_id: str = None,
-        region_id: str = None,
     ):
         self.build_task_id = build_task_id
         self.instance_id = instance_id
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4092,8 +3910,6 @@ class GetArtifactBuildTaskRequest(TeaModel):
             result['BuildTaskId'] = self.build_task_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4102,8 +3918,6 @@ class GetArtifactBuildTaskRequest(TeaModel):
             self.build_task_id = m.get('BuildTaskId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4318,10 +4132,8 @@ class GetAuthorizationTokenRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4334,16 +4146,12 @@ class GetAuthorizationTokenRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4446,11 +4254,9 @@ class GetChainRequest(TeaModel):
         self,
         chain_id: str = None,
         instance_id: str = None,
-        region_id: str = None,
     ):
         self.chain_id = chain_id
         self.instance_id = instance_id
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4465,8 +4271,6 @@ class GetChainRequest(TeaModel):
             result['ChainId'] = self.chain_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4475,8 +4279,6 @@ class GetChainRequest(TeaModel):
             self.chain_id = m.get('ChainId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4910,11 +4712,9 @@ class GetChartNamespaceRequest(TeaModel):
         self,
         instance_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4929,8 +4729,6 @@ class GetChartNamespaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4939,8 +4737,6 @@ class GetChartNamespaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5060,12 +4856,10 @@ class GetChartRepositoryRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
 
@@ -5080,8 +4874,6 @@ class GetChartRepositoryRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -5092,8 +4884,6 @@ class GetChartRepositoryRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -5235,10 +5025,8 @@ class GetInstanceRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5251,16 +5039,12 @@ class GetInstanceRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5376,33 +5160,6 @@ class GetInstanceResponse(TeaModel):
         return self
 
 
-class GetInstanceCountRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-    ):
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
 class GetInstanceCountResponseBody(TeaModel):
     def __init__(
         self,
@@ -5491,12 +5248,10 @@ class GetInstanceEndpointRequest(TeaModel):
         endpoint_type: str = None,
         instance_id: str = None,
         module_name: str = None,
-        region_id: str = None,
     ):
         self.endpoint_type = endpoint_type
         self.instance_id = instance_id
         self.module_name = module_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5513,8 +5268,6 @@ class GetInstanceEndpointRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5525,8 +5278,6 @@ class GetInstanceEndpointRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5723,10 +5474,8 @@ class GetInstanceUsageRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5739,16 +5488,12 @@ class GetInstanceUsageRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -5881,11 +5626,9 @@ class GetInstanceVpcEndpointRequest(TeaModel):
         self,
         instance_id: str = None,
         module_name: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
         self.module_name = module_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -5900,8 +5643,6 @@ class GetInstanceVpcEndpointRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5910,8 +5651,6 @@ class GetInstanceVpcEndpointRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6074,12 +5813,10 @@ class GetNamespaceRequest(TeaModel):
         instance_id: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6096,8 +5833,6 @@ class GetNamespaceRequest(TeaModel):
             result['NamespaceId'] = self.namespace_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6108,8 +5843,6 @@ class GetNamespaceRequest(TeaModel):
             self.namespace_id = m.get('NamespaceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6230,11 +5963,9 @@ class GetRepoBuildRecordRequest(TeaModel):
         self,
         build_record_id: str = None,
         instance_id: str = None,
-        region_id: str = None,
     ):
         self.build_record_id = build_record_id
         self.instance_id = instance_id
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6249,8 +5980,6 @@ class GetRepoBuildRecordRequest(TeaModel):
             result['BuildRecordId'] = self.build_record_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6259,8 +5988,6 @@ class GetRepoBuildRecordRequest(TeaModel):
             self.build_record_id = m.get('BuildRecordId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -6416,12 +6143,10 @@ class GetRepoBuildRecordStatusRequest(TeaModel):
         self,
         build_record_id: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.build_record_id = build_record_id
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -6437,8 +6162,6 @@ class GetRepoBuildRecordStatusRequest(TeaModel):
             result['BuildRecordId'] = self.build_record_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -6449,8 +6172,6 @@ class GetRepoBuildRecordStatusRequest(TeaModel):
             self.build_record_id = m.get('BuildRecordId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -6542,11 +6263,9 @@ class GetRepoSourceCodeRepoRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -6560,8 +6279,6 @@ class GetRepoSourceCodeRepoRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -6570,8 +6287,6 @@ class GetRepoSourceCodeRepoRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -6705,11 +6420,9 @@ class GetRepoSyncTaskRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         sync_task_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.sync_task_id = sync_task_id
 
     def validate(self):
@@ -6723,8 +6436,6 @@ class GetRepoSyncTaskRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.sync_task_id is not None:
             result['SyncTaskId'] = self.sync_task_id
         return result
@@ -6733,8 +6444,6 @@ class GetRepoSyncTaskRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('SyncTaskId') is not None:
             self.sync_task_id = m.get('SyncTaskId')
         return self
@@ -6903,6 +6612,7 @@ class GetRepoSyncTaskResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
+        cross_user: bool = None,
         image_from: GetRepoSyncTaskResponseBodyImageFrom = None,
         image_to: GetRepoSyncTaskResponseBodyImageTo = None,
         is_success: bool = None,
@@ -6912,11 +6622,13 @@ class GetRepoSyncTaskResponseBody(TeaModel):
         sync_batch_task_id: str = None,
         sync_rule_id: str = None,
         sync_task_id: str = None,
+        sync_trans_accelerate: bool = None,
         synced_size: int = None,
         task_status: str = None,
         task_trigger: str = None,
     ):
         self.code = code
+        self.cross_user = cross_user
         self.image_from = image_from
         self.image_to = image_to
         self.is_success = is_success
@@ -6926,6 +6638,7 @@ class GetRepoSyncTaskResponseBody(TeaModel):
         self.sync_batch_task_id = sync_batch_task_id
         self.sync_rule_id = sync_rule_id
         self.sync_task_id = sync_task_id
+        self.sync_trans_accelerate = sync_trans_accelerate
         self.synced_size = synced_size
         self.task_status = task_status
         self.task_trigger = task_trigger
@@ -6948,6 +6661,8 @@ class GetRepoSyncTaskResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.cross_user is not None:
+            result['CrossUser'] = self.cross_user
         if self.image_from is not None:
             result['ImageFrom'] = self.image_from.to_map()
         if self.image_to is not None:
@@ -6968,6 +6683,8 @@ class GetRepoSyncTaskResponseBody(TeaModel):
             result['SyncRuleId'] = self.sync_rule_id
         if self.sync_task_id is not None:
             result['SyncTaskId'] = self.sync_task_id
+        if self.sync_trans_accelerate is not None:
+            result['SyncTransAccelerate'] = self.sync_trans_accelerate
         if self.synced_size is not None:
             result['SyncedSize'] = self.synced_size
         if self.task_status is not None:
@@ -6980,6 +6697,8 @@ class GetRepoSyncTaskResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('CrossUser') is not None:
+            self.cross_user = m.get('CrossUser')
         if m.get('ImageFrom') is not None:
             temp_model = GetRepoSyncTaskResponseBodyImageFrom()
             self.image_from = temp_model.from_map(m['ImageFrom'])
@@ -7003,6 +6722,8 @@ class GetRepoSyncTaskResponseBody(TeaModel):
             self.sync_rule_id = m.get('SyncRuleId')
         if m.get('SyncTaskId') is not None:
             self.sync_task_id = m.get('SyncTaskId')
+        if m.get('SyncTransAccelerate') is not None:
+            self.sync_trans_accelerate = m.get('SyncTransAccelerate')
         if m.get('SyncedSize') is not None:
             self.synced_size = m.get('SyncedSize')
         if m.get('TaskStatus') is not None:
@@ -7053,12 +6774,10 @@ class GetRepoTagRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         tag: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.tag = tag
 
@@ -7073,8 +6792,6 @@ class GetRepoTagRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.tag is not None:
@@ -7085,8 +6802,6 @@ class GetRepoTagRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('Tag') is not None:
@@ -7217,13 +6932,11 @@ class GetRepoTagLayersRequest(TeaModel):
         self,
         digest: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         tag: str = None,
     ):
         self.digest = digest
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.tag = tag
 
@@ -7240,8 +6953,6 @@ class GetRepoTagLayersRequest(TeaModel):
             result['Digest'] = self.digest
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.tag is not None:
@@ -7254,8 +6965,6 @@ class GetRepoTagLayersRequest(TeaModel):
             self.digest = m.get('Digest')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('Tag') is not None:
@@ -7408,13 +7117,11 @@ class GetRepoTagManifestRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         schema_version: int = None,
         tag: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.schema_version = schema_version
         self.tag = tag
@@ -7430,8 +7137,6 @@ class GetRepoTagManifestRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.schema_version is not None:
@@ -7444,8 +7149,6 @@ class GetRepoTagManifestRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('SchemaVersion') is not None:
@@ -7834,14 +7537,12 @@ class GetRepoTagScanStatusRequest(TeaModel):
         self,
         digest: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         scan_task_id: str = None,
         tag: str = None,
     ):
         self.digest = digest
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.scan_task_id = scan_task_id
         self.tag = tag
@@ -7859,8 +7560,6 @@ class GetRepoTagScanStatusRequest(TeaModel):
             result['Digest'] = self.digest
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.scan_task_id is not None:
@@ -7875,8 +7574,6 @@ class GetRepoTagScanStatusRequest(TeaModel):
             self.digest = m.get('Digest')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('ScanTaskId') is not None:
@@ -7979,14 +7676,12 @@ class GetRepoTagScanSummaryRequest(TeaModel):
         self,
         digest: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         scan_task_id: str = None,
         tag: str = None,
     ):
         self.digest = digest
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.scan_task_id = scan_task_id
         self.tag = tag
@@ -8004,8 +7699,6 @@ class GetRepoTagScanSummaryRequest(TeaModel):
             result['Digest'] = self.digest
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.scan_task_id is not None:
@@ -8020,8 +7713,6 @@ class GetRepoTagScanSummaryRequest(TeaModel):
             self.digest = m.get('Digest')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('ScanTaskId') is not None:
@@ -8141,13 +7832,11 @@ class GetRepositoryRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
@@ -8163,8 +7852,6 @@ class GetRepositoryRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.repo_name is not None:
@@ -8177,8 +7864,6 @@ class GetRepositoryRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('RepoName') is not None:
@@ -8343,13 +8028,11 @@ class ListArtifactBuildTaskLogRequest(TeaModel):
         instance_id: str = None,
         page: int = None,
         page_size: int = None,
-        region_id: str = None,
     ):
         self.build_task_id = build_task_id
         self.instance_id = instance_id
         self.page = page
         self.page_size = page_size
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -8368,8 +8051,6 @@ class ListArtifactBuildTaskLogRequest(TeaModel):
             result['Page'] = self.page
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8382,8 +8063,6 @@ class ListArtifactBuildTaskLogRequest(TeaModel):
             self.page = m.get('Page')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -8522,14 +8201,12 @@ class ListChainRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
 
@@ -8548,8 +8225,6 @@ class ListChainRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -8564,8 +8239,6 @@ class ListChainRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -8756,14 +8429,12 @@ class ListChainInstanceRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
 
@@ -8782,8 +8453,6 @@ class ListChainInstanceRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -8798,8 +8467,6 @@ class ListChainInstanceRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -9039,14 +8706,12 @@ class ListChartNamespaceRequest(TeaModel):
         namespace_status: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
         self.namespace_name = namespace_name
         self.namespace_status = namespace_status
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -9067,8 +8732,6 @@ class ListChartNamespaceRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9083,8 +8746,6 @@ class ListChartNamespaceRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -9260,7 +8921,6 @@ class ListChartReleaseRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
@@ -9268,7 +8928,6 @@ class ListChartReleaseRequest(TeaModel):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
 
@@ -9289,8 +8948,6 @@ class ListChartReleaseRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -9307,8 +8964,6 @@ class ListChartReleaseRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -9493,7 +9148,6 @@ class ListChartRepositoryRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
         repo_status: str = None,
@@ -9501,7 +9155,6 @@ class ListChartRepositoryRequest(TeaModel):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
         self.repo_status = repo_status
@@ -9521,8 +9174,6 @@ class ListChartRepositoryRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -9539,8 +9190,6 @@ class ListChartRepositoryRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -9740,14 +9389,12 @@ class ListEventCenterRecordRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         rule_id: str = None,
     ):
         self.event_type = event_type
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.rule_id = rule_id
 
     def validate(self):
@@ -9767,8 +9414,6 @@ class ListEventCenterRecordRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         return result
@@ -9783,8 +9428,6 @@ class ListEventCenterRecordRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         return self
@@ -10156,13 +9799,11 @@ class ListInstanceRequest(TeaModel):
         instance_status: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
     ):
         self.instance_name = instance_name
         self.instance_status = instance_status
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -10181,8 +9822,6 @@ class ListInstanceRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10195,8 +9834,6 @@ class ListInstanceRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -10376,11 +10013,9 @@ class ListInstanceEndpointRequest(TeaModel):
         self,
         instance_id: str = None,
         module_name: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
         self.module_name = module_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -10395,8 +10030,6 @@ class ListInstanceEndpointRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10405,8 +10038,6 @@ class ListInstanceEndpointRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -10680,10 +10311,8 @@ class ListInstanceRegionRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        region_id: str = None,
     ):
         self.lang = lang
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -10696,16 +10325,12 @@ class ListInstanceRegionRequest(TeaModel):
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -10840,14 +10465,12 @@ class ListNamespaceRequest(TeaModel):
         namespace_status: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
         self.namespace_name = namespace_name
         self.namespace_status = namespace_status
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -10868,8 +10491,6 @@ class ListNamespaceRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10884,8 +10505,6 @@ class ListNamespaceRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -11060,13 +10679,11 @@ class ListRepoBuildRecordRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -11084,8 +10701,6 @@ class ListRepoBuildRecordRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -11098,8 +10713,6 @@ class ListRepoBuildRecordRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -11317,13 +10930,11 @@ class ListRepoBuildRecordLogRequest(TeaModel):
         build_record_id: str = None,
         instance_id: str = None,
         offset: int = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.build_record_id = build_record_id
         self.instance_id = instance_id
         self.offset = offset
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -11341,8 +10952,6 @@ class ListRepoBuildRecordLogRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.offset is not None:
             result['Offset'] = self.offset
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -11355,8 +10964,6 @@ class ListRepoBuildRecordLogRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -11515,13 +11122,11 @@ class ListRepoBuildRuleRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -11539,8 +11144,6 @@ class ListRepoBuildRuleRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -11553,8 +11156,6 @@ class ListRepoBuildRuleRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -11744,7 +11345,6 @@ class ListRepoSyncRuleRequest(TeaModel):
         namespace_name: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_name: str = None,
         target_instance_id: str = None,
         target_region_id: str = None,
@@ -11753,7 +11353,6 @@ class ListRepoSyncRuleRequest(TeaModel):
         self.namespace_name = namespace_name
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_name = repo_name
         self.target_instance_id = target_instance_id
         self.target_region_id = target_region_id
@@ -11775,8 +11374,6 @@ class ListRepoSyncRuleRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.target_instance_id is not None:
@@ -11795,8 +11392,6 @@ class ListRepoSyncRuleRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('TargetInstanceId') is not None:
@@ -12043,7 +11638,6 @@ class ListRepoSyncTaskRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
         sync_record_id: str = None,
@@ -12052,7 +11646,6 @@ class ListRepoSyncTaskRequest(TeaModel):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
         self.sync_record_id = sync_record_id
@@ -12073,8 +11666,6 @@ class ListRepoSyncTaskRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -12093,8 +11684,6 @@ class ListRepoSyncTaskRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -12219,6 +11808,7 @@ class ListRepoSyncTaskResponseBodySyncTasks(TeaModel):
         sync_batch_task_id: str = None,
         sync_rule_id: str = None,
         sync_task_id: str = None,
+        sync_trans_accelerate: bool = None,
         task_status: str = None,
         task_trigger: str = None,
     ):
@@ -12230,6 +11820,7 @@ class ListRepoSyncTaskResponseBodySyncTasks(TeaModel):
         self.sync_batch_task_id = sync_batch_task_id
         self.sync_rule_id = sync_rule_id
         self.sync_task_id = sync_task_id
+        self.sync_trans_accelerate = sync_trans_accelerate
         self.task_status = task_status
         self.task_trigger = task_trigger
 
@@ -12261,6 +11852,8 @@ class ListRepoSyncTaskResponseBodySyncTasks(TeaModel):
             result['SyncRuleId'] = self.sync_rule_id
         if self.sync_task_id is not None:
             result['SyncTaskId'] = self.sync_task_id
+        if self.sync_trans_accelerate is not None:
+            result['SyncTransAccelerate'] = self.sync_trans_accelerate
         if self.task_status is not None:
             result['TaskStatus'] = self.task_status
         if self.task_trigger is not None:
@@ -12287,6 +11880,8 @@ class ListRepoSyncTaskResponseBodySyncTasks(TeaModel):
             self.sync_rule_id = m.get('SyncRuleId')
         if m.get('SyncTaskId') is not None:
             self.sync_task_id = m.get('SyncTaskId')
+        if m.get('SyncTransAccelerate') is not None:
+            self.sync_trans_accelerate = m.get('SyncTransAccelerate')
         if m.get('TaskStatus') is not None:
             self.task_status = m.get('TaskStatus')
         if m.get('TaskTrigger') is not None:
@@ -12408,13 +12003,11 @@ class ListRepoTagRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -12432,8 +12025,6 @@ class ListRepoTagRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -12446,8 +12037,6 @@ class ListRepoTagRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -12631,7 +12220,6 @@ class ListRepoTagScanResultRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_id: str = None,
         scan_task_id: str = None,
         severity: str = None,
@@ -12641,7 +12229,6 @@ class ListRepoTagScanResultRequest(TeaModel):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_id = repo_id
         self.scan_task_id = scan_task_id
         self.severity = severity
@@ -12664,8 +12251,6 @@ class ListRepoTagScanResultRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.scan_task_id is not None:
@@ -12686,8 +12271,6 @@ class ListRepoTagScanResultRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('ScanTaskId') is not None:
@@ -12892,11 +12475,9 @@ class ListRepoTriggerRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -12910,8 +12491,6 @@ class ListRepoTriggerRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -12920,8 +12499,6 @@ class ListRepoTriggerRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -13080,7 +12657,6 @@ class ListRepositoryRequest(TeaModel):
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
         repo_status: str = None,
@@ -13088,7 +12664,6 @@ class ListRepositoryRequest(TeaModel):
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
         self.repo_status = repo_status
@@ -13108,8 +12683,6 @@ class ListRepositoryRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -13126,8 +12699,6 @@ class ListRepositoryRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -13337,11 +12908,9 @@ class ResetLoginPasswordRequest(TeaModel):
         self,
         instance_id: str = None,
         password: str = None,
-        region_id: str = None,
     ):
         self.instance_id = instance_id
         self.password = password
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -13356,8 +12925,6 @@ class ResetLoginPasswordRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.password is not None:
             result['Password'] = self.password
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13366,8 +12933,6 @@ class ResetLoginPasswordRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Password') is not None:
             self.password = m.get('Password')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -13455,14 +13020,12 @@ class UpdateChainRequest(TeaModel):
         description: str = None,
         instance_id: str = None,
         name: str = None,
-        region_id: str = None,
     ):
         self.chain_config = chain_config
         self.chain_id = chain_id
         self.description = description
         self.instance_id = instance_id
         self.name = name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -13483,8 +13046,6 @@ class UpdateChainRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.name is not None:
             result['Name'] = self.name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13499,8 +13060,6 @@ class UpdateChainRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -13587,13 +13146,11 @@ class UpdateChartNamespaceRequest(TeaModel):
         default_repo_type: str = None,
         instance_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.default_repo_type = default_repo_type
         self.instance_id = instance_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -13612,8 +13169,6 @@ class UpdateChartNamespaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13626,8 +13181,6 @@ class UpdateChartNamespaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -13711,14 +13264,12 @@ class UpdateChartRepositoryRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_name: str = None,
         repo_namespace_name: str = None,
         repo_type: str = None,
         summary: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
         self.repo_type = repo_type
@@ -13735,8 +13286,6 @@ class UpdateChartRepositoryRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.repo_namespace_name is not None:
@@ -13751,8 +13300,6 @@ class UpdateChartRepositoryRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RepoNamespaceName') is not None:
@@ -13849,7 +13396,6 @@ class UpdateEventCenterRuleRequest(TeaModel):
         event_type: str = None,
         instance_id: str = None,
         namespaces: List[str] = None,
-        region_id: str = None,
         repo_names: List[str] = None,
         repo_tag_filter_pattern: str = None,
         rule_id: str = None,
@@ -13861,7 +13407,6 @@ class UpdateEventCenterRuleRequest(TeaModel):
         self.event_type = event_type
         self.instance_id = instance_id
         self.namespaces = namespaces
-        self.region_id = region_id
         self.repo_names = repo_names
         self.repo_tag_filter_pattern = repo_tag_filter_pattern
         self.rule_id = rule_id
@@ -13888,8 +13433,6 @@ class UpdateEventCenterRuleRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespaces is not None:
             result['Namespaces'] = self.namespaces
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_names is not None:
             result['RepoNames'] = self.repo_names
         if self.repo_tag_filter_pattern is not None:
@@ -13914,8 +13457,6 @@ class UpdateEventCenterRuleRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Namespaces') is not None:
             self.namespaces = m.get('Namespaces')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoNames') is not None:
             self.repo_names = m.get('RepoNames')
         if m.get('RepoTagFilterPattern') is not None:
@@ -13936,7 +13477,6 @@ class UpdateEventCenterRuleShrinkRequest(TeaModel):
         event_type: str = None,
         instance_id: str = None,
         namespaces_shrink: str = None,
-        region_id: str = None,
         repo_names_shrink: str = None,
         repo_tag_filter_pattern: str = None,
         rule_id: str = None,
@@ -13948,7 +13488,6 @@ class UpdateEventCenterRuleShrinkRequest(TeaModel):
         self.event_type = event_type
         self.instance_id = instance_id
         self.namespaces_shrink = namespaces_shrink
-        self.region_id = region_id
         self.repo_names_shrink = repo_names_shrink
         self.repo_tag_filter_pattern = repo_tag_filter_pattern
         self.rule_id = rule_id
@@ -13975,8 +13514,6 @@ class UpdateEventCenterRuleShrinkRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespaces_shrink is not None:
             result['Namespaces'] = self.namespaces_shrink
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_names_shrink is not None:
             result['RepoNames'] = self.repo_names_shrink
         if self.repo_tag_filter_pattern is not None:
@@ -14001,8 +13538,6 @@ class UpdateEventCenterRuleShrinkRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Namespaces') is not None:
             self.namespaces_shrink = m.get('Namespaces')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoNames') is not None:
             self.repo_names_shrink = m.get('RepoNames')
         if m.get('RepoTagFilterPattern') is not None:
@@ -14098,13 +13633,11 @@ class UpdateInstanceEndpointStatusRequest(TeaModel):
         endpoint_type: str = None,
         instance_id: str = None,
         module_name: str = None,
-        region_id: str = None,
     ):
         self.enable = enable
         self.endpoint_type = endpoint_type
         self.instance_id = instance_id
         self.module_name = module_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -14123,8 +13656,6 @@ class UpdateInstanceEndpointStatusRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14137,8 +13668,6 @@ class UpdateInstanceEndpointStatusRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -14225,13 +13754,11 @@ class UpdateNamespaceRequest(TeaModel):
         default_repo_type: str = None,
         instance_id: str = None,
         namespace_name: str = None,
-        region_id: str = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.default_repo_type = default_repo_type
         self.instance_id = instance_id
         self.namespace_name = namespace_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -14250,8 +13777,6 @@ class UpdateNamespaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14264,8 +13789,6 @@ class UpdateNamespaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -14356,7 +13879,6 @@ class UpdateRepoBuildRuleRequest(TeaModel):
         platforms: List[str] = None,
         push_name: str = None,
         push_type: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.build_rule_id = build_rule_id
@@ -14367,7 +13889,6 @@ class UpdateRepoBuildRuleRequest(TeaModel):
         self.platforms = platforms
         self.push_name = push_name
         self.push_type = push_type
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -14395,8 +13916,6 @@ class UpdateRepoBuildRuleRequest(TeaModel):
             result['PushName'] = self.push_name
         if self.push_type is not None:
             result['PushType'] = self.push_type
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -14419,8 +13938,6 @@ class UpdateRepoBuildRuleRequest(TeaModel):
             self.push_name = m.get('PushName')
         if m.get('PushType') is not None:
             self.push_type = m.get('PushType')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -14519,7 +14036,6 @@ class UpdateRepoSourceCodeRepoRequest(TeaModel):
         disable_cache_build: str = None,
         instance_id: str = None,
         oversea_build: str = None,
-        region_id: str = None,
         repo_id: str = None,
     ):
         self.auto_build = auto_build
@@ -14530,7 +14046,6 @@ class UpdateRepoSourceCodeRepoRequest(TeaModel):
         self.disable_cache_build = disable_cache_build
         self.instance_id = instance_id
         self.oversea_build = oversea_build
-        self.region_id = region_id
         self.repo_id = repo_id
 
     def validate(self):
@@ -14558,8 +14073,6 @@ class UpdateRepoSourceCodeRepoRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.oversea_build is not None:
             result['OverseaBuild'] = self.oversea_build
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         return result
@@ -14582,8 +14095,6 @@ class UpdateRepoSourceCodeRepoRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('OverseaBuild') is not None:
             self.oversea_build = m.get('OverseaBuild')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         return self
@@ -14669,7 +14180,6 @@ class UpdateRepoTriggerRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         trigger_id: str = None,
         trigger_name: str = None,
@@ -14678,7 +14188,6 @@ class UpdateRepoTriggerRequest(TeaModel):
         trigger_url: str = None,
     ):
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.trigger_id = trigger_id
         self.trigger_name = trigger_name
@@ -14697,8 +14206,6 @@ class UpdateRepoTriggerRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.trigger_id is not None:
@@ -14717,8 +14224,6 @@ class UpdateRepoTriggerRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('TriggerId') is not None:
@@ -14815,7 +14320,6 @@ class UpdateRepositoryRequest(TeaModel):
         self,
         detail: str = None,
         instance_id: str = None,
-        region_id: str = None,
         repo_id: str = None,
         repo_type: str = None,
         summary: str = None,
@@ -14823,7 +14327,6 @@ class UpdateRepositoryRequest(TeaModel):
     ):
         self.detail = detail
         self.instance_id = instance_id
-        self.region_id = region_id
         self.repo_id = repo_id
         self.repo_type = repo_type
         self.summary = summary
@@ -14842,8 +14345,6 @@ class UpdateRepositoryRequest(TeaModel):
             result['Detail'] = self.detail
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
         if self.repo_type is not None:
@@ -14860,8 +14361,6 @@ class UpdateRepositoryRequest(TeaModel):
             self.detail = m.get('Detail')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
         if m.get('RepoType') is not None:

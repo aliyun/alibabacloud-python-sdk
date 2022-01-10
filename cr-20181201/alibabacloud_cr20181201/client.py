@@ -48,8 +48,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CancelArtifactBuildTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildTaskId'] = request.build_task_id
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.build_task_id):
+            query['BuildTaskId'] = request.build_task_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -76,8 +78,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CancelArtifactBuildTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildTaskId'] = request.build_task_id
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.build_task_id):
+            query['BuildTaskId'] = request.build_task_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -118,9 +122,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CancelRepoBuildRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRecordId'] = request.build_record_id
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -147,9 +154,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CancelRepoBuildRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRecordId'] = request.build_record_id
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -190,9 +200,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateBuildRecordByRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRuleId'] = request.build_rule_id
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_rule_id):
+            query['BuildRuleId'] = request.build_rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -219,9 +232,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateBuildRecordByRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRuleId'] = request.build_rule_id
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_rule_id):
+            query['BuildRuleId'] = request.build_rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -262,12 +278,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChainConfig'] = request.chain_config
-        query['Description'] = request.description
-        query['InstanceId'] = request.instance_id
-        query['Name'] = request.name
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.chain_config):
+            query['ChainConfig'] = request.chain_config
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -294,12 +316,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChainConfig'] = request.chain_config
-        query['Description'] = request.description
-        query['InstanceId'] = request.instance_id
-        query['Name'] = request.name
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.chain_config):
+            query['ChainConfig'] = request.chain_config
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -340,10 +368,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoCreateRepo'] = request.auto_create_repo
-        query['DefaultRepoType'] = request.default_repo_type
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.auto_create_repo):
+            query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_type):
+            query['DefaultRepoType'] = request.default_repo_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -370,10 +402,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoCreateRepo'] = request.auto_create_repo
-        query['DefaultRepoType'] = request.default_repo_type
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.auto_create_repo):
+            query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_type):
+            query['DefaultRepoType'] = request.default_repo_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -414,11 +450,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoType'] = request.repo_type
-        query['Summary'] = request.summary
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_type):
+            query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.summary):
+            query['Summary'] = request.summary
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -445,11 +486,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoType'] = request.repo_type
-        query['Summary'] = request.summary
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_type):
+            query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.summary):
+            query['Summary'] = request.summary
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -490,11 +536,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateInstanceEndpointAclPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Comment'] = request.comment
-        query['EndpointType'] = request.endpoint_type
-        query['Entry'] = request.entry
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.entry):
+            query['Entry'] = request.entry
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -521,11 +572,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateInstanceEndpointAclPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Comment'] = request.comment
-        query['EndpointType'] = request.endpoint_type
-        query['Entry'] = request.entry
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.entry):
+            query['Entry'] = request.entry
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -566,10 +622,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
-        query['VpcId'] = request.vpc_id
-        query['VswitchId'] = request.vswitch_id
+        if not UtilClient.is_unset(request.enable_create_dnsrecord_in_pvzt):
+            query['EnableCreateDNSRecordInPvzt'] = request.enable_create_dnsrecord_in_pvzt
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -596,10 +658,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateInstanceVpcEndpointLinkedVpcResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
-        query['VpcId'] = request.vpc_id
-        query['VswitchId'] = request.vswitch_id
+        if not UtilClient.is_unset(request.enable_create_dnsrecord_in_pvzt):
+            query['EnableCreateDNSRecordInPvzt'] = request.enable_create_dnsrecord_in_pvzt
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -640,10 +708,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoCreateRepo'] = request.auto_create_repo
-        query['DefaultRepoType'] = request.default_repo_type
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.auto_create_repo):
+            query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_type):
+            query['DefaultRepoType'] = request.default_repo_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -670,10 +742,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoCreateRepo'] = request.auto_create_repo
-        query['DefaultRepoType'] = request.default_repo_type
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.auto_create_repo):
+            query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_type):
+            query['DefaultRepoType'] = request.default_repo_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -714,13 +790,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DockerfileLocation'] = request.dockerfile_location
-        query['DockerfileName'] = request.dockerfile_name
-        query['ImageTag'] = request.image_tag
-        query['InstanceId'] = request.instance_id
-        query['PushName'] = request.push_name
-        query['PushType'] = request.push_type
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.dockerfile_location):
+            query['DockerfileLocation'] = request.dockerfile_location
+        if not UtilClient.is_unset(request.dockerfile_name):
+            query['DockerfileName'] = request.dockerfile_name
+        if not UtilClient.is_unset(request.image_tag):
+            query['ImageTag'] = request.image_tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.push_name):
+            query['PushName'] = request.push_name
+        if not UtilClient.is_unset(request.push_type):
+            query['PushType'] = request.push_type
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -747,13 +830,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DockerfileLocation'] = request.dockerfile_location
-        query['DockerfileName'] = request.dockerfile_name
-        query['ImageTag'] = request.image_tag
-        query['InstanceId'] = request.instance_id
-        query['PushName'] = request.push_name
-        query['PushType'] = request.push_type
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.dockerfile_location):
+            query['DockerfileLocation'] = request.dockerfile_location
+        if not UtilClient.is_unset(request.dockerfile_name):
+            query['DockerfileName'] = request.dockerfile_name
+        if not UtilClient.is_unset(request.image_tag):
+            query['ImageTag'] = request.image_tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.push_name):
+            query['PushName'] = request.push_name
+        if not UtilClient.is_unset(request.push_type):
+            query['PushType'] = request.push_type
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -794,14 +884,22 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoBuild'] = request.auto_build
-        query['CodeRepoName'] = request.code_repo_name
-        query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
-        query['CodeRepoType'] = request.code_repo_type
-        query['DisableCacheBuild'] = request.disable_cache_build
-        query['InstanceId'] = request.instance_id
-        query['OverseaBuild'] = request.oversea_build
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.auto_build):
+            query['AutoBuild'] = request.auto_build
+        if not UtilClient.is_unset(request.code_repo_name):
+            query['CodeRepoName'] = request.code_repo_name
+        if not UtilClient.is_unset(request.code_repo_namespace_name):
+            query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
+        if not UtilClient.is_unset(request.code_repo_type):
+            query['CodeRepoType'] = request.code_repo_type
+        if not UtilClient.is_unset(request.disable_cache_build):
+            query['DisableCacheBuild'] = request.disable_cache_build
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.oversea_build):
+            query['OverseaBuild'] = request.oversea_build
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -828,14 +926,22 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoBuild'] = request.auto_build
-        query['CodeRepoName'] = request.code_repo_name
-        query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
-        query['CodeRepoType'] = request.code_repo_type
-        query['DisableCacheBuild'] = request.disable_cache_build
-        query['InstanceId'] = request.instance_id
-        query['OverseaBuild'] = request.oversea_build
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.auto_build):
+            query['AutoBuild'] = request.auto_build
+        if not UtilClient.is_unset(request.code_repo_name):
+            query['CodeRepoName'] = request.code_repo_name
+        if not UtilClient.is_unset(request.code_repo_namespace_name):
+            query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
+        if not UtilClient.is_unset(request.code_repo_type):
+            query['CodeRepoType'] = request.code_repo_type
+        if not UtilClient.is_unset(request.disable_cache_build):
+            query['DisableCacheBuild'] = request.disable_cache_build
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.oversea_build):
+            query['OverseaBuild'] = request.oversea_build
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -876,18 +982,30 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoSyncRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['RepoName'] = request.repo_name
-        query['SyncRuleName'] = request.sync_rule_name
-        query['SyncScope'] = request.sync_scope
-        query['SyncTrigger'] = request.sync_trigger
-        query['TagFilter'] = request.tag_filter
-        query['TargetInstanceId'] = request.target_instance_id
-        query['TargetNamespaceName'] = request.target_namespace_name
-        query['TargetRegionId'] = request.target_region_id
-        query['TargetRepoName'] = request.target_repo_name
-        query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.sync_rule_name):
+            query['SyncRuleName'] = request.sync_rule_name
+        if not UtilClient.is_unset(request.sync_scope):
+            query['SyncScope'] = request.sync_scope
+        if not UtilClient.is_unset(request.sync_trigger):
+            query['SyncTrigger'] = request.sync_trigger
+        if not UtilClient.is_unset(request.tag_filter):
+            query['TagFilter'] = request.tag_filter
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_namespace_name):
+            query['TargetNamespaceName'] = request.target_namespace_name
+        if not UtilClient.is_unset(request.target_region_id):
+            query['TargetRegionId'] = request.target_region_id
+        if not UtilClient.is_unset(request.target_repo_name):
+            query['TargetRepoName'] = request.target_repo_name
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -914,18 +1032,30 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoSyncRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['RepoName'] = request.repo_name
-        query['SyncRuleName'] = request.sync_rule_name
-        query['SyncScope'] = request.sync_scope
-        query['SyncTrigger'] = request.sync_trigger
-        query['TagFilter'] = request.tag_filter
-        query['TargetInstanceId'] = request.target_instance_id
-        query['TargetNamespaceName'] = request.target_namespace_name
-        query['TargetRegionId'] = request.target_region_id
-        query['TargetRepoName'] = request.target_repo_name
-        query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.sync_rule_name):
+            query['SyncRuleName'] = request.sync_rule_name
+        if not UtilClient.is_unset(request.sync_scope):
+            query['SyncScope'] = request.sync_scope
+        if not UtilClient.is_unset(request.sync_trigger):
+            query['SyncTrigger'] = request.sync_trigger
+        if not UtilClient.is_unset(request.tag_filter):
+            query['TagFilter'] = request.tag_filter
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_namespace_name):
+            query['TargetNamespaceName'] = request.target_namespace_name
+        if not UtilClient.is_unset(request.target_region_id):
+            query['TargetRegionId'] = request.target_region_id
+        if not UtilClient.is_unset(request.target_repo_name):
+            query['TargetRepoName'] = request.target_repo_name
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -966,16 +1096,26 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoSyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Override'] = request.override
-        query['RepoId'] = request.repo_id
-        query['Tag'] = request.tag
-        query['TargetInstanceId'] = request.target_instance_id
-        query['TargetNamespace'] = request.target_namespace
-        query['TargetRegionId'] = request.target_region_id
-        query['TargetRepoName'] = request.target_repo_name
-        query['TargetTag'] = request.target_tag
-        query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.override):
+            query['Override'] = request.override
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_namespace):
+            query['TargetNamespace'] = request.target_namespace
+        if not UtilClient.is_unset(request.target_region_id):
+            query['TargetRegionId'] = request.target_region_id
+        if not UtilClient.is_unset(request.target_repo_name):
+            query['TargetRepoName'] = request.target_repo_name
+        if not UtilClient.is_unset(request.target_tag):
+            query['TargetTag'] = request.target_tag
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1002,16 +1142,26 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoSyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Override'] = request.override
-        query['RepoId'] = request.repo_id
-        query['Tag'] = request.tag
-        query['TargetInstanceId'] = request.target_instance_id
-        query['TargetNamespace'] = request.target_namespace
-        query['TargetRegionId'] = request.target_region_id
-        query['TargetRepoName'] = request.target_repo_name
-        query['TargetTag'] = request.target_tag
-        query['TargetUserId'] = request.target_user_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.override):
+            query['Override'] = request.override
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_namespace):
+            query['TargetNamespace'] = request.target_namespace
+        if not UtilClient.is_unset(request.target_region_id):
+            query['TargetRegionId'] = request.target_region_id
+        if not UtilClient.is_unset(request.target_repo_name):
+            query['TargetRepoName'] = request.target_repo_name
+        if not UtilClient.is_unset(request.target_tag):
+            query['TargetTag'] = request.target_tag
+        if not UtilClient.is_unset(request.target_user_id):
+            query['TargetUserId'] = request.target_user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1052,10 +1202,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoSyncTaskByRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['SyncRuleId'] = request.sync_rule_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.sync_rule_id):
+            query['SyncRuleId'] = request.sync_rule_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1082,10 +1236,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoSyncTaskByRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['SyncRuleId'] = request.sync_rule_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.sync_rule_id):
+            query['SyncRuleId'] = request.sync_rule_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1126,11 +1284,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FromTag'] = request.from_tag
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['RepoName'] = request.repo_name
-        query['ToTag'] = request.to_tag
+        if not UtilClient.is_unset(request.from_tag):
+            query['FromTag'] = request.from_tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.to_tag):
+            query['ToTag'] = request.to_tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1157,11 +1320,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FromTag'] = request.from_tag
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['RepoName'] = request.repo_name
-        query['ToTag'] = request.to_tag
+        if not UtilClient.is_unset(request.from_tag):
+            query['FromTag'] = request.from_tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.to_tag):
+            query['ToTag'] = request.to_tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1202,11 +1370,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoTagScanTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['ScanService'] = request.scan_service
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.scan_service):
+            query['ScanService'] = request.scan_service
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1233,11 +1406,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoTagScanTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['ScanService'] = request.scan_service
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.scan_service):
+            query['ScanService'] = request.scan_service
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1278,12 +1456,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['TriggerName'] = request.trigger_name
-        query['TriggerTag'] = request.trigger_tag
-        query['TriggerType'] = request.trigger_type
-        query['TriggerUrl'] = request.trigger_url
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.trigger_name):
+            query['TriggerName'] = request.trigger_name
+        if not UtilClient.is_unset(request.trigger_tag):
+            query['TriggerTag'] = request.trigger_tag
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        if not UtilClient.is_unset(request.trigger_url):
+            query['TriggerUrl'] = request.trigger_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1310,12 +1494,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['TriggerName'] = request.trigger_name
-        query['TriggerTag'] = request.trigger_tag
-        query['TriggerType'] = request.trigger_type
-        query['TriggerUrl'] = request.trigger_url
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.trigger_name):
+            query['TriggerName'] = request.trigger_name
+        if not UtilClient.is_unset(request.trigger_tag):
+            query['TriggerTag'] = request.trigger_tag
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        if not UtilClient.is_unset(request.trigger_url):
+            query['TriggerUrl'] = request.trigger_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1356,13 +1546,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoType'] = request.repo_type
-        query['Summary'] = request.summary
-        query['TagImmutability'] = request.tag_immutability
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_type):
+            query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.summary):
+            query['Summary'] = request.summary
+        if not UtilClient.is_unset(request.tag_immutability):
+            query['TagImmutability'] = request.tag_immutability
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1389,13 +1586,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoType'] = request.repo_type
-        query['Summary'] = request.summary
-        query['TagImmutability'] = request.tag_immutability
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_type):
+            query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.summary):
+            query['Summary'] = request.summary
+        if not UtilClient.is_unset(request.tag_immutability):
+            query['TagImmutability'] = request.tag_immutability
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1436,8 +1640,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChainId'] = request.chain_id
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.chain_id):
+            query['ChainId'] = request.chain_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1464,8 +1670,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChainId'] = request.chain_id
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.chain_id):
+            query['ChainId'] = request.chain_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1506,8 +1714,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1534,8 +1744,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1576,11 +1788,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteChartReleaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Chart'] = request.chart
-        query['InstanceId'] = request.instance_id
-        query['Release'] = request.release
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.chart):
+            query['Chart'] = request.chart
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1607,11 +1824,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteChartReleaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Chart'] = request.chart
-        query['InstanceId'] = request.instance_id
-        query['Release'] = request.release
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.chart):
+            query['Chart'] = request.chart
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1652,9 +1874,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1681,9 +1906,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1724,8 +1952,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteEventCenterRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1752,8 +1982,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteEventCenterRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1794,10 +2026,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointType'] = request.endpoint_type
-        query['Entry'] = request.entry
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.entry):
+            query['Entry'] = request.entry
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1824,10 +2060,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteInstanceEndpointAclPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointType'] = request.endpoint_type
-        query['Entry'] = request.entry
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.entry):
+            query['Entry'] = request.entry
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1868,10 +2108,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
-        query['VpcId'] = request.vpc_id
-        query['VswitchId'] = request.vswitch_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1898,10 +2142,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteInstanceVpcEndpointLinkedVpcResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
-        query['VpcId'] = request.vpc_id
-        query['VswitchId'] = request.vswitch_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1942,8 +2190,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1970,8 +2220,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2012,9 +2264,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRuleId'] = request.build_rule_id
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_rule_id):
+            query['BuildRuleId'] = request.build_rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2041,9 +2296,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRuleId'] = request.build_rule_id
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_rule_id):
+            query['BuildRuleId'] = request.build_rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2084,8 +2342,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepoSyncRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['SyncRuleId'] = request.sync_rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sync_rule_id):
+            query['SyncRuleId'] = request.sync_rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2112,8 +2372,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepoSyncRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['SyncRuleId'] = request.sync_rule_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sync_rule_id):
+            query['SyncRuleId'] = request.sync_rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2154,9 +2416,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepoTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2183,9 +2448,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepoTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2226,9 +2494,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepoTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['TriggerId'] = request.trigger_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.trigger_id):
+            query['TriggerId'] = request.trigger_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2255,9 +2526,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepoTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['TriggerId'] = request.trigger_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.trigger_id):
+            query['TriggerId'] = request.trigger_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2298,8 +2572,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2326,8 +2602,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.DeleteRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2434,7 +2712,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetAuthorizationTokenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2461,7 +2740,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetAuthorizationTokenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2502,8 +2782,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChainId'] = request.chain_id
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.chain_id):
+            query['ChainId'] = request.chain_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2530,8 +2812,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChainId'] = request.chain_id
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.chain_id):
+            query['ChainId'] = request.chain_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2572,8 +2856,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2600,8 +2886,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2642,9 +2930,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2671,9 +2962,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2714,7 +3008,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2741,7 +3036,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2777,10 +3073,8 @@ class Client(OpenApiClient):
 
     def get_instance_count_with_options(
         self,
-        request: cr_20181201_models.GetInstanceCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceCountResponse:
-        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetInstanceCount',
@@ -2800,10 +3094,8 @@ class Client(OpenApiClient):
 
     async def get_instance_count_with_options_async(
         self,
-        request: cr_20181201_models.GetInstanceCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.GetInstanceCountResponse:
-        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetInstanceCount',
@@ -2821,19 +3113,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_instance_count(
-        self,
-        request: cr_20181201_models.GetInstanceCountRequest,
-    ) -> cr_20181201_models.GetInstanceCountResponse:
+    def get_instance_count(self) -> cr_20181201_models.GetInstanceCountResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_instance_count_with_options(request, runtime)
+        return self.get_instance_count_with_options(runtime)
 
-    async def get_instance_count_async(
-        self,
-        request: cr_20181201_models.GetInstanceCountRequest,
-    ) -> cr_20181201_models.GetInstanceCountResponse:
+    async def get_instance_count_async(self) -> cr_20181201_models.GetInstanceCountResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_instance_count_with_options_async(request, runtime)
+        return await self.get_instance_count_with_options_async(runtime)
 
     def get_instance_endpoint_with_options(
         self,
@@ -2842,9 +3128,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetInstanceEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointType'] = request.endpoint_type
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2871,9 +3160,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetInstanceEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndpointType'] = request.endpoint_type
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2914,7 +3206,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetInstanceUsageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2941,7 +3234,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetInstanceUsageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2982,8 +3276,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetInstanceVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3010,8 +3306,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetInstanceVpcEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3052,9 +3350,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceId'] = request.namespace_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3081,9 +3382,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceId'] = request.namespace_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3124,8 +3428,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoBuildRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRecordId'] = request.build_record_id
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3152,8 +3458,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoBuildRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRecordId'] = request.build_record_id
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3194,9 +3502,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoBuildRecordStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRecordId'] = request.build_record_id
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3223,9 +3534,12 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoBuildRecordStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRecordId'] = request.build_record_id
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3266,8 +3580,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3294,8 +3610,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3336,8 +3654,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoSyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['SyncTaskId'] = request.sync_task_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sync_task_id):
+            query['SyncTaskId'] = request.sync_task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3364,8 +3684,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoSyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['SyncTaskId'] = request.sync_task_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sync_task_id):
+            query['SyncTaskId'] = request.sync_task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3472,10 +3794,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoTagLayersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3502,10 +3828,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoTagLayersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3546,10 +3876,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoTagManifestResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['SchemaVersion'] = request.schema_version
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.schema_version):
+            query['SchemaVersion'] = request.schema_version
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3576,10 +3910,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoTagManifestResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['SchemaVersion'] = request.schema_version
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.schema_version):
+            query['SchemaVersion'] = request.schema_version
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3620,11 +3958,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoTagScanStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['ScanTaskId'] = request.scan_task_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.scan_task_id):
+            query['ScanTaskId'] = request.scan_task_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3651,11 +3994,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoTagScanStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['ScanTaskId'] = request.scan_task_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.scan_task_id):
+            query['ScanTaskId'] = request.scan_task_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3696,11 +4044,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoTagScanSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['ScanTaskId'] = request.scan_task_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.scan_task_id):
+            query['ScanTaskId'] = request.scan_task_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3727,11 +4080,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepoTagScanSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['ScanTaskId'] = request.scan_task_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.scan_task_id):
+            query['ScanTaskId'] = request.scan_task_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3772,10 +4130,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3802,10 +4164,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.GetRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3912,11 +4278,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3943,11 +4314,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3988,11 +4364,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChainInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4019,11 +4400,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChainInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4064,11 +4450,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['NamespaceStatus'] = request.namespace_status
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.namespace_status):
+            query['NamespaceStatus'] = request.namespace_status
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4095,11 +4486,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['NamespaceStatus'] = request.namespace_status
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.namespace_status):
+            query['NamespaceStatus'] = request.namespace_status
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4140,12 +4536,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChartReleaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Chart'] = request.chart
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.chart):
+            query['Chart'] = request.chart
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4172,12 +4574,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChartReleaseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Chart'] = request.chart
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.chart):
+            query['Chart'] = request.chart
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4218,12 +4626,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoStatus'] = request.repo_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_status):
+            query['RepoStatus'] = request.repo_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4250,12 +4664,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoStatus'] = request.repo_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_status):
+            query['RepoStatus'] = request.repo_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4428,10 +4848,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceName'] = request.instance_name
-        query['InstanceStatus'] = request.instance_status
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_status):
+            query['InstanceStatus'] = request.instance_status
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4458,10 +4882,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceName'] = request.instance_name
-        query['InstanceStatus'] = request.instance_status
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_status):
+            query['InstanceStatus'] = request.instance_status
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4502,8 +4930,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListInstanceEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4530,8 +4960,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListInstanceEndpointResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4572,7 +5004,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListInstanceRegionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4599,7 +5032,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListInstanceRegionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4640,11 +5074,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['NamespaceStatus'] = request.namespace_status
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.namespace_status):
+            query['NamespaceStatus'] = request.namespace_status
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4671,11 +5110,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['NamespaceStatus'] = request.namespace_status
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.namespace_status):
+            query['NamespaceStatus'] = request.namespace_status
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4716,10 +5160,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoBuildRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4746,10 +5194,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoBuildRecordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4790,10 +5242,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoBuildRecordLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRecordId'] = request.build_record_id
-        query['InstanceId'] = request.instance_id
-        query['Offset'] = request.offset
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4820,10 +5276,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoBuildRecordLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRecordId'] = request.build_record_id
-        query['InstanceId'] = request.instance_id
-        query['Offset'] = request.offset
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_record_id):
+            query['BuildRecordId'] = request.build_record_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4864,10 +5324,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4894,10 +5358,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4938,13 +5406,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoSyncRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['TargetInstanceId'] = request.target_instance_id
-        query['TargetRegionId'] = request.target_region_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_region_id):
+            query['TargetRegionId'] = request.target_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4971,13 +5446,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoSyncRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['TargetInstanceId'] = request.target_instance_id
-        query['TargetRegionId'] = request.target_region_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_region_id):
+            query['TargetRegionId'] = request.target_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5018,13 +5500,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoSyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['SyncRecordId'] = request.sync_record_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.sync_record_id):
+            query['SyncRecordId'] = request.sync_record_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5051,13 +5540,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoSyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['SyncRecordId'] = request.sync_record_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.sync_record_id):
+            query['SyncRecordId'] = request.sync_record_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5098,10 +5594,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5128,10 +5628,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoTagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5172,14 +5676,22 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoTagScanResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoId'] = request.repo_id
-        query['ScanTaskId'] = request.scan_task_id
-        query['Severity'] = request.severity
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.scan_task_id):
+            query['ScanTaskId'] = request.scan_task_id
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5206,14 +5718,22 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoTagScanResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Digest'] = request.digest
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoId'] = request.repo_id
-        query['ScanTaskId'] = request.scan_task_id
-        query['Severity'] = request.severity
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.digest):
+            query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.scan_task_id):
+            query['ScanTaskId'] = request.scan_task_id
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5254,8 +5774,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5282,8 +5804,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepoTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5324,12 +5848,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoStatus'] = request.repo_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_status):
+            query['RepoStatus'] = request.repo_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5356,12 +5886,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ListRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoStatus'] = request.repo_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_status):
+            query['RepoStatus'] = request.repo_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5402,8 +5938,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ResetLoginPasswordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Password'] = request.password
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5430,8 +5968,10 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.ResetLoginPasswordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['Password'] = request.password
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5472,11 +6012,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChainConfig'] = request.chain_config
-        query['ChainId'] = request.chain_id
-        query['Description'] = request.description
-        query['InstanceId'] = request.instance_id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.chain_config):
+            query['ChainConfig'] = request.chain_config
+        if not UtilClient.is_unset(request.chain_id):
+            query['ChainId'] = request.chain_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5503,11 +6048,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateChainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChainConfig'] = request.chain_config
-        query['ChainId'] = request.chain_id
-        query['Description'] = request.description
-        query['InstanceId'] = request.instance_id
-        query['Name'] = request.name
+        if not UtilClient.is_unset(request.chain_config):
+            query['ChainConfig'] = request.chain_config
+        if not UtilClient.is_unset(request.chain_id):
+            query['ChainId'] = request.chain_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5548,10 +6098,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoCreateRepo'] = request.auto_create_repo
-        query['DefaultRepoType'] = request.default_repo_type
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.auto_create_repo):
+            query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_type):
+            query['DefaultRepoType'] = request.default_repo_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5578,10 +6132,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateChartNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoCreateRepo'] = request.auto_create_repo
-        query['DefaultRepoType'] = request.default_repo_type
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.auto_create_repo):
+            query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_type):
+            query['DefaultRepoType'] = request.default_repo_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5622,11 +6180,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoType'] = request.repo_type
-        query['Summary'] = request.summary
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_type):
+            query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.summary):
+            query['Summary'] = request.summary
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5653,11 +6216,16 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateChartRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoName'] = request.repo_name
-        query['RepoNamespaceName'] = request.repo_namespace_name
-        query['RepoType'] = request.repo_type
-        query['Summary'] = request.summary
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.repo_type):
+            query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.summary):
+            query['Summary'] = request.summary
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5704,16 +6272,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.repo_names):
             request.repo_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repo_names, 'RepoNames', 'json')
         query = {}
-        query['EventChannel'] = request.event_channel
-        query['EventConfig'] = request.event_config
-        query['EventScope'] = request.event_scope
-        query['EventType'] = request.event_type
-        query['InstanceId'] = request.instance_id
-        query['Namespaces'] = request.namespaces_shrink
-        query['RepoNames'] = request.repo_names_shrink
-        query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
-        query['RuleId'] = request.rule_id
-        query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.event_channel):
+            query['EventChannel'] = request.event_channel
+        if not UtilClient.is_unset(request.event_config):
+            query['EventConfig'] = request.event_config
+        if not UtilClient.is_unset(request.event_scope):
+            query['EventScope'] = request.event_scope
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.repo_names_shrink):
+            query['RepoNames'] = request.repo_names_shrink
+        if not UtilClient.is_unset(request.repo_tag_filter_pattern):
+            query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5746,16 +6324,26 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.repo_names):
             request.repo_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repo_names, 'RepoNames', 'json')
         query = {}
-        query['EventChannel'] = request.event_channel
-        query['EventConfig'] = request.event_config
-        query['EventScope'] = request.event_scope
-        query['EventType'] = request.event_type
-        query['InstanceId'] = request.instance_id
-        query['Namespaces'] = request.namespaces_shrink
-        query['RepoNames'] = request.repo_names_shrink
-        query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
-        query['RuleId'] = request.rule_id
-        query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.event_channel):
+            query['EventChannel'] = request.event_channel
+        if not UtilClient.is_unset(request.event_config):
+            query['EventConfig'] = request.event_config
+        if not UtilClient.is_unset(request.event_scope):
+            query['EventScope'] = request.event_scope
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.repo_names_shrink):
+            query['RepoNames'] = request.repo_names_shrink
+        if not UtilClient.is_unset(request.repo_tag_filter_pattern):
+            query['RepoTagFilterPattern'] = request.repo_tag_filter_pattern
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5796,10 +6384,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateInstanceEndpointStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Enable'] = request.enable
-        query['EndpointType'] = request.endpoint_type
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5826,10 +6418,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateInstanceEndpointStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Enable'] = request.enable
-        query['EndpointType'] = request.endpoint_type
-        query['InstanceId'] = request.instance_id
-        query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5870,10 +6466,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoCreateRepo'] = request.auto_create_repo
-        query['DefaultRepoType'] = request.default_repo_type
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.auto_create_repo):
+            query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_type):
+            query['DefaultRepoType'] = request.default_repo_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5900,10 +6500,14 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateNamespaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoCreateRepo'] = request.auto_create_repo
-        query['DefaultRepoType'] = request.default_repo_type
-        query['InstanceId'] = request.instance_id
-        query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.auto_create_repo):
+            query['AutoCreateRepo'] = request.auto_create_repo
+        if not UtilClient.is_unset(request.default_repo_type):
+            query['DefaultRepoType'] = request.default_repo_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5944,15 +6548,24 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRuleId'] = request.build_rule_id
-        query['DockerfileLocation'] = request.dockerfile_location
-        query['DockerfileName'] = request.dockerfile_name
-        query['ImageTag'] = request.image_tag
-        query['InstanceId'] = request.instance_id
-        query['Platforms'] = request.platforms
-        query['PushName'] = request.push_name
-        query['PushType'] = request.push_type
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_rule_id):
+            query['BuildRuleId'] = request.build_rule_id
+        if not UtilClient.is_unset(request.dockerfile_location):
+            query['DockerfileLocation'] = request.dockerfile_location
+        if not UtilClient.is_unset(request.dockerfile_name):
+            query['DockerfileName'] = request.dockerfile_name
+        if not UtilClient.is_unset(request.image_tag):
+            query['ImageTag'] = request.image_tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.platforms):
+            query['Platforms'] = request.platforms
+        if not UtilClient.is_unset(request.push_name):
+            query['PushName'] = request.push_name
+        if not UtilClient.is_unset(request.push_type):
+            query['PushType'] = request.push_type
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5979,15 +6592,24 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BuildRuleId'] = request.build_rule_id
-        query['DockerfileLocation'] = request.dockerfile_location
-        query['DockerfileName'] = request.dockerfile_name
-        query['ImageTag'] = request.image_tag
-        query['InstanceId'] = request.instance_id
-        query['Platforms'] = request.platforms
-        query['PushName'] = request.push_name
-        query['PushType'] = request.push_type
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.build_rule_id):
+            query['BuildRuleId'] = request.build_rule_id
+        if not UtilClient.is_unset(request.dockerfile_location):
+            query['DockerfileLocation'] = request.dockerfile_location
+        if not UtilClient.is_unset(request.dockerfile_name):
+            query['DockerfileName'] = request.dockerfile_name
+        if not UtilClient.is_unset(request.image_tag):
+            query['ImageTag'] = request.image_tag
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.platforms):
+            query['Platforms'] = request.platforms
+        if not UtilClient.is_unset(request.push_name):
+            query['PushName'] = request.push_name
+        if not UtilClient.is_unset(request.push_type):
+            query['PushType'] = request.push_type
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6028,15 +6650,24 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoBuild'] = request.auto_build
-        query['CodeRepoId'] = request.code_repo_id
-        query['CodeRepoName'] = request.code_repo_name
-        query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
-        query['CodeRepoType'] = request.code_repo_type
-        query['DisableCacheBuild'] = request.disable_cache_build
-        query['InstanceId'] = request.instance_id
-        query['OverseaBuild'] = request.oversea_build
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.auto_build):
+            query['AutoBuild'] = request.auto_build
+        if not UtilClient.is_unset(request.code_repo_id):
+            query['CodeRepoId'] = request.code_repo_id
+        if not UtilClient.is_unset(request.code_repo_name):
+            query['CodeRepoName'] = request.code_repo_name
+        if not UtilClient.is_unset(request.code_repo_namespace_name):
+            query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
+        if not UtilClient.is_unset(request.code_repo_type):
+            query['CodeRepoType'] = request.code_repo_type
+        if not UtilClient.is_unset(request.disable_cache_build):
+            query['DisableCacheBuild'] = request.disable_cache_build
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.oversea_build):
+            query['OverseaBuild'] = request.oversea_build
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6063,15 +6694,24 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepoSourceCodeRepoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoBuild'] = request.auto_build
-        query['CodeRepoId'] = request.code_repo_id
-        query['CodeRepoName'] = request.code_repo_name
-        query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
-        query['CodeRepoType'] = request.code_repo_type
-        query['DisableCacheBuild'] = request.disable_cache_build
-        query['InstanceId'] = request.instance_id
-        query['OverseaBuild'] = request.oversea_build
-        query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.auto_build):
+            query['AutoBuild'] = request.auto_build
+        if not UtilClient.is_unset(request.code_repo_id):
+            query['CodeRepoId'] = request.code_repo_id
+        if not UtilClient.is_unset(request.code_repo_name):
+            query['CodeRepoName'] = request.code_repo_name
+        if not UtilClient.is_unset(request.code_repo_namespace_name):
+            query['CodeRepoNamespaceName'] = request.code_repo_namespace_name
+        if not UtilClient.is_unset(request.code_repo_type):
+            query['CodeRepoType'] = request.code_repo_type
+        if not UtilClient.is_unset(request.disable_cache_build):
+            query['DisableCacheBuild'] = request.disable_cache_build
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.oversea_build):
+            query['OverseaBuild'] = request.oversea_build
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6112,13 +6752,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepoTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['TriggerId'] = request.trigger_id
-        query['TriggerName'] = request.trigger_name
-        query['TriggerTag'] = request.trigger_tag
-        query['TriggerType'] = request.trigger_type
-        query['TriggerUrl'] = request.trigger_url
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.trigger_id):
+            query['TriggerId'] = request.trigger_id
+        if not UtilClient.is_unset(request.trigger_name):
+            query['TriggerName'] = request.trigger_name
+        if not UtilClient.is_unset(request.trigger_tag):
+            query['TriggerTag'] = request.trigger_tag
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        if not UtilClient.is_unset(request.trigger_url):
+            query['TriggerUrl'] = request.trigger_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6145,13 +6792,20 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepoTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['TriggerId'] = request.trigger_id
-        query['TriggerName'] = request.trigger_name
-        query['TriggerTag'] = request.trigger_tag
-        query['TriggerType'] = request.trigger_type
-        query['TriggerUrl'] = request.trigger_url
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.trigger_id):
+            query['TriggerId'] = request.trigger_id
+        if not UtilClient.is_unset(request.trigger_name):
+            query['TriggerName'] = request.trigger_name
+        if not UtilClient.is_unset(request.trigger_tag):
+            query['TriggerTag'] = request.trigger_tag
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        if not UtilClient.is_unset(request.trigger_url):
+            query['TriggerUrl'] = request.trigger_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6192,12 +6846,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['RepoType'] = request.repo_type
-        query['Summary'] = request.summary
-        query['TagImmutability'] = request.tag_immutability
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.repo_type):
+            query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.summary):
+            query['Summary'] = request.summary
+        if not UtilClient.is_unset(request.tag_immutability):
+            query['TagImmutability'] = request.tag_immutability
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6224,12 +6884,18 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepositoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Detail'] = request.detail
-        query['InstanceId'] = request.instance_id
-        query['RepoId'] = request.repo_id
-        query['RepoType'] = request.repo_type
-        query['Summary'] = request.summary
-        query['TagImmutability'] = request.tag_immutability
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.repo_type):
+            query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.summary):
+            query['Summary'] = request.summary
+        if not UtilClient.is_unset(request.tag_immutability):
+            query['TagImmutability'] = request.tag_immutability
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
