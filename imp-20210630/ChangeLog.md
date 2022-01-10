@@ -1,3 +1,6 @@
+2022-01-10 Version: 2.8.9
+- Add GetLiveRoomDetail Field.
+
 2021-12-29 Version: 2.8.8
 - Add GetClassRecord API.
 
