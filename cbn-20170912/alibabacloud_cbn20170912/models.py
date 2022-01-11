@@ -4885,6 +4885,133 @@ class DeleteTrafficMarkingPolicyResponse(TeaModel):
         return self
 
 
+class DeleteTransitRouterRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_id = transit_router_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_id is not None:
+            result['TransitRouterId'] = self.transit_router_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterId') is not None:
+            self.transit_router_id = m.get('TransitRouterId')
+        return self
+
+
+class DeleteTransitRouterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTransitRouterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteTransitRouterResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteTransitRouterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteTransitRouterPeerAttachmentRequest(TeaModel):
     def __init__(
         self,
@@ -15567,9 +15694,11 @@ class ListTransitRouterVpcAttachmentsRequest(TeaModel):
 class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings(TeaModel):
     def __init__(
         self,
+        network_interface_id: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        self.network_interface_id = network_interface_id
         self.v_switch_id = v_switch_id
         self.zone_id = zone_id
 
@@ -15582,6 +15711,8 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMap
             return _map
 
         result = dict()
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
@@ -15590,6 +15721,8 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMap
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:

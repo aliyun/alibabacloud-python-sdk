@@ -48,14 +48,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -82,14 +90,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ActiveFlowLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -130,14 +146,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
-        query['TrafficMatchRules'] = request.traffic_match_rules
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_match_rules):
+            query['TrafficMatchRules'] = request.traffic_match_rules
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -164,14 +188,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AddTraficMatchRuleToTrafficMarkingPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
-        query['TrafficMatchRules'] = request.traffic_match_rules
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_match_rules):
+            query['TrafficMatchRules'] = request.traffic_match_rules
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -212,12 +244,18 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AssociateCenBandwidthPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -244,12 +282,18 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AssociateCenBandwidthPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -290,14 +334,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -324,14 +376,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AssociateTransitRouterAttachmentWithRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -372,15 +432,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AttachCenChildInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceOwnerId'] = request.child_instance_owner_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_owner_id):
+            query['ChildInstanceOwnerId'] = request.child_instance_owner_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -407,15 +476,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.AttachCenChildInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceOwnerId'] = request.child_instance_owner_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_owner_id):
+            query['ChildInstanceOwnerId'] = request.child_instance_owner_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -456,11 +534,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CheckTransitRouterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -487,11 +570,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CheckTransitRouterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -532,14 +620,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProtectionLevel'] = request.protection_level
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.protection_level):
+            query['ProtectionLevel'] = request.protection_level
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -566,14 +662,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProtectionLevel'] = request.protection_level
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.protection_level):
+            query['ProtectionLevel'] = request.protection_level
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -614,22 +718,38 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenBandwidthPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoPay'] = request.auto_pay
-        query['AutoRenew'] = request.auto_renew
-        query['AutoRenewDuration'] = request.auto_renew_duration
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageChargeType'] = request.bandwidth_package_charge_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['GeographicRegionAId'] = request.geographic_region_aid
-        query['GeographicRegionBId'] = request.geographic_region_bid
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PricingCycle'] = request.pricing_cycle
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_duration):
+            query['AutoRenewDuration'] = request.auto_renew_duration
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.bandwidth_package_charge_type):
+            query['BandwidthPackageChargeType'] = request.bandwidth_package_charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.geographic_region_aid):
+            query['GeographicRegionAId'] = request.geographic_region_aid
+        if not UtilClient.is_unset(request.geographic_region_bid):
+            query['GeographicRegionBId'] = request.geographic_region_bid
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -656,22 +776,38 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenBandwidthPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoPay'] = request.auto_pay
-        query['AutoRenew'] = request.auto_renew
-        query['AutoRenewDuration'] = request.auto_renew_duration
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthPackageChargeType'] = request.bandwidth_package_charge_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['GeographicRegionAId'] = request.geographic_region_aid
-        query['GeographicRegionBId'] = request.geographic_region_bid
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Period'] = request.period
-        query['PricingCycle'] = request.pricing_cycle
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_duration):
+            query['AutoRenewDuration'] = request.auto_renew_duration
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.bandwidth_package_charge_type):
+            query['BandwidthPackageChargeType'] = request.bandwidth_package_charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.geographic_region_aid):
+            query['GeographicRegionAId'] = request.geographic_region_aid
+        if not UtilClient.is_unset(request.geographic_region_bid):
+            query['GeographicRegionBId'] = request.geographic_region_bid
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -712,16 +848,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenChildInstanceRouteEntryToAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -748,16 +894,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenChildInstanceRouteEntryToAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -798,17 +954,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceAliUid'] = request.child_instance_ali_uid
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_ali_uid):
+            query['ChildInstanceAliUid'] = request.child_instance_ali_uid
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -835,17 +1002,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenChildInstanceRouteEntryToCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceAliUid'] = request.child_instance_ali_uid
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_ali_uid):
+            query['ChildInstanceAliUid'] = request.child_instance_ali_uid
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -886,17 +1064,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
-        query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
-        query['TrafficQosQueues'] = request.traffic_qos_queues
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_description):
+            query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
+        if not UtilClient.is_unset(request.traffic_qos_policy_name):
+            query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
+        if not UtilClient.is_unset(request.traffic_qos_queues):
+            query['TrafficQosQueues'] = request.traffic_qos_queues
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -923,17 +1112,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
-        query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
-        query['TrafficQosQueues'] = request.traffic_qos_queues
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_description):
+            query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
+        if not UtilClient.is_unset(request.traffic_qos_policy_name):
+            query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
+        if not UtilClient.is_unset(request.traffic_qos_queues):
+            query['TrafficQosQueues'] = request.traffic_qos_queues
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -974,37 +1174,68 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AsPathMatchMode'] = request.as_path_match_mode
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['CidrMatchMode'] = request.cidr_match_mode
-        query['CommunityMatchMode'] = request.community_match_mode
-        query['CommunityOperateMode'] = request.community_operate_mode
-        query['Description'] = request.description
-        query['DestinationChildInstanceTypes'] = request.destination_child_instance_types
-        query['DestinationCidrBlocks'] = request.destination_cidr_blocks
-        query['DestinationInstanceIds'] = request.destination_instance_ids
-        query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
-        query['DestinationRouteTableIds'] = request.destination_route_table_ids
-        query['MapResult'] = request.map_result
-        query['MatchAsns'] = request.match_asns
-        query['MatchCommunitySet'] = request.match_community_set
-        query['NextPriority'] = request.next_priority
-        query['OperateCommunitySet'] = request.operate_community_set
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Preference'] = request.preference
-        query['PrependAsPath'] = request.prepend_as_path
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTypes'] = request.route_types
-        query['SourceChildInstanceTypes'] = request.source_child_instance_types
-        query['SourceInstanceIds'] = request.source_instance_ids
-        query['SourceInstanceIdsReverseMatch'] = request.source_instance_ids_reverse_match
-        query['SourceRegionIds'] = request.source_region_ids
-        query['SourceRouteTableIds'] = request.source_route_table_ids
-        query['TransmitDirection'] = request.transmit_direction
+        if not UtilClient.is_unset(request.as_path_match_mode):
+            query['AsPathMatchMode'] = request.as_path_match_mode
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.cidr_match_mode):
+            query['CidrMatchMode'] = request.cidr_match_mode
+        if not UtilClient.is_unset(request.community_match_mode):
+            query['CommunityMatchMode'] = request.community_match_mode
+        if not UtilClient.is_unset(request.community_operate_mode):
+            query['CommunityOperateMode'] = request.community_operate_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_child_instance_types):
+            query['DestinationChildInstanceTypes'] = request.destination_child_instance_types
+        if not UtilClient.is_unset(request.destination_cidr_blocks):
+            query['DestinationCidrBlocks'] = request.destination_cidr_blocks
+        if not UtilClient.is_unset(request.destination_instance_ids):
+            query['DestinationInstanceIds'] = request.destination_instance_ids
+        if not UtilClient.is_unset(request.destination_instance_ids_reverse_match):
+            query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.destination_route_table_ids):
+            query['DestinationRouteTableIds'] = request.destination_route_table_ids
+        if not UtilClient.is_unset(request.map_result):
+            query['MapResult'] = request.map_result
+        if not UtilClient.is_unset(request.match_asns):
+            query['MatchAsns'] = request.match_asns
+        if not UtilClient.is_unset(request.match_community_set):
+            query['MatchCommunitySet'] = request.match_community_set
+        if not UtilClient.is_unset(request.next_priority):
+            query['NextPriority'] = request.next_priority
+        if not UtilClient.is_unset(request.operate_community_set):
+            query['OperateCommunitySet'] = request.operate_community_set
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.preference):
+            query['Preference'] = request.preference
+        if not UtilClient.is_unset(request.prepend_as_path):
+            query['PrependAsPath'] = request.prepend_as_path
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_types):
+            query['RouteTypes'] = request.route_types
+        if not UtilClient.is_unset(request.source_child_instance_types):
+            query['SourceChildInstanceTypes'] = request.source_child_instance_types
+        if not UtilClient.is_unset(request.source_instance_ids):
+            query['SourceInstanceIds'] = request.source_instance_ids
+        if not UtilClient.is_unset(request.source_instance_ids_reverse_match):
+            query['SourceInstanceIdsReverseMatch'] = request.source_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.source_region_ids):
+            query['SourceRegionIds'] = request.source_region_ids
+        if not UtilClient.is_unset(request.source_route_table_ids):
+            query['SourceRouteTableIds'] = request.source_route_table_ids
+        if not UtilClient.is_unset(request.transmit_direction):
+            query['TransmitDirection'] = request.transmit_direction
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1031,37 +1262,68 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AsPathMatchMode'] = request.as_path_match_mode
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['CidrMatchMode'] = request.cidr_match_mode
-        query['CommunityMatchMode'] = request.community_match_mode
-        query['CommunityOperateMode'] = request.community_operate_mode
-        query['Description'] = request.description
-        query['DestinationChildInstanceTypes'] = request.destination_child_instance_types
-        query['DestinationCidrBlocks'] = request.destination_cidr_blocks
-        query['DestinationInstanceIds'] = request.destination_instance_ids
-        query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
-        query['DestinationRouteTableIds'] = request.destination_route_table_ids
-        query['MapResult'] = request.map_result
-        query['MatchAsns'] = request.match_asns
-        query['MatchCommunitySet'] = request.match_community_set
-        query['NextPriority'] = request.next_priority
-        query['OperateCommunitySet'] = request.operate_community_set
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Preference'] = request.preference
-        query['PrependAsPath'] = request.prepend_as_path
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTypes'] = request.route_types
-        query['SourceChildInstanceTypes'] = request.source_child_instance_types
-        query['SourceInstanceIds'] = request.source_instance_ids
-        query['SourceInstanceIdsReverseMatch'] = request.source_instance_ids_reverse_match
-        query['SourceRegionIds'] = request.source_region_ids
-        query['SourceRouteTableIds'] = request.source_route_table_ids
-        query['TransmitDirection'] = request.transmit_direction
+        if not UtilClient.is_unset(request.as_path_match_mode):
+            query['AsPathMatchMode'] = request.as_path_match_mode
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.cidr_match_mode):
+            query['CidrMatchMode'] = request.cidr_match_mode
+        if not UtilClient.is_unset(request.community_match_mode):
+            query['CommunityMatchMode'] = request.community_match_mode
+        if not UtilClient.is_unset(request.community_operate_mode):
+            query['CommunityOperateMode'] = request.community_operate_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_child_instance_types):
+            query['DestinationChildInstanceTypes'] = request.destination_child_instance_types
+        if not UtilClient.is_unset(request.destination_cidr_blocks):
+            query['DestinationCidrBlocks'] = request.destination_cidr_blocks
+        if not UtilClient.is_unset(request.destination_instance_ids):
+            query['DestinationInstanceIds'] = request.destination_instance_ids
+        if not UtilClient.is_unset(request.destination_instance_ids_reverse_match):
+            query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.destination_route_table_ids):
+            query['DestinationRouteTableIds'] = request.destination_route_table_ids
+        if not UtilClient.is_unset(request.map_result):
+            query['MapResult'] = request.map_result
+        if not UtilClient.is_unset(request.match_asns):
+            query['MatchAsns'] = request.match_asns
+        if not UtilClient.is_unset(request.match_community_set):
+            query['MatchCommunitySet'] = request.match_community_set
+        if not UtilClient.is_unset(request.next_priority):
+            query['NextPriority'] = request.next_priority
+        if not UtilClient.is_unset(request.operate_community_set):
+            query['OperateCommunitySet'] = request.operate_community_set
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.preference):
+            query['Preference'] = request.preference
+        if not UtilClient.is_unset(request.prepend_as_path):
+            query['PrependAsPath'] = request.prepend_as_path
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_types):
+            query['RouteTypes'] = request.route_types
+        if not UtilClient.is_unset(request.source_child_instance_types):
+            query['SourceChildInstanceTypes'] = request.source_child_instance_types
+        if not UtilClient.is_unset(request.source_instance_ids):
+            query['SourceInstanceIds'] = request.source_instance_ids
+        if not UtilClient.is_unset(request.source_instance_ids_reverse_match):
+            query['SourceInstanceIdsReverseMatch'] = request.source_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.source_region_ids):
+            query['SourceRegionIds'] = request.source_region_ids
+        if not UtilClient.is_unset(request.source_route_table_ids):
+            query['SourceRouteTableIds'] = request.source_route_table_ids
+        if not UtilClient.is_unset(request.transmit_direction):
+            query['TransmitDirection'] = request.transmit_direction
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1102,17 +1364,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateFlowlogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['FlowLogName'] = request.flow_log_name
-        query['LogStoreName'] = request.log_store_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectName'] = request.project_name
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_log_name):
+            query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1139,17 +1412,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateFlowlogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['FlowLogName'] = request.flow_log_name
-        query['LogStoreName'] = request.log_store_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectName'] = request.project_name
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_log_name):
+            query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1190,18 +1474,30 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTrafficMarkingPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['MarkingDscp'] = request.marking_dscp
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
-        query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
-        query['TrafficMatchRules'] = request.traffic_match_rules
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.marking_dscp):
+            query['MarkingDscp'] = request.marking_dscp
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_description):
+            query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
+        if not UtilClient.is_unset(request.traffic_marking_policy_name):
+            query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
+        if not UtilClient.is_unset(request.traffic_match_rules):
+            query['TrafficMatchRules'] = request.traffic_match_rules
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1228,18 +1524,30 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTrafficMarkingPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['MarkingDscp'] = request.marking_dscp
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
-        query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
-        query['TrafficMatchRules'] = request.traffic_match_rules
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.marking_dscp):
+            query['MarkingDscp'] = request.marking_dscp
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_description):
+            query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
+        if not UtilClient.is_unset(request.traffic_marking_policy_name):
+            query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
+        if not UtilClient.is_unset(request.traffic_match_rules):
+            query['TrafficMatchRules'] = request.traffic_match_rules
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1280,16 +1588,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterDescription'] = request.transit_router_description
-        query['TransitRouterName'] = request.transit_router_name
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_description):
+            query['TransitRouterDescription'] = request.transit_router_description
+        if not UtilClient.is_unset(request.transit_router_name):
+            query['TransitRouterName'] = request.transit_router_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1316,16 +1634,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterDescription'] = request.transit_router_description
-        query['TransitRouterName'] = request.transit_router_name
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_description):
+            query['TransitRouterDescription'] = request.transit_router_description
+        if not UtilClient.is_unset(request.transit_router_name):
+            query['TransitRouterName'] = request.transit_router_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1366,23 +1694,40 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthType'] = request.bandwidth_type
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerTransitRouterId'] = request.peer_transit_router_id
-        query['PeerTransitRouterRegionId'] = request.peer_transit_router_region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.bandwidth_type):
+            query['BandwidthType'] = request.bandwidth_type
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.peer_transit_router_id):
+            query['PeerTransitRouterId'] = request.peer_transit_router_id
+        if not UtilClient.is_unset(request.peer_transit_router_region_id):
+            query['PeerTransitRouterRegionId'] = request.peer_transit_router_region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1409,23 +1754,40 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthType'] = request.bandwidth_type
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PeerTransitRouterId'] = request.peer_transit_router_id
-        query['PeerTransitRouterRegionId'] = request.peer_transit_router_region_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.bandwidth_type):
+            query['BandwidthType'] = request.bandwidth_type
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.peer_transit_router_id):
+            query['PeerTransitRouterId'] = request.peer_transit_router_id
+        if not UtilClient.is_unset(request.peer_transit_router_region_id):
+            query['PeerTransitRouterRegionId'] = request.peer_transit_router_region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1466,18 +1828,30 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterRouteEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteEntryDescription'] = request.transit_router_route_entry_description
-        query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
-        query['TransitRouterRouteEntryName'] = request.transit_router_route_entry_name
-        query['TransitRouterRouteEntryNextHopId'] = request.transit_router_route_entry_next_hop_id
-        query['TransitRouterRouteEntryNextHopType'] = request.transit_router_route_entry_next_hop_type
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_description):
+            query['TransitRouterRouteEntryDescription'] = request.transit_router_route_entry_description
+        if not UtilClient.is_unset(request.transit_router_route_entry_destination_cidr_block):
+            query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
+        if not UtilClient.is_unset(request.transit_router_route_entry_name):
+            query['TransitRouterRouteEntryName'] = request.transit_router_route_entry_name
+        if not UtilClient.is_unset(request.transit_router_route_entry_next_hop_id):
+            query['TransitRouterRouteEntryNextHopId'] = request.transit_router_route_entry_next_hop_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_next_hop_type):
+            query['TransitRouterRouteEntryNextHopType'] = request.transit_router_route_entry_next_hop_type
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1504,18 +1878,30 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterRouteEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteEntryDescription'] = request.transit_router_route_entry_description
-        query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
-        query['TransitRouterRouteEntryName'] = request.transit_router_route_entry_name
-        query['TransitRouterRouteEntryNextHopId'] = request.transit_router_route_entry_next_hop_id
-        query['TransitRouterRouteEntryNextHopType'] = request.transit_router_route_entry_next_hop_type
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_description):
+            query['TransitRouterRouteEntryDescription'] = request.transit_router_route_entry_description
+        if not UtilClient.is_unset(request.transit_router_route_entry_destination_cidr_block):
+            query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
+        if not UtilClient.is_unset(request.transit_router_route_entry_name):
+            query['TransitRouterRouteEntryName'] = request.transit_router_route_entry_name
+        if not UtilClient.is_unset(request.transit_router_route_entry_next_hop_id):
+            query['TransitRouterRouteEntryNextHopId'] = request.transit_router_route_entry_next_hop_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_next_hop_type):
+            query['TransitRouterRouteEntryNextHopType'] = request.transit_router_route_entry_next_hop_type
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1556,15 +1942,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterId'] = request.transit_router_id
-        query['TransitRouterRouteTableDescription'] = request.transit_router_route_table_description
-        query['TransitRouterRouteTableName'] = request.transit_router_route_table_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_route_table_description):
+            query['TransitRouterRouteTableDescription'] = request.transit_router_route_table_description
+        if not UtilClient.is_unset(request.transit_router_route_table_name):
+            query['TransitRouterRouteTableName'] = request.transit_router_route_table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1591,15 +1986,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterId'] = request.transit_router_id
-        query['TransitRouterRouteTableDescription'] = request.transit_router_route_table_description
-        query['TransitRouterRouteTableName'] = request.transit_router_route_table_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_route_table_description):
+            query['TransitRouterRouteTableDescription'] = request.transit_router_route_table_description
+        if not UtilClient.is_unset(request.transit_router_route_table_name):
+            query['TransitRouterRouteTableName'] = request.transit_router_route_table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1640,20 +2044,34 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterVbrAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
-        query['TransitRouterId'] = request.transit_router_id
-        query['VbrId'] = request.vbr_id
-        query['VbrOwnerId'] = request.vbr_owner_id
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.vbr_id):
+            query['VbrId'] = request.vbr_id
+        if not UtilClient.is_unset(request.vbr_owner_id):
+            query['VbrOwnerId'] = request.vbr_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1680,20 +2098,34 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterVbrAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
-        query['TransitRouterId'] = request.transit_router_id
-        query['VbrId'] = request.vbr_id
-        query['VbrOwnerId'] = request.vbr_owner_id
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.vbr_id):
+            query['VbrId'] = request.vbr_id
+        if not UtilClient.is_unset(request.vbr_owner_id):
+            query['VbrOwnerId'] = request.vbr_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1734,21 +2166,36 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChargeType'] = request.charge_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
-        query['TransitRouterId'] = request.transit_router_id
-        query['VpcId'] = request.vpc_id
-        query['VpcOwnerId'] = request.vpc_owner_id
-        query['ZoneMappings'] = request.zone_mappings
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vpc_owner_id):
+            query['VpcOwnerId'] = request.vpc_owner_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1775,21 +2222,36 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChargeType'] = request.charge_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
-        query['TransitRouterId'] = request.transit_router_id
-        query['VpcId'] = request.vpc_id
-        query['VpcOwnerId'] = request.vpc_owner_id
-        query['ZoneMappings'] = request.zone_mappings
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vpc_owner_id):
+            query['VpcOwnerId'] = request.vpc_owner_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1830,14 +2292,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeactiveFlowLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1864,14 +2334,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeactiveFlowLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1912,11 +2390,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1943,11 +2426,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1988,11 +2476,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenBandwidthPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2019,11 +2512,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenBandwidthPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2064,16 +2562,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenChildInstanceRouteEntryToAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2100,16 +2608,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenChildInstanceRouteEntryToAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2150,17 +2668,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceAliUid'] = request.child_instance_ali_uid
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_ali_uid):
+            query['ChildInstanceAliUid'] = request.child_instance_ali_uid
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2187,17 +2716,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenChildInstanceRouteEntryToCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceAliUid'] = request.child_instance_ali_uid
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_ali_uid):
+            query['ChildInstanceAliUid'] = request.child_instance_ali_uid
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2238,13 +2778,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenInterRegionTrafficQosPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_id):
+            query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2271,13 +2818,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenInterRegionTrafficQosPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_id):
+            query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2318,13 +2872,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenInterRegionTrafficQosQueueResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['QosQueueId'] = request.qos_queue_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_queue_id):
+            query['QosQueueId'] = request.qos_queue_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2351,13 +2912,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenInterRegionTrafficQosQueueResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['QosQueueId'] = request.qos_queue_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_queue_id):
+            query['QosQueueId'] = request.qos_queue_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2398,13 +2966,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenRouteMapResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteMapId'] = request.route_map_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2431,13 +3006,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteCenRouteMapResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteMapId'] = request.route_map_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2478,14 +3060,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteFlowlogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2512,14 +3102,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteFlowlogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['FlowLogId'] = request.flow_log_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2560,15 +3158,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteRouteServiceInCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['Host'] = request.host
-        query['HostRegionId'] = request.host_region_id
-        query['HostVpcId'] = request.host_vpc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.host_vpc_id):
+            query['HostVpcId'] = request.host_vpc_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2595,15 +3202,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteRouteServiceInCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['Host'] = request.host
-        query['HostRegionId'] = request.host_region_id
-        query['HostVpcId'] = request.host_vpc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.host_vpc_id):
+            query['HostVpcId'] = request.host_vpc_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2644,13 +3260,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTrafficMarkingPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2677,13 +3300,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTrafficMarkingPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2717,6 +3347,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_traffic_marking_policy_with_options_async(request, runtime)
 
+    def delete_transit_router_with_options(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouter',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_transit_router_with_options_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouter',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_transit_router(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_transit_router_with_options(request, runtime)
+
+    async def delete_transit_router_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_transit_router_with_options_async(request, runtime)
+
     def delete_transit_router_peer_attachment_with_options(
         self,
         request: cbn_20170912_models.DeleteTransitRouterPeerAttachmentRequest,
@@ -2724,13 +3448,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2757,13 +3488,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterPeerAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2804,17 +3542,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterRouteEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
-        query['TransitRouterRouteEntryId'] = request.transit_router_route_entry_id
-        query['TransitRouterRouteEntryNextHopId'] = request.transit_router_route_entry_next_hop_id
-        query['TransitRouterRouteEntryNextHopType'] = request.transit_router_route_entry_next_hop_type
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_destination_cidr_block):
+            query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
+        if not UtilClient.is_unset(request.transit_router_route_entry_id):
+            query['TransitRouterRouteEntryId'] = request.transit_router_route_entry_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_next_hop_id):
+            query['TransitRouterRouteEntryNextHopId'] = request.transit_router_route_entry_next_hop_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_next_hop_type):
+            query['TransitRouterRouteEntryNextHopType'] = request.transit_router_route_entry_next_hop_type
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2841,17 +3590,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterRouteEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
-        query['TransitRouterRouteEntryId'] = request.transit_router_route_entry_id
-        query['TransitRouterRouteEntryNextHopId'] = request.transit_router_route_entry_next_hop_id
-        query['TransitRouterRouteEntryNextHopType'] = request.transit_router_route_entry_next_hop_type
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_destination_cidr_block):
+            query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
+        if not UtilClient.is_unset(request.transit_router_route_entry_id):
+            query['TransitRouterRouteEntryId'] = request.transit_router_route_entry_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_next_hop_id):
+            query['TransitRouterRouteEntryNextHopId'] = request.transit_router_route_entry_next_hop_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_next_hop_type):
+            query['TransitRouterRouteEntryNextHopType'] = request.transit_router_route_entry_next_hop_type
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2892,13 +3652,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2925,13 +3692,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2972,13 +3746,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterVbrAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3005,13 +3786,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterVbrAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3052,13 +3840,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterVpcAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3085,13 +3880,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterVpcAttachmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3132,14 +3934,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3166,14 +3976,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenAttachedChildInstanceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3214,15 +4032,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenAttachedChildInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3249,15 +4076,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenAttachedChildInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3298,15 +4134,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenBandwidthPackagesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Filter'] = request.filter
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['IsOrKey'] = request.is_or_key
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_reservation_data):
+            query['IncludeReservationData'] = request.include_reservation_data
+        if not UtilClient.is_unset(request.is_or_key):
+            query['IsOrKey'] = request.is_or_key
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3333,15 +4178,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenBandwidthPackagesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Filter'] = request.filter
-        query['IncludeReservationData'] = request.include_reservation_data
-        query['IsOrKey'] = request.is_or_key
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_reservation_data):
+            query['IncludeReservationData'] = request.include_reservation_data
+        if not UtilClient.is_unset(request.is_or_key):
+            query['IsOrKey'] = request.is_or_key
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3382,17 +4236,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3419,17 +4284,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenChildInstanceRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3470,15 +4346,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['GeographicRegionAId'] = request.geographic_region_aid
-        query['GeographicRegionBId'] = request.geographic_region_bid
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.geographic_region_aid):
+            query['GeographicRegionAId'] = request.geographic_region_aid
+        if not UtilClient.is_unset(request.geographic_region_bid):
+            query['GeographicRegionBId'] = request.geographic_region_bid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3505,15 +4390,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenGeographicSpanRemainingBandwidthResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['GeographicRegionAId'] = request.geographic_region_aid
-        query['GeographicRegionBId'] = request.geographic_region_bid
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.geographic_region_aid):
+            query['GeographicRegionAId'] = request.geographic_region_aid
+        if not UtilClient.is_unset(request.geographic_region_bid):
+            query['GeographicRegionBId'] = request.geographic_region_bid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3554,13 +4448,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenGeographicSpansResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GeographicSpanId'] = request.geographic_span_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.geographic_span_id):
+            query['GeographicSpanId'] = request.geographic_span_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3587,13 +4488,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenGeographicSpansResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GeographicSpanId'] = request.geographic_span_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.geographic_span_id):
+            query['GeographicSpanId'] = request.geographic_span_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3634,13 +4542,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3667,13 +4582,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenInterRegionBandwidthLimitsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3714,13 +4636,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['HostRegionId'] = request.host_region_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3747,13 +4676,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenPrivateZoneRoutesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['HostRegionId'] = request.host_region_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3794,15 +4730,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3829,15 +4774,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3878,16 +4832,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenRouteMapsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteMapId'] = request.route_map_id
-        query['TransmitDirection'] = request.transmit_direction
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not UtilClient.is_unset(request.transmit_direction):
+            query['TransmitDirection'] = request.transmit_direction
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3914,16 +4878,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenRouteMapsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteMapId'] = request.route_map_id
-        query['TransmitDirection'] = request.transmit_direction
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not UtilClient.is_unset(request.transmit_direction):
+            query['TransmitDirection'] = request.transmit_direction
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3964,16 +4938,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenVbrHealthCheckResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrInstanceId'] = request.vbr_instance_id
-        query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
-        query['VbrInstanceRegionId'] = request.vbr_instance_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_id):
+            query['VbrInstanceId'] = request.vbr_instance_id
+        if not UtilClient.is_unset(request.vbr_instance_owner_id):
+            query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_region_id):
+            query['VbrInstanceRegionId'] = request.vbr_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4000,16 +4984,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCenVbrHealthCheckResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrInstanceId'] = request.vbr_instance_id
-        query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
-        query['VbrInstanceRegionId'] = request.vbr_instance_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_id):
+            query['VbrInstanceId'] = request.vbr_instance_id
+        if not UtilClient.is_unset(request.vbr_instance_owner_id):
+            query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_region_id):
+            query['VbrInstanceRegionId'] = request.vbr_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4050,14 +5044,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCensResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Filter'] = request.filter
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4084,14 +5086,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeCensResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Filter'] = request.filter
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4132,11 +5142,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeChildInstanceRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4163,11 +5178,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeChildInstanceRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProductType'] = request.product_type
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4208,21 +5228,36 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeFlowlogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['FlowLogId'] = request.flow_log_id
-        query['FlowLogName'] = request.flow_log_name
-        query['LogStoreName'] = request.log_store_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ProjectName'] = request.project_name
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4249,21 +5284,36 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeFlowlogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['FlowLogId'] = request.flow_log_id
-        query['FlowLogName'] = request.flow_log_name
-        query['LogStoreName'] = request.log_store_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ProjectName'] = request.project_name
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4304,13 +5354,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeGeographicRegionMembershipResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GeographicRegionId'] = request.geographic_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.geographic_region_id):
+            query['GeographicRegionId'] = request.geographic_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4337,13 +5394,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeGeographicRegionMembershipResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['GeographicRegionId'] = request.geographic_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.geographic_region_id):
+            query['GeographicRegionId'] = request.geographic_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4384,13 +5448,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeGrantRulesToCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProductType'] = request.product_type
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4417,13 +5488,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeGrantRulesToCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProductType'] = request.product_type
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4464,16 +5542,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribePublishedRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_route_table_id):
+            query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4500,16 +5588,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribePublishedRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_route_table_id):
+            query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4550,17 +5648,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeRouteConflictResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_route_table_id):
+            query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4587,17 +5696,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeRouteConflictResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_route_table_id):
+            query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4638,17 +5758,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeRouteServicesInCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['Host'] = request.host
-        query['HostRegionId'] = request.host_region_id
-        query['HostVpcId'] = request.host_vpc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.host_vpc_id):
+            query['HostVpcId'] = request.host_vpc_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4675,17 +5806,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeRouteServicesInCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['Host'] = request.host
-        query['HostRegionId'] = request.host_region_id
-        query['HostVpcId'] = request.host_vpc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.host_vpc_id):
+            query['HostVpcId'] = request.host_vpc_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4726,16 +5868,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DetachCenChildInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceOwnerId'] = request.child_instance_owner_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_owner_id):
+            query['CenOwnerId'] = request.cen_owner_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_owner_id):
+            query['ChildInstanceOwnerId'] = request.child_instance_owner_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4762,16 +5914,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DetachCenChildInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceOwnerId'] = request.child_instance_owner_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_owner_id):
+            query['CenOwnerId'] = request.cen_owner_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_owner_id):
+            query['ChildInstanceOwnerId'] = request.child_instance_owner_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4812,14 +5974,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DisableCenVbrHealthCheckResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrInstanceId'] = request.vbr_instance_id
-        query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
-        query['VbrInstanceRegionId'] = request.vbr_instance_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_id):
+            query['VbrInstanceId'] = request.vbr_instance_id
+        if not UtilClient.is_unset(request.vbr_instance_owner_id):
+            query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_region_id):
+            query['VbrInstanceRegionId'] = request.vbr_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4846,14 +6016,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DisableCenVbrHealthCheckResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrInstanceId'] = request.vbr_instance_id
-        query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
-        query['VbrInstanceRegionId'] = request.vbr_instance_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_id):
+            query['VbrInstanceId'] = request.vbr_instance_id
+        if not UtilClient.is_unset(request.vbr_instance_owner_id):
+            query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_region_id):
+            query['VbrInstanceRegionId'] = request.vbr_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4894,14 +6072,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4928,14 +6114,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DisableTransitRouterRouteTablePropagationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4976,14 +6170,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DissociateTransitRouterAttachmentFromRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5010,14 +6212,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DissociateTransitRouterAttachmentFromRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5058,19 +6268,32 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.EnableCenVbrHealthCheckResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['HealthCheckInterval'] = request.health_check_interval
-        query['HealthCheckOnly'] = request.health_check_only
-        query['HealthCheckSourceIp'] = request.health_check_source_ip
-        query['HealthCheckTargetIp'] = request.health_check_target_ip
-        query['HealthyThreshold'] = request.healthy_threshold
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrInstanceId'] = request.vbr_instance_id
-        query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
-        query['VbrInstanceRegionId'] = request.vbr_instance_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_only):
+            query['HealthCheckOnly'] = request.health_check_only
+        if not UtilClient.is_unset(request.health_check_source_ip):
+            query['HealthCheckSourceIp'] = request.health_check_source_ip
+        if not UtilClient.is_unset(request.health_check_target_ip):
+            query['HealthCheckTargetIp'] = request.health_check_target_ip
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_id):
+            query['VbrInstanceId'] = request.vbr_instance_id
+        if not UtilClient.is_unset(request.vbr_instance_owner_id):
+            query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_region_id):
+            query['VbrInstanceRegionId'] = request.vbr_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5097,19 +6320,32 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.EnableCenVbrHealthCheckResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['HealthCheckInterval'] = request.health_check_interval
-        query['HealthCheckOnly'] = request.health_check_only
-        query['HealthCheckSourceIp'] = request.health_check_source_ip
-        query['HealthCheckTargetIp'] = request.health_check_target_ip
-        query['HealthyThreshold'] = request.healthy_threshold
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VbrInstanceId'] = request.vbr_instance_id
-        query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
-        query['VbrInstanceRegionId'] = request.vbr_instance_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_only):
+            query['HealthCheckOnly'] = request.health_check_only
+        if not UtilClient.is_unset(request.health_check_source_ip):
+            query['HealthCheckSourceIp'] = request.health_check_source_ip
+        if not UtilClient.is_unset(request.health_check_target_ip):
+            query['HealthCheckTargetIp'] = request.health_check_target_ip
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_id):
+            query['VbrInstanceId'] = request.vbr_instance_id
+        if not UtilClient.is_unset(request.vbr_instance_owner_id):
+            query['VbrInstanceOwnerId'] = request.vbr_instance_owner_id
+        if not UtilClient.is_unset(request.vbr_instance_region_id):
+            query['VbrInstanceRegionId'] = request.vbr_instance_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5150,14 +6386,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.EnableTransitRouterRouteTablePropagationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5184,14 +6428,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.EnableTransitRouterRouteTablePropagationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5232,16 +6484,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.GrantInstanceToTransitRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OrderType'] = request.order_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_owner_id):
+            query['CenOwnerId'] = request.cen_owner_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5268,16 +6530,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.GrantInstanceToTransitRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OrderType'] = request.order_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_owner_id):
+            query['CenOwnerId'] = request.cen_owner_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5318,17 +6590,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListCenInterRegionTrafficQosPoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
-        query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
-        query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_description):
+            query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
+        if not UtilClient.is_unset(request.traffic_qos_policy_id):
+            query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_name):
+            query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5355,17 +6638,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListCenInterRegionTrafficQosPoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
-        query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
-        query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_description):
+            query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
+        if not UtilClient.is_unset(request.traffic_qos_policy_id):
+            query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_name):
+            query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5406,16 +6700,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListGrantVSwitchesToCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5442,16 +6746,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListGrantVSwitchesToCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VpcId'] = request.vpc_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5492,15 +6806,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5527,15 +6850,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5576,16 +6908,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTrafficMarkingPoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
-        query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_description):
+            query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_name):
+            query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5612,16 +6954,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTrafficMarkingPoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
-        query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_description):
+            query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_name):
+            query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5662,11 +7014,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterAvailableResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5693,11 +7050,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterAvailableResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5738,16 +7100,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterPeerAttachmentsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5774,16 +7146,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterPeerAttachmentsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5824,17 +7206,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
-        query['TransitRouterRouteEntryIds'] = request.transit_router_route_entry_ids
-        query['TransitRouterRouteEntryNames'] = request.transit_router_route_entry_names
-        query['TransitRouterRouteEntryStatus'] = request.transit_router_route_entry_status
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_destination_cidr_block):
+            query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
+        if not UtilClient.is_unset(request.transit_router_route_entry_ids):
+            query['TransitRouterRouteEntryIds'] = request.transit_router_route_entry_ids
+        if not UtilClient.is_unset(request.transit_router_route_entry_names):
+            query['TransitRouterRouteEntryNames'] = request.transit_router_route_entry_names
+        if not UtilClient.is_unset(request.transit_router_route_entry_status):
+            query['TransitRouterRouteEntryStatus'] = request.transit_router_route_entry_status
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5861,17 +7254,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
-        query['TransitRouterRouteEntryIds'] = request.transit_router_route_entry_ids
-        query['TransitRouterRouteEntryNames'] = request.transit_router_route_entry_names
-        query['TransitRouterRouteEntryStatus'] = request.transit_router_route_entry_status
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_destination_cidr_block):
+            query['TransitRouterRouteEntryDestinationCidrBlock'] = request.transit_router_route_entry_destination_cidr_block
+        if not UtilClient.is_unset(request.transit_router_route_entry_ids):
+            query['TransitRouterRouteEntryIds'] = request.transit_router_route_entry_ids
+        if not UtilClient.is_unset(request.transit_router_route_entry_names):
+            query['TransitRouterRouteEntryNames'] = request.transit_router_route_entry_names
+        if not UtilClient.is_unset(request.transit_router_route_entry_status):
+            query['TransitRouterRouteEntryStatus'] = request.transit_router_route_entry_status
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5912,14 +7316,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterRouteTableAssociationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5946,14 +7358,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterRouteTableAssociationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5994,14 +7414,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterRouteTablePropagationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6028,14 +7456,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterRouteTablePropagationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6076,17 +7512,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterRouteTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterId'] = request.transit_router_id
-        query['TransitRouterRouteTableIds'] = request.transit_router_route_table_ids
-        query['TransitRouterRouteTableNames'] = request.transit_router_route_table_names
-        query['TransitRouterRouteTableStatus'] = request.transit_router_route_table_status
-        query['TransitRouterRouteTableType'] = request.transit_router_route_table_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_route_table_ids):
+            query['TransitRouterRouteTableIds'] = request.transit_router_route_table_ids
+        if not UtilClient.is_unset(request.transit_router_route_table_names):
+            query['TransitRouterRouteTableNames'] = request.transit_router_route_table_names
+        if not UtilClient.is_unset(request.transit_router_route_table_status):
+            query['TransitRouterRouteTableStatus'] = request.transit_router_route_table_status
+        if not UtilClient.is_unset(request.transit_router_route_table_type):
+            query['TransitRouterRouteTableType'] = request.transit_router_route_table_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6113,17 +7560,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterRouteTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterId'] = request.transit_router_id
-        query['TransitRouterRouteTableIds'] = request.transit_router_route_table_ids
-        query['TransitRouterRouteTableNames'] = request.transit_router_route_table_names
-        query['TransitRouterRouteTableStatus'] = request.transit_router_route_table_status
-        query['TransitRouterRouteTableType'] = request.transit_router_route_table_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_route_table_ids):
+            query['TransitRouterRouteTableIds'] = request.transit_router_route_table_ids
+        if not UtilClient.is_unset(request.transit_router_route_table_names):
+            query['TransitRouterRouteTableNames'] = request.transit_router_route_table_names
+        if not UtilClient.is_unset(request.transit_router_route_table_status):
+            query['TransitRouterRouteTableStatus'] = request.transit_router_route_table_status
+        if not UtilClient.is_unset(request.transit_router_route_table_type):
+            query['TransitRouterRouteTableType'] = request.transit_router_route_table_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6164,16 +7622,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterVbrAttachmentsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6200,16 +7668,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterVbrAttachmentsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6250,16 +7728,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6286,16 +7774,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterVpcAttachmentsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6336,15 +7834,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRoutersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6371,15 +7878,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRoutersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6420,14 +7936,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyCenAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProtectionLevel'] = request.protection_level
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.protection_level):
+            query['ProtectionLevel'] = request.protection_level
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6454,14 +7978,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyCenAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProtectionLevel'] = request.protection_level
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.protection_level):
+            query['ProtectionLevel'] = request.protection_level
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6502,13 +8034,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6535,13 +8074,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyCenBandwidthPackageAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['Description'] = request.description
-        query['Name'] = request.name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6582,12 +8128,18 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6614,12 +8166,18 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyCenBandwidthPackageSpecResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6660,37 +8218,68 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AsPathMatchMode'] = request.as_path_match_mode
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['CidrMatchMode'] = request.cidr_match_mode
-        query['CommunityMatchMode'] = request.community_match_mode
-        query['CommunityOperateMode'] = request.community_operate_mode
-        query['Description'] = request.description
-        query['DestinationChildInstanceTypes'] = request.destination_child_instance_types
-        query['DestinationCidrBlocks'] = request.destination_cidr_blocks
-        query['DestinationInstanceIds'] = request.destination_instance_ids
-        query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
-        query['DestinationRouteTableIds'] = request.destination_route_table_ids
-        query['MapResult'] = request.map_result
-        query['MatchAsns'] = request.match_asns
-        query['MatchCommunitySet'] = request.match_community_set
-        query['NextPriority'] = request.next_priority
-        query['OperateCommunitySet'] = request.operate_community_set
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Preference'] = request.preference
-        query['PrependAsPath'] = request.prepend_as_path
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteMapId'] = request.route_map_id
-        query['RouteTypes'] = request.route_types
-        query['SourceChildInstanceTypes'] = request.source_child_instance_types
-        query['SourceInstanceIds'] = request.source_instance_ids
-        query['SourceInstanceIdsReverseMatch'] = request.source_instance_ids_reverse_match
-        query['SourceRegionIds'] = request.source_region_ids
-        query['SourceRouteTableIds'] = request.source_route_table_ids
+        if not UtilClient.is_unset(request.as_path_match_mode):
+            query['AsPathMatchMode'] = request.as_path_match_mode
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.cidr_match_mode):
+            query['CidrMatchMode'] = request.cidr_match_mode
+        if not UtilClient.is_unset(request.community_match_mode):
+            query['CommunityMatchMode'] = request.community_match_mode
+        if not UtilClient.is_unset(request.community_operate_mode):
+            query['CommunityOperateMode'] = request.community_operate_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_child_instance_types):
+            query['DestinationChildInstanceTypes'] = request.destination_child_instance_types
+        if not UtilClient.is_unset(request.destination_cidr_blocks):
+            query['DestinationCidrBlocks'] = request.destination_cidr_blocks
+        if not UtilClient.is_unset(request.destination_instance_ids):
+            query['DestinationInstanceIds'] = request.destination_instance_ids
+        if not UtilClient.is_unset(request.destination_instance_ids_reverse_match):
+            query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.destination_route_table_ids):
+            query['DestinationRouteTableIds'] = request.destination_route_table_ids
+        if not UtilClient.is_unset(request.map_result):
+            query['MapResult'] = request.map_result
+        if not UtilClient.is_unset(request.match_asns):
+            query['MatchAsns'] = request.match_asns
+        if not UtilClient.is_unset(request.match_community_set):
+            query['MatchCommunitySet'] = request.match_community_set
+        if not UtilClient.is_unset(request.next_priority):
+            query['NextPriority'] = request.next_priority
+        if not UtilClient.is_unset(request.operate_community_set):
+            query['OperateCommunitySet'] = request.operate_community_set
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.preference):
+            query['Preference'] = request.preference
+        if not UtilClient.is_unset(request.prepend_as_path):
+            query['PrependAsPath'] = request.prepend_as_path
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not UtilClient.is_unset(request.route_types):
+            query['RouteTypes'] = request.route_types
+        if not UtilClient.is_unset(request.source_child_instance_types):
+            query['SourceChildInstanceTypes'] = request.source_child_instance_types
+        if not UtilClient.is_unset(request.source_instance_ids):
+            query['SourceInstanceIds'] = request.source_instance_ids
+        if not UtilClient.is_unset(request.source_instance_ids_reverse_match):
+            query['SourceInstanceIdsReverseMatch'] = request.source_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.source_region_ids):
+            query['SourceRegionIds'] = request.source_region_ids
+        if not UtilClient.is_unset(request.source_route_table_ids):
+            query['SourceRouteTableIds'] = request.source_route_table_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6717,37 +8306,68 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AsPathMatchMode'] = request.as_path_match_mode
-        query['CenId'] = request.cen_id
-        query['CenRegionId'] = request.cen_region_id
-        query['CidrMatchMode'] = request.cidr_match_mode
-        query['CommunityMatchMode'] = request.community_match_mode
-        query['CommunityOperateMode'] = request.community_operate_mode
-        query['Description'] = request.description
-        query['DestinationChildInstanceTypes'] = request.destination_child_instance_types
-        query['DestinationCidrBlocks'] = request.destination_cidr_blocks
-        query['DestinationInstanceIds'] = request.destination_instance_ids
-        query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
-        query['DestinationRouteTableIds'] = request.destination_route_table_ids
-        query['MapResult'] = request.map_result
-        query['MatchAsns'] = request.match_asns
-        query['MatchCommunitySet'] = request.match_community_set
-        query['NextPriority'] = request.next_priority
-        query['OperateCommunitySet'] = request.operate_community_set
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Preference'] = request.preference
-        query['PrependAsPath'] = request.prepend_as_path
-        query['Priority'] = request.priority
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['RouteMapId'] = request.route_map_id
-        query['RouteTypes'] = request.route_types
-        query['SourceChildInstanceTypes'] = request.source_child_instance_types
-        query['SourceInstanceIds'] = request.source_instance_ids
-        query['SourceInstanceIdsReverseMatch'] = request.source_instance_ids_reverse_match
-        query['SourceRegionIds'] = request.source_region_ids
-        query['SourceRouteTableIds'] = request.source_route_table_ids
+        if not UtilClient.is_unset(request.as_path_match_mode):
+            query['AsPathMatchMode'] = request.as_path_match_mode
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_region_id):
+            query['CenRegionId'] = request.cen_region_id
+        if not UtilClient.is_unset(request.cidr_match_mode):
+            query['CidrMatchMode'] = request.cidr_match_mode
+        if not UtilClient.is_unset(request.community_match_mode):
+            query['CommunityMatchMode'] = request.community_match_mode
+        if not UtilClient.is_unset(request.community_operate_mode):
+            query['CommunityOperateMode'] = request.community_operate_mode
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_child_instance_types):
+            query['DestinationChildInstanceTypes'] = request.destination_child_instance_types
+        if not UtilClient.is_unset(request.destination_cidr_blocks):
+            query['DestinationCidrBlocks'] = request.destination_cidr_blocks
+        if not UtilClient.is_unset(request.destination_instance_ids):
+            query['DestinationInstanceIds'] = request.destination_instance_ids
+        if not UtilClient.is_unset(request.destination_instance_ids_reverse_match):
+            query['DestinationInstanceIdsReverseMatch'] = request.destination_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.destination_route_table_ids):
+            query['DestinationRouteTableIds'] = request.destination_route_table_ids
+        if not UtilClient.is_unset(request.map_result):
+            query['MapResult'] = request.map_result
+        if not UtilClient.is_unset(request.match_asns):
+            query['MatchAsns'] = request.match_asns
+        if not UtilClient.is_unset(request.match_community_set):
+            query['MatchCommunitySet'] = request.match_community_set
+        if not UtilClient.is_unset(request.next_priority):
+            query['NextPriority'] = request.next_priority
+        if not UtilClient.is_unset(request.operate_community_set):
+            query['OperateCommunitySet'] = request.operate_community_set
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.preference):
+            query['Preference'] = request.preference
+        if not UtilClient.is_unset(request.prepend_as_path):
+            query['PrependAsPath'] = request.prepend_as_path
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not UtilClient.is_unset(request.route_types):
+            query['RouteTypes'] = request.route_types
+        if not UtilClient.is_unset(request.source_child_instance_types):
+            query['SourceChildInstanceTypes'] = request.source_child_instance_types
+        if not UtilClient.is_unset(request.source_instance_ids):
+            query['SourceInstanceIds'] = request.source_instance_ids
+        if not UtilClient.is_unset(request.source_instance_ids_reverse_match):
+            query['SourceInstanceIdsReverseMatch'] = request.source_instance_ids_reverse_match
+        if not UtilClient.is_unset(request.source_region_ids):
+            query['SourceRegionIds'] = request.source_region_ids
+        if not UtilClient.is_unset(request.source_route_table_ids):
+            query['SourceRouteTableIds'] = request.source_route_table_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6788,16 +8408,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['FlowLogId'] = request.flow_log_id
-        query['FlowLogName'] = request.flow_log_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6824,16 +8454,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['FlowLogId'] = request.flow_log_id
-        query['FlowLogName'] = request.flow_log_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.flow_log_id):
+            query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.flow_log_name):
+            query['FlowLogName'] = request.flow_log_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6874,15 +8514,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NewResourceGroupId'] = request.new_resource_group_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6909,15 +8558,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['NewResourceGroupId'] = request.new_resource_group_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6958,11 +8616,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.OpenTransitRouterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6989,11 +8652,16 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.OpenTransitRouterServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7034,14 +8702,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.PublishRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_route_table_id):
+            query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7068,14 +8744,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.PublishRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_route_table_id):
+            query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7116,14 +8800,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkRuleIds'] = request.traffic_mark_rule_ids
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_mark_rule_ids):
+            query['TrafficMarkRuleIds'] = request.traffic_mark_rule_ids
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7150,14 +8842,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkRuleIds'] = request.traffic_mark_rule_ids
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_mark_rule_ids):
+            query['TrafficMarkRuleIds'] = request.traffic_mark_rule_ids
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7198,14 +8898,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ReplaceTransitRouterRouteTableAssociationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7232,14 +8940,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ReplaceTransitRouterRouteTableAssociationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7280,17 +8996,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ResolveAndRouteServiceInCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionIds'] = request.access_region_ids
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Host'] = request.host
-        query['HostRegionId'] = request.host_region_id
-        query['HostVpcId'] = request.host_vpc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_ids):
+            query['AccessRegionIds'] = request.access_region_ids
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.host_vpc_id):
+            query['HostVpcId'] = request.host_vpc_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7317,17 +9044,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ResolveAndRouteServiceInCenResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionIds'] = request.access_region_ids
-        query['CenId'] = request.cen_id
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Host'] = request.host
-        query['HostRegionId'] = request.host_region_id
-        query['HostVpcId'] = request.host_vpc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_ids):
+            query['AccessRegionIds'] = request.access_region_ids
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.host):
+            query['Host'] = request.host
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.host_vpc_id):
+            query['HostVpcId'] = request.host_vpc_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7368,15 +9106,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RevokeInstanceFromTransitRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_owner_id):
+            query['CenOwnerId'] = request.cen_owner_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7403,15 +9150,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RevokeInstanceFromTransitRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['CenOwnerId'] = request.cen_owner_id
-        query['InstanceId'] = request.instance_id
-        query['InstanceType'] = request.instance_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.cen_owner_id):
+            query['CenOwnerId'] = request.cen_owner_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7452,14 +9208,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['HostRegionId'] = request.host_region_id
-        query['HostVpcId'] = request.host_vpc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.host_vpc_id):
+            query['HostVpcId'] = request.host_vpc_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7486,14 +9250,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RoutePrivateZoneInCenToVpcResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['HostRegionId'] = request.host_region_id
-        query['HostVpcId'] = request.host_vpc_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.host_region_id):
+            query['HostRegionId'] = request.host_region_id
+        if not UtilClient.is_unset(request.host_vpc_id):
+            query['HostVpcId'] = request.host_vpc_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7534,14 +9306,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BandwidthLimit'] = request.bandwidth_limit
-        query['CenId'] = request.cen_id
-        query['LocalRegionId'] = request.local_region_id
-        query['OppositeRegionId'] = request.opposite_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.bandwidth_limit):
+            query['BandwidthLimit'] = request.bandwidth_limit
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.local_region_id):
+            query['LocalRegionId'] = request.local_region_id
+        if not UtilClient.is_unset(request.opposite_region_id):
+            query['OppositeRegionId'] = request.opposite_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7568,14 +9348,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.SetCenInterRegionBandwidthLimitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BandwidthLimit'] = request.bandwidth_limit
-        query['CenId'] = request.cen_id
-        query['LocalRegionId'] = request.local_region_id
-        query['OppositeRegionId'] = request.opposite_region_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.bandwidth_limit):
+            query['BandwidthLimit'] = request.bandwidth_limit
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.local_region_id):
+            query['LocalRegionId'] = request.local_region_id
+        if not UtilClient.is_unset(request.opposite_region_id):
+            query['OppositeRegionId'] = request.opposite_region_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7616,13 +9404,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7649,13 +9444,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7696,13 +9498,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7729,13 +9538,20 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.TempUpgradeCenBandwidthPackageSpecResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bandwidth'] = request.bandwidth
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7776,12 +9592,18 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UnassociateCenBandwidthPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7808,12 +9630,18 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UnassociateCenBandwidthPackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7854,12 +9682,18 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7886,12 +9720,18 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessRegionId'] = request.access_region_id
-        query['CenId'] = request.cen_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.access_region_id):
+            query['AccessRegionId'] = request.access_region_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7932,14 +9772,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7966,14 +9814,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8014,15 +9870,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateCenInterRegionTrafficQosPolicyAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
-        query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
-        query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_description):
+            query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
+        if not UtilClient.is_unset(request.traffic_qos_policy_id):
+            query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_name):
+            query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8049,15 +9914,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateCenInterRegionTrafficQosPolicyAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
-        query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
-        query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_description):
+            query['TrafficQosPolicyDescription'] = request.traffic_qos_policy_description
+        if not UtilClient.is_unset(request.traffic_qos_policy_id):
+            query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_name):
+            query['TrafficQosPolicyName'] = request.traffic_qos_policy_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8098,17 +9972,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateCenInterRegionTrafficQosQueueAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Dscps'] = request.dscps
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['QosQueueDescription'] = request.qos_queue_description
-        query['QosQueueId'] = request.qos_queue_id
-        query['QosQueueName'] = request.qos_queue_name
-        query['RemainBandwidthPercent'] = request.remain_bandwidth_percent
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.dscps):
+            query['Dscps'] = request.dscps
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_queue_description):
+            query['QosQueueDescription'] = request.qos_queue_description
+        if not UtilClient.is_unset(request.qos_queue_id):
+            query['QosQueueId'] = request.qos_queue_id
+        if not UtilClient.is_unset(request.qos_queue_name):
+            query['QosQueueName'] = request.qos_queue_name
+        if not UtilClient.is_unset(request.remain_bandwidth_percent):
+            query['RemainBandwidthPercent'] = request.remain_bandwidth_percent
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8135,17 +10020,28 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateCenInterRegionTrafficQosQueueAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Dscps'] = request.dscps
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['QosQueueDescription'] = request.qos_queue_description
-        query['QosQueueId'] = request.qos_queue_id
-        query['QosQueueName'] = request.qos_queue_name
-        query['RemainBandwidthPercent'] = request.remain_bandwidth_percent
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.dscps):
+            query['Dscps'] = request.dscps
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_queue_description):
+            query['QosQueueDescription'] = request.qos_queue_description
+        if not UtilClient.is_unset(request.qos_queue_id):
+            query['QosQueueId'] = request.qos_queue_id
+        if not UtilClient.is_unset(request.qos_queue_name):
+            query['QosQueueName'] = request.qos_queue_name
+        if not UtilClient.is_unset(request.remain_bandwidth_percent):
+            query['RemainBandwidthPercent'] = request.remain_bandwidth_percent
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8186,15 +10082,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTrafficMarkingPolicyAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
-        query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_description):
+            query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_name):
+            query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8221,15 +10126,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTrafficMarkingPolicyAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
-        query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
-        query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_description):
+            query['TrafficMarkingPolicyDescription'] = request.traffic_marking_policy_description
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        if not UtilClient.is_unset(request.traffic_marking_policy_name):
+            query['TrafficMarkingPolicyName'] = request.traffic_marking_policy_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8270,16 +10184,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterDescription'] = request.transit_router_description
-        query['TransitRouterId'] = request.transit_router_id
-        query['TransitRouterName'] = request.transit_router_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_description):
+            query['TransitRouterDescription'] = request.transit_router_description
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_name):
+            query['TransitRouterName'] = request.transit_router_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8306,16 +10230,26 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterDescription'] = request.transit_router_description
-        query['TransitRouterId'] = request.transit_router_id
-        query['TransitRouterName'] = request.transit_router_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_description):
+            query['TransitRouterDescription'] = request.transit_router_description
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_name):
+            query['TransitRouterName'] = request.transit_router_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8356,19 +10290,32 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterPeerAttachmentAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthType'] = request.bandwidth_type
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.bandwidth_type):
+            query['BandwidthType'] = request.bandwidth_type
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8395,19 +10342,32 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterPeerAttachmentAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
-        query['Bandwidth'] = request.bandwidth
-        query['BandwidthType'] = request.bandwidth_type
-        query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.auto_publish_route_enabled):
+            query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.bandwidth_type):
+            query['BandwidthType'] = request.bandwidth_type
+        if not UtilClient.is_unset(request.cen_bandwidth_package_id):
+            query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8448,15 +10408,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterRouteEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteEntryDescription'] = request.transit_router_route_entry_description
-        query['TransitRouterRouteEntryId'] = request.transit_router_route_entry_id
-        query['TransitRouterRouteEntryName'] = request.transit_router_route_entry_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_description):
+            query['TransitRouterRouteEntryDescription'] = request.transit_router_route_entry_description
+        if not UtilClient.is_unset(request.transit_router_route_entry_id):
+            query['TransitRouterRouteEntryId'] = request.transit_router_route_entry_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_name):
+            query['TransitRouterRouteEntryName'] = request.transit_router_route_entry_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8483,15 +10452,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterRouteEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteEntryDescription'] = request.transit_router_route_entry_description
-        query['TransitRouterRouteEntryId'] = request.transit_router_route_entry_id
-        query['TransitRouterRouteEntryName'] = request.transit_router_route_entry_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_description):
+            query['TransitRouterRouteEntryDescription'] = request.transit_router_route_entry_description
+        if not UtilClient.is_unset(request.transit_router_route_entry_id):
+            query['TransitRouterRouteEntryId'] = request.transit_router_route_entry_id
+        if not UtilClient.is_unset(request.transit_router_route_entry_name):
+            query['TransitRouterRouteEntryName'] = request.transit_router_route_entry_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8532,15 +10510,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteTableDescription'] = request.transit_router_route_table_description
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
-        query['TransitRouterRouteTableName'] = request.transit_router_route_table_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_table_description):
+            query['TransitRouterRouteTableDescription'] = request.transit_router_route_table_description
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.transit_router_route_table_name):
+            query['TransitRouterRouteTableName'] = request.transit_router_route_table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8567,15 +10554,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterRouteTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterRouteTableDescription'] = request.transit_router_route_table_description
-        query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
-        query['TransitRouterRouteTableName'] = request.transit_router_route_table_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_route_table_description):
+            query['TransitRouterRouteTableDescription'] = request.transit_router_route_table_description
+        if not UtilClient.is_unset(request.transit_router_route_table_id):
+            query['TransitRouterRouteTableId'] = request.transit_router_route_table_id
+        if not UtilClient.is_unset(request.transit_router_route_table_name):
+            query['TransitRouterRouteTableName'] = request.transit_router_route_table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8616,15 +10612,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8651,15 +10656,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterVbrAttachmentAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8700,15 +10714,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8735,15 +10758,24 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
-        query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
-        query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_attachment_description):
+            query['TransitRouterAttachmentDescription'] = request.transit_router_attachment_description
+        if not UtilClient.is_unset(request.transit_router_attachment_id):
+            query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
+        if not UtilClient.is_unset(request.transit_router_attachment_name):
+            query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8784,14 +10816,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.WithdrawPublishedRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_route_table_id):
+            query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8818,14 +10858,22 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.WithdrawPublishedRouteEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CenId'] = request.cen_id
-        query['ChildInstanceId'] = request.child_instance_id
-        query['ChildInstanceRegionId'] = request.child_instance_region_id
-        query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
-        query['ChildInstanceType'] = request.child_instance_type
-        query['DestinationCidrBlock'] = request.destination_cidr_block
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.child_instance_id):
+            query['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_region_id):
+            query['ChildInstanceRegionId'] = request.child_instance_region_id
+        if not UtilClient.is_unset(request.child_instance_route_table_id):
+            query['ChildInstanceRouteTableId'] = request.child_instance_route_table_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            query['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
