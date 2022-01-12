@@ -1,3 +1,6 @@
+2022-01-12 Version: 1.0.7
+- Update sdk by platform.
+
 2022-01-12 Version: 1.0.6
 - Update sdk by platform.
 
