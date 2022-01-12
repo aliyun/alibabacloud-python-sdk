@@ -48,12 +48,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.AddCidrToConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Cidrs'] = request.cidrs
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.cidrs):
+            query['Cidrs'] = request.cidrs
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -80,12 +86,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.AddCidrToConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Cidrs'] = request.cidrs
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.cidrs):
+            query['Cidrs'] = request.cidrs
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -126,11 +138,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.AddIoTCloudConnectorToGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -157,11 +174,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.AddIoTCloudConnectorToGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -202,13 +224,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.AssociateIpWithConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Ips'] = request.ips
-        query['IpsFilePath'] = request.ips_file_path
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ips):
+            query['Ips'] = request.ips
+        if not UtilClient.is_unset(request.ips_file_path):
+            query['IpsFilePath'] = request.ips_file_path
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -235,13 +264,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.AssociateIpWithConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Ips'] = request.ips
-        query['IpsFilePath'] = request.ips_file_path
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ips):
+            query['Ips'] = request.ips
+        if not UtilClient.is_unset(request.ips_file_path):
+            query['IpsFilePath'] = request.ips_file_path
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -282,12 +318,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.AssociateVSwitchWithIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['VSwitchList'] = request.v_switch_list
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_list):
+            query['VSwitchList'] = request.v_switch_list
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -314,12 +356,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.AssociateVSwitchWithIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['VSwitchList'] = request.v_switch_list
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_list):
+            query['VSwitchList'] = request.v_switch_list
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -360,16 +408,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateAuthorizationRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleDescription'] = request.authorization_rule_description
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['ClientToken'] = request.client_token
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
-        query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.authorization_rule_description):
+            query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_cidrs):
+            query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -396,16 +454,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateAuthorizationRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleDescription'] = request.authorization_rule_description
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['ClientToken'] = request.client_token
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
-        query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.authorization_rule_description):
+            query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_cidrs):
+            query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -446,14 +514,22 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Cidrs'] = request.cidrs
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolDescription'] = request.connection_pool_description
-        query['ConnectionPoolName'] = request.connection_pool_name
-        query['Count'] = request.count
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.cidrs):
+            query['Cidrs'] = request.cidrs
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_description):
+            query['ConnectionPoolDescription'] = request.connection_pool_description
+        if not UtilClient.is_unset(request.connection_pool_name):
+            query['ConnectionPoolName'] = request.connection_pool_name
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -480,14 +556,22 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Cidrs'] = request.cidrs
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolDescription'] = request.connection_pool_description
-        query['ConnectionPoolName'] = request.connection_pool_name
-        query['Count'] = request.count
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.cidrs):
+            query['Cidrs'] = request.cidrs
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_description):
+            query['ConnectionPoolDescription'] = request.connection_pool_description
+        if not UtilClient.is_unset(request.connection_pool_name):
+            query['ConnectionPoolName'] = request.connection_pool_name
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -528,16 +612,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateGroupAuthorizationRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleDescription'] = request.authorization_rule_description
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['ClientToken'] = request.client_token
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
-        query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.authorization_rule_description):
+            query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_cidrs):
+            query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -564,16 +658,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateGroupAuthorizationRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleDescription'] = request.authorization_rule_description
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['ClientToken'] = request.client_token
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
-        query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.authorization_rule_description):
+            query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_cidrs):
+            query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -614,15 +718,24 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['APN'] = request.apn
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ISP'] = request.isp
-        query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
-        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
-        query['RegionId'] = request.region_id
-        query['ResourceUid'] = request.resource_uid
-        query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
+        if not UtilClient.is_unset(request.apn):
+            query['APN'] = request.apn
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.isp):
+            query['ISP'] = request.isp
+        if not UtilClient.is_unset(request.io_tcloud_connector_description):
+            query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
+        if not UtilClient.is_unset(request.io_tcloud_connector_name):
+            query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.wildcard_domain_enabled):
+            query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -649,15 +762,24 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['APN'] = request.apn
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ISP'] = request.isp
-        query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
-        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
-        query['RegionId'] = request.region_id
-        query['ResourceUid'] = request.resource_uid
-        query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
+        if not UtilClient.is_unset(request.apn):
+            query['APN'] = request.apn
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.isp):
+            query['ISP'] = request.isp
+        if not UtilClient.is_unset(request.io_tcloud_connector_description):
+            query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
+        if not UtilClient.is_unset(request.io_tcloud_connector_name):
+            query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.wildcard_domain_enabled):
+            query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -698,11 +820,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateIoTCloudConnectorGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['Name'] = request.name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -729,11 +856,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateIoTCloudConnectorGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['Name'] = request.name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -774,12 +906,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceDescription'] = request.service_description
-        query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -806,12 +944,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceDescription'] = request.service_description
-        query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -852,15 +996,24 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateServiceEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceEntryDescription'] = request.service_entry_description
-        query['ServiceEntryName'] = request.service_entry_name
-        query['ServiceId'] = request.service_id
-        query['Target'] = request.target
-        query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_entry_description):
+            query['ServiceEntryDescription'] = request.service_entry_description
+        if not UtilClient.is_unset(request.service_entry_name):
+            query['ServiceEntryName'] = request.service_entry_name
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -887,15 +1040,24 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateServiceEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceEntryDescription'] = request.service_entry_description
-        query['ServiceEntryName'] = request.service_entry_name
-        query['ServiceId'] = request.service_id
-        query['Target'] = request.target
-        query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_entry_description):
+            query['ServiceEntryDescription'] = request.service_entry_description
+        if not UtilClient.is_unset(request.service_entry_name):
+            query['ServiceEntryName'] = request.service_entry_name
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -936,11 +1098,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteAuthorizationRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleId'] = request.authorization_rule_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -967,11 +1134,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteAuthorizationRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleId'] = request.authorization_rule_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1012,11 +1184,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1043,11 +1220,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1088,11 +1270,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteGroupAuthorizationRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleId'] = request.authorization_rule_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1119,11 +1306,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteGroupAuthorizationRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleId'] = request.authorization_rule_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1164,10 +1356,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1194,10 +1390,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1238,10 +1438,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteIoTCloudConnectorGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1268,10 +1472,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteIoTCloudConnectorGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1312,11 +1520,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1343,11 +1556,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1388,12 +1606,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteServiceEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceEntryId'] = request.service_entry_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_entry_id):
+            query['ServiceEntryId'] = request.service_entry_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1420,12 +1644,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteServiceEntryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceEntryId'] = request.service_entry_id
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_entry_id):
+            query['ServiceEntryId'] = request.service_entry_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1466,10 +1696,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DisableIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1496,10 +1730,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DisableIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1540,13 +1778,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DissociateIpFromConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Ips'] = request.ips
-        query['IpsFilePath'] = request.ips_file_path
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ips):
+            query['Ips'] = request.ips
+        if not UtilClient.is_unset(request.ips_file_path):
+            query['IpsFilePath'] = request.ips_file_path
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1573,13 +1818,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DissociateIpFromConnectionPoolResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Ips'] = request.ips
-        query['IpsFilePath'] = request.ips_file_path
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ips):
+            query['Ips'] = request.ips
+        if not UtilClient.is_unset(request.ips_file_path):
+            query['IpsFilePath'] = request.ips_file_path
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1620,10 +1872,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DissociateVSwitchFromIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1650,10 +1906,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DissociateVSwitchFromIoTCloudConnectorResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1694,12 +1954,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.EnableIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessLogSlsLogStore'] = request.access_log_sls_log_store
-        query['AccessLogSlsProject'] = request.access_log_sls_project
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.access_log_sls_log_store):
+            query['AccessLogSlsLogStore'] = request.access_log_sls_log_store
+        if not UtilClient.is_unset(request.access_log_sls_project):
+            query['AccessLogSlsProject'] = request.access_log_sls_project
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1726,12 +1992,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.EnableIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessLogSlsLogStore'] = request.access_log_sls_log_store
-        query['AccessLogSlsProject'] = request.access_log_sls_project
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.access_log_sls_log_store):
+            query['AccessLogSlsLogStore'] = request.access_log_sls_log_store
+        if not UtilClient.is_unset(request.access_log_sls_project):
+            query['AccessLogSlsProject'] = request.access_log_sls_project
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1772,10 +2044,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.GetConnectionPoolIpOperationResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['QueryRequestId'] = request.query_request_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.query_request_id):
+            query['QueryRequestId'] = request.query_request_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1802,10 +2078,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.GetConnectionPoolIpOperationResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['QueryRequestId'] = request.query_request_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.query_request_id):
+            query['QueryRequestId'] = request.query_request_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1846,10 +2126,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.GetIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1876,10 +2160,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.GetIoTCloudConnectorAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1920,12 +2208,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.GetStsInfoAndOssPathResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['FileName'] = request.file_name
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1952,12 +2246,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.GetStsInfoAndOssPathResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['DryRun'] = request.dry_run
-        query['FileName'] = request.file_name
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1998,8 +2298,10 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.GrantVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['VirtualBorderRouterId'] = request.virtual_border_router_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.virtual_border_router_id):
+            query['VirtualBorderRouterId'] = request.virtual_border_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2026,8 +2328,10 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.GrantVirtualBorderRouterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
-        query['VirtualBorderRouterId'] = request.virtual_border_router_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.virtual_border_router_id):
+            query['VirtualBorderRouterId'] = request.virtual_border_router_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2068,11 +2372,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListAPNsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['APN'] = request.apn
-        query['ISP'] = request.isp
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.apn):
+            query['APN'] = request.apn
+        if not UtilClient.is_unset(request.isp):
+            query['ISP'] = request.isp
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2099,11 +2408,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListAPNsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['APN'] = request.apn
-        query['ISP'] = request.isp
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.apn):
+            query['APN'] = request.apn
+        if not UtilClient.is_unset(request.isp):
+            query['ISP'] = request.isp
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2144,16 +2458,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListAuthorizationRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleIds'] = request.authorization_rule_ids
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['AuthorizationRuleStatus'] = request.authorization_rule_status
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.authorization_rule_ids):
+            query['AuthorizationRuleIds'] = request.authorization_rule_ids
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.authorization_rule_status):
+            query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2180,16 +2504,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListAuthorizationRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleIds'] = request.authorization_rule_ids
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['AuthorizationRuleStatus'] = request.authorization_rule_status
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.authorization_rule_ids):
+            query['AuthorizationRuleIds'] = request.authorization_rule_ids
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.authorization_rule_status):
+            query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2230,13 +2564,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListConnectionPoolAllIpsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Ip'] = request.ip
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2263,13 +2604,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListConnectionPoolAllIpsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Ip'] = request.ip
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2310,12 +2658,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListConnectionPoolIpsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Ip'] = request.ip
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2342,12 +2696,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListConnectionPoolIpsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Ip'] = request.ip
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2388,13 +2748,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListConnectionPoolsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionPoolIds'] = request.connection_pool_ids
-        query['ConnectionPoolName'] = request.connection_pool_name
-        query['ConnectionPoolStatus'] = request.connection_pool_status
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.connection_pool_ids):
+            query['ConnectionPoolIds'] = request.connection_pool_ids
+        if not UtilClient.is_unset(request.connection_pool_name):
+            query['ConnectionPoolName'] = request.connection_pool_name
+        if not UtilClient.is_unset(request.connection_pool_status):
+            query['ConnectionPoolStatus'] = request.connection_pool_status
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2421,13 +2788,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListConnectionPoolsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConnectionPoolIds'] = request.connection_pool_ids
-        query['ConnectionPoolName'] = request.connection_pool_name
-        query['ConnectionPoolStatus'] = request.connection_pool_status
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.connection_pool_ids):
+            query['ConnectionPoolIds'] = request.connection_pool_ids
+        if not UtilClient.is_unset(request.connection_pool_name):
+            query['ConnectionPoolName'] = request.connection_pool_name
+        if not UtilClient.is_unset(request.connection_pool_status):
+            query['ConnectionPoolStatus'] = request.connection_pool_status
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2468,16 +2842,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListGroupAuthorizationRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleIds'] = request.authorization_rule_ids
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['AuthorizationRuleStatus'] = request.authorization_rule_status
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.authorization_rule_ids):
+            query['AuthorizationRuleIds'] = request.authorization_rule_ids
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.authorization_rule_status):
+            query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2504,16 +2888,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListGroupAuthorizationRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleIds'] = request.authorization_rule_ids
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['AuthorizationRuleStatus'] = request.authorization_rule_status
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.authorization_rule_ids):
+            query['AuthorizationRuleIds'] = request.authorization_rule_ids
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.authorization_rule_status):
+            query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2554,8 +2948,10 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListIoTCloudConnectorAvailableZonesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2582,8 +2978,10 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListIoTCloudConnectorAvailableZonesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2624,12 +3022,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListIoTCloudConnectorGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IoTCloudConnectorGroupIds'] = request.io_tcloud_connector_group_ids
-        query['IoTCloudConnectorGroupName'] = request.io_tcloud_connector_group_name
-        query['IoTCloudConnectorGroupStatus'] = request.io_tcloud_connector_group_status
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_ids):
+            query['IoTCloudConnectorGroupIds'] = request.io_tcloud_connector_group_ids
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_name):
+            query['IoTCloudConnectorGroupName'] = request.io_tcloud_connector_group_name
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_status):
+            query['IoTCloudConnectorGroupStatus'] = request.io_tcloud_connector_group_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2656,12 +3060,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListIoTCloudConnectorGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IoTCloudConnectorGroupIds'] = request.io_tcloud_connector_group_ids
-        query['IoTCloudConnectorGroupName'] = request.io_tcloud_connector_group_name
-        query['IoTCloudConnectorGroupStatus'] = request.io_tcloud_connector_group_status
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_ids):
+            query['IoTCloudConnectorGroupIds'] = request.io_tcloud_connector_group_ids
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_name):
+            query['IoTCloudConnectorGroupName'] = request.io_tcloud_connector_group_name
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_status):
+            query['IoTCloudConnectorGroupStatus'] = request.io_tcloud_connector_group_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2702,16 +3112,28 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListIoTCloudConnectorsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['APN'] = request.apn
-        query['ISP'] = request.isp
-        query['IoTCloudConnectorIds'] = request.io_tcloud_connector_ids
-        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
-        query['IoTCloudConnectorStatus'] = request.io_tcloud_connector_status
-        query['IsInGroup'] = request.is_in_group
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.apn):
+            query['APN'] = request.apn
+        if not UtilClient.is_unset(request.isp):
+            query['ISP'] = request.isp
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_ids):
+            query['IoTCloudConnectorIds'] = request.io_tcloud_connector_ids
+        if not UtilClient.is_unset(request.io_tcloud_connector_name):
+            query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        if not UtilClient.is_unset(request.io_tcloud_connector_status):
+            query['IoTCloudConnectorStatus'] = request.io_tcloud_connector_status
+        if not UtilClient.is_unset(request.is_in_group):
+            query['IsInGroup'] = request.is_in_group
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2738,16 +3160,28 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListIoTCloudConnectorsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['APN'] = request.apn
-        query['ISP'] = request.isp
-        query['IoTCloudConnectorIds'] = request.io_tcloud_connector_ids
-        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
-        query['IoTCloudConnectorStatus'] = request.io_tcloud_connector_status
-        query['IsInGroup'] = request.is_in_group
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.apn):
+            query['APN'] = request.apn
+        if not UtilClient.is_unset(request.isp):
+            query['ISP'] = request.isp
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_ids):
+            query['IoTCloudConnectorIds'] = request.io_tcloud_connector_ids
+        if not UtilClient.is_unset(request.io_tcloud_connector_name):
+            query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        if not UtilClient.is_unset(request.io_tcloud_connector_status):
+            query['IoTCloudConnectorStatus'] = request.io_tcloud_connector_status
+        if not UtilClient.is_unset(request.is_in_group):
+            query['IsInGroup'] = request.is_in_group
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2788,8 +3222,10 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2816,8 +3252,10 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2858,13 +3296,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceStatuses'] = request.resource_statuses
-        query['ServiceIds'] = request.service_ids
-        query['ServiceNames'] = request.service_names
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_statuses):
+            query['ResourceStatuses'] = request.resource_statuses
+        if not UtilClient.is_unset(request.service_ids):
+            query['ServiceIds'] = request.service_ids
+        if not UtilClient.is_unset(request.service_names):
+            query['ServiceNames'] = request.service_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2891,13 +3336,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ResourceStatuses'] = request.resource_statuses
-        query['ServiceIds'] = request.service_ids
-        query['ServiceNames'] = request.service_names
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_statuses):
+            query['ResourceStatuses'] = request.resource_statuses
+        if not UtilClient.is_unset(request.service_ids):
+            query['ServiceIds'] = request.service_ids
+        if not UtilClient.is_unset(request.service_names):
+            query['ServiceNames'] = request.service_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2938,16 +3390,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListServiceEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ServiceEntryIds'] = request.service_entry_ids
-        query['ServiceEntryName'] = request.service_entry_name
-        query['ServiceEntryStatus'] = request.service_entry_status
-        query['ServiceId'] = request.service_id
-        query['Target'] = request.target
-        query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_entry_ids):
+            query['ServiceEntryIds'] = request.service_entry_ids
+        if not UtilClient.is_unset(request.service_entry_name):
+            query['ServiceEntryName'] = request.service_entry_name
+        if not UtilClient.is_unset(request.service_entry_status):
+            query['ServiceEntryStatus'] = request.service_entry_status
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2974,16 +3436,26 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListServiceEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RegionId'] = request.region_id
-        query['ServiceEntryIds'] = request.service_entry_ids
-        query['ServiceEntryName'] = request.service_entry_name
-        query['ServiceEntryStatus'] = request.service_entry_status
-        query['ServiceId'] = request.service_id
-        query['Target'] = request.target
-        query['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_entry_ids):
+            query['ServiceEntryIds'] = request.service_entry_ids
+        if not UtilClient.is_unset(request.service_entry_name):
+            query['ServiceEntryName'] = request.service_entry_name
+        if not UtilClient.is_unset(request.service_entry_status):
+            query['ServiceEntryStatus'] = request.service_entry_status
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3024,7 +3496,8 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.OpenIoTCloudConnectorServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3051,7 +3524,8 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.OpenIoTCloudConnectorServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3092,11 +3566,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3123,11 +3602,16 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.RemoveIoTCloudConnectorFromGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3168,17 +3652,28 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateAuthorizationRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleDescription'] = request.authorization_rule_description
-        query['AuthorizationRuleId'] = request.authorization_rule_id
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['ClientToken'] = request.client_token
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
-        query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.authorization_rule_description):
+            query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_cidrs):
+            query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3205,17 +3700,28 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateAuthorizationRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleDescription'] = request.authorization_rule_description
-        query['AuthorizationRuleId'] = request.authorization_rule_id
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['ClientToken'] = request.client_token
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
-        query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.authorization_rule_description):
+            query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_cidrs):
+            query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3256,15 +3762,24 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateConnectionPoolAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Cidrs'] = request.cidrs
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolDescription'] = request.connection_pool_description
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['ConnectionPoolName'] = request.connection_pool_name
-        query['Count'] = request.count
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.cidrs):
+            query['Cidrs'] = request.cidrs
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_description):
+            query['ConnectionPoolDescription'] = request.connection_pool_description
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.connection_pool_name):
+            query['ConnectionPoolName'] = request.connection_pool_name
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3291,15 +3806,24 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateConnectionPoolAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Cidrs'] = request.cidrs
-        query['ClientToken'] = request.client_token
-        query['ConnectionPoolDescription'] = request.connection_pool_description
-        query['ConnectionPoolId'] = request.connection_pool_id
-        query['ConnectionPoolName'] = request.connection_pool_name
-        query['Count'] = request.count
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.cidrs):
+            query['Cidrs'] = request.cidrs
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_pool_description):
+            query['ConnectionPoolDescription'] = request.connection_pool_description
+        if not UtilClient.is_unset(request.connection_pool_id):
+            query['ConnectionPoolId'] = request.connection_pool_id
+        if not UtilClient.is_unset(request.connection_pool_name):
+            query['ConnectionPoolName'] = request.connection_pool_name
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3340,17 +3864,28 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleDescription'] = request.authorization_rule_description
-        query['AuthorizationRuleId'] = request.authorization_rule_id
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['ClientToken'] = request.client_token
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
-        query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.authorization_rule_description):
+            query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_cidrs):
+            query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3377,17 +3912,28 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateGroupAuthorizationRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthorizationRuleDescription'] = request.authorization_rule_description
-        query['AuthorizationRuleId'] = request.authorization_rule_id
-        query['AuthorizationRuleName'] = request.authorization_rule_name
-        query['ClientToken'] = request.client_token
-        query['Destination'] = request.destination
-        query['DestinationType'] = request.destination_type
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['Policy'] = request.policy
-        query['RegionId'] = request.region_id
-        query['SourceCidrs'] = request.source_cidrs
+        if not UtilClient.is_unset(request.authorization_rule_description):
+            query['AuthorizationRuleDescription'] = request.authorization_rule_description
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_cidrs):
+            query['SourceCidrs'] = request.source_cidrs
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3428,13 +3974,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateIoTCloudConnectorAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
-        query['RegionId'] = request.region_id
-        query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_description):
+            query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_name):
+            query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.wildcard_domain_enabled):
+            query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3461,13 +4014,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateIoTCloudConnectorAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
-        query['RegionId'] = request.region_id
-        query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_description):
+            query['IoTCloudConnectorDescription'] = request.io_tcloud_connector_description
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_name):
+            query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.wildcard_domain_enabled):
+            query['WildcardDomainEnabled'] = request.wildcard_domain_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3508,12 +4068,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['Name'] = request.name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3540,12 +4106,18 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
-        query['Name'] = request.name
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3586,13 +4158,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateServiceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceDescription'] = request.service_description
-        query['ServiceId'] = request.service_id
-        query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3619,13 +4198,20 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateServiceAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceDescription'] = request.service_description
-        query['ServiceId'] = request.service_id
-        query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3666,14 +4252,22 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateServiceEntryAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceEntryDescription'] = request.service_entry_description
-        query['ServiceEntryId'] = request.service_entry_id
-        query['ServiceEntryName'] = request.service_entry_name
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_entry_description):
+            query['ServiceEntryDescription'] = request.service_entry_description
+        if not UtilClient.is_unset(request.service_entry_id):
+            query['ServiceEntryId'] = request.service_entry_id
+        if not UtilClient.is_unset(request.service_entry_name):
+            query['ServiceEntryName'] = request.service_entry_name
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3700,14 +4294,22 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateServiceEntryAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
-        query['RegionId'] = request.region_id
-        query['ServiceEntryDescription'] = request.service_entry_description
-        query['ServiceEntryId'] = request.service_entry_id
-        query['ServiceEntryName'] = request.service_entry_name
-        query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_entry_description):
+            query['ServiceEntryDescription'] = request.service_entry_description
+        if not UtilClient.is_unset(request.service_entry_id):
+            query['ServiceEntryId'] = request.service_entry_id
+        if not UtilClient.is_unset(request.service_entry_name):
+            query['ServiceEntryName'] = request.service_entry_name
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
