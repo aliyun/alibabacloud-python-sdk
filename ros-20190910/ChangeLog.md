@@ -1,3 +1,6 @@
+2022-01-12 Version: 3.0.6
+- GetFeatureDetails return value adds UpdateAllowedTransforms.
+
 2022-01-05 Version: 3.0.5
 - GetTemplate return value adds TemplateId, TemplateVersion, TemplateScratchId and TemplateURL.
 

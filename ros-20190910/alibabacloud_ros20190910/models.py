@@ -4492,10 +4492,12 @@ class GetFeatureDetailsResponseBodyTerraformSupportedVersions(TeaModel):
         provider_versions: List[GetFeatureDetailsResponseBodyTerraformSupportedVersionsProviderVersions] = None,
         terraform_version: str = None,
         transform: str = None,
+        update_allowed_transforms: List[str] = None,
     ):
         self.provider_versions = provider_versions
         self.terraform_version = terraform_version
         self.transform = transform
+        self.update_allowed_transforms = update_allowed_transforms
 
     def validate(self):
         if self.provider_versions:
@@ -4517,6 +4519,8 @@ class GetFeatureDetailsResponseBodyTerraformSupportedVersions(TeaModel):
             result['TerraformVersion'] = self.terraform_version
         if self.transform is not None:
             result['Transform'] = self.transform
+        if self.update_allowed_transforms is not None:
+            result['UpdateAllowedTransforms'] = self.update_allowed_transforms
         return result
 
     def from_map(self, m: dict = None):
@@ -4530,6 +4534,8 @@ class GetFeatureDetailsResponseBodyTerraformSupportedVersions(TeaModel):
             self.terraform_version = m.get('TerraformVersion')
         if m.get('Transform') is not None:
             self.transform = m.get('Transform')
+        if m.get('UpdateAllowedTransforms') is not None:
+            self.update_allowed_transforms = m.get('UpdateAllowedTransforms')
         return self
 
 
@@ -5552,6 +5558,10 @@ class GetStackResponseBody(TeaModel):
         status_reason: str = None,
         tags: List[GetStackResponseBodyTags] = None,
         template_description: str = None,
+        template_id: str = None,
+        template_scratch_id: str = None,
+        template_url: str = None,
+        template_version: str = None,
         timeout_in_minutes: int = None,
         update_time: str = None,
     ):
@@ -5579,6 +5589,10 @@ class GetStackResponseBody(TeaModel):
         self.status_reason = status_reason
         self.tags = tags
         self.template_description = template_description
+        self.template_id = template_id
+        self.template_scratch_id = template_scratch_id
+        self.template_url = template_url
+        self.template_version = template_version
         self.timeout_in_minutes = timeout_in_minutes
         self.update_time = update_time
 
@@ -5654,6 +5668,14 @@ class GetStackResponseBody(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.template_description is not None:
             result['TemplateDescription'] = self.template_description
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_scratch_id is not None:
+            result['TemplateScratchId'] = self.template_scratch_id
+        if self.template_url is not None:
+            result['TemplateURL'] = self.template_url
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
         if self.timeout_in_minutes is not None:
             result['TimeoutInMinutes'] = self.timeout_in_minutes
         if self.update_time is not None:
@@ -5718,6 +5740,14 @@ class GetStackResponseBody(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('TemplateDescription') is not None:
             self.template_description = m.get('TemplateDescription')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateScratchId') is not None:
+            self.template_scratch_id = m.get('TemplateScratchId')
+        if m.get('TemplateURL') is not None:
+            self.template_url = m.get('TemplateURL')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
         if m.get('TimeoutInMinutes') is not None:
             self.timeout_in_minutes = m.get('TimeoutInMinutes')
         if m.get('UpdateTime') is not None:
