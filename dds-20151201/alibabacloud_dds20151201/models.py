@@ -8016,10 +8016,8 @@ class DescribeDBInstancesResponse(TeaModel):
 class DescribeDBInstancesOverviewRequest(TeaModel):
     def __init__(
         self,
-        architecture_type: str = None,
         charge_type: str = None,
         engine_version: str = None,
-        expire_time: str = None,
         instance_class: str = None,
         instance_ids: str = None,
         instance_status: str = None,
@@ -8027,20 +8025,16 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
         network_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        region_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        search_key: str = None,
         security_token: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        self.architecture_type = architecture_type
         self.charge_type = charge_type
         self.engine_version = engine_version
-        self.expire_time = expire_time
         self.instance_class = instance_class
         self.instance_ids = instance_ids
         self.instance_status = instance_status
@@ -8048,11 +8042,9 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.search_key = search_key
         self.security_token = security_token
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
@@ -8067,14 +8059,10 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.architecture_type is not None:
-            result['ArchitectureType'] = self.architecture_type
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
-        if self.expire_time is not None:
-            result['ExpireTime'] = self.expire_time
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
         if self.instance_ids is not None:
@@ -8089,16 +8077,12 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.search_key is not None:
-            result['SearchKey'] = self.search_key
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
         if self.v_switch_id is not None:
@@ -8111,14 +8095,10 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ArchitectureType') is not None:
-            self.architecture_type = m.get('ArchitectureType')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
-        if m.get('ExpireTime') is not None:
-            self.expire_time = m.get('ExpireTime')
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
         if m.get('InstanceIds') is not None:
@@ -8133,16 +8113,12 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SearchKey') is not None:
-            self.search_key = m.get('SearchKey')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
         if m.get('VSwitchId') is not None:
@@ -8280,6 +8256,7 @@ class DescribeDBInstancesOverviewResponseBodyDBInstancesTags(TeaModel):
 class DescribeDBInstancesOverviewResponseBodyDBInstances(TeaModel):
     def __init__(
         self,
+        capacity_unit: str = None,
         charge_type: str = None,
         creation_time: str = None,
         dbinstance_class: str = None,
@@ -8305,6 +8282,7 @@ class DescribeDBInstancesOverviewResponseBodyDBInstances(TeaModel):
         vpc_auth_mode: str = None,
         zone_id: str = None,
     ):
+        self.capacity_unit = capacity_unit
         self.charge_type = charge_type
         self.creation_time = creation_time
         self.dbinstance_class = dbinstance_class
@@ -8350,6 +8328,8 @@ class DescribeDBInstancesOverviewResponseBodyDBInstances(TeaModel):
             return _map
 
         result = dict()
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.creation_time is not None:
@@ -8408,6 +8388,8 @@ class DescribeDBInstancesOverviewResponseBodyDBInstances(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CapacityUnit') is not None:
+            self.capacity_unit = m.get('CapacityUnit')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('CreationTime') is not None:
@@ -8473,10 +8455,9 @@ class DescribeDBInstancesOverviewResponseBody(TeaModel):
         self,
         dbinstances: List[DescribeDBInstancesOverviewResponseBodyDBInstances] = None,
         request_id: str = None,
-        total_count: int = None,
+        total_count: str = None,
     ):
         self.dbinstances = dbinstances
-        # Id of the request
         self.request_id = request_id
         self.total_count = total_count
 

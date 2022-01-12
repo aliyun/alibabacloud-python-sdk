@@ -3697,14 +3697,10 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DescribeDBInstancesOverviewResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.architecture_type):
-            query['ArchitectureType'] = request.architecture_type
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
-        if not UtilClient.is_unset(request.expire_time):
-            query['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.instance_class):
             query['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_ids):
@@ -3719,16 +3715,12 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.search_key):
-            query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.v_switch_id):
@@ -3763,14 +3755,10 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DescribeDBInstancesOverviewResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.architecture_type):
-            query['ArchitectureType'] = request.architecture_type
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
-        if not UtilClient.is_unset(request.expire_time):
-            query['ExpireTime'] = request.expire_time
         if not UtilClient.is_unset(request.instance_class):
             query['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_ids):
@@ -3785,16 +3773,12 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.search_key):
-            query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.v_switch_id):

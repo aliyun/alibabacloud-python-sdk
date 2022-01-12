@@ -1,3 +1,6 @@
+2022-01-12 Version: 1.0.6
+- Update sdk by platform.
+
 2021-12-31 Version: 1.0.5
 - Update mongodb sdk.
 
