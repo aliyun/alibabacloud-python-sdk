@@ -928,7 +928,10 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         config_rule_name: str = None,
         config_rule_trigger_types: str = None,
         description: str = None,
+        exclude_account_ids_scope: str = None,
+        exclude_folder_ids_scope: str = None,
         exclude_resource_ids_scope: str = None,
+        folder_ids_scope: str = None,
         input_parameters: Dict[str, Any] = None,
         maximum_execution_frequency: str = None,
         region_ids_scope: str = None,
@@ -946,7 +949,10 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         self.config_rule_name = config_rule_name
         self.config_rule_trigger_types = config_rule_trigger_types
         self.description = description
+        self.exclude_account_ids_scope = exclude_account_ids_scope
+        self.exclude_folder_ids_scope = exclude_folder_ids_scope
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        self.folder_ids_scope = folder_ids_scope
         self.input_parameters = input_parameters
         self.maximum_execution_frequency = maximum_execution_frequency
         self.region_ids_scope = region_ids_scope
@@ -978,8 +984,14 @@ class CreateAggregateConfigRuleRequest(TeaModel):
             result['ConfigRuleTriggerTypes'] = self.config_rule_trigger_types
         if self.description is not None:
             result['Description'] = self.description
+        if self.exclude_account_ids_scope is not None:
+            result['ExcludeAccountIdsScope'] = self.exclude_account_ids_scope
+        if self.exclude_folder_ids_scope is not None:
+            result['ExcludeFolderIdsScope'] = self.exclude_folder_ids_scope
         if self.exclude_resource_ids_scope is not None:
             result['ExcludeResourceIdsScope'] = self.exclude_resource_ids_scope
+        if self.folder_ids_scope is not None:
+            result['FolderIdsScope'] = self.folder_ids_scope
         if self.input_parameters is not None:
             result['InputParameters'] = self.input_parameters
         if self.maximum_execution_frequency is not None:
@@ -1016,8 +1028,14 @@ class CreateAggregateConfigRuleRequest(TeaModel):
             self.config_rule_trigger_types = m.get('ConfigRuleTriggerTypes')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExcludeAccountIdsScope') is not None:
+            self.exclude_account_ids_scope = m.get('ExcludeAccountIdsScope')
+        if m.get('ExcludeFolderIdsScope') is not None:
+            self.exclude_folder_ids_scope = m.get('ExcludeFolderIdsScope')
         if m.get('ExcludeResourceIdsScope') is not None:
             self.exclude_resource_ids_scope = m.get('ExcludeResourceIdsScope')
+        if m.get('FolderIdsScope') is not None:
+            self.folder_ids_scope = m.get('FolderIdsScope')
         if m.get('InputParameters') is not None:
             self.input_parameters = m.get('InputParameters')
         if m.get('MaximumExecutionFrequency') is not None:
@@ -1051,7 +1069,10 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         config_rule_name: str = None,
         config_rule_trigger_types: str = None,
         description: str = None,
+        exclude_account_ids_scope: str = None,
+        exclude_folder_ids_scope: str = None,
         exclude_resource_ids_scope: str = None,
+        folder_ids_scope: str = None,
         input_parameters_shrink: str = None,
         maximum_execution_frequency: str = None,
         region_ids_scope: str = None,
@@ -1069,7 +1090,10 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         self.config_rule_name = config_rule_name
         self.config_rule_trigger_types = config_rule_trigger_types
         self.description = description
+        self.exclude_account_ids_scope = exclude_account_ids_scope
+        self.exclude_folder_ids_scope = exclude_folder_ids_scope
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        self.folder_ids_scope = folder_ids_scope
         self.input_parameters_shrink = input_parameters_shrink
         self.maximum_execution_frequency = maximum_execution_frequency
         self.region_ids_scope = region_ids_scope
@@ -1101,8 +1125,14 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
             result['ConfigRuleTriggerTypes'] = self.config_rule_trigger_types
         if self.description is not None:
             result['Description'] = self.description
+        if self.exclude_account_ids_scope is not None:
+            result['ExcludeAccountIdsScope'] = self.exclude_account_ids_scope
+        if self.exclude_folder_ids_scope is not None:
+            result['ExcludeFolderIdsScope'] = self.exclude_folder_ids_scope
         if self.exclude_resource_ids_scope is not None:
             result['ExcludeResourceIdsScope'] = self.exclude_resource_ids_scope
+        if self.folder_ids_scope is not None:
+            result['FolderIdsScope'] = self.folder_ids_scope
         if self.input_parameters_shrink is not None:
             result['InputParameters'] = self.input_parameters_shrink
         if self.maximum_execution_frequency is not None:
@@ -1139,8 +1169,14 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
             self.config_rule_trigger_types = m.get('ConfigRuleTriggerTypes')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExcludeAccountIdsScope') is not None:
+            self.exclude_account_ids_scope = m.get('ExcludeAccountIdsScope')
+        if m.get('ExcludeFolderIdsScope') is not None:
+            self.exclude_folder_ids_scope = m.get('ExcludeFolderIdsScope')
         if m.get('ExcludeResourceIdsScope') is not None:
             self.exclude_resource_ids_scope = m.get('ExcludeResourceIdsScope')
+        if m.get('FolderIdsScope') is not None:
+            self.folder_ids_scope = m.get('FolderIdsScope')
         if m.get('InputParameters') is not None:
             self.input_parameters_shrink = m.get('InputParameters')
         if m.get('MaximumExecutionFrequency') is not None:
@@ -4953,7 +4989,10 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         create_by: GetAggregateConfigRuleResponseBodyConfigRuleCreateBy = None,
         create_timestamp: int = None,
         description: str = None,
+        exclude_account_ids_scope: str = None,
+        exclude_folder_ids_scope: str = None,
         exclude_resource_ids_scope: str = None,
+        folder_ids_scope: str = None,
         input_parameters: Dict[str, Any] = None,
         managed_rule: GetAggregateConfigRuleResponseBodyConfigRuleManagedRule = None,
         maximum_execution_frequency: str = None,
@@ -4976,7 +5015,10 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
         self.create_by = create_by
         self.create_timestamp = create_timestamp
         self.description = description
+        self.exclude_account_ids_scope = exclude_account_ids_scope
+        self.exclude_folder_ids_scope = exclude_folder_ids_scope
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        self.folder_ids_scope = folder_ids_scope
         self.input_parameters = input_parameters
         self.managed_rule = managed_rule
         self.maximum_execution_frequency = maximum_execution_frequency
@@ -5024,8 +5066,14 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
             result['CreateTimestamp'] = self.create_timestamp
         if self.description is not None:
             result['Description'] = self.description
+        if self.exclude_account_ids_scope is not None:
+            result['ExcludeAccountIdsScope'] = self.exclude_account_ids_scope
+        if self.exclude_folder_ids_scope is not None:
+            result['ExcludeFolderIdsScope'] = self.exclude_folder_ids_scope
         if self.exclude_resource_ids_scope is not None:
             result['ExcludeResourceIdsScope'] = self.exclude_resource_ids_scope
+        if self.folder_ids_scope is not None:
+            result['FolderIdsScope'] = self.folder_ids_scope
         if self.input_parameters is not None:
             result['InputParameters'] = self.input_parameters
         if self.managed_rule is not None:
@@ -5074,8 +5122,14 @@ class GetAggregateConfigRuleResponseBodyConfigRule(TeaModel):
             self.create_timestamp = m.get('CreateTimestamp')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExcludeAccountIdsScope') is not None:
+            self.exclude_account_ids_scope = m.get('ExcludeAccountIdsScope')
+        if m.get('ExcludeFolderIdsScope') is not None:
+            self.exclude_folder_ids_scope = m.get('ExcludeFolderIdsScope')
         if m.get('ExcludeResourceIdsScope') is not None:
             self.exclude_resource_ids_scope = m.get('ExcludeResourceIdsScope')
+        if m.get('FolderIdsScope') is not None:
+            self.folder_ids_scope = m.get('FolderIdsScope')
         if m.get('InputParameters') is not None:
             self.input_parameters = m.get('InputParameters')
         if m.get('ManagedRule') is not None:
@@ -15076,7 +15130,10 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         config_rule_name: str = None,
         config_rule_trigger_types: str = None,
         description: str = None,
+        exclude_account_ids_scope: str = None,
+        exclude_folder_ids_scope: str = None,
         exclude_resource_ids_scope: str = None,
+        folder_ids_scope: str = None,
         input_parameters: Dict[str, Any] = None,
         maximum_execution_frequency: str = None,
         region_ids_scope: str = None,
@@ -15093,7 +15150,10 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
         self.config_rule_name = config_rule_name
         self.config_rule_trigger_types = config_rule_trigger_types
         self.description = description
+        self.exclude_account_ids_scope = exclude_account_ids_scope
+        self.exclude_folder_ids_scope = exclude_folder_ids_scope
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        self.folder_ids_scope = folder_ids_scope
         self.input_parameters = input_parameters
         self.maximum_execution_frequency = maximum_execution_frequency
         self.region_ids_scope = region_ids_scope
@@ -15125,8 +15185,14 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
             result['ConfigRuleTriggerTypes'] = self.config_rule_trigger_types
         if self.description is not None:
             result['Description'] = self.description
+        if self.exclude_account_ids_scope is not None:
+            result['ExcludeAccountIdsScope'] = self.exclude_account_ids_scope
+        if self.exclude_folder_ids_scope is not None:
+            result['ExcludeFolderIdsScope'] = self.exclude_folder_ids_scope
         if self.exclude_resource_ids_scope is not None:
             result['ExcludeResourceIdsScope'] = self.exclude_resource_ids_scope
+        if self.folder_ids_scope is not None:
+            result['FolderIdsScope'] = self.folder_ids_scope
         if self.input_parameters is not None:
             result['InputParameters'] = self.input_parameters
         if self.maximum_execution_frequency is not None:
@@ -15161,8 +15227,14 @@ class UpdateAggregateConfigRuleRequest(TeaModel):
             self.config_rule_trigger_types = m.get('ConfigRuleTriggerTypes')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExcludeAccountIdsScope') is not None:
+            self.exclude_account_ids_scope = m.get('ExcludeAccountIdsScope')
+        if m.get('ExcludeFolderIdsScope') is not None:
+            self.exclude_folder_ids_scope = m.get('ExcludeFolderIdsScope')
         if m.get('ExcludeResourceIdsScope') is not None:
             self.exclude_resource_ids_scope = m.get('ExcludeResourceIdsScope')
+        if m.get('FolderIdsScope') is not None:
+            self.folder_ids_scope = m.get('FolderIdsScope')
         if m.get('InputParameters') is not None:
             self.input_parameters = m.get('InputParameters')
         if m.get('MaximumExecutionFrequency') is not None:
@@ -15193,7 +15265,10 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         config_rule_name: str = None,
         config_rule_trigger_types: str = None,
         description: str = None,
+        exclude_account_ids_scope: str = None,
+        exclude_folder_ids_scope: str = None,
         exclude_resource_ids_scope: str = None,
+        folder_ids_scope: str = None,
         input_parameters_shrink: str = None,
         maximum_execution_frequency: str = None,
         region_ids_scope: str = None,
@@ -15210,7 +15285,10 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
         self.config_rule_name = config_rule_name
         self.config_rule_trigger_types = config_rule_trigger_types
         self.description = description
+        self.exclude_account_ids_scope = exclude_account_ids_scope
+        self.exclude_folder_ids_scope = exclude_folder_ids_scope
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        self.folder_ids_scope = folder_ids_scope
         self.input_parameters_shrink = input_parameters_shrink
         self.maximum_execution_frequency = maximum_execution_frequency
         self.region_ids_scope = region_ids_scope
@@ -15242,8 +15320,14 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
             result['ConfigRuleTriggerTypes'] = self.config_rule_trigger_types
         if self.description is not None:
             result['Description'] = self.description
+        if self.exclude_account_ids_scope is not None:
+            result['ExcludeAccountIdsScope'] = self.exclude_account_ids_scope
+        if self.exclude_folder_ids_scope is not None:
+            result['ExcludeFolderIdsScope'] = self.exclude_folder_ids_scope
         if self.exclude_resource_ids_scope is not None:
             result['ExcludeResourceIdsScope'] = self.exclude_resource_ids_scope
+        if self.folder_ids_scope is not None:
+            result['FolderIdsScope'] = self.folder_ids_scope
         if self.input_parameters_shrink is not None:
             result['InputParameters'] = self.input_parameters_shrink
         if self.maximum_execution_frequency is not None:
@@ -15278,8 +15362,14 @@ class UpdateAggregateConfigRuleShrinkRequest(TeaModel):
             self.config_rule_trigger_types = m.get('ConfigRuleTriggerTypes')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ExcludeAccountIdsScope') is not None:
+            self.exclude_account_ids_scope = m.get('ExcludeAccountIdsScope')
+        if m.get('ExcludeFolderIdsScope') is not None:
+            self.exclude_folder_ids_scope = m.get('ExcludeFolderIdsScope')
         if m.get('ExcludeResourceIdsScope') is not None:
             self.exclude_resource_ids_scope = m.get('ExcludeResourceIdsScope')
+        if m.get('FolderIdsScope') is not None:
+            self.folder_ids_scope = m.get('FolderIdsScope')
         if m.get('InputParameters') is not None:
             self.input_parameters_shrink = m.get('InputParameters')
         if m.get('MaximumExecutionFrequency') is not None:

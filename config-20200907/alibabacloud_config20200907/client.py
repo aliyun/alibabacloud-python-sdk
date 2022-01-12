@@ -396,8 +396,14 @@ class Client(OpenApiClient):
             body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_account_ids_scope):
+            body['ExcludeAccountIdsScope'] = request.exclude_account_ids_scope
+        if not UtilClient.is_unset(request.exclude_folder_ids_scope):
+            body['ExcludeFolderIdsScope'] = request.exclude_folder_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.folder_ids_scope):
+            body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -462,8 +468,14 @@ class Client(OpenApiClient):
             body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_account_ids_scope):
+            body['ExcludeAccountIdsScope'] = request.exclude_account_ids_scope
+        if not UtilClient.is_unset(request.exclude_folder_ids_scope):
+            body['ExcludeFolderIdsScope'] = request.exclude_folder_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.folder_ids_scope):
+            body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -5136,8 +5148,14 @@ class Client(OpenApiClient):
             body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_account_ids_scope):
+            body['ExcludeAccountIdsScope'] = request.exclude_account_ids_scope
+        if not UtilClient.is_unset(request.exclude_folder_ids_scope):
+            body['ExcludeFolderIdsScope'] = request.exclude_folder_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.folder_ids_scope):
+            body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
@@ -5200,8 +5218,14 @@ class Client(OpenApiClient):
             body['ConfigRuleTriggerTypes'] = request.config_rule_trigger_types
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.exclude_account_ids_scope):
+            body['ExcludeAccountIdsScope'] = request.exclude_account_ids_scope
+        if not UtilClient.is_unset(request.exclude_folder_ids_scope):
+            body['ExcludeFolderIdsScope'] = request.exclude_folder_ids_scope
         if not UtilClient.is_unset(request.exclude_resource_ids_scope):
             body['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
+        if not UtilClient.is_unset(request.folder_ids_scope):
+            body['FolderIdsScope'] = request.folder_ids_scope
         if not UtilClient.is_unset(request.input_parameters_shrink):
             body['InputParameters'] = request.input_parameters_shrink
         if not UtilClient.is_unset(request.maximum_execution_frequency):
