@@ -1397,16 +1397,12 @@ class QueryGateVerifyBillingPublicRequest(TeaModel):
         authentication_type: int = None,
         month: str = None,
         owner_id: int = None,
-        prod_code: str = None,
         resource_owner_account: str = None,
-        resource_owner_id: int = None,
     ):
         self.authentication_type = authentication_type
         self.month = month
         self.owner_id = owner_id
-        self.prod_code = prod_code
         self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -1423,12 +1419,8 @@ class QueryGateVerifyBillingPublicRequest(TeaModel):
             result['Month'] = self.month
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.prod_code is not None:
-            result['ProdCode'] = self.prod_code
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1439,12 +1431,8 @@ class QueryGateVerifyBillingPublicRequest(TeaModel):
             self.month = m.get('Month')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('ProdCode') is not None:
-            self.prod_code = m.get('ProdCode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -1643,9 +1631,7 @@ class QueryGateVerifyStatisticPublicRequest(TeaModel):
         end_date: str = None,
         os_type: str = None,
         owner_id: int = None,
-        prod_code: str = None,
         resource_owner_account: str = None,
-        resource_owner_id: int = None,
         scene_code: str = None,
         start_date: str = None,
     ):
@@ -1653,9 +1639,7 @@ class QueryGateVerifyStatisticPublicRequest(TeaModel):
         self.end_date = end_date
         self.os_type = os_type
         self.owner_id = owner_id
-        self.prod_code = prod_code
         self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
         self.scene_code = scene_code
         self.start_date = start_date
 
@@ -1676,12 +1660,8 @@ class QueryGateVerifyStatisticPublicRequest(TeaModel):
             result['OsType'] = self.os_type
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.prod_code is not None:
-            result['ProdCode'] = self.prod_code
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
         if self.scene_code is not None:
             result['SceneCode'] = self.scene_code
         if self.start_date is not None:
@@ -1698,12 +1678,8 @@ class QueryGateVerifyStatisticPublicRequest(TeaModel):
             self.os_type = m.get('OsType')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('ProdCode') is not None:
-            self.prod_code = m.get('ProdCode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SceneCode') is not None:
             self.scene_code = m.get('SceneCode')
         if m.get('StartDate') is not None:
