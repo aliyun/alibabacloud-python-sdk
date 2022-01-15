@@ -1,3 +1,6 @@
+2022-01-15 Version: 1.0.4
+- Add set switch value api.
+
 2021-12-14 Version: 1.0.3
 - Add region parameter to api.
 

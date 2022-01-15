@@ -144,11 +144,16 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.CreateManualDagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bizdate'] = request.bizdate
-        query['DagPara'] = request.dag_para
-        query['FlowName'] = request.flow_name
-        query['NodePara'] = request.node_para
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.bizdate):
+            query['Bizdate'] = request.bizdate
+        if not UtilClient.is_unset(request.dag_para):
+            query['DagPara'] = request.dag_para
+        if not UtilClient.is_unset(request.flow_name):
+            query['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.node_para):
+            query['NodePara'] = request.node_para
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -175,11 +180,16 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.CreateManualDagResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Bizdate'] = request.bizdate
-        query['DagPara'] = request.dag_para
-        query['FlowName'] = request.flow_name
-        query['NodePara'] = request.node_para
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.bizdate):
+            query['Bizdate'] = request.bizdate
+        if not UtilClient.is_unset(request.dag_para):
+            query['DagPara'] = request.dag_para
+        if not UtilClient.is_unset(request.flow_name):
+            query['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.node_para):
+            query['NodePara'] = request.node_para
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -220,16 +230,26 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.CreateRealTimeProcessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ActionType'] = request.action_type
-        query['CreateResGroup'] = request.create_res_group
-        query['DataSource'] = request.data_source
-        query['DataworksVersion'] = request.dataworks_version
-        query['FileId'] = request.file_id
-        query['JobConfig'] = request.job_config
-        query['ProjectId'] = request.project_id
-        query['ResourceSpec'] = request.resource_spec
-        query['TableRule'] = request.table_rule
-        query['Tables'] = request.tables
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.create_res_group):
+            query['CreateResGroup'] = request.create_res_group
+        if not UtilClient.is_unset(request.data_source):
+            query['DataSource'] = request.data_source
+        if not UtilClient.is_unset(request.dataworks_version):
+            query['DataworksVersion'] = request.dataworks_version
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.job_config):
+            query['JobConfig'] = request.job_config
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_spec):
+            query['ResourceSpec'] = request.resource_spec
+        if not UtilClient.is_unset(request.table_rule):
+            query['TableRule'] = request.table_rule
+        if not UtilClient.is_unset(request.tables):
+            query['Tables'] = request.tables
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -256,16 +276,26 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.CreateRealTimeProcessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ActionType'] = request.action_type
-        query['CreateResGroup'] = request.create_res_group
-        query['DataSource'] = request.data_source
-        query['DataworksVersion'] = request.dataworks_version
-        query['FileId'] = request.file_id
-        query['JobConfig'] = request.job_config
-        query['ProjectId'] = request.project_id
-        query['ResourceSpec'] = request.resource_spec
-        query['TableRule'] = request.table_rule
-        query['Tables'] = request.tables
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.create_res_group):
+            query['CreateResGroup'] = request.create_res_group
+        if not UtilClient.is_unset(request.data_source):
+            query['DataSource'] = request.data_source
+        if not UtilClient.is_unset(request.dataworks_version):
+            query['DataworksVersion'] = request.dataworks_version
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.job_config):
+            query['JobConfig'] = request.job_config
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_spec):
+            query['ResourceSpec'] = request.resource_spec
+        if not UtilClient.is_unset(request.table_rule):
+            query['TableRule'] = request.table_rule
+        if not UtilClient.is_unset(request.tables):
+            query['Tables'] = request.tables
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -306,9 +336,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.DeleteDISyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -335,9 +368,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.DeleteDISyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -456,9 +492,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.DeployDISyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -485,9 +524,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.DeployDISyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -528,9 +570,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.DescribeEmrHiveTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -557,9 +602,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.DescribeEmrHiveTableResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -600,9 +648,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.GetDISyncInstanceInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -629,9 +680,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.GetDISyncInstanceInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -672,9 +726,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.GetDISyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -701,9 +758,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.GetDISyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -744,7 +804,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.GetSwitchValueResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SwitchName'] = request.switch_name
+        if not UtilClient.is_unset(request.switch_name):
+            query['SwitchName'] = request.switch_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -771,7 +832,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.GetSwitchValueResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SwitchName'] = request.switch_name
+        if not UtilClient.is_unset(request.switch_name):
+            query['SwitchName'] = request.switch_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -812,13 +874,20 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListEmrHiveAuditLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -845,13 +914,20 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListEmrHiveAuditLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['EndTime'] = request.end_time
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -892,7 +968,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListEmrHiveDatabasesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -919,7 +996,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListEmrHiveDatabasesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -960,10 +1038,14 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListEmrHiveTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -990,10 +1072,14 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListEmrHiveTablesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1034,10 +1120,14 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListHiveColumnLineagesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['ColumnName'] = request.column_name
-        query['DatabaseName'] = request.database_name
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1064,10 +1154,14 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListHiveColumnLineagesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['ColumnName'] = request.column_name
-        query['DatabaseName'] = request.database_name
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1108,9 +1202,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListHiveTableLineagesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1137,9 +1234,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListHiveTableLineagesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1180,12 +1280,18 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListTablePartitionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['Order'] = request.order
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1212,12 +1318,18 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.ListTablePartitionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterId'] = request.cluster_id
-        query['DatabaseName'] = request.database_name
-        query['Order'] = request.order
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1258,7 +1370,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.OpenDataWorksStandardServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Region'] = request.region
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1285,7 +1398,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.OpenDataWorksStandardServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Region'] = request.region
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1326,7 +1440,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.QueryDataImportProcessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubUid'] = request.sub_uid
+        if not UtilClient.is_unset(request.sub_uid):
+            query['SubUid'] = request.sub_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1353,7 +1468,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.QueryDataImportProcessResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubUid'] = request.sub_uid
+        if not UtilClient.is_unset(request.sub_uid):
+            query['SubUid'] = request.sub_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1394,7 +1510,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.QueryDataImportProcessStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1421,7 +1538,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.QueryDataImportProcessStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1462,7 +1580,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.QueryRealTimeProcessStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1489,7 +1608,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.QueryRealTimeProcessStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1530,8 +1650,10 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.SearchManualDagNodeInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DagId'] = request.dag_id
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1558,8 +1680,10 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.SearchManualDagNodeInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DagId'] = request.dag_id
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1699,6 +1823,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.send_task_meta_callback_with_options_async(request, runtime)
 
+    def set_switch_value_with_options(
+        self,
+        request: dataworks_public_20180601_models.SetSwitchValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.SetSwitchValueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.switch_name):
+            query['SwitchName'] = request.switch_name
+        if not UtilClient.is_unset(request.switch_value):
+            query['SwitchValue'] = request.switch_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetSwitchValue',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.SetSwitchValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_switch_value_with_options_async(
+        self,
+        request: dataworks_public_20180601_models.SetSwitchValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20180601_models.SetSwitchValueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.switch_name):
+            query['SwitchName'] = request.switch_name
+        if not UtilClient.is_unset(request.switch_value):
+            query['SwitchValue'] = request.switch_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetSwitchValue',
+            version='2018-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20180601_models.SetSwitchValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_switch_value(
+        self,
+        request: dataworks_public_20180601_models.SetSwitchValueRequest,
+    ) -> dataworks_public_20180601_models.SetSwitchValueResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_switch_value_with_options(request, runtime)
+
+    async def set_switch_value_async(
+        self,
+        request: dataworks_public_20180601_models.SetSwitchValueRequest,
+    ) -> dataworks_public_20180601_models.SetSwitchValueResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_switch_value_with_options_async(request, runtime)
+
     def start_disync_instance_with_options(
         self,
         request: dataworks_public_20180601_models.StartDISyncInstanceRequest,
@@ -1706,10 +1904,14 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.StartDISyncInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['StartParam'] = request.start_param
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_param):
+            query['StartParam'] = request.start_param
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1736,10 +1938,14 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.StartDISyncInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['StartParam'] = request.start_param
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_param):
+            query['StartParam'] = request.start_param
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1780,9 +1986,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.StopDISyncInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1809,9 +2018,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.StopDISyncInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1852,9 +2064,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.TerminateDISyncInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1881,9 +2096,12 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.TerminateDISyncInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1919,10 +2137,8 @@ class Client(OpenApiClient):
 
     def trigger_data_loader_with_options(
         self,
-        request: dataworks_public_20180601_models.TriggerDataLoaderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
-        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='TriggerDataLoader',
@@ -1942,10 +2158,8 @@ class Client(OpenApiClient):
 
     async def trigger_data_loader_with_options_async(
         self,
-        request: dataworks_public_20180601_models.TriggerDataLoaderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
-        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='TriggerDataLoader',
@@ -1963,19 +2177,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def trigger_data_loader(
-        self,
-        request: dataworks_public_20180601_models.TriggerDataLoaderRequest,
-    ) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
+    def trigger_data_loader(self) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
         runtime = util_models.RuntimeOptions()
-        return self.trigger_data_loader_with_options(request, runtime)
+        return self.trigger_data_loader_with_options(runtime)
 
-    async def trigger_data_loader_async(
-        self,
-        request: dataworks_public_20180601_models.TriggerDataLoaderRequest,
-    ) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
+    async def trigger_data_loader_async(self) -> dataworks_public_20180601_models.TriggerDataLoaderResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.trigger_data_loader_with_options_async(request, runtime)
+        return await self.trigger_data_loader_with_options_async(runtime)
 
     def update_disync_task_with_options(
         self,
@@ -1984,11 +2192,16 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.UpdateDISyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskContent'] = request.task_content
-        query['TaskParam'] = request.task_param
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_content):
+            query['TaskContent'] = request.task_content
+        if not UtilClient.is_unset(request.task_param):
+            query['TaskParam'] = request.task_param
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2015,11 +2228,16 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20180601_models.UpdateDISyncTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FileId'] = request.file_id
-        query['ProjectId'] = request.project_id
-        query['TaskContent'] = request.task_content
-        query['TaskParam'] = request.task_param
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.task_content):
+            query['TaskContent'] = request.task_content
+        if not UtilClient.is_unset(request.task_param):
+            query['TaskParam'] = request.task_param
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

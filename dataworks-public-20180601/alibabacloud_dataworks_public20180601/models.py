@@ -8,10 +8,8 @@ class CheckCallbackRequest(TeaModel):
     def __init__(
         self,
         callback_result_string: str = None,
-        region_id: str = None,
     ):
         self.callback_result_string = callback_result_string
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -24,16 +22,12 @@ class CheckCallbackRequest(TeaModel):
         result = dict()
         if self.callback_result_string is not None:
             result['CallbackResultString'] = self.callback_result_string
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CallbackResultString') is not None:
             self.callback_result_string = m.get('CallbackResultString')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -121,14 +115,12 @@ class CreateManualDagRequest(TeaModel):
         flow_name: str = None,
         node_para: str = None,
         project_name: str = None,
-        region_id: str = None,
     ):
         self.bizdate = bizdate
         self.dag_para = dag_para
         self.flow_name = flow_name
         self.node_para = node_para
         self.project_name = project_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -149,8 +141,6 @@ class CreateManualDagRequest(TeaModel):
             result['NodePara'] = self.node_para
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -165,8 +155,6 @@ class CreateManualDagRequest(TeaModel):
             self.node_para = m.get('NodePara')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -268,7 +256,6 @@ class CreateRealTimeProcessRequest(TeaModel):
         file_id: int = None,
         job_config: str = None,
         project_id: int = None,
-        region_id: str = None,
         resource_spec: str = None,
         table_rule: str = None,
         tables: str = None,
@@ -280,7 +267,6 @@ class CreateRealTimeProcessRequest(TeaModel):
         self.file_id = file_id
         self.job_config = job_config
         self.project_id = project_id
-        self.region_id = region_id
         self.resource_spec = resource_spec
         self.table_rule = table_rule
         self.tables = tables
@@ -308,8 +294,6 @@ class CreateRealTimeProcessRequest(TeaModel):
             result['JobConfig'] = self.job_config
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resource_spec is not None:
             result['ResourceSpec'] = self.resource_spec
         if self.table_rule is not None:
@@ -334,8 +318,6 @@ class CreateRealTimeProcessRequest(TeaModel):
             self.job_config = m.get('JobConfig')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('ResourceSpec') is not None:
             self.resource_spec = m.get('ResourceSpec')
         if m.get('TableRule') is not None:
@@ -461,12 +443,10 @@ class DeleteDISyncTaskRequest(TeaModel):
         self,
         file_id: int = None,
         project_id: int = None,
-        region_id: str = None,
         task_type: str = None,
     ):
         self.file_id = file_id
         self.project_id = project_id
-        self.region_id = region_id
         self.task_type = task_type
 
     def validate(self):
@@ -482,8 +462,6 @@ class DeleteDISyncTaskRequest(TeaModel):
             result['FileId'] = self.file_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         return result
@@ -494,8 +472,6 @@ class DeleteDISyncTaskRequest(TeaModel):
             self.file_id = m.get('FileId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         return self
@@ -618,12 +594,10 @@ class DeleteFileRequest(TeaModel):
         file_id: int = None,
         project_id: int = None,
         project_identifier: str = None,
-        region_id: str = None,
     ):
         self.file_id = file_id
         self.project_id = project_id
         self.project_identifier = project_identifier
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -640,8 +614,6 @@ class DeleteFileRequest(TeaModel):
             result['ProjectId'] = self.project_id
         if self.project_identifier is not None:
             result['ProjectIdentifier'] = self.project_identifier
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -652,8 +624,6 @@ class DeleteFileRequest(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('ProjectIdentifier') is not None:
             self.project_identifier = m.get('ProjectIdentifier')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -750,12 +720,10 @@ class DeployDISyncTaskRequest(TeaModel):
         self,
         file_id: int = None,
         project_id: int = None,
-        region_id: str = None,
         task_type: str = None,
     ):
         self.file_id = file_id
         self.project_id = project_id
-        self.region_id = region_id
         self.task_type = task_type
 
     def validate(self):
@@ -771,8 +739,6 @@ class DeployDISyncTaskRequest(TeaModel):
             result['FileId'] = self.file_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         return result
@@ -783,8 +749,6 @@ class DeployDISyncTaskRequest(TeaModel):
             self.file_id = m.get('FileId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         return self
@@ -906,12 +870,10 @@ class DescribeEmrHiveTableRequest(TeaModel):
         self,
         cluster_id: str = None,
         database_name: str = None,
-        region_id: str = None,
         table_name: str = None,
     ):
         self.cluster_id = cluster_id
         self.database_name = database_name
-        self.region_id = region_id
         self.table_name = table_name
 
     def validate(self):
@@ -927,8 +889,6 @@ class DescribeEmrHiveTableRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.table_name is not None:
             result['TableName'] = self.table_name
         return result
@@ -939,8 +899,6 @@ class DescribeEmrHiveTableRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
         return self
@@ -1271,12 +1229,10 @@ class GetDISyncInstanceInfoRequest(TeaModel):
         self,
         file_id: int = None,
         project_id: int = None,
-        region_id: str = None,
         task_type: str = None,
     ):
         self.file_id = file_id
         self.project_id = project_id
-        self.region_id = region_id
         self.task_type = task_type
 
     def validate(self):
@@ -1292,8 +1248,6 @@ class GetDISyncInstanceInfoRequest(TeaModel):
             result['FileId'] = self.file_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         return result
@@ -1304,8 +1258,6 @@ class GetDISyncInstanceInfoRequest(TeaModel):
             self.file_id = m.get('FileId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         return self
@@ -1433,12 +1385,10 @@ class GetDISyncTaskRequest(TeaModel):
         self,
         file_id: int = None,
         project_id: int = None,
-        region_id: str = None,
         task_type: str = None,
     ):
         self.file_id = file_id
         self.project_id = project_id
-        self.region_id = region_id
         self.task_type = task_type
 
     def validate(self):
@@ -1454,8 +1404,6 @@ class GetDISyncTaskRequest(TeaModel):
             result['FileId'] = self.file_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         return result
@@ -1466,8 +1414,6 @@ class GetDISyncTaskRequest(TeaModel):
             self.file_id = m.get('FileId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         return self
@@ -1593,10 +1539,8 @@ class GetDISyncTaskResponse(TeaModel):
 class GetSwitchValueRequest(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         switch_name: str = None,
     ):
-        self.region_id = region_id
         self.switch_name = switch_name
 
     def validate(self):
@@ -1608,16 +1552,12 @@ class GetSwitchValueRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.switch_name is not None:
             result['SwitchName'] = self.switch_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('SwitchName') is not None:
             self.switch_name = m.get('SwitchName')
         return self
@@ -1701,7 +1641,6 @@ class ListEmrHiveAuditLogsRequest(TeaModel):
         end_time: int = None,
         page_number: int = None,
         page_size: int = None,
-        region_id: str = None,
         start_time: int = None,
         table_name: str = None,
     ):
@@ -1710,7 +1649,6 @@ class ListEmrHiveAuditLogsRequest(TeaModel):
         self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
-        self.region_id = region_id
         self.start_time = start_time
         self.table_name = table_name
 
@@ -1733,8 +1671,6 @@ class ListEmrHiveAuditLogsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.table_name is not None:
@@ -1753,8 +1689,6 @@ class ListEmrHiveAuditLogsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TableName') is not None:
@@ -1960,10 +1894,8 @@ class ListEmrHiveDatabasesRequest(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
-        region_id: str = None,
     ):
         self.cluster_id = cluster_id
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -1976,16 +1908,12 @@ class ListEmrHiveDatabasesRequest(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2179,13 +2107,11 @@ class ListEmrHiveTablesRequest(TeaModel):
         database_name: str = None,
         page_number: int = None,
         page_size: int = None,
-        region_id: str = None,
     ):
         self.cluster_id = cluster_id
         self.database_name = database_name
         self.page_number = page_number
         self.page_size = page_size
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -2204,8 +2130,6 @@ class ListEmrHiveTablesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2218,8 +2142,6 @@ class ListEmrHiveTablesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -2519,13 +2441,11 @@ class ListHiveColumnLineagesRequest(TeaModel):
         cluster_id: str = None,
         column_name: str = None,
         database_name: str = None,
-        region_id: str = None,
         table_name: str = None,
     ):
         self.cluster_id = cluster_id
         self.column_name = column_name
         self.database_name = database_name
-        self.region_id = region_id
         self.table_name = table_name
 
     def validate(self):
@@ -2543,8 +2463,6 @@ class ListHiveColumnLineagesRequest(TeaModel):
             result['ColumnName'] = self.column_name
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.table_name is not None:
             result['TableName'] = self.table_name
         return result
@@ -2557,8 +2475,6 @@ class ListHiveColumnLineagesRequest(TeaModel):
             self.column_name = m.get('ColumnName')
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
         return self
@@ -2889,12 +2805,10 @@ class ListHiveTableLineagesRequest(TeaModel):
         self,
         cluster_id: str = None,
         database_name: str = None,
-        region_id: str = None,
         table_name: str = None,
     ):
         self.cluster_id = cluster_id
         self.database_name = database_name
-        self.region_id = region_id
         self.table_name = table_name
 
     def validate(self):
@@ -2910,8 +2824,6 @@ class ListHiveTableLineagesRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.table_name is not None:
             result['TableName'] = self.table_name
         return result
@@ -2922,8 +2834,6 @@ class ListHiveTableLineagesRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
         return self
@@ -3233,7 +3143,6 @@ class ListTablePartitionsRequest(TeaModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
-        region_id: str = None,
         table_name: str = None,
     ):
         self.cluster_id = cluster_id
@@ -3241,7 +3150,6 @@ class ListTablePartitionsRequest(TeaModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
-        self.region_id = region_id
         self.table_name = table_name
 
     def validate(self):
@@ -3263,8 +3171,6 @@ class ListTablePartitionsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.table_name is not None:
             result['TableName'] = self.table_name
         return result
@@ -3281,8 +3187,6 @@ class ListTablePartitionsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
         return self
@@ -3582,10 +3486,8 @@ class OpenDataWorksStandardServiceResponse(TeaModel):
 class QueryDataImportProcessRequest(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         sub_uid: str = None,
     ):
-        self.region_id = region_id
         self.sub_uid = sub_uid
 
     def validate(self):
@@ -3597,16 +3499,12 @@ class QueryDataImportProcessRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.sub_uid is not None:
             result['SubUid'] = self.sub_uid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('SubUid') is not None:
             self.sub_uid = m.get('SubUid')
         return self
@@ -3726,10 +3624,8 @@ class QueryDataImportProcessResponse(TeaModel):
 class QueryDataImportProcessStatusRequest(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         task_id: str = None,
     ):
-        self.region_id = region_id
         self.task_id = task_id
 
     def validate(self):
@@ -3741,16 +3637,12 @@ class QueryDataImportProcessStatusRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -3929,10 +3821,8 @@ class QueryDataImportProcessStatusResponse(TeaModel):
 class QueryRealTimeProcessStatusRequest(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         task_id: str = None,
     ):
-        self.region_id = region_id
         self.task_id = task_id
 
     def validate(self):
@@ -3944,16 +3834,12 @@ class QueryRealTimeProcessStatusRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -4105,11 +3991,9 @@ class SearchManualDagNodeInstanceRequest(TeaModel):
         self,
         dag_id: int = None,
         project_name: str = None,
-        region_id: str = None,
     ):
         self.dag_id = dag_id
         self.project_name = project_name
-        self.region_id = region_id
 
     def validate(self):
         pass
@@ -4124,8 +4008,6 @@ class SearchManualDagNodeInstanceRequest(TeaModel):
             result['DagId'] = self.dag_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4134,8 +4016,6 @@ class SearchManualDagNodeInstanceRequest(TeaModel):
             self.dag_id = m.get('DagId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         return self
 
 
@@ -4369,7 +4249,6 @@ class SendTaskMetaCallbackRequest(TeaModel):
         code: str = None,
         connection_info: str = None,
         end_time: int = None,
-        region_id: str = None,
         resources: List[str] = None,
         start_time: int = None,
         sub_type: str = None,
@@ -4381,7 +4260,6 @@ class SendTaskMetaCallbackRequest(TeaModel):
         self.code = code
         self.connection_info = connection_info
         self.end_time = end_time
-        self.region_id = region_id
         self.resources = resources
         self.start_time = start_time
         self.sub_type = sub_type
@@ -4405,8 +4283,6 @@ class SendTaskMetaCallbackRequest(TeaModel):
             result['ConnectionInfo'] = self.connection_info
         if self.end_time is not None:
             result['EndTime'] = self.end_time
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resources is not None:
             result['Resources'] = self.resources
         if self.start_time is not None:
@@ -4431,8 +4307,6 @@ class SendTaskMetaCallbackRequest(TeaModel):
             self.connection_info = m.get('ConnectionInfo')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('Resources') is not None:
             self.resources = m.get('Resources')
         if m.get('StartTime') is not None:
@@ -4532,18 +4406,120 @@ class SendTaskMetaCallbackResponse(TeaModel):
         return self
 
 
+class SetSwitchValueRequest(TeaModel):
+    def __init__(
+        self,
+        switch_name: str = None,
+        switch_value: str = None,
+    ):
+        self.switch_name = switch_name
+        self.switch_value = switch_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.switch_name is not None:
+            result['SwitchName'] = self.switch_name
+        if self.switch_value is not None:
+            result['SwitchValue'] = self.switch_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SwitchName') is not None:
+            self.switch_name = m.get('SwitchName')
+        if m.get('SwitchValue') is not None:
+            self.switch_value = m.get('SwitchValue')
+        return self
+
+
+class SetSwitchValueResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetSwitchValueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SetSwitchValueResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SetSwitchValueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartDISyncInstanceRequest(TeaModel):
     def __init__(
         self,
         file_id: int = None,
         project_id: int = None,
-        region_id: str = None,
         start_param: str = None,
         task_type: str = None,
     ):
         self.file_id = file_id
         self.project_id = project_id
-        self.region_id = region_id
         self.start_param = start_param
         self.task_type = task_type
 
@@ -4560,8 +4536,6 @@ class StartDISyncInstanceRequest(TeaModel):
             result['FileId'] = self.file_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.start_param is not None:
             result['StartParam'] = self.start_param
         if self.task_type is not None:
@@ -4574,8 +4548,6 @@ class StartDISyncInstanceRequest(TeaModel):
             self.file_id = m.get('FileId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('StartParam') is not None:
             self.start_param = m.get('StartParam')
         if m.get('TaskType') is not None:
@@ -4699,12 +4671,10 @@ class StopDISyncInstanceRequest(TeaModel):
         self,
         file_id: int = None,
         project_id: int = None,
-        region_id: str = None,
         task_type: str = None,
     ):
         self.file_id = file_id
         self.project_id = project_id
-        self.region_id = region_id
         self.task_type = task_type
 
     def validate(self):
@@ -4720,8 +4690,6 @@ class StopDISyncInstanceRequest(TeaModel):
             result['FileId'] = self.file_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         return result
@@ -4732,8 +4700,6 @@ class StopDISyncInstanceRequest(TeaModel):
             self.file_id = m.get('FileId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         return self
@@ -4855,12 +4821,10 @@ class TerminateDISyncInstanceRequest(TeaModel):
         self,
         file_id: int = None,
         project_id: int = None,
-        region_id: str = None,
         task_type: str = None,
     ):
         self.file_id = file_id
         self.project_id = project_id
-        self.region_id = region_id
         self.task_type = task_type
 
     def validate(self):
@@ -4876,8 +4840,6 @@ class TerminateDISyncInstanceRequest(TeaModel):
             result['FileId'] = self.file_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.task_type is not None:
             result['TaskType'] = self.task_type
         return result
@@ -4888,8 +4850,6 @@ class TerminateDISyncInstanceRequest(TeaModel):
             self.file_id = m.get('FileId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
         return self
@@ -5006,33 +4966,6 @@ class TerminateDISyncInstanceResponse(TeaModel):
         return self
 
 
-class TriggerDataLoaderRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-    ):
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
 class TriggerDataLoaderResponseBody(TeaModel):
     def __init__(
         self,
@@ -5109,14 +5042,12 @@ class UpdateDISyncTaskRequest(TeaModel):
         self,
         file_id: int = None,
         project_id: int = None,
-        region_id: str = None,
         task_content: str = None,
         task_param: str = None,
         task_type: str = None,
     ):
         self.file_id = file_id
         self.project_id = project_id
-        self.region_id = region_id
         self.task_content = task_content
         self.task_param = task_param
         self.task_type = task_type
@@ -5134,8 +5065,6 @@ class UpdateDISyncTaskRequest(TeaModel):
             result['FileId'] = self.file_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.task_content is not None:
             result['TaskContent'] = self.task_content
         if self.task_param is not None:
@@ -5150,8 +5079,6 @@ class UpdateDISyncTaskRequest(TeaModel):
             self.file_id = m.get('FileId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('TaskContent') is not None:
             self.task_content = m.get('TaskContent')
         if m.get('TaskParam') is not None:
