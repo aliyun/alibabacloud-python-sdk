@@ -61,19 +61,28 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.AddCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CdnType'] = request.cdn_type
-        query['CheckUrl'] = request.check_url
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Scope'] = request.scope
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.cdn_type):
+            query['CdnType'] = request.cdn_type
+        if not UtilClient.is_unset(request.check_url):
+            query['CheckUrl'] = request.check_url
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCdnDomain',
@@ -83,7 +92,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -98,19 +107,28 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.AddCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CdnType'] = request.cdn_type
-        query['CheckUrl'] = request.check_url
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Scope'] = request.scope
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.cdn_type):
+            query['CdnType'] = request.cdn_type
+        if not UtilClient.is_unset(request.check_url):
+            query['CheckUrl'] = request.check_url
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddCdnDomain',
@@ -120,7 +138,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -149,11 +167,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.AddFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TriggerARN'] = request.trigger_arn
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.trigger_arn):
+            query['TriggerARN'] = request.trigger_arn
+        body = {}
+        if not UtilClient.is_unset(request.event_meta_name):
+            body['EventMetaName'] = request.event_meta_name
+        if not UtilClient.is_unset(request.event_meta_version):
+            body['EventMetaVersion'] = request.event_meta_version
+        if not UtilClient.is_unset(request.function_arn):
+            body['FunctionARN'] = request.function_arn
+        if not UtilClient.is_unset(request.notes):
+            body['Notes'] = request.notes
+        if not UtilClient.is_unset(request.role_arn):
+            body['RoleARN'] = request.role_arn
+        if not UtilClient.is_unset(request.source_arn):
+            body['SourceARN'] = request.source_arn
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddFCTrigger',
@@ -178,11 +211,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.AddFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TriggerARN'] = request.trigger_arn
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.trigger_arn):
+            query['TriggerARN'] = request.trigger_arn
+        body = {}
+        if not UtilClient.is_unset(request.event_meta_name):
+            body['EventMetaName'] = request.event_meta_name
+        if not UtilClient.is_unset(request.event_meta_version):
+            body['EventMetaVersion'] = request.event_meta_version
+        if not UtilClient.is_unset(request.function_arn):
+            body['FunctionARN'] = request.function_arn
+        if not UtilClient.is_unset(request.notes):
+            body['Notes'] = request.notes
+        if not UtilClient.is_unset(request.role_arn):
+            body['RoleARN'] = request.role_arn
+        if not UtilClient.is_unset(request.source_arn):
+            body['SourceARN'] = request.source_arn
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddFCTrigger',
@@ -221,19 +269,28 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchAddCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CdnType'] = request.cdn_type
-        query['CheckUrl'] = request.check_url
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Scope'] = request.scope
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.cdn_type):
+            query['CdnType'] = request.cdn_type
+        if not UtilClient.is_unset(request.check_url):
+            query['CheckUrl'] = request.check_url
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchAddCdnDomain',
@@ -243,7 +300,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -258,19 +315,28 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchAddCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CdnType'] = request.cdn_type
-        query['CheckUrl'] = request.check_url
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Scope'] = request.scope
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.cdn_type):
+            query['CdnType'] = request.cdn_type
+        if not UtilClient.is_unset(request.check_url):
+            query['CheckUrl'] = request.check_url
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchAddCdnDomain',
@@ -280,7 +346,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -309,14 +375,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchDeleteCdnDomainConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['FunctionNames'] = request.function_names
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.function_names):
+            query['FunctionNames'] = request.function_names
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchDeleteCdnDomainConfig',
@@ -326,7 +396,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -341,14 +411,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchDeleteCdnDomainConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['FunctionNames'] = request.function_names
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.function_names):
+            query['FunctionNames'] = request.function_names
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchDeleteCdnDomainConfig',
@@ -358,7 +432,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -387,14 +461,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchSetCdnDomainConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['Functions'] = request.functions
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.functions):
+            query['Functions'] = request.functions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchSetCdnDomainConfig',
@@ -404,7 +482,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -419,14 +497,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchSetCdnDomainConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['Functions'] = request.functions
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.functions):
+            query['Functions'] = request.functions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchSetCdnDomainConfig',
@@ -436,7 +518,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -465,19 +547,28 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchSetCdnDomainServerCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertName'] = request.cert_name
-        query['CertType'] = request.cert_type
-        query['DomainName'] = request.domain_name
-        query['ForceSet'] = request.force_set
-        query['OwnerId'] = request.owner_id
-        query['Region'] = request.region
-        query['SSLPri'] = request.sslpri
-        query['SSLProtocol'] = request.sslprotocol
-        query['SSLPub'] = request.sslpub
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.force_set):
+            query['ForceSet'] = request.force_set
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.sslpri):
+            query['SSLPri'] = request.sslpri
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchSetCdnDomainServerCertificate',
@@ -487,7 +578,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -502,19 +593,28 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchSetCdnDomainServerCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertName'] = request.cert_name
-        query['CertType'] = request.cert_type
-        query['DomainName'] = request.domain_name
-        query['ForceSet'] = request.force_set
-        query['OwnerId'] = request.owner_id
-        query['Region'] = request.region
-        query['SSLPri'] = request.sslpri
-        query['SSLProtocol'] = request.sslprotocol
-        query['SSLPub'] = request.sslpub
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.force_set):
+            query['ForceSet'] = request.force_set
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.sslpri):
+            query['SSLPri'] = request.sslpri
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchSetCdnDomainServerCertificate',
@@ -524,7 +624,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -553,12 +653,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchStartCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchStartCdnDomain',
@@ -568,7 +670,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -583,12 +685,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchStartCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchStartCdnDomain',
@@ -598,7 +702,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -627,12 +731,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchStopCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchStopCdnDomain',
@@ -642,7 +748,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -657,12 +763,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchStopCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchStopCdnDomain',
@@ -672,7 +780,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -701,15 +809,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchUpdateCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchUpdateCdnDomain',
@@ -719,7 +832,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -734,15 +847,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.BatchUpdateCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='BatchUpdateCdnDomain',
@@ -752,7 +870,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -781,18 +899,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateCdnCertificateSigningRequestResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['City'] = request.city
-        query['CommonName'] = request.common_name
-        query['Country'] = request.country
-        query['Email'] = request.email
-        query['Organization'] = request.organization
-        query['OrganizationUnit'] = request.organization_unit
-        query['OwnerId'] = request.owner_id
-        query['SANs'] = request.sans
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sans):
+            query['SANs'] = request.sans
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCdnCertificateSigningRequest',
@@ -802,7 +928,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -817,18 +943,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateCdnCertificateSigningRequestResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['City'] = request.city
-        query['CommonName'] = request.common_name
-        query['Country'] = request.country
-        query['Email'] = request.email
-        query['Organization'] = request.organization
-        query['OrganizationUnit'] = request.organization_unit
-        query['OwnerId'] = request.owner_id
-        query['SANs'] = request.sans
-        query['State'] = request.state
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sans):
+            query['SANs'] = request.sans
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateCdnCertificateSigningRequest',
@@ -838,7 +972,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -867,10 +1001,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateCdnDeliverTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.deliver):
+            body['Deliver'] = request.deliver
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.reports):
+            body['Reports'] = request.reports
+        if not UtilClient.is_unset(request.schedule):
+            body['Schedule'] = request.schedule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCdnDeliverTask',
@@ -895,10 +1041,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateCdnDeliverTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.deliver):
+            body['Deliver'] = request.deliver
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.reports):
+            body['Reports'] = request.reports
+        if not UtilClient.is_unset(request.schedule):
+            body['Schedule'] = request.schedule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCdnDeliverTask',
@@ -937,10 +1095,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateCdnSubTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.report_ids):
+            body['ReportIds'] = request.report_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCdnSubTask',
@@ -965,10 +1129,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateCdnSubTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.report_ids):
+            body['ReportIds'] = request.report_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateCdnSubTask',
@@ -1007,12 +1177,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateIllegalUrlExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskName'] = request.task_name
-        query['TimePoint'] = request.time_point
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateIllegalUrlExportTask',
@@ -1022,7 +1194,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1037,12 +1209,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateIllegalUrlExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskName'] = request.task_name
-        query['TimePoint'] = request.time_point
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateIllegalUrlExportTask',
@@ -1052,7 +1226,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1092,7 +1266,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1118,7 +1292,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1147,17 +1321,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['EndTime'] = request.end_time
-        query['Group'] = request.group
-        query['Language'] = request.language
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['TaskName'] = request.task_name
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateUsageDetailDataExportTask',
@@ -1167,7 +1348,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1182,17 +1363,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['EndTime'] = request.end_time
-        query['Group'] = request.group
-        query['Language'] = request.language
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['TaskName'] = request.task_name
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateUsageDetailDataExportTask',
@@ -1202,7 +1390,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1231,14 +1419,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Language'] = request.language
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateUserUsageDataExportTask',
@@ -1248,7 +1440,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1263,14 +1455,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.CreateUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Language'] = request.language
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateUserUsageDataExportTask',
@@ -1280,7 +1476,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1309,11 +1505,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteCdnDeliverTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeliverId'] = request.deliver_id
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.deliver_id):
+            query['DeliverId'] = request.deliver_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCdnDeliverTask',
@@ -1323,7 +1520,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1338,11 +1535,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteCdnDeliverTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeliverId'] = request.deliver_id
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.deliver_id):
+            query['DeliverId'] = request.deliver_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCdnDeliverTask',
@@ -1352,7 +1550,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1381,13 +1579,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCdnDomain',
@@ -1397,7 +1598,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1412,13 +1613,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCdnDomain',
@@ -1428,7 +1632,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1457,10 +1661,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCdnSubTask',
@@ -1470,7 +1674,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1485,10 +1689,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteCdnSubTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCdnSubTask',
@@ -1498,7 +1702,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1527,11 +1731,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TriggerARN'] = request.trigger_arn
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.trigger_arn):
+            query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteFCTrigger',
@@ -1541,7 +1746,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1556,11 +1761,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TriggerARN'] = request.trigger_arn
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.trigger_arn):
+            query['TriggerARN'] = request.trigger_arn
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteFCTrigger',
@@ -1570,7 +1776,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1610,7 +1816,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1636,7 +1842,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1665,13 +1871,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteSpecificConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSpecificConfig',
@@ -1681,7 +1890,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1696,13 +1905,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteSpecificConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSpecificConfig',
@@ -1712,7 +1924,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1741,13 +1953,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteSpecificStagingConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSpecificStagingConfig',
@@ -1757,7 +1972,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1772,13 +1987,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteSpecificStagingConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSpecificStagingConfig',
@@ -1788,7 +2006,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1817,11 +2035,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteUsageDetailDataExportTask',
@@ -1831,7 +2050,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1846,11 +2065,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteUsageDetailDataExportTask',
@@ -1860,7 +2080,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1889,11 +2109,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteUserUsageDataExportTask',
@@ -1903,7 +2124,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1918,11 +2139,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteUserUsageDataExportTask',
@@ -1932,7 +2154,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1961,12 +2183,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigGroupId'] = request.config_group_id
-        query['Env'] = request.env
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_group_id):
+            query['ConfigGroupId'] = request.config_group_id
+        if not UtilClient.is_unset(request.env):
+            query['Env'] = request.env
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeActiveVersionOfConfigGroup',
@@ -1976,7 +2200,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1991,12 +2215,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigGroupId'] = request.config_group_id
-        query['Env'] = request.env
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_group_id):
+            query['ConfigGroupId'] = request.config_group_id
+        if not UtilClient.is_unset(request.env):
+            query['Env'] = request.env
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeActiveVersionOfConfigGroup',
@@ -2006,7 +2232,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2046,7 +2272,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2072,7 +2298,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2101,12 +2327,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnCertificateDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertName'] = request.cert_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnCertificateDetail',
@@ -2116,7 +2344,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2131,12 +2359,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnCertificateDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertName'] = request.cert_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnCertificateDetail',
@@ -2146,7 +2376,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2175,12 +2405,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnCertificateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnCertificateList',
@@ -2190,7 +2422,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2205,12 +2437,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnCertificateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnCertificateList',
@@ -2220,7 +2454,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2249,12 +2483,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDeletedDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDeletedDomains',
@@ -2264,7 +2500,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2279,12 +2515,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDeletedDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDeletedDomains',
@@ -2294,7 +2532,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2323,11 +2561,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDeliverListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeliverId'] = request.deliver_id
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.deliver_id):
+            query['DeliverId'] = request.deliver_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDeliverList',
@@ -2337,7 +2576,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2352,11 +2591,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDeliverListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeliverId'] = request.deliver_id
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.deliver_id):
+            query['DeliverId'] = request.deliver_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDeliverList',
@@ -2366,7 +2606,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2395,11 +2635,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainByCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainByCertificate',
@@ -2409,7 +2650,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2424,11 +2665,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainByCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainByCertificate',
@@ -2438,7 +2680,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2467,14 +2709,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['FunctionNames'] = request.function_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_names):
+            query['FunctionNames'] = request.function_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainConfigs',
@@ -2484,7 +2730,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2499,14 +2745,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['FunctionNames'] = request.function_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_names):
+            query['FunctionNames'] = request.function_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainConfigs',
@@ -2516,7 +2766,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2545,12 +2795,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainDetail',
@@ -2560,7 +2812,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2575,12 +2827,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainDetail',
@@ -2590,7 +2844,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2619,15 +2873,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainLogs',
@@ -2637,7 +2896,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2652,15 +2911,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainLogsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainLogs',
@@ -2670,7 +2934,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2699,12 +2963,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainStagingConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['FunctionNames'] = request.function_names
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_names):
+            query['FunctionNames'] = request.function_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainStagingConfig',
@@ -2714,7 +2980,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2729,12 +2995,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnDomainStagingConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['FunctionNames'] = request.function_names
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_names):
+            query['FunctionNames'] = request.function_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnDomainStagingConfig',
@@ -2744,7 +3012,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2773,13 +3041,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnHttpsDomainListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Keyword'] = request.keyword
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnHttpsDomainList',
@@ -2789,7 +3060,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2804,13 +3075,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnHttpsDomainListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Keyword'] = request.keyword
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnHttpsDomainList',
@@ -2820,7 +3094,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2849,11 +3123,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnRegionAndIspResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnRegionAndIsp',
@@ -2863,7 +3138,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2878,11 +3153,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnRegionAndIspResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnRegionAndIsp',
@@ -2892,7 +3168,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2921,17 +3197,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnReportResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['HttpCode'] = request.http_code
-        query['IsOverseas'] = request.is_overseas
-        query['OwnerId'] = request.owner_id
-        query['ReportId'] = request.report_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.http_code):
+            query['HttpCode'] = request.http_code
+        if not UtilClient.is_unset(request.is_overseas):
+            query['IsOverseas'] = request.is_overseas
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnReport',
@@ -2941,7 +3224,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2956,17 +3239,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnReportResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['HttpCode'] = request.http_code
-        query['IsOverseas'] = request.is_overseas
-        query['OwnerId'] = request.owner_id
-        query['ReportId'] = request.report_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.http_code):
+            query['HttpCode'] = request.http_code
+        if not UtilClient.is_unset(request.is_overseas):
+            query['IsOverseas'] = request.is_overseas
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnReport',
@@ -2976,7 +3266,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3005,11 +3295,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnReportListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnReportList',
@@ -3019,7 +3310,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3034,11 +3325,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnReportListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnReportList',
@@ -3048,7 +3340,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3077,12 +3369,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnSMCertificateDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertIdentifier'] = request.cert_identifier
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnSMCertificateDetail',
@@ -3092,7 +3386,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3107,12 +3401,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnSMCertificateDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertIdentifier'] = request.cert_identifier
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnSMCertificateDetail',
@@ -3122,7 +3418,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3151,12 +3447,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnSMCertificateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnSMCertificateList',
@@ -3166,7 +3464,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3181,12 +3479,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnSMCertificateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnSMCertificateList',
@@ -3196,7 +3496,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3225,11 +3525,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnService',
@@ -3239,7 +3540,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3254,11 +3555,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnService',
@@ -3268,7 +3570,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3297,10 +3599,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnSubListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnSubList',
@@ -3310,7 +3612,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3325,10 +3627,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnSubListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnSubList',
@@ -3338,7 +3640,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3367,12 +3669,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserBillHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserBillHistory',
@@ -3382,7 +3686,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3397,12 +3701,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserBillHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserBillHistory',
@@ -3412,7 +3718,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3441,14 +3747,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserBillPredictionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['Dimension'] = request.dimension
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.dimension):
+            query['Dimension'] = request.dimension
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserBillPrediction',
@@ -3458,7 +3768,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3473,14 +3783,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserBillPredictionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['Dimension'] = request.dimension
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.dimension):
+            query['Dimension'] = request.dimension
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserBillPrediction',
@@ -3490,7 +3804,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3519,12 +3833,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserBillTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserBillType',
@@ -3534,7 +3850,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3549,12 +3865,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserBillTypeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserBillType',
@@ -3564,7 +3882,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3593,11 +3911,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FunctionName'] = request.function_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserConfigs',
@@ -3607,7 +3926,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3622,11 +3941,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FunctionName'] = request.function_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserConfigs',
@@ -3636,7 +3956,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3665,14 +3985,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserDomainsByFuncResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FuncId'] = request.func_id
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.func_id):
+            query['FuncId'] = request.func_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserDomainsByFunc',
@@ -3682,7 +4006,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3697,14 +4021,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserDomainsByFuncResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FuncId'] = request.func_id
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.func_id):
+            query['FuncId'] = request.func_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserDomainsByFunc',
@@ -3714,7 +4042,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3743,11 +4071,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserQuotaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserQuota',
@@ -3757,7 +4086,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3772,11 +4101,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserQuotaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserQuota',
@@ -3786,7 +4116,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3815,12 +4145,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserResourcePackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserResourcePackage',
@@ -3830,7 +4162,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3845,12 +4177,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnUserResourcePackageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnUserResourcePackage',
@@ -3860,7 +4194,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3889,13 +4223,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnWafDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnWafDomain',
@@ -3905,7 +4242,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3920,13 +4257,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnWafDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeCdnWafDomain',
@@ -3936,7 +4276,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3976,7 +4316,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4002,7 +4342,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4031,12 +4371,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigGroupId'] = request.config_group_id
-        query['ConfigGroupName'] = request.config_group_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_group_id):
+            query['ConfigGroupId'] = request.config_group_id
+        if not UtilClient.is_unset(request.config_group_name):
+            query['ConfigGroupName'] = request.config_group_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeConfigGroupDetail',
@@ -4046,7 +4388,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4061,12 +4403,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigGroupId'] = request.config_group_id
-        query['ConfigGroupName'] = request.config_group_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_group_id):
+            query['ConfigGroupId'] = request.config_group_id
+        if not UtilClient.is_unset(request.config_group_name):
+            query['ConfigGroupName'] = request.config_group_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeConfigGroupDetail',
@@ -4076,7 +4420,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4105,15 +4449,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeConfigOfVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FunctionId'] = request.function_id
-        query['FunctionName'] = request.function_name
-        query['GroupId'] = request.group_id
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.function_id):
+            query['FunctionId'] = request.function_id
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeConfigOfVersion',
@@ -4123,7 +4472,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4138,15 +4487,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeConfigOfVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['FunctionId'] = request.function_id
-        query['FunctionName'] = request.function_name
-        query['GroupId'] = request.group_id
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.function_id):
+            query['FunctionId'] = request.function_id
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeConfigOfVersion',
@@ -4156,7 +4510,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4196,7 +4550,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4222,7 +4576,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4251,18 +4605,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainAverageResponseTimeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['DomainType'] = request.domain_type
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['TimeMerge'] = request.time_merge
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_merge):
+            query['TimeMerge'] = request.time_merge
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainAverageResponseTime',
@@ -4272,7 +4634,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4287,18 +4649,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainAverageResponseTimeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['DomainType'] = request.domain_type
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['TimeMerge'] = request.time_merge
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_type):
+            query['DomainType'] = request.domain_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_merge):
+            query['TimeMerge'] = request.time_merge
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainAverageResponseTime',
@@ -4308,7 +4678,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4337,16 +4707,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainBpsData',
@@ -4356,7 +4732,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4371,16 +4747,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainBpsData',
@@ -4390,7 +4772,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4419,17 +4801,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainBpsDataByLayerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['Layer'] = request.layer
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.layer):
+            query['Layer'] = request.layer
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainBpsDataByLayer',
@@ -4439,7 +4828,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4454,17 +4843,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainBpsDataByLayerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['Layer'] = request.layer
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.layer):
+            query['Layer'] = request.layer
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainBpsDataByLayer',
@@ -4474,7 +4870,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4503,14 +4899,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainBpsDataByTimeStampResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['IspNames'] = request.isp_names
-        query['LocationNames'] = request.location_names
-        query['OwnerId'] = request.owner_id
-        query['TimePoint'] = request.time_point
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.isp_names):
+            query['IspNames'] = request.isp_names
+        if not UtilClient.is_unset(request.location_names):
+            query['LocationNames'] = request.location_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainBpsDataByTimeStamp',
@@ -4520,7 +4920,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4535,14 +4935,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainBpsDataByTimeStampResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['IspNames'] = request.isp_names
-        query['LocationNames'] = request.location_names
-        query['OwnerId'] = request.owner_id
-        query['TimePoint'] = request.time_point
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.isp_names):
+            query['IspNames'] = request.isp_names
+        if not UtilClient.is_unset(request.location_names):
+            query['LocationNames'] = request.location_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainBpsDataByTimeStamp',
@@ -4552,7 +4956,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4581,18 +4985,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainCcActivityLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RuleName'] = request.rule_name
-        query['StartTime'] = request.start_time
-        query['TriggerObject'] = request.trigger_object
-        query['Value'] = request.value
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.trigger_object):
+            query['TriggerObject'] = request.trigger_object
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainCcActivityLog',
@@ -4602,7 +5014,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4617,18 +5029,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainCcActivityLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['RuleName'] = request.rule_name
-        query['StartTime'] = request.start_time
-        query['TriggerObject'] = request.trigger_object
-        query['Value'] = request.value
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.trigger_object):
+            query['TriggerObject'] = request.trigger_object
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainCcActivityLog',
@@ -4638,7 +5058,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4667,11 +5087,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainCertificateInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainCertificateInfo',
@@ -4681,7 +5102,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4696,11 +5117,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainCertificateInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainCertificateInfo',
@@ -4710,7 +5132,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4750,7 +5172,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4776,7 +5198,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4816,7 +5238,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4842,7 +5264,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4871,14 +5293,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainFileSizeProportionData',
@@ -4888,7 +5314,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4903,14 +5329,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainFileSizeProportionDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainFileSizeProportionData',
@@ -4920,7 +5350,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4949,14 +5379,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainHitRateDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainHitRateData',
@@ -4966,7 +5400,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -4981,14 +5415,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainHitRateDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainHitRateData',
@@ -4998,7 +5436,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5027,14 +5465,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainHttpCodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainHttpCodeData',
@@ -5044,7 +5486,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5059,14 +5501,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainHttpCodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainHttpCodeData',
@@ -5076,7 +5522,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5105,17 +5551,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainHttpCodeDataByLayerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['Layer'] = request.layer
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.layer):
+            query['Layer'] = request.layer
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainHttpCodeDataByLayer',
@@ -5125,7 +5578,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5140,17 +5593,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainHttpCodeDataByLayerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['Layer'] = request.layer
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.layer):
+            query['Layer'] = request.layer
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainHttpCodeDataByLayer',
@@ -5160,7 +5620,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5189,13 +5649,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainISPDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainISPData',
@@ -5205,7 +5668,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5220,13 +5683,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainISPDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainISPData',
@@ -5236,7 +5702,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5265,15 +5731,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainMax95BpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Cycle'] = request.cycle
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['TimePoint'] = request.time_point
+        if not UtilClient.is_unset(request.cycle):
+            query['Cycle'] = request.cycle
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainMax95BpsData',
@@ -5283,7 +5754,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5298,15 +5769,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainMax95BpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Cycle'] = request.cycle
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['TimePoint'] = request.time_point
+        if not UtilClient.is_unset(request.cycle):
+            query['Cycle'] = request.cycle
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainMax95BpsData',
@@ -5316,7 +5792,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5345,13 +5821,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainMultiUsageDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainMultiUsageData',
@@ -5361,7 +5840,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5376,13 +5855,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainMultiUsageDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainMultiUsageData',
@@ -5392,7 +5874,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5421,13 +5903,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainNamesOfVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageIndex'] = request.page_index
-        query['PageSize'] = request.page_size
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainNamesOfVersion',
@@ -5437,7 +5922,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5452,13 +5937,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainNamesOfVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageIndex'] = request.page_index
-        query['PageSize'] = request.page_size
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainNamesOfVersion',
@@ -5468,7 +5956,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5508,7 +5996,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5534,7 +6022,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5563,13 +6051,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainPvDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainPvData',
@@ -5579,7 +6070,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5594,13 +6085,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainPvDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainPvData',
@@ -5610,7 +6104,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5639,16 +6133,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainQpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainQpsData',
@@ -5658,7 +6158,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5673,16 +6173,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainQpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainQpsData',
@@ -5692,7 +6198,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5721,17 +6227,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainQpsDataByLayerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['Layer'] = request.layer
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.layer):
+            query['Layer'] = request.layer
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainQpsDataByLayer',
@@ -5741,7 +6254,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5756,17 +6269,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainQpsDataByLayerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['Layer'] = request.layer
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.layer):
+            query['Layer'] = request.layer
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainQpsDataByLayer',
@@ -5776,7 +6296,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5816,7 +6336,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5842,7 +6362,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5882,7 +6402,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5908,7 +6428,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5948,7 +6468,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5974,7 +6494,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6003,15 +6523,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeHttpCodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeHttpCodeData',
@@ -6021,7 +6546,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6036,15 +6561,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeHttpCodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeHttpCodeData',
@@ -6054,7 +6584,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6094,7 +6624,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6120,7 +6650,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6160,7 +6690,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6186,7 +6716,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6215,13 +6745,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeSrcBpsData',
@@ -6231,7 +6764,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6246,13 +6779,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeSrcBpsData',
@@ -6262,7 +6798,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6291,15 +6827,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcHttpCodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeSrcHttpCodeData',
@@ -6309,7 +6850,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6324,15 +6865,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcHttpCodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeSrcHttpCodeData',
@@ -6342,7 +6888,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6371,13 +6917,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeSrcTrafficData',
@@ -6387,7 +6936,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6402,13 +6951,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeSrcTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeSrcTrafficData',
@@ -6418,7 +6970,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6447,15 +6999,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeTrafficData',
@@ -6465,7 +7022,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6480,15 +7037,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRealTimeTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRealTimeTrafficData',
@@ -6498,7 +7060,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6538,7 +7100,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6564,7 +7126,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6593,13 +7155,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRegionDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRegionData',
@@ -6609,7 +7174,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6624,13 +7189,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainRegionDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainRegionData',
@@ -6640,7 +7208,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6669,14 +7237,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainReqHitRateDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainReqHitRateData',
@@ -6686,7 +7258,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6701,14 +7273,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainReqHitRateDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainReqHitRateData',
@@ -6718,7 +7294,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6747,14 +7323,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcBpsData',
@@ -6764,7 +7344,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6779,14 +7359,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcBpsData',
@@ -6796,7 +7380,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6825,14 +7409,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcHttpCodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcHttpCodeData',
@@ -6842,7 +7430,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6857,14 +7445,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcHttpCodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcHttpCodeData',
@@ -6874,7 +7466,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6903,14 +7495,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcQpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcQpsData',
@@ -6920,7 +7516,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6935,14 +7531,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcQpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcQpsData',
@@ -6952,7 +7552,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6981,14 +7581,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcTopUrlVisitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcTopUrlVisit',
@@ -6998,7 +7602,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7013,14 +7617,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcTopUrlVisitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcTopUrlVisit',
@@ -7030,7 +7638,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7059,14 +7667,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcTrafficData',
@@ -7076,7 +7688,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7091,14 +7703,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainSrcTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainSrcTrafficData',
@@ -7108,7 +7724,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7137,16 +7753,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainTopClientIpVisitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Limit'] = request.limit
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTopClientIpVisit',
@@ -7156,7 +7778,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7171,16 +7793,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainTopClientIpVisitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Limit'] = request.limit
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTopClientIpVisit',
@@ -7190,7 +7818,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7219,15 +7847,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainTopReferVisitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['Percent'] = request.percent
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.percent):
+            query['Percent'] = request.percent
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTopReferVisit',
@@ -7237,7 +7870,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7252,15 +7885,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainTopReferVisitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['Percent'] = request.percent
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.percent):
+            query['Percent'] = request.percent
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTopReferVisit',
@@ -7270,7 +7908,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7299,14 +7937,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainTopUrlVisitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTopUrlVisit',
@@ -7316,7 +7958,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7331,14 +7973,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainTopUrlVisitResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTopUrlVisit',
@@ -7348,7 +7994,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7377,16 +8023,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTrafficData',
@@ -7396,7 +8048,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7411,16 +8063,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainTrafficData',
@@ -7430,7 +8088,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7459,18 +8117,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainUsageDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['DataProtocol'] = request.data_protocol
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Field'] = request.field
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.data_protocol):
+            query['DataProtocol'] = request.data_protocol
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainUsageData',
@@ -7480,7 +8146,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7495,18 +8161,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainUsageDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['DataProtocol'] = request.data_protocol
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Field'] = request.field
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.data_protocol):
+            query['DataProtocol'] = request.data_protocol
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainUsageData',
@@ -7516,7 +8190,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7545,13 +8219,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainUvDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainUvData',
@@ -7561,7 +8238,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7576,13 +8253,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainUvDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainUvData',
@@ -7592,7 +8272,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7621,12 +8301,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainsBySource',
@@ -7636,7 +8318,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7651,12 +8333,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainsBySourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainsBySource',
@@ -7666,7 +8350,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7695,13 +8379,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainsUsageByDay',
@@ -7711,7 +8398,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7726,13 +8413,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainsUsageByDayResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomainsUsageByDay',
@@ -7742,7 +8432,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7771,13 +8461,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeEsExceptionDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['RuleId'] = request.rule_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeEsExceptionData',
@@ -7787,7 +8480,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7802,13 +8495,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeEsExceptionDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['RuleId'] = request.rule_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeEsExceptionData',
@@ -7818,7 +8514,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7847,13 +8543,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeEsExecuteDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['RuleId'] = request.rule_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeEsExecuteData',
@@ -7863,7 +8562,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7878,13 +8577,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeEsExecuteDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['RuleId'] = request.rule_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeEsExecuteData',
@@ -7894,7 +8596,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7934,7 +8636,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7960,7 +8662,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7989,11 +8691,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeIllegalUrlExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeIllegalUrlExportTask',
@@ -8003,7 +8706,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8018,11 +8721,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeIllegalUrlExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeIllegalUrlExportTask',
@@ -8032,7 +8736,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8061,12 +8765,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeIpInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IP'] = request.ip
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.ip):
+            query['IP'] = request.ip
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeIpInfo',
@@ -8076,7 +8782,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8091,12 +8797,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeIpInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IP'] = request.ip
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.ip):
+            query['IP'] = request.ip
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeIpInfo',
@@ -8106,7 +8814,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8135,12 +8843,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeL2VipsByDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeL2VipsByDomain',
@@ -8150,7 +8860,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8165,12 +8875,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeL2VipsByDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeL2VipsByDomain',
@@ -8180,7 +8892,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8209,15 +8921,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRangeDataByLocateAndIspServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['EndTime'] = request.end_time
-        query['IspNames'] = request.isp_names
-        query['LocationNames'] = request.location_names
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_names):
+            query['IspNames'] = request.isp_names
+        if not UtilClient.is_unset(request.location_names):
+            query['LocationNames'] = request.location_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRangeDataByLocateAndIspService',
@@ -8227,7 +8944,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8242,15 +8959,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRangeDataByLocateAndIspServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['EndTime'] = request.end_time
-        query['IspNames'] = request.isp_names
-        query['LocationNames'] = request.location_names
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_names):
+            query['IspNames'] = request.isp_names
+        if not UtilClient.is_unset(request.location_names):
+            query['LocationNames'] = request.location_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRangeDataByLocateAndIspService',
@@ -8260,7 +8982,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8289,15 +9011,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRealtimeDeliveryAccResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['LogStore'] = request.log_store
-        query['OwnerId'] = request.owner_id
-        query['Project'] = request.project
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.log_store):
+            query['LogStore'] = request.log_store
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project):
+            query['Project'] = request.project
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRealtimeDeliveryAcc',
@@ -8307,7 +9034,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8322,15 +9049,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRealtimeDeliveryAccResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['LogStore'] = request.log_store
-        query['OwnerId'] = request.owner_id
-        query['Project'] = request.project
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.log_store):
+            query['LogStore'] = request.log_store
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project):
+            query['Project'] = request.project
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRealtimeDeliveryAcc',
@@ -8340,7 +9072,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8369,11 +9101,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRefreshQuotaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRefreshQuota',
@@ -8383,7 +9116,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8398,11 +9131,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRefreshQuotaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRefreshQuota',
@@ -8412,7 +9146,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8441,11 +9175,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRefreshTaskByIdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRefreshTaskById',
@@ -8455,7 +9190,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8470,11 +9205,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRefreshTaskByIdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRefreshTaskById',
@@ -8484,7 +9220,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8513,21 +9249,32 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRefreshTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['ObjectPath'] = request.object_path
-        query['ObjectType'] = request.object_type
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityToken'] = request.security_token
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRefreshTasks',
@@ -8537,7 +9284,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8552,21 +9299,32 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRefreshTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['ObjectPath'] = request.object_path
-        query['ObjectType'] = request.object_type
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityToken'] = request.security_token
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeRefreshTasks',
@@ -8576,7 +9334,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8605,10 +9363,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeStagingIpResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeStagingIp',
@@ -8618,7 +9376,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8633,10 +9391,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeStagingIpResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeStagingIp',
@@ -8646,7 +9404,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8675,13 +9433,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTagResources',
@@ -8691,7 +9452,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8706,13 +9467,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTagResources',
@@ -8722,7 +9486,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8751,13 +9515,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeTopDomainsByFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Limit'] = request.limit
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTopDomainsByFlow',
@@ -8767,7 +9534,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8782,13 +9549,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeTopDomainsByFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Limit'] = request.limit
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeTopDomainsByFlow',
@@ -8798,7 +9568,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8827,10 +9597,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserCertificateExpireCount',
@@ -8840,7 +9610,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8855,10 +9625,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserCertificateExpireCountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserCertificateExpireCount',
@@ -8868,7 +9638,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8897,12 +9667,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserConfigs',
@@ -8912,7 +9684,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8927,12 +9699,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserConfigs',
@@ -8942,7 +9716,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -8971,24 +9745,38 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CdnType'] = request.cdn_type
-        query['ChangeEndTime'] = request.change_end_time
-        query['ChangeStartTime'] = request.change_start_time
-        query['CheckDomainShow'] = request.check_domain_show
-        query['Coverage'] = request.coverage
-        query['DomainName'] = request.domain_name
-        query['DomainSearchType'] = request.domain_search_type
-        query['DomainStatus'] = request.domain_status
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityToken'] = request.security_token
-        query['Source'] = request.source
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.cdn_type):
+            query['CdnType'] = request.cdn_type
+        if not UtilClient.is_unset(request.change_end_time):
+            query['ChangeEndTime'] = request.change_end_time
+        if not UtilClient.is_unset(request.change_start_time):
+            query['ChangeStartTime'] = request.change_start_time
+        if not UtilClient.is_unset(request.check_domain_show):
+            query['CheckDomainShow'] = request.check_domain_show
+        if not UtilClient.is_unset(request.coverage):
+            query['Coverage'] = request.coverage
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_search_type):
+            query['DomainSearchType'] = request.domain_search_type
+        if not UtilClient.is_unset(request.domain_status):
+            query['DomainStatus'] = request.domain_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserDomains',
@@ -8998,7 +9786,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9013,24 +9801,38 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CdnType'] = request.cdn_type
-        query['ChangeEndTime'] = request.change_end_time
-        query['ChangeStartTime'] = request.change_start_time
-        query['CheckDomainShow'] = request.check_domain_show
-        query['Coverage'] = request.coverage
-        query['DomainName'] = request.domain_name
-        query['DomainSearchType'] = request.domain_search_type
-        query['DomainStatus'] = request.domain_status
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityToken'] = request.security_token
-        query['Source'] = request.source
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.cdn_type):
+            query['CdnType'] = request.cdn_type
+        if not UtilClient.is_unset(request.change_end_time):
+            query['ChangeEndTime'] = request.change_end_time
+        if not UtilClient.is_unset(request.change_start_time):
+            query['ChangeStartTime'] = request.change_start_time
+        if not UtilClient.is_unset(request.check_domain_show):
+            query['CheckDomainShow'] = request.check_domain_show
+        if not UtilClient.is_unset(request.coverage):
+            query['Coverage'] = request.coverage
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_search_type):
+            query['DomainSearchType'] = request.domain_search_type
+        if not UtilClient.is_unset(request.domain_status):
+            query['DomainStatus'] = request.domain_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserDomains',
@@ -9040,7 +9842,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9069,10 +9871,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserTagsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserTags',
@@ -9082,7 +9884,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9097,10 +9899,10 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserTagsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserTags',
@@ -9110,7 +9912,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9139,12 +9941,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserUsageDataExportTask',
@@ -9154,7 +9958,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9169,12 +9973,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserUsageDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserUsageDataExportTask',
@@ -9184,7 +9990,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9213,12 +10019,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserUsageDetailDataExportTask',
@@ -9228,7 +10036,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9243,12 +10051,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeUserUsageDetailDataExportTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeUserUsageDetailDataExportTask',
@@ -9258,7 +10068,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9298,7 +10108,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9324,7 +10134,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9353,11 +10163,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeVerifyContentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeVerifyContent',
@@ -9367,7 +10178,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9382,11 +10193,12 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeVerifyContentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeVerifyContent',
@@ -9396,7 +10208,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9436,7 +10248,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9462,7 +10274,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9502,7 +10314,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9528,7 +10340,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9568,7 +10380,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9594,7 +10406,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9634,7 +10446,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9660,7 +10472,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9700,7 +10512,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9726,7 +10538,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9766,7 +10578,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9792,7 +10604,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9832,7 +10644,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9858,7 +10670,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9887,15 +10699,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.ModifyCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyCdnDomain',
@@ -9905,7 +10722,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9920,15 +10737,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.ModifyCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyCdnDomain',
@@ -9938,7 +10760,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9967,12 +10789,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.ModifyCdnDomainSchdmByPropertyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['Property'] = request.property
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.property):
+            query['Property'] = request.property
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyCdnDomainSchdmByProperty',
@@ -9982,7 +10806,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -9997,12 +10821,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.ModifyCdnDomainSchdmByPropertyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['Property'] = request.property
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.property):
+            query['Property'] = request.property
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifyCdnDomainSchdmByProperty',
@@ -10012,7 +10838,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10052,7 +10878,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10078,7 +10904,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10118,7 +10944,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10144,7 +10970,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10184,7 +11010,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10210,7 +11036,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10239,12 +11065,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.OpenCdnServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InternetChargeType'] = request.internet_charge_type
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OpenCdnService',
@@ -10254,7 +11082,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10269,12 +11097,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.OpenCdnServiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InternetChargeType'] = request.internet_charge_type
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OpenCdnService',
@@ -10284,7 +11114,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10313,12 +11143,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.PublishStagingConfigToProductionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['FunctionName'] = request.function_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PublishStagingConfigToProduction',
@@ -10328,7 +11160,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10343,12 +11175,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.PublishStagingConfigToProductionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['FunctionName'] = request.function_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PublishStagingConfigToProduction',
@@ -10358,7 +11192,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10387,13 +11221,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.PushObjectCacheResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['ObjectPath'] = request.object_path
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PushObjectCache',
@@ -10403,7 +11240,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10418,13 +11255,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.PushObjectCacheResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['ObjectPath'] = request.object_path
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PushObjectCache',
@@ -10434,7 +11274,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10463,13 +11303,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.RefreshObjectCachesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ObjectPath'] = request.object_path
-        query['ObjectType'] = request.object_type
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RefreshObjectCaches',
@@ -10479,7 +11322,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10494,13 +11337,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.RefreshObjectCachesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ObjectPath'] = request.object_path
-        query['ObjectType'] = request.object_type
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RefreshObjectCaches',
@@ -10510,7 +11356,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10539,12 +11385,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.RollbackStagingConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['FunctionName'] = request.function_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RollbackStagingConfig',
@@ -10554,7 +11402,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10569,12 +11417,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.RollbackStagingConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['FunctionName'] = request.function_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RollbackStagingConfig',
@@ -10584,7 +11434,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10613,14 +11463,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetCcConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllowIps'] = request.allow_ips
-        query['BlockIps'] = request.block_ips
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.allow_ips):
+            query['AllowIps'] = request.allow_ips
+        if not UtilClient.is_unset(request.block_ips):
+            query['BlockIps'] = request.block_ips
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetCcConfig',
@@ -10630,7 +11484,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10645,14 +11499,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetCcConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllowIps'] = request.allow_ips
-        query['BlockIps'] = request.block_ips
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.allow_ips):
+            query['AllowIps'] = request.allow_ips
+        if not UtilClient.is_unset(request.block_ips):
+            query['BlockIps'] = request.block_ips
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetCcConfig',
@@ -10662,7 +11520,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10691,12 +11549,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetCdnDomainCSRCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['ServerCertificate'] = request.server_certificate
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.server_certificate):
+            query['ServerCertificate'] = request.server_certificate
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetCdnDomainCSRCertificate',
@@ -10706,7 +11566,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10721,12 +11581,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetCdnDomainCSRCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['ServerCertificate'] = request.server_certificate
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.server_certificate):
+            query['ServerCertificate'] = request.server_certificate
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetCdnDomainCSRCertificate',
@@ -10736,7 +11598,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10765,14 +11627,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetCdnDomainSMCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertIdentifier'] = request.cert_identifier
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SSLProtocol'] = request.sslprotocol
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetCdnDomainSMCertificate',
@@ -10782,7 +11648,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10797,14 +11663,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetCdnDomainSMCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertIdentifier'] = request.cert_identifier
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SSLProtocol'] = request.sslprotocol
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetCdnDomainSMCertificate',
@@ -10814,7 +11684,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10843,12 +11713,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetCdnDomainStagingConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['Functions'] = request.functions
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.functions):
+            query['Functions'] = request.functions
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetCdnDomainStagingConfig',
@@ -10858,7 +11730,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10873,12 +11745,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetCdnDomainStagingConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['Functions'] = request.functions
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.functions):
+            query['Functions'] = request.functions
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetCdnDomainStagingConfig',
@@ -10888,7 +11762,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10917,18 +11791,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetConfigOfVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['FunctionArgs'] = request.function_args
-        query['FunctionId'] = request.function_id
-        query['FunctionMatches'] = request.function_matches
-        query['FunctionName'] = request.function_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.function_args):
+            query['FunctionArgs'] = request.function_args
+        if not UtilClient.is_unset(request.function_id):
+            query['FunctionId'] = request.function_id
+        if not UtilClient.is_unset(request.function_matches):
+            query['FunctionMatches'] = request.function_matches
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetConfigOfVersion',
@@ -10938,7 +11820,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -10953,18 +11835,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetConfigOfVersionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['FunctionArgs'] = request.function_args
-        query['FunctionId'] = request.function_id
-        query['FunctionMatches'] = request.function_matches
-        query['FunctionName'] = request.function_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.function_args):
+            query['FunctionArgs'] = request.function_args
+        if not UtilClient.is_unset(request.function_id):
+            query['FunctionId'] = request.function_id
+        if not UtilClient.is_unset(request.function_matches):
+            query['FunctionMatches'] = request.function_matches
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetConfigOfVersion',
@@ -10974,7 +11864,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11003,12 +11893,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetDomainGreenManagerConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDomainGreenManagerConfig',
@@ -11018,7 +11910,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11033,12 +11925,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetDomainGreenManagerConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDomainGreenManagerConfig',
@@ -11048,7 +11942,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11077,18 +11971,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetDomainServerCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertName'] = request.cert_name
-        query['CertType'] = request.cert_type
-        query['DomainName'] = request.domain_name
-        query['ForceSet'] = request.force_set
-        query['OwnerId'] = request.owner_id
-        query['PrivateKey'] = request.private_key
-        query['SecurityToken'] = request.security_token
-        query['ServerCertificate'] = request.server_certificate
-        query['ServerCertificateStatus'] = request.server_certificate_status
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.force_set):
+            query['ForceSet'] = request.force_set
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.server_certificate):
+            query['ServerCertificate'] = request.server_certificate
+        if not UtilClient.is_unset(request.server_certificate_status):
+            query['ServerCertificateStatus'] = request.server_certificate_status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDomainServerCertificate',
@@ -11098,7 +12000,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11113,18 +12015,26 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetDomainServerCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertName'] = request.cert_name
-        query['CertType'] = request.cert_type
-        query['DomainName'] = request.domain_name
-        query['ForceSet'] = request.force_set
-        query['OwnerId'] = request.owner_id
-        query['PrivateKey'] = request.private_key
-        query['SecurityToken'] = request.security_token
-        query['ServerCertificate'] = request.server_certificate
-        query['ServerCertificateStatus'] = request.server_certificate_status
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.force_set):
+            query['ForceSet'] = request.force_set
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.server_certificate):
+            query['ServerCertificate'] = request.server_certificate
+        if not UtilClient.is_unset(request.server_certificate_status):
+            query['ServerCertificateStatus'] = request.server_certificate_status
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetDomainServerCertificate',
@@ -11134,7 +12044,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11163,14 +12073,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetErrorPageConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CustomPageUrl'] = request.custom_page_url
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['PageType'] = request.page_type
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.custom_page_url):
+            query['CustomPageUrl'] = request.custom_page_url
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_type):
+            query['PageType'] = request.page_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetErrorPageConfig',
@@ -11180,7 +12094,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11195,14 +12109,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetErrorPageConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CustomPageUrl'] = request.custom_page_url
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['PageType'] = request.page_type
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.custom_page_url):
+            query['CustomPageUrl'] = request.custom_page_url
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_type):
+            query['PageType'] = request.page_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetErrorPageConfig',
@@ -11212,7 +12130,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11241,15 +12159,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetFileCacheExpiredConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CacheContent'] = request.cache_content
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['TTL'] = request.ttl
-        query['Weight'] = request.weight
+        if not UtilClient.is_unset(request.cache_content):
+            query['CacheContent'] = request.cache_content
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.ttl):
+            query['TTL'] = request.ttl
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetFileCacheExpiredConfig',
@@ -11259,7 +12182,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11274,15 +12197,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetFileCacheExpiredConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CacheContent'] = request.cache_content
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['TTL'] = request.ttl
-        query['Weight'] = request.weight
+        if not UtilClient.is_unset(request.cache_content):
+            query['CacheContent'] = request.cache_content
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.ttl):
+            query['TTL'] = request.ttl
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetFileCacheExpiredConfig',
@@ -11292,7 +12220,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11321,13 +12249,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetForceRedirectConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['RedirectType'] = request.redirect_type
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.redirect_type):
+            query['RedirectType'] = request.redirect_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetForceRedirectConfig',
@@ -11337,7 +12268,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11352,13 +12283,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetForceRedirectConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['RedirectType'] = request.redirect_type
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.redirect_type):
+            query['RedirectType'] = request.redirect_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetForceRedirectConfig',
@@ -11368,7 +12302,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11397,15 +12331,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetForwardSchemeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
-        query['SchemeOrigin'] = request.scheme_origin
-        query['SchemeOriginPort'] = request.scheme_origin_port
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.scheme_origin):
+            query['SchemeOrigin'] = request.scheme_origin
+        if not UtilClient.is_unset(request.scheme_origin_port):
+            query['SchemeOriginPort'] = request.scheme_origin_port
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetForwardSchemeConfig',
@@ -11415,7 +12354,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11430,15 +12369,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetForwardSchemeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
-        query['SchemeOrigin'] = request.scheme_origin
-        query['SchemeOriginPort'] = request.scheme_origin_port
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.scheme_origin):
+            query['SchemeOrigin'] = request.scheme_origin
+        if not UtilClient.is_unset(request.scheme_origin_port):
+            query['SchemeOriginPort'] = request.scheme_origin_port
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetForwardSchemeConfig',
@@ -11448,7 +12392,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11477,14 +12421,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetHttpErrorPageConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['ErrorCode'] = request.error_code
-        query['OwnerId'] = request.owner_id
-        query['PageUrl'] = request.page_url
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.error_code):
+            query['ErrorCode'] = request.error_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_url):
+            query['PageUrl'] = request.page_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetHttpErrorPageConfig',
@@ -11494,7 +12442,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11509,14 +12457,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetHttpErrorPageConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['ErrorCode'] = request.error_code
-        query['OwnerId'] = request.owner_id
-        query['PageUrl'] = request.page_url
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.error_code):
+            query['ErrorCode'] = request.error_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_url):
+            query['PageUrl'] = request.page_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetHttpErrorPageConfig',
@@ -11526,7 +12478,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11555,15 +12507,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetHttpHeaderConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['HeaderKey'] = request.header_key
-        query['HeaderValue'] = request.header_value
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.header_key):
+            query['HeaderKey'] = request.header_key
+        if not UtilClient.is_unset(request.header_value):
+            query['HeaderValue'] = request.header_value
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetHttpHeaderConfig',
@@ -11573,7 +12530,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11588,15 +12545,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetHttpHeaderConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['HeaderKey'] = request.header_key
-        query['HeaderValue'] = request.header_value
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.header_key):
+            query['HeaderKey'] = request.header_key
+        if not UtilClient.is_unset(request.header_value):
+            query['HeaderValue'] = request.header_value
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetHttpHeaderConfig',
@@ -11606,7 +12568,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11635,13 +12597,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetHttpsOptionConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Http2'] = request.http_2
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.http_2):
+            query['Http2'] = request.http_2
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetHttpsOptionConfig',
@@ -11651,7 +12616,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11666,13 +12631,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetHttpsOptionConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Http2'] = request.http_2
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.http_2):
+            query['Http2'] = request.http_2
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetHttpsOptionConfig',
@@ -11682,7 +12650,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11711,15 +12679,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetIgnoreQueryStringConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['HashKeyArgs'] = request.hash_key_args
-        query['KeepOssArgs'] = request.keep_oss_args
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.hash_key_args):
+            query['HashKeyArgs'] = request.hash_key_args
+        if not UtilClient.is_unset(request.keep_oss_args):
+            query['KeepOssArgs'] = request.keep_oss_args
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetIgnoreQueryStringConfig',
@@ -11729,7 +12702,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11744,15 +12717,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetIgnoreQueryStringConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['HashKeyArgs'] = request.hash_key_args
-        query['KeepOssArgs'] = request.keep_oss_args
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.hash_key_args):
+            query['HashKeyArgs'] = request.hash_key_args
+        if not UtilClient.is_unset(request.keep_oss_args):
+            query['KeepOssArgs'] = request.keep_oss_args
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetIgnoreQueryStringConfig',
@@ -11762,7 +12740,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11791,13 +12769,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetIpAllowListConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllowIps'] = request.allow_ips
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.allow_ips):
+            query['AllowIps'] = request.allow_ips
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetIpAllowListConfig',
@@ -11807,7 +12788,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11822,13 +12803,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetIpAllowListConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllowIps'] = request.allow_ips
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.allow_ips):
+            query['AllowIps'] = request.allow_ips
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetIpAllowListConfig',
@@ -11838,7 +12822,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11867,13 +12851,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetIpBlackListConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlockIps'] = request.block_ips
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.block_ips):
+            query['BlockIps'] = request.block_ips
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetIpBlackListConfig',
@@ -11883,7 +12870,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11898,13 +12885,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetIpBlackListConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BlockIps'] = request.block_ips
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.block_ips):
+            query['BlockIps'] = request.block_ips
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetIpBlackListConfig',
@@ -11914,7 +12904,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11943,13 +12933,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetOptimizeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetOptimizeConfig',
@@ -11959,7 +12952,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -11974,13 +12967,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetOptimizeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetOptimizeConfig',
@@ -11990,7 +12986,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12019,13 +13015,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetPageCompressConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetPageCompressConfig',
@@ -12035,7 +13034,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12050,13 +13049,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetPageCompressConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetPageCompressConfig',
@@ -12066,7 +13068,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12095,13 +13097,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetRangeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetRangeConfig',
@@ -12111,7 +13116,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12126,13 +13131,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetRangeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetRangeConfig',
@@ -12142,7 +13150,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12171,16 +13179,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetRefererConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllowEmpty'] = request.allow_empty
-        query['DisableAst'] = request.disable_ast
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['ReferList'] = request.refer_list
-        query['ReferType'] = request.refer_type
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.allow_empty):
+            query['AllowEmpty'] = request.allow_empty
+        if not UtilClient.is_unset(request.disable_ast):
+            query['DisableAst'] = request.disable_ast
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.refer_list):
+            query['ReferList'] = request.refer_list
+        if not UtilClient.is_unset(request.refer_type):
+            query['ReferType'] = request.refer_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetRefererConfig',
@@ -12190,7 +13204,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12205,16 +13219,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetRefererConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllowEmpty'] = request.allow_empty
-        query['DisableAst'] = request.disable_ast
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['ReferList'] = request.refer_list
-        query['ReferType'] = request.refer_type
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.allow_empty):
+            query['AllowEmpty'] = request.allow_empty
+        if not UtilClient.is_unset(request.disable_ast):
+            query['DisableAst'] = request.disable_ast
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.refer_list):
+            query['ReferList'] = request.refer_list
+        if not UtilClient.is_unset(request.refer_type):
+            query['ReferType'] = request.refer_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetRefererConfig',
@@ -12224,7 +13244,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12253,14 +13273,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetRemoveQueryStringConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AliRemoveArgs'] = request.ali_remove_args
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['KeepOssArgs'] = request.keep_oss_args
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.ali_remove_args):
+            query['AliRemoveArgs'] = request.ali_remove_args
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.keep_oss_args):
+            query['KeepOssArgs'] = request.keep_oss_args
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetRemoveQueryStringConfig',
@@ -12270,7 +13294,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12285,14 +13309,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetRemoveQueryStringConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AliRemoveArgs'] = request.ali_remove_args
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['KeepOssArgs'] = request.keep_oss_args
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.ali_remove_args):
+            query['AliRemoveArgs'] = request.ali_remove_args
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.keep_oss_args):
+            query['KeepOssArgs'] = request.keep_oss_args
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetRemoveQueryStringConfig',
@@ -12302,7 +13330,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12331,17 +13359,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetReqAuthConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthRemoteDesc'] = request.auth_remote_desc
-        query['AuthType'] = request.auth_type
-        query['DomainName'] = request.domain_name
-        query['Key1'] = request.key_1
-        query['Key2'] = request.key_2
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['TimeOut'] = request.time_out
+        if not UtilClient.is_unset(request.auth_remote_desc):
+            query['AuthRemoteDesc'] = request.auth_remote_desc
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.key_1):
+            query['Key1'] = request.key_1
+        if not UtilClient.is_unset(request.key_2):
+            query['Key2'] = request.key_2
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.time_out):
+            query['TimeOut'] = request.time_out
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetReqAuthConfig',
@@ -12351,7 +13386,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12366,17 +13401,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetReqAuthConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthRemoteDesc'] = request.auth_remote_desc
-        query['AuthType'] = request.auth_type
-        query['DomainName'] = request.domain_name
-        query['Key1'] = request.key_1
-        query['Key2'] = request.key_2
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['TimeOut'] = request.time_out
+        if not UtilClient.is_unset(request.auth_remote_desc):
+            query['AuthRemoteDesc'] = request.auth_remote_desc
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.key_1):
+            query['Key1'] = request.key_1
+        if not UtilClient.is_unset(request.key_2):
+            query['Key2'] = request.key_2
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.time_out):
+            query['TimeOut'] = request.time_out
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetReqAuthConfig',
@@ -12386,7 +13428,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12415,15 +13457,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetReqHeaderConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Key'] = request.key
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['Value'] = request.value
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetReqHeaderConfig',
@@ -12433,7 +13480,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12448,15 +13495,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetReqHeaderConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['Key'] = request.key
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['Value'] = request.value
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetReqHeaderConfig',
@@ -12466,7 +13518,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12495,14 +13547,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetSourceHostConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BackSrcDomain'] = request.back_src_domain
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.back_src_domain):
+            query['BackSrcDomain'] = request.back_src_domain
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetSourceHostConfig',
@@ -12512,7 +13568,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12527,14 +13583,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetSourceHostConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BackSrcDomain'] = request.back_src_domain
-        query['DomainName'] = request.domain_name
-        query['Enable'] = request.enable
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.back_src_domain):
+            query['BackSrcDomain'] = request.back_src_domain
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetSourceHostConfig',
@@ -12544,7 +13604,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12573,13 +13633,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetUserGreenManagerConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Quota'] = request.quota
-        query['Ratio'] = request.ratio
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.quota):
+            query['Quota'] = request.quota
+        if not UtilClient.is_unset(request.ratio):
+            query['Ratio'] = request.ratio
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetUserGreenManagerConfig',
@@ -12589,7 +13652,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12604,13 +13667,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetUserGreenManagerConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Quota'] = request.quota
-        query['Ratio'] = request.ratio
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.quota):
+            query['Quota'] = request.quota
+        if not UtilClient.is_unset(request.ratio):
+            query['Ratio'] = request.ratio
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetUserGreenManagerConfig',
@@ -12620,7 +13686,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12649,16 +13715,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetWaitingRoomConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllowPct'] = request.allow_pct
-        query['DomainName'] = request.domain_name
-        query['GapTime'] = request.gap_time
-        query['MaxTimeWait'] = request.max_time_wait
-        query['OwnerId'] = request.owner_id
-        query['WaitUri'] = request.wait_uri
-        query['WaitUrl'] = request.wait_url
+        if not UtilClient.is_unset(request.allow_pct):
+            query['AllowPct'] = request.allow_pct
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.gap_time):
+            query['GapTime'] = request.gap_time
+        if not UtilClient.is_unset(request.max_time_wait):
+            query['MaxTimeWait'] = request.max_time_wait
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.wait_uri):
+            query['WaitUri'] = request.wait_uri
+        if not UtilClient.is_unset(request.wait_url):
+            query['WaitUrl'] = request.wait_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetWaitingRoomConfig',
@@ -12668,7 +13740,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12683,16 +13755,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetWaitingRoomConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllowPct'] = request.allow_pct
-        query['DomainName'] = request.domain_name
-        query['GapTime'] = request.gap_time
-        query['MaxTimeWait'] = request.max_time_wait
-        query['OwnerId'] = request.owner_id
-        query['WaitUri'] = request.wait_uri
-        query['WaitUrl'] = request.wait_url
+        if not UtilClient.is_unset(request.allow_pct):
+            query['AllowPct'] = request.allow_pct
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.gap_time):
+            query['GapTime'] = request.gap_time
+        if not UtilClient.is_unset(request.max_time_wait):
+            query['MaxTimeWait'] = request.max_time_wait
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.wait_uri):
+            query['WaitUri'] = request.wait_uri
+        if not UtilClient.is_unset(request.wait_url):
+            query['WaitUrl'] = request.wait_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SetWaitingRoomConfig',
@@ -12702,7 +13780,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12731,12 +13809,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.StartCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartCdnDomain',
@@ -12746,7 +13826,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12761,12 +13841,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.StartCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartCdnDomain',
@@ -12776,7 +13858,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12805,12 +13887,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.StopCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopCdnDomain',
@@ -12820,7 +13904,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12835,12 +13919,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.StopCdnDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopCdnDomain',
@@ -12850,7 +13936,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12879,13 +13965,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -12895,7 +13984,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12910,13 +13999,16 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -12926,7 +14018,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12955,14 +14047,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UntagResources',
@@ -12972,7 +14068,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -12987,14 +14083,18 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UntagResources',
@@ -13004,7 +14104,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13033,10 +14133,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UpdateCdnDeliverTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.deliver):
+            body['Deliver'] = request.deliver
+        if not UtilClient.is_unset(request.deliver_id):
+            body['DeliverId'] = request.deliver_id
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.reports):
+            body['Reports'] = request.reports
+        if not UtilClient.is_unset(request.schedule):
+            body['Schedule'] = request.schedule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateCdnDeliverTask',
@@ -13061,10 +14175,24 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UpdateCdnDeliverTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.deliver):
+            body['Deliver'] = request.deliver
+        if not UtilClient.is_unset(request.deliver_id):
+            body['DeliverId'] = request.deliver_id
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.reports):
+            body['Reports'] = request.reports
+        if not UtilClient.is_unset(request.schedule):
+            body['Schedule'] = request.schedule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateCdnDeliverTask',
@@ -13103,10 +14231,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UpdateCdnSubTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.report_ids):
+            body['ReportIds'] = request.report_ids
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateCdnSubTask',
@@ -13131,10 +14269,20 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UpdateCdnSubTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.report_ids):
+            body['ReportIds'] = request.report_ids
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateCdnSubTask',
@@ -13173,11 +14321,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UpdateFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TriggerARN'] = request.trigger_arn
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.trigger_arn):
+            query['TriggerARN'] = request.trigger_arn
+        body = {}
+        if not UtilClient.is_unset(request.function_arn):
+            body['FunctionARN'] = request.function_arn
+        if not UtilClient.is_unset(request.notes):
+            body['Notes'] = request.notes
+        if not UtilClient.is_unset(request.role_arn):
+            body['RoleARN'] = request.role_arn
+        if not UtilClient.is_unset(request.source_arn):
+            body['SourceARN'] = request.source_arn
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateFCTrigger',
@@ -13202,11 +14361,22 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.UpdateFCTriggerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['TriggerARN'] = request.trigger_arn
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.trigger_arn):
+            query['TriggerARN'] = request.trigger_arn
+        body = {}
+        if not UtilClient.is_unset(request.function_arn):
+            body['FunctionARN'] = request.function_arn
+        if not UtilClient.is_unset(request.notes):
+            body['Notes'] = request.notes
+        if not UtilClient.is_unset(request.role_arn):
+            body['RoleARN'] = request.role_arn
+        if not UtilClient.is_unset(request.source_arn):
+            body['SourceARN'] = request.source_arn
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateFCTrigger',
@@ -13245,12 +14415,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.VerifyDomainOwnerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['VerifyType'] = request.verify_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='VerifyDomainOwner',
@@ -13260,7 +14432,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13275,12 +14447,14 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.VerifyDomainOwnerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['VerifyType'] = request.verify_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='VerifyDomainOwner',
@@ -13290,7 +14464,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(

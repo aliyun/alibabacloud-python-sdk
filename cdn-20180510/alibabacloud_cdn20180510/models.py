@@ -23225,39 +23225,6 @@ class DescribeUserConfigsRequest(TeaModel):
         return self
 
 
-class DescribeUserConfigsResponseBodyConfigsGreenManagerConfig(TeaModel):
-    def __init__(
-        self,
-        quota: str = None,
-        ratio: str = None,
-    ):
-        self.quota = quota
-        self.ratio = ratio
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.quota is not None:
-            result['Quota'] = self.quota
-        if self.ratio is not None:
-            result['Ratio'] = self.ratio
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Quota') is not None:
-            self.quota = m.get('Quota')
-        if m.get('Ratio') is not None:
-            self.ratio = m.get('Ratio')
-        return self
-
-
 class DescribeUserConfigsResponseBodyConfigsOssLogConfig(TeaModel):
     def __init__(
         self,
@@ -23327,17 +23294,13 @@ class DescribeUserConfigsResponseBodyConfigsWafConfig(TeaModel):
 class DescribeUserConfigsResponseBodyConfigs(TeaModel):
     def __init__(
         self,
-        green_manager_config: DescribeUserConfigsResponseBodyConfigsGreenManagerConfig = None,
         oss_log_config: DescribeUserConfigsResponseBodyConfigsOssLogConfig = None,
         waf_config: DescribeUserConfigsResponseBodyConfigsWafConfig = None,
     ):
-        self.green_manager_config = green_manager_config
         self.oss_log_config = oss_log_config
         self.waf_config = waf_config
 
     def validate(self):
-        if self.green_manager_config:
-            self.green_manager_config.validate()
         if self.oss_log_config:
             self.oss_log_config.validate()
         if self.waf_config:
@@ -23349,8 +23312,6 @@ class DescribeUserConfigsResponseBodyConfigs(TeaModel):
             return _map
 
         result = dict()
-        if self.green_manager_config is not None:
-            result['GreenManagerConfig'] = self.green_manager_config.to_map()
         if self.oss_log_config is not None:
             result['OssLogConfig'] = self.oss_log_config.to_map()
         if self.waf_config is not None:
@@ -23359,9 +23320,6 @@ class DescribeUserConfigsResponseBodyConfigs(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GreenManagerConfig') is not None:
-            temp_model = DescribeUserConfigsResponseBodyConfigsGreenManagerConfig()
-            self.green_manager_config = temp_model.from_map(m['GreenManagerConfig'])
         if m.get('OssLogConfig') is not None:
             temp_model = DescribeUserConfigsResponseBodyConfigsOssLogConfig()
             self.oss_log_config = temp_model.from_map(m['OssLogConfig'])
