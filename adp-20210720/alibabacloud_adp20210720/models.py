@@ -5161,20 +5161,38 @@ class GetFoundationComponentReferenceResponse(TeaModel):
         return self
 
 
-class GetFoundationVersionResponseBody(TeaModel):
+class GetFoundationVersionResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        data: List[FoundationVersion] = None,
-        msg: str = None,
+        description: str = None,
+        features: List[str] = None,
+        name: str = None,
+        platforms: List[Platform] = None,
+        status: str = None,
+        type: str = None,
+        uid: str = None,
+        version: str = None,
     ):
-        self.code = code
-        self.data = data
-        self.msg = msg
+        # description
+        self.description = description
+        # 底座功能列表
+        self.features = features
+        # name，目前仅能是 “ADP 底座“
+        self.name = name
+        # platforms
+        self.platforms = platforms
+        # status，ENUM:["Testing","Published","Deprecated"] Published 后，则全平台所有用户可见，请谨慎操作
+        self.status = status
+        # the type of foundation version,ENUM:["trident","ack"]
+        self.type = type
+        # uid
+        self.uid = uid
+        # version
+        self.version = version
 
     def validate(self):
-        if self.data:
-            for k in self.data:
+        if self.platforms:
+            for k in self.platforms:
                 if k:
                     k.validate()
 
@@ -5184,12 +5202,75 @@ class GetFoundationVersionResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.features is not None:
+            result['features'] = self.features
+        if self.name is not None:
+            result['name'] = self.name
+        result['platforms'] = []
+        if self.platforms is not None:
+            for k in self.platforms:
+                result['platforms'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        if self.uid is not None:
+            result['uid'] = self.uid
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('features') is not None:
+            self.features = m.get('features')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.platforms = []
+        if m.get('platforms') is not None:
+            for k in m.get('platforms'):
+                temp_model = Platform()
+                self.platforms.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class GetFoundationVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetFoundationVersionResponseBodyData = None,
+        msg: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.msg = msg
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['code'] = self.code
-        result['data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['data'].append(k.to_map() if k else None)
+            result['data'] = self.data.to_map()
         if self.msg is not None:
             result['msg'] = self.msg
         return result
@@ -5198,11 +5279,9 @@ class GetFoundationVersionResponseBody(TeaModel):
         m = m or dict()
         if m.get('code') is not None:
             self.code = m.get('code')
-        self.data = []
         if m.get('data') is not None:
-            for k in m.get('data'):
-                temp_model = FoundationVersion()
-                self.data.append(temp_model.from_map(k))
+            temp_model = GetFoundationVersionResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
         if m.get('msg') is not None:
             self.msg = m.get('msg')
         return self
