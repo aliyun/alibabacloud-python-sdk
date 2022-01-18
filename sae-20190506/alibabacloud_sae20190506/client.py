@@ -628,6 +628,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.web_container):
             query['WebContainer'] = request.web_container
         body = {}
+        if not UtilClient.is_unset(request.acr_instance_id):
+            body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.associate_eip):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
@@ -748,6 +750,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.web_container):
             query['WebContainer'] = request.web_container
         body = {}
+        if not UtilClient.is_unset(request.acr_instance_id):
+            body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.associate_eip):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
@@ -807,8 +811,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
+        if not UtilClient.is_unset(request.min_ready_instances):
+            query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.scaling_rule_enable):
             query['ScalingRuleEnable'] = request.scaling_rule_enable
+        if not UtilClient.is_unset(request.scaling_rule_metric):
+            query['ScalingRuleMetric'] = request.scaling_rule_metric
         if not UtilClient.is_unset(request.scaling_rule_name):
             query['ScalingRuleName'] = request.scaling_rule_name
         if not UtilClient.is_unset(request.scaling_rule_timer):
@@ -845,8 +855,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
+        if not UtilClient.is_unset(request.min_ready_instances):
+            query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.scaling_rule_enable):
             query['ScalingRuleEnable'] = request.scaling_rule_enable
+        if not UtilClient.is_unset(request.scaling_rule_metric):
+            query['ScalingRuleMetric'] = request.scaling_rule_metric
         if not UtilClient.is_unset(request.scaling_rule_name):
             query['ScalingRuleName'] = request.scaling_rule_name
         if not UtilClient.is_unset(request.scaling_rule_timer):
@@ -1763,6 +1779,8 @@ class Client(OpenApiClient):
             query['Jdk'] = request.jdk
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
             query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.mount_desc):
@@ -1877,6 +1895,8 @@ class Client(OpenApiClient):
             query['Jdk'] = request.jdk
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
             query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.mount_desc):
@@ -2377,6 +2397,86 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def describe_application_scaling_rule(
+        self,
+        request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_application_scaling_rule_with_options(request, headers, runtime)
+
+    async def describe_application_scaling_rule_async(
+        self,
+        request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_application_scaling_rule_with_options_async(request, headers, runtime)
+
+    def describe_application_scaling_rule_with_options(
+        self,
+        request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.scaling_rule_name):
+            query['ScalingRuleName'] = request.scaling_rule_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationScalingRule',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/scale/applicationScalingRule',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeApplicationScalingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_scaling_rule_with_options_async(
+        self,
+        request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.scaling_rule_name):
+            query['ScalingRuleName'] = request.scaling_rule_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationScalingRule',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/scale/applicationScalingRule',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeApplicationScalingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def describe_application_scaling_rules(
         self,
         request: sae_20190506_models.DescribeApplicationScalingRulesRequest,
@@ -2834,6 +2934,86 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sae_20190506_models.DescribeConfigMapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_configuration_price(
+        self,
+        request: sae_20190506_models.DescribeConfigurationPriceRequest,
+    ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_configuration_price_with_options(request, headers, runtime)
+
+    async def describe_configuration_price_async(
+        self,
+        request: sae_20190506_models.DescribeConfigurationPriceRequest,
+    ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_configuration_price_with_options_async(request, headers, runtime)
+
+    def describe_configuration_price_with_options(
+        self,
+        request: sae_20190506_models.DescribeConfigurationPriceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu):
+            query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.memory):
+            query['Memory'] = request.memory
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeConfigurationPrice',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/paas/configurationPrice',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeConfigurationPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_configuration_price_with_options_async(
+        self,
+        request: sae_20190506_models.DescribeConfigurationPriceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu):
+            query['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.memory):
+            query['Memory'] = request.memory
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeConfigurationPrice',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/paas/configurationPrice',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeConfigurationPriceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -3745,7 +3925,7 @@ class Client(OpenApiClient):
             action='DownloadFiles',
             version='2019-05-06',
             protocol='HTTPS',
-            pathname=f'/pop/v1/sam/app/downloadFiles.json',
+            pathname=f'/pop/v1/sam/app/downloadFiles',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3779,7 +3959,7 @@ class Client(OpenApiClient):
             action='DownloadFiles',
             version='2019-05-06',
             protocol='HTTPS',
-            pathname=f'/pop/v1/sam/app/downloadFiles.json',
+            pathname=f'/pop/v1/sam/app/downloadFiles',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5241,6 +5421,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
             query['AutoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
             query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.replicas):
@@ -5277,6 +5459,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
             query['AutoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
             query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.replicas):
@@ -5411,6 +5595,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
             query['MinReadyInstances'] = request.min_ready_instances
         req = open_api_models.OpenApiRequest(
@@ -5443,6 +5629,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
             query['MinReadyInstances'] = request.min_ready_instances
         req = open_api_models.OpenApiRequest(
@@ -5575,6 +5763,8 @@ class Client(OpenApiClient):
             query['AutoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
         if not UtilClient.is_unset(request.batch_wait_time):
             query['BatchWaitTime'] = request.batch_wait_time
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
             query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.update_strategy):
@@ -5615,6 +5805,8 @@ class Client(OpenApiClient):
             query['AutoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
         if not UtilClient.is_unset(request.batch_wait_time):
             query['BatchWaitTime'] = request.batch_wait_time
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
             query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.update_strategy):
@@ -6163,6 +6355,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
+        if not UtilClient.is_unset(request.min_ready_instances):
+            query['MinReadyInstances'] = request.min_ready_instances
+        if not UtilClient.is_unset(request.scaling_rule_metric):
+            query['ScalingRuleMetric'] = request.scaling_rule_metric
         if not UtilClient.is_unset(request.scaling_rule_name):
             query['ScalingRuleName'] = request.scaling_rule_name
         if not UtilClient.is_unset(request.scaling_rule_timer):
@@ -6197,6 +6395,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.min_ready_instance_ratio):
+            query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
+        if not UtilClient.is_unset(request.min_ready_instances):
+            query['MinReadyInstances'] = request.min_ready_instances
+        if not UtilClient.is_unset(request.scaling_rule_metric):
+            query['ScalingRuleMetric'] = request.scaling_rule_metric
         if not UtilClient.is_unset(request.scaling_rule_name):
             query['ScalingRuleName'] = request.scaling_rule_name
         if not UtilClient.is_unset(request.scaling_rule_timer):
@@ -6701,7 +6905,7 @@ class Client(OpenApiClient):
             action='UploadFiles',
             version='2019-05-06',
             protocol='HTTPS',
-            pathname=f'/pop/v1/sam/app/uploadFiles.json',
+            pathname=f'/pop/v1/sam/app/uploadFiles',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6737,7 +6941,7 @@ class Client(OpenApiClient):
             action='UploadFiles',
             version='2019-05-06',
             protocol='HTTPS',
-            pathname=f'/pop/v1/sam/app/uploadFiles.json',
+            pathname=f'/pop/v1/sam/app/uploadFiles',
             method='POST',
             auth_type='AK',
             style='ROA',

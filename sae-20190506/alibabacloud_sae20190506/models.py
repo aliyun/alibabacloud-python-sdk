@@ -986,6 +986,7 @@ class CreateApplicationRequest(TeaModel):
     def __init__(
         self,
         acr_assume_role_arn: str = None,
+        acr_instance_id: str = None,
         app_description: str = None,
         app_name: str = None,
         associate_eip: bool = None,
@@ -1032,6 +1033,8 @@ class CreateApplicationRequest(TeaModel):
         web_container: str = None,
     ):
         self.acr_assume_role_arn = acr_assume_role_arn
+        # ACR 企业版实例 ID
+        self.acr_instance_id = acr_instance_id
         self.app_description = app_description
         self.app_name = app_name
         # 是否绑定EIP
@@ -1092,6 +1095,8 @@ class CreateApplicationRequest(TeaModel):
         result = dict()
         if self.acr_assume_role_arn is not None:
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
+        if self.acr_instance_id is not None:
+            result['AcrInstanceId'] = self.acr_instance_id
         if self.app_description is not None:
             result['AppDescription'] = self.app_description
         if self.app_name is not None:
@@ -1186,6 +1191,8 @@ class CreateApplicationRequest(TeaModel):
         m = m or dict()
         if m.get('AcrAssumeRoleArn') is not None:
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
+        if m.get('AcrInstanceId') is not None:
+            self.acr_instance_id = m.get('AcrInstanceId')
         if m.get('AppDescription') is not None:
             self.app_description = m.get('AppDescription')
         if m.get('AppName') is not None:
@@ -1416,13 +1423,19 @@ class CreateApplicationScalingRuleRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        min_ready_instance_ratio: int = None,
+        min_ready_instances: int = None,
         scaling_rule_enable: bool = None,
+        scaling_rule_metric: str = None,
         scaling_rule_name: str = None,
         scaling_rule_timer: str = None,
         scaling_rule_type: str = None,
     ):
         self.app_id = app_id
+        self.min_ready_instance_ratio = min_ready_instance_ratio
+        self.min_ready_instances = min_ready_instances
         self.scaling_rule_enable = scaling_rule_enable
+        self.scaling_rule_metric = scaling_rule_metric
         self.scaling_rule_name = scaling_rule_name
         self.scaling_rule_timer = scaling_rule_timer
         self.scaling_rule_type = scaling_rule_type
@@ -1438,8 +1451,14 @@ class CreateApplicationScalingRuleRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.min_ready_instance_ratio is not None:
+            result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
+        if self.min_ready_instances is not None:
+            result['MinReadyInstances'] = self.min_ready_instances
         if self.scaling_rule_enable is not None:
             result['ScalingRuleEnable'] = self.scaling_rule_enable
+        if self.scaling_rule_metric is not None:
+            result['ScalingRuleMetric'] = self.scaling_rule_metric
         if self.scaling_rule_name is not None:
             result['ScalingRuleName'] = self.scaling_rule_name
         if self.scaling_rule_timer is not None:
@@ -1452,14 +1471,100 @@ class CreateApplicationScalingRuleRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('MinReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
+        if m.get('MinReadyInstances') is not None:
+            self.min_ready_instances = m.get('MinReadyInstances')
         if m.get('ScalingRuleEnable') is not None:
             self.scaling_rule_enable = m.get('ScalingRuleEnable')
+        if m.get('ScalingRuleMetric') is not None:
+            self.scaling_rule_metric = m.get('ScalingRuleMetric')
         if m.get('ScalingRuleName') is not None:
             self.scaling_rule_name = m.get('ScalingRuleName')
         if m.get('ScalingRuleTimer') is not None:
             self.scaling_rule_timer = m.get('ScalingRuleTimer')
         if m.get('ScalingRuleType') is not None:
             self.scaling_rule_type = m.get('ScalingRuleType')
+        return self
+
+
+class CreateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
+    def __init__(
+        self,
+        metric_target_average_utilization: int = None,
+        metric_type: str = None,
+    ):
+        self.metric_target_average_utilization = metric_target_average_utilization
+        self.metric_type = metric_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_target_average_utilization is not None:
+            result['MetricTargetAverageUtilization'] = self.metric_target_average_utilization
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricTargetAverageUtilization') is not None:
+            self.metric_target_average_utilization = m.get('MetricTargetAverageUtilization')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        return self
+
+
+class CreateApplicationScalingRuleResponseBodyDataMetric(TeaModel):
+    def __init__(
+        self,
+        max_replicas: int = None,
+        metrics: List[CreateApplicationScalingRuleResponseBodyDataMetricMetrics] = None,
+        min_replicas: int = None,
+    ):
+        self.max_replicas = max_replicas
+        self.metrics = metrics
+        self.min_replicas = min_replicas
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_replicas is not None:
+            result['MaxReplicas'] = self.max_replicas
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.min_replicas is not None:
+            result['MinReplicas'] = self.min_replicas
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxReplicas') is not None:
+            self.max_replicas = m.get('MaxReplicas')
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = CreateApplicationScalingRuleResponseBodyDataMetricMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('MinReplicas') is not None:
+            self.min_replicas = m.get('MinReplicas')
         return self
 
 
@@ -1554,6 +1659,8 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
         self,
         app_id: str = None,
         create_time: int = None,
+        last_disable_time: int = None,
+        metric: CreateApplicationScalingRuleResponseBodyDataMetric = None,
         scale_rule_enabled: bool = None,
         scale_rule_name: str = None,
         scale_rule_type: str = None,
@@ -1562,6 +1669,8 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
     ):
         self.app_id = app_id
         self.create_time = create_time
+        self.last_disable_time = last_disable_time
+        self.metric = metric
         self.scale_rule_enabled = scale_rule_enabled
         self.scale_rule_name = scale_rule_name
         self.scale_rule_type = scale_rule_type
@@ -1569,6 +1678,8 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.metric:
+            self.metric.validate()
         if self.timer:
             self.timer.validate()
 
@@ -1582,6 +1693,10 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
             result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.last_disable_time is not None:
+            result['LastDisableTime'] = self.last_disable_time
+        if self.metric is not None:
+            result['Metric'] = self.metric.to_map()
         if self.scale_rule_enabled is not None:
             result['ScaleRuleEnabled'] = self.scale_rule_enabled
         if self.scale_rule_name is not None:
@@ -1600,6 +1715,11 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('LastDisableTime') is not None:
+            self.last_disable_time = m.get('LastDisableTime')
+        if m.get('Metric') is not None:
+            temp_model = CreateApplicationScalingRuleResponseBodyDataMetric()
+            self.metric = temp_model.from_map(m['Metric'])
         if m.get('ScaleRuleEnabled') is not None:
             self.scale_rule_enabled = m.get('ScaleRuleEnabled')
         if m.get('ScaleRuleName') is not None:
@@ -3301,6 +3421,7 @@ class DeployApplicationRequest(TeaModel):
         jar_start_options: str = None,
         jdk: str = None,
         liveness: str = None,
+        min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         mount_desc: str = None,
         mount_host: str = None,
@@ -3347,6 +3468,7 @@ class DeployApplicationRequest(TeaModel):
         self.jar_start_options = jar_start_options
         self.jdk = jdk
         self.liveness = liveness
+        self.min_ready_instance_ratio = min_ready_instance_ratio
         self.min_ready_instances = min_ready_instances
         self.mount_desc = mount_desc
         self.mount_host = mount_host
@@ -3422,6 +3544,8 @@ class DeployApplicationRequest(TeaModel):
             result['Jdk'] = self.jdk
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.min_ready_instance_ratio is not None:
+            result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
             result['MinReadyInstances'] = self.min_ready_instances
         if self.mount_desc is not None:
@@ -3510,6 +3634,8 @@ class DeployApplicationRequest(TeaModel):
             self.jdk = m.get('Jdk')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('MinReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
             self.min_ready_instances = m.get('MinReadyInstances')
         if m.get('MountDesc') is not None:
@@ -4280,6 +4406,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         jdk: str = None,
         liveness: str = None,
         memory: int = None,
+        min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         mount_desc: List[DescribeApplicationConfigResponseBodyDataMountDesc] = None,
         mount_host: str = None,
@@ -4335,6 +4462,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.jdk = jdk
         self.liveness = liveness
         self.memory = memory
+        self.min_ready_instance_ratio = min_ready_instance_ratio
         self.min_ready_instances = min_ready_instances
         self.mount_desc = mount_desc
         self.mount_host = mount_host
@@ -4439,6 +4567,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['Liveness'] = self.liveness
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.min_ready_instance_ratio is not None:
+            result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
             result['MinReadyInstances'] = self.min_ready_instances
         result['MountDesc'] = []
@@ -4556,6 +4686,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.liveness = m.get('Liveness')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('MinReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
             self.min_ready_instances = m.get('MinReadyInstances')
         self.mount_desc = []
@@ -5469,6 +5601,620 @@ class DescribeApplicationInstancesResponse(TeaModel):
         return self
 
 
+class DescribeApplicationScalingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        scaling_rule_name: str = None,
+    ):
+        self.app_id = app_id
+        self.scaling_rule_name = scaling_rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.scaling_rule_name is not None:
+            result['ScalingRuleName'] = self.scaling_rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ScalingRuleName') is not None:
+            self.scaling_rule_name = m.get('ScalingRuleName')
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
+    def __init__(
+        self,
+        metric_target_average_utilization: int = None,
+        metric_type: str = None,
+    ):
+        self.metric_target_average_utilization = metric_target_average_utilization
+        self.metric_type = metric_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_target_average_utilization is not None:
+            result['MetricTargetAverageUtilization'] = self.metric_target_average_utilization
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricTargetAverageUtilization') is not None:
+            self.metric_target_average_utilization = m.get('MetricTargetAverageUtilization')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics(TeaModel):
+    def __init__(
+        self,
+        current_value: int = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.current_value = current_value
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_value is not None:
+            result['CurrentValue'] = self.current_value
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentValue') is not None:
+            self.current_value = m.get('CurrentValue')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        next_scale_in_average_utilization: int = None,
+        next_scale_out_average_utilization: int = None,
+    ):
+        self.name = name
+        self.next_scale_in_average_utilization = next_scale_in_average_utilization
+        self.next_scale_out_average_utilization = next_scale_out_average_utilization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_scale_in_average_utilization is not None:
+            result['NextScaleInAverageUtilization'] = self.next_scale_in_average_utilization
+        if self.next_scale_out_average_utilization is not None:
+            result['NextScaleOutAverageUtilization'] = self.next_scale_out_average_utilization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextScaleInAverageUtilization') is not None:
+            self.next_scale_in_average_utilization = m.get('NextScaleInAverageUtilization')
+        if m.get('NextScaleOutAverageUtilization') is not None:
+            self.next_scale_out_average_utilization = m.get('NextScaleOutAverageUtilization')
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus(TeaModel):
+    def __init__(
+        self,
+        current_metrics: List[DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics] = None,
+        current_replicas: int = None,
+        desired_replicas: int = None,
+        last_scale_time: str = None,
+        next_scale_metrics: List[DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics] = None,
+        next_scale_time_period: int = None,
+    ):
+        self.current_metrics = current_metrics
+        self.current_replicas = current_replicas
+        self.desired_replicas = desired_replicas
+        self.last_scale_time = last_scale_time
+        self.next_scale_metrics = next_scale_metrics
+        self.next_scale_time_period = next_scale_time_period
+
+    def validate(self):
+        if self.current_metrics:
+            for k in self.current_metrics:
+                if k:
+                    k.validate()
+        if self.next_scale_metrics:
+            for k in self.next_scale_metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CurrentMetrics'] = []
+        if self.current_metrics is not None:
+            for k in self.current_metrics:
+                result['CurrentMetrics'].append(k.to_map() if k else None)
+        if self.current_replicas is not None:
+            result['CurrentReplicas'] = self.current_replicas
+        if self.desired_replicas is not None:
+            result['DesiredReplicas'] = self.desired_replicas
+        if self.last_scale_time is not None:
+            result['LastScaleTime'] = self.last_scale_time
+        result['NextScaleMetrics'] = []
+        if self.next_scale_metrics is not None:
+            for k in self.next_scale_metrics:
+                result['NextScaleMetrics'].append(k.to_map() if k else None)
+        if self.next_scale_time_period is not None:
+            result['NextScaleTimePeriod'] = self.next_scale_time_period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.current_metrics = []
+        if m.get('CurrentMetrics') is not None:
+            for k in m.get('CurrentMetrics'):
+                temp_model = DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics()
+                self.current_metrics.append(temp_model.from_map(k))
+        if m.get('CurrentReplicas') is not None:
+            self.current_replicas = m.get('CurrentReplicas')
+        if m.get('DesiredReplicas') is not None:
+            self.desired_replicas = m.get('DesiredReplicas')
+        if m.get('LastScaleTime') is not None:
+            self.last_scale_time = m.get('LastScaleTime')
+        self.next_scale_metrics = []
+        if m.get('NextScaleMetrics') is not None:
+            for k in m.get('NextScaleMetrics'):
+                temp_model = DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusNextScaleMetrics()
+                self.next_scale_metrics.append(temp_model.from_map(k))
+        if m.get('NextScaleTimePeriod') is not None:
+            self.next_scale_time_period = m.get('NextScaleTimePeriod')
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules(TeaModel):
+    def __init__(
+        self,
+        disabled: bool = None,
+        stabilization_window_seconds: int = None,
+        step: int = None,
+    ):
+        self.disabled = disabled
+        self.stabilization_window_seconds = stabilization_window_seconds
+        self.step = step
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.stabilization_window_seconds is not None:
+            result['StabilizationWindowSeconds'] = self.stabilization_window_seconds
+        if self.step is not None:
+            result['Step'] = self.step
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('StabilizationWindowSeconds') is not None:
+            self.stabilization_window_seconds = m.get('StabilizationWindowSeconds')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules(TeaModel):
+    def __init__(
+        self,
+        disabled: bool = None,
+        stabilization_window_seconds: int = None,
+        step: int = None,
+    ):
+        self.disabled = disabled
+        self.stabilization_window_seconds = stabilization_window_seconds
+        self.step = step
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.stabilization_window_seconds is not None:
+            result['StabilizationWindowSeconds'] = self.stabilization_window_seconds
+        if self.step is not None:
+            result['Step'] = self.step
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('StabilizationWindowSeconds') is not None:
+            self.stabilization_window_seconds = m.get('StabilizationWindowSeconds')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyDataMetric(TeaModel):
+    def __init__(
+        self,
+        max_replicas: int = None,
+        metrics: List[DescribeApplicationScalingRuleResponseBodyDataMetricMetrics] = None,
+        metrics_status: DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus = None,
+        min_replicas: int = None,
+        scale_down_rules: DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules = None,
+        scale_up_rules: DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules = None,
+    ):
+        self.max_replicas = max_replicas
+        self.metrics = metrics
+        self.metrics_status = metrics_status
+        self.min_replicas = min_replicas
+        self.scale_down_rules = scale_down_rules
+        self.scale_up_rules = scale_up_rules
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+        if self.metrics_status:
+            self.metrics_status.validate()
+        if self.scale_down_rules:
+            self.scale_down_rules.validate()
+        if self.scale_up_rules:
+            self.scale_up_rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_replicas is not None:
+            result['MaxReplicas'] = self.max_replicas
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.metrics_status is not None:
+            result['MetricsStatus'] = self.metrics_status.to_map()
+        if self.min_replicas is not None:
+            result['MinReplicas'] = self.min_replicas
+        if self.scale_down_rules is not None:
+            result['ScaleDownRules'] = self.scale_down_rules.to_map()
+        if self.scale_up_rules is not None:
+            result['ScaleUpRules'] = self.scale_up_rules.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxReplicas') is not None:
+            self.max_replicas = m.get('MaxReplicas')
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = DescribeApplicationScalingRuleResponseBodyDataMetricMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('MetricsStatus') is not None:
+            temp_model = DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus()
+            self.metrics_status = temp_model.from_map(m['MetricsStatus'])
+        if m.get('MinReplicas') is not None:
+            self.min_replicas = m.get('MinReplicas')
+        if m.get('ScaleDownRules') is not None:
+            temp_model = DescribeApplicationScalingRuleResponseBodyDataMetricScaleDownRules()
+            self.scale_down_rules = temp_model.from_map(m['ScaleDownRules'])
+        if m.get('ScaleUpRules') is not None:
+            temp_model = DescribeApplicationScalingRuleResponseBodyDataMetricScaleUpRules()
+            self.scale_up_rules = temp_model.from_map(m['ScaleUpRules'])
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
+    def __init__(
+        self,
+        at_time: str = None,
+        target_replicas: int = None,
+    ):
+        self.at_time = at_time
+        self.target_replicas = target_replicas
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.at_time is not None:
+            result['AtTime'] = self.at_time
+        if self.target_replicas is not None:
+            result['TargetReplicas'] = self.target_replicas
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AtTime') is not None:
+            self.at_time = m.get('AtTime')
+        if m.get('TargetReplicas') is not None:
+            self.target_replicas = m.get('TargetReplicas')
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyDataTimer(TeaModel):
+    def __init__(
+        self,
+        begin_date: str = None,
+        end_date: str = None,
+        period: str = None,
+        schedules: List[DescribeApplicationScalingRuleResponseBodyDataTimerSchedules] = None,
+    ):
+        self.begin_date = begin_date
+        self.end_date = end_date
+        self.period = period
+        self.schedules = schedules
+
+    def validate(self):
+        if self.schedules:
+            for k in self.schedules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_date is not None:
+            result['BeginDate'] = self.begin_date
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.period is not None:
+            result['Period'] = self.period
+        result['Schedules'] = []
+        if self.schedules is not None:
+            for k in self.schedules:
+                result['Schedules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginDate') is not None:
+            self.begin_date = m.get('BeginDate')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        self.schedules = []
+        if m.get('Schedules') is not None:
+            for k in m.get('Schedules'):
+                temp_model = DescribeApplicationScalingRuleResponseBodyDataTimerSchedules()
+                self.schedules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        create_time: int = None,
+        last_disable_time: int = None,
+        metric: DescribeApplicationScalingRuleResponseBodyDataMetric = None,
+        scale_rule_enabled: bool = None,
+        scale_rule_name: str = None,
+        scale_rule_type: str = None,
+        timer: DescribeApplicationScalingRuleResponseBodyDataTimer = None,
+        update_time: int = None,
+    ):
+        self.app_id = app_id
+        self.create_time = create_time
+        self.last_disable_time = last_disable_time
+        self.metric = metric
+        self.scale_rule_enabled = scale_rule_enabled
+        self.scale_rule_name = scale_rule_name
+        self.scale_rule_type = scale_rule_type
+        self.timer = timer
+        self.update_time = update_time
+
+    def validate(self):
+        if self.metric:
+            self.metric.validate()
+        if self.timer:
+            self.timer.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.last_disable_time is not None:
+            result['LastDisableTime'] = self.last_disable_time
+        if self.metric is not None:
+            result['Metric'] = self.metric.to_map()
+        if self.scale_rule_enabled is not None:
+            result['ScaleRuleEnabled'] = self.scale_rule_enabled
+        if self.scale_rule_name is not None:
+            result['ScaleRuleName'] = self.scale_rule_name
+        if self.scale_rule_type is not None:
+            result['ScaleRuleType'] = self.scale_rule_type
+        if self.timer is not None:
+            result['Timer'] = self.timer.to_map()
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('LastDisableTime') is not None:
+            self.last_disable_time = m.get('LastDisableTime')
+        if m.get('Metric') is not None:
+            temp_model = DescribeApplicationScalingRuleResponseBodyDataMetric()
+            self.metric = temp_model.from_map(m['Metric'])
+        if m.get('ScaleRuleEnabled') is not None:
+            self.scale_rule_enabled = m.get('ScaleRuleEnabled')
+        if m.get('ScaleRuleName') is not None:
+            self.scale_rule_name = m.get('ScaleRuleName')
+        if m.get('ScaleRuleType') is not None:
+            self.scale_rule_type = m.get('ScaleRuleType')
+        if m.get('Timer') is not None:
+            temp_model = DescribeApplicationScalingRuleResponseBodyDataTimer()
+            self.timer = temp_model.from_map(m['Timer'])
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeApplicationScalingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeApplicationScalingRuleResponseBodyData = None,
+        request_id: str = None,
+        trace_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeApplicationScalingRuleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DescribeApplicationScalingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeApplicationScalingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeApplicationScalingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeApplicationScalingRulesRequest(TeaModel):
     def __init__(
         self,
@@ -5493,6 +6239,355 @@ class DescribeApplicationScalingRulesRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        return self
+
+
+class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics(TeaModel):
+    def __init__(
+        self,
+        metric_target_average_utilization: int = None,
+        metric_type: str = None,
+    ):
+        self.metric_target_average_utilization = metric_target_average_utilization
+        self.metric_type = metric_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_target_average_utilization is not None:
+            result['MetricTargetAverageUtilization'] = self.metric_target_average_utilization
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricTargetAverageUtilization') is not None:
+            self.metric_target_average_utilization = m.get('MetricTargetAverageUtilization')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        return self
+
+
+class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics(TeaModel):
+    def __init__(
+        self,
+        current_value: int = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.current_value = current_value
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_value is not None:
+            result['CurrentValue'] = self.current_value
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentValue') is not None:
+            self.current_value = m.get('CurrentValue')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        next_scale_in_average_utilization: int = None,
+        next_scale_out_average_utilization: int = None,
+    ):
+        self.name = name
+        self.next_scale_in_average_utilization = next_scale_in_average_utilization
+        self.next_scale_out_average_utilization = next_scale_out_average_utilization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.next_scale_in_average_utilization is not None:
+            result['NextScaleInAverageUtilization'] = self.next_scale_in_average_utilization
+        if self.next_scale_out_average_utilization is not None:
+            result['NextScaleOutAverageUtilization'] = self.next_scale_out_average_utilization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NextScaleInAverageUtilization') is not None:
+            self.next_scale_in_average_utilization = m.get('NextScaleInAverageUtilization')
+        if m.get('NextScaleOutAverageUtilization') is not None:
+            self.next_scale_out_average_utilization = m.get('NextScaleOutAverageUtilization')
+        return self
+
+
+class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus(TeaModel):
+    def __init__(
+        self,
+        current_metrics: List[DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics] = None,
+        current_replicas: int = None,
+        desired_replicas: int = None,
+        last_scale_time: str = None,
+        max_replicas: int = None,
+        min_replicas: int = None,
+        next_scale_metrics: List[DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics] = None,
+        next_scale_time_period: int = None,
+    ):
+        self.current_metrics = current_metrics
+        self.current_replicas = current_replicas
+        self.desired_replicas = desired_replicas
+        self.last_scale_time = last_scale_time
+        self.max_replicas = max_replicas
+        self.min_replicas = min_replicas
+        self.next_scale_metrics = next_scale_metrics
+        self.next_scale_time_period = next_scale_time_period
+
+    def validate(self):
+        if self.current_metrics:
+            for k in self.current_metrics:
+                if k:
+                    k.validate()
+        if self.next_scale_metrics:
+            for k in self.next_scale_metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CurrentMetrics'] = []
+        if self.current_metrics is not None:
+            for k in self.current_metrics:
+                result['CurrentMetrics'].append(k.to_map() if k else None)
+        if self.current_replicas is not None:
+            result['CurrentReplicas'] = self.current_replicas
+        if self.desired_replicas is not None:
+            result['DesiredReplicas'] = self.desired_replicas
+        if self.last_scale_time is not None:
+            result['LastScaleTime'] = self.last_scale_time
+        if self.max_replicas is not None:
+            result['MaxReplicas'] = self.max_replicas
+        if self.min_replicas is not None:
+            result['MinReplicas'] = self.min_replicas
+        result['NextScaleMetrics'] = []
+        if self.next_scale_metrics is not None:
+            for k in self.next_scale_metrics:
+                result['NextScaleMetrics'].append(k.to_map() if k else None)
+        if self.next_scale_time_period is not None:
+            result['NextScaleTimePeriod'] = self.next_scale_time_period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.current_metrics = []
+        if m.get('CurrentMetrics') is not None:
+            for k in m.get('CurrentMetrics'):
+                temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusCurrentMetrics()
+                self.current_metrics.append(temp_model.from_map(k))
+        if m.get('CurrentReplicas') is not None:
+            self.current_replicas = m.get('CurrentReplicas')
+        if m.get('DesiredReplicas') is not None:
+            self.desired_replicas = m.get('DesiredReplicas')
+        if m.get('LastScaleTime') is not None:
+            self.last_scale_time = m.get('LastScaleTime')
+        if m.get('MaxReplicas') is not None:
+            self.max_replicas = m.get('MaxReplicas')
+        if m.get('MinReplicas') is not None:
+            self.min_replicas = m.get('MinReplicas')
+        self.next_scale_metrics = []
+        if m.get('NextScaleMetrics') is not None:
+            for k in m.get('NextScaleMetrics'):
+                temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatusNextScaleMetrics()
+                self.next_scale_metrics.append(temp_model.from_map(k))
+        if m.get('NextScaleTimePeriod') is not None:
+            self.next_scale_time_period = m.get('NextScaleTimePeriod')
+        return self
+
+
+class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules(TeaModel):
+    def __init__(
+        self,
+        disabled: bool = None,
+        stabilization_window_seconds: int = None,
+        step: int = None,
+    ):
+        self.disabled = disabled
+        self.stabilization_window_seconds = stabilization_window_seconds
+        self.step = step
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.stabilization_window_seconds is not None:
+            result['StabilizationWindowSeconds'] = self.stabilization_window_seconds
+        if self.step is not None:
+            result['Step'] = self.step
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('StabilizationWindowSeconds') is not None:
+            self.stabilization_window_seconds = m.get('StabilizationWindowSeconds')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        return self
+
+
+class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules(TeaModel):
+    def __init__(
+        self,
+        disabled: bool = None,
+        stabilization_window_seconds: int = None,
+        step: int = None,
+    ):
+        self.disabled = disabled
+        self.stabilization_window_seconds = stabilization_window_seconds
+        self.step = step
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.stabilization_window_seconds is not None:
+            result['StabilizationWindowSeconds'] = self.stabilization_window_seconds
+        if self.step is not None:
+            result['Step'] = self.step
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('StabilizationWindowSeconds') is not None:
+            self.stabilization_window_seconds = m.get('StabilizationWindowSeconds')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        return self
+
+
+class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric(TeaModel):
+    def __init__(
+        self,
+        max_replicas: int = None,
+        metrics: List[DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics] = None,
+        metrics_status: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus = None,
+        min_replicas: int = None,
+        scale_down_rules: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules = None,
+        scale_up_rules: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules = None,
+    ):
+        self.max_replicas = max_replicas
+        self.metrics = metrics
+        self.metrics_status = metrics_status
+        self.min_replicas = min_replicas
+        self.scale_down_rules = scale_down_rules
+        self.scale_up_rules = scale_up_rules
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+        if self.metrics_status:
+            self.metrics_status.validate()
+        if self.scale_down_rules:
+            self.scale_down_rules.validate()
+        if self.scale_up_rules:
+            self.scale_up_rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_replicas is not None:
+            result['MaxReplicas'] = self.max_replicas
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.metrics_status is not None:
+            result['MetricsStatus'] = self.metrics_status.to_map()
+        if self.min_replicas is not None:
+            result['MinReplicas'] = self.min_replicas
+        if self.scale_down_rules is not None:
+            result['ScaleDownRules'] = self.scale_down_rules.to_map()
+        if self.scale_up_rules is not None:
+            result['ScaleUpRules'] = self.scale_up_rules.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxReplicas') is not None:
+            self.max_replicas = m.get('MaxReplicas')
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('MetricsStatus') is not None:
+            temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetricsStatus()
+            self.metrics_status = temp_model.from_map(m['MetricsStatus'])
+        if m.get('MinReplicas') is not None:
+            self.min_replicas = m.get('MinReplicas')
+        if m.get('ScaleDownRules') is not None:
+            temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleDownRules()
+            self.scale_down_rules = temp_model.from_map(m['ScaleDownRules'])
+        if m.get('ScaleUpRules') is not None:
+            temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricScaleUpRules()
+            self.scale_up_rules = temp_model.from_map(m['ScaleUpRules'])
         return self
 
 
@@ -5599,6 +6694,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
         self,
         app_id: str = None,
         create_time: int = None,
+        last_disable_time: int = None,
+        metric: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric = None,
         scale_rule_enabled: bool = None,
         scale_rule_name: str = None,
         scale_rule_type: str = None,
@@ -5607,6 +6704,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
     ):
         self.app_id = app_id
         self.create_time = create_time
+        self.last_disable_time = last_disable_time
+        self.metric = metric
         self.scale_rule_enabled = scale_rule_enabled
         self.scale_rule_name = scale_rule_name
         self.scale_rule_type = scale_rule_type
@@ -5614,6 +6713,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
         self.update_time = update_time
 
     def validate(self):
+        if self.metric:
+            self.metric.validate()
         if self.timer:
             self.timer.validate()
 
@@ -5627,6 +6728,10 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
             result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.last_disable_time is not None:
+            result['LastDisableTime'] = self.last_disable_time
+        if self.metric is not None:
+            result['Metric'] = self.metric.to_map()
         if self.scale_rule_enabled is not None:
             result['ScaleRuleEnabled'] = self.scale_rule_enabled
         if self.scale_rule_name is not None:
@@ -5645,6 +6750,11 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('LastDisableTime') is not None:
+            self.last_disable_time = m.get('LastDisableTime')
+        if m.get('Metric') is not None:
+            temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric()
+            self.metric = temp_model.from_map(m['Metric'])
         if m.get('ScaleRuleEnabled') is not None:
             self.scale_rule_enabled = m.get('ScaleRuleEnabled')
         if m.get('ScaleRuleName') is not None:
@@ -6119,6 +7229,7 @@ class DescribeApplicationStatusResponseBodyData(TeaModel):
         create_time: str = None,
         current_status: str = None,
         enable_agent: bool = None,
+        file_size_limit: int = None,
         last_change_order_id: str = None,
         last_change_order_running: bool = None,
         last_change_order_status: str = None,
@@ -6131,6 +7242,7 @@ class DescribeApplicationStatusResponseBodyData(TeaModel):
         self.create_time = create_time
         self.current_status = current_status
         self.enable_agent = enable_agent
+        self.file_size_limit = file_size_limit
         self.last_change_order_id = last_change_order_id
         self.last_change_order_running = last_change_order_running
         self.last_change_order_status = last_change_order_status
@@ -6158,6 +7270,8 @@ class DescribeApplicationStatusResponseBodyData(TeaModel):
             result['CurrentStatus'] = self.current_status
         if self.enable_agent is not None:
             result['EnableAgent'] = self.enable_agent
+        if self.file_size_limit is not None:
+            result['FileSizeLimit'] = self.file_size_limit
         if self.last_change_order_id is not None:
             result['LastChangeOrderId'] = self.last_change_order_id
         if self.last_change_order_running is not None:
@@ -6184,6 +7298,8 @@ class DescribeApplicationStatusResponseBodyData(TeaModel):
             self.current_status = m.get('CurrentStatus')
         if m.get('EnableAgent') is not None:
             self.enable_agent = m.get('EnableAgent')
+        if m.get('FileSizeLimit') is not None:
+            self.file_size_limit = m.get('FileSizeLimit')
         if m.get('LastChangeOrderId') is not None:
             self.last_change_order_id = m.get('LastChangeOrderId')
         if m.get('LastChangeOrderRunning') is not None:
@@ -7043,6 +8159,305 @@ class DescribeConfigMapResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeConfigMapResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeConfigurationPriceRequest(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory: int = None,
+    ):
+        self.cpu = cpu
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyDataBagUsage(TeaModel):
+    def __init__(
+        self,
+        cpu: float = None,
+        mem: float = None,
+    ):
+        self.cpu = cpu
+        self.mem = mem
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.mem is not None:
+            result['Mem'] = self.mem
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('Mem') is not None:
+            self.mem = m.get('Mem')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyDataOrder(TeaModel):
+    def __init__(
+        self,
+        discount_amount: float = None,
+        original_amount: float = None,
+        rule_ids: List[str] = None,
+        trade_amount: float = None,
+    ):
+        self.discount_amount = discount_amount
+        self.original_amount = original_amount
+        self.rule_ids = rule_ids
+        self.trade_amount = trade_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.original_amount is not None:
+            result['OriginalAmount'] = self.original_amount
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
+        if self.trade_amount is not None:
+            result['TradeAmount'] = self.trade_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('OriginalAmount') is not None:
+            self.original_amount = m.get('OriginalAmount')
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
+        if m.get('TradeAmount') is not None:
+            self.trade_amount = m.get('TradeAmount')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyDataRules(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        rule_desc_id: int = None,
+    ):
+        self.name = name
+        self.rule_desc_id = rule_desc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rule_desc_id is not None:
+            result['RuleDescId'] = self.rule_desc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RuleDescId') is not None:
+            self.rule_desc_id = m.get('RuleDescId')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        bag_usage: DescribeConfigurationPriceResponseBodyDataBagUsage = None,
+        order: DescribeConfigurationPriceResponseBodyDataOrder = None,
+        rules: List[DescribeConfigurationPriceResponseBodyDataRules] = None,
+    ):
+        self.bag_usage = bag_usage
+        self.order = order
+        self.rules = rules
+
+    def validate(self):
+        if self.bag_usage:
+            self.bag_usage.validate()
+        if self.order:
+            self.order.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bag_usage is not None:
+            result['BagUsage'] = self.bag_usage.to_map()
+        if self.order is not None:
+            result['Order'] = self.order.to_map()
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BagUsage') is not None:
+            temp_model = DescribeConfigurationPriceResponseBodyDataBagUsage()
+            self.bag_usage = temp_model.from_map(m['BagUsage'])
+        if m.get('Order') is not None:
+            temp_model = DescribeConfigurationPriceResponseBodyDataOrder()
+            self.order = temp_model.from_map(m['Order'])
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeConfigurationPriceResponseBodyDataRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeConfigurationPriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeConfigurationPriceResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeConfigurationPriceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DescribeConfigurationPriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeConfigurationPriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeConfigurationPriceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14141,11 +15556,13 @@ class RescaleApplicationRequest(TeaModel):
         self,
         app_id: str = None,
         auto_enable_application_scaling_rule: bool = None,
+        min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         replicas: int = None,
     ):
         self.app_id = app_id
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
+        self.min_ready_instance_ratio = min_ready_instance_ratio
         self.min_ready_instances = min_ready_instances
         self.replicas = replicas
 
@@ -14162,6 +15579,8 @@ class RescaleApplicationRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.auto_enable_application_scaling_rule is not None:
             result['AutoEnableApplicationScalingRule'] = self.auto_enable_application_scaling_rule
+        if self.min_ready_instance_ratio is not None:
+            result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
             result['MinReadyInstances'] = self.min_ready_instances
         if self.replicas is not None:
@@ -14174,6 +15593,8 @@ class RescaleApplicationRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AutoEnableApplicationScalingRule') is not None:
             self.auto_enable_application_scaling_rule = m.get('AutoEnableApplicationScalingRule')
+        if m.get('MinReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
             self.min_ready_instances = m.get('MinReadyInstances')
         if m.get('Replicas') is not None:
@@ -14476,9 +15897,11 @@ class RestartApplicationRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
     ):
         self.app_id = app_id
+        self.min_ready_instance_ratio = min_ready_instance_ratio
         self.min_ready_instances = min_ready_instances
 
     def validate(self):
@@ -14492,6 +15915,8 @@ class RestartApplicationRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.min_ready_instance_ratio is not None:
+            result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
             result['MinReadyInstances'] = self.min_ready_instances
         return result
@@ -14500,6 +15925,8 @@ class RestartApplicationRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('MinReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
             self.min_ready_instances = m.get('MinReadyInstances')
         return self
@@ -14802,6 +16229,7 @@ class RollbackApplicationRequest(TeaModel):
         app_id: str = None,
         auto_enable_application_scaling_rule: str = None,
         batch_wait_time: int = None,
+        min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         update_strategy: str = None,
         version_id: str = None,
@@ -14809,6 +16237,7 @@ class RollbackApplicationRequest(TeaModel):
         self.app_id = app_id
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
         self.batch_wait_time = batch_wait_time
+        self.min_ready_instance_ratio = min_ready_instance_ratio
         self.min_ready_instances = min_ready_instances
         self.update_strategy = update_strategy
         self.version_id = version_id
@@ -14828,6 +16257,8 @@ class RollbackApplicationRequest(TeaModel):
             result['AutoEnableApplicationScalingRule'] = self.auto_enable_application_scaling_rule
         if self.batch_wait_time is not None:
             result['BatchWaitTime'] = self.batch_wait_time
+        if self.min_ready_instance_ratio is not None:
+            result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
             result['MinReadyInstances'] = self.min_ready_instances
         if self.update_strategy is not None:
@@ -14844,6 +16275,8 @@ class RollbackApplicationRequest(TeaModel):
             self.auto_enable_application_scaling_rule = m.get('AutoEnableApplicationScalingRule')
         if m.get('BatchWaitTime') is not None:
             self.batch_wait_time = m.get('BatchWaitTime')
+        if m.get('MinReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
             self.min_ready_instances = m.get('MinReadyInstances')
         if m.get('UpdateStrategy') is not None:
@@ -15895,10 +17328,16 @@ class UpdateApplicationScalingRuleRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        min_ready_instance_ratio: int = None,
+        min_ready_instances: int = None,
+        scaling_rule_metric: str = None,
         scaling_rule_name: str = None,
         scaling_rule_timer: str = None,
     ):
         self.app_id = app_id
+        self.min_ready_instance_ratio = min_ready_instance_ratio
+        self.min_ready_instances = min_ready_instances
+        self.scaling_rule_metric = scaling_rule_metric
         self.scaling_rule_name = scaling_rule_name
         self.scaling_rule_timer = scaling_rule_timer
 
@@ -15913,6 +17352,12 @@ class UpdateApplicationScalingRuleRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.min_ready_instance_ratio is not None:
+            result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
+        if self.min_ready_instances is not None:
+            result['MinReadyInstances'] = self.min_ready_instances
+        if self.scaling_rule_metric is not None:
+            result['ScalingRuleMetric'] = self.scaling_rule_metric
         if self.scaling_rule_name is not None:
             result['ScalingRuleName'] = self.scaling_rule_name
         if self.scaling_rule_timer is not None:
@@ -15923,10 +17368,96 @@ class UpdateApplicationScalingRuleRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('MinReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
+        if m.get('MinReadyInstances') is not None:
+            self.min_ready_instances = m.get('MinReadyInstances')
+        if m.get('ScalingRuleMetric') is not None:
+            self.scaling_rule_metric = m.get('ScalingRuleMetric')
         if m.get('ScalingRuleName') is not None:
             self.scaling_rule_name = m.get('ScalingRuleName')
         if m.get('ScalingRuleTimer') is not None:
             self.scaling_rule_timer = m.get('ScalingRuleTimer')
+        return self
+
+
+class UpdateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
+    def __init__(
+        self,
+        metric_target_average_utilization: int = None,
+        metric_type: str = None,
+    ):
+        self.metric_target_average_utilization = metric_target_average_utilization
+        self.metric_type = metric_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metric_target_average_utilization is not None:
+            result['MetricTargetAverageUtilization'] = self.metric_target_average_utilization
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetricTargetAverageUtilization') is not None:
+            self.metric_target_average_utilization = m.get('MetricTargetAverageUtilization')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        return self
+
+
+class UpdateApplicationScalingRuleResponseBodyDataMetric(TeaModel):
+    def __init__(
+        self,
+        max_replicas: int = None,
+        metrics: List[UpdateApplicationScalingRuleResponseBodyDataMetricMetrics] = None,
+        min_replicas: int = None,
+    ):
+        self.max_replicas = max_replicas
+        self.metrics = metrics
+        self.min_replicas = min_replicas
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_replicas is not None:
+            result['MaxReplicas'] = self.max_replicas
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.min_replicas is not None:
+            result['MinReplicas'] = self.min_replicas
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxReplicas') is not None:
+            self.max_replicas = m.get('MaxReplicas')
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = UpdateApplicationScalingRuleResponseBodyDataMetricMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('MinReplicas') is not None:
+            self.min_replicas = m.get('MinReplicas')
         return self
 
 
@@ -16021,6 +17552,8 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
         self,
         app_id: str = None,
         create_time: int = None,
+        last_disable_time: int = None,
+        metric: UpdateApplicationScalingRuleResponseBodyDataMetric = None,
         scale_rule_enabled: bool = None,
         scale_rule_name: str = None,
         scale_rule_type: str = None,
@@ -16029,6 +17562,8 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
     ):
         self.app_id = app_id
         self.create_time = create_time
+        self.last_disable_time = last_disable_time
+        self.metric = metric
         self.scale_rule_enabled = scale_rule_enabled
         self.scale_rule_name = scale_rule_name
         self.scale_rule_type = scale_rule_type
@@ -16036,6 +17571,8 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.metric:
+            self.metric.validate()
         if self.timer:
             self.timer.validate()
 
@@ -16049,6 +17586,10 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
             result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.last_disable_time is not None:
+            result['LastDisableTime'] = self.last_disable_time
+        if self.metric is not None:
+            result['Metric'] = self.metric.to_map()
         if self.scale_rule_enabled is not None:
             result['ScaleRuleEnabled'] = self.scale_rule_enabled
         if self.scale_rule_name is not None:
@@ -16067,6 +17608,11 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('LastDisableTime') is not None:
+            self.last_disable_time = m.get('LastDisableTime')
+        if m.get('Metric') is not None:
+            temp_model = UpdateApplicationScalingRuleResponseBodyDataMetric()
+            self.metric = temp_model.from_map(m['Metric'])
         if m.get('ScaleRuleEnabled') is not None:
             self.scale_rule_enabled = m.get('ScaleRuleEnabled')
         if m.get('ScaleRuleName') is not None:
