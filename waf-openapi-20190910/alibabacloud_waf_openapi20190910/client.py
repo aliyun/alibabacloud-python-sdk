@@ -74,11 +74,16 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.CreateCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Certificate'] = request.certificate
-        query['CertificateName'] = request.certificate_name
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.certificate):
+            query['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.certificate_name):
+            query['CertificateName'] = request.certificate_name
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -105,11 +110,16 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.CreateCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Certificate'] = request.certificate
-        query['CertificateName'] = request.certificate_name
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.certificate):
+            query['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.certificate_name):
+            query['CertificateName'] = request.certificate_name
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -150,9 +160,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.CreateCertificateByCertificateIdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertificateId'] = request.certificate_id
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -179,9 +192,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.CreateCertificateByCertificateIdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertificateId'] = request.certificate_id
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -222,29 +238,52 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.CreateDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessHeaderMode'] = request.access_header_mode
-        query['AccessHeaders'] = request.access_headers
-        query['AccessType'] = request.access_type
-        query['CloudNativeInstances'] = request.cloud_native_instances
-        query['ClusterType'] = request.cluster_type
-        query['ConnectionTime'] = request.connection_time
-        query['Domain'] = request.domain
-        query['Http2Port'] = request.http_2port
-        query['HttpPort'] = request.http_port
-        query['HttpToUserIp'] = request.http_to_user_ip
-        query['HttpsPort'] = request.https_port
-        query['HttpsRedirect'] = request.https_redirect
-        query['InstanceId'] = request.instance_id
-        query['IpFollowStatus'] = request.ip_follow_status
-        query['IsAccessProduct'] = request.is_access_product
-        query['LoadBalancing'] = request.load_balancing
-        query['LogHeaders'] = request.log_headers
-        query['ReadTime'] = request.read_time
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SniHost'] = request.sni_host
-        query['SniStatus'] = request.sni_status
-        query['SourceIps'] = request.source_ips
-        query['WriteTime'] = request.write_time
+        if not UtilClient.is_unset(request.access_header_mode):
+            query['AccessHeaderMode'] = request.access_header_mode
+        if not UtilClient.is_unset(request.access_headers):
+            query['AccessHeaders'] = request.access_headers
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.cloud_native_instances):
+            query['CloudNativeInstances'] = request.cloud_native_instances
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.connection_time):
+            query['ConnectionTime'] = request.connection_time
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.http_2port):
+            query['Http2Port'] = request.http_2port
+        if not UtilClient.is_unset(request.http_port):
+            query['HttpPort'] = request.http_port
+        if not UtilClient.is_unset(request.http_to_user_ip):
+            query['HttpToUserIp'] = request.http_to_user_ip
+        if not UtilClient.is_unset(request.https_port):
+            query['HttpsPort'] = request.https_port
+        if not UtilClient.is_unset(request.https_redirect):
+            query['HttpsRedirect'] = request.https_redirect
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip_follow_status):
+            query['IpFollowStatus'] = request.ip_follow_status
+        if not UtilClient.is_unset(request.is_access_product):
+            query['IsAccessProduct'] = request.is_access_product
+        if not UtilClient.is_unset(request.load_balancing):
+            query['LoadBalancing'] = request.load_balancing
+        if not UtilClient.is_unset(request.log_headers):
+            query['LogHeaders'] = request.log_headers
+        if not UtilClient.is_unset(request.read_time):
+            query['ReadTime'] = request.read_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.sni_host):
+            query['SniHost'] = request.sni_host
+        if not UtilClient.is_unset(request.sni_status):
+            query['SniStatus'] = request.sni_status
+        if not UtilClient.is_unset(request.source_ips):
+            query['SourceIps'] = request.source_ips
+        if not UtilClient.is_unset(request.write_time):
+            query['WriteTime'] = request.write_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -271,29 +310,52 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.CreateDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessHeaderMode'] = request.access_header_mode
-        query['AccessHeaders'] = request.access_headers
-        query['AccessType'] = request.access_type
-        query['CloudNativeInstances'] = request.cloud_native_instances
-        query['ClusterType'] = request.cluster_type
-        query['ConnectionTime'] = request.connection_time
-        query['Domain'] = request.domain
-        query['Http2Port'] = request.http_2port
-        query['HttpPort'] = request.http_port
-        query['HttpToUserIp'] = request.http_to_user_ip
-        query['HttpsPort'] = request.https_port
-        query['HttpsRedirect'] = request.https_redirect
-        query['InstanceId'] = request.instance_id
-        query['IpFollowStatus'] = request.ip_follow_status
-        query['IsAccessProduct'] = request.is_access_product
-        query['LoadBalancing'] = request.load_balancing
-        query['LogHeaders'] = request.log_headers
-        query['ReadTime'] = request.read_time
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SniHost'] = request.sni_host
-        query['SniStatus'] = request.sni_status
-        query['SourceIps'] = request.source_ips
-        query['WriteTime'] = request.write_time
+        if not UtilClient.is_unset(request.access_header_mode):
+            query['AccessHeaderMode'] = request.access_header_mode
+        if not UtilClient.is_unset(request.access_headers):
+            query['AccessHeaders'] = request.access_headers
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.cloud_native_instances):
+            query['CloudNativeInstances'] = request.cloud_native_instances
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.connection_time):
+            query['ConnectionTime'] = request.connection_time
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.http_2port):
+            query['Http2Port'] = request.http_2port
+        if not UtilClient.is_unset(request.http_port):
+            query['HttpPort'] = request.http_port
+        if not UtilClient.is_unset(request.http_to_user_ip):
+            query['HttpToUserIp'] = request.http_to_user_ip
+        if not UtilClient.is_unset(request.https_port):
+            query['HttpsPort'] = request.https_port
+        if not UtilClient.is_unset(request.https_redirect):
+            query['HttpsRedirect'] = request.https_redirect
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip_follow_status):
+            query['IpFollowStatus'] = request.ip_follow_status
+        if not UtilClient.is_unset(request.is_access_product):
+            query['IsAccessProduct'] = request.is_access_product
+        if not UtilClient.is_unset(request.load_balancing):
+            query['LoadBalancing'] = request.load_balancing
+        if not UtilClient.is_unset(request.log_headers):
+            query['LogHeaders'] = request.log_headers
+        if not UtilClient.is_unset(request.read_time):
+            query['ReadTime'] = request.read_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.sni_host):
+            query['SniHost'] = request.sni_host
+        if not UtilClient.is_unset(request.sni_status):
+            query['SniStatus'] = request.sni_status
+        if not UtilClient.is_unset(request.source_ips):
+            query['SourceIps'] = request.source_ips
+        if not UtilClient.is_unset(request.write_time):
+            query['WriteTime'] = request.write_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -334,10 +396,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.CreateProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -364,10 +430,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.CreateProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -408,8 +478,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -436,8 +508,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -478,8 +552,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -506,8 +582,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -548,10 +626,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DeleteProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -578,10 +660,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DeleteProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -622,10 +708,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeCertMatchStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Certificate'] = request.certificate
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.certificate):
+            query['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -652,10 +742,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeCertMatchStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Certificate'] = request.certificate
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.certificate):
+            query['Certificate'] = request.certificate
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -696,8 +790,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -724,8 +820,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeCertificatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -766,8 +864,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -794,8 +894,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -836,9 +938,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainAdvanceConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainList'] = request.domain_list
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_list):
+            query['DomainList'] = request.domain_list
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -865,9 +970,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainAdvanceConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainList'] = request.domain_list
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_list):
+            query['DomainList'] = request.domain_list
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -908,13 +1016,20 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainBasicConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessType'] = request.access_type
-        query['CloudNativeProductId'] = request.cloud_native_product_id
-        query['DomainKey'] = request.domain_key
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.cloud_native_product_id):
+            query['CloudNativeProductId'] = request.cloud_native_product_id
+        if not UtilClient.is_unset(request.domain_key):
+            query['DomainKey'] = request.domain_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -941,13 +1056,20 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainBasicConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessType'] = request.access_type
-        query['CloudNativeProductId'] = request.cloud_native_product_id
-        query['DomainKey'] = request.domain_key
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.cloud_native_product_id):
+            query['CloudNativeProductId'] = request.cloud_native_product_id
+        if not UtilClient.is_unset(request.domain_key):
+            query['DomainKey'] = request.domain_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -988,13 +1110,20 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['DomainNames'] = request.domain_names
-        query['InstanceId'] = request.instance_id
-        query['IsSub'] = request.is_sub
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_sub):
+            query['IsSub'] = request.is_sub
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1021,13 +1150,20 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['DomainNames'] = request.domain_names
-        query['InstanceId'] = request.instance_id
-        query['IsSub'] = request.is_sub
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_sub):
+            query['IsSub'] = request.is_sub
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1068,8 +1204,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainNamesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1096,8 +1234,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainNamesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1138,8 +1278,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainRuleGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1166,8 +1308,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeDomainRuleGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1208,8 +1352,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeInstanceInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1236,8 +1382,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeInstanceInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1278,8 +1426,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeInstanceSpecInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1306,8 +1456,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeInstanceSpecInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1348,12 +1500,18 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeLogServiceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Region'] = request.region
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1380,12 +1538,18 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeLogServiceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['InstanceId'] = request.instance_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Region'] = request.region
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1426,10 +1590,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CodeType'] = request.code_type
-        query['CodeValue'] = request.code_value
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.code_type):
+            query['CodeType'] = request.code_type
+        if not UtilClient.is_unset(request.code_value):
+            query['CodeValue'] = request.code_value
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1456,10 +1624,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleCodeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CodeType'] = request.code_type
-        query['CodeValue'] = request.code_value
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.code_type):
+            query['CodeType'] = request.code_type
+        if not UtilClient.is_unset(request.code_value):
+            query['CodeValue'] = request.code_value
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1500,14 +1672,22 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Query'] = request.query
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1534,14 +1714,22 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['Lang'] = request.lang
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Query'] = request.query
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1582,9 +1770,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1611,9 +1802,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeProtectionModuleStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1654,8 +1848,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeWafSourceIpSegmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1682,8 +1878,10 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.DescribeWafSourceIpSegmentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1724,29 +1922,52 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessHeaderMode'] = request.access_header_mode
-        query['AccessHeaders'] = request.access_headers
-        query['AccessType'] = request.access_type
-        query['CloudNativeInstances'] = request.cloud_native_instances
-        query['ClusterType'] = request.cluster_type
-        query['ConnectionTime'] = request.connection_time
-        query['Domain'] = request.domain
-        query['Http2Port'] = request.http_2port
-        query['HttpPort'] = request.http_port
-        query['HttpToUserIp'] = request.http_to_user_ip
-        query['HttpsPort'] = request.https_port
-        query['HttpsRedirect'] = request.https_redirect
-        query['InstanceId'] = request.instance_id
-        query['InstanceId'] = request.instance_id
-        query['IpFollowStatus'] = request.ip_follow_status
-        query['IsAccessProduct'] = request.is_access_product
-        query['LoadBalancing'] = request.load_balancing
-        query['LogHeaders'] = request.log_headers
-        query['ReadTime'] = request.read_time
-        query['SniHost'] = request.sni_host
-        query['SniStatus'] = request.sni_status
-        query['SourceIps'] = request.source_ips
-        query['WriteTime'] = request.write_time
+        if not UtilClient.is_unset(request.access_header_mode):
+            query['AccessHeaderMode'] = request.access_header_mode
+        if not UtilClient.is_unset(request.access_headers):
+            query['AccessHeaders'] = request.access_headers
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.cloud_native_instances):
+            query['CloudNativeInstances'] = request.cloud_native_instances
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.connection_time):
+            query['ConnectionTime'] = request.connection_time
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.http_2port):
+            query['Http2Port'] = request.http_2port
+        if not UtilClient.is_unset(request.http_port):
+            query['HttpPort'] = request.http_port
+        if not UtilClient.is_unset(request.http_to_user_ip):
+            query['HttpToUserIp'] = request.http_to_user_ip
+        if not UtilClient.is_unset(request.https_port):
+            query['HttpsPort'] = request.https_port
+        if not UtilClient.is_unset(request.https_redirect):
+            query['HttpsRedirect'] = request.https_redirect
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip_follow_status):
+            query['IpFollowStatus'] = request.ip_follow_status
+        if not UtilClient.is_unset(request.is_access_product):
+            query['IsAccessProduct'] = request.is_access_product
+        if not UtilClient.is_unset(request.load_balancing):
+            query['LoadBalancing'] = request.load_balancing
+        if not UtilClient.is_unset(request.log_headers):
+            query['LogHeaders'] = request.log_headers
+        if not UtilClient.is_unset(request.read_time):
+            query['ReadTime'] = request.read_time
+        if not UtilClient.is_unset(request.sni_host):
+            query['SniHost'] = request.sni_host
+        if not UtilClient.is_unset(request.sni_status):
+            query['SniStatus'] = request.sni_status
+        if not UtilClient.is_unset(request.source_ips):
+            query['SourceIps'] = request.source_ips
+        if not UtilClient.is_unset(request.write_time):
+            query['WriteTime'] = request.write_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1773,29 +1994,52 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessHeaderMode'] = request.access_header_mode
-        query['AccessHeaders'] = request.access_headers
-        query['AccessType'] = request.access_type
-        query['CloudNativeInstances'] = request.cloud_native_instances
-        query['ClusterType'] = request.cluster_type
-        query['ConnectionTime'] = request.connection_time
-        query['Domain'] = request.domain
-        query['Http2Port'] = request.http_2port
-        query['HttpPort'] = request.http_port
-        query['HttpToUserIp'] = request.http_to_user_ip
-        query['HttpsPort'] = request.https_port
-        query['HttpsRedirect'] = request.https_redirect
-        query['InstanceId'] = request.instance_id
-        query['InstanceId'] = request.instance_id
-        query['IpFollowStatus'] = request.ip_follow_status
-        query['IsAccessProduct'] = request.is_access_product
-        query['LoadBalancing'] = request.load_balancing
-        query['LogHeaders'] = request.log_headers
-        query['ReadTime'] = request.read_time
-        query['SniHost'] = request.sni_host
-        query['SniStatus'] = request.sni_status
-        query['SourceIps'] = request.source_ips
-        query['WriteTime'] = request.write_time
+        if not UtilClient.is_unset(request.access_header_mode):
+            query['AccessHeaderMode'] = request.access_header_mode
+        if not UtilClient.is_unset(request.access_headers):
+            query['AccessHeaders'] = request.access_headers
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.cloud_native_instances):
+            query['CloudNativeInstances'] = request.cloud_native_instances
+        if not UtilClient.is_unset(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
+        if not UtilClient.is_unset(request.connection_time):
+            query['ConnectionTime'] = request.connection_time
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.http_2port):
+            query['Http2Port'] = request.http_2port
+        if not UtilClient.is_unset(request.http_port):
+            query['HttpPort'] = request.http_port
+        if not UtilClient.is_unset(request.http_to_user_ip):
+            query['HttpToUserIp'] = request.http_to_user_ip
+        if not UtilClient.is_unset(request.https_port):
+            query['HttpsPort'] = request.https_port
+        if not UtilClient.is_unset(request.https_redirect):
+            query['HttpsRedirect'] = request.https_redirect
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip_follow_status):
+            query['IpFollowStatus'] = request.ip_follow_status
+        if not UtilClient.is_unset(request.is_access_product):
+            query['IsAccessProduct'] = request.is_access_product
+        if not UtilClient.is_unset(request.load_balancing):
+            query['LoadBalancing'] = request.load_balancing
+        if not UtilClient.is_unset(request.log_headers):
+            query['LogHeaders'] = request.log_headers
+        if not UtilClient.is_unset(request.read_time):
+            query['ReadTime'] = request.read_time
+        if not UtilClient.is_unset(request.sni_host):
+            query['SniHost'] = request.sni_host
+        if not UtilClient.is_unset(request.sni_status):
+            query['SniStatus'] = request.sni_status
+        if not UtilClient.is_unset(request.source_ips):
+            query['SourceIps'] = request.source_ips
+        if not UtilClient.is_unset(request.write_time):
+            query['WriteTime'] = request.write_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1836,9 +2080,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyDomainIpv6StatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1865,9 +2112,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyDomainIpv6StatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1908,9 +2158,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyLogRetrievalStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1937,9 +2190,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyLogRetrievalStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1980,9 +2236,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyLogServiceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2009,9 +2268,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyLogServiceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domain'] = request.domain
-        query['Enabled'] = request.enabled
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2052,10 +2314,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2082,10 +2348,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleModeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2126,12 +2396,18 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['LockVersion'] = request.lock_version
-        query['Rule'] = request.rule
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lock_version):
+            query['LockVersion'] = request.lock_version
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2158,12 +2434,18 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['LockVersion'] = request.lock_version
-        query['Rule'] = request.rule
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lock_version):
+            query['LockVersion'] = request.lock_version
+        if not UtilClient.is_unset(request.rule):
+            query['Rule'] = request.rule
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2204,10 +2486,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['ModuleStatus'] = request.module_status
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_status):
+            query['ModuleStatus'] = request.module_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2234,10 +2520,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionModuleStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['ModuleStatus'] = request.module_status
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_status):
+            query['ModuleStatus'] = request.module_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2278,10 +2568,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionRuleCacheStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2308,10 +2602,14 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionRuleCacheStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2352,12 +2650,18 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionRuleStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['LockVersion'] = request.lock_version
-        query['RuleId'] = request.rule_id
-        query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lock_version):
+            query['LockVersion'] = request.lock_version
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2384,12 +2688,18 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.ModifyProtectionRuleStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DefenseType'] = request.defense_type
-        query['Domain'] = request.domain
-        query['InstanceId'] = request.instance_id
-        query['LockVersion'] = request.lock_version
-        query['RuleId'] = request.rule_id
-        query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.defense_type):
+            query['DefenseType'] = request.defense_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lock_version):
+            query['LockVersion'] = request.lock_version
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2430,9 +2740,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2459,9 +2772,12 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2502,11 +2818,18 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.SetDomainRuleGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domains'] = request.domains
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['RuleGroupId'] = request.rule_group_id
-        query['WafVersion'] = request.waf_version
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_group_id):
+            query['RuleGroupId'] = request.rule_group_id
+        if not UtilClient.is_unset(request.waf_ai_status):
+            query['WafAiStatus'] = request.waf_ai_status
+        if not UtilClient.is_unset(request.waf_version):
+            query['WafVersion'] = request.waf_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2533,11 +2856,18 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20190910_models.SetDomainRuleGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Domains'] = request.domains
-        query['InstanceId'] = request.instance_id
-        query['ResourceGroupId'] = request.resource_group_id
-        query['RuleGroupId'] = request.rule_group_id
-        query['WafVersion'] = request.waf_version
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.rule_group_id):
+            query['RuleGroupId'] = request.rule_group_id
+        if not UtilClient.is_unset(request.waf_ai_status):
+            query['WafAiStatus'] = request.waf_ai_status
+        if not UtilClient.is_unset(request.waf_version):
+            query['WafVersion'] = request.waf_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

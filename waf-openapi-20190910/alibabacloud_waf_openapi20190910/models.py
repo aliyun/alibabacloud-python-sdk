@@ -2311,9 +2311,11 @@ class DescribeDomainRuleGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
         rule_group_id: int = None,
+        waf_ai_status: int = None,
     ):
         self.request_id = request_id
         self.rule_group_id = rule_group_id
+        self.waf_ai_status = waf_ai_status
 
     def validate(self):
         pass
@@ -2328,6 +2330,8 @@ class DescribeDomainRuleGroupResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.rule_group_id is not None:
             result['RuleGroupId'] = self.rule_group_id
+        if self.waf_ai_status is not None:
+            result['WafAiStatus'] = self.waf_ai_status
         return result
 
     def from_map(self, m: dict = None):
@@ -2336,6 +2340,8 @@ class DescribeDomainRuleGroupResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('RuleGroupId') is not None:
             self.rule_group_id = m.get('RuleGroupId')
+        if m.get('WafAiStatus') is not None:
+            self.waf_ai_status = m.get('WafAiStatus')
         return self
 
 
@@ -4533,12 +4539,10 @@ class ModifyProtectionRuleStatusResponse(TeaModel):
 class MoveResourceGroupRequest(TeaModel):
     def __init__(
         self,
-        region_id: str = None,
         resource_group_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
     ):
-        self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.resource_id = resource_id
         self.resource_type = resource_type
@@ -4552,8 +4556,6 @@ class MoveResourceGroupRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
@@ -4564,8 +4566,6 @@ class MoveResourceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
@@ -4646,12 +4646,14 @@ class SetDomainRuleGroupRequest(TeaModel):
         instance_id: str = None,
         resource_group_id: str = None,
         rule_group_id: int = None,
+        waf_ai_status: int = None,
         waf_version: int = None,
     ):
         self.domains = domains
         self.instance_id = instance_id
         self.resource_group_id = resource_group_id
         self.rule_group_id = rule_group_id
+        self.waf_ai_status = waf_ai_status
         self.waf_version = waf_version
 
     def validate(self):
@@ -4671,6 +4673,8 @@ class SetDomainRuleGroupRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.rule_group_id is not None:
             result['RuleGroupId'] = self.rule_group_id
+        if self.waf_ai_status is not None:
+            result['WafAiStatus'] = self.waf_ai_status
         if self.waf_version is not None:
             result['WafVersion'] = self.waf_version
         return result
@@ -4685,6 +4689,8 @@ class SetDomainRuleGroupRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RuleGroupId') is not None:
             self.rule_group_id = m.get('RuleGroupId')
+        if m.get('WafAiStatus') is not None:
+            self.waf_ai_status = m.get('WafAiStatus')
         if m.get('WafVersion') is not None:
             self.waf_version = m.get('WafVersion')
         return self
