@@ -4,6 +4,395 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class LogstashEndpointList(TeaModel):
+    def __init__(
+        self,
+        host: str = None,
+        port: int = None,
+        zone_id: str = None,
+    ):
+        # Host
+        self.host = host
+        # Port
+        self.port = port
+        # ZoneId
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host is not None:
+            result['host'] = self.host
+        if self.port is not None:
+            result['port'] = self.port
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('host') is not None:
+            self.host = m.get('host')
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+        return self
+
+
+class LogstashNetworkConfig(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+        vpc_id: str = None,
+        vs_area: str = None,
+        vswitch_id: str = None,
+    ):
+        # Type
+        self.type = type
+        # VpcId
+        self.vpc_id = vpc_id
+        # VsArea
+        self.vs_area = vs_area
+        # VswitchId
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        if self.vs_area is not None:
+            result['vsArea'] = self.vs_area
+        if self.vswitch_id is not None:
+            result['vswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        if m.get('vsArea') is not None:
+            self.vs_area = m.get('vsArea')
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
+        return self
+
+
+class LogstashNodeSpec(TeaModel):
+    def __init__(
+        self,
+        disk: int = None,
+        disk_type: str = None,
+        spec: str = None,
+    ):
+        # Disk
+        self.disk = disk
+        # DiskType
+        self.disk_type = disk_type
+        # Spec
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk is not None:
+            result['disk'] = self.disk
+        if self.disk_type is not None:
+            result['diskType'] = self.disk_type
+        if self.spec is not None:
+            result['spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disk') is not None:
+            self.disk = m.get('disk')
+        if m.get('diskType') is not None:
+            self.disk_type = m.get('diskType')
+        if m.get('spec') is not None:
+            self.spec = m.get('spec')
+        return self
+
+
+class LogstashTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # TagKey
+        self.tag_key = tag_key
+        # TagValue
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['tagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+        if m.get('tagValue') is not None:
+            self.tag_value = m.get('tagValue')
+        return self
+
+
+class LogstashZoneInfos(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        zone_id: str = None,
+    ):
+        # Status
+        self.status = status
+        # ZoneId
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+        return self
+
+
+class Logstash(TeaModel):
+    def __init__(
+        self,
+        config: Dict[str, str] = None,
+        created_at: str = None,
+        data_node: bool = None,
+        description: str = None,
+        end_time: int = None,
+        endpoint_list: List[LogstashEndpointList] = None,
+        instance_id: str = None,
+        network_config: LogstashNetworkConfig = None,
+        node_amount: int = None,
+        node_spec: LogstashNodeSpec = None,
+        payment_type: str = None,
+        protocol: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        tags: List[LogstashTags] = None,
+        updated_at: str = None,
+        version: str = None,
+        zone_count: int = None,
+        zone_infos: List[LogstashZoneInfos] = None,
+    ):
+        # Config
+        self.config = config
+        # CreatedAt
+        self.created_at = created_at
+        # DataNode
+        self.data_node = data_node
+        # Description
+        self.description = description
+        # EndTime
+        self.end_time = end_time
+        # EndpointList
+        self.endpoint_list = endpoint_list
+        # InstanceId
+        self.instance_id = instance_id
+        # NetworkConfig
+        self.network_config = network_config
+        # NodeAmount
+        self.node_amount = node_amount
+        # NodeSpec
+        self.node_spec = node_spec
+        # PaymentType
+        self.payment_type = payment_type
+        # Protocol
+        self.protocol = protocol
+        # ResourceGroupId
+        self.resource_group_id = resource_group_id
+        # Status
+        self.status = status
+        # Tags
+        self.tags = tags
+        # UpdatedAt
+        self.updated_at = updated_at
+        # Version
+        self.version = version
+        # ZoneCount
+        self.zone_count = zone_count
+        # ZoneInfos
+        self.zone_infos = zone_infos
+
+    def validate(self):
+        if self.endpoint_list:
+            for k in self.endpoint_list:
+                if k:
+                    k.validate()
+        if self.network_config:
+            self.network_config.validate()
+        if self.node_spec:
+            self.node_spec.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+        if self.zone_infos:
+            for k in self.zone_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.data_node is not None:
+            result['dataNode'] = self.data_node
+        if self.description is not None:
+            result['description'] = self.description
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        result['endpointList'] = []
+        if self.endpoint_list is not None:
+            for k in self.endpoint_list:
+                result['endpointList'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.network_config is not None:
+            result['networkConfig'] = self.network_config.to_map()
+        if self.node_amount is not None:
+            result['nodeAmount'] = self.node_amount
+        if self.node_spec is not None:
+            result['nodeSpec'] = self.node_spec.to_map()
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
+        if self.version is not None:
+            result['version'] = self.version
+        if self.zone_count is not None:
+            result['zoneCount'] = self.zone_count
+        result['zoneInfos'] = []
+        if self.zone_infos is not None:
+            for k in self.zone_infos:
+                result['zoneInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('dataNode') is not None:
+            self.data_node = m.get('dataNode')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        self.endpoint_list = []
+        if m.get('endpointList') is not None:
+            for k in m.get('endpointList'):
+                temp_model = LogstashEndpointList()
+                self.endpoint_list.append(temp_model.from_map(k))
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('networkConfig') is not None:
+            temp_model = LogstashNetworkConfig()
+            self.network_config = temp_model.from_map(m['networkConfig'])
+        if m.get('nodeAmount') is not None:
+            self.node_amount = m.get('nodeAmount')
+        if m.get('nodeSpec') is not None:
+            temp_model = LogstashNodeSpec()
+            self.node_spec = temp_model.from_map(m['nodeSpec'])
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = LogstashTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('zoneCount') is not None:
+            self.zone_count = m.get('zoneCount')
+        self.zone_infos = []
+        if m.get('zoneInfos') is not None:
+            for k in m.get('zoneInfos'):
+                temp_model = LogstashZoneInfos()
+                self.zone_infos.append(temp_model.from_map(k))
+        return self
+
+
 class ActivateZonesRequest(TeaModel):
     def __init__(
         self,
@@ -2164,12 +2553,18 @@ class CreateIndexTemplateResponse(TeaModel):
         return self
 
 
-class CreateLogstashRequest(TeaModel):
+class CreateLogstashRequestNetworkConfig(TeaModel):
     def __init__(
         self,
-        client_token: str = None,
+        type: str = None,
+        vpc_id: str = None,
+        vs_area: str = None,
+        vswitch_id: str = None,
     ):
-        self.client_token = client_token
+        self.type = type
+        self.vpc_id = vpc_id
+        self.vs_area = vs_area
+        self.vswitch_id = vswitch_id
 
     def validate(self):
         pass
@@ -2180,41 +2575,191 @@ class CreateLogstashRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        if self.vs_area is not None:
+            result['vsArea'] = self.vs_area
+        if self.vswitch_id is not None:
+            result['vswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        if m.get('vsArea') is not None:
+            self.vs_area = m.get('vsArea')
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
+        return self
+
+
+class CreateLogstashRequestNodeSpec(TeaModel):
+    def __init__(
+        self,
+        disk: int = None,
+        disk_type: str = None,
+        spec: str = None,
+    ):
+        self.disk = disk
+        self.disk_type = disk_type
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk is not None:
+            result['disk'] = self.disk
+        if self.disk_type is not None:
+            result['diskType'] = self.disk_type
+        if self.spec is not None:
+            result['spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disk') is not None:
+            self.disk = m.get('disk')
+        if m.get('diskType') is not None:
+            self.disk_type = m.get('diskType')
+        if m.get('spec') is not None:
+            self.spec = m.get('spec')
+        return self
+
+
+class CreateLogstashRequestPaymentInfo(TeaModel):
+    def __init__(
+        self,
+        auto_renew_duration: int = None,
+        duration: int = None,
+        is_auto_renew: bool = None,
+        pricing_cycle: str = None,
+    ):
+        # 自动续费包月周期
+        self.auto_renew_duration = auto_renew_duration
+        # 包月周期
+        self.duration = duration
+        # 是否自动续费
+        self.is_auto_renew = is_auto_renew
+        # 日期单位
+        self.pricing_cycle = pricing_cycle
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew_duration is not None:
+            result['autoRenewDuration'] = self.auto_renew_duration
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.is_auto_renew is not None:
+            result['isAutoRenew'] = self.is_auto_renew
+        if self.pricing_cycle is not None:
+            result['pricingCycle'] = self.pricing_cycle
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoRenewDuration') is not None:
+            self.auto_renew_duration = m.get('autoRenewDuration')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('isAutoRenew') is not None:
+            self.is_auto_renew = m.get('isAutoRenew')
+        if m.get('pricingCycle') is not None:
+            self.pricing_cycle = m.get('pricingCycle')
+        return self
+
+
+class CreateLogstashRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        network_config: CreateLogstashRequestNetworkConfig = None,
+        node_amount: int = None,
+        node_spec: CreateLogstashRequestNodeSpec = None,
+        payment_info: CreateLogstashRequestPaymentInfo = None,
+        payment_type: str = None,
+        version: str = None,
+        client_token: str = None,
+    ):
+        self.description = description
+        self.network_config = network_config
+        self.node_amount = node_amount
+        self.node_spec = node_spec
+        self.payment_info = payment_info
+        self.payment_type = payment_type
+        self.version = version
+        self.client_token = client_token
+
+    def validate(self):
+        if self.network_config:
+            self.network_config.validate()
+        if self.node_spec:
+            self.node_spec.validate()
+        if self.payment_info:
+            self.payment_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.network_config is not None:
+            result['networkConfig'] = self.network_config.to_map()
+        if self.node_amount is not None:
+            result['nodeAmount'] = self.node_amount
+        if self.node_spec is not None:
+            result['nodeSpec'] = self.node_spec.to_map()
+        if self.payment_info is not None:
+            result['paymentInfo'] = self.payment_info.to_map()
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.version is not None:
+            result['version'] = self.version
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('networkConfig') is not None:
+            temp_model = CreateLogstashRequestNetworkConfig()
+            self.network_config = temp_model.from_map(m['networkConfig'])
+        if m.get('nodeAmount') is not None:
+            self.node_amount = m.get('nodeAmount')
+        if m.get('nodeSpec') is not None:
+            temp_model = CreateLogstashRequestNodeSpec()
+            self.node_spec = temp_model.from_map(m['nodeSpec'])
+        if m.get('paymentInfo') is not None:
+            temp_model = CreateLogstashRequestPaymentInfo()
+            self.payment_info = temp_model.from_map(m['paymentInfo'])
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('version') is not None:
+            self.version = m.get('version')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
-        return self
-
-
-class CreateLogstashResponseBodyResult(TeaModel):
-    def __init__(
-        self,
-        instance_id: str = None,
-    ):
-        self.instance_id = instance_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.instance_id is not None:
-            result['instanceId'] = self.instance_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('instanceId') is not None:
-            self.instance_id = m.get('instanceId')
         return self
 
 
@@ -2222,7 +2767,7 @@ class CreateLogstashResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        result: CreateLogstashResponseBodyResult = None,
+        result: Logstash = None,
     ):
         self.request_id = request_id
         self.result = result
@@ -2248,7 +2793,7 @@ class CreateLogstashResponseBody(TeaModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Result') is not None:
-            temp_model = CreateLogstashResponseBodyResult()
+            temp_model = Logstash()
             self.result = temp_model.from_map(m['Result'])
         return self
 
@@ -13104,39 +13649,6 @@ class ListComponentIndicesResponseBodyHeaders(TeaModel):
         return self
 
 
-class ListComponentIndicesResponseBodyResultContentMeta(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        managed: bool = None,
-    ):
-        self.description = description
-        self.managed = managed
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.managed is not None:
-            result['managed'] = self.managed
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('managed') is not None:
-            self.managed = m.get('managed')
-        return self
-
-
 class ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle(TeaModel):
     def __init__(
         self,
@@ -13260,7 +13772,7 @@ class ListComponentIndicesResponseBodyResultContentTemplate(TeaModel):
 class ListComponentIndicesResponseBodyResultContent(TeaModel):
     def __init__(
         self,
-        meta: ListComponentIndicesResponseBodyResultContentMeta = None,
+        meta: Dict[str, Any] = None,
         template: ListComponentIndicesResponseBodyResultContentTemplate = None,
         version: int = None,
     ):
@@ -13269,8 +13781,6 @@ class ListComponentIndicesResponseBodyResultContent(TeaModel):
         self.version = version
 
     def validate(self):
-        if self.meta:
-            self.meta.validate()
         if self.template:
             self.template.validate()
 
@@ -13281,7 +13791,7 @@ class ListComponentIndicesResponseBodyResultContent(TeaModel):
 
         result = dict()
         if self.meta is not None:
-            result['_meta'] = self.meta.to_map()
+            result['_meta'] = self.meta
         if self.template is not None:
             result['template'] = self.template.to_map()
         if self.version is not None:
@@ -13291,8 +13801,7 @@ class ListComponentIndicesResponseBodyResultContent(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('_meta') is not None:
-            temp_model = ListComponentIndicesResponseBodyResultContentMeta()
-            self.meta = temp_model.from_map(m['_meta'])
+            self.meta = m.get('_meta')
         if m.get('template') is not None:
             temp_model = ListComponentIndicesResponseBodyResultContentTemplate()
             self.template = temp_model.from_map(m['template'])
@@ -17753,236 +18262,12 @@ class ListLogstashResponseBodyHeaders(TeaModel):
         return self
 
 
-class ListLogstashResponseBodyResultTags(TeaModel):
-    def __init__(
-        self,
-        tag_key: str = None,
-        tag_value: str = None,
-    ):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.tag_key is not None:
-            result['TagKey'] = self.tag_key
-        if self.tag_value is not None:
-            result['TagValue'] = self.tag_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TagKey') is not None:
-            self.tag_key = m.get('TagKey')
-        if m.get('TagValue') is not None:
-            self.tag_value = m.get('TagValue')
-        return self
-
-
-class ListLogstashResponseBodyResultNetworkConfig(TeaModel):
-    def __init__(
-        self,
-        type: str = None,
-        vpc_id: str = None,
-        vs_area: str = None,
-        vswitch_id: str = None,
-    ):
-        self.type = type
-        self.vpc_id = vpc_id
-        self.vs_area = vs_area
-        self.vswitch_id = vswitch_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.type is not None:
-            result['type'] = self.type
-        if self.vpc_id is not None:
-            result['vpcId'] = self.vpc_id
-        if self.vs_area is not None:
-            result['vsArea'] = self.vs_area
-        if self.vswitch_id is not None:
-            result['vswitchId'] = self.vswitch_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        if m.get('vpcId') is not None:
-            self.vpc_id = m.get('vpcId')
-        if m.get('vsArea') is not None:
-            self.vs_area = m.get('vsArea')
-        if m.get('vswitchId') is not None:
-            self.vswitch_id = m.get('vswitchId')
-        return self
-
-
-class ListLogstashResponseBodyResultNodeSpec(TeaModel):
-    def __init__(
-        self,
-        disk: int = None,
-        disk_encryption: bool = None,
-        disk_type: str = None,
-        spec: str = None,
-    ):
-        self.disk = disk
-        self.disk_encryption = disk_encryption
-        self.disk_type = disk_type
-        self.spec = spec
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.disk is not None:
-            result['disk'] = self.disk
-        if self.disk_encryption is not None:
-            result['diskEncryption'] = self.disk_encryption
-        if self.disk_type is not None:
-            result['diskType'] = self.disk_type
-        if self.spec is not None:
-            result['spec'] = self.spec
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('disk') is not None:
-            self.disk = m.get('disk')
-        if m.get('diskEncryption') is not None:
-            self.disk_encryption = m.get('diskEncryption')
-        if m.get('diskType') is not None:
-            self.disk_type = m.get('diskType')
-        if m.get('spec') is not None:
-            self.spec = m.get('spec')
-        return self
-
-
-class ListLogstashResponseBodyResult(TeaModel):
-    def __init__(
-        self,
-        tags: List[ListLogstashResponseBodyResultTags] = None,
-        created_at: str = None,
-        description: str = None,
-        instance_id: str = None,
-        network_config: ListLogstashResponseBodyResultNetworkConfig = None,
-        node_amount: int = None,
-        node_spec: ListLogstashResponseBodyResultNodeSpec = None,
-        payment_type: str = None,
-        status: str = None,
-        updated_at: str = None,
-        version: str = None,
-    ):
-        self.tags = tags
-        self.created_at = created_at
-        self.description = description
-        self.instance_id = instance_id
-        self.network_config = network_config
-        self.node_amount = node_amount
-        self.node_spec = node_spec
-        self.payment_type = payment_type
-        self.status = status
-        self.updated_at = updated_at
-        self.version = version
-
-    def validate(self):
-        if self.tags:
-            for k in self.tags:
-                if k:
-                    k.validate()
-        if self.network_config:
-            self.network_config.validate()
-        if self.node_spec:
-            self.node_spec.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Tags'] = []
-        if self.tags is not None:
-            for k in self.tags:
-                result['Tags'].append(k.to_map() if k else None)
-        if self.created_at is not None:
-            result['createdAt'] = self.created_at
-        if self.description is not None:
-            result['description'] = self.description
-        if self.instance_id is not None:
-            result['instanceId'] = self.instance_id
-        if self.network_config is not None:
-            result['networkConfig'] = self.network_config.to_map()
-        if self.node_amount is not None:
-            result['nodeAmount'] = self.node_amount
-        if self.node_spec is not None:
-            result['nodeSpec'] = self.node_spec.to_map()
-        if self.payment_type is not None:
-            result['paymentType'] = self.payment_type
-        if self.status is not None:
-            result['status'] = self.status
-        if self.updated_at is not None:
-            result['updatedAt'] = self.updated_at
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.tags = []
-        if m.get('Tags') is not None:
-            for k in m.get('Tags'):
-                temp_model = ListLogstashResponseBodyResultTags()
-                self.tags.append(temp_model.from_map(k))
-        if m.get('createdAt') is not None:
-            self.created_at = m.get('createdAt')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('instanceId') is not None:
-            self.instance_id = m.get('instanceId')
-        if m.get('networkConfig') is not None:
-            temp_model = ListLogstashResponseBodyResultNetworkConfig()
-            self.network_config = temp_model.from_map(m['networkConfig'])
-        if m.get('nodeAmount') is not None:
-            self.node_amount = m.get('nodeAmount')
-        if m.get('nodeSpec') is not None:
-            temp_model = ListLogstashResponseBodyResultNodeSpec()
-            self.node_spec = temp_model.from_map(m['nodeSpec'])
-        if m.get('paymentType') is not None:
-            self.payment_type = m.get('paymentType')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('updatedAt') is not None:
-            self.updated_at = m.get('updatedAt')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        return self
-
-
 class ListLogstashResponseBody(TeaModel):
     def __init__(
         self,
         headers: ListLogstashResponseBodyHeaders = None,
         request_id: str = None,
-        result: List[ListLogstashResponseBodyResult] = None,
+        result: List[Logstash] = None,
     ):
         self.headers = headers
         self.request_id = request_id
@@ -18022,7 +18307,7 @@ class ListLogstashResponseBody(TeaModel):
         self.result = []
         if m.get('Result') is not None:
             for k in m.get('Result'):
-                temp_model = ListLogstashResponseBodyResult()
+                temp_model = Logstash()
                 self.result.append(temp_model.from_map(k))
         return self
 
@@ -20911,7 +21196,9 @@ class ModifyWhiteIpsRequestWhiteIpGroup(TeaModel):
         group_name: str = None,
         ips: List[str] = None,
     ):
+        # 白名单组的组名。如果选填了whiteIpGroup参数，则该参数必填。
         self.group_name = group_name
+        # 白名单组中的IP列表。如果选填了whiteIpGroup参数，则该参数必填。
         self.ips = ips
 
     def validate(self):
@@ -20941,19 +21228,30 @@ class ModifyWhiteIpsRequestWhiteIpGroup(TeaModel):
 class ModifyWhiteIpsRequest(TeaModel):
     def __init__(
         self,
-        client_token: str = None,
         modify_mode: str = None,
         network_type: str = None,
         node_type: str = None,
         white_ip_group: ModifyWhiteIpsRequestWhiteIpGroup = None,
         white_ip_list: List[str] = None,
+        client_token: str = None,
     ):
-        self.client_token = client_token
+        # 修改方式，取值含义如下：
+        # 
+        # Cover（默认值）：使用ips参数的值覆盖原IP白名单。
+        # 
+        # Append：在原IP白名单中增加ips参数中输入的IP地址。
+        # 
+        # Delete：Delete：在原IP白名单中删除ips参数中输入的IP地址，至少需要保留一个IP地址。
         self.modify_mode = modify_mode
+        # 网络类型。可选值：PRIVATE（私网）、PUBLIC（公网）。如果选填了whiteIpList参数，则该参数必填。
         self.network_type = network_type
+        # 节点类型。可选值：WORKER（Elasticsearch集群）、KIBANA（Kibana集群）。如果选填了whiteIpList参数，则该参数必填。
         self.node_type = node_type
+        # 以白名单组whiteIpGroup传参方式，更新实例白名单安全配置。仅支持更新一个白名单组。
         self.white_ip_group = white_ip_group
+        # 白名单列表。whiteIpGroup为空时可用，更改默认分组白名单
         self.white_ip_list = white_ip_list
+        self.client_token = client_token
 
     def validate(self):
         if self.white_ip_group:
@@ -20965,8 +21263,6 @@ class ModifyWhiteIpsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.client_token is not None:
-            result['clientToken'] = self.client_token
         if self.modify_mode is not None:
             result['modifyMode'] = self.modify_mode
         if self.network_type is not None:
@@ -20977,12 +21273,12 @@ class ModifyWhiteIpsRequest(TeaModel):
             result['whiteIpGroup'] = self.white_ip_group.to_map()
         if self.white_ip_list is not None:
             result['whiteIpList'] = self.white_ip_list
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('clientToken') is not None:
-            self.client_token = m.get('clientToken')
         if m.get('modifyMode') is not None:
             self.modify_mode = m.get('modifyMode')
         if m.get('networkType') is not None:
@@ -20994,6 +21290,8 @@ class ModifyWhiteIpsRequest(TeaModel):
             self.white_ip_group = temp_model.from_map(m['whiteIpGroup'])
         if m.get('whiteIpList') is not None:
             self.white_ip_list = m.get('whiteIpList')
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
         return self
 
 
@@ -21070,8 +21368,10 @@ class ModifyWhiteIpsResponse(TeaModel):
 class MoveResourceGroupRequest(TeaModel):
     def __init__(
         self,
+        resource_group_id: str = None,
         client_token: str = None,
     ):
+        self.resource_group_id = resource_group_id
         self.client_token = client_token
 
     def validate(self):
@@ -21083,12 +21383,16 @@ class MoveResourceGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         return self
@@ -24042,6 +24346,86 @@ class StopPipelinesResponse(TeaModel):
         return self
 
 
+class TagResourcesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        resource_ids: List[str] = None,
+        resource_type: str = None,
+        tags: List[TagResourcesRequestTags] = None,
+    ):
+        self.resource_ids = resource_ids
+        self.resource_type = resource_type
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = TagResourcesRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
 class TagResourcesResponseBody(TeaModel):
     def __init__(
         self,
@@ -24217,8 +24601,11 @@ class TriggerNetworkRequest(TeaModel):
         node_type: str = None,
         client_token: str = None,
     ):
+        # 动作类型。CLOSE：关闭; OPEN：开启
         self.action_type = action_type
+        # 网络类型。PUBLIC：公网；PRIVATE：私网
         self.network_type = network_type
+        # 实例类型。KIBANA kibana公私网/WORKER 集群公私网
         self.node_type = node_type
         self.client_token = client_token
 
@@ -28185,12 +28572,16 @@ class UpdateKibanaWhiteIpsResponse(TeaModel):
         return self
 
 
-class UpdateLogstashRequest(TeaModel):
+class UpdateLogstashRequestNodeSpec(TeaModel):
     def __init__(
         self,
-        client_token: str = None,
+        disk: int = None,
+        disk_type: str = None,
+        spec: str = None,
     ):
-        self.client_token = client_token
+        self.disk = disk
+        self.disk_type = disk_type
+        self.spec = spec
 
     def validate(self):
         pass
@@ -28201,12 +28592,67 @@ class UpdateLogstashRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.disk is not None:
+            result['disk'] = self.disk
+        if self.disk_type is not None:
+            result['diskType'] = self.disk_type
+        if self.spec is not None:
+            result['spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disk') is not None:
+            self.disk = m.get('disk')
+        if m.get('diskType') is not None:
+            self.disk_type = m.get('diskType')
+        if m.get('spec') is not None:
+            self.spec = m.get('spec')
+        return self
+
+
+class UpdateLogstashRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        node_amount: int = None,
+        node_spec: UpdateLogstashRequestNodeSpec = None,
+        client_token: str = None,
+    ):
+        self.description = description
+        self.node_amount = node_amount
+        self.node_spec = node_spec
+        self.client_token = client_token
+
+    def validate(self):
+        if self.node_spec:
+            self.node_spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.node_amount is not None:
+            result['nodeAmount'] = self.node_amount
+        if self.node_spec is not None:
+            result['nodeSpec'] = self.node_spec.to_map()
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('nodeAmount') is not None:
+            self.node_amount = m.get('nodeAmount')
+        if m.get('nodeSpec') is not None:
+            temp_model = UpdateLogstashRequestNodeSpec()
+            self.node_spec = temp_model.from_map(m['nodeSpec'])
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         return self
@@ -28215,14 +28661,15 @@ class UpdateLogstashRequest(TeaModel):
 class UpdateLogstashResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        request_id: Logstash = None,
         result: bool = None,
     ):
         self.request_id = request_id
         self.result = result
 
     def validate(self):
-        pass
+        if self.request_id:
+            self.request_id.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -28231,7 +28678,7 @@ class UpdateLogstashResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestId'] = self.request_id.to_map()
         if self.result is not None:
             result['Result'] = self.result
         return result
@@ -28239,7 +28686,8 @@ class UpdateLogstashResponseBody(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+            temp_model = Logstash()
+            self.request_id = temp_model.from_map(m['RequestId'])
         if m.get('Result') is not None:
             self.result = m.get('Result')
         return self
@@ -28282,12 +28730,14 @@ class UpdateLogstashResponse(TeaModel):
         return self
 
 
-class UpdateLogstashChargeTypeRequest(TeaModel):
+class UpdateLogstashChargeTypeRequestPaymentInfo(TeaModel):
     def __init__(
         self,
-        client_token: str = None,
+        duration: int = None,
+        pricing_cycle: str = None,
     ):
-        self.client_token = client_token
+        self.duration = duration
+        self.pricing_cycle = pricing_cycle
 
     def validate(self):
         pass
@@ -28298,12 +28748,57 @@ class UpdateLogstashChargeTypeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.pricing_cycle is not None:
+            result['pricingCycle'] = self.pricing_cycle
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('pricingCycle') is not None:
+            self.pricing_cycle = m.get('pricingCycle')
+        return self
+
+
+class UpdateLogstashChargeTypeRequest(TeaModel):
+    def __init__(
+        self,
+        payment_info: UpdateLogstashChargeTypeRequestPaymentInfo = None,
+        payment_type: str = None,
+        client_token: str = None,
+    ):
+        self.payment_info = payment_info
+        self.payment_type = payment_type
+        self.client_token = client_token
+
+    def validate(self):
+        if self.payment_info:
+            self.payment_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.payment_info is not None:
+            result['paymentInfo'] = self.payment_info.to_map()
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('paymentInfo') is not None:
+            temp_model = UpdateLogstashChargeTypeRequestPaymentInfo()
+            self.payment_info = temp_model.from_map(m['paymentInfo'])
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         return self
@@ -28312,14 +28807,15 @@ class UpdateLogstashChargeTypeRequest(TeaModel):
 class UpdateLogstashChargeTypeResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        request_id: Logstash = None,
         result: bool = None,
     ):
         self.request_id = request_id
         self.result = result
 
     def validate(self):
-        pass
+        if self.request_id:
+            self.request_id.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -28328,7 +28824,7 @@ class UpdateLogstashChargeTypeResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['RequestId'] = self.request_id.to_map()
         if self.result is not None:
             result['Result'] = self.result
         return result
@@ -28336,7 +28832,8 @@ class UpdateLogstashChargeTypeResponseBody(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+            temp_model = Logstash()
+            self.request_id = temp_model.from_map(m['RequestId'])
         if m.get('Result') is not None:
             self.result = m.get('Result')
         return self
@@ -28382,8 +28879,10 @@ class UpdateLogstashChargeTypeResponse(TeaModel):
 class UpdateLogstashDescriptionRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
         client_token: str = None,
     ):
+        self.description = description
         self.client_token = client_token
 
     def validate(self):
@@ -28395,12 +28894,16 @@ class UpdateLogstashDescriptionRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['description'] = self.description
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         return self
@@ -28508,8 +29011,10 @@ class UpdateLogstashDescriptionResponse(TeaModel):
 class UpdateLogstashSettingsRequest(TeaModel):
     def __init__(
         self,
+        body: Dict[str, Any] = None,
         client_token: str = None,
     ):
+        self.body = body
         self.client_token = client_token
 
     def validate(self):
@@ -28521,12 +29026,16 @@ class UpdateLogstashSettingsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.body is not None:
+            result['body'] = self.body
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('body') is not None:
+            self.body = m.get('body')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         return self
@@ -28536,11 +29045,14 @@ class UpdateLogstashSettingsResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        result: Logstash = None,
     ):
         self.request_id = request_id
+        self.result = result
 
     def validate(self):
-        pass
+        if self.result:
+            self.result.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -28550,12 +29062,17 @@ class UpdateLogstashSettingsResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = Logstash()
+            self.result = temp_model.from_map(m['Result'])
         return self
 
 

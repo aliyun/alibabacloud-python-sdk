@@ -1,3 +1,6 @@
+2022-01-18 Version: 1.0.13
+- ModifyWhiteIps reqeust body.
+
 2021-12-28 Version: 1.0.12
 - Add UpdateComponentIndex.
 - Add DescribeDeprecatedTemplate.
