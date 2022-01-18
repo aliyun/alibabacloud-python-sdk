@@ -1,3 +1,7 @@
+2022-01-18 Version: 3.1.0
+- Added EntityType to ListResourceTypes parameters.
+- Added EntityType to GetResourceType return value.
+
 2022-01-12 Version: 3.0.6
 - GetFeatureDetails return value adds UpdateAllowedTransforms.
 

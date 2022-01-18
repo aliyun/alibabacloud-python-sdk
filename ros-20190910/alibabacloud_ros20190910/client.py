@@ -3605,9 +3605,16 @@ class Client(OpenApiClient):
 
     def list_resource_types_with_options(
         self,
+        request: ros20190910_models.ListResourceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListResourceTypesResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='ListResourceTypes',
             version='2019-09-10',
@@ -3626,9 +3633,16 @@ class Client(OpenApiClient):
 
     async def list_resource_types_with_options_async(
         self,
+        request: ros20190910_models.ListResourceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ros20190910_models.ListResourceTypesResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='ListResourceTypes',
             version='2019-09-10',
@@ -3645,13 +3659,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_resource_types(self) -> ros20190910_models.ListResourceTypesResponse:
+    def list_resource_types(
+        self,
+        request: ros20190910_models.ListResourceTypesRequest,
+    ) -> ros20190910_models.ListResourceTypesResponse:
         runtime = util_models.RuntimeOptions()
-        return self.list_resource_types_with_options(runtime)
+        return self.list_resource_types_with_options(request, runtime)
 
-    async def list_resource_types_async(self) -> ros20190910_models.ListResourceTypesResponse:
+    async def list_resource_types_async(
+        self,
+        request: ros20190910_models.ListResourceTypesRequest,
+    ) -> ros20190910_models.ListResourceTypesResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.list_resource_types_with_options_async(runtime)
+        return await self.list_resource_types_with_options_async(request, runtime)
 
     def list_stack_events_with_options(
         self,
