@@ -1,3 +1,6 @@
+2022-01-19 Version: 3.1.0
+- Clickhouse go sdk.
+
 2021-11-26 Version: 2.1.0
 - For test.
 
