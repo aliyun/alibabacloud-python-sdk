@@ -1461,6 +1461,7 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
         fs_name: str = None,
         instance_type: str = None,
         kmskey_id: str = None,
+        last_failed: str = None,
         last_mount_time: str = None,
         last_umount_time: str = None,
         pay_type: str = None,
@@ -1486,6 +1487,7 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
         self.fs_name = fs_name
         self.instance_type = instance_type
         self.kmskey_id = kmskey_id
+        self.last_failed = last_failed
         self.last_mount_time = last_mount_time
         self.last_umount_time = last_umount_time
         self.pay_type = pay_type
@@ -1548,6 +1550,8 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.kmskey_id is not None:
             result['KMSKeyId'] = self.kmskey_id
+        if self.last_failed is not None:
+            result['LastFailed'] = self.last_failed
         if self.last_mount_time is not None:
             result['LastMountTime'] = self.last_mount_time
         if self.last_umount_time is not None:
@@ -1608,6 +1612,8 @@ class GetDbfsResponseBodyDBFSInfo(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('KMSKeyId') is not None:
             self.kmskey_id = m.get('KMSKeyId')
+        if m.get('LastFailed') is not None:
+            self.last_failed = m.get('LastFailed')
         if m.get('LastMountTime') is not None:
             self.last_mount_time = m.get('LastMountTime')
         if m.get('LastUmountTime') is not None:
@@ -2000,6 +2006,7 @@ class ListDbfsResponseBodyDBFSInfo(TeaModel):
         fs_name: str = None,
         instance_type: str = None,
         kmskey_id: str = None,
+        last_failed: str = None,
         last_mount_time: str = None,
         last_umount_time: str = None,
         pay_type: str = None,
@@ -2024,6 +2031,7 @@ class ListDbfsResponseBodyDBFSInfo(TeaModel):
         self.fs_name = fs_name
         self.instance_type = instance_type
         self.kmskey_id = kmskey_id
+        self.last_failed = last_failed
         self.last_mount_time = last_mount_time
         self.last_umount_time = last_umount_time
         self.pay_type = pay_type
@@ -2084,6 +2092,8 @@ class ListDbfsResponseBodyDBFSInfo(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.kmskey_id is not None:
             result['KMSKeyId'] = self.kmskey_id
+        if self.last_failed is not None:
+            result['LastFailed'] = self.last_failed
         if self.last_mount_time is not None:
             result['LastMountTime'] = self.last_mount_time
         if self.last_umount_time is not None:
@@ -2142,6 +2152,8 @@ class ListDbfsResponseBodyDBFSInfo(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('KMSKeyId') is not None:
             self.kmskey_id = m.get('KMSKeyId')
+        if m.get('LastFailed') is not None:
+            self.last_failed = m.get('LastFailed')
         if m.get('LastMountTime') is not None:
             self.last_mount_time = m.get('LastMountTime')
         if m.get('LastUmountTime') is not None:
