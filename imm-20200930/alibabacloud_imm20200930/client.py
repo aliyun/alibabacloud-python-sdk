@@ -55,9 +55,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.uris):
             request.uris_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uris, 'URIs', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URIs'] = request.uris_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uris_shrink):
+            query['URIs'] = request.uris_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -88,9 +91,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.uris):
             request.uris_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uris, 'URIs', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URIs'] = request.uris_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uris_shrink):
+            query['URIs'] = request.uris_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -135,9 +141,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.uris):
             request.uris_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uris, 'URIs', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URIs'] = request.uris_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uris_shrink):
+            query['URIs'] = request.uris_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -168,9 +177,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.uris):
             request.uris_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uris, 'URIs', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URIs'] = request.uris_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uris_shrink):
+            query['URIs'] = request.uris_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -215,11 +227,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.files):
             request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['Files'] = request.files_shrink
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.files_shrink):
+            query['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -250,11 +267,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.files):
             request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['Files'] = request.files_shrink
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.files_shrink):
+            query['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -299,9 +321,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.files):
             request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['Files'] = request.files_shrink
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.files_shrink):
+            query['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -332,9 +357,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.files):
             request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['Files'] = request.files_shrink
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.files_shrink):
+            query['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -368,84 +396,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_update_file_meta_with_options_async(request, runtime)
 
-    def cluster_figures_with_options(
-        self,
-        request: imm_20200930_models.ClusterFiguresRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.ClusterFiguresResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['CustomMessage'] = request.custom_message
-        query['DatasetName'] = request.dataset_name
-        query['FigureType'] = request.figure_type
-        query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['ProjectName'] = request.project_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ClusterFigures',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.ClusterFiguresResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def cluster_figures_with_options_async(
-        self,
-        request: imm_20200930_models.ClusterFiguresRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.ClusterFiguresResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['CustomMessage'] = request.custom_message
-        query['DatasetName'] = request.dataset_name
-        query['FigureType'] = request.figure_type
-        query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['ProjectName'] = request.project_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ClusterFigures',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.ClusterFiguresResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def cluster_figures(
-        self,
-        request: imm_20200930_models.ClusterFiguresRequest,
-    ) -> imm_20200930_models.ClusterFiguresResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cluster_figures_with_options(request, runtime)
-
-    async def cluster_figures_async(
-        self,
-        request: imm_20200930_models.ClusterFiguresRequest,
-    ) -> imm_20200930_models.ClusterFiguresResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cluster_figures_with_options_async(request, runtime)
-
     def create_binding_with_options(
         self,
         request: imm_20200930_models.CreateBindingRequest,
@@ -453,9 +403,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -482,9 +435,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -525,15 +481,24 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateDatasetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetMaxBindCount'] = request.dataset_max_bind_count
-        query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
-        query['DatasetMaxFileCount'] = request.dataset_max_file_count
-        query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
-        query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
-        query['DatasetName'] = request.dataset_name
-        query['Description'] = request.description
-        query['ProjectName'] = request.project_name
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.dataset_max_bind_count):
+            query['DatasetMaxBindCount'] = request.dataset_max_bind_count
+        if not UtilClient.is_unset(request.dataset_max_entity_count):
+            query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
+        if not UtilClient.is_unset(request.dataset_max_file_count):
+            query['DatasetMaxFileCount'] = request.dataset_max_file_count
+        if not UtilClient.is_unset(request.dataset_max_relation_count):
+            query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
+        if not UtilClient.is_unset(request.dataset_max_total_file_size):
+            query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -560,15 +525,24 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateDatasetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetMaxBindCount'] = request.dataset_max_bind_count
-        query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
-        query['DatasetMaxFileCount'] = request.dataset_max_file_count
-        query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
-        query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
-        query['DatasetName'] = request.dataset_name
-        query['Description'] = request.description
-        query['ProjectName'] = request.project_name
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.dataset_max_bind_count):
+            query['DatasetMaxBindCount'] = request.dataset_max_bind_count
+        if not UtilClient.is_unset(request.dataset_max_entity_count):
+            query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
+        if not UtilClient.is_unset(request.dataset_max_file_count):
+            query['DatasetMaxFileCount'] = request.dataset_max_file_count
+        if not UtilClient.is_unset(request.dataset_max_relation_count):
+            query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
+        if not UtilClient.is_unset(request.dataset_max_total_file_size):
+            query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -609,9 +583,16 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['SourceURI'] = request.source_uri
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -638,9 +619,16 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['SourceURI'] = request.source_uri
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -674,6 +662,186 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_detect_video_labels_task_with_options_async(request, runtime)
 
+    def create_figure_clustering_task_with_options(
+        self,
+        request: imm_20200930_models.CreateFigureClusteringTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFigureClusteringTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFigureClusteringTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_figure_clustering_task_with_options_async(
+        self,
+        request: imm_20200930_models.CreateFigureClusteringTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFigureClusteringTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFigureClusteringTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_figure_clustering_task(
+        self,
+        request: imm_20200930_models.CreateFigureClusteringTaskRequest,
+    ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_figure_clustering_task_with_options(request, runtime)
+
+    async def create_figure_clustering_task_async(
+        self,
+        request: imm_20200930_models.CreateFigureClusteringTaskRequest,
+    ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_figure_clustering_task_with_options_async(request, runtime)
+
+    def create_figure_clusters_merging_task_with_options(
+        self,
+        request: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFigureClustersMergingTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFigureClustersMergingTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_figure_clusters_merging_task_with_options_async(
+        self,
+        request: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFigureClustersMergingTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFigureClustersMergingTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_figure_clusters_merging_task(
+        self,
+        request: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
+    ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_figure_clusters_merging_task_with_options(request, runtime)
+
+    async def create_figure_clusters_merging_task_async(
+        self,
+        request: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
+    ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_figure_clusters_merging_task_with_options_async(request, runtime)
+
     def create_project_with_options(
         self,
         request: imm_20200930_models.CreateProjectRequest,
@@ -681,18 +849,30 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetMaxBindCount'] = request.dataset_max_bind_count
-        query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
-        query['DatasetMaxFileCount'] = request.dataset_max_file_count
-        query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
-        query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
-        query['Description'] = request.description
-        query['EngineConcurrency'] = request.engine_concurrency
-        query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
-        query['ProjectName'] = request.project_name
-        query['ProjectQueriesPerSecond'] = request.project_queries_per_second
-        query['ServiceRole'] = request.service_role
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.dataset_max_bind_count):
+            query['DatasetMaxBindCount'] = request.dataset_max_bind_count
+        if not UtilClient.is_unset(request.dataset_max_entity_count):
+            query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
+        if not UtilClient.is_unset(request.dataset_max_file_count):
+            query['DatasetMaxFileCount'] = request.dataset_max_file_count
+        if not UtilClient.is_unset(request.dataset_max_relation_count):
+            query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
+        if not UtilClient.is_unset(request.dataset_max_total_file_size):
+            query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.engine_concurrency):
+            query['EngineConcurrency'] = request.engine_concurrency
+        if not UtilClient.is_unset(request.project_max_dataset_count):
+            query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_queries_per_second):
+            query['ProjectQueriesPerSecond'] = request.project_queries_per_second
+        if not UtilClient.is_unset(request.service_role):
+            query['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -719,18 +899,30 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetMaxBindCount'] = request.dataset_max_bind_count
-        query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
-        query['DatasetMaxFileCount'] = request.dataset_max_file_count
-        query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
-        query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
-        query['Description'] = request.description
-        query['EngineConcurrency'] = request.engine_concurrency
-        query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
-        query['ProjectName'] = request.project_name
-        query['ProjectQueriesPerSecond'] = request.project_queries_per_second
-        query['ServiceRole'] = request.service_role
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.dataset_max_bind_count):
+            query['DatasetMaxBindCount'] = request.dataset_max_bind_count
+        if not UtilClient.is_unset(request.dataset_max_entity_count):
+            query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
+        if not UtilClient.is_unset(request.dataset_max_file_count):
+            query['DatasetMaxFileCount'] = request.dataset_max_file_count
+        if not UtilClient.is_unset(request.dataset_max_relation_count):
+            query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
+        if not UtilClient.is_unset(request.dataset_max_total_file_size):
+            query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.engine_concurrency):
+            query['EngineConcurrency'] = request.engine_concurrency
+        if not UtilClient.is_unset(request.project_max_dataset_count):
+            query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_queries_per_second):
+            query['ProjectQueriesPerSecond'] = request.project_queries_per_second
+        if not UtilClient.is_unset(request.service_role):
+            query['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -764,6 +956,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_project_with_options_async(request, runtime)
 
+    def create_story_with_options(
+        self,
+        request: imm_20200930_models.CreateStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_file_count):
+            body['MaxFileCount'] = request.max_file_count
+        if not UtilClient.is_unset(request.min_file_count):
+            body['MinFileCount'] = request.min_file_count
+        if not UtilClient.is_unset(request.notify_endpoint):
+            body['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            body['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.object_id):
+            body['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.story_end_time):
+            body['StoryEndTime'] = request.story_end_time
+        if not UtilClient.is_unset(request.story_name):
+            body['StoryName'] = request.story_name
+        if not UtilClient.is_unset(request.story_start_time):
+            body['StoryStartTime'] = request.story_start_time
+        if not UtilClient.is_unset(request.story_sub_type):
+            body['StorySubType'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            body['StoryType'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateStoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_story_with_options_async(
+        self,
+        request: imm_20200930_models.CreateStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateStoryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_file_count):
+            body['MaxFileCount'] = request.max_file_count
+        if not UtilClient.is_unset(request.min_file_count):
+            body['MinFileCount'] = request.min_file_count
+        if not UtilClient.is_unset(request.notify_endpoint):
+            body['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            body['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.object_id):
+            body['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.story_end_time):
+            body['StoryEndTime'] = request.story_end_time
+        if not UtilClient.is_unset(request.story_name):
+            body['StoryName'] = request.story_name
+        if not UtilClient.is_unset(request.story_start_time):
+            body['StoryStartTime'] = request.story_start_time
+        if not UtilClient.is_unset(request.story_sub_type):
+            body['StorySubType'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            body['StoryType'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateStoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_story(
+        self,
+        request: imm_20200930_models.CreateStoryRequest,
+    ) -> imm_20200930_models.CreateStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_story_with_options(request, runtime)
+
+    async def create_story_async(
+        self,
+        request: imm_20200930_models.CreateStoryRequest,
+    ) -> imm_20200930_models.CreateStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_story_with_options_async(request, runtime)
+
     def delete_binding_with_options(
         self,
         request: imm_20200930_models.DeleteBindingRequest,
@@ -771,9 +1077,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DeleteBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.cleanup):
+            query['Cleanup'] = request.cleanup
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -800,9 +1111,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DeleteBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.cleanup):
+            query['Cleanup'] = request.cleanup
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -843,8 +1159,10 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DeleteDatasetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -871,8 +1189,10 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DeleteDatasetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -913,9 +1233,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DeleteFileMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -942,9 +1265,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DeleteFileMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -985,7 +1311,8 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1012,7 +1339,8 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1046,6 +1374,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_project_with_options_async(request, runtime)
 
+    def delete_story_with_options(
+        self,
+        request: imm_20200930_models.DeleteStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DeleteStoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DeleteStoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_story_with_options_async(
+        self,
+        request: imm_20200930_models.DeleteStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DeleteStoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DeleteStoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_story(
+        self,
+        request: imm_20200930_models.DeleteStoryRequest,
+    ) -> imm_20200930_models.DeleteStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_story_with_options(request, runtime)
+
+    async def delete_story_async(
+        self,
+        request: imm_20200930_models.DeleteStoryRequest,
+    ) -> imm_20200930_models.DeleteStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_story_with_options_async(request, runtime)
+
     def detect_image_labels_with_options(
         self,
         request: imm_20200930_models.DetectImageLabelsRequest,
@@ -1053,9 +1459,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DetectImageLabelsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['SourceURI'] = request.source_uri
-        query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1082,9 +1491,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DetectImageLabelsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['SourceURI'] = request.source_uri
-        query['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.threshold):
+            query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1125,11 +1537,16 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.FuzzyQueryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectName'] = request.project_name
-        query['Query'] = request.query
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1156,11 +1573,16 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.FuzzyQueryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectName'] = request.project_name
-        query['Query'] = request.query
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1201,9 +1623,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1230,9 +1655,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1273,9 +1701,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetDatasetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['WithStatistics'] = request.with_statistics
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.with_statistics):
+            query['WithStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1302,9 +1733,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetDatasetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['WithStatistics'] = request.with_statistics
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.with_statistics):
+            query['WithStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1345,9 +1779,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['TaskId'] = request.task_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1374,9 +1811,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['TaskId'] = request.task_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1417,9 +1857,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetFigureClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['FigureClusterId'] = request.figure_cluster_id
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1446,9 +1889,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetFigureClusterResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['FigureClusterId'] = request.figure_cluster_id
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1489,9 +1935,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetFileMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1518,9 +1967,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetFileMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1554,76 +2006,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_file_meta_with_options_async(request, runtime)
 
-    def get_file_signed_uriwith_options(
-        self,
-        request: imm_20200930_models.GetFileSignedURIRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.GetFileSignedURIResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetFileSignedURI',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.GetFileSignedURIResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_file_signed_uriwith_options_async(
-        self,
-        request: imm_20200930_models.GetFileSignedURIRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.GetFileSignedURIResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetFileSignedURI',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.GetFileSignedURIResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_file_signed_uri(
-        self,
-        request: imm_20200930_models.GetFileSignedURIRequest,
-    ) -> imm_20200930_models.GetFileSignedURIResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_file_signed_uriwith_options(request, runtime)
-
-    async def get_file_signed_uri_async(
-        self,
-        request: imm_20200930_models.GetFileSignedURIRequest,
-    ) -> imm_20200930_models.GetFileSignedURIResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_file_signed_uriwith_options_async(request, runtime)
-
     def get_project_with_options(
         self,
         request: imm_20200930_models.GetProjectRequest,
@@ -1631,8 +2013,10 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['WithStatistics'] = request.with_statistics
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.with_statistics):
+            query['WithStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1659,8 +2043,10 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['WithStatistics'] = request.with_statistics
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.with_statistics):
+            query['WithStatistics'] = request.with_statistics
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1694,6 +2080,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_project_with_options_async(request, runtime)
 
+    def get_story_with_options(
+        self,
+        request: imm_20200930_models.GetStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetStoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetStoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_story_with_options_async(
+        self,
+        request: imm_20200930_models.GetStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetStoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetStoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_story(
+        self,
+        request: imm_20200930_models.GetStoryRequest,
+    ) -> imm_20200930_models.GetStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_story_with_options(request, runtime)
+
+    async def get_story_async(
+        self,
+        request: imm_20200930_models.GetStoryRequest,
+    ) -> imm_20200930_models.GetStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_story_with_options_async(request, runtime)
+
     def get_task_with_options(
         self,
         request: imm_20200930_models.GetTaskRequest,
@@ -1701,9 +2165,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['TaskId'] = request.task_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1730,9 +2197,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ProjectName'] = request.project_name
-        query['TaskId'] = request.task_id
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1783,21 +2253,36 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.watermark):
             request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.watermark), 'Watermark', 'json')
         query = {}
-        query['AssumeRoleChain'] = request.assume_role_chain_shrink
-        query['ExternalUploaded'] = request.external_uploaded
-        query['Filename'] = request.filename
-        query['Hidecmb'] = request.hidecmb
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['Password'] = request.password
-        query['Permission'] = request.permission_shrink
-        query['PreviewPages'] = request.preview_pages
-        query['ProjectName'] = request.project_name
-        query['Referer'] = request.referer
-        query['SourceURI'] = request.source_uri
-        query['User'] = request.user_shrink
-        query['UserData'] = request.user_data
-        query['Watermark'] = request.watermark_shrink
+        if not UtilClient.is_unset(request.assume_role_chain_shrink):
+            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.external_uploaded):
+            query['ExternalUploaded'] = request.external_uploaded
+        if not UtilClient.is_unset(request.filename):
+            query['Filename'] = request.filename
+        if not UtilClient.is_unset(request.hidecmb):
+            query['Hidecmb'] = request.hidecmb
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.permission_shrink):
+            query['Permission'] = request.permission_shrink
+        if not UtilClient.is_unset(request.preview_pages):
+            query['PreviewPages'] = request.preview_pages
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.referer):
+            query['Referer'] = request.referer
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.user_shrink):
+            query['User'] = request.user_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.watermark_shrink):
+            query['Watermark'] = request.watermark_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1834,21 +2319,36 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.watermark):
             request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.watermark), 'Watermark', 'json')
         query = {}
-        query['AssumeRoleChain'] = request.assume_role_chain_shrink
-        query['ExternalUploaded'] = request.external_uploaded
-        query['Filename'] = request.filename
-        query['Hidecmb'] = request.hidecmb
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['Password'] = request.password
-        query['Permission'] = request.permission_shrink
-        query['PreviewPages'] = request.preview_pages
-        query['ProjectName'] = request.project_name
-        query['Referer'] = request.referer
-        query['SourceURI'] = request.source_uri
-        query['User'] = request.user_shrink
-        query['UserData'] = request.user_data
-        query['Watermark'] = request.watermark_shrink
+        if not UtilClient.is_unset(request.assume_role_chain_shrink):
+            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.external_uploaded):
+            query['ExternalUploaded'] = request.external_uploaded
+        if not UtilClient.is_unset(request.filename):
+            query['Filename'] = request.filename
+        if not UtilClient.is_unset(request.hidecmb):
+            query['Hidecmb'] = request.hidecmb
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.permission_shrink):
+            query['Permission'] = request.permission_shrink
+        if not UtilClient.is_unset(request.preview_pages):
+            query['PreviewPages'] = request.preview_pages
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.referer):
+            query['Referer'] = request.referer
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.user_shrink):
+            query['User'] = request.user_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.watermark_shrink):
+            query['Watermark'] = request.watermark_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1893,11 +2393,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.file):
             request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.file), 'File', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['File'] = request.file_shrink
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.file_shrink):
+            query['File'] = request.file_shrink
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1928,11 +2433,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.file):
             request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.file), 'File', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['File'] = request.file_shrink
-        query['NotifyEndpoint'] = request.notify_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.file_shrink):
+            query['File'] = request.file_shrink
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1973,10 +2483,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListBindingsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2003,10 +2517,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListBindingsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2047,10 +2565,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListDatasetsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Prefix'] = request.prefix
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2077,10 +2599,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListDatasetsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Prefix'] = request.prefix
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2114,86 +2640,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_datasets_with_options_async(request, runtime)
 
-    def list_figure_clusters_with_options(
-        self,
-        request: imm_20200930_models.ListFigureClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.ListFigureClustersResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['DatasetName'] = request.dataset_name
-        query['Labels'] = request.labels
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Order'] = request.order
-        query['ProjectName'] = request.project_name
-        query['Sort'] = request.sort
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListFigureClusters',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.ListFigureClustersResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_figure_clusters_with_options_async(
-        self,
-        request: imm_20200930_models.ListFigureClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.ListFigureClustersResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['DatasetName'] = request.dataset_name
-        query['Labels'] = request.labels
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Order'] = request.order
-        query['ProjectName'] = request.project_name
-        query['Sort'] = request.sort
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListFigureClusters',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.ListFigureClustersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_figure_clusters(
-        self,
-        request: imm_20200930_models.ListFigureClustersRequest,
-    ) -> imm_20200930_models.ListFigureClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_figure_clusters_with_options(request, runtime)
-
-    async def list_figure_clusters_async(
-        self,
-        request: imm_20200930_models.ListFigureClustersRequest,
-    ) -> imm_20200930_models.ListFigureClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_figure_clusters_with_options_async(request, runtime)
-
     def list_projects_with_options(
         self,
         request: imm_20200930_models.ListProjectsRequest,
@@ -2201,9 +2647,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListProjectsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2230,9 +2679,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListProjectsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2273,10 +2725,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectName'] = request.project_name
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2303,10 +2759,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectName'] = request.project_name
-        query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2347,14 +2807,22 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.MergeFigureClustersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterIdFrom'] = request.cluster_id_from
-        query['ClusterIdTo'] = request.cluster_id_to
-        query['CustomMessage'] = request.custom_message
-        query['DatasetName'] = request.dataset_name
-        query['FigureType'] = request.figure_type
-        query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.cluster_id_from):
+            query['ClusterIdFrom'] = request.cluster_id_from
+        if not UtilClient.is_unset(request.cluster_id_to):
+            query['ClusterIdTo'] = request.cluster_id_to
+        if not UtilClient.is_unset(request.custom_message):
+            query['CustomMessage'] = request.custom_message
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.figure_type):
+            query['FigureType'] = request.figure_type
+        if not UtilClient.is_unset(request.notify_topic_endpoint):
+            query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2381,14 +2849,22 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.MergeFigureClustersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClusterIdFrom'] = request.cluster_id_from
-        query['ClusterIdTo'] = request.cluster_id_to
-        query['CustomMessage'] = request.custom_message
-        query['DatasetName'] = request.dataset_name
-        query['FigureType'] = request.figure_type
-        query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
-        query['NotifyTopicName'] = request.notify_topic_name
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.cluster_id_from):
+            query['ClusterIdFrom'] = request.cluster_id_from
+        if not UtilClient.is_unset(request.cluster_id_to):
+            query['ClusterIdTo'] = request.cluster_id_to
+        if not UtilClient.is_unset(request.custom_message):
+            query['CustomMessage'] = request.custom_message
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.figure_type):
+            query['FigureType'] = request.figure_type
+        if not UtilClient.is_unset(request.notify_topic_endpoint):
+            query['NotifyTopicEndpoint'] = request.notify_topic_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2422,6 +2898,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.merge_figure_clusters_with_options_async(request, runtime)
 
+    def query_figure_clusters_with_options(
+        self,
+        request: imm_20200930_models.QueryFigureClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.QueryFigureClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_labels):
+            query['CustomLabels'] = request.custom_labels
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryFigureClusters',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.QueryFigureClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_figure_clusters_with_options_async(
+        self,
+        request: imm_20200930_models.QueryFigureClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.QueryFigureClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_labels):
+            query['CustomLabels'] = request.custom_labels
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryFigureClusters',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.QueryFigureClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_figure_clusters(
+        self,
+        request: imm_20200930_models.QueryFigureClustersRequest,
+    ) -> imm_20200930_models.QueryFigureClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_figure_clusters_with_options(request, runtime)
+
+    async def query_figure_clusters_async(
+        self,
+        request: imm_20200930_models.QueryFigureClustersRequest,
+    ) -> imm_20200930_models.QueryFigureClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_figure_clusters_with_options_async(request, runtime)
+
+    def query_stories_with_options(
+        self,
+        tmp_req: imm_20200930_models.QueryStoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.QueryStoriesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.QueryStoriesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_time_range):
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.create_time_range), 'CreateTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.figure_cluster_ids):
+            request.figure_cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.figure_cluster_ids, 'FigureClusterIds', 'json')
+        if not UtilClient.is_unset(tmp_req.story_end_time_range):
+            request.story_end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.story_end_time_range), 'StoryEndTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.story_start_time_range):
+            request.story_start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.story_start_time_range), 'StoryStartTimeRange', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.create_time_range_shrink):
+            query['CreateTimeRange'] = request.create_time_range_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.figure_cluster_ids_shrink):
+            query['FigureClusterIds'] = request.figure_cluster_ids_shrink
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.story_end_time_range_shrink):
+            query['StoryEndTimeRange'] = request.story_end_time_range_shrink
+        if not UtilClient.is_unset(request.story_name):
+            query['StoryName'] = request.story_name
+        if not UtilClient.is_unset(request.story_start_time_range_shrink):
+            query['StoryStartTimeRange'] = request.story_start_time_range_shrink
+        if not UtilClient.is_unset(request.story_sub_type):
+            query['StorySubType'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            query['StoryType'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryStories',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.QueryStoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_stories_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.QueryStoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.QueryStoriesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.QueryStoriesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_time_range):
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.create_time_range), 'CreateTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.figure_cluster_ids):
+            request.figure_cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.figure_cluster_ids, 'FigureClusterIds', 'json')
+        if not UtilClient.is_unset(tmp_req.story_end_time_range):
+            request.story_end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.story_end_time_range), 'StoryEndTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.story_start_time_range):
+            request.story_start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.story_start_time_range), 'StoryStartTimeRange', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.create_time_range_shrink):
+            query['CreateTimeRange'] = request.create_time_range_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.figure_cluster_ids_shrink):
+            query['FigureClusterIds'] = request.figure_cluster_ids_shrink
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.story_end_time_range_shrink):
+            query['StoryEndTimeRange'] = request.story_end_time_range_shrink
+        if not UtilClient.is_unset(request.story_name):
+            query['StoryName'] = request.story_name
+        if not UtilClient.is_unset(request.story_start_time_range_shrink):
+            query['StoryStartTimeRange'] = request.story_start_time_range_shrink
+        if not UtilClient.is_unset(request.story_sub_type):
+            query['StorySubType'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            query['StoryType'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryStories',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.QueryStoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_stories(
+        self,
+        request: imm_20200930_models.QueryStoriesRequest,
+    ) -> imm_20200930_models.QueryStoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_stories_with_options(request, runtime)
+
+    async def query_stories_async(
+        self,
+        request: imm_20200930_models.QueryStoriesRequest,
+    ) -> imm_20200930_models.QueryStoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_stories_with_options_async(request, runtime)
+
     def refresh_weboffice_token_with_options(
         self,
         tmp_req: imm_20200930_models.RefreshWebofficeTokenRequest,
@@ -2433,10 +3137,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.assume_role_chain):
             request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
         query = {}
-        query['AccessToken'] = request.access_token
-        query['AssumeRoleChain'] = request.assume_role_chain_shrink
-        query['ProjectName'] = request.project_name
-        query['RefreshToken'] = request.refresh_token
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.assume_role_chain_shrink):
+            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.refresh_token):
+            query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2467,10 +3175,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.assume_role_chain):
             request.assume_role_chain_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.assume_role_chain), 'AssumeRoleChain', 'json')
         query = {}
-        query['AccessToken'] = request.access_token
-        query['AssumeRoleChain'] = request.assume_role_chain_shrink
-        query['ProjectName'] = request.project_name
-        query['RefreshToken'] = request.refresh_token
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.assume_role_chain_shrink):
+            query['AssumeRoleChain'] = request.assume_role_chain_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.refresh_token):
+            query['RefreshToken'] = request.refresh_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2511,9 +3223,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ResumeBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2540,9 +3255,12 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ResumeBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2583,11 +3301,16 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.SemanticQueryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectName'] = request.project_name
-        query['Query'] = request.query
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2614,11 +3337,16 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.SemanticQueryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ProjectName'] = request.project_name
-        query['Query'] = request.query
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2665,14 +3393,22 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.query):
             request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.query), 'Query', 'json')
         query = {}
-        query['Aggregations'] = request.aggregations_shrink
-        query['DatasetName'] = request.dataset_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Order'] = request.order
-        query['ProjectName'] = request.project_name
-        query['Query'] = request.query_shrink
-        query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.aggregations_shrink):
+            query['Aggregations'] = request.aggregations_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.query_shrink):
+            query['Query'] = request.query_shrink
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2705,14 +3441,22 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.query):
             request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.query), 'Query', 'json')
         query = {}
-        query['Aggregations'] = request.aggregations_shrink
-        query['DatasetName'] = request.dataset_name
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['Order'] = request.order
-        query['ProjectName'] = request.project_name
-        query['Query'] = request.query_shrink
-        query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.aggregations_shrink):
+            query['Aggregations'] = request.aggregations_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.query_shrink):
+            query['Query'] = request.query_shrink
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2753,10 +3497,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.StopBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['Reason'] = request.reason
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2783,10 +3531,14 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.StopBindingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['ProjectName'] = request.project_name
-        query['Reason'] = request.reason
-        query['URI'] = request.uri
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.uri):
+            query['URI'] = request.uri
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2827,15 +3579,24 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.UpdateDatasetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetMaxBindCount'] = request.dataset_max_bind_count
-        query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
-        query['DatasetMaxFileCount'] = request.dataset_max_file_count
-        query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
-        query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
-        query['DatasetName'] = request.dataset_name
-        query['Description'] = request.description
-        query['ProjectName'] = request.project_name
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.dataset_max_bind_count):
+            query['DatasetMaxBindCount'] = request.dataset_max_bind_count
+        if not UtilClient.is_unset(request.dataset_max_entity_count):
+            query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
+        if not UtilClient.is_unset(request.dataset_max_file_count):
+            query['DatasetMaxFileCount'] = request.dataset_max_file_count
+        if not UtilClient.is_unset(request.dataset_max_relation_count):
+            query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
+        if not UtilClient.is_unset(request.dataset_max_total_file_size):
+            query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2862,15 +3623,24 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.UpdateDatasetResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetMaxBindCount'] = request.dataset_max_bind_count
-        query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
-        query['DatasetMaxFileCount'] = request.dataset_max_file_count
-        query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
-        query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
-        query['DatasetName'] = request.dataset_name
-        query['Description'] = request.description
-        query['ProjectName'] = request.project_name
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.dataset_max_bind_count):
+            query['DatasetMaxBindCount'] = request.dataset_max_bind_count
+        if not UtilClient.is_unset(request.dataset_max_entity_count):
+            query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
+        if not UtilClient.is_unset(request.dataset_max_file_count):
+            query['DatasetMaxFileCount'] = request.dataset_max_file_count
+        if not UtilClient.is_unset(request.dataset_max_relation_count):
+            query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
+        if not UtilClient.is_unset(request.dataset_max_total_file_size):
+            query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2915,9 +3685,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.figure_cluster):
             request.figure_cluster_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.figure_cluster), 'FigureCluster', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['FigureCluster'] = request.figure_cluster_shrink
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.figure_cluster_shrink):
+            query['FigureCluster'] = request.figure_cluster_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2948,9 +3721,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.figure_cluster):
             request.figure_cluster_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.figure_cluster), 'FigureCluster', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['FigureCluster'] = request.figure_cluster_shrink
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.figure_cluster_shrink):
+            query['FigureCluster'] = request.figure_cluster_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2995,9 +3771,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.file):
             request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.file), 'File', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['File'] = request.file_shrink
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.file_shrink):
+            query['File'] = request.file_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3028,9 +3807,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.file):
             request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.file), 'File', 'json')
         query = {}
-        query['DatasetName'] = request.dataset_name
-        query['File'] = request.file_shrink
-        query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.file_shrink):
+            query['File'] = request.file_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3071,18 +3853,30 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetMaxBindCount'] = request.dataset_max_bind_count
-        query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
-        query['DatasetMaxFileCount'] = request.dataset_max_file_count
-        query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
-        query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
-        query['Description'] = request.description
-        query['EngineConcurrency'] = request.engine_concurrency
-        query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
-        query['ProjectName'] = request.project_name
-        query['ProjectQueriesPerSecond'] = request.project_queries_per_second
-        query['ServiceRole'] = request.service_role
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.dataset_max_bind_count):
+            query['DatasetMaxBindCount'] = request.dataset_max_bind_count
+        if not UtilClient.is_unset(request.dataset_max_entity_count):
+            query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
+        if not UtilClient.is_unset(request.dataset_max_file_count):
+            query['DatasetMaxFileCount'] = request.dataset_max_file_count
+        if not UtilClient.is_unset(request.dataset_max_relation_count):
+            query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
+        if not UtilClient.is_unset(request.dataset_max_total_file_size):
+            query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.engine_concurrency):
+            query['EngineConcurrency'] = request.engine_concurrency
+        if not UtilClient.is_unset(request.project_max_dataset_count):
+            query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_queries_per_second):
+            query['ProjectQueriesPerSecond'] = request.project_queries_per_second
+        if not UtilClient.is_unset(request.service_role):
+            query['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3109,18 +3903,30 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.UpdateProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DatasetMaxBindCount'] = request.dataset_max_bind_count
-        query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
-        query['DatasetMaxFileCount'] = request.dataset_max_file_count
-        query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
-        query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
-        query['Description'] = request.description
-        query['EngineConcurrency'] = request.engine_concurrency
-        query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
-        query['ProjectName'] = request.project_name
-        query['ProjectQueriesPerSecond'] = request.project_queries_per_second
-        query['ServiceRole'] = request.service_role
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.dataset_max_bind_count):
+            query['DatasetMaxBindCount'] = request.dataset_max_bind_count
+        if not UtilClient.is_unset(request.dataset_max_entity_count):
+            query['DatasetMaxEntityCount'] = request.dataset_max_entity_count
+        if not UtilClient.is_unset(request.dataset_max_file_count):
+            query['DatasetMaxFileCount'] = request.dataset_max_file_count
+        if not UtilClient.is_unset(request.dataset_max_relation_count):
+            query['DatasetMaxRelationCount'] = request.dataset_max_relation_count
+        if not UtilClient.is_unset(request.dataset_max_total_file_size):
+            query['DatasetMaxTotalFileSize'] = request.dataset_max_total_file_size
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.engine_concurrency):
+            query['EngineConcurrency'] = request.engine_concurrency
+        if not UtilClient.is_unset(request.project_max_dataset_count):
+            query['ProjectMaxDatasetCount'] = request.project_max_dataset_count
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_queries_per_second):
+            query['ProjectQueriesPerSecond'] = request.project_queries_per_second
+        if not UtilClient.is_unset(request.service_role):
+            query['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -738,233 +738,6 @@ class HeadPose(TeaModel):
         return self
 
 
-class Face(TeaModel):
-    def __init__(
-        self,
-        age: int = None,
-        age_confidence: float = None,
-        beard: str = None,
-        beard_confidence: float = None,
-        boundary: Boundary = None,
-        embeddings_float_32: List[float] = None,
-        embeddings_int_8: List[int] = None,
-        emotion: str = None,
-        emotion_confidence: float = None,
-        face_cluster_id: str = None,
-        face_confidence: float = None,
-        face_id: str = None,
-        gender: str = None,
-        gender_confidence: float = None,
-        glasses: str = None,
-        glasses_confidence: float = None,
-        hat: str = None,
-        hat_confidence: float = None,
-        head_pose: HeadPose = None,
-        left_eye: str = None,
-        left_eye_confidence: float = None,
-        mask: str = None,
-        mask_confidence: float = None,
-        mouth: str = None,
-        mouth_confidence: float = None,
-        race: str = None,
-        race_confidence: float = None,
-        right_eye: str = None,
-        right_eye_confidence: float = None,
-    ):
-        # Age
-        self.age = age
-        # AgeConfidence
-        self.age_confidence = age_confidence
-        # Beard
-        self.beard = beard
-        # BeardConfidence
-        self.beard_confidence = beard_confidence
-        self.boundary = boundary
-        # EmbeddingsFloat32
-        self.embeddings_float_32 = embeddings_float_32
-        # EmbeddingsInt8
-        self.embeddings_int_8 = embeddings_int_8
-        # Emotion
-        self.emotion = emotion
-        # EmotionConfidence
-        self.emotion_confidence = emotion_confidence
-        # FaceClusterId
-        self.face_cluster_id = face_cluster_id
-        # FaceConfidence
-        self.face_confidence = face_confidence
-        # FaceId
-        self.face_id = face_id
-        # Gender
-        self.gender = gender
-        # GenderConfidence
-        self.gender_confidence = gender_confidence
-        # Glasses
-        self.glasses = glasses
-        # GlassesConfidence
-        self.glasses_confidence = glasses_confidence
-        # Hat
-        self.hat = hat
-        # HatConfidence
-        self.hat_confidence = hat_confidence
-        self.head_pose = head_pose
-        # LeftEye
-        self.left_eye = left_eye
-        # LeftEyeConfidence
-        self.left_eye_confidence = left_eye_confidence
-        # Mask
-        self.mask = mask
-        # MaskConfidence
-        self.mask_confidence = mask_confidence
-        # Mouth
-        self.mouth = mouth
-        # MouthConfidence
-        self.mouth_confidence = mouth_confidence
-        # Race
-        self.race = race
-        # RaceConfidence
-        self.race_confidence = race_confidence
-        # RightEye
-        self.right_eye = right_eye
-        # RightEyeConfidence
-        self.right_eye_confidence = right_eye_confidence
-
-    def validate(self):
-        if self.boundary:
-            self.boundary.validate()
-        if self.head_pose:
-            self.head_pose.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.age is not None:
-            result['Age'] = self.age
-        if self.age_confidence is not None:
-            result['AgeConfidence'] = self.age_confidence
-        if self.beard is not None:
-            result['Beard'] = self.beard
-        if self.beard_confidence is not None:
-            result['BeardConfidence'] = self.beard_confidence
-        if self.boundary is not None:
-            result['Boundary'] = self.boundary.to_map()
-        if self.embeddings_float_32 is not None:
-            result['EmbeddingsFloat32'] = self.embeddings_float_32
-        if self.embeddings_int_8 is not None:
-            result['EmbeddingsInt8'] = self.embeddings_int_8
-        if self.emotion is not None:
-            result['Emotion'] = self.emotion
-        if self.emotion_confidence is not None:
-            result['EmotionConfidence'] = self.emotion_confidence
-        if self.face_cluster_id is not None:
-            result['FaceClusterId'] = self.face_cluster_id
-        if self.face_confidence is not None:
-            result['FaceConfidence'] = self.face_confidence
-        if self.face_id is not None:
-            result['FaceId'] = self.face_id
-        if self.gender is not None:
-            result['Gender'] = self.gender
-        if self.gender_confidence is not None:
-            result['GenderConfidence'] = self.gender_confidence
-        if self.glasses is not None:
-            result['Glasses'] = self.glasses
-        if self.glasses_confidence is not None:
-            result['GlassesConfidence'] = self.glasses_confidence
-        if self.hat is not None:
-            result['Hat'] = self.hat
-        if self.hat_confidence is not None:
-            result['HatConfidence'] = self.hat_confidence
-        if self.head_pose is not None:
-            result['HeadPose'] = self.head_pose.to_map()
-        if self.left_eye is not None:
-            result['LeftEye'] = self.left_eye
-        if self.left_eye_confidence is not None:
-            result['LeftEyeConfidence'] = self.left_eye_confidence
-        if self.mask is not None:
-            result['Mask'] = self.mask
-        if self.mask_confidence is not None:
-            result['MaskConfidence'] = self.mask_confidence
-        if self.mouth is not None:
-            result['Mouth'] = self.mouth
-        if self.mouth_confidence is not None:
-            result['MouthConfidence'] = self.mouth_confidence
-        if self.race is not None:
-            result['Race'] = self.race
-        if self.race_confidence is not None:
-            result['RaceConfidence'] = self.race_confidence
-        if self.right_eye is not None:
-            result['RightEye'] = self.right_eye
-        if self.right_eye_confidence is not None:
-            result['RightEyeConfidence'] = self.right_eye_confidence
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Age') is not None:
-            self.age = m.get('Age')
-        if m.get('AgeConfidence') is not None:
-            self.age_confidence = m.get('AgeConfidence')
-        if m.get('Beard') is not None:
-            self.beard = m.get('Beard')
-        if m.get('BeardConfidence') is not None:
-            self.beard_confidence = m.get('BeardConfidence')
-        if m.get('Boundary') is not None:
-            temp_model = Boundary()
-            self.boundary = temp_model.from_map(m['Boundary'])
-        if m.get('EmbeddingsFloat32') is not None:
-            self.embeddings_float_32 = m.get('EmbeddingsFloat32')
-        if m.get('EmbeddingsInt8') is not None:
-            self.embeddings_int_8 = m.get('EmbeddingsInt8')
-        if m.get('Emotion') is not None:
-            self.emotion = m.get('Emotion')
-        if m.get('EmotionConfidence') is not None:
-            self.emotion_confidence = m.get('EmotionConfidence')
-        if m.get('FaceClusterId') is not None:
-            self.face_cluster_id = m.get('FaceClusterId')
-        if m.get('FaceConfidence') is not None:
-            self.face_confidence = m.get('FaceConfidence')
-        if m.get('FaceId') is not None:
-            self.face_id = m.get('FaceId')
-        if m.get('Gender') is not None:
-            self.gender = m.get('Gender')
-        if m.get('GenderConfidence') is not None:
-            self.gender_confidence = m.get('GenderConfidence')
-        if m.get('Glasses') is not None:
-            self.glasses = m.get('Glasses')
-        if m.get('GlassesConfidence') is not None:
-            self.glasses_confidence = m.get('GlassesConfidence')
-        if m.get('Hat') is not None:
-            self.hat = m.get('Hat')
-        if m.get('HatConfidence') is not None:
-            self.hat_confidence = m.get('HatConfidence')
-        if m.get('HeadPose') is not None:
-            temp_model = HeadPose()
-            self.head_pose = temp_model.from_map(m['HeadPose'])
-        if m.get('LeftEye') is not None:
-            self.left_eye = m.get('LeftEye')
-        if m.get('LeftEyeConfidence') is not None:
-            self.left_eye_confidence = m.get('LeftEyeConfidence')
-        if m.get('Mask') is not None:
-            self.mask = m.get('Mask')
-        if m.get('MaskConfidence') is not None:
-            self.mask_confidence = m.get('MaskConfidence')
-        if m.get('Mouth') is not None:
-            self.mouth = m.get('Mouth')
-        if m.get('MouthConfidence') is not None:
-            self.mouth_confidence = m.get('MouthConfidence')
-        if m.get('Race') is not None:
-            self.race = m.get('Race')
-        if m.get('RaceConfidence') is not None:
-            self.race_confidence = m.get('RaceConfidence')
-        if m.get('RightEye') is not None:
-            self.right_eye = m.get('RightEye')
-        if m.get('RightEyeConfidence') is not None:
-            self.right_eye_confidence = m.get('RightEyeConfidence')
-        return self
-
-
 class Figure(TeaModel):
     def __init__(
         self,
@@ -1441,7 +1214,7 @@ class SubtitleStream(TeaModel):
 class VideoStream(TeaModel):
     def __init__(
         self,
-        average_frame_rate: float = None,
+        average_frame_rate: str = None,
         bitrate: int = None,
         codec_long_name: str = None,
         codec_name: str = None,
@@ -1451,14 +1224,15 @@ class VideoStream(TeaModel):
         display_aspect_ratio: str = None,
         duration: float = None,
         frame_count: int = None,
-        frame_rate: float = None,
-        has_bframes: str = None,
+        frame_rate: str = None,
+        has_bframes: int = None,
         height: int = None,
         index: int = None,
         language: str = None,
         level: int = None,
         pixel_format: str = None,
         profile: str = None,
+        rotate: str = None,
         sample_aspect_ratio: str = None,
         start_time: float = None,
         time_base: str = None,
@@ -1500,6 +1274,8 @@ class VideoStream(TeaModel):
         self.pixel_format = pixel_format
         # Profile
         self.profile = profile
+        # Rotate
+        self.rotate = rotate
         # SampleAspectRatio
         self.sample_aspect_ratio = sample_aspect_ratio
         # StartTime
@@ -1554,6 +1330,8 @@ class VideoStream(TeaModel):
             result['PixelFormat'] = self.pixel_format
         if self.profile is not None:
             result['Profile'] = self.profile
+        if self.rotate is not None:
+            result['Rotate'] = self.rotate
         if self.sample_aspect_ratio is not None:
             result['SampleAspectRatio'] = self.sample_aspect_ratio
         if self.start_time is not None:
@@ -1602,6 +1380,8 @@ class VideoStream(TeaModel):
             self.pixel_format = m.get('PixelFormat')
         if m.get('Profile') is not None:
             self.profile = m.get('Profile')
+        if m.get('Rotate') is not None:
+            self.rotate = m.get('Rotate')
         if m.get('SampleAspectRatio') is not None:
             self.sample_aspect_ratio = m.get('SampleAspectRatio')
         if m.get('StartTime') is not None:
@@ -1621,13 +1401,9 @@ class File(TeaModel):
         addresses: List[Address] = None,
         album: str = None,
         album_artist: str = None,
-        artists: List[str] = None,
-        audio_bitrate: float = None,
+        artist: str = None,
         audio_covers: List[Image] = None,
-        audio_duration: float = None,
-        audio_language: str = None,
         audio_streams: List[AudioStream] = None,
-        audio_taken_time: str = None,
         cache_control: str = None,
         composer: str = None,
         content_disposition: str = None,
@@ -1655,6 +1431,7 @@ class File(TeaModel):
         image_score: ImageScore = None,
         image_width: int = None,
         labels: List[Label] = None,
+        language: str = None,
         lat_long: str = None,
         media_type: str = None,
         ocrcontents: List[OCRContents] = None,
@@ -1671,7 +1448,7 @@ class File(TeaModel):
         object_acl: str = None,
         object_id: str = None,
         object_type: str = None,
-        orientation: str = None,
+        orientation: int = None,
         owner_id: str = None,
         page_count: int = None,
         performer: str = None,
@@ -1688,12 +1465,9 @@ class File(TeaModel):
         travel_cluster_id: str = None,
         uri: str = None,
         update_time: str = None,
-        video_bitrate: int = None,
-        video_duration: float = None,
         video_height: int = None,
         video_start_time: float = None,
         video_streams: List[VideoStream] = None,
-        video_taken_time: str = None,
         video_width: int = None,
     ):
         # AccessControlAllowOrigin
@@ -1706,20 +1480,12 @@ class File(TeaModel):
         self.album = album
         # AlbumArtist
         self.album_artist = album_artist
-        # Artists
-        self.artists = artists
-        # AudioBitrate
-        self.audio_bitrate = audio_bitrate
+        # Artist
+        self.artist = artist
         # AudioCovers
         self.audio_covers = audio_covers
-        # AudioDuration
-        self.audio_duration = audio_duration
-        # AudioLanguage
-        self.audio_language = audio_language
         # AudioStreams
         self.audio_streams = audio_streams
-        # AudioTakenTime
-        self.audio_taken_time = audio_taken_time
         # CacheControl
         self.cache_control = cache_control
         # Composer
@@ -1773,6 +1539,8 @@ class File(TeaModel):
         self.image_width = image_width
         # Labels
         self.labels = labels
+        # Language
+        self.language = language
         # LatLong
         self.lat_long = lat_long
         # MediaType
@@ -1839,18 +1607,12 @@ class File(TeaModel):
         self.uri = uri
         # UpdateTime
         self.update_time = update_time
-        # VideoBitrate
-        self.video_bitrate = video_bitrate
-        # VideoDuration
-        self.video_duration = video_duration
         # VideoHeight
         self.video_height = video_height
         # VideoStartTime
         self.video_start_time = video_start_time
         # VideoStreams
         self.video_streams = video_streams
-        # VideoTakenTime
-        self.video_taken_time = video_taken_time
         # VideoWidth
         self.video_width = video_width
 
@@ -1912,24 +1674,16 @@ class File(TeaModel):
             result['Album'] = self.album
         if self.album_artist is not None:
             result['AlbumArtist'] = self.album_artist
-        if self.artists is not None:
-            result['Artists'] = self.artists
-        if self.audio_bitrate is not None:
-            result['AudioBitrate'] = self.audio_bitrate
+        if self.artist is not None:
+            result['Artist'] = self.artist
         result['AudioCovers'] = []
         if self.audio_covers is not None:
             for k in self.audio_covers:
                 result['AudioCovers'].append(k.to_map() if k else None)
-        if self.audio_duration is not None:
-            result['AudioDuration'] = self.audio_duration
-        if self.audio_language is not None:
-            result['AudioLanguage'] = self.audio_language
         result['AudioStreams'] = []
         if self.audio_streams is not None:
             for k in self.audio_streams:
                 result['AudioStreams'].append(k.to_map() if k else None)
-        if self.audio_taken_time is not None:
-            result['AudioTakenTime'] = self.audio_taken_time
         if self.cache_control is not None:
             result['CacheControl'] = self.cache_control
         if self.composer is not None:
@@ -1990,6 +1744,8 @@ class File(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.language is not None:
+            result['Language'] = self.language
         if self.lat_long is not None:
             result['LatLong'] = self.lat_long
         if self.media_type is not None:
@@ -2060,10 +1816,6 @@ class File(TeaModel):
             result['URI'] = self.uri
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
-        if self.video_bitrate is not None:
-            result['VideoBitrate'] = self.video_bitrate
-        if self.video_duration is not None:
-            result['VideoDuration'] = self.video_duration
         if self.video_height is not None:
             result['VideoHeight'] = self.video_height
         if self.video_start_time is not None:
@@ -2072,8 +1824,6 @@ class File(TeaModel):
         if self.video_streams is not None:
             for k in self.video_streams:
                 result['VideoStreams'].append(k.to_map() if k else None)
-        if self.video_taken_time is not None:
-            result['VideoTakenTime'] = self.video_taken_time
         if self.video_width is not None:
             result['VideoWidth'] = self.video_width
         return result
@@ -2093,26 +1843,18 @@ class File(TeaModel):
             self.album = m.get('Album')
         if m.get('AlbumArtist') is not None:
             self.album_artist = m.get('AlbumArtist')
-        if m.get('Artists') is not None:
-            self.artists = m.get('Artists')
-        if m.get('AudioBitrate') is not None:
-            self.audio_bitrate = m.get('AudioBitrate')
+        if m.get('Artist') is not None:
+            self.artist = m.get('Artist')
         self.audio_covers = []
         if m.get('AudioCovers') is not None:
             for k in m.get('AudioCovers'):
                 temp_model = Image()
                 self.audio_covers.append(temp_model.from_map(k))
-        if m.get('AudioDuration') is not None:
-            self.audio_duration = m.get('AudioDuration')
-        if m.get('AudioLanguage') is not None:
-            self.audio_language = m.get('AudioLanguage')
         self.audio_streams = []
         if m.get('AudioStreams') is not None:
             for k in m.get('AudioStreams'):
                 temp_model = AudioStream()
                 self.audio_streams.append(temp_model.from_map(k))
-        if m.get('AudioTakenTime') is not None:
-            self.audio_taken_time = m.get('AudioTakenTime')
         if m.get('CacheControl') is not None:
             self.cache_control = m.get('CacheControl')
         if m.get('Composer') is not None:
@@ -2177,6 +1919,8 @@ class File(TeaModel):
             for k in m.get('Labels'):
                 temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('LatLong') is not None:
             self.lat_long = m.get('LatLong')
         if m.get('MediaType') is not None:
@@ -2249,10 +1993,6 @@ class File(TeaModel):
             self.uri = m.get('URI')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
-        if m.get('VideoBitrate') is not None:
-            self.video_bitrate = m.get('VideoBitrate')
-        if m.get('VideoDuration') is not None:
-            self.video_duration = m.get('VideoDuration')
         if m.get('VideoHeight') is not None:
             self.video_height = m.get('VideoHeight')
         if m.get('VideoStartTime') is not None:
@@ -2262,8 +2002,6 @@ class File(TeaModel):
             for k in m.get('VideoStreams'):
                 temp_model = VideoStream()
                 self.video_streams.append(temp_model.from_map(k))
-        if m.get('VideoTakenTime') is not None:
-            self.video_taken_time = m.get('VideoTakenTime')
         if m.get('VideoWidth') is not None:
             self.video_width = m.get('VideoWidth')
         return self
@@ -2289,7 +2027,7 @@ class FigureCluster(TeaModel):
         owner_id: str = None,
         project_name: str = None,
         update_time: str = None,
-        version: str = None,
+        video_count: int = None,
     ):
         # AverageAge
         self.average_age = average_age
@@ -2325,8 +2063,8 @@ class FigureCluster(TeaModel):
         self.project_name = project_name
         # UpdateTime
         self.update_time = update_time
-        # Version
-        self.version = version
+        # VideoCount
+        self.video_count = video_count
 
     def validate(self):
         if self.cover:
@@ -2372,8 +2110,8 @@ class FigureCluster(TeaModel):
             result['ProjectName'] = self.project_name
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
-        if self.version is not None:
-            result['Version'] = self.version
+        if self.video_count is not None:
+            result['VideoCount'] = self.video_count
         return result
 
     def from_map(self, m: dict = None):
@@ -2413,8 +2151,130 @@ class FigureCluster(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
+        if m.get('VideoCount') is not None:
+            self.video_count = m.get('VideoCount')
+        return self
+
+
+class FigureClusterForReqCoverFigures(TeaModel):
+    def __init__(
+        self,
+        figure_id: str = None,
+    ):
+        # FigureId
+        self.figure_id = figure_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.figure_id is not None:
+            result['FigureId'] = self.figure_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FigureId') is not None:
+            self.figure_id = m.get('FigureId')
+        return self
+
+
+class FigureClusterForReqCover(TeaModel):
+    def __init__(
+        self,
+        figures: List[FigureClusterForReqCoverFigures] = None,
+    ):
+        # Figures
+        self.figures = figures
+
+    def validate(self):
+        if self.figures:
+            for k in self.figures:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Figures'] = []
+        if self.figures is not None:
+            for k in self.figures:
+                result['Figures'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.figures = []
+        if m.get('Figures') is not None:
+            for k in m.get('Figures'):
+                temp_model = FigureClusterForReqCoverFigures()
+                self.figures.append(temp_model.from_map(k))
+        return self
+
+
+class FigureClusterForReq(TeaModel):
+    def __init__(
+        self,
+        cover: FigureClusterForReqCover = None,
+        custom_id: str = None,
+        custom_labels: Dict[str, Any] = None,
+        name: str = None,
+        object_id: str = None,
+    ):
+        # Cover
+        self.cover = cover
+        # CustomId
+        self.custom_id = custom_id
+        # CustomLabels
+        self.custom_labels = custom_labels
+        # Name
+        self.name = name
+        # ObjectId
+        self.object_id = object_id
+
+    def validate(self):
+        if self.cover:
+            self.cover.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover is not None:
+            result['Cover'] = self.cover.to_map()
+        if self.custom_id is not None:
+            result['CustomId'] = self.custom_id
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cover') is not None:
+            temp_model = FigureClusterForReqCover()
+            self.cover = temp_model.from_map(m['Cover'])
+        if m.get('CustomId') is not None:
+            self.custom_id = m.get('CustomId')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
         return self
 
 
@@ -2813,6 +2673,149 @@ class SimpleQuery(TeaModel):
         return self
 
 
+class Story(TeaModel):
+    def __init__(
+        self,
+        cover: File = None,
+        create_time: str = None,
+        custom_fields: str = None,
+        dataset_name: str = None,
+        figure_cluster_ids: List[str] = None,
+        files: List[File] = None,
+        object_id: str = None,
+        object_type: str = None,
+        owner_id: str = None,
+        project_name: str = None,
+        story_end_time: str = None,
+        story_name: str = None,
+        story_start_time: str = None,
+        story_sub_type: str = None,
+        story_type: str = None,
+        update_time: str = None,
+    ):
+        self.cover = cover
+        # CreateTime
+        self.create_time = create_time
+        # CustomFields
+        self.custom_fields = custom_fields
+        # DatasetName
+        self.dataset_name = dataset_name
+        # FigureClusterIds
+        self.figure_cluster_ids = figure_cluster_ids
+        # Files
+        self.files = files
+        # ObjectId
+        self.object_id = object_id
+        # ObjectType
+        self.object_type = object_type
+        # OwnerId
+        self.owner_id = owner_id
+        # ProjectName
+        self.project_name = project_name
+        # StoryEndTime
+        self.story_end_time = story_end_time
+        # StoryName
+        self.story_name = story_name
+        # StoryStartTime
+        self.story_start_time = story_start_time
+        # StorySubType
+        self.story_sub_type = story_sub_type
+        # StoryType
+        self.story_type = story_type
+        # UpdateTime
+        self.update_time = update_time
+
+    def validate(self):
+        if self.cover:
+            self.cover.validate()
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover is not None:
+            result['Cover'] = self.cover.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_fields is not None:
+            result['CustomFields'] = self.custom_fields
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.figure_cluster_ids is not None:
+            result['FigureClusterIds'] = self.figure_cluster_ids
+        result['Files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['Files'].append(k.to_map() if k else None)
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.story_end_time is not None:
+            result['StoryEndTime'] = self.story_end_time
+        if self.story_name is not None:
+            result['StoryName'] = self.story_name
+        if self.story_start_time is not None:
+            result['StoryStartTime'] = self.story_start_time
+        if self.story_sub_type is not None:
+            result['StorySubType'] = self.story_sub_type
+        if self.story_type is not None:
+            result['StoryType'] = self.story_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cover') is not None:
+            temp_model = File()
+            self.cover = temp_model.from_map(m['Cover'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomFields') is not None:
+            self.custom_fields = m.get('CustomFields')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('FigureClusterIds') is not None:
+            self.figure_cluster_ids = m.get('FigureClusterIds')
+        self.files = []
+        if m.get('Files') is not None:
+            for k in m.get('Files'):
+                temp_model = File()
+                self.files.append(temp_model.from_map(k))
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('StoryEndTime') is not None:
+            self.story_end_time = m.get('StoryEndTime')
+        if m.get('StoryName') is not None:
+            self.story_name = m.get('StoryName')
+        if m.get('StoryStartTime') is not None:
+            self.story_start_time = m.get('StoryStartTime')
+        if m.get('StorySubType') is not None:
+            self.story_sub_type = m.get('StorySubType')
+        if m.get('StoryType') is not None:
+            self.story_type = m.get('StoryType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
 class TaskInfo(TeaModel):
     def __init__(
         self,
@@ -2887,6 +2890,41 @@ class TaskInfo(TeaModel):
             self.task_type = m.get('TaskType')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+        return self
+
+
+class TimeRange(TeaModel):
+    def __init__(
+        self,
+        end: str = None,
+        start: str = None,
+    ):
+        # end time
+        self.end = end
+        # start time
+        self.start = start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end
+        if self.start is not None:
+            result['Start'] = self.start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
         return self
 
 
@@ -3750,134 +3788,6 @@ class BatchUpdateFileMetaResponse(TeaModel):
         return self
 
 
-class ClusterFiguresRequest(TeaModel):
-    def __init__(
-        self,
-        custom_message: str = None,
-        dataset_name: str = None,
-        figure_type: str = None,
-        notify_topic_endpoint: str = None,
-        notify_topic_name: str = None,
-        project_name: str = None,
-    ):
-        self.custom_message = custom_message
-        self.dataset_name = dataset_name
-        self.figure_type = figure_type
-        self.notify_topic_endpoint = notify_topic_endpoint
-        self.notify_topic_name = notify_topic_name
-        self.project_name = project_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.custom_message is not None:
-            result['CustomMessage'] = self.custom_message
-        if self.dataset_name is not None:
-            result['DatasetName'] = self.dataset_name
-        if self.figure_type is not None:
-            result['FigureType'] = self.figure_type
-        if self.notify_topic_endpoint is not None:
-            result['NotifyTopicEndpoint'] = self.notify_topic_endpoint
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CustomMessage') is not None:
-            self.custom_message = m.get('CustomMessage')
-        if m.get('DatasetName') is not None:
-            self.dataset_name = m.get('DatasetName')
-        if m.get('FigureType') is not None:
-            self.figure_type = m.get('FigureType')
-        if m.get('NotifyTopicEndpoint') is not None:
-            self.notify_topic_endpoint = m.get('NotifyTopicEndpoint')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        return self
-
-
-class ClusterFiguresResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        task_id: str = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        return self
-
-
-class ClusterFiguresResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ClusterFiguresResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ClusterFiguresResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateBindingRequest(TeaModel):
     def __init__(
         self,
@@ -4153,10 +4063,16 @@ class CreateDatasetResponse(TeaModel):
 class CreateDetectVideoLabelsTaskRequest(TeaModel):
     def __init__(
         self,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
         project_name: str = None,
         source_uri: str = None,
         user_data: str = None,
     ):
+        # NotifyEndpoint
+        self.notify_endpoint = notify_endpoint
+        # NotifyTopicName
+        self.notify_topic_name = notify_topic_name
         # 项目名称
         self.project_name = project_name
         # SourceURI
@@ -4173,6 +4089,10 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.source_uri is not None:
@@ -4183,6 +4103,10 @@ class CreateDetectVideoLabelsTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('SourceURI') is not None:
@@ -4323,6 +4247,276 @@ class CreateDetectVideoLabelsTaskResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateDetectVideoLabelsTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFigureClusteringTaskRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        user_data: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateFigureClusteringTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        # Id of the request
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateFigureClusteringTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateFigureClusteringTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateFigureClusteringTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFigureClustersMergingTaskRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        from_: str = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        to: str = None,
+        user_data: str = None,
+    ):
+        self.dataset_name = dataset_name
+        # 源cluster
+        self.from_ = from_
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        # 目的cluster
+        self.to = to
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.to is not None:
+            result['To'] = self.to
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateFigureClustersMergingTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        # Id of the request
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateFigureClustersMergingTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateFigureClustersMergingTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateFigureClustersMergingTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4494,13 +4688,185 @@ class CreateProjectResponse(TeaModel):
         return self
 
 
+class CreateStoryRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        max_file_count: int = None,
+        min_file_count: int = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        object_id: str = None,
+        project_name: str = None,
+        story_end_time: str = None,
+        story_name: str = None,
+        story_start_time: str = None,
+        story_sub_type: str = None,
+        story_type: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.max_file_count = max_file_count
+        self.min_file_count = min_file_count
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.object_id = object_id
+        self.project_name = project_name
+        self.story_end_time = story_end_time
+        self.story_name = story_name
+        self.story_start_time = story_start_time
+        self.story_sub_type = story_sub_type
+        self.story_type = story_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.max_file_count is not None:
+            result['MaxFileCount'] = self.max_file_count
+        if self.min_file_count is not None:
+            result['MinFileCount'] = self.min_file_count
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.story_end_time is not None:
+            result['StoryEndTime'] = self.story_end_time
+        if self.story_name is not None:
+            result['StoryName'] = self.story_name
+        if self.story_start_time is not None:
+            result['StoryStartTime'] = self.story_start_time
+        if self.story_sub_type is not None:
+            result['StorySubType'] = self.story_sub_type
+        if self.story_type is not None:
+            result['StoryType'] = self.story_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('MaxFileCount') is not None:
+            self.max_file_count = m.get('MaxFileCount')
+        if m.get('MinFileCount') is not None:
+            self.min_file_count = m.get('MinFileCount')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('StoryEndTime') is not None:
+            self.story_end_time = m.get('StoryEndTime')
+        if m.get('StoryName') is not None:
+            self.story_name = m.get('StoryName')
+        if m.get('StoryStartTime') is not None:
+            self.story_start_time = m.get('StoryStartTime')
+        if m.get('StorySubType') is not None:
+            self.story_sub_type = m.get('StorySubType')
+        if m.get('StoryType') is not None:
+            self.story_type = m.get('StoryType')
+        return self
+
+
+class CreateStoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        # Id of the request
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateStoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateStoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateStoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteBindingRequest(TeaModel):
     def __init__(
         self,
+        cleanup: bool = None,
         dataset_name: str = None,
         project_name: str = None,
         uri: str = None,
     ):
+        self.cleanup = cleanup
         self.dataset_name = dataset_name
         # A short description of struct
         self.project_name = project_name
@@ -4515,6 +4881,8 @@ class DeleteBindingRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cleanup is not None:
+            result['Cleanup'] = self.cleanup
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
         if self.project_name is not None:
@@ -4525,6 +4893,8 @@ class DeleteBindingRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Cleanup') is not None:
+            self.cleanup = m.get('Cleanup')
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
         if m.get('ProjectName') is not None:
@@ -4890,6 +5260,109 @@ class DeleteProjectResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteStoryRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        object_id: str = None,
+        project_name: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.object_id = object_id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class DeleteStoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteStoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteStoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteStoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5577,11 +6050,11 @@ class GetFigureClusterRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        figure_cluster_id: str = None,
+        object_id: str = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
-        self.figure_cluster_id = figure_cluster_id
+        self.object_id = object_id
         self.project_name = project_name
 
     def validate(self):
@@ -5595,8 +6068,8 @@ class GetFigureClusterRequest(TeaModel):
         result = dict()
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
-        if self.figure_cluster_id is not None:
-            result['FigureClusterId'] = self.figure_cluster_id
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         return result
@@ -5605,8 +6078,8 @@ class GetFigureClusterRequest(TeaModel):
         m = m or dict()
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
-        if m.get('FigureClusterId') is not None:
-            self.figure_cluster_id = m.get('FigureClusterId')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         return self
@@ -5804,111 +6277,6 @@ class GetFileMetaResponse(TeaModel):
         return self
 
 
-class GetFileSignedURIRequest(TeaModel):
-    def __init__(
-        self,
-        project_name: str = None,
-        uri: str = None,
-    ):
-        self.project_name = project_name
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
-class GetFileSignedURIResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        uri: str = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-        # 签名地址
-        self.uri = uri
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.uri is not None:
-            result['URI'] = self.uri
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
-        return self
-
-
-class GetFileSignedURIResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetFileSignedURIResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetFileSignedURIResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetProjectRequest(TeaModel):
     def __init__(
         self,
@@ -6013,6 +6381,118 @@ class GetProjectResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetStoryRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        object_id: str = None,
+        project_name: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.object_id = object_id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class GetStoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        story: Story = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.story = story
+
+    def validate(self):
+        if self.story:
+            self.story.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.story is not None:
+            result['Story'] = self.story.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Story') is not None:
+            temp_model = Story()
+            self.story = temp_model.from_map(m['Story'])
+        return self
+
+
+class GetStoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetStoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetStoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6997,154 +7477,6 @@ class ListDatasetsResponse(TeaModel):
         return self
 
 
-class ListFigureClustersRequest(TeaModel):
-    def __init__(
-        self,
-        dataset_name: str = None,
-        labels: str = None,
-        max_results: int = None,
-        next_token: str = None,
-        order: str = None,
-        project_name: str = None,
-        sort: str = None,
-    ):
-        self.dataset_name = dataset_name
-        self.labels = labels
-        self.max_results = max_results
-        self.next_token = next_token
-        self.order = order
-        self.project_name = project_name
-        self.sort = sort
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dataset_name is not None:
-            result['DatasetName'] = self.dataset_name
-        if self.labels is not None:
-            result['Labels'] = self.labels
-        if self.max_results is not None:
-            result['MaxResults'] = self.max_results
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.order is not None:
-            result['Order'] = self.order
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.sort is not None:
-            result['Sort'] = self.sort
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DatasetName') is not None:
-            self.dataset_name = m.get('DatasetName')
-        if m.get('Labels') is not None:
-            self.labels = m.get('Labels')
-        if m.get('MaxResults') is not None:
-            self.max_results = m.get('MaxResults')
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('Order') is not None:
-            self.order = m.get('Order')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('Sort') is not None:
-            self.sort = m.get('Sort')
-        return self
-
-
-class ListFigureClustersResponseBody(TeaModel):
-    def __init__(
-        self,
-        figure_clusters: List[FigureCluster] = None,
-        next_token: str = None,
-        request_id: str = None,
-    ):
-        self.figure_clusters = figure_clusters
-        self.next_token = next_token
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        if self.figure_clusters:
-            for k in self.figure_clusters:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['FigureClusters'] = []
-        if self.figure_clusters is not None:
-            for k in self.figure_clusters:
-                result['FigureClusters'].append(k.to_map() if k else None)
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.figure_clusters = []
-        if m.get('FigureClusters') is not None:
-            for k in m.get('FigureClusters'):
-                temp_model = FigureCluster()
-                self.figure_clusters.append(temp_model.from_map(k))
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ListFigureClustersResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListFigureClustersResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListFigureClustersResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListProjectsRequest(TeaModel):
     def __init__(
         self,
@@ -7560,6 +7892,435 @@ class MergeFigureClustersResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = MergeFigureClustersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryFigureClustersRequest(TeaModel):
+    def __init__(
+        self,
+        custom_labels: str = None,
+        dataset_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        order: str = None,
+        project_name: str = None,
+        sort: str = None,
+    ):
+        self.custom_labels = custom_labels
+        self.dataset_name = dataset_name
+        self.max_results = max_results
+        self.next_token = next_token
+        # 升降序
+        self.order = order
+        self.project_name = project_name
+        # 排序字段
+        self.sort = sort
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        return self
+
+
+class QueryFigureClustersResponseBody(TeaModel):
+    def __init__(
+        self,
+        figure_clusters: List[FigureCluster] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.figure_clusters = figure_clusters
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.figure_clusters:
+            for k in self.figure_clusters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FigureClusters'] = []
+        if self.figure_clusters is not None:
+            for k in self.figure_clusters:
+                result['FigureClusters'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.figure_clusters = []
+        if m.get('FigureClusters') is not None:
+            for k in m.get('FigureClusters'):
+                temp_model = FigureCluster()
+                self.figure_clusters.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QueryFigureClustersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryFigureClustersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryFigureClustersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryStoriesRequest(TeaModel):
+    def __init__(
+        self,
+        create_time_range: TimeRange = None,
+        dataset_name: str = None,
+        figure_cluster_ids: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
+        object_id: str = None,
+        project_name: str = None,
+        story_end_time_range: TimeRange = None,
+        story_name: str = None,
+        story_start_time_range: TimeRange = None,
+        story_sub_type: str = None,
+        story_type: str = None,
+    ):
+        self.create_time_range = create_time_range
+        self.dataset_name = dataset_name
+        self.figure_cluster_ids = figure_cluster_ids
+        self.max_results = max_results
+        self.next_token = next_token
+        self.object_id = object_id
+        self.project_name = project_name
+        self.story_end_time_range = story_end_time_range
+        self.story_name = story_name
+        self.story_start_time_range = story_start_time_range
+        self.story_sub_type = story_sub_type
+        self.story_type = story_type
+
+    def validate(self):
+        if self.create_time_range:
+            self.create_time_range.validate()
+        if self.story_end_time_range:
+            self.story_end_time_range.validate()
+        if self.story_start_time_range:
+            self.story_start_time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time_range is not None:
+            result['CreateTimeRange'] = self.create_time_range.to_map()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.figure_cluster_ids is not None:
+            result['FigureClusterIds'] = self.figure_cluster_ids
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.story_end_time_range is not None:
+            result['StoryEndTimeRange'] = self.story_end_time_range.to_map()
+        if self.story_name is not None:
+            result['StoryName'] = self.story_name
+        if self.story_start_time_range is not None:
+            result['StoryStartTimeRange'] = self.story_start_time_range.to_map()
+        if self.story_sub_type is not None:
+            result['StorySubType'] = self.story_sub_type
+        if self.story_type is not None:
+            result['StoryType'] = self.story_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimeRange') is not None:
+            temp_model = TimeRange()
+            self.create_time_range = temp_model.from_map(m['CreateTimeRange'])
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('FigureClusterIds') is not None:
+            self.figure_cluster_ids = m.get('FigureClusterIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('StoryEndTimeRange') is not None:
+            temp_model = TimeRange()
+            self.story_end_time_range = temp_model.from_map(m['StoryEndTimeRange'])
+        if m.get('StoryName') is not None:
+            self.story_name = m.get('StoryName')
+        if m.get('StoryStartTimeRange') is not None:
+            temp_model = TimeRange()
+            self.story_start_time_range = temp_model.from_map(m['StoryStartTimeRange'])
+        if m.get('StorySubType') is not None:
+            self.story_sub_type = m.get('StorySubType')
+        if m.get('StoryType') is not None:
+            self.story_type = m.get('StoryType')
+        return self
+
+
+class QueryStoriesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        create_time_range_shrink: str = None,
+        dataset_name: str = None,
+        figure_cluster_ids_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        object_id: str = None,
+        project_name: str = None,
+        story_end_time_range_shrink: str = None,
+        story_name: str = None,
+        story_start_time_range_shrink: str = None,
+        story_sub_type: str = None,
+        story_type: str = None,
+    ):
+        self.create_time_range_shrink = create_time_range_shrink
+        self.dataset_name = dataset_name
+        self.figure_cluster_ids_shrink = figure_cluster_ids_shrink
+        self.max_results = max_results
+        self.next_token = next_token
+        self.object_id = object_id
+        self.project_name = project_name
+        self.story_end_time_range_shrink = story_end_time_range_shrink
+        self.story_name = story_name
+        self.story_start_time_range_shrink = story_start_time_range_shrink
+        self.story_sub_type = story_sub_type
+        self.story_type = story_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time_range_shrink is not None:
+            result['CreateTimeRange'] = self.create_time_range_shrink
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.figure_cluster_ids_shrink is not None:
+            result['FigureClusterIds'] = self.figure_cluster_ids_shrink
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.story_end_time_range_shrink is not None:
+            result['StoryEndTimeRange'] = self.story_end_time_range_shrink
+        if self.story_name is not None:
+            result['StoryName'] = self.story_name
+        if self.story_start_time_range_shrink is not None:
+            result['StoryStartTimeRange'] = self.story_start_time_range_shrink
+        if self.story_sub_type is not None:
+            result['StorySubType'] = self.story_sub_type
+        if self.story_type is not None:
+            result['StoryType'] = self.story_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimeRange') is not None:
+            self.create_time_range_shrink = m.get('CreateTimeRange')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('FigureClusterIds') is not None:
+            self.figure_cluster_ids_shrink = m.get('FigureClusterIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('StoryEndTimeRange') is not None:
+            self.story_end_time_range_shrink = m.get('StoryEndTimeRange')
+        if m.get('StoryName') is not None:
+            self.story_name = m.get('StoryName')
+        if m.get('StoryStartTimeRange') is not None:
+            self.story_start_time_range_shrink = m.get('StoryStartTimeRange')
+        if m.get('StorySubType') is not None:
+            self.story_sub_type = m.get('StorySubType')
+        if m.get('StoryType') is not None:
+            self.story_type = m.get('StoryType')
+        return self
+
+
+class QueryStoriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        stories: List[Story] = None,
+    ):
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.stories = stories
+
+    def validate(self):
+        if self.stories:
+            for k in self.stories:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Stories'] = []
+        if self.stories is not None:
+            for k in self.stories:
+                result['Stories'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.stories = []
+        if m.get('Stories') is not None:
+            for k in m.get('Stories'):
+                temp_model = Story()
+                self.stories.append(temp_model.from_map(k))
+        return self
+
+
+class QueryStoriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryStoriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryStoriesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8351,7 +9112,7 @@ class SimpleQueryResponseBodyAggregations(TeaModel):
         field: str = None,
         groups: List[SimpleQueryResponseBodyAggregationsGroups] = None,
         operation: str = None,
-        value: float = None,
+        value: str = None,
     ):
         # 聚合字段名
         self.field = field
@@ -8359,7 +9120,6 @@ class SimpleQueryResponseBodyAggregations(TeaModel):
         self.groups = groups
         # 聚合字段的聚合操作符
         self.operation = operation
-        # 聚合的统计结果
         self.value = value
 
     def validate(self):
@@ -8776,7 +9536,7 @@ class UpdateFigureClusterRequest(TeaModel):
     def __init__(
         self,
         dataset_name: str = None,
-        figure_cluster: FigureCluster = None,
+        figure_cluster: FigureClusterForReq = None,
         project_name: str = None,
     ):
         self.dataset_name = dataset_name
@@ -8806,7 +9566,7 @@ class UpdateFigureClusterRequest(TeaModel):
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
         if m.get('FigureCluster') is not None:
-            temp_model = FigureCluster()
+            temp_model = FigureClusterForReq()
             self.figure_cluster = temp_model.from_map(m['FigureCluster'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
