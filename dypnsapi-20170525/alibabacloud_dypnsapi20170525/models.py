@@ -1391,6 +1391,376 @@ class GetSmsAuthTokensResponse(TeaModel):
         return self
 
 
+class JyCreateVerifySchemeRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        bundle_id: str = None,
+        cm_api_code: int = None,
+        ct_api_code: int = None,
+        cu_api_code: int = None,
+        os_type: str = None,
+        owner_id: int = None,
+        pack_name: str = None,
+        pack_sign: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        scheme_name: str = None,
+    ):
+        self.app_name = app_name
+        self.bundle_id = bundle_id
+        # 移动供应商ApiCode
+        self.cm_api_code = cm_api_code
+        # 电信供应商ApiCode
+        self.ct_api_code = ct_api_code
+        # 联通供应商ApiCode
+        self.cu_api_code = cu_api_code
+        self.os_type = os_type
+        self.owner_id = owner_id
+        self.pack_name = pack_name
+        self.pack_sign = pack_sign
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.scheme_name = scheme_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.bundle_id is not None:
+            result['BundleId'] = self.bundle_id
+        if self.cm_api_code is not None:
+            result['CmApiCode'] = self.cm_api_code
+        if self.ct_api_code is not None:
+            result['CtApiCode'] = self.ct_api_code
+        if self.cu_api_code is not None:
+            result['CuApiCode'] = self.cu_api_code
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.pack_name is not None:
+            result['PackName'] = self.pack_name
+        if self.pack_sign is not None:
+            result['PackSign'] = self.pack_sign
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scheme_name is not None:
+            result['SchemeName'] = self.scheme_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('BundleId') is not None:
+            self.bundle_id = m.get('BundleId')
+        if m.get('CmApiCode') is not None:
+            self.cm_api_code = m.get('CmApiCode')
+        if m.get('CtApiCode') is not None:
+            self.ct_api_code = m.get('CtApiCode')
+        if m.get('CuApiCode') is not None:
+            self.cu_api_code = m.get('CuApiCode')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PackName') is not None:
+            self.pack_name = m.get('PackName')
+        if m.get('PackSign') is not None:
+            self.pack_sign = m.get('PackSign')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SchemeName') is not None:
+            self.scheme_name = m.get('SchemeName')
+        return self
+
+
+class JyCreateVerifySchemeResponseBodyGateVerifySchemeData(TeaModel):
+    def __init__(
+        self,
+        scheme_code: str = None,
+    ):
+        self.scheme_code = scheme_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scheme_code is not None:
+            result['SchemeCode'] = self.scheme_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SchemeCode') is not None:
+            self.scheme_code = m.get('SchemeCode')
+        return self
+
+
+class JyCreateVerifySchemeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        gate_verify_scheme_data: JyCreateVerifySchemeResponseBodyGateVerifySchemeData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.gate_verify_scheme_data = gate_verify_scheme_data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.gate_verify_scheme_data:
+            self.gate_verify_scheme_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.gate_verify_scheme_data is not None:
+            result['GateVerifySchemeData'] = self.gate_verify_scheme_data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('GateVerifySchemeData') is not None:
+            temp_model = JyCreateVerifySchemeResponseBodyGateVerifySchemeData()
+            self.gate_verify_scheme_data = temp_model.from_map(m['GateVerifySchemeData'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class JyCreateVerifySchemeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: JyCreateVerifySchemeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = JyCreateVerifySchemeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class JyGetMobileRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # 认证Token
+        self.access_token = access_token
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['AccessToken'] = self.access_token
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessToken') is not None:
+            self.access_token = m.get('AccessToken')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class JyGetMobileResponseBodyGetMobileResultData(TeaModel):
+    def __init__(
+        self,
+        mobile: str = None,
+    ):
+        self.mobile = mobile
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        return self
+
+
+class JyGetMobileResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        get_mobile_result_data: JyGetMobileResponseBodyGetMobileResultData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.get_mobile_result_data = get_mobile_result_data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.get_mobile_result_data:
+            self.get_mobile_result_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.get_mobile_result_data is not None:
+            result['GetMobileResultData'] = self.get_mobile_result_data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('GetMobileResultData') is not None:
+            temp_model = JyGetMobileResponseBodyGetMobileResultData()
+            self.get_mobile_result_data = temp_model.from_map(m['GetMobileResultData'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class JyGetMobileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: JyGetMobileResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = JyGetMobileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryGateVerifyBillingPublicRequest(TeaModel):
     def __init__(
         self,
