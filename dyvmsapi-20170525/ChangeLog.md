@@ -1,3 +1,6 @@
+2022-01-20 Version: 2.1.2
+- Add QueryVoiceFileAuditInfo.
+
 2021-11-29 Version: 2.1.1
 - Update Dyvmsapi SDK.
 
