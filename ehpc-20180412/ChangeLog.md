@@ -1,3 +1,6 @@
+2022-01-20 Version: 1.14.13
+- Support JobQueue param for ApplyNodes.
+
 2021-12-23 Version: 1.14.12
 - Set DataDisk param for AddNodes and SetAutoScaleConfig.
 
