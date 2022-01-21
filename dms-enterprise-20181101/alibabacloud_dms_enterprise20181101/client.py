@@ -8179,6 +8179,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_data_correct_exec_sqlwith_options_async(request, runtime)
 
+    def pause_data_correct_sqljob_with_options(
+        self,
+        request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PauseDataCorrectSQLJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_data_correct_sqljob_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PauseDataCorrectSQLJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_data_correct_sqljob(
+        self,
+        request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
+    ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pause_data_correct_sqljob_with_options(request, runtime)
+
+    async def pause_data_correct_sqljob_async(
+        self,
+        request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
+    ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pause_data_correct_sqljob_with_options_async(request, runtime)
+
     def register_instance_with_options(
         self,
         request: dms_enterprise_20181101_models.RegisterInstanceRequest,
@@ -8418,6 +8500,88 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RegisterUserResponse:
         runtime = util_models.RuntimeOptions()
         return await self.register_user_with_options_async(request, runtime)
+
+    def restart_data_correct_sqljob_with_options(
+        self,
+        request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDataCorrectSQLJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_data_correct_sqljob_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDataCorrectSQLJob',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_data_correct_sqljob(
+        self,
+        request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
+    ) -> dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.restart_data_correct_sqljob_with_options(request, runtime)
+
+    async def restart_data_correct_sqljob_async(
+        self,
+        request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
+    ) -> dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_data_correct_sqljob_with_options_async(request, runtime)
 
     def retry_data_correct_pre_check_with_options(
         self,

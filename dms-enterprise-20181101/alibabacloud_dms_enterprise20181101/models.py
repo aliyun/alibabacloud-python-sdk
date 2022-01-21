@@ -16212,6 +16212,7 @@ class ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList(TeaModel):
         sqlreview_query_key: str = None,
         sql_review_status: str = None,
         sql_type: str = None,
+        table_names: str = None,
     ):
         self.affect_rows = affect_rows
         self.check_sql = check_sql
@@ -16219,6 +16220,7 @@ class ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList(TeaModel):
         self.sqlreview_query_key = sqlreview_query_key
         self.sql_review_status = sql_review_status
         self.sql_type = sql_type
+        self.table_names = table_names
 
     def validate(self):
         pass
@@ -16241,6 +16243,8 @@ class ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList(TeaModel):
             result['SqlReviewStatus'] = self.sql_review_status
         if self.sql_type is not None:
             result['SqlType'] = self.sql_type
+        if self.table_names is not None:
+            result['TableNames'] = self.table_names
         return result
 
     def from_map(self, m: dict = None):
@@ -16257,6 +16261,8 @@ class ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList(TeaModel):
             self.sql_review_status = m.get('SqlReviewStatus')
         if m.get('SqlType') is not None:
             self.sql_type = m.get('SqlType')
+        if m.get('TableNames') is not None:
+            self.table_names = m.get('TableNames')
         return self
 
 
@@ -23437,6 +23443,134 @@ class ModifyDataCorrectExecSQLResponse(TeaModel):
         return self
 
 
+class PauseDataCorrectSQLJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: int = None,
+        order_id: int = None,
+        tid: int = None,
+        type: str = None,
+    ):
+        self.job_id = job_id
+        self.order_id = order_id
+        self.tid = tid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class PauseDataCorrectSQLJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PauseDataCorrectSQLJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: PauseDataCorrectSQLJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = PauseDataCorrectSQLJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RegisterInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -23801,6 +23935,134 @@ class RegisterUserResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RegisterUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestartDataCorrectSQLJobRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: int = None,
+        order_id: int = None,
+        tid: int = None,
+        type: str = None,
+    ):
+        self.job_id = job_id
+        self.order_id = order_id
+        self.tid = tid
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RestartDataCorrectSQLJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RestartDataCorrectSQLJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RestartDataCorrectSQLJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RestartDataCorrectSQLJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
