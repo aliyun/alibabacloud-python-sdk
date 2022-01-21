@@ -121,9 +121,13 @@ class CloneFlowJobRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # 克隆的目标作业ID。您可以调用ListFlowJob查看。
         self.id = id
+        # 克隆的目标作业名称。
         self.name = name
+        # 克隆的目标作业所属项目。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -164,7 +168,9 @@ class CloneFlowJobResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # 新产生的作业ID。
         self.id = id
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -1690,7 +1696,9 @@ class CreateFlowJobRequestResourceList(TeaModel):
         alias: str = None,
         path: str = None,
     ):
+        # 保留参数。
         self.alias = alias
+        # 保留参数。
         self.path = path
 
     def validate(self):
@@ -1741,25 +1749,45 @@ class CreateFlowJobRequest(TeaModel):
         run_conf: str = None,
         type: str = None,
     ):
+        # 是否临时查询。
         self.adhoc = adhoc
+        # 保留参数。
         self.alert_conf = alert_conf
+        # 保留参数。
         self.client_token = client_token
+        # 集群ID。您可以调用ListClusters查看集群的ID。
         self.cluster_id = cluster_id
+        # 自定义变量。
         self.custom_variables = custom_variables
+        # 作业的描述。
         self.description = description
+        # 环境变量设置。
         self.env_conf = env_conf
+        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
+        # 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
         self.mode = mode
+        # 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
         self.monitor_conf = monitor_conf
+        # 作业的名称。
         self.name = name
+        # 参数设置。
         self.param_conf = param_conf
+        # 作业内容。
         self.params = params
+        # 父目录ID。您可以调用DescribeFlowCategory查看。
         self.parent_category = parent_category
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
+        # 保留参数。
         self.resource_list = resource_list
+        # 重试策略，保留参数。
         self.retry_policy = retry_policy
+        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
+        # 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
         self.type = type
 
     def validate(self):
@@ -1872,7 +1900,9 @@ class CreateFlowJobResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # 作业ID。
         self.id = id
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -1947,10 +1977,15 @@ class CreateFlowProjectRequest(TeaModel):
         resource_group_id: str = None,
     ):
         self.client_token = client_token
+        # 项目描述
         self.description = description
+        # 项目名称
         self.name = name
+        # 产品类型，固定值DATABRICKS_DATAINSIGHT
         self.product_type = product_type
+        # 地域ID
         self.region_id = region_id
+        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1999,7 +2034,9 @@ class CreateFlowProjectResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # 项目ID
         self.id = id
+        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -5422,8 +5459,11 @@ class DescribeFlowJobRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # 作业ID。您可以调用ListFlowJob查看作业ID。
         self.id = id
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -5460,7 +5500,9 @@ class DescribeFlowJobResponseBodyResourceListResource(TeaModel):
         alias: str = None,
         path: str = None,
     ):
+        # 保留参数。
         self.alias = alias
+        # 保留参数。
         self.path = path
 
     def validate(self):
@@ -5553,32 +5595,58 @@ class DescribeFlowJobResponseBody(TeaModel):
         run_conf: str = None,
         type: str = None,
     ):
+        # 是否临时查询。
         self.adhoc = adhoc
+        # 报警配置。
         self.alert_conf = alert_conf
+        # 作业所在目录ID。
         self.category_id = category_id
+        # 自定义变量。
         self.custom_variables = custom_variables
+        # 作业的描述。
         self.description = description
+        # 保留参数。
         self.edit_lock_detail = edit_lock_detail
+        # 环境变量设置。
         self.env_conf = env_conf
+        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
+        # 创建时间。
         self.gmt_create = gmt_create
+        # 最后修改时间。
         self.gmt_modified = gmt_modified
+        # 作业ID。
         self.id = id
+        # Knox的用户密码，执行Zeppelin Notebook时必须提供。
         self.knox_password = knox_password
+        # Knox的用户名，执行Zeppelin Notebook时必须提供。
         self.knox_user = knox_user
+        # 最后一次执行的实例ID。
         self.last_instance_id = last_instance_id
+        # 最大重试次数。
         self.max_retry = max_retry
+        # 保留参数。
         self.max_running_time_sec = max_running_time_sec
+        # 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
         self.mode = mode
+        # 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
         self.monitor_conf = monitor_conf
+        # 作业名称。
         self.name = name
+        # 参数设置。
         self.param_conf = param_conf
+        # 作业内容。
         self.params = params
+        # 请求ID。
         self.request_id = request_id
         self.resource_list = resource_list
+        # 重试间隔 0~300（秒）。
         self.retry_interval = retry_interval
+        # 重试策略，保留参数。
         self.retry_policy = retry_policy
+        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
+        # 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
         self.type = type
 
     def validate(self):
@@ -7559,8 +7627,11 @@ class KillFlowJobRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
         self.job_instance_id = job_instance_id
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -7597,7 +7668,9 @@ class KillFlowJobResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # 返回执行结果，包含如下：true（执行成功），false（执行失败）
         self.data = data
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -8241,15 +8314,25 @@ class ListFlowRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
+        # 集群ID。您可以调用ListClusters查看集群的ID。
         self.cluster_id = cluster_id
+        # 工作流ID。您可以调用ListFlowInstance查看工作流ID。
         self.id = id
+        # 作业ID。您可以调用ListFlowJob查看。
         self.job_id = job_id
+        # 工作流名称。您可以调用ListFlowInstance查看。
         self.name = name
+        # 页码。
         self.page_number = page_number
+        # 每页查询数量。
         self.page_size = page_size
+        # 是否调度。
         self.periodic = periodic
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
+        # 状态：  STOP_SCHEDULE（停止调度） UNDER_SCHEDULE（调度中）
         self.status = status
 
     def validate(self):
@@ -8493,10 +8576,15 @@ class ListFlowResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # 工作流列表
         self.flow = flow
+        # 页码。
         self.page_number = page_number
+        # 每页数量。
         self.page_size = page_size
+        # 请求ID。
         self.request_id = request_id
+        # 总数。
         self.total = total
 
     def validate(self):
@@ -8583,10 +8671,15 @@ class ListFlowClusterRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # 当前页码，从1开始。
         self.page_number = page_number
+        # 分页查询时设置的每页行数。
         self.page_size = page_size
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
+        # 资源组ID。您可以调用ListResourceGroups查看资源组ID。
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8632,8 +8725,11 @@ class ListFlowClusterResponseBodyClustersClusterInfoFailReason(TeaModel):
         error_msg: str = None,
         request_id: str = None,
     ):
+        # 错误码。
         self.error_code = error_code
+        # 错误原因。
         self.error_msg = error_msg
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -8671,8 +8767,11 @@ class ListFlowClusterResponseBodyClustersClusterInfoOrderTaskInfo(TeaModel):
         order_id_list: str = None,
         target_count: int = None,
     ):
+        # 当前数量。
         self.current_count = current_count
+        # 订单列表。
         self.order_id_list = order_id_list
+        # 目标数量。
         self.target_count = target_count
 
     def validate(self):
@@ -8722,20 +8821,35 @@ class ListFlowClusterResponseBodyClustersClusterInfo(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # 付费类型。PostPaid: 按量付费，PrePaid：包年包月集群。
         self.charge_type = charge_type
+        # 资源。
         self.create_resource = create_resource
+        # 创建时间。
         self.create_time = create_time
+        # 过期时间。
         self.expired_time = expired_time
+        # 集群失败原因。
         self.fail_reason = fail_reason
+        # 是否有未完成订单。
         self.has_uncompleted_order = has_uncompleted_order
+        # 集群ID。
         self.id = id
+        # 保留字段。
         self.k_8s_cluster_id = k_8s_cluster_id
+        # 集群名字。
         self.name = name
+        # 订单列表
         self.order_list = order_list
+        # 订单任务信息。
         self.order_task_info = order_task_info
+        # 包年包月时间（包月数有：1、2、3、4、5、6、7、8、9、12、24、36）。ChargeType=PrePaid 时，必填。
         self.period = period
+        # 运行时间，单位：秒。
         self.running_time = running_time
+        # 集群状态。
         self.status = status
+        # 集群类型。
         self.type = type
 
     def validate(self):
@@ -8863,10 +8977,15 @@ class ListFlowClusterResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # 集群列表。
         self.clusters = clusters
+        # 当前页码，从1开始。
         self.page_number = page_number
+        # 分页查询时每页行数。
         self.page_size = page_size
+        # 请求ID。
         self.request_id = request_id
+        # 总数。
         self.total_count = total_count
 
     def validate(self):
@@ -8951,8 +9070,11 @@ class ListFlowClusterAllRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # 产品类型。固定值DATABRICKS_INSIGHT。
         self.product_type = product_type
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
+        # 资源组ID。您可以调用ListResourceGroups查看资源组ID。
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -8990,8 +9112,11 @@ class ListFlowClusterAllResponseBodyClustersClusterInfoFailReason(TeaModel):
         error_msg: str = None,
         request_id: str = None,
     ):
+        # 错误码。
         self.error_code = error_code
+        # 错误原因。
         self.error_msg = error_msg
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -9029,8 +9154,11 @@ class ListFlowClusterAllResponseBodyClustersClusterInfoOrderTaskInfo(TeaModel):
         order_id_list: str = None,
         target_count: int = None,
     ):
+        # 当前数量。
         self.current_count = current_count
+        # 订单列表。
         self.order_id_list = order_id_list
+        # 目标数量。
         self.target_count = target_count
 
     def validate(self):
@@ -9080,20 +9208,35 @@ class ListFlowClusterAllResponseBodyClustersClusterInfo(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # 付费类型。PostPaid: 按量付费，PrePaid：包年包月集群。
         self.charge_type = charge_type
+        # 资源。
         self.create_resource = create_resource
+        # 创建时间。
         self.create_time = create_time
+        # 过期时间。
         self.expired_time = expired_time
+        # 集群失败原因。
         self.fail_reason = fail_reason
+        # 是否有未完成订单。
         self.has_uncompleted_order = has_uncompleted_order
+        # 集群ID。
         self.id = id
+        # 保留字段。
         self.k_8s_cluster_id = k_8s_cluster_id
+        # 集群名字。
         self.name = name
+        # 订单列表
         self.order_list = order_list
+        # 订单任务信息。
         self.order_task_info = order_task_info
+        # 包年包月时间（包月数有：1、2、3、4、5、6、7、8、9、12、24、36）。ChargeType=PrePaid 时，必填。
         self.period = period
+        # 运行时间，单位：秒。
         self.running_time = running_time
+        # 集群状态。
         self.status = status
+        # 集群类型。
         self.type = type
 
     def validate(self):
@@ -9221,10 +9364,15 @@ class ListFlowClusterAllResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # 集群列表。
         self.clusters = clusters
+        # 当前页码，从1开始。
         self.page_number = page_number
+        # 分页查询时每页行数。
         self.page_size = page_size
+        # 请求ID。
         self.request_id = request_id
+        # 总数。
         self.total_count = total_count
 
     def validate(self):
@@ -10445,14 +10593,23 @@ class ListFlowJobHistoryRequest(TeaModel):
         status_list: List[str] = None,
         time_range: str = None,
     ):
+        # 作业ID。您可以调用ListFlowJob查看作业ID。
         self.id = id
+        # 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
         self.instance_id = instance_id
+        # 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
         self.job_type = job_type
+        # 当前页码。
         self.page_number = page_number
+        # 分页查询时每页行数。
         self.page_size = page_size
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
+        # 状态列表。取值如下：SUBMITTED, RUNNING, SUCCESS, FAILED, KILL_FAILED, KILL_SUCCESS
         self.status_list = status_list
+        # 查询的时间范围参数，参数列表：type: range，from: 开始时间（long型时间戳），to: 结束时间（long型时间戳）
         self.time_range = time_range
 
     def validate(self):
@@ -10537,31 +10694,57 @@ class ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance(TeaModel):
         type: str = None,
         pending: bool = None,
     ):
+        # 集群ID。
         self.cluster_id = cluster_id
+        # 运行结束时间。
         self.end_time = end_time
+        # 环境变量设置。
         self.env_conf = env_conf
+        # 启动器的application的ID。
         self.external_id = external_id
+        # 外部信息。例如，运行作业的错误诊断信息。
         self.external_info = external_info
+        # 实例对应的Container的状态：SUBMITTED, RUNNING, SUCCESS, FAIL, KILL_FAIL, KILL_SUCCESS
         self.external_status = external_status
+        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
+        # 创建时间。
         self.gmt_create = gmt_create
+        # 创建时间。
         self.gmt_modified = gmt_modified
+        # 保留参数。
         self.host_name = host_name
+        # 作业实例ID。
         self.id = id
+        # 作业ID。
         self.job_id = job_id
+        # 作业名称。
         self.job_name = job_name
+        # 作业内容。
         self.job_params = job_params
+        # 作业类型。
         self.job_type = job_type
+        # 最大重试次数。
         self.max_retry = max_retry
+        # 保留参数。
         self.node_name = node_name
+        # 参数设置。
         self.param_conf = param_conf
+        # 项目ID。
         self.project_id = project_id
+        # 重试次数。
         self.retries = retries
+        # 重试间隔 0-300（秒）。
         self.retry_interval = retry_interval
+        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
+        # 运行开始时间。
         self.start_time = start_time
+        # 实例的执行状态：PREP：准备启动，SUBMITTING：提交中，RUNNING：运行中DONE：已完成，OK：执行成功，FAILED：执行失败，KILLED：已终止，KILL_FAILED：终止失败，START_RETRY：开始重试
         self.status = status
+        # 节点类型：JOB：作业，CLUSTER：集群，START：开始，END：结束
         self.type = type
+        # 是否结束。
         self.pending = pending
 
     def validate(self):
@@ -10728,10 +10911,15 @@ class ListFlowJobHistoryResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # 作业实例列表。
         self.node_instances = node_instances
+        # 当前页码。
         self.page_number = page_number
+        # 分页查询时设置的每页行数。
         self.page_size = page_size
+        # 请求ID。
         self.request_id = request_id
+        # 记录总数。
         self.total = total
 
     def validate(self):
@@ -10821,13 +11009,21 @@ class ListFlowJobsRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # 是否为临时查询。用于过滤作业。
         self.adhoc = adhoc
+        # 作业ID。您可以调用ListFlowJob查看作业ID。
         self.id = id
+        # 作业名称。
         self.name = name
+        # 当前页数。
         self.page_number = page_number
+        # 每页的作业数量。
         self.page_size = page_size
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
+        # 作业类型。用于过滤作业，支持的类型有：SPARK，SPARK_STREAMING，ZEPPELIN。
         self.type = type
 
     def validate(self):
@@ -10884,7 +11080,9 @@ class ListFlowJobsResponseBodyJobListJobResourceListResource(TeaModel):
         alias: str = None,
         path: str = None,
     ):
+        # 保留参数。
         self.alias = alias
+        # 保留参数。
         self.path = path
 
     def validate(self):
@@ -10971,26 +11169,46 @@ class ListFlowJobsResponseBodyJobListJob(TeaModel):
         run_conf: str = None,
         type: str = None,
     ):
+        # 是否临时查询。
         self.adhoc = adhoc
+        # 报警配置。
         self.alert_conf = alert_conf
+        # 作业所在目录ID。
         self.category_id = category_id
+        # 自定义变量。
         self.custom_variables = custom_variables
+        # 作业的描述。
         self.description = description
+        # 环境变量设置。
         self.env_conf = env_conf
+        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
+        # 创建时间。
         self.gmt_create = gmt_create
+        # 最后修改时间。
         self.gmt_modified = gmt_modified
+        # 作业ID。
         self.id = id
+        # 最后一次执行的实例ID。
         self.last_instance_detail = last_instance_detail
+        # 最大重试次数。
         self.max_retry = max_retry
+        # 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
         self.mode = mode
+        # 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
         self.monitor_conf = monitor_conf
+        # 作业名称。
         self.name = name
+        # 参数设置。
         self.param_conf = param_conf
+        # 作业内容。
         self.params = params
         self.resource_list = resource_list
+        # 重试间隔 0~300（秒）。
         self.retry_interval = retry_interval
+        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
+        # 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
         self.type = type
 
     def validate(self):
@@ -11140,9 +11358,13 @@ class ListFlowJobsResponseBody(TeaModel):
         total: int = None,
     ):
         self.job_list = job_list
+        # 当前页数。
         self.page_number = page_number
+        # 每页的作业数量。
         self.page_size = page_size
+        # 请求ID。
         self.request_id = request_id
+        # 作业数量。
         self.total = total
 
     def validate(self):
@@ -12293,12 +12515,19 @@ class ListFlowProjectsRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # 项目名称，用于过滤项目
         self.name = name
+        # 页码，用于分页
         self.page_number = page_number
+        # 每页数量
         self.page_size = page_size
+        # 产品类型。固定值DATABIRCKS_DATAINSIGHT
         self.product_type = product_type
+        # 项目ID。您可以调用ListFlowProjects查看项目的ID
         self.project_id = project_id
+        # 地域ID
         self.region_id = region_id
+        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -12355,11 +12584,17 @@ class ListFlowProjectsResponseBodyProjectsProject(TeaModel):
         name: str = None,
         user_id: str = None,
     ):
+        # 项目描述
         self.description = description
+        # 创建时间戳
         self.gmt_create = gmt_create
+        # 修改时间戳
         self.gmt_modified = gmt_modified
+        # 项目ID
         self.id = id
+        # 项目名称
         self.name = name
+        # 主账号ID
         self.user_id = user_id
 
     def validate(self):
@@ -12446,10 +12681,15 @@ class ListFlowProjectsResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # 页码
         self.page_number = page_number
+        # 每页数量
         self.page_size = page_size
+        # 项目列表
         self.projects = projects
+        # 请求ID
         self.request_id = request_id
+        # 总数
         self.total = total
 
     def validate(self):
@@ -12523,353 +12763,6 @@ class ListFlowProjectsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListFlowProjectsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListFlowsRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        id: str = None,
-        job_id: str = None,
-        name: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        periodic: bool = None,
-        project_id: str = None,
-        region_id: str = None,
-        status: str = None,
-    ):
-        self.cluster_id = cluster_id
-        self.id = id
-        self.job_id = job_id
-        self.name = name
-        self.page_number = page_number
-        self.page_size = page_size
-        self.periodic = periodic
-        self.project_id = project_id
-        self.region_id = region_id
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.periodic is not None:
-            result['Periodic'] = self.periodic
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('Periodic') is not None:
-            self.periodic = m.get('Periodic')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class ListFlowsResponseBodyFlowFlow(TeaModel):
-    def __init__(
-        self,
-        alert_conf: str = None,
-        alert_ding_ding_group_biz_id: str = None,
-        alert_user_group_biz_id: str = None,
-        category_id: str = None,
-        cluster_id: str = None,
-        create_cluster: bool = None,
-        cron_expr: str = None,
-        description: str = None,
-        end_schedule: int = None,
-        gmt_create: int = None,
-        gmt_modified: int = None,
-        graph: str = None,
-        host_name: str = None,
-        id: str = None,
-        name: str = None,
-        periodic: bool = None,
-        project_id: str = None,
-        start_schedule: int = None,
-        status: str = None,
-        type: str = None,
-    ):
-        self.alert_conf = alert_conf
-        self.alert_ding_ding_group_biz_id = alert_ding_ding_group_biz_id
-        self.alert_user_group_biz_id = alert_user_group_biz_id
-        self.category_id = category_id
-        self.cluster_id = cluster_id
-        self.create_cluster = create_cluster
-        self.cron_expr = cron_expr
-        self.description = description
-        self.end_schedule = end_schedule
-        self.gmt_create = gmt_create
-        self.gmt_modified = gmt_modified
-        self.graph = graph
-        self.host_name = host_name
-        self.id = id
-        self.name = name
-        self.periodic = periodic
-        self.project_id = project_id
-        self.start_schedule = start_schedule
-        self.status = status
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.alert_conf is not None:
-            result['AlertConf'] = self.alert_conf
-        if self.alert_ding_ding_group_biz_id is not None:
-            result['AlertDingDingGroupBizId'] = self.alert_ding_ding_group_biz_id
-        if self.alert_user_group_biz_id is not None:
-            result['AlertUserGroupBizId'] = self.alert_user_group_biz_id
-        if self.category_id is not None:
-            result['CategoryId'] = self.category_id
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.create_cluster is not None:
-            result['CreateCluster'] = self.create_cluster
-        if self.cron_expr is not None:
-            result['CronExpr'] = self.cron_expr
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.end_schedule is not None:
-            result['EndSchedule'] = self.end_schedule
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.graph is not None:
-            result['Graph'] = self.graph
-        if self.host_name is not None:
-            result['HostName'] = self.host_name
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.periodic is not None:
-            result['Periodic'] = self.periodic
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.start_schedule is not None:
-            result['StartSchedule'] = self.start_schedule
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AlertConf') is not None:
-            self.alert_conf = m.get('AlertConf')
-        if m.get('AlertDingDingGroupBizId') is not None:
-            self.alert_ding_ding_group_biz_id = m.get('AlertDingDingGroupBizId')
-        if m.get('AlertUserGroupBizId') is not None:
-            self.alert_user_group_biz_id = m.get('AlertUserGroupBizId')
-        if m.get('CategoryId') is not None:
-            self.category_id = m.get('CategoryId')
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('CreateCluster') is not None:
-            self.create_cluster = m.get('CreateCluster')
-        if m.get('CronExpr') is not None:
-            self.cron_expr = m.get('CronExpr')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('EndSchedule') is not None:
-            self.end_schedule = m.get('EndSchedule')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('Graph') is not None:
-            self.graph = m.get('Graph')
-        if m.get('HostName') is not None:
-            self.host_name = m.get('HostName')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Periodic') is not None:
-            self.periodic = m.get('Periodic')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('StartSchedule') is not None:
-            self.start_schedule = m.get('StartSchedule')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class ListFlowsResponseBodyFlow(TeaModel):
-    def __init__(
-        self,
-        flow: List[ListFlowsResponseBodyFlowFlow] = None,
-    ):
-        self.flow = flow
-
-    def validate(self):
-        if self.flow:
-            for k in self.flow:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Flow'] = []
-        if self.flow is not None:
-            for k in self.flow:
-                result['Flow'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.flow = []
-        if m.get('Flow') is not None:
-            for k in m.get('Flow'):
-                temp_model = ListFlowsResponseBodyFlowFlow()
-                self.flow.append(temp_model.from_map(k))
-        return self
-
-
-class ListFlowsResponseBody(TeaModel):
-    def __init__(
-        self,
-        flow: ListFlowsResponseBodyFlow = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total: int = None,
-    ):
-        self.flow = flow
-        self.page_number = page_number
-        self.page_size = page_size
-        self.request_id = request_id
-        self.total = total
-
-    def validate(self):
-        if self.flow:
-            self.flow.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.flow is not None:
-            result['Flow'] = self.flow.to_map()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total is not None:
-            result['Total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Flow') is not None:
-            temp_model = ListFlowsResponseBodyFlow()
-            self.flow = temp_model.from_map(m['Flow'])
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Total') is not None:
-            self.total = m.get('Total')
-        return self
-
-
-class ListFlowsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListFlowsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListFlowsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13615,7 +13508,9 @@ class ModifyFlowJobRequestResourceList(TeaModel):
         alias: str = None,
         path: str = None,
     ):
+        # 保留参数。
         self.alias = alias
+        # 保留参数。
         self.path = path
 
     def validate(self):
@@ -13665,24 +13560,43 @@ class ModifyFlowJobRequest(TeaModel):
         retry_policy: str = None,
         run_conf: str = None,
     ):
+        # 保留参数。
         self.alert_conf = alert_conf
+        # 集群ID。您可以调用ListClusters查看集群的ID。
         self.cluster_id = cluster_id
+        # 自定义变量。
         self.custom_variables = custom_variables
+        # 修改后的作业描述。
         self.description = description
+        # 环境变量设置。
         self.env_conf = env_conf
+        # 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
         self.fail_act = fail_act
+        # 需要修改的作业的ID。
         self.id = id
+        # Knox的用户密码，执行Zeppelin Notebook时必须提供。
         self.knox_password = knox_password
+        # Knox的用户名，执行Zeppelin Notebook时必须提供。
         self.knox_user = knox_user
+        # 模型模式，取值如下：  YARN：将作业包装成一个Launcher提交至YARN中执行，LOCAL：作业直接在机器上以进程方式运行。
         self.mode = mode
+        # 监控配置，仅SPARK_STREAMING类型作业支持监控配置。
         self.monitor_conf = monitor_conf
+        # 修改后的作业名称。
         self.name = name
+        # 参数设置。
         self.param_conf = param_conf
+        # 作业内容。如果是spark作业，该参数的内容会作为spark-submit的参数。
         self.params = params
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
+        # 保留参数。
         self.resource_list = resource_list
+        # 重试策略，保留参数。
         self.retry_policy = retry_policy
+        # 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
         self.run_conf = run_conf
 
     def validate(self):
@@ -13791,7 +13705,9 @@ class ModifyFlowJobResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # API调用结果：true（修改成功），false（修改失败）
         self.data = data
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -14329,9 +14245,13 @@ class RerunFlowRequest(TeaModel):
         re_run_fail: bool = None,
         region_id: str = None,
     ):
+        # 工作流实例ID。您可以调用ListFlowInstance查看工作流实例ID。
         self.flow_instance_id = flow_instance_id
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 是否只重试失败节点。
         self.re_run_fail = re_run_fail
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -14372,7 +14292,9 @@ class RerunFlowResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # 返回执行结果，包含如下：true: 重试工作流成功，false: 重试工作流失败。
         self.data = data
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -14570,8 +14492,11 @@ class ResumeFlowRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # 工作流实例ID。您可以调用ListFlowInstance查看工作流ID。
         self.flow_instance_id = flow_instance_id
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 区域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -14608,7 +14533,9 @@ class ResumeFlowResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # 返回执行结果。
         self.data = data
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -14679,8 +14606,11 @@ class StartFlowRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # 工作流实例ID。您可以调用ListFlowInstance查看工作流实例ID。
         self.flow_instance_id = flow_instance_id
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -14717,7 +14647,9 @@ class StartFlowResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # 返回执行结果，包含如下：true: 启动成功，false: 启动失败。
         self.data = data
+        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -14789,9 +14721,13 @@ class SubmitFlowRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # 配置信息{"key":"value"}格式。  本示例中cyctime表示实际调度运行的时间（长整型时间戳）。
         self.conf = conf
+        # 工作流ID。您可以调用ListFlowInstance查看工作流ID。
         self.flow_id = flow_id
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -14834,9 +14770,13 @@ class SubmitFlowResponseBody(TeaModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # 过期参数。
         self.data = data
+        # 工作流实例ID。
         self.id = id
+        # 过期参数。
         self.instance_id = instance_id
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -14918,11 +14858,17 @@ class SubmitFlowJobRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # 集群ID。您可以调用ListClusters查看集群的ID。
         self.cluster_id = cluster_id
+        # 配置参数信息：{"key1":"value1"}。key为params的参数值会覆盖实际作业中运行的内容。
         self.conf = conf
+        # 保留参数。
         self.host_name = host_name
+        # 作业ID。您可以调用ListFlowJob查看作业ID。
         self.job_id = job_id
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -14971,7 +14917,9 @@ class SubmitFlowJobResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # 运行的作业实例ID。
         self.id = id
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
@@ -15042,8 +14990,11 @@ class SuspendFlowRequest(TeaModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # 工作流实例ID。您可以调用ListFlowInstance查看工作流ID。
         self.flow_instance_id = flow_instance_id
+        # 项目ID。您可以调用ListFlowProject查看项目的ID。
         self.project_id = project_id
+        # 区域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
         self.region_id = region_id
 
     def validate(self):
@@ -15080,7 +15031,9 @@ class SuspendFlowResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # 返回执行结果。
         self.data = data
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):
