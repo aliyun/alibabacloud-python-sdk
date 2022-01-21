@@ -1,3 +1,6 @@
+2022-01-21 Version: 2.0.5
+- Support  sts.
+
 2021-08-13 Version: 2.0.4
 - Support  sts.
 
