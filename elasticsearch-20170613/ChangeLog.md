@@ -1,3 +1,6 @@
+2022-01-21 Version: 1.0.14
+- ShrinkNode and TransferNode add request body.
+
 2022-01-18 Version: 1.0.13
 - ModifyWhiteIps reqeust body.
 
