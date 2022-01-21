@@ -104,12 +104,106 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.data_initialization):
+            query['DataInitialization'] = request.data_initialization
+        if not UtilClient.is_unset(request.data_synchronization):
+            query['DataSynchronization'] = request.data_synchronization
+        if not UtilClient.is_unset(request.delay_notice):
+            query['DelayNotice'] = request.delay_notice
+        if not UtilClient.is_unset(request.delay_phone):
+            query['DelayPhone'] = request.delay_phone
+        if not UtilClient.is_unset(request.delay_rule_time):
+            query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.destination_endpoint_data_base_name):
+            query['DestinationEndpointDataBaseName'] = request.destination_endpoint_data_base_name
+        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
+            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
+        if not UtilClient.is_unset(request.destination_endpoint_ip):
+            query['DestinationEndpointIP'] = request.destination_endpoint_ip
+        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
+            query['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
+        if not UtilClient.is_unset(request.destination_endpoint_instance_type):
+            query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
+        if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
+            query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.destination_endpoint_password):
+            query['DestinationEndpointPassword'] = request.destination_endpoint_password
+        if not UtilClient.is_unset(request.destination_endpoint_port):
+            query['DestinationEndpointPort'] = request.destination_endpoint_port
+        if not UtilClient.is_unset(request.destination_endpoint_region):
+            query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.destination_endpoint_user_name):
+            query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.dts_job_name):
+            query['DtsJobName'] = request.dts_job_name
+        if not UtilClient.is_unset(request.error_notice):
+            query['ErrorNotice'] = request.error_notice
+        if not UtilClient.is_unset(request.error_phone):
+            query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_database_name):
+            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_endpoint_ip):
+            query['SourceEndpointIP'] = request.source_endpoint_ip
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_type):
+            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
+        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
+            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.source_endpoint_owner_id):
+            query['SourceEndpointOwnerID'] = request.source_endpoint_owner_id
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            query['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_port):
+            query['SourceEndpointPort'] = request.source_endpoint_port
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_role):
+            query['SourceEndpointRole'] = request.source_endpoint_role
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.structure_initialization):
+            query['StructureInitialization'] = request.structure_initialization
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        body = {}
+        if not UtilClient.is_unset(request.db_list):
+            body['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.reserve):
+            body['Reserve'] = request.reserve
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureDtsJobResponse(),
-            self.do_rpcrequest('ConfigureDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def configure_dts_job_with_options_async(
@@ -118,12 +212,106 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.data_initialization):
+            query['DataInitialization'] = request.data_initialization
+        if not UtilClient.is_unset(request.data_synchronization):
+            query['DataSynchronization'] = request.data_synchronization
+        if not UtilClient.is_unset(request.delay_notice):
+            query['DelayNotice'] = request.delay_notice
+        if not UtilClient.is_unset(request.delay_phone):
+            query['DelayPhone'] = request.delay_phone
+        if not UtilClient.is_unset(request.delay_rule_time):
+            query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.destination_endpoint_data_base_name):
+            query['DestinationEndpointDataBaseName'] = request.destination_endpoint_data_base_name
+        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
+            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
+        if not UtilClient.is_unset(request.destination_endpoint_ip):
+            query['DestinationEndpointIP'] = request.destination_endpoint_ip
+        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
+            query['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
+        if not UtilClient.is_unset(request.destination_endpoint_instance_type):
+            query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
+        if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
+            query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.destination_endpoint_password):
+            query['DestinationEndpointPassword'] = request.destination_endpoint_password
+        if not UtilClient.is_unset(request.destination_endpoint_port):
+            query['DestinationEndpointPort'] = request.destination_endpoint_port
+        if not UtilClient.is_unset(request.destination_endpoint_region):
+            query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.destination_endpoint_user_name):
+            query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.dts_job_name):
+            query['DtsJobName'] = request.dts_job_name
+        if not UtilClient.is_unset(request.error_notice):
+            query['ErrorNotice'] = request.error_notice
+        if not UtilClient.is_unset(request.error_phone):
+            query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_database_name):
+            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_endpoint_ip):
+            query['SourceEndpointIP'] = request.source_endpoint_ip
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_type):
+            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
+        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
+            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.source_endpoint_owner_id):
+            query['SourceEndpointOwnerID'] = request.source_endpoint_owner_id
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            query['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_port):
+            query['SourceEndpointPort'] = request.source_endpoint_port
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_role):
+            query['SourceEndpointRole'] = request.source_endpoint_role
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.structure_initialization):
+            query['StructureInitialization'] = request.structure_initialization
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        body = {}
+        if not UtilClient.is_unset(request.db_list):
+            body['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.reserve):
+            body['Reserve'] = request.reserve
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureDtsJobResponse(),
-            await self.do_rpcrequest_async('ConfigureDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def configure_dts_job(
@@ -146,12 +334,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.migration_job_name):
+            query['MigrationJobName'] = request.migration_job_name
+        if not UtilClient.is_unset(request.migration_reserved):
+            query['MigrationReserved'] = request.migration_reserved
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.destination_endpoint):
+            query['DestinationEndpoint'] = request.destination_endpoint
+        if not UtilClient.is_unset(request.migration_mode):
+            query['MigrationMode'] = request.migration_mode
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
+        body = {}
+        if not UtilClient.is_unset(request.migration_object):
+            body['MigrationObject'] = request.migration_object
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureMigrationJobResponse(),
-            self.do_rpcrequest('ConfigureMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def configure_migration_job_with_options_async(
@@ -160,12 +384,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.migration_job_name):
+            query['MigrationJobName'] = request.migration_job_name
+        if not UtilClient.is_unset(request.migration_reserved):
+            query['MigrationReserved'] = request.migration_reserved
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.destination_endpoint):
+            query['DestinationEndpoint'] = request.destination_endpoint
+        if not UtilClient.is_unset(request.migration_mode):
+            query['MigrationMode'] = request.migration_mode
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
+        body = {}
+        if not UtilClient.is_unset(request.migration_object):
+            body['MigrationObject'] = request.migration_object
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureMigrationJobResponse(),
-            await self.do_rpcrequest_async('ConfigureMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def configure_migration_job(
@@ -188,12 +448,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureMigrationJobAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.delay_alert_phone):
+            query['DelayAlertPhone'] = request.delay_alert_phone
+        if not UtilClient.is_unset(request.delay_alert_status):
+            query['DelayAlertStatus'] = request.delay_alert_status
+        if not UtilClient.is_unset(request.delay_over_seconds):
+            query['DelayOverSeconds'] = request.delay_over_seconds
+        if not UtilClient.is_unset(request.error_alert_phone):
+            query['ErrorAlertPhone'] = request.error_alert_phone
+        if not UtilClient.is_unset(request.error_alert_status):
+            query['ErrorAlertStatus'] = request.error_alert_status
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureMigrationJobAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureMigrationJobAlertResponse(),
-            self.do_rpcrequest('ConfigureMigrationJobAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def configure_migration_job_alert_with_options_async(
@@ -202,12 +492,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureMigrationJobAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.delay_alert_phone):
+            query['DelayAlertPhone'] = request.delay_alert_phone
+        if not UtilClient.is_unset(request.delay_alert_status):
+            query['DelayAlertStatus'] = request.delay_alert_status
+        if not UtilClient.is_unset(request.delay_over_seconds):
+            query['DelayOverSeconds'] = request.delay_over_seconds
+        if not UtilClient.is_unset(request.error_alert_phone):
+            query['ErrorAlertPhone'] = request.error_alert_phone
+        if not UtilClient.is_unset(request.error_alert_status):
+            query['ErrorAlertStatus'] = request.error_alert_status
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureMigrationJobAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureMigrationJobAlertResponse(),
-            await self.do_rpcrequest_async('ConfigureMigrationJobAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def configure_migration_job_alert(
@@ -230,12 +550,82 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSubscriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.db_list):
+            query['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.delay_notice):
+            query['DelayNotice'] = request.delay_notice
+        if not UtilClient.is_unset(request.delay_phone):
+            query['DelayPhone'] = request.delay_phone
+        if not UtilClient.is_unset(request.delay_rule_time):
+            query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.dts_job_name):
+            query['DtsJobName'] = request.dts_job_name
+        if not UtilClient.is_unset(request.error_notice):
+            query['ErrorNotice'] = request.error_notice
+        if not UtilClient.is_unset(request.error_phone):
+            query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserve):
+            query['Reserve'] = request.reserve
+        if not UtilClient.is_unset(request.source_endpoint_database_name):
+            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_endpoint_ip):
+            query['SourceEndpointIP'] = request.source_endpoint_ip
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_type):
+            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
+        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
+            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.source_endpoint_owner_id):
+            query['SourceEndpointOwnerID'] = request.source_endpoint_owner_id
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            query['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_port):
+            query['SourceEndpointPort'] = request.source_endpoint_port
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_role):
+            query['SourceEndpointRole'] = request.source_endpoint_role
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.subscription_data_type_ddl):
+            query['SubscriptionDataTypeDDL'] = request.subscription_data_type_ddl
+        if not UtilClient.is_unset(request.subscription_data_type_dml):
+            query['SubscriptionDataTypeDML'] = request.subscription_data_type_dml
+        if not UtilClient.is_unset(request.subscription_instance_network_type):
+            query['SubscriptionInstanceNetworkType'] = request.subscription_instance_network_type
+        if not UtilClient.is_unset(request.subscription_instance_vpcid):
+            query['SubscriptionInstanceVPCId'] = request.subscription_instance_vpcid
+        if not UtilClient.is_unset(request.subscription_instance_vswitch_id):
+            query['SubscriptionInstanceVSwitchId'] = request.subscription_instance_vswitch_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSubscription',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSubscriptionResponse(),
-            self.do_rpcrequest('ConfigureSubscription', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def configure_subscription_with_options_async(
@@ -244,12 +634,82 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSubscriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.db_list):
+            query['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.delay_notice):
+            query['DelayNotice'] = request.delay_notice
+        if not UtilClient.is_unset(request.delay_phone):
+            query['DelayPhone'] = request.delay_phone
+        if not UtilClient.is_unset(request.delay_rule_time):
+            query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.dts_job_name):
+            query['DtsJobName'] = request.dts_job_name
+        if not UtilClient.is_unset(request.error_notice):
+            query['ErrorNotice'] = request.error_notice
+        if not UtilClient.is_unset(request.error_phone):
+            query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserve):
+            query['Reserve'] = request.reserve
+        if not UtilClient.is_unset(request.source_endpoint_database_name):
+            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_endpoint_ip):
+            query['SourceEndpointIP'] = request.source_endpoint_ip
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_type):
+            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
+        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
+            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.source_endpoint_owner_id):
+            query['SourceEndpointOwnerID'] = request.source_endpoint_owner_id
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            query['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_port):
+            query['SourceEndpointPort'] = request.source_endpoint_port
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_role):
+            query['SourceEndpointRole'] = request.source_endpoint_role
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.subscription_data_type_ddl):
+            query['SubscriptionDataTypeDDL'] = request.subscription_data_type_ddl
+        if not UtilClient.is_unset(request.subscription_data_type_dml):
+            query['SubscriptionDataTypeDML'] = request.subscription_data_type_dml
+        if not UtilClient.is_unset(request.subscription_instance_network_type):
+            query['SubscriptionInstanceNetworkType'] = request.subscription_instance_network_type
+        if not UtilClient.is_unset(request.subscription_instance_vpcid):
+            query['SubscriptionInstanceVPCId'] = request.subscription_instance_vpcid
+        if not UtilClient.is_unset(request.subscription_instance_vswitch_id):
+            query['SubscriptionInstanceVSwitchId'] = request.subscription_instance_vswitch_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSubscription',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSubscriptionResponse(),
-            await self.do_rpcrequest_async('ConfigureSubscription', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def configure_subscription(
@@ -272,12 +732,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSubscriptionInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
+        if not UtilClient.is_unset(request.subscription_instance_name):
+            query['SubscriptionInstanceName'] = request.subscription_instance_name
+        if not UtilClient.is_unset(request.subscription_instance_network_type):
+            query['SubscriptionInstanceNetworkType'] = request.subscription_instance_network_type
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
+        if not UtilClient.is_unset(request.subscription_data_type):
+            query['SubscriptionDataType'] = request.subscription_data_type
+        if not UtilClient.is_unset(request.subscription_instance):
+            query['SubscriptionInstance'] = request.subscription_instance
+        body = {}
+        if not UtilClient.is_unset(request.subscription_object):
+            body['SubscriptionObject'] = request.subscription_object
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSubscriptionInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSubscriptionInstanceResponse(),
-            self.do_rpcrequest('ConfigureSubscriptionInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def configure_subscription_instance_with_options_async(
@@ -286,12 +780,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSubscriptionInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
+        if not UtilClient.is_unset(request.subscription_instance_name):
+            query['SubscriptionInstanceName'] = request.subscription_instance_name
+        if not UtilClient.is_unset(request.subscription_instance_network_type):
+            query['SubscriptionInstanceNetworkType'] = request.subscription_instance_network_type
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
+        if not UtilClient.is_unset(request.subscription_data_type):
+            query['SubscriptionDataType'] = request.subscription_data_type
+        if not UtilClient.is_unset(request.subscription_instance):
+            query['SubscriptionInstance'] = request.subscription_instance
+        body = {}
+        if not UtilClient.is_unset(request.subscription_object):
+            body['SubscriptionObject'] = request.subscription_object
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSubscriptionInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSubscriptionInstanceResponse(),
-            await self.do_rpcrequest_async('ConfigureSubscriptionInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def configure_subscription_instance(
@@ -314,12 +842,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSubscriptionInstanceAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.delay_alert_phone):
+            query['DelayAlertPhone'] = request.delay_alert_phone
+        if not UtilClient.is_unset(request.delay_alert_status):
+            query['DelayAlertStatus'] = request.delay_alert_status
+        if not UtilClient.is_unset(request.delay_over_seconds):
+            query['DelayOverSeconds'] = request.delay_over_seconds
+        if not UtilClient.is_unset(request.error_alert_phone):
+            query['ErrorAlertPhone'] = request.error_alert_phone
+        if not UtilClient.is_unset(request.error_alert_status):
+            query['ErrorAlertStatus'] = request.error_alert_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSubscriptionInstanceAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSubscriptionInstanceAlertResponse(),
-            self.do_rpcrequest('ConfigureSubscriptionInstanceAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def configure_subscription_instance_alert_with_options_async(
@@ -328,12 +886,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSubscriptionInstanceAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.delay_alert_phone):
+            query['DelayAlertPhone'] = request.delay_alert_phone
+        if not UtilClient.is_unset(request.delay_alert_status):
+            query['DelayAlertStatus'] = request.delay_alert_status
+        if not UtilClient.is_unset(request.delay_over_seconds):
+            query['DelayOverSeconds'] = request.delay_over_seconds
+        if not UtilClient.is_unset(request.error_alert_phone):
+            query['ErrorAlertPhone'] = request.error_alert_phone
+        if not UtilClient.is_unset(request.error_alert_status):
+            query['ErrorAlertStatus'] = request.error_alert_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSubscriptionInstanceAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSubscriptionInstanceAlertResponse(),
-            await self.do_rpcrequest_async('ConfigureSubscriptionInstanceAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def configure_subscription_instance_alert(
@@ -356,12 +944,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.data_initialization):
+            query['DataInitialization'] = request.data_initialization
+        if not UtilClient.is_unset(request.migration_reserved):
+            query['MigrationReserved'] = request.migration_reserved
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.structure_initialization):
+            query['StructureInitialization'] = request.structure_initialization
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        if not UtilClient.is_unset(request.synchronization_job_name):
+            query['SynchronizationJobName'] = request.synchronization_job_name
+        if not UtilClient.is_unset(request.destination_endpoint):
+            query['DestinationEndpoint'] = request.destination_endpoint
+        if not UtilClient.is_unset(request.partition_key):
+            query['PartitionKey'] = request.partition_key
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
+        body = {}
+        if not UtilClient.is_unset(request.synchronization_objects):
+            body['SynchronizationObjects'] = request.synchronization_objects
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSynchronizationJobResponse(),
-            self.do_rpcrequest('ConfigureSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def configure_synchronization_job_with_options_async(
@@ -370,12 +1000,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.data_initialization):
+            query['DataInitialization'] = request.data_initialization
+        if not UtilClient.is_unset(request.migration_reserved):
+            query['MigrationReserved'] = request.migration_reserved
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.structure_initialization):
+            query['StructureInitialization'] = request.structure_initialization
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        if not UtilClient.is_unset(request.synchronization_job_name):
+            query['SynchronizationJobName'] = request.synchronization_job_name
+        if not UtilClient.is_unset(request.destination_endpoint):
+            query['DestinationEndpoint'] = request.destination_endpoint
+        if not UtilClient.is_unset(request.partition_key):
+            query['PartitionKey'] = request.partition_key
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
+        body = {}
+        if not UtilClient.is_unset(request.synchronization_objects):
+            body['SynchronizationObjects'] = request.synchronization_objects
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSynchronizationJobResponse(),
-            await self.do_rpcrequest_async('ConfigureSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def configure_synchronization_job(
@@ -398,12 +1070,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.delay_alert_phone):
+            query['DelayAlertPhone'] = request.delay_alert_phone
+        if not UtilClient.is_unset(request.delay_alert_status):
+            query['DelayAlertStatus'] = request.delay_alert_status
+        if not UtilClient.is_unset(request.delay_over_seconds):
+            query['DelayOverSeconds'] = request.delay_over_seconds
+        if not UtilClient.is_unset(request.error_alert_phone):
+            query['ErrorAlertPhone'] = request.error_alert_phone
+        if not UtilClient.is_unset(request.error_alert_status):
+            query['ErrorAlertStatus'] = request.error_alert_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSynchronizationJobAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSynchronizationJobAlertResponse(),
-            self.do_rpcrequest('ConfigureSynchronizationJobAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def configure_synchronization_job_alert_with_options_async(
@@ -412,12 +1116,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.delay_alert_phone):
+            query['DelayAlertPhone'] = request.delay_alert_phone
+        if not UtilClient.is_unset(request.delay_alert_status):
+            query['DelayAlertStatus'] = request.delay_alert_status
+        if not UtilClient.is_unset(request.delay_over_seconds):
+            query['DelayOverSeconds'] = request.delay_over_seconds
+        if not UtilClient.is_unset(request.error_alert_phone):
+            query['ErrorAlertPhone'] = request.error_alert_phone
+        if not UtilClient.is_unset(request.error_alert_status):
+            query['ErrorAlertStatus'] = request.error_alert_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSynchronizationJobAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSynchronizationJobAlertResponse(),
-            await self.do_rpcrequest_async('ConfigureSynchronizationJobAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def configure_synchronization_job_alert(
@@ -440,12 +1176,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        if not UtilClient.is_unset(request.synchronization_replicator_compare_enable):
+            query['SynchronizationReplicatorCompareEnable'] = request.synchronization_replicator_compare_enable
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSynchronizationJobReplicatorCompare',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareResponse(),
-            self.do_rpcrequest('ConfigureSynchronizationJobReplicatorCompare', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def configure_synchronization_job_replicator_compare_with_options_async(
@@ -454,12 +1216,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        if not UtilClient.is_unset(request.synchronization_replicator_compare_enable):
+            query['SynchronizationReplicatorCompareEnable'] = request.synchronization_replicator_compare_enable
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigureSynchronizationJobReplicatorCompare',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ConfigureSynchronizationJobReplicatorCompareResponse(),
-            await self.do_rpcrequest_async('ConfigureSynchronizationJobReplicatorCompare', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def configure_synchronization_job_replicator_compare(
@@ -476,18 +1264,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.configure_synchronization_job_replicator_compare_with_options_async(request, runtime)
 
+    def count_job_by_condition_with_options(
+        self,
+        request: dts_20200101_models.CountJobByConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CountJobByConditionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dest_db_type):
+            query['DestDbType'] = request.dest_db_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.src_db_type):
+            query['SrcDbType'] = request.src_db_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CountJobByCondition',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CountJobByConditionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def count_job_by_condition_with_options_async(
+        self,
+        request: dts_20200101_models.CountJobByConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CountJobByConditionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dest_db_type):
+            query['DestDbType'] = request.dest_db_type
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.src_db_type):
+            query['SrcDbType'] = request.src_db_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CountJobByCondition',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CountJobByConditionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def count_job_by_condition(
+        self,
+        request: dts_20200101_models.CountJobByConditionRequest,
+    ) -> dts_20200101_models.CountJobByConditionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.count_job_by_condition_with_options(request, runtime)
+
+    async def count_job_by_condition_async(
+        self,
+        request: dts_20200101_models.CountJobByConditionRequest,
+    ) -> dts_20200101_models.CountJobByConditionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.count_job_by_condition_with_options_async(request, runtime)
+
     def create_consumer_channel_with_options(
         self,
         request: dts_20200101_models.CreateConsumerChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateConsumerChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not UtilClient.is_unset(request.consumer_group_password):
+            query['ConsumerGroupPassword'] = request.consumer_group_password
+        if not UtilClient.is_unset(request.consumer_group_user_name):
+            query['ConsumerGroupUserName'] = request.consumer_group_user_name
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerChannel',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateConsumerChannelResponse(),
-            self.do_rpcrequest('CreateConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_consumer_channel_with_options_async(
@@ -496,12 +1410,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateConsumerChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not UtilClient.is_unset(request.consumer_group_password):
+            query['ConsumerGroupPassword'] = request.consumer_group_password
+        if not UtilClient.is_unset(request.consumer_group_user_name):
+            query['ConsumerGroupUserName'] = request.consumer_group_user_name
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerChannel',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateConsumerChannelResponse(),
-            await self.do_rpcrequest_async('CreateConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_consumer_channel(
@@ -524,12 +1462,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not UtilClient.is_unset(request.consumer_group_password):
+            query['ConsumerGroupPassword'] = request.consumer_group_password
+        if not UtilClient.is_unset(request.consumer_group_user_name):
+            query['ConsumerGroupUserName'] = request.consumer_group_user_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerGroup',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateConsumerGroupResponse(),
-            self.do_rpcrequest('CreateConsumerGroup', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_consumer_group_with_options_async(
@@ -538,12 +1502,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not UtilClient.is_unset(request.consumer_group_password):
+            query['ConsumerGroupPassword'] = request.consumer_group_password
+        if not UtilClient.is_unset(request.consumer_group_user_name):
+            query['ConsumerGroupUserName'] = request.consumer_group_user_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateConsumerGroup',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateConsumerGroupResponse(),
-            await self.do_rpcrequest_async('CreateConsumerGroup', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_consumer_group(
@@ -566,12 +1556,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateDtsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_start):
+            query['AutoStart'] = request.auto_start
+        if not UtilClient.is_unset(request.compute_unit):
+            query['ComputeUnit'] = request.compute_unit
+        if not UtilClient.is_unset(request.database_count):
+            query['DatabaseCount'] = request.database_count
+        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
+            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
+        if not UtilClient.is_unset(request.destination_region):
+            query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.fee_type):
+            query['FeeType'] = request.fee_type
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.quantity):
+            query['Quantity'] = request.quantity
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_region):
+            query['SourceRegion'] = request.source_region
+        if not UtilClient.is_unset(request.sync_architecture):
+            query['SyncArchitecture'] = request.sync_architecture
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDtsInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateDtsInstanceResponse(),
-            self.do_rpcrequest('CreateDtsInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_dts_instance_with_options_async(
@@ -580,12 +1618,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateDtsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_start):
+            query['AutoStart'] = request.auto_start
+        if not UtilClient.is_unset(request.compute_unit):
+            query['ComputeUnit'] = request.compute_unit
+        if not UtilClient.is_unset(request.database_count):
+            query['DatabaseCount'] = request.database_count
+        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
+            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
+        if not UtilClient.is_unset(request.destination_region):
+            query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.fee_type):
+            query['FeeType'] = request.fee_type
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.quantity):
+            query['Quantity'] = request.quantity
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_region):
+            query['SourceRegion'] = request.source_region
+        if not UtilClient.is_unset(request.sync_architecture):
+            query['SyncArchitecture'] = request.sync_architecture
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDtsInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateDtsInstanceResponse(),
-            await self.do_rpcrequest_async('CreateDtsInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dts_instance(
@@ -608,12 +1694,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delay_rule_time):
+            query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.phone):
+            query['Phone'] = request.phone
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJobMonitorRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateJobMonitorRuleResponse(),
-            self.do_rpcrequest('CreateJobMonitorRule', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_job_monitor_rule_with_options_async(
@@ -622,12 +1732,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateJobMonitorRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delay_rule_time):
+            query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.phone):
+            query['Phone'] = request.phone
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJobMonitorRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateJobMonitorRuleResponse(),
-            await self.do_rpcrequest_async('CreateJobMonitorRule', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_job_monitor_rule(
@@ -650,12 +1784,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_class):
+            query['MigrationJobClass'] = request.migration_job_class
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateMigrationJobResponse(),
-            self.do_rpcrequest('CreateMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_migration_job_with_options_async(
@@ -664,12 +1822,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_class):
+            query['MigrationJobClass'] = request.migration_job_class
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateMigrationJobResponse(),
-            await self.do_rpcrequest_async('CreateMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_migration_job(
@@ -692,12 +1874,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateSubscriptionInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSubscriptionInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateSubscriptionInstanceResponse(),
-            self.do_rpcrequest('CreateSubscriptionInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_subscription_instance_with_options_async(
@@ -706,12 +1918,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateSubscriptionInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSubscriptionInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateSubscriptionInstanceResponse(),
-            await self.do_rpcrequest_async('CreateSubscriptionInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_subscription_instance(
@@ -734,12 +1976,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_count):
+            query['DBInstanceCount'] = request.dbinstance_count
+        if not UtilClient.is_unset(request.dest_region):
+            query['DestRegion'] = request.dest_region
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_region):
+            query['SourceRegion'] = request.source_region
+        if not UtilClient.is_unset(request.synchronization_job_class):
+            query['SynchronizationJobClass'] = request.synchronization_job_class
+        if not UtilClient.is_unset(request.topology):
+            query['Topology'] = request.topology
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.network_type):
+            query['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.destination_endpoint):
+            query['DestinationEndpoint'] = request.destination_endpoint
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateSynchronizationJobResponse(),
-            self.do_rpcrequest('CreateSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_synchronization_job_with_options_async(
@@ -748,12 +2032,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.CreateSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_count):
+            query['DBInstanceCount'] = request.dbinstance_count
+        if not UtilClient.is_unset(request.dest_region):
+            query['DestRegion'] = request.dest_region
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_region):
+            query['SourceRegion'] = request.source_region
+        if not UtilClient.is_unset(request.synchronization_job_class):
+            query['SynchronizationJobClass'] = request.synchronization_job_class
+        if not UtilClient.is_unset(request.topology):
+            query['Topology'] = request.topology
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.network_type):
+            query['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.destination_endpoint):
+            query['DestinationEndpoint'] = request.destination_endpoint
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.CreateSynchronizationJobResponse(),
-            await self.do_rpcrequest_async('CreateSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_synchronization_job(
@@ -776,12 +2102,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteConsumerChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerChannel',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteConsumerChannelResponse(),
-            self.do_rpcrequest('DeleteConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_consumer_channel_with_options_async(
@@ -790,12 +2136,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteConsumerChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerChannel',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteConsumerChannelResponse(),
-            await self.do_rpcrequest_async('DeleteConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_consumer_channel(
@@ -818,12 +2184,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupID'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerGroup',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteConsumerGroupResponse(),
-            self.do_rpcrequest('DeleteConsumerGroup', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_consumer_group_with_options_async(
@@ -832,12 +2220,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupID'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerGroup',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteConsumerGroupResponse(),
-            await self.do_rpcrequest_async('DeleteConsumerGroup', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_consumer_group(
@@ -860,12 +2270,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteDtsJobResponse(),
-            self.do_rpcrequest('DeleteDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dts_job_with_options_async(
@@ -874,12 +2304,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteDtsJobResponse(),
-            await self.do_rpcrequest_async('DeleteDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dts_job(
@@ -902,12 +2352,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteMigrationJobResponse(),
-            self.do_rpcrequest('DeleteMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_migration_job_with_options_async(
@@ -916,12 +2386,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteMigrationJobResponse(),
-            await self.do_rpcrequest_async('DeleteMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_migration_job(
@@ -944,12 +2434,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteSubscriptionInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubscriptionInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteSubscriptionInstanceResponse(),
-            self.do_rpcrequest('DeleteSubscriptionInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_subscription_instance_with_options_async(
@@ -958,12 +2468,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteSubscriptionInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubscriptionInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteSubscriptionInstanceResponse(),
-            await self.do_rpcrequest_async('DeleteSubscriptionInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_subscription_instance(
@@ -986,12 +2516,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteSynchronizationJobResponse(),
-            self.do_rpcrequest('DeleteSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_synchronization_job_with_options_async(
@@ -1000,12 +2550,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DeleteSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DeleteSynchronizationJobResponse(),
-            await self.do_rpcrequest_async('DeleteSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_synchronization_job(
@@ -1028,12 +2598,70 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeConnectionStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_endpoint_architecture):
+            query['DestinationEndpointArchitecture'] = request.destination_endpoint_architecture
+        if not UtilClient.is_unset(request.destination_endpoint_database_name):
+            query['DestinationEndpointDatabaseName'] = request.destination_endpoint_database_name
+        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
+            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
+        if not UtilClient.is_unset(request.destination_endpoint_ip):
+            query['DestinationEndpointIP'] = request.destination_endpoint_ip
+        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
+            query['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
+        if not UtilClient.is_unset(request.destination_endpoint_instance_type):
+            query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
+        if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
+            query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.destination_endpoint_password):
+            query['DestinationEndpointPassword'] = request.destination_endpoint_password
+        if not UtilClient.is_unset(request.destination_endpoint_port):
+            query['DestinationEndpointPort'] = request.destination_endpoint_port
+        if not UtilClient.is_unset(request.destination_endpoint_region):
+            query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.destination_endpoint_user_name):
+            query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_architecture):
+            query['SourceEndpointArchitecture'] = request.source_endpoint_architecture
+        if not UtilClient.is_unset(request.source_endpoint_database_name):
+            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_endpoint_ip):
+            query['SourceEndpointIP'] = request.source_endpoint_ip
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_type):
+            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
+        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
+            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            query['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_port):
+            query['SourceEndpointPort'] = request.source_endpoint_port
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            query['SourceEndpointUserName'] = request.source_endpoint_user_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeConnectionStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeConnectionStatusResponse(),
-            self.do_rpcrequest('DescribeConnectionStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_connection_status_with_options_async(
@@ -1042,12 +2670,70 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeConnectionStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_endpoint_architecture):
+            query['DestinationEndpointArchitecture'] = request.destination_endpoint_architecture
+        if not UtilClient.is_unset(request.destination_endpoint_database_name):
+            query['DestinationEndpointDatabaseName'] = request.destination_endpoint_database_name
+        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
+            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
+        if not UtilClient.is_unset(request.destination_endpoint_ip):
+            query['DestinationEndpointIP'] = request.destination_endpoint_ip
+        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
+            query['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
+        if not UtilClient.is_unset(request.destination_endpoint_instance_type):
+            query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
+        if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
+            query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.destination_endpoint_password):
+            query['DestinationEndpointPassword'] = request.destination_endpoint_password
+        if not UtilClient.is_unset(request.destination_endpoint_port):
+            query['DestinationEndpointPort'] = request.destination_endpoint_port
+        if not UtilClient.is_unset(request.destination_endpoint_region):
+            query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.destination_endpoint_user_name):
+            query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_architecture):
+            query['SourceEndpointArchitecture'] = request.source_endpoint_architecture
+        if not UtilClient.is_unset(request.source_endpoint_database_name):
+            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_endpoint_ip):
+            query['SourceEndpointIP'] = request.source_endpoint_ip
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_type):
+            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
+        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
+            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            query['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_port):
+            query['SourceEndpointPort'] = request.source_endpoint_port
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            query['SourceEndpointUserName'] = request.source_endpoint_user_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeConnectionStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeConnectionStatusResponse(),
-            await self.do_rpcrequest_async('DescribeConnectionStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_connection_status(
@@ -1070,12 +2756,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeConsumerChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_channel_id):
+            query['ParentChannelId'] = request.parent_channel_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeConsumerChannel',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeConsumerChannelResponse(),
-            self.do_rpcrequest('DescribeConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_consumer_channel_with_options_async(
@@ -1084,12 +2794,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeConsumerChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_channel_id):
+            query['ParentChannelId'] = request.parent_channel_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeConsumerChannel',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeConsumerChannelResponse(),
-            await self.do_rpcrequest_async('DescribeConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_consumer_channel(
@@ -1112,12 +2846,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeConsumerGroup',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeConsumerGroupResponse(),
-            self.do_rpcrequest('DescribeConsumerGroup', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_consumer_group_with_options_async(
@@ -1126,12 +2884,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeConsumerGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeConsumerGroup',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeConsumerGroupResponse(),
-            await self.do_rpcrequest_async('DescribeConsumerGroup', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_consumer_group(
@@ -1154,12 +2936,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDTSIPResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_endpoint_region):
+            query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDTSIP',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeDTSIPResponse(),
-            self.do_rpcrequest('DescribeDTSIP', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dtsipwith_options_async(
@@ -1168,12 +2968,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDTSIPResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_endpoint_region):
+            query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDTSIP',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeDTSIPResponse(),
-            await self.do_rpcrequest_async('DescribeDTSIP', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dtsip(
@@ -1196,12 +3014,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDtsJobDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceID'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsJobDetail',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeDtsJobDetailResponse(),
-            self.do_rpcrequest('DescribeDtsJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dts_job_detail_with_options_async(
@@ -1210,12 +3048,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDtsJobDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceID'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsJobDetail',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeDtsJobDetailResponse(),
-            await self.do_rpcrequest_async('DescribeDtsJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dts_job_detail(
@@ -1238,12 +3096,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDtsJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.order_direction):
+            query['OrderDirection'] = request.order_direction
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeDtsJobsResponse(),
-            self.do_rpcrequest('DescribeDtsJobs', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dts_jobs_with_options_async(
@@ -1252,12 +3146,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeDtsJobsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.order_direction):
+            query['OrderDirection'] = request.order_direction
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeDtsJobsResponse(),
-            await self.do_rpcrequest_async('DescribeDtsJobs', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dts_jobs(
@@ -1280,12 +3210,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeEndpointSwitchStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEndpointSwitchStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeEndpointSwitchStatusResponse(),
-            self.do_rpcrequest('DescribeEndpointSwitchStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_endpoint_switch_status_with_options_async(
@@ -1294,12 +3246,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeEndpointSwitchStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEndpointSwitchStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeEndpointSwitchStatusResponse(),
-            await self.do_rpcrequest_async('DescribeEndpointSwitchStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_endpoint_switch_status(
@@ -1322,12 +3296,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeInitializationStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInitializationStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeInitializationStatusResponse(),
-            self.do_rpcrequest('DescribeInitializationStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_initialization_status_with_options_async(
@@ -1336,12 +3334,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeInitializationStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInitializationStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeInitializationStatusResponse(),
-            await self.do_rpcrequest_async('DescribeInitializationStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_initialization_status(
@@ -1364,12 +3386,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeJobMonitorRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeJobMonitorRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeJobMonitorRuleResponse(),
-            self.do_rpcrequest('DescribeJobMonitorRule', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_job_monitor_rule_with_options_async(
@@ -1378,12 +3416,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeJobMonitorRuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeJobMonitorRule',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeJobMonitorRuleResponse(),
-            await self.do_rpcrequest_async('DescribeJobMonitorRule', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_job_monitor_rule(
@@ -1406,12 +3460,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeMigrationJobAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMigrationJobAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeMigrationJobAlertResponse(),
-            self.do_rpcrequest('DescribeMigrationJobAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_migration_job_alert_with_options_async(
@@ -1420,12 +3496,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeMigrationJobAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMigrationJobAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeMigrationJobAlertResponse(),
-            await self.do_rpcrequest_async('DescribeMigrationJobAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_migration_job_alert(
@@ -1448,12 +3546,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeMigrationJobDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.migration_mode):
+            query['MigrationMode'] = request.migration_mode
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMigrationJobDetail',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeMigrationJobDetailResponse(),
-            self.do_rpcrequest('DescribeMigrationJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_migration_job_detail_with_options_async(
@@ -1462,12 +3588,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeMigrationJobDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.migration_mode):
+            query['MigrationMode'] = request.migration_mode
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMigrationJobDetail',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeMigrationJobDetailResponse(),
-            await self.do_rpcrequest_async('DescribeMigrationJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_migration_job_detail(
@@ -1484,60 +3638,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_migration_job_detail_with_options_async(request, runtime)
 
-    def describe_migration_jobs_with_options(
-        self,
-        request: dts_20200101_models.DescribeMigrationJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.DescribeMigrationJobsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.DescribeMigrationJobsResponse(),
-            self.do_rpcrequest('DescribeMigrationJobs', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_migration_jobs_with_options_async(
-        self,
-        request: dts_20200101_models.DescribeMigrationJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.DescribeMigrationJobsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.DescribeMigrationJobsResponse(),
-            await self.do_rpcrequest_async('DescribeMigrationJobs', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_migration_jobs(
-        self,
-        request: dts_20200101_models.DescribeMigrationJobsRequest,
-    ) -> dts_20200101_models.DescribeMigrationJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_migration_jobs_with_options(request, runtime)
-
-    async def describe_migration_jobs_async(
-        self,
-        request: dts_20200101_models.DescribeMigrationJobsRequest,
-    ) -> dts_20200101_models.DescribeMigrationJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_migration_jobs_with_options_async(request, runtime)
-
     def describe_migration_job_status_with_options(
         self,
         request: dts_20200101_models.DescribeMigrationJobStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeMigrationJobStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMigrationJobStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeMigrationJobStatusResponse(),
-            self.do_rpcrequest('DescribeMigrationJobStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_migration_job_status_with_options_async(
@@ -1546,12 +3680,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeMigrationJobStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMigrationJobStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeMigrationJobStatusResponse(),
-            await self.do_rpcrequest_async('DescribeMigrationJobStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_migration_job_status(
@@ -1568,18 +3724,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_migration_job_status_with_options_async(request, runtime)
 
+    def describe_migration_jobs_with_options(
+        self,
+        request: dts_20200101_models.DescribeMigrationJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeMigrationJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.migration_job_name):
+            query['MigrationJobName'] = request.migration_job_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMigrationJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeMigrationJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_migration_jobs_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeMigrationJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeMigrationJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.migration_job_name):
+            query['MigrationJobName'] = request.migration_job_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMigrationJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeMigrationJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_migration_jobs(
+        self,
+        request: dts_20200101_models.DescribeMigrationJobsRequest,
+    ) -> dts_20200101_models.DescribeMigrationJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_migration_jobs_with_options(request, runtime)
+
+    async def describe_migration_jobs_async(
+        self,
+        request: dts_20200101_models.DescribeMigrationJobsRequest,
+    ) -> dts_20200101_models.DescribeMigrationJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_migration_jobs_with_options_async(request, runtime)
+
     def describe_pre_check_status_with_options(
         self,
         request: dts_20200101_models.DescribePreCheckStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribePreCheckStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_code):
+            query['JobCode'] = request.job_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.struct_phase):
+            query['StructPhase'] = request.struct_phase
+        if not UtilClient.is_unset(request.struct_type):
+            query['StructType'] = request.struct_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePreCheckStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribePreCheckStatusResponse(),
-            self.do_rpcrequest('DescribePreCheckStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_pre_check_status_with_options_async(
@@ -1588,12 +3866,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribePreCheckStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_code):
+            query['JobCode'] = request.job_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.struct_phase):
+            query['StructPhase'] = request.struct_phase
+        if not UtilClient.is_unset(request.struct_type):
+            query['StructType'] = request.struct_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePreCheckStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribePreCheckStatusResponse(),
-            await self.do_rpcrequest_async('DescribePreCheckStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_pre_check_status(
@@ -1616,12 +3922,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSubscriptionInstanceAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubscriptionInstanceAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSubscriptionInstanceAlertResponse(),
-            self.do_rpcrequest('DescribeSubscriptionInstanceAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_subscription_instance_alert_with_options_async(
@@ -1630,12 +3958,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSubscriptionInstanceAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubscriptionInstanceAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSubscriptionInstanceAlertResponse(),
-            await self.do_rpcrequest_async('DescribeSubscriptionInstanceAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_subscription_instance_alert(
@@ -1652,60 +4002,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_subscription_instance_alert_with_options_async(request, runtime)
 
-    def describe_subscription_instances_with_options(
-        self,
-        request: dts_20200101_models.DescribeSubscriptionInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.DescribeSubscriptionInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.DescribeSubscriptionInstancesResponse(),
-            self.do_rpcrequest('DescribeSubscriptionInstances', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_subscription_instances_with_options_async(
-        self,
-        request: dts_20200101_models.DescribeSubscriptionInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.DescribeSubscriptionInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.DescribeSubscriptionInstancesResponse(),
-            await self.do_rpcrequest_async('DescribeSubscriptionInstances', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_subscription_instances(
-        self,
-        request: dts_20200101_models.DescribeSubscriptionInstancesRequest,
-    ) -> dts_20200101_models.DescribeSubscriptionInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_subscription_instances_with_options(request, runtime)
-
-    async def describe_subscription_instances_async(
-        self,
-        request: dts_20200101_models.DescribeSubscriptionInstancesRequest,
-    ) -> dts_20200101_models.DescribeSubscriptionInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_subscription_instances_with_options_async(request, runtime)
-
     def describe_subscription_instance_status_with_options(
         self,
         request: dts_20200101_models.DescribeSubscriptionInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSubscriptionInstanceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubscriptionInstanceStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSubscriptionInstanceStatusResponse(),
-            self.do_rpcrequest('DescribeSubscriptionInstanceStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_subscription_instance_status_with_options_async(
@@ -1714,12 +4042,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSubscriptionInstanceStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubscriptionInstanceStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSubscriptionInstanceStatusResponse(),
-            await self.do_rpcrequest_async('DescribeSubscriptionInstanceStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_subscription_instance_status(
@@ -1736,6 +4084,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_subscription_instance_status_with_options_async(request, runtime)
 
+    def describe_subscription_instances_with_options(
+        self,
+        request: dts_20200101_models.DescribeSubscriptionInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeSubscriptionInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_name):
+            query['SubscriptionInstanceName'] = request.subscription_instance_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubscriptionInstances',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeSubscriptionInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_subscription_instances_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeSubscriptionInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeSubscriptionInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_name):
+            query['SubscriptionInstanceName'] = request.subscription_instance_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubscriptionInstances',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeSubscriptionInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_subscription_instances(
+        self,
+        request: dts_20200101_models.DescribeSubscriptionInstancesRequest,
+    ) -> dts_20200101_models.DescribeSubscriptionInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_subscription_instances_with_options(request, runtime)
+
+    async def describe_subscription_instances_async(
+        self,
+        request: dts_20200101_models.DescribeSubscriptionInstancesRequest,
+    ) -> dts_20200101_models.DescribeSubscriptionInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_subscription_instances_with_options_async(request, runtime)
+
     def describe_subscription_meta_with_options(
         self,
         tmp_req: dts_20200101_models.DescribeSubscriptionMetaRequest,
@@ -1748,12 +4194,34 @@ class Client(OpenApiClient):
             request.sub_migration_job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_migration_job_ids, 'SubMigrationJobIds', 'json')
         if not UtilClient.is_unset(tmp_req.topics):
             request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.sub_migration_job_ids_shrink):
+            query['SubMigrationJobIds'] = request.sub_migration_job_ids_shrink
+        if not UtilClient.is_unset(request.topics_shrink):
+            query['Topics'] = request.topics_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubscriptionMeta',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSubscriptionMetaResponse(),
-            self.do_rpcrequest('DescribeSubscriptionMeta', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_subscription_meta_with_options_async(
@@ -1768,12 +4236,34 @@ class Client(OpenApiClient):
             request.sub_migration_job_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_migration_job_ids, 'SubMigrationJobIds', 'json')
         if not UtilClient.is_unset(tmp_req.topics):
             request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sid):
+            query['Sid'] = request.sid
+        if not UtilClient.is_unset(request.sub_migration_job_ids_shrink):
+            query['SubMigrationJobIds'] = request.sub_migration_job_ids_shrink
+        if not UtilClient.is_unset(request.topics_shrink):
+            query['Topics'] = request.topics_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSubscriptionMeta',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSubscriptionMetaResponse(),
-            await self.do_rpcrequest_async('DescribeSubscriptionMeta', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_subscription_meta(
@@ -1796,12 +4286,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationJobAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationJobAlertResponse(),
-            self.do_rpcrequest('DescribeSynchronizationJobAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_synchronization_job_alert_with_options_async(
@@ -1810,12 +4324,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationJobAlertResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobAlert',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationJobAlertResponse(),
-            await self.do_rpcrequest_async('DescribeSynchronizationJobAlert', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_synchronization_job_alert(
@@ -1838,12 +4376,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationJobReplicatorCompareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobReplicatorCompare',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationJobReplicatorCompareResponse(),
-            self.do_rpcrequest('DescribeSynchronizationJobReplicatorCompare', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_synchronization_job_replicator_compare_with_options_async(
@@ -1852,12 +4414,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationJobReplicatorCompareResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobReplicatorCompare',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationJobReplicatorCompareResponse(),
-            await self.do_rpcrequest_async('DescribeSynchronizationJobReplicatorCompare', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_synchronization_job_replicator_compare(
@@ -1874,60 +4460,42 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_synchronization_job_replicator_compare_with_options_async(request, runtime)
 
-    def describe_synchronization_jobs_with_options(
-        self,
-        request: dts_20200101_models.DescribeSynchronizationJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.DescribeSynchronizationJobsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.DescribeSynchronizationJobsResponse(),
-            self.do_rpcrequest('DescribeSynchronizationJobs', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_synchronization_jobs_with_options_async(
-        self,
-        request: dts_20200101_models.DescribeSynchronizationJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.DescribeSynchronizationJobsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.DescribeSynchronizationJobsResponse(),
-            await self.do_rpcrequest_async('DescribeSynchronizationJobs', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_synchronization_jobs(
-        self,
-        request: dts_20200101_models.DescribeSynchronizationJobsRequest,
-    ) -> dts_20200101_models.DescribeSynchronizationJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_synchronization_jobs_with_options(request, runtime)
-
-    async def describe_synchronization_jobs_async(
-        self,
-        request: dts_20200101_models.DescribeSynchronizationJobsRequest,
-    ) -> dts_20200101_models.DescribeSynchronizationJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_synchronization_jobs_with_options_async(request, runtime)
-
     def describe_synchronization_job_status_with_options(
         self,
         request: dts_20200101_models.DescribeSynchronizationJobStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationJobStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationJobStatusResponse(),
-            self.do_rpcrequest('DescribeSynchronizationJobStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_synchronization_job_status_with_options_async(
@@ -1936,12 +4504,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationJobStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationJobStatusResponse(),
-            await self.do_rpcrequest_async('DescribeSynchronizationJobStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_synchronization_job_status(
@@ -1964,12 +4556,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationJobStatusListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_job_id_list_json_str):
+            query['SynchronizationJobIdListJsonStr'] = request.synchronization_job_id_list_json_str
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobStatusList',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationJobStatusListResponse(),
-            self.do_rpcrequest('DescribeSynchronizationJobStatusList', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_synchronization_job_status_list_with_options_async(
@@ -1978,12 +4592,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationJobStatusListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_job_id_list_json_str):
+            query['SynchronizationJobIdListJsonStr'] = request.synchronization_job_id_list_json_str
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobStatusList',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationJobStatusListResponse(),
-            await self.do_rpcrequest_async('DescribeSynchronizationJobStatusList', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_synchronization_job_status_list(
@@ -2000,18 +4636,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_synchronization_job_status_list_with_options_async(request, runtime)
 
+    def describe_synchronization_jobs_with_options(
+        self,
+        request: dts_20200101_models.DescribeSynchronizationJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeSynchronizationJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_job_name):
+            query['SynchronizationJobName'] = request.synchronization_job_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeSynchronizationJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_synchronization_jobs_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeSynchronizationJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeSynchronizationJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_job_name):
+            query['SynchronizationJobName'] = request.synchronization_job_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeSynchronizationJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_synchronization_jobs(
+        self,
+        request: dts_20200101_models.DescribeSynchronizationJobsRequest,
+    ) -> dts_20200101_models.DescribeSynchronizationJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_synchronization_jobs_with_options(request, runtime)
+
+    async def describe_synchronization_jobs_async(
+        self,
+        request: dts_20200101_models.DescribeSynchronizationJobsRequest,
+    ) -> dts_20200101_models.DescribeSynchronizationJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_synchronization_jobs_with_options_async(request, runtime)
+
     def describe_synchronization_object_modify_status_with_options(
         self,
         request: dts_20200101_models.DescribeSynchronizationObjectModifyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationObjectModifyStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationObjectModifyStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationObjectModifyStatusResponse(),
-            self.do_rpcrequest('DescribeSynchronizationObjectModifyStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_synchronization_object_modify_status_with_options_async(
@@ -2020,12 +4776,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.DescribeSynchronizationObjectModifyStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSynchronizationObjectModifyStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.DescribeSynchronizationObjectModifyStatusResponse(),
-            await self.do_rpcrequest_async('DescribeSynchronizationObjectModifyStatus', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_synchronization_object_modify_status(
@@ -2042,60 +4820,42 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_synchronization_object_modify_status_with_options_async(request, runtime)
 
-    def ignore_job_detail_with_options(
-        self,
-        request: dts_20200101_models.IgnoreJobDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.IgnoreJobDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.IgnoreJobDetailResponse(),
-            self.do_rpcrequest('IgnoreJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def ignore_job_detail_with_options_async(
-        self,
-        request: dts_20200101_models.IgnoreJobDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.IgnoreJobDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.IgnoreJobDetailResponse(),
-            await self.do_rpcrequest_async('IgnoreJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def ignore_job_detail(
-        self,
-        request: dts_20200101_models.IgnoreJobDetailRequest,
-    ) -> dts_20200101_models.IgnoreJobDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.ignore_job_detail_with_options(request, runtime)
-
-    async def ignore_job_detail_async(
-        self,
-        request: dts_20200101_models.IgnoreJobDetailRequest,
-    ) -> dts_20200101_models.IgnoreJobDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.ignore_job_detail_with_options_async(request, runtime)
-
     def init_dts_rds_instance_with_options(
         self,
         request: dts_20200101_models.InitDtsRdsInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.endpoint_cen_id):
+            query['EndpointCenId'] = request.endpoint_cen_id
+        if not UtilClient.is_unset(request.endpoint_instance_id):
+            query['EndpointInstanceId'] = request.endpoint_instance_id
+        if not UtilClient.is_unset(request.endpoint_instance_type):
+            query['EndpointInstanceType'] = request.endpoint_instance_type
+        if not UtilClient.is_unset(request.endpoint_region):
+            query['EndpointRegion'] = request.endpoint_region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InitDtsRdsInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.InitDtsRdsInstanceResponse(),
-            self.do_rpcrequest('InitDtsRdsInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def init_dts_rds_instance_with_options_async(
@@ -2104,12 +4864,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.InitDtsRdsInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.endpoint_cen_id):
+            query['EndpointCenId'] = request.endpoint_cen_id
+        if not UtilClient.is_unset(request.endpoint_instance_id):
+            query['EndpointInstanceId'] = request.endpoint_instance_id
+        if not UtilClient.is_unset(request.endpoint_instance_type):
+            query['EndpointInstanceType'] = request.endpoint_instance_type
+        if not UtilClient.is_unset(request.endpoint_region):
+            query['EndpointRegion'] = request.endpoint_region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InitDtsRdsInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.InitDtsRdsInstanceResponse(),
-            await self.do_rpcrequest_async('InitDtsRdsInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def init_dts_rds_instance(
@@ -2132,12 +4916,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ListTagResourcesResponse(),
-            self.do_rpcrequest('ListTagResources', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -2146,12 +4952,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ListTagResourcesResponse(),
-            await self.do_rpcrequest_async('ListTagResources', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -2174,12 +5002,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumerChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not UtilClient.is_unset(request.consumer_group_password):
+            query['ConsumerGroupPassword'] = request.consumer_group_password
+        if not UtilClient.is_unset(request.consumer_group_user_name):
+            query['ConsumerGroupUserName'] = request.consumer_group_user_name
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyConsumerChannel',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyConsumerChannelResponse(),
-            self.do_rpcrequest('ModifyConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_consumer_channel_with_options_async(
@@ -2188,12 +5042,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumerChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not UtilClient.is_unset(request.consumer_group_password):
+            query['ConsumerGroupPassword'] = request.consumer_group_password
+        if not UtilClient.is_unset(request.consumer_group_user_name):
+            query['ConsumerGroupUserName'] = request.consumer_group_user_name
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyConsumerChannel',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyConsumerChannelResponse(),
-            await self.do_rpcrequest_async('ModifyConsumerChannel', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_consumer_channel(
@@ -2216,12 +5096,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumerGroupPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupID'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not UtilClient.is_unset(request.consumer_group_password):
+            query['ConsumerGroupPassword'] = request.consumer_group_password
+        if not UtilClient.is_unset(request.consumer_group_user_name):
+            query['ConsumerGroupUserName'] = request.consumer_group_user_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
+        if not UtilClient.is_unset(request.consumer_group_new_password):
+            query['consumerGroupNewPassword'] = request.consumer_group_new_password
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyConsumerGroupPassword',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyConsumerGroupPasswordResponse(),
-            self.do_rpcrequest('ModifyConsumerGroupPassword', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_consumer_group_password_with_options_async(
@@ -2230,12 +5140,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumerGroupPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['ConsumerGroupID'] = request.consumer_group_id
+        if not UtilClient.is_unset(request.consumer_group_name):
+            query['ConsumerGroupName'] = request.consumer_group_name
+        if not UtilClient.is_unset(request.consumer_group_password):
+            query['ConsumerGroupPassword'] = request.consumer_group_password
+        if not UtilClient.is_unset(request.consumer_group_user_name):
+            query['ConsumerGroupUserName'] = request.consumer_group_user_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
+        if not UtilClient.is_unset(request.consumer_group_new_password):
+            query['consumerGroupNewPassword'] = request.consumer_group_new_password
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyConsumerGroupPassword',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyConsumerGroupPasswordResponse(),
-            await self.do_rpcrequest_async('ModifyConsumerGroupPassword', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_consumer_group_password(
@@ -2258,12 +5198,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumptionTimestampResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.consumption_timestamp):
+            query['ConsumptionTimestamp'] = request.consumption_timestamp
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyConsumptionTimestamp',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyConsumptionTimestampResponse(),
-            self.do_rpcrequest('ModifyConsumptionTimestamp', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_consumption_timestamp_with_options_async(
@@ -2272,12 +5234,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyConsumptionTimestampResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.consumption_timestamp):
+            query['ConsumptionTimestamp'] = request.consumption_timestamp
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyConsumptionTimestamp',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyConsumptionTimestampResponse(),
-            await self.do_rpcrequest_async('ModifyConsumptionTimestamp', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_consumption_timestamp(
@@ -2304,12 +5288,42 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.db_list):
             request.db_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.db_list, 'DbList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        body = {}
+        if not UtilClient.is_unset(request.db_list_shrink):
+            body['DbList'] = request.db_list_shrink
+        if not UtilClient.is_unset(request.etl_operator_column_reference):
+            body['EtlOperatorColumnReference'] = request.etl_operator_column_reference
+        if not UtilClient.is_unset(request.modify_type_enum):
+            body['ModifyTypeEnum'] = request.modify_type_enum
+        if not UtilClient.is_unset(request.reserved):
+            body['Reserved'] = request.reserved
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyDtsJobResponse(),
-            self.do_rpcrequest('ModifyDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dts_job_with_options_async(
@@ -2322,12 +5336,42 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.db_list):
             request.db_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.db_list, 'DbList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        body = {}
+        if not UtilClient.is_unset(request.db_list_shrink):
+            body['DbList'] = request.db_list_shrink
+        if not UtilClient.is_unset(request.etl_operator_column_reference):
+            body['EtlOperatorColumnReference'] = request.etl_operator_column_reference
+        if not UtilClient.is_unset(request.modify_type_enum):
+            body['ModifyTypeEnum'] = request.modify_type_enum
+        if not UtilClient.is_unset(request.reserved):
+            body['Reserved'] = request.reserved
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyDtsJobResponse(),
-            await self.do_rpcrequest_async('ModifyDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dts_job(
@@ -2350,12 +5394,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.dts_job_name):
+            query['DtsJobName'] = request.dts_job_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobName',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyDtsJobNameResponse(),
-            self.do_rpcrequest('ModifyDtsJobName', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dts_job_name_with_options_async(
@@ -2364,12 +5426,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.dts_job_name):
+            query['DtsJobName'] = request.dts_job_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobName',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyDtsJobNameResponse(),
-            await self.do_rpcrequest_async('ModifyDtsJobName', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dts_job_name(
@@ -2392,12 +5472,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobPassword',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyDtsJobPasswordResponse(),
-            self.do_rpcrequest('ModifyDtsJobPassword', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dts_job_password_with_options_async(
@@ -2406,12 +5508,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobPassword',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifyDtsJobPasswordResponse(),
-            await self.do_rpcrequest_async('ModifyDtsJobPassword', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dts_job_password(
@@ -2434,12 +5558,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySubscriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_list):
+            query['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_data_type_ddl):
+            query['SubscriptionDataTypeDDL'] = request.subscription_data_type_ddl
+        if not UtilClient.is_unset(request.subscription_data_type_dml):
+            query['SubscriptionDataTypeDML'] = request.subscription_data_type_dml
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySubscription',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifySubscriptionResponse(),
-            self.do_rpcrequest('ModifySubscription', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_subscription_with_options_async(
@@ -2448,12 +5596,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySubscriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_list):
+            query['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_data_type_ddl):
+            query['SubscriptionDataTypeDDL'] = request.subscription_data_type_ddl
+        if not UtilClient.is_unset(request.subscription_data_type_dml):
+            query['SubscriptionDataTypeDML'] = request.subscription_data_type_dml
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySubscription',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifySubscriptionResponse(),
-            await self.do_rpcrequest_async('ModifySubscription', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_subscription(
@@ -2476,12 +5648,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySubscriptionObjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
+        if not UtilClient.is_unset(request.subscription_object):
+            query['SubscriptionObject'] = request.subscription_object
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySubscriptionObject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifySubscriptionObjectResponse(),
-            self.do_rpcrequest('ModifySubscriptionObject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_subscription_object_with_options_async(
@@ -2490,12 +5684,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySubscriptionObjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
+        if not UtilClient.is_unset(request.subscription_object):
+            query['SubscriptionObject'] = request.subscription_object
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySubscriptionObject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifySubscriptionObjectResponse(),
-            await self.do_rpcrequest_async('ModifySubscriptionObject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_subscription_object(
@@ -2518,12 +5734,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySynchronizationObjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        if not UtilClient.is_unset(request.synchronization_objects):
+            query['SynchronizationObjects'] = request.synchronization_objects
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySynchronizationObject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifySynchronizationObjectResponse(),
-            self.do_rpcrequest('ModifySynchronizationObject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_synchronization_object_with_options_async(
@@ -2532,12 +5772,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifySynchronizationObjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        if not UtilClient.is_unset(request.synchronization_objects):
+            query['SynchronizationObjects'] = request.synchronization_objects
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySynchronizationObject',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ModifySynchronizationObjectResponse(),
-            await self.do_rpcrequest_async('ModifySynchronizationObject', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_synchronization_object(
@@ -2560,12 +5824,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buy_count):
+            query['BuyCount'] = request.buy_count
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.RenewInstanceResponse(),
-            self.do_rpcrequest('RenewInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def renew_instance_with_options_async(
@@ -2574,12 +5860,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buy_count):
+            query['BuyCount'] = request.buy_count
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.RenewInstanceResponse(),
-            await self.do_rpcrequest_async('RenewInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def renew_instance(
@@ -2602,12 +5910,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ResetDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ResetDtsJobResponse(),
-            self.do_rpcrequest('ResetDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def reset_dts_job_with_options_async(
@@ -2616,12 +5944,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ResetDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ResetDtsJobResponse(),
-            await self.do_rpcrequest_async('ResetDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_dts_job(
@@ -2644,12 +5992,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ResetSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ResetSynchronizationJobResponse(),
-            self.do_rpcrequest('ResetSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def reset_synchronization_job_with_options_async(
@@ -2658,12 +6028,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ResetSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ResetSynchronizationJobResponse(),
-            await self.do_rpcrequest_async('ResetSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_synchronization_job(
@@ -2686,12 +6078,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ShieldPrecheckResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.precheck_items):
+            query['PrecheckItems'] = request.precheck_items
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ShieldPrecheck',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ShieldPrecheckResponse(),
-            self.do_rpcrequest('ShieldPrecheck', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def shield_precheck_with_options_async(
@@ -2700,12 +6110,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ShieldPrecheckResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.precheck_items):
+            query['PrecheckItems'] = request.precheck_items
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ShieldPrecheck',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.ShieldPrecheckResponse(),
-            await self.do_rpcrequest_async('ShieldPrecheck', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def shield_precheck(
@@ -2728,12 +6156,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SkipPreCheckResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.skip):
+            query['Skip'] = request.skip
+        if not UtilClient.is_unset(request.skip_pre_check_items):
+            query['SkipPreCheckItems'] = request.skip_pre_check_items
+        if not UtilClient.is_unset(request.skip_pre_check_names):
+            query['SkipPreCheckNames'] = request.skip_pre_check_names
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SkipPreCheck',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SkipPreCheckResponse(),
-            self.do_rpcrequest('SkipPreCheck', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def skip_pre_check_with_options_async(
@@ -2742,12 +6194,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SkipPreCheckResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.skip):
+            query['Skip'] = request.skip
+        if not UtilClient.is_unset(request.skip_pre_check_items):
+            query['SkipPreCheckItems'] = request.skip_pre_check_items
+        if not UtilClient.is_unset(request.skip_pre_check_names):
+            query['SkipPreCheckNames'] = request.skip_pre_check_names
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SkipPreCheck',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SkipPreCheckResponse(),
-            await self.do_rpcrequest_async('SkipPreCheck', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def skip_pre_check(
@@ -2770,12 +6246,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StartDtsJobResponse(),
-            self.do_rpcrequest('StartDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_dts_job_with_options_async(
@@ -2784,12 +6280,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StartDtsJobResponse(),
-            await self.do_rpcrequest_async('StartDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_dts_job(
@@ -2812,12 +6328,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StartMigrationJobResponse(),
-            self.do_rpcrequest('StartMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_migration_job_with_options_async(
@@ -2826,12 +6362,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StartMigrationJobResponse(),
-            await self.do_rpcrequest_async('StartMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_migration_job(
@@ -2854,12 +6410,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartSubscriptionInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartSubscriptionInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StartSubscriptionInstanceResponse(),
-            self.do_rpcrequest('StartSubscriptionInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_subscription_instance_with_options_async(
@@ -2868,12 +6444,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartSubscriptionInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.subscription_instance_id):
+            query['SubscriptionInstanceId'] = request.subscription_instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartSubscriptionInstance',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StartSubscriptionInstanceResponse(),
-            await self.do_rpcrequest_async('StartSubscriptionInstance', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_subscription_instance(
@@ -2896,12 +6492,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StartSynchronizationJobResponse(),
-            self.do_rpcrequest('StartSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def start_synchronization_job_with_options_async(
@@ -2910,12 +6528,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StartSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StartSynchronizationJobResponse(),
-            await self.do_rpcrequest_async('StartSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def start_synchronization_job(
@@ -2938,12 +6578,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StopDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StopDtsJobResponse(),
-            self.do_rpcrequest('StopDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_dts_job_with_options_async(
@@ -2952,12 +6612,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StopDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StopDtsJobResponse(),
-            await self.do_rpcrequest_async('StopDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_dts_job(
@@ -2980,12 +6660,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StopMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StopMigrationJobResponse(),
-            self.do_rpcrequest('StopMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def stop_migration_job_with_options_async(
@@ -2994,12 +6696,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.StopMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.StopMigrationJobResponse(),
-            await self.do_rpcrequest_async('StopMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def stop_migration_job(
@@ -3016,60 +6740,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_migration_job_with_options_async(request, runtime)
 
-    def summary_job_detail_with_options(
-        self,
-        request: dts_20200101_models.SummaryJobDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.SummaryJobDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.SummaryJobDetailResponse(),
-            self.do_rpcrequest('SummaryJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def summary_job_detail_with_options_async(
-        self,
-        request: dts_20200101_models.SummaryJobDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dts_20200101_models.SummaryJobDetailResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            dts_20200101_models.SummaryJobDetailResponse(),
-            await self.do_rpcrequest_async('SummaryJobDetail', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def summary_job_detail(
-        self,
-        request: dts_20200101_models.SummaryJobDetailRequest,
-    ) -> dts_20200101_models.SummaryJobDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.summary_job_detail_with_options(request, runtime)
-
-    async def summary_job_detail_async(
-        self,
-        request: dts_20200101_models.SummaryJobDetailRequest,
-    ) -> dts_20200101_models.SummaryJobDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.summary_job_detail_with_options_async(request, runtime)
-
     def suspend_dts_job_with_options(
         self,
         request: dts_20200101_models.SuspendDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SuspendDtsJobResponse(),
-            self.do_rpcrequest('SuspendDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def suspend_dts_job_with_options_async(
@@ -3078,12 +6780,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendDtsJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SuspendDtsJobResponse(),
-            await self.do_rpcrequest_async('SuspendDtsJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def suspend_dts_job(
@@ -3106,12 +6828,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SuspendMigrationJobResponse(),
-            self.do_rpcrequest('SuspendMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def suspend_migration_job_with_options_async(
@@ -3120,12 +6864,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendMigrationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.migration_job_id):
+            query['MigrationJobId'] = request.migration_job_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendMigrationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SuspendMigrationJobResponse(),
-            await self.do_rpcrequest_async('SuspendMigrationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def suspend_migration_job(
@@ -3148,12 +6914,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SuspendSynchronizationJobResponse(),
-            self.do_rpcrequest('SuspendSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def suspend_synchronization_job_with_options_async(
@@ -3162,12 +6950,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SuspendSynchronizationJobResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendSynchronizationJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SuspendSynchronizationJobResponse(),
-            await self.do_rpcrequest_async('SuspendSynchronizationJob', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def suspend_synchronization_job(
@@ -3190,12 +7000,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SwitchSynchronizationEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        if not UtilClient.is_unset(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchSynchronizationEndpoint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SwitchSynchronizationEndpointResponse(),
-            self.do_rpcrequest('SwitchSynchronizationEndpoint', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def switch_synchronization_endpoint_with_options_async(
@@ -3204,12 +7040,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.SwitchSynchronizationEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        if not UtilClient.is_unset(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.source_endpoint):
+            query['SourceEndpoint'] = request.source_endpoint
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchSynchronizationEndpoint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.SwitchSynchronizationEndpointResponse(),
-            await self.do_rpcrequest_async('SwitchSynchronizationEndpoint', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def switch_synchronization_endpoint(
@@ -3232,12 +7094,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.TagResourcesResponse(),
-            self.do_rpcrequest('TagResources', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -3246,12 +7128,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.TagResourcesResponse(),
-            await self.do_rpcrequest_async('TagResources', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -3274,12 +7176,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TransferInstanceClassResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferInstanceClass',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.TransferInstanceClassResponse(),
-            self.do_rpcrequest('TransferInstanceClass', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def transfer_instance_class_with_options_async(
@@ -3288,12 +7210,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TransferInstanceClassResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferInstanceClass',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.TransferInstanceClassResponse(),
-            await self.do_rpcrequest_async('TransferInstanceClass', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def transfer_instance_class(
@@ -3316,12 +7258,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TransferPayTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buy_count):
+            query['BuyCount'] = request.buy_count
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferPayType',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.TransferPayTypeResponse(),
-            self.do_rpcrequest('TransferPayType', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def transfer_pay_type_with_options_async(
@@ -3330,12 +7294,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.TransferPayTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buy_count):
+            query['BuyCount'] = request.buy_count
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferPayType',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.TransferPayTypeResponse(),
-            await self.do_rpcrequest_async('TransferPayType', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def transfer_pay_type(
@@ -3358,12 +7344,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.UntagResourcesResponse(),
-            self.do_rpcrequest('UntagResources', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -3372,12 +7380,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.UntagResourcesResponse(),
-            await self.do_rpcrequest_async('UntagResources', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -3400,12 +7430,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.UpgradeTwoWayResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeTwoWay',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.UpgradeTwoWayResponse(),
-            self.do_rpcrequest('UpgradeTwoWay', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_two_way_with_options_async(
@@ -3414,12 +7462,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.UpgradeTwoWayResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeTwoWay',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.UpgradeTwoWayResponse(),
-            await self.do_rpcrequest_async('UpgradeTwoWay', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_two_way(
@@ -3442,12 +7508,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.WhiteIpListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_region):
+            query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WhiteIpList',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.WhiteIpListResponse(),
-            self.do_rpcrequest('WhiteIpList', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def white_ip_list_with_options_async(
@@ -3456,12 +7542,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.WhiteIpListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_region):
+            query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WhiteIpList',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             dts_20200101_models.WhiteIpListResponse(),
-            await self.do_rpcrequest_async('WhiteIpList', '2020-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def white_ip_list(
