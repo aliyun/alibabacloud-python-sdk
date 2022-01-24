@@ -58,8 +58,17 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.images):
             request.images_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.images, 'Images', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.db_id):
+            body['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.extra_data):
+            body['ExtraData'] = request.extra_data
+        if not UtilClient.is_unset(request.images_shrink):
+            body['Images'] = request.images_shrink
+        if not UtilClient.is_unset(request.person_id):
+            body['PersonId'] = request.person_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddBodyTrace',
@@ -87,8 +96,17 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.images):
             request.images_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.images, 'Images', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.db_id):
+            body['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.extra_data):
+            body['ExtraData'] = request.extra_data
+        if not UtilClient.is_unset(request.images_shrink):
+            body['Images'] = request.images_shrink
+        if not UtilClient.is_unset(request.person_id):
+            body['PersonId'] = request.person_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddBodyTrace',
@@ -126,8 +144,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.AddFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.extra_data):
+            body['ExtraData'] = request.extra_data
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
+        if not UtilClient.is_unset(request.similarity_score_threshold_between_entity):
+            body['SimilarityScoreThresholdBetweenEntity'] = request.similarity_score_threshold_between_entity
+        if not UtilClient.is_unset(request.similarity_score_threshold_in_entity):
+            body['SimilarityScoreThresholdInEntity'] = request.similarity_score_threshold_in_entity
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddFace',
@@ -151,8 +184,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.AddFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.extra_data):
+            body['ExtraData'] = request.extra_data
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
+        if not UtilClient.is_unset(request.similarity_score_threshold_between_entity):
+            body['SimilarityScoreThresholdBetweenEntity'] = request.similarity_score_threshold_between_entity
+        if not UtilClient.is_unset(request.similarity_score_threshold_in_entity):
+            body['SimilarityScoreThresholdInEntity'] = request.similarity_score_threshold_in_entity
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddFace',
@@ -332,8 +380,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.AddFaceEntityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddFaceEntity',
@@ -357,8 +412,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.AddFaceEntityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddFaceEntity',
@@ -396,8 +458,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.AddFaceImageTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddFaceImageTemplate',
@@ -421,8 +488,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.AddFaceImageTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddFaceImageTemplate',
@@ -606,8 +678,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.faces):
             request.faces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.faces, 'Faces', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.faces_shrink):
+            body['Faces'] = request.faces_shrink
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
+        if not UtilClient.is_unset(request.similarity_score_threshold_between_entity):
+            body['SimilarityScoreThresholdBetweenEntity'] = request.similarity_score_threshold_between_entity
+        if not UtilClient.is_unset(request.similarity_score_threshold_in_entity):
+            body['SimilarityScoreThresholdInEntity'] = request.similarity_score_threshold_in_entity
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchAddFaces',
@@ -635,8 +720,21 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.faces):
             request.faces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.faces, 'Faces', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.faces_shrink):
+            body['Faces'] = request.faces_shrink
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
+        if not UtilClient.is_unset(request.similarity_score_threshold_between_entity):
+            body['SimilarityScoreThresholdBetweenEntity'] = request.similarity_score_threshold_between_entity
+        if not UtilClient.is_unset(request.similarity_score_threshold_in_entity):
+            body['SimilarityScoreThresholdInEntity'] = request.similarity_score_threshold_in_entity
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BatchAddFaces',
@@ -684,8 +782,33 @@ class Client(OpenApiClient):
             request.face_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.face_list, 'FaceList', 'json')
         if not UtilClient.is_unset(tmp_req.pose_list):
             request.pose_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pose_list, 'PoseList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.age_range_shrink):
+            body['AgeRange'] = request.age_range_shrink
+        if not UtilClient.is_unset(request.body_boxes_shrink):
+            body['BodyBoxes'] = request.body_boxes_shrink
+        if not UtilClient.is_unset(request.custom):
+            body['Custom'] = request.custom
+        if not UtilClient.is_unset(request.face_list_shrink):
+            body['FaceList'] = request.face_list_shrink
+        if not UtilClient.is_unset(request.female_liquify_degree):
+            body['FemaleLiquifyDegree'] = request.female_liquify_degree
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.is_pregnant):
+            body['IsPregnant'] = request.is_pregnant
+        if not UtilClient.is_unset(request.lengthen_degree):
+            body['LengthenDegree'] = request.lengthen_degree
+        if not UtilClient.is_unset(request.male_liquify_degree):
+            body['MaleLiquifyDegree'] = request.male_liquify_degree
+        if not UtilClient.is_unset(request.original_height):
+            body['OriginalHeight'] = request.original_height
+        if not UtilClient.is_unset(request.original_width):
+            body['OriginalWidth'] = request.original_width
+        if not UtilClient.is_unset(request.pose_list_shrink):
+            body['PoseList'] = request.pose_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BeautifyBody',
@@ -719,8 +842,33 @@ class Client(OpenApiClient):
             request.face_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.face_list, 'FaceList', 'json')
         if not UtilClient.is_unset(tmp_req.pose_list):
             request.pose_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.pose_list, 'PoseList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.age_range_shrink):
+            body['AgeRange'] = request.age_range_shrink
+        if not UtilClient.is_unset(request.body_boxes_shrink):
+            body['BodyBoxes'] = request.body_boxes_shrink
+        if not UtilClient.is_unset(request.custom):
+            body['Custom'] = request.custom
+        if not UtilClient.is_unset(request.face_list_shrink):
+            body['FaceList'] = request.face_list_shrink
+        if not UtilClient.is_unset(request.female_liquify_degree):
+            body['FemaleLiquifyDegree'] = request.female_liquify_degree
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.is_pregnant):
+            body['IsPregnant'] = request.is_pregnant
+        if not UtilClient.is_unset(request.lengthen_degree):
+            body['LengthenDegree'] = request.lengthen_degree
+        if not UtilClient.is_unset(request.male_liquify_degree):
+            body['MaleLiquifyDegree'] = request.male_liquify_degree
+        if not UtilClient.is_unset(request.original_height):
+            body['OriginalHeight'] = request.original_height
+        if not UtilClient.is_unset(request.original_width):
+            body['OriginalWidth'] = request.original_width
+        if not UtilClient.is_unset(request.pose_list_shrink):
+            body['PoseList'] = request.pose_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BeautifyBody',
@@ -900,8 +1048,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.BlurFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BlurFace',
@@ -925,8 +1076,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.BlurFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BlurFace',
@@ -1106,8 +1260,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.BodyPostureResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BodyPosture',
@@ -1131,8 +1288,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.BodyPostureResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BodyPosture',
@@ -1312,8 +1472,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CompareFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_data_a):
+            body['ImageDataA'] = request.image_data_a
+        if not UtilClient.is_unset(request.image_data_b):
+            body['ImageDataB'] = request.image_data_b
+        if not UtilClient.is_unset(request.image_urla):
+            body['ImageURLA'] = request.image_urla
+        if not UtilClient.is_unset(request.image_urlb):
+            body['ImageURLB'] = request.image_urlb
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CompareFace',
@@ -1337,8 +1508,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CompareFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_data_a):
+            body['ImageDataA'] = request.image_data_a
+        if not UtilClient.is_unset(request.image_data_b):
+            body['ImageDataB'] = request.image_data_b
+        if not UtilClient.is_unset(request.image_urla):
+            body['ImageURLA'] = request.image_urla
+        if not UtilClient.is_unset(request.image_urlb):
+            body['ImageURLB'] = request.image_urlb
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CompareFace',
@@ -1376,8 +1558,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CountCrowdResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.is_show):
+            body['IsShow'] = request.is_show
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CountCrowd',
@@ -1401,8 +1588,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CountCrowdResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.is_show):
+            body['IsShow'] = request.is_show
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CountCrowd',
@@ -1582,8 +1774,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CreateBodyDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateBodyDb',
@@ -1607,8 +1802,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CreateBodyDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateBodyDb',
@@ -1646,8 +1844,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CreateBodyPersonResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_id):
+            body['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateBodyPerson',
@@ -1671,8 +1874,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CreateBodyPersonResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_id):
+            body['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateBodyPerson',
@@ -1710,8 +1918,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CreateFaceDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateFaceDb',
@@ -1735,8 +1946,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.CreateFaceDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateFaceDb',
@@ -1774,8 +1988,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteBodyDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteBodyDb',
@@ -1799,8 +2016,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteBodyDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteBodyDb',
@@ -1838,8 +2058,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteBodyPersonResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_id):
+            body['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.person_id):
+            body['PersonId'] = request.person_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteBodyPerson',
@@ -1863,8 +2088,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteBodyPersonResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_id):
+            body['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.person_id):
+            body['PersonId'] = request.person_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteBodyPerson',
@@ -1902,8 +2132,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.face_id):
+            body['FaceId'] = request.face_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteFace',
@@ -1927,8 +2162,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.face_id):
+            body['FaceId'] = request.face_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteFace',
@@ -1966,8 +2206,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteFaceDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteFaceDb',
@@ -1991,8 +2234,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteFaceDbResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteFaceDb',
@@ -2030,8 +2276,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteFaceEntityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteFaceEntity',
@@ -2055,8 +2306,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteFaceEntityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteFaceEntity',
@@ -2094,8 +2350,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteFaceImageTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteFaceImageTemplate',
@@ -2119,8 +2380,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DeleteFaceImageTemplateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteFaceImageTemplate',
@@ -2158,8 +2424,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectBodyCountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectBodyCount',
@@ -2183,8 +2452,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectBodyCountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectBodyCount',
@@ -2364,8 +2636,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectCelebrityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectCelebrity',
@@ -2389,8 +2664,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectCelebrityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectCelebrity',
@@ -2570,8 +2848,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectChefCapResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectChefCap',
@@ -2595,8 +2876,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectChefCapResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectChefCap',
@@ -2776,8 +3060,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.landmark):
+            body['Landmark'] = request.landmark
+        if not UtilClient.is_unset(request.max_face_number):
+            body['MaxFaceNumber'] = request.max_face_number
+        if not UtilClient.is_unset(request.pose):
+            body['Pose'] = request.pose
+        if not UtilClient.is_unset(request.quality):
+            body['Quality'] = request.quality
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectFace',
@@ -2801,8 +3096,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.landmark):
+            body['Landmark'] = request.landmark
+        if not UtilClient.is_unset(request.max_face_number):
+            body['MaxFaceNumber'] = request.max_face_number
+        if not UtilClient.is_unset(request.pose):
+            body['Pose'] = request.pose
+        if not UtilClient.is_unset(request.quality):
+            body['Quality'] = request.quality
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectFace',
@@ -2982,8 +3288,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectIPCPedestrianResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
+        if not UtilClient.is_unset(request.image_data):
+            body['ImageData'] = request.image_data
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.width):
+            body['Width'] = request.width
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectIPCPedestrian',
@@ -3007,8 +3322,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectIPCPedestrianResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
+        if not UtilClient.is_unset(request.image_data):
+            body['ImageData'] = request.image_data
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.width):
+            body['Width'] = request.width
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectIPCPedestrian',
@@ -3188,8 +3512,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectLivingFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tasks):
+            body['Tasks'] = request.tasks
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectLivingFace',
@@ -3213,8 +3540,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectLivingFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tasks):
+            body['Tasks'] = request.tasks
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectLivingFace',
@@ -3246,220 +3576,17 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_living_face_with_options_async(request, runtime)
 
-    def detect_mask_with_options(
-        self,
-        request: facebody_20191230_models.DetectMaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.DetectMaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DetectMask',
-            version='2019-12-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            facebody_20191230_models.DetectMaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def detect_mask_with_options_async(
-        self,
-        request: facebody_20191230_models.DetectMaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.DetectMaskResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='DetectMask',
-            version='2019-12-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            facebody_20191230_models.DetectMaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def detect_mask(
-        self,
-        request: facebody_20191230_models.DetectMaskRequest,
-    ) -> facebody_20191230_models.DetectMaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_mask_with_options(request, runtime)
-
-    async def detect_mask_async(
-        self,
-        request: facebody_20191230_models.DetectMaskRequest,
-    ) -> facebody_20191230_models.DetectMaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_mask_with_options_async(request, runtime)
-
-    def detect_mask_advance(
-        self,
-        request: facebody_20191230_models.DetectMaskAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.DetectMaskResponse:
-        # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='facebody',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_mask_req = facebody_20191230_models.DetectMaskRequest()
-        OpenApiUtilClient.convert(request, detect_mask_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            detect_mask_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        detect_mask_resp = self.detect_mask_with_options(detect_mask_req, runtime)
-        return detect_mask_resp
-
-    async def detect_mask_advance_async(
-        self,
-        request: facebody_20191230_models.DetectMaskAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20191230_models.DetectMaskResponse:
-        # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
-        open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
-            open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
-            credential_type = 'access_key'
-        auth_config = rpc_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='facebody',
-            region_id=self._region_id
-        )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
-        )
-        oss_client = None
-        file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
-        detect_mask_req = facebody_20191230_models.DetectMaskRequest()
-        OpenApiUtilClient.convert(request, detect_mask_req)
-        if not UtilClient.is_unset(request.image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
-            file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
-                content=request.image_urlobject,
-                content_type=''
-            )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            detect_mask_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
-        detect_mask_resp = await self.detect_mask_with_options_async(detect_mask_req, runtime)
-        return detect_mask_resp
-
     def detect_pedestrian_with_options(
         self,
         request: facebody_20191230_models.DetectPedestrianRequest,
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectPedestrianResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectPedestrian',
@@ -3483,8 +3610,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectPedestrianResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectPedestrian',
@@ -3668,8 +3798,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.detect_region):
             request.detect_region_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.detect_region, 'DetectRegion', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.detect_region_shrink):
+            body['DetectRegion'] = request.detect_region_shrink
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.region_type):
+            body['RegionType'] = request.region_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectPedestrianIntrusion',
@@ -3697,8 +3834,15 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.detect_region):
             request.detect_region_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.detect_region, 'DetectRegion', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.detect_region_shrink):
+            body['DetectRegion'] = request.detect_region_shrink
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.region_type):
+            body['RegionType'] = request.region_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectPedestrianIntrusion',
@@ -3878,8 +4022,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectVideoLivingFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.video_url):
+            body['VideoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectVideoLivingFace',
@@ -3903,8 +4050,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.DetectVideoLivingFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.video_url):
+            body['VideoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DetectVideoLivingFace',
@@ -4084,8 +4234,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.EnhanceFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='EnhanceFace',
@@ -4109,8 +4262,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.EnhanceFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='EnhanceFace',
@@ -4290,8 +4446,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ExtractFingerPrintResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_data):
+            body['ImageData'] = request.image_data
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ExtractFingerPrint',
@@ -4315,8 +4476,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ExtractFingerPrintResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_data):
+            body['ImageData'] = request.image_data
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ExtractFingerPrint',
@@ -4496,8 +4662,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ExtractPedestrianFeatureAttrResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.service_version):
+            body['ServiceVersion'] = request.service_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ExtractPedestrianFeatureAttr',
@@ -4521,8 +4694,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ExtractPedestrianFeatureAttrResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.service_version):
+            body['ServiceVersion'] = request.service_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ExtractPedestrianFeatureAttr',
@@ -4702,8 +4882,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ExtractPedestrianFeatureAttributeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.url_list):
+            body['UrlList'] = request.url_list
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ExtractPedestrianFeatureAttribute',
@@ -4727,8 +4914,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ExtractPedestrianFeatureAttributeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.mode):
+            body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.url_list):
+            body['UrlList'] = request.url_list
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ExtractPedestrianFeatureAttribute',
@@ -4766,8 +4960,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.FaceBeautyResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.sharp):
+            body['Sharp'] = request.sharp
+        if not UtilClient.is_unset(request.smooth):
+            body['Smooth'] = request.smooth
+        if not UtilClient.is_unset(request.white):
+            body['White'] = request.white
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceBeauty',
@@ -4791,8 +4994,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.FaceBeautyResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.sharp):
+            body['Sharp'] = request.sharp
+        if not UtilClient.is_unset(request.smooth):
+            body['Smooth'] = request.smooth
+        if not UtilClient.is_unset(request.white):
+            body['White'] = request.white
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceBeauty',
@@ -4972,8 +5184,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.FaceFilterResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.strength):
+            body['Strength'] = request.strength
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceFilter',
@@ -4997,8 +5216,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.FaceFilterResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.strength):
+            body['Strength'] = request.strength
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceFilter',
@@ -5178,8 +5404,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.FaceMakeupResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.makeup_type):
+            body['MakeupType'] = request.makeup_type
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.strength):
+            body['Strength'] = request.strength
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceMakeup',
@@ -5203,8 +5438,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.FaceMakeupResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.makeup_type):
+            body['MakeupType'] = request.makeup_type
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.strength):
+            body['Strength'] = request.strength
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceMakeup',
@@ -5384,8 +5628,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.FaceTidyupResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.shape_type):
+            body['ShapeType'] = request.shape_type
+        if not UtilClient.is_unset(request.strength):
+            body['Strength'] = request.strength
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceTidyup',
@@ -5409,8 +5660,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.FaceTidyupResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.shape_type):
+            body['ShapeType'] = request.shape_type
+        if not UtilClient.is_unset(request.strength):
+            body['Strength'] = request.strength
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='FaceTidyup',
@@ -5590,8 +5848,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.GenRealPersonVerificationTokenResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.certificate_name):
+            body['CertificateName'] = request.certificate_name
+        if not UtilClient.is_unset(request.certificate_number):
+            body['CertificateNumber'] = request.certificate_number
+        if not UtilClient.is_unset(request.meta_info):
+            body['MetaInfo'] = request.meta_info
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenRealPersonVerificationToken',
@@ -5615,8 +5880,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.GenRealPersonVerificationTokenResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.certificate_name):
+            body['CertificateName'] = request.certificate_name
+        if not UtilClient.is_unset(request.certificate_number):
+            body['CertificateNumber'] = request.certificate_number
+        if not UtilClient.is_unset(request.meta_info):
+            body['MetaInfo'] = request.meta_info
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenRealPersonVerificationToken',
@@ -5655,11 +5927,12 @@ class Client(OpenApiClient):
     ) -> facebody_20191230_models.GenerateHumanAnimeStyleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AlgoType'] = request.algo_type
-        query['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.algo_type):
+            query['AlgoType'] = request.algo_type
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GenerateHumanAnimeStyle',
@@ -5669,7 +5942,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5684,11 +5957,12 @@ class Client(OpenApiClient):
     ) -> facebody_20191230_models.GenerateHumanAnimeStyleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AlgoType'] = request.algo_type
-        query['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.algo_type):
+            query['AlgoType'] = request.algo_type
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GenerateHumanAnimeStyle',
@@ -5698,7 +5972,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -5868,8 +6142,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.GenerateHumanSketchStyleResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.return_type):
+            body['ReturnType'] = request.return_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateHumanSketchStyle',
@@ -5893,8 +6172,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.GenerateHumanSketchStyleResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.return_type):
+            body['ReturnType'] = request.return_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GenerateHumanSketchStyle',
@@ -6086,7 +6370,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6112,7 +6396,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6140,8 +6424,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.GetFaceEntityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetFaceEntity',
@@ -6165,8 +6454,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.GetFaceEntityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetFaceEntity',
@@ -6204,8 +6498,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.GetRealPersonVerificationResultResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.material_hash):
+            body['MaterialHash'] = request.material_hash
+        if not UtilClient.is_unset(request.verification_token):
+            body['VerificationToken'] = request.verification_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetRealPersonVerificationResult',
@@ -6229,8 +6528,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.GetRealPersonVerificationResultResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.material_hash):
+            body['MaterialHash'] = request.material_hash
+        if not UtilClient.is_unset(request.verification_token):
+            body['VerificationToken'] = request.verification_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='GetRealPersonVerificationResult',
@@ -6268,8 +6572,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.HandPostureResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='HandPosture',
@@ -6293,8 +6600,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.HandPostureResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='HandPosture',
@@ -6474,8 +6784,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.LiquifyFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.slim_degree):
+            body['SlimDegree'] = request.slim_degree
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='LiquifyFace',
@@ -6499,8 +6814,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.LiquifyFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.slim_degree):
+            body['SlimDegree'] = request.slim_degree
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='LiquifyFace',
@@ -6692,7 +7012,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6718,7 +7038,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6758,7 +7078,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6784,7 +7104,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6819,7 +7139,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6840,7 +7160,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -6862,8 +7182,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ListFaceEntitiesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id_prefix):
+            body['EntityIdPrefix'] = request.entity_id_prefix
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.offset):
+            body['Offset'] = request.offset
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListFaceEntities',
@@ -6887,8 +7222,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.ListFaceEntitiesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id_prefix):
+            body['EntityIdPrefix'] = request.entity_id_prefix
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.offset):
+            body['Offset'] = request.offset
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ListFaceEntities',
@@ -6926,8 +7276,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.MergeImageFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MergeImageFace',
@@ -6951,8 +7308,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.MergeImageFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MergeImageFace',
@@ -7132,8 +7496,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.MonitorExaminationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MonitorExamination',
@@ -7157,8 +7526,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.MonitorExaminationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='MonitorExamination',
@@ -7338,8 +7712,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.PedestrianDetectAttributeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PedestrianDetectAttribute',
@@ -7363,8 +7740,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.PedestrianDetectAttributeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='PedestrianDetectAttribute',
@@ -7556,7 +7936,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7582,7 +7962,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -7610,8 +7990,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizeActionResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        if not UtilClient.is_unset(request.video_data):
+            body['VideoData'] = request.video_data
+        if not UtilClient.is_unset(request.video_url):
+            body['VideoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizeAction',
@@ -7635,8 +8024,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizeActionResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        if not UtilClient.is_unset(request.video_data):
+            body['VideoData'] = request.video_data
+        if not UtilClient.is_unset(request.video_url):
+            body['VideoUrl'] = request.video_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizeAction',
@@ -7674,8 +8072,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizeExpressionResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizeExpression',
@@ -7699,8 +8100,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizeExpressionResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizeExpression',
@@ -7880,8 +8284,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizeFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.age):
+            body['Age'] = request.age
+        if not UtilClient.is_unset(request.beauty):
+            body['Beauty'] = request.beauty
+        if not UtilClient.is_unset(request.expression):
+            body['Expression'] = request.expression
+        if not UtilClient.is_unset(request.gender):
+            body['Gender'] = request.gender
+        if not UtilClient.is_unset(request.glass):
+            body['Glass'] = request.glass
+        if not UtilClient.is_unset(request.hat):
+            body['Hat'] = request.hat
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.mask):
+            body['Mask'] = request.mask
+        if not UtilClient.is_unset(request.max_face_number):
+            body['MaxFaceNumber'] = request.max_face_number
+        if not UtilClient.is_unset(request.quality):
+            body['Quality'] = request.quality
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizeFace',
@@ -7905,8 +8330,29 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizeFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.age):
+            body['Age'] = request.age
+        if not UtilClient.is_unset(request.beauty):
+            body['Beauty'] = request.beauty
+        if not UtilClient.is_unset(request.expression):
+            body['Expression'] = request.expression
+        if not UtilClient.is_unset(request.gender):
+            body['Gender'] = request.gender
+        if not UtilClient.is_unset(request.glass):
+            body['Glass'] = request.glass
+        if not UtilClient.is_unset(request.hat):
+            body['Hat'] = request.hat
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.mask):
+            body['Mask'] = request.mask
+        if not UtilClient.is_unset(request.max_face_number):
+            body['MaxFaceNumber'] = request.max_face_number
+        if not UtilClient.is_unset(request.quality):
+            body['Quality'] = request.quality
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizeFace',
@@ -8086,8 +8532,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizeHandGestureResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.gesture_type):
+            body['GestureType'] = request.gesture_type
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizeHandGesture',
@@ -8111,8 +8564,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizeHandGestureResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.gesture_type):
+            body['GestureType'] = request.gesture_type
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizeHandGesture',
@@ -8292,8 +8752,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizePublicFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task):
+            body['Task'] = request.task
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizePublicFace',
@@ -8317,8 +8780,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RecognizePublicFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task):
+            body['Task'] = request.task
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RecognizePublicFace',
@@ -8356,8 +8822,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RetouchBodyResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.lengthen_degree):
+            body['LengthenDegree'] = request.lengthen_degree
+        if not UtilClient.is_unset(request.slim_degree):
+            body['SlimDegree'] = request.slim_degree
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RetouchBody',
@@ -8381,8 +8854,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RetouchBodyResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.lengthen_degree):
+            body['LengthenDegree'] = request.lengthen_degree
+        if not UtilClient.is_unset(request.slim_degree):
+            body['SlimDegree'] = request.slim_degree
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RetouchBody',
@@ -8562,8 +9042,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RetouchSkinResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.retouch_degree):
+            body['RetouchDegree'] = request.retouch_degree
+        if not UtilClient.is_unset(request.whitening_degree):
+            body['WhiteningDegree'] = request.whitening_degree
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RetouchSkin',
@@ -8587,8 +9074,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.RetouchSkinResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.retouch_degree):
+            body['RetouchDegree'] = request.retouch_degree
+        if not UtilClient.is_unset(request.whitening_degree):
+            body['WhiteningDegree'] = request.whitening_degree
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RetouchSkin',
@@ -8772,8 +9266,17 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.images):
             request.images_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.images, 'Images', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.db_id):
+            body['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.images_shrink):
+            body['Images'] = request.images_shrink
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.min_score):
+            body['MinScore'] = request.min_score
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SearchBodyTrace',
@@ -8801,8 +9304,17 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.images):
             request.images_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.images, 'Images', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.db_id):
+            body['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.images_shrink):
+            body['Images'] = request.images_shrink
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.min_score):
+            body['MinScore'] = request.min_score
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SearchBodyTrace',
@@ -8840,8 +9352,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.SearchFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.db_names):
+            body['DbNames'] = request.db_names
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.max_face_num):
+            body['MaxFaceNum'] = request.max_face_num
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SearchFace',
@@ -8865,8 +9390,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.SearchFaceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.db_names):
+            body['DbNames'] = request.db_names
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.max_face_num):
+            body['MaxFaceNum'] = request.max_face_num
+        if not UtilClient.is_unset(request.quality_score_threshold):
+            body['QualityScoreThreshold'] = request.quality_score_threshold
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SearchFace',
@@ -9046,8 +9584,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.SwapFacialFeaturesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.edit_part):
+            body['EditPart'] = request.edit_part
+        if not UtilClient.is_unset(request.source_image_data):
+            body['SourceImageData'] = request.source_image_data
+        if not UtilClient.is_unset(request.source_image_url):
+            body['SourceImageURL'] = request.source_image_url
+        if not UtilClient.is_unset(request.target_image_data):
+            body['TargetImageData'] = request.target_image_data
+        if not UtilClient.is_unset(request.target_image_url):
+            body['TargetImageURL'] = request.target_image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SwapFacialFeatures',
@@ -9071,8 +9620,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.SwapFacialFeaturesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.edit_part):
+            body['EditPart'] = request.edit_part
+        if not UtilClient.is_unset(request.source_image_data):
+            body['SourceImageData'] = request.source_image_data
+        if not UtilClient.is_unset(request.source_image_url):
+            body['SourceImageURL'] = request.source_image_url
+        if not UtilClient.is_unset(request.target_image_data):
+            body['TargetImageData'] = request.target_image_data
+        if not UtilClient.is_unset(request.target_image_url):
+            body['TargetImageURL'] = request.target_image_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SwapFacialFeatures',
@@ -9110,8 +9670,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.UpdateFaceEntityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateFaceEntity',
@@ -9135,8 +9702,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.UpdateFaceEntityResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateFaceEntity',
@@ -9174,8 +9748,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.VerifyFaceMaskResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_data):
+            body['ImageData'] = request.image_data
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.ref_data):
+            body['RefData'] = request.ref_data
+        if not UtilClient.is_unset(request.ref_url):
+            body['RefUrl'] = request.ref_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='VerifyFaceMask',
@@ -9199,8 +9782,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> facebody_20191230_models.VerifyFaceMaskResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_data):
+            body['ImageData'] = request.image_data
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.ref_data):
+            body['RefData'] = request.ref_data
+        if not UtilClient.is_unset(request.ref_url):
+            body['RefUrl'] = request.ref_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='VerifyFaceMask',
