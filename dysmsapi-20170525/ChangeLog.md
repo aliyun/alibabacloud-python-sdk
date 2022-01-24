@@ -1,3 +1,6 @@
+2022-01-24 Version: 2.0.9
+- Generated python 2017-05-25 for Dysmsapi.
+
 2021-11-29 Version: 2.0.8
 - Upgrade Service for SMS.
 

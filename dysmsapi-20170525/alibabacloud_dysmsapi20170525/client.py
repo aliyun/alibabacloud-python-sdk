@@ -54,12 +54,22 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.AddShortUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.effective_days):
+            body['EffectiveDays'] = request.effective_days
+        if not UtilClient.is_unset(request.short_url_name):
+            body['ShortUrlName'] = request.short_url_name
+        if not UtilClient.is_unset(request.source_url):
+            body['SourceUrl'] = request.source_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddShortUrl',
@@ -84,12 +94,22 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.AddShortUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.effective_days):
+            body['EffectiveDays'] = request.effective_days
+        if not UtilClient.is_unset(request.short_url_name):
+            body['ShortUrlName'] = request.short_url_name
+        if not UtilClient.is_unset(request.source_url):
+            body['SourceUrl'] = request.source_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddShortUrl',
@@ -128,15 +148,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.AddSmsSignResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
-        query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sign_source):
+            query['SignSource'] = request.sign_source
+        body = {}
+        if not UtilClient.is_unset(request.sign_file_list):
+            body['SignFileList'] = request.sign_file_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddSmsSign',
@@ -161,15 +190,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.AddSmsSignResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
-        query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sign_source):
+            query['SignSource'] = request.sign_source
+        body = {}
+        if not UtilClient.is_unset(request.sign_file_list):
+            body['SignFileList'] = request.sign_file_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddSmsSign',
@@ -208,16 +246,22 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.AddSmsTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateContent'] = request.template_content
-        query['TemplateName'] = request.template_name
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddSmsTemplate',
@@ -227,7 +271,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -242,16 +286,22 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.AddSmsTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateContent'] = request.template_content
-        query['TemplateName'] = request.template_name
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddSmsTemplate',
@@ -261,7 +311,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -283,88 +333,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_sms_template_with_options_async(request, runtime)
 
-    def create_card_sms_template_with_options(
-        self,
-        tmp_req: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dysmsapi_20170525_models.CreateCardSmsTemplateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.template):
-            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
-        query = {}
-        query['Memo'] = request.memo
-        query['Template'] = request.template_shrink
-        query['TemplateName'] = request.template_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateCardSmsTemplate',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.CreateCardSmsTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_card_sms_template_with_options_async(
-        self,
-        tmp_req: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dysmsapi_20170525_models.CreateCardSmsTemplateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.template):
-            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
-        query = {}
-        query['Memo'] = request.memo
-        query['Template'] = request.template_shrink
-        query['TemplateName'] = request.template_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='CreateCardSmsTemplate',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.CreateCardSmsTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_card_sms_template(
-        self,
-        request: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
-    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_card_sms_template_with_options(request, runtime)
-
-    async def create_card_sms_template_async(
-        self,
-        request: dysmsapi_20170525_models.CreateCardSmsTemplateRequest,
-    ) -> dysmsapi_20170525_models.CreateCardSmsTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_card_sms_template_with_options_async(request, runtime)
-
     def delete_short_url_with_options(
         self,
         request: dysmsapi_20170525_models.DeleteShortUrlRequest,
@@ -372,12 +340,18 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.source_url):
+            body['SourceUrl'] = request.source_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteShortUrl',
@@ -402,12 +376,18 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.DeleteShortUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.source_url):
+            body['SourceUrl'] = request.source_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteShortUrl',
@@ -446,13 +426,16 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.DeleteSmsSignResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSmsSign',
@@ -462,7 +445,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -477,13 +460,16 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.DeleteSmsSignResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSmsSign',
@@ -493,7 +479,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -522,13 +508,16 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.DeleteSmsTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSmsTemplate',
@@ -538,7 +527,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -553,13 +542,16 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.DeleteSmsTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSmsTemplate',
@@ -569,7 +561,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -591,134 +583,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_sms_template_with_options_async(request, runtime)
 
-    def get_media_resource_id_with_options(
-        self,
-        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ExtendInfo'] = request.extend_info
-        query['FileSize'] = request.file_size
-        query['Memo'] = request.memo
-        query['OssKey'] = request.oss_key
-        query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetMediaResourceId',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.GetMediaResourceIdResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_media_resource_id_with_options_async(
-        self,
-        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['ExtendInfo'] = request.extend_info
-        query['FileSize'] = request.file_size
-        query['Memo'] = request.memo
-        query['OssKey'] = request.oss_key
-        query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='GetMediaResourceId',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.GetMediaResourceIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_media_resource_id(
-        self,
-        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
-    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_media_resource_id_with_options(request, runtime)
-
-    async def get_media_resource_id_async(
-        self,
-        request: dysmsapi_20170525_models.GetMediaResourceIdRequest,
-    ) -> dysmsapi_20170525_models.GetMediaResourceIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_media_resource_id_with_options_async(request, runtime)
-
-    def get_ossinfo_for_card_template_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetOSSInfoForCardTemplate',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_ossinfo_for_card_template_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetOSSInfoForCardTemplate',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_ossinfo_for_card_template(self) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_ossinfo_for_card_template_with_options(runtime)
-
-    async def get_ossinfo_for_card_template_async(self) -> dysmsapi_20170525_models.GetOSSInfoForCardTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_ossinfo_for_card_template_with_options_async(runtime)
-
     def list_tag_resources_with_options(
         self,
         request: dysmsapi_20170525_models.ListTagResourcesRequest,
@@ -726,19 +590,28 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NextToken'] = request.next_token
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['ProdCode'] = request.prod_code
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagResources',
@@ -748,7 +621,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -763,19 +636,28 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NextToken'] = request.next_token
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['ProdCode'] = request.prod_code
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagResources',
@@ -785,7 +667,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -814,15 +696,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.ModifySmsSignResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
-        query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sign_source):
+            query['SignSource'] = request.sign_source
+        body = {}
+        if not UtilClient.is_unset(request.sign_file_list):
+            body['SignFileList'] = request.sign_file_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifySmsSign',
@@ -847,15 +738,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.ModifySmsSignResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
-        query['SignSource'] = request.sign_source
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sign_source):
+            query['SignSource'] = request.sign_source
+        body = {}
+        if not UtilClient.is_unset(request.sign_file_list):
+            body['SignFileList'] = request.sign_file_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifySmsSign',
@@ -894,17 +794,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.ModifySmsTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateCode'] = request.template_code
-        query['TemplateContent'] = request.template_content
-        query['TemplateName'] = request.template_name
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySmsTemplate',
@@ -914,7 +821,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -929,17 +836,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.ModifySmsTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['Remark'] = request.remark
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateCode'] = request.template_code
-        query['TemplateContent'] = request.template_content
-        query['TemplateName'] = request.template_name
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ModifySmsTemplate',
@@ -949,7 +863,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -971,76 +885,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_sms_template_with_options_async(request, runtime)
 
-    def query_card_sms_template_with_options(
-        self,
-        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['TemplateCode'] = request.template_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCardSmsTemplate',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.QueryCardSmsTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_card_sms_template_with_options_async(
-        self,
-        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['TemplateCode'] = request.template_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='QueryCardSmsTemplate',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.QueryCardSmsTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_card_sms_template(
-        self,
-        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
-    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_card_sms_template_with_options(request, runtime)
-
-    async def query_card_sms_template_async(
-        self,
-        request: dysmsapi_20170525_models.QueryCardSmsTemplateRequest,
-    ) -> dysmsapi_20170525_models.QueryCardSmsTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_card_sms_template_with_options_async(request, runtime)
-
     def query_send_details_with_options(
         self,
         request: dysmsapi_20170525_models.QuerySendDetailsRequest,
@@ -1048,17 +892,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.QuerySendDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizId'] = request.biz_id
-        query['CurrentPage'] = request.current_page
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['PhoneNumber'] = request.phone_number
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SendDate'] = request.send_date
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_date):
+            query['SendDate'] = request.send_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySendDetails',
@@ -1068,7 +919,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1083,17 +934,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.QuerySendDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizId'] = request.biz_id
-        query['CurrentPage'] = request.current_page
-        query['OwnerId'] = request.owner_id
-        query['PageSize'] = request.page_size
-        query['PhoneNumber'] = request.phone_number
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SendDate'] = request.send_date
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.send_date):
+            query['SendDate'] = request.send_date
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySendDetails',
@@ -1103,7 +961,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1125,6 +983,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_send_details_with_options_async(request, runtime)
 
+    def query_send_statistics_with_options(
+        self,
+        request: dysmsapi_20170525_models.QuerySendStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySendStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.is_globe):
+            query['IsGlobe'] = request.is_globe
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySendStatistics',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySendStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_send_statistics_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySendStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySendStatisticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.is_globe):
+            query['IsGlobe'] = request.is_globe
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySendStatistics',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySendStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_send_statistics(
+        self,
+        request: dysmsapi_20170525_models.QuerySendStatisticsRequest,
+    ) -> dysmsapi_20170525_models.QuerySendStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_send_statistics_with_options(request, runtime)
+
+    async def query_send_statistics_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySendStatisticsRequest,
+    ) -> dysmsapi_20170525_models.QuerySendStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_send_statistics_with_options_async(request, runtime)
+
     def query_short_url_with_options(
         self,
         request: dysmsapi_20170525_models.QueryShortUrlRequest,
@@ -1132,12 +1088,18 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.short_url):
+            body['ShortUrl'] = request.short_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='QueryShortUrl',
@@ -1162,12 +1124,18 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.QueryShortUrlResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.short_url):
+            body['ShortUrl'] = request.short_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='QueryShortUrl',
@@ -1206,13 +1174,16 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.QuerySmsSignResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmsSign',
@@ -1222,7 +1193,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1237,13 +1208,16 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.QuerySmsSignResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmsSign',
@@ -1253,7 +1227,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1275,6 +1249,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_sign_with_options_async(request, runtime)
 
+    def query_sms_sign_list_with_options(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsSignListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySmsSignListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsSignList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsSignListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sms_sign_list_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsSignListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySmsSignListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsSignList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsSignListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sms_sign_list(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsSignListRequest,
+    ) -> dysmsapi_20170525_models.QuerySmsSignListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sms_sign_list_with_options(request, runtime)
+
+    async def query_sms_sign_list_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsSignListRequest,
+    ) -> dysmsapi_20170525_models.QuerySmsSignListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sms_sign_list_with_options_async(request, runtime)
+
     def query_sms_template_with_options(
         self,
         request: dysmsapi_20170525_models.QuerySmsTemplateRequest,
@@ -1282,13 +1342,16 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.QuerySmsTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmsTemplate',
@@ -1298,7 +1361,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1313,13 +1376,16 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.QuerySmsTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='QuerySmsTemplate',
@@ -1329,7 +1395,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1351,6 +1417,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_sms_template_with_options_async(request, runtime)
 
+    def query_sms_template_list_with_options(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsTemplateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySmsTemplateListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsTemplateList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsTemplateListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sms_template_list_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsTemplateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QuerySmsTemplateListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySmsTemplateList',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QuerySmsTemplateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sms_template_list(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsTemplateListRequest,
+    ) -> dysmsapi_20170525_models.QuerySmsTemplateListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sms_template_list_with_options(request, runtime)
+
+    async def query_sms_template_list_async(
+        self,
+        request: dysmsapi_20170525_models.QuerySmsTemplateListRequest,
+    ) -> dysmsapi_20170525_models.QuerySmsTemplateListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sms_template_list_with_options_async(request, runtime)
+
     def send_batch_sms_with_options(
         self,
         request: dysmsapi_20170525_models.SendBatchSmsRequest,
@@ -1358,17 +1510,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumberJson'] = request.phone_number_json
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignNameJson'] = request.sign_name_json
-        query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
-        query['TemplateCode'] = request.template_code
-        query['TemplateParamJson'] = request.template_param_json
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number_json):
+            query['PhoneNumberJson'] = request.phone_number_json
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name_json):
+            query['SignNameJson'] = request.sign_name_json
+        if not UtilClient.is_unset(request.sms_up_extend_code_json):
+            query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param_json):
+            query['TemplateParamJson'] = request.template_param_json
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SendBatchSms',
@@ -1378,7 +1537,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1393,17 +1552,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumberJson'] = request.phone_number_json
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignNameJson'] = request.sign_name_json
-        query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
-        query['TemplateCode'] = request.template_code
-        query['TemplateParamJson'] = request.template_param_json
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number_json):
+            query['PhoneNumberJson'] = request.phone_number_json
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name_json):
+            query['SignNameJson'] = request.sign_name_json
+        if not UtilClient.is_unset(request.sms_up_extend_code_json):
+            query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param_json):
+            query['TemplateParamJson'] = request.template_param_json
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SendBatchSms',
@@ -1413,7 +1579,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1435,94 +1601,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.send_batch_sms_with_options_async(request, runtime)
 
-    def send_card_sms_with_options(
-        self,
-        request: dysmsapi_20170525_models.SendCardSmsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['CardObjects'] = request.card_objects
-        query['CardTemplateCode'] = request.card_template_code
-        query['DigitalTemplateCode'] = request.digital_template_code
-        query['DigitalTemplateParam'] = request.digital_template_param
-        query['FallbackType'] = request.fallback_type
-        query['OutId'] = request.out_id
-        query['SignName'] = request.sign_name
-        query['SmsTemplateCode'] = request.sms_template_code
-        query['SmsTemplateParam'] = request.sms_template_param
-        query['SmsUpExtendCode'] = request.sms_up_extend_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SendCardSms',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.SendCardSmsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def send_card_sms_with_options_async(
-        self,
-        request: dysmsapi_20170525_models.SendCardSmsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['CardObjects'] = request.card_objects
-        query['CardTemplateCode'] = request.card_template_code
-        query['DigitalTemplateCode'] = request.digital_template_code
-        query['DigitalTemplateParam'] = request.digital_template_param
-        query['FallbackType'] = request.fallback_type
-        query['OutId'] = request.out_id
-        query['SignName'] = request.sign_name
-        query['SmsTemplateCode'] = request.sms_template_code
-        query['SmsTemplateParam'] = request.sms_template_param
-        query['SmsUpExtendCode'] = request.sms_up_extend_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
-        )
-        params = open_api_models.Params(
-            action='SendCardSms',
-            version='2017-05-25',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dysmsapi_20170525_models.SendCardSmsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def send_card_sms(
-        self,
-        request: dysmsapi_20170525_models.SendCardSmsRequest,
-    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.send_card_sms_with_options(request, runtime)
-
-    async def send_card_sms_async(
-        self,
-        request: dysmsapi_20170525_models.SendCardSmsRequest,
-    ) -> dysmsapi_20170525_models.SendCardSmsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.send_card_sms_with_options_async(request, runtime)
-
     def send_sms_with_options(
         self,
         request: dysmsapi_20170525_models.SendSmsRequest,
@@ -1530,18 +1608,26 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.SendSmsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OutId'] = request.out_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumbers'] = request.phone_numbers
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
-        query['SmsUpExtendCode'] = request.sms_up_extend_code
-        query['TemplateCode'] = request.template_code
-        query['TemplateParam'] = request.template_param
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sms_up_extend_code):
+            query['SmsUpExtendCode'] = request.sms_up_extend_code
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SendSms',
@@ -1551,7 +1637,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1566,18 +1652,26 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.SendSmsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OutId'] = request.out_id
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumbers'] = request.phone_numbers
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SignName'] = request.sign_name
-        query['SmsUpExtendCode'] = request.sms_up_extend_code
-        query['TemplateCode'] = request.template_code
-        query['TemplateParam'] = request.template_param
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.sms_up_extend_code):
+            query['SmsUpExtendCode'] = request.sms_up_extend_code
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SendSms',
@@ -1587,7 +1681,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1616,17 +1710,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ProdCode'] = request.prod_code
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -1636,7 +1737,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1651,17 +1752,24 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ProdCode'] = request.prod_code
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -1671,7 +1779,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1700,18 +1808,26 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerId'] = request.owner_id
-        query['ProdCode'] = request.prod_code
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UntagResources',
@@ -1721,7 +1837,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1736,18 +1852,26 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerId'] = request.owner_id
-        query['ProdCode'] = request.prod_code
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.prod_code):
+            query['ProdCode'] = request.prod_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UntagResources',
@@ -1757,7 +1881,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
