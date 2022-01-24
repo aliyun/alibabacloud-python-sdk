@@ -578,6 +578,10 @@ class Client(OpenApiClient):
             query['AppCodeAuthType'] = request.app_code_auth_type
         if not UtilClient.is_unset(request.auth_type):
             query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.backend_enable):
+            query['BackendEnable'] = request.backend_enable
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
         if not UtilClient.is_unset(request.constant_parameters):
             query['ConstantParameters'] = request.constant_parameters
         if not UtilClient.is_unset(request.description):
@@ -654,6 +658,10 @@ class Client(OpenApiClient):
             query['AppCodeAuthType'] = request.app_code_auth_type
         if not UtilClient.is_unset(request.auth_type):
             query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.backend_enable):
+            query['BackendEnable'] = request.backend_enable
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
         if not UtilClient.is_unset(request.constant_parameters):
             query['ConstantParameters'] = request.constant_parameters
         if not UtilClient.is_unset(request.description):
@@ -998,6 +1006,178 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.CreateAppResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_app_with_options_async(request, runtime)
+
+    def create_backend_with_options(
+        self,
+        request: cloud_api20160714_models.CreateBackendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreateBackendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackend',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreateBackendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_backend_with_options_async(
+        self,
+        request: cloud_api20160714_models.CreateBackendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreateBackendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackend',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreateBackendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_backend(
+        self,
+        request: cloud_api20160714_models.CreateBackendRequest,
+    ) -> cloud_api20160714_models.CreateBackendResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_backend_with_options(request, runtime)
+
+    async def create_backend_async(
+        self,
+        request: cloud_api20160714_models.CreateBackendRequest,
+    ) -> cloud_api20160714_models.CreateBackendResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_backend_with_options_async(request, runtime)
+
+    def create_backend_model_with_options(
+        self,
+        request: cloud_api20160714_models.CreateBackendModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreateBackendModelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.backend_model_data):
+            query['BackendModelData'] = request.backend_model_data
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackendModel',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreateBackendModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_backend_model_with_options_async(
+        self,
+        request: cloud_api20160714_models.CreateBackendModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreateBackendModelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.backend_model_data):
+            query['BackendModelData'] = request.backend_model_data
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackendModel',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreateBackendModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_backend_model(
+        self,
+        request: cloud_api20160714_models.CreateBackendModelRequest,
+    ) -> cloud_api20160714_models.CreateBackendModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_backend_model_with_options(request, runtime)
+
+    async def create_backend_model_async(
+        self,
+        request: cloud_api20160714_models.CreateBackendModelRequest,
+    ) -> cloud_api20160714_models.CreateBackendModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_backend_model_with_options_async(request, runtime)
 
     def create_instance_with_options(
         self,
@@ -2162,6 +2342,162 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.DeleteAppResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_with_options_async(request, runtime)
+
+    def delete_backend_with_options(
+        self,
+        request: cloud_api20160714_models.DeleteBackendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteBackendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackend',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteBackendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backend_with_options_async(
+        self,
+        request: cloud_api20160714_models.DeleteBackendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteBackendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackend',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteBackendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backend(
+        self,
+        request: cloud_api20160714_models.DeleteBackendRequest,
+    ) -> cloud_api20160714_models.DeleteBackendResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backend_with_options(request, runtime)
+
+    async def delete_backend_async(
+        self,
+        request: cloud_api20160714_models.DeleteBackendRequest,
+    ) -> cloud_api20160714_models.DeleteBackendResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backend_with_options_async(request, runtime)
+
+    def delete_backend_model_with_options(
+        self,
+        request: cloud_api20160714_models.DeleteBackendModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteBackendModelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.backend_model_id):
+            query['BackendModelId'] = request.backend_model_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackendModel',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteBackendModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backend_model_with_options_async(
+        self,
+        request: cloud_api20160714_models.DeleteBackendModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteBackendModelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.backend_model_id):
+            query['BackendModelId'] = request.backend_model_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackendModel',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteBackendModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backend_model(
+        self,
+        request: cloud_api20160714_models.DeleteBackendModelRequest,
+    ) -> cloud_api20160714_models.DeleteBackendModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backend_model_with_options(request, runtime)
+
+    async def delete_backend_model_async(
+        self,
+        request: cloud_api20160714_models.DeleteBackendModelRequest,
+    ) -> cloud_api20160714_models.DeleteBackendModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backend_model_with_options_async(request, runtime)
 
     def delete_domain_with_options(
         self,
@@ -4503,6 +4839,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_apis_by_app_with_options_async(request, runtime)
 
+    def describe_apis_by_backend_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeApisByBackendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeApisByBackendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisByBackend',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeApisByBackendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apis_by_backend_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeApisByBackendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeApisByBackendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisByBackend',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeApisByBackendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apis_by_backend(
+        self,
+        request: cloud_api20160714_models.DescribeApisByBackendRequest,
+    ) -> cloud_api20160714_models.DescribeApisByBackendResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apis_by_backend_with_options(request, runtime)
+
+    async def describe_apis_by_backend_async(
+        self,
+        request: cloud_api20160714_models.DescribeApisByBackendRequest,
+    ) -> cloud_api20160714_models.DescribeApisByBackendResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apis_by_backend_with_options_async(request, runtime)
+
     def describe_apis_by_ip_control_with_options(
         self,
         request: cloud_api20160714_models.DescribeApisByIpControlRequest,
@@ -5276,6 +5698,166 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.DescribeAuthorizedAppsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_authorized_apps_with_options_async(request, runtime)
+
+    def describe_backend_info_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeBackendInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeBackendInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackendInfo',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeBackendInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backend_info_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeBackendInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeBackendInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackendInfo',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeBackendInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backend_info(
+        self,
+        request: cloud_api20160714_models.DescribeBackendInfoRequest,
+    ) -> cloud_api20160714_models.DescribeBackendInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backend_info_with_options(request, runtime)
+
+    async def describe_backend_info_async(
+        self,
+        request: cloud_api20160714_models.DescribeBackendInfoRequest,
+    ) -> cloud_api20160714_models.DescribeBackendInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backend_info_with_options_async(request, runtime)
+
+    def describe_backend_list_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeBackendListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeBackendListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackendList',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeBackendListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backend_list_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeBackendListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeBackendListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackendList',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeBackendListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backend_list(
+        self,
+        request: cloud_api20160714_models.DescribeBackendListRequest,
+    ) -> cloud_api20160714_models.DescribeBackendListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backend_list_with_options(request, runtime)
+
+    async def describe_backend_list_async(
+        self,
+        request: cloud_api20160714_models.DescribeBackendListRequest,
+    ) -> cloud_api20160714_models.DescribeBackendListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backend_list_with_options_async(request, runtime)
 
     def describe_deploy_api_task_with_options(
         self,
@@ -7187,6 +7769,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_traffic_controls_by_api_with_options_async(request, runtime)
 
+    def describe_update_backend_task_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeUpdateBackendTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeUpdateBackendTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.operation_uid):
+            query['OperationUid'] = request.operation_uid
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUpdateBackendTask',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeUpdateBackendTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_update_backend_task_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeUpdateBackendTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeUpdateBackendTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.operation_uid):
+            query['OperationUid'] = request.operation_uid
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUpdateBackendTask',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeUpdateBackendTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_update_backend_task(
+        self,
+        request: cloud_api20160714_models.DescribeUpdateBackendTaskRequest,
+    ) -> cloud_api20160714_models.DescribeUpdateBackendTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_update_backend_task_with_options(request, runtime)
+
+    async def describe_update_backend_task_async(
+        self,
+        request: cloud_api20160714_models.DescribeUpdateBackendTaskRequest,
+    ) -> cloud_api20160714_models.DescribeUpdateBackendTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_update_backend_task_with_options_async(request, runtime)
+
     def describe_update_vpc_info_task_with_options(
         self,
         request: cloud_api20160714_models.DescribeUpdateVpcInfoTaskRequest,
@@ -7740,6 +8396,10 @@ class Client(OpenApiClient):
             query['AppCodeAuthType'] = request.app_code_auth_type
         if not UtilClient.is_unset(request.auth_type):
             query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.backend_enable):
+            query['BackendEnable'] = request.backend_enable
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
         if not UtilClient.is_unset(request.constant_parameters):
             query['ConstantParameters'] = request.constant_parameters
         if not UtilClient.is_unset(request.description):
@@ -7818,6 +8478,10 @@ class Client(OpenApiClient):
             query['AppCodeAuthType'] = request.app_code_auth_type
         if not UtilClient.is_unset(request.auth_type):
             query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.backend_enable):
+            query['BackendEnable'] = request.backend_enable
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
         if not UtilClient.is_unset(request.constant_parameters):
             query['ConstantParameters'] = request.constant_parameters
         if not UtilClient.is_unset(request.description):
@@ -8174,6 +8838,186 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.ModifyAppResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_with_options_async(request, runtime)
+
+    def modify_backend_with_options(
+        self,
+        request: cloud_api20160714_models.ModifyBackendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyBackendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackend',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyBackendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_backend_with_options_async(
+        self,
+        request: cloud_api20160714_models.ModifyBackendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyBackendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackend',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyBackendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_backend(
+        self,
+        request: cloud_api20160714_models.ModifyBackendRequest,
+    ) -> cloud_api20160714_models.ModifyBackendResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_backend_with_options(request, runtime)
+
+    async def modify_backend_async(
+        self,
+        request: cloud_api20160714_models.ModifyBackendRequest,
+    ) -> cloud_api20160714_models.ModifyBackendResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_backend_with_options_async(request, runtime)
+
+    def modify_backend_model_with_options(
+        self,
+        request: cloud_api20160714_models.ModifyBackendModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyBackendModelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.backend_model_data):
+            query['BackendModelData'] = request.backend_model_data
+        if not UtilClient.is_unset(request.backend_model_id):
+            query['BackendModelId'] = request.backend_model_id
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackendModel',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyBackendModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_backend_model_with_options_async(
+        self,
+        request: cloud_api20160714_models.ModifyBackendModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyBackendModelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend_id):
+            query['BackendId'] = request.backend_id
+        if not UtilClient.is_unset(request.backend_model_data):
+            query['BackendModelData'] = request.backend_model_data
+        if not UtilClient.is_unset(request.backend_model_id):
+            query['BackendModelId'] = request.backend_model_id
+        if not UtilClient.is_unset(request.backend_type):
+            query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackendModel',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyBackendModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_backend_model(
+        self,
+        request: cloud_api20160714_models.ModifyBackendModelRequest,
+    ) -> cloud_api20160714_models.ModifyBackendModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_backend_model_with_options(request, runtime)
+
+    async def modify_backend_model_async(
+        self,
+        request: cloud_api20160714_models.ModifyBackendModelRequest,
+    ) -> cloud_api20160714_models.ModifyBackendModelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_backend_model_with_options_async(request, runtime)
 
     def modify_instance_spec_with_options(
         self,

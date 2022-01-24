@@ -777,6 +777,8 @@ class CreateApiRequest(TeaModel):
         api_name: str = None,
         app_code_auth_type: str = None,
         auth_type: str = None,
+        backend_enable: bool = None,
+        backend_id: str = None,
         constant_parameters: str = None,
         description: str = None,
         disable_internet: bool = None,
@@ -803,6 +805,8 @@ class CreateApiRequest(TeaModel):
         self.api_name = api_name
         self.app_code_auth_type = app_code_auth_type
         self.auth_type = auth_type
+        self.backend_enable = backend_enable
+        self.backend_id = backend_id
         self.constant_parameters = constant_parameters
         self.description = description
         self.disable_internet = disable_internet
@@ -842,6 +846,10 @@ class CreateApiRequest(TeaModel):
             result['AppCodeAuthType'] = self.app_code_auth_type
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
+        if self.backend_enable is not None:
+            result['BackendEnable'] = self.backend_enable
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
         if self.constant_parameters is not None:
             result['ConstantParameters'] = self.constant_parameters
         if self.description is not None:
@@ -896,6 +904,10 @@ class CreateApiRequest(TeaModel):
             self.app_code_auth_type = m.get('AppCodeAuthType')
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
+        if m.get('BackendEnable') is not None:
+            self.backend_enable = m.get('BackendEnable')
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
         if m.get('ConstantParameters') is not None:
             self.constant_parameters = m.get('ConstantParameters')
         if m.get('Description') is not None:
@@ -1512,6 +1524,248 @@ class CreateAppResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateBackendRequest(TeaModel):
+    def __init__(
+        self,
+        backend_name: str = None,
+        backend_type: str = None,
+        description: str = None,
+        security_token: str = None,
+    ):
+        self.backend_name = backend_name
+        self.backend_type = backend_type
+        self.description = description
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_name is not None:
+            result['BackendName'] = self.backend_name
+        if self.backend_type is not None:
+            result['BackendType'] = self.backend_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendName') is not None:
+            self.backend_name = m.get('BackendName')
+        if m.get('BackendType') is not None:
+            self.backend_type = m.get('BackendType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class CreateBackendResponseBody(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        request_id: str = None,
+    ):
+        self.backend_id = backend_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateBackendResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateBackendResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateBackendResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateBackendModelRequest(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        backend_model_data: str = None,
+        backend_type: str = None,
+        description: str = None,
+        security_token: str = None,
+        stage_name: str = None,
+    ):
+        self.backend_id = backend_id
+        self.backend_model_data = backend_model_data
+        self.backend_type = backend_type
+        self.description = description
+        self.security_token = security_token
+        self.stage_name = stage_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.backend_model_data is not None:
+            result['BackendModelData'] = self.backend_model_data
+        if self.backend_type is not None:
+            result['BackendType'] = self.backend_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('BackendModelData') is not None:
+            self.backend_model_data = m.get('BackendModelData')
+        if m.get('BackendType') is not None:
+            self.backend_type = m.get('BackendType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        return self
+
+
+class CreateBackendModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        backend_model_id: str = None,
+        request_id: str = None,
+    ):
+        self.backend_model_id = backend_model_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_model_id is not None:
+            result['BackendModelId'] = self.backend_model_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendModelId') is not None:
+            self.backend_model_id = m.get('BackendModelId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateBackendModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateBackendModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateBackendModelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3338,6 +3592,218 @@ class DeleteAppResponse(TeaModel):
         return self
 
 
+class DeleteBackendRequest(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        security_token: str = None,
+    ):
+        self.backend_id = backend_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DeleteBackendResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteBackendResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteBackendResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteBackendResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteBackendModelRequest(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        backend_model_id: str = None,
+        security_token: str = None,
+        stage_name: str = None,
+    ):
+        self.backend_id = backend_id
+        self.backend_model_id = backend_model_id
+        self.security_token = security_token
+        self.stage_name = stage_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.backend_model_id is not None:
+            result['BackendModelId'] = self.backend_model_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('BackendModelId') is not None:
+            self.backend_model_id = m.get('BackendModelId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        return self
+
+
+class DeleteBackendModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        operation_id: str = None,
+        request_id: str = None,
+    ):
+        self.operation_id = operation_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteBackendModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteBackendModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteBackendModelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDomainRequest(TeaModel):
     def __init__(
         self,
@@ -4789,6 +5255,45 @@ class DescribeApiRequest(TeaModel):
         return self
 
 
+class DescribeApiResponseBodyBackendConfig(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        backend_name: str = None,
+        backend_type: str = None,
+    ):
+        self.backend_id = backend_id
+        self.backend_name = backend_name
+        self.backend_type = backend_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.backend_name is not None:
+            result['BackendName'] = self.backend_name
+        if self.backend_type is not None:
+            result['BackendType'] = self.backend_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('BackendName') is not None:
+            self.backend_name = m.get('BackendName')
+        if m.get('BackendType') is not None:
+            self.backend_type = m.get('BackendType')
+        return self
+
+
 class DescribeApiResponseBodyConstantParametersConstantParameter(TeaModel):
     def __init__(
         self,
@@ -6100,6 +6605,8 @@ class DescribeApiResponseBody(TeaModel):
         api_name: str = None,
         app_code_auth_type: str = None,
         auth_type: str = None,
+        backend_config: DescribeApiResponseBodyBackendConfig = None,
+        backend_enable: bool = None,
         constant_parameters: DescribeApiResponseBodyConstantParameters = None,
         created_time: str = None,
         custom_system_parameters: DescribeApiResponseBodyCustomSystemParameters = None,
@@ -6135,6 +6642,8 @@ class DescribeApiResponseBody(TeaModel):
         self.api_name = api_name
         self.app_code_auth_type = app_code_auth_type
         self.auth_type = auth_type
+        self.backend_config = backend_config
+        self.backend_enable = backend_enable
         self.constant_parameters = constant_parameters
         self.created_time = created_time
         self.custom_system_parameters = custom_system_parameters
@@ -6166,6 +6675,8 @@ class DescribeApiResponseBody(TeaModel):
         self.web_socket_api_type = web_socket_api_type
 
     def validate(self):
+        if self.backend_config:
+            self.backend_config.validate()
         if self.constant_parameters:
             self.constant_parameters.validate()
         if self.custom_system_parameters:
@@ -6207,6 +6718,10 @@ class DescribeApiResponseBody(TeaModel):
             result['AppCodeAuthType'] = self.app_code_auth_type
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
+        if self.backend_config is not None:
+            result['BackendConfig'] = self.backend_config.to_map()
+        if self.backend_enable is not None:
+            result['BackendEnable'] = self.backend_enable
         if self.constant_parameters is not None:
             result['ConstantParameters'] = self.constant_parameters.to_map()
         if self.created_time is not None:
@@ -6279,6 +6794,11 @@ class DescribeApiResponseBody(TeaModel):
             self.app_code_auth_type = m.get('AppCodeAuthType')
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
+        if m.get('BackendConfig') is not None:
+            temp_model = DescribeApiResponseBodyBackendConfig()
+            self.backend_config = temp_model.from_map(m['BackendConfig'])
+        if m.get('BackendEnable') is not None:
+            self.backend_enable = m.get('BackendEnable')
         if m.get('ConstantParameters') is not None:
             temp_model = DescribeApiResponseBodyConstantParameters()
             self.constant_parameters = temp_model.from_map(m['ConstantParameters'])
@@ -8386,6 +8906,45 @@ class DescribeApiHistoryRequest(TeaModel):
         return self
 
 
+class DescribeApiHistoryResponseBodyBackendConfig(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        backend_name: str = None,
+        backend_type: str = None,
+    ):
+        self.backend_id = backend_id
+        self.backend_name = backend_name
+        self.backend_type = backend_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.backend_name is not None:
+            result['BackendName'] = self.backend_name
+        if self.backend_type is not None:
+            result['BackendType'] = self.backend_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('BackendName') is not None:
+            self.backend_name = m.get('BackendName')
+        if m.get('BackendType') is not None:
+            self.backend_type = m.get('BackendType')
+        return self
+
+
 class DescribeApiHistoryResponseBodyConstantParametersConstantParameter(TeaModel):
     def __init__(
         self,
@@ -9617,6 +10176,8 @@ class DescribeApiHistoryResponseBody(TeaModel):
         api_name: str = None,
         app_code_auth_type: str = None,
         auth_type: str = None,
+        backend_config: DescribeApiHistoryResponseBodyBackendConfig = None,
+        backend_enable: bool = None,
         constant_parameters: DescribeApiHistoryResponseBodyConstantParameters = None,
         custom_system_parameters: DescribeApiHistoryResponseBodyCustomSystemParameters = None,
         deployed_time: str = None,
@@ -9651,6 +10212,8 @@ class DescribeApiHistoryResponseBody(TeaModel):
         self.api_name = api_name
         self.app_code_auth_type = app_code_auth_type
         self.auth_type = auth_type
+        self.backend_config = backend_config
+        self.backend_enable = backend_enable
         self.constant_parameters = constant_parameters
         self.custom_system_parameters = custom_system_parameters
         self.deployed_time = deployed_time
@@ -9681,6 +10244,8 @@ class DescribeApiHistoryResponseBody(TeaModel):
         self.web_socket_api_type = web_socket_api_type
 
     def validate(self):
+        if self.backend_config:
+            self.backend_config.validate()
         if self.constant_parameters:
             self.constant_parameters.validate()
         if self.custom_system_parameters:
@@ -9720,6 +10285,10 @@ class DescribeApiHistoryResponseBody(TeaModel):
             result['AppCodeAuthType'] = self.app_code_auth_type
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
+        if self.backend_config is not None:
+            result['BackendConfig'] = self.backend_config.to_map()
+        if self.backend_enable is not None:
+            result['BackendEnable'] = self.backend_enable
         if self.constant_parameters is not None:
             result['ConstantParameters'] = self.constant_parameters.to_map()
         if self.custom_system_parameters is not None:
@@ -9790,6 +10359,11 @@ class DescribeApiHistoryResponseBody(TeaModel):
             self.app_code_auth_type = m.get('AppCodeAuthType')
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
+        if m.get('BackendConfig') is not None:
+            temp_model = DescribeApiHistoryResponseBodyBackendConfig()
+            self.backend_config = temp_model.from_map(m['BackendConfig'])
+        if m.get('BackendEnable') is not None:
+            self.backend_enable = m.get('BackendEnable')
         if m.get('ConstantParameters') is not None:
             temp_model = DescribeApiHistoryResponseBodyConstantParameters()
             self.constant_parameters = temp_model.from_map(m['ConstantParameters'])
@@ -12100,6 +12674,245 @@ class DescribeApisByAppResponse(TeaModel):
         return self
 
 
+class DescribeApisByBackendRequest(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        security_token: str = None,
+        stage_name: str = None,
+    ):
+        self.backend_id = backend_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.security_token = security_token
+        self.stage_name = stage_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        return self
+
+
+class DescribeApisByBackendResponseBodyApiInfoListApiInfo(TeaModel):
+    def __init__(
+        self,
+        api_id: str = None,
+        api_name: str = None,
+        description: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        method: str = None,
+        path: str = None,
+    ):
+        self.api_id = api_id
+        self.api_name = api_name
+        self.description = description
+        self.group_id = group_id
+        self.group_name = group_name
+        self.method = method
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_id is not None:
+            result['ApiId'] = self.api_id
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiId') is not None:
+            self.api_id = m.get('ApiId')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class DescribeApisByBackendResponseBodyApiInfoList(TeaModel):
+    def __init__(
+        self,
+        api_info: List[DescribeApisByBackendResponseBodyApiInfoListApiInfo] = None,
+    ):
+        self.api_info = api_info
+
+    def validate(self):
+        if self.api_info:
+            for k in self.api_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApiInfo'] = []
+        if self.api_info is not None:
+            for k in self.api_info:
+                result['ApiInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.api_info = []
+        if m.get('ApiInfo') is not None:
+            for k in m.get('ApiInfo'):
+                temp_model = DescribeApisByBackendResponseBodyApiInfoListApiInfo()
+                self.api_info.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeApisByBackendResponseBody(TeaModel):
+    def __init__(
+        self,
+        api_info_list: DescribeApisByBackendResponseBodyApiInfoList = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.api_info_list = api_info_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.api_info_list:
+            self.api_info_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_info_list is not None:
+            result['ApiInfoList'] = self.api_info_list.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiInfoList') is not None:
+            temp_model = DescribeApisByBackendResponseBodyApiInfoList()
+            self.api_info_list = temp_model.from_map(m['ApiInfoList'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeApisByBackendResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeApisByBackendResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeApisByBackendResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeApisByIpControlRequest(TeaModel):
     def __init__(
         self,
@@ -14247,6 +15060,669 @@ class DescribeAuthorizedAppsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeAuthorizedAppsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeBackendInfoRequest(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        security_token: str = None,
+    ):
+        self.backend_id = backend_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig(TeaModel):
+    def __init__(
+        self,
+        fc_base_url: str = None,
+        fc_region_id: str = None,
+        fc_type: str = None,
+        function_name: str = None,
+        only_business_path: bool = None,
+        qualifier: str = None,
+        role_arn: str = None,
+        service_name: str = None,
+    ):
+        self.fc_base_url = fc_base_url
+        self.fc_region_id = fc_region_id
+        self.fc_type = fc_type
+        self.function_name = function_name
+        self.only_business_path = only_business_path
+        self.qualifier = qualifier
+        self.role_arn = role_arn
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fc_base_url is not None:
+            result['FcBaseUrl'] = self.fc_base_url
+        if self.fc_region_id is not None:
+            result['FcRegionId'] = self.fc_region_id
+        if self.fc_type is not None:
+            result['FcType'] = self.fc_type
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.only_business_path is not None:
+            result['OnlyBusinessPath'] = self.only_business_path
+        if self.qualifier is not None:
+            result['Qualifier'] = self.qualifier
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FcBaseUrl') is not None:
+            self.fc_base_url = m.get('FcBaseUrl')
+        if m.get('FcRegionId') is not None:
+            self.fc_region_id = m.get('FcRegionId')
+        if m.get('FcType') is not None:
+            self.fc_type = m.get('FcType')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('OnlyBusinessPath') is not None:
+            self.only_business_path = m.get('OnlyBusinessPath')
+        if m.get('Qualifier') is not None:
+            self.qualifier = m.get('Qualifier')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        oss_region_id: str = None,
+    ):
+        self.bucket_name = bucket_name
+        self.oss_region_id = oss_region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.oss_region_id is not None:
+            result['OssRegionId'] = self.oss_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('OssRegionId') is not None:
+            self.oss_region_id = m.get('OssRegionId')
+        return self
+
+
+class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        name: str = None,
+        port: int = None,
+        vpc_access_id: str = None,
+        vpc_id: str = None,
+        vpc_scheme: str = None,
+    ):
+        self.instance_id = instance_id
+        self.name = name
+        self.port = port
+        self.vpc_access_id = vpc_access_id
+        self.vpc_id = vpc_id
+        self.vpc_scheme = vpc_scheme
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.vpc_access_id is not None:
+            result['VpcAccessId'] = self.vpc_access_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_scheme is not None:
+            result['VpcScheme'] = self.vpc_scheme
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('VpcAccessId') is not None:
+            self.vpc_access_id = m.get('VpcAccessId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcScheme') is not None:
+            self.vpc_scheme = m.get('VpcScheme')
+        return self
+
+
+class DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig(TeaModel):
+    def __init__(
+        self,
+        function_compute_config: DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig = None,
+        oss_config: DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig = None,
+        service_address: str = None,
+        type: str = None,
+        vpc_config: DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig = None,
+    ):
+        self.function_compute_config = function_compute_config
+        self.oss_config = oss_config
+        self.service_address = service_address
+        self.type = type
+        self.vpc_config = vpc_config
+
+    def validate(self):
+        if self.function_compute_config:
+            self.function_compute_config.validate()
+        if self.oss_config:
+            self.oss_config.validate()
+        if self.vpc_config:
+            self.vpc_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function_compute_config is not None:
+            result['FunctionComputeConfig'] = self.function_compute_config.to_map()
+        if self.oss_config is not None:
+            result['OssConfig'] = self.oss_config.to_map()
+        if self.service_address is not None:
+            result['ServiceAddress'] = self.service_address
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.vpc_config is not None:
+            result['VpcConfig'] = self.vpc_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FunctionComputeConfig') is not None:
+            temp_model = DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig()
+            self.function_compute_config = temp_model.from_map(m['FunctionComputeConfig'])
+        if m.get('OssConfig') is not None:
+            temp_model = DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig()
+            self.oss_config = temp_model.from_map(m['OssConfig'])
+        if m.get('ServiceAddress') is not None:
+            self.service_address = m.get('ServiceAddress')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('VpcConfig') is not None:
+            temp_model = DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig()
+            self.vpc_config = temp_model.from_map(m['VpcConfig'])
+        return self
+
+
+class DescribeBackendInfoResponseBodyBackendInfoBackendModels(TeaModel):
+    def __init__(
+        self,
+        backend_config: DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig = None,
+        backend_model_id: str = None,
+        description: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        stage_mode_id: str = None,
+        stage_name: str = None,
+    ):
+        self.backend_config = backend_config
+        self.backend_model_id = backend_model_id
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.stage_mode_id = stage_mode_id
+        self.stage_name = stage_name
+
+    def validate(self):
+        if self.backend_config:
+            self.backend_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_config is not None:
+            result['BackendConfig'] = self.backend_config.to_map()
+        if self.backend_model_id is not None:
+            result['BackendModelId'] = self.backend_model_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.stage_mode_id is not None:
+            result['StageModeId'] = self.stage_mode_id
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendConfig') is not None:
+            temp_model = DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig()
+            self.backend_config = temp_model.from_map(m['BackendConfig'])
+        if m.get('BackendModelId') is not None:
+            self.backend_model_id = m.get('BackendModelId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('StageModeId') is not None:
+            self.stage_mode_id = m.get('StageModeId')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        return self
+
+
+class DescribeBackendInfoResponseBodyBackendInfo(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        backend_models: List[DescribeBackendInfoResponseBodyBackendInfoBackendModels] = None,
+        backend_name: str = None,
+        backend_type: str = None,
+        created_time: str = None,
+        description: str = None,
+        modified_time: str = None,
+    ):
+        self.backend_id = backend_id
+        self.backend_models = backend_models
+        self.backend_name = backend_name
+        self.backend_type = backend_type
+        self.created_time = created_time
+        self.description = description
+        self.modified_time = modified_time
+
+    def validate(self):
+        if self.backend_models:
+            for k in self.backend_models:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        result['BackendModels'] = []
+        if self.backend_models is not None:
+            for k in self.backend_models:
+                result['BackendModels'].append(k.to_map() if k else None)
+        if self.backend_name is not None:
+            result['BackendName'] = self.backend_name
+        if self.backend_type is not None:
+            result['BackendType'] = self.backend_type
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        self.backend_models = []
+        if m.get('BackendModels') is not None:
+            for k in m.get('BackendModels'):
+                temp_model = DescribeBackendInfoResponseBodyBackendInfoBackendModels()
+                self.backend_models.append(temp_model.from_map(k))
+        if m.get('BackendName') is not None:
+            self.backend_name = m.get('BackendName')
+        if m.get('BackendType') is not None:
+            self.backend_type = m.get('BackendType')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        return self
+
+
+class DescribeBackendInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        backend_info: DescribeBackendInfoResponseBodyBackendInfo = None,
+        request_id: str = None,
+    ):
+        self.backend_info = backend_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.backend_info:
+            self.backend_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_info is not None:
+            result['BackendInfo'] = self.backend_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendInfo') is not None:
+            temp_model = DescribeBackendInfoResponseBodyBackendInfo()
+            self.backend_info = temp_model.from_map(m['BackendInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeBackendInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeBackendInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeBackendInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeBackendListRequest(TeaModel):
+    def __init__(
+        self,
+        backend_name: str = None,
+        backend_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        security_token: str = None,
+    ):
+        self.backend_name = backend_name
+        self.backend_type = backend_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_name is not None:
+            result['BackendName'] = self.backend_name
+        if self.backend_type is not None:
+            result['BackendType'] = self.backend_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendName') is not None:
+            self.backend_name = m.get('BackendName')
+        if m.get('BackendType') is not None:
+            self.backend_type = m.get('BackendType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeBackendListResponseBodyBackendInfoList(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        backend_name: str = None,
+        backend_type: str = None,
+        created_time: str = None,
+        description: str = None,
+        modified_time: str = None,
+    ):
+        self.backend_id = backend_id
+        self.backend_name = backend_name
+        self.backend_type = backend_type
+        self.created_time = created_time
+        self.description = description
+        self.modified_time = modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.backend_name is not None:
+            result['BackendName'] = self.backend_name
+        if self.backend_type is not None:
+            result['BackendType'] = self.backend_type
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('BackendName') is not None:
+            self.backend_name = m.get('BackendName')
+        if m.get('BackendType') is not None:
+            self.backend_type = m.get('BackendType')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        return self
+
+
+class DescribeBackendListResponseBody(TeaModel):
+    def __init__(
+        self,
+        backend_info_list: List[DescribeBackendListResponseBodyBackendInfoList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.backend_info_list = backend_info_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.backend_info_list:
+            for k in self.backend_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BackendInfoList'] = []
+        if self.backend_info_list is not None:
+            for k in self.backend_info_list:
+                result['BackendInfoList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.backend_info_list = []
+        if m.get('BackendInfoList') is not None:
+            for k in m.get('BackendInfoList'):
+                temp_model = DescribeBackendListResponseBodyBackendInfoList()
+                self.backend_info_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeBackendListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeBackendListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeBackendListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20791,6 +22267,221 @@ class DescribeTrafficControlsByApiResponse(TeaModel):
         return self
 
 
+class DescribeUpdateBackendTaskRequest(TeaModel):
+    def __init__(
+        self,
+        operation_uid: str = None,
+        security_token: str = None,
+    ):
+        self.operation_uid = operation_uid
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_uid is not None:
+            result['OperationUid'] = self.operation_uid
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationUid') is not None:
+            self.operation_uid = m.get('OperationUid')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult(TeaModel):
+    def __init__(
+        self,
+        api_name: str = None,
+        api_uid: str = None,
+        backend_id: str = None,
+        error_msg: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        stage_id: str = None,
+        stage_name: str = None,
+        update_status: str = None,
+    ):
+        self.api_name = api_name
+        self.api_uid = api_uid
+        self.backend_id = backend_id
+        self.error_msg = error_msg
+        self.group_id = group_id
+        self.group_name = group_name
+        self.stage_id = stage_id
+        self.stage_name = stage_name
+        self.update_status = update_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.api_uid is not None:
+            result['ApiUid'] = self.api_uid
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.stage_id is not None:
+            result['StageId'] = self.stage_id
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        if self.update_status is not None:
+            result['UpdateStatus'] = self.update_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('ApiUid') is not None:
+            self.api_uid = m.get('ApiUid')
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('StageId') is not None:
+            self.stage_id = m.get('StageId')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        if m.get('UpdateStatus') is not None:
+            self.update_status = m.get('UpdateStatus')
+        return self
+
+
+class DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults(TeaModel):
+    def __init__(
+        self,
+        api_update_backend_result: List[DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult] = None,
+    ):
+        self.api_update_backend_result = api_update_backend_result
+
+    def validate(self):
+        if self.api_update_backend_result:
+            for k in self.api_update_backend_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApiUpdateBackendResult'] = []
+        if self.api_update_backend_result is not None:
+            for k in self.api_update_backend_result:
+                result['ApiUpdateBackendResult'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.api_update_backend_result = []
+        if m.get('ApiUpdateBackendResult') is not None:
+            for k in m.get('ApiUpdateBackendResult'):
+                temp_model = DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult()
+                self.api_update_backend_result.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeUpdateBackendTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        api_update_backend_results: DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults = None,
+        request_id: str = None,
+    ):
+        self.api_update_backend_results = api_update_backend_results
+        self.request_id = request_id
+
+    def validate(self):
+        if self.api_update_backend_results:
+            self.api_update_backend_results.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_update_backend_results is not None:
+            result['ApiUpdateBackendResults'] = self.api_update_backend_results.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiUpdateBackendResults') is not None:
+            temp_model = DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults()
+            self.api_update_backend_results = temp_model.from_map(m['ApiUpdateBackendResults'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeUpdateBackendTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeUpdateBackendTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeUpdateBackendTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeUpdateVpcInfoTaskRequest(TeaModel):
     def __init__(
         self,
@@ -22769,6 +24460,8 @@ class ModifyApiRequest(TeaModel):
         api_name: str = None,
         app_code_auth_type: str = None,
         auth_type: str = None,
+        backend_enable: bool = None,
+        backend_id: str = None,
         constant_parameters: str = None,
         description: str = None,
         disable_internet: bool = None,
@@ -22796,6 +24489,8 @@ class ModifyApiRequest(TeaModel):
         self.api_name = api_name
         self.app_code_auth_type = app_code_auth_type
         self.auth_type = auth_type
+        self.backend_enable = backend_enable
+        self.backend_id = backend_id
         self.constant_parameters = constant_parameters
         self.description = description
         self.disable_internet = disable_internet
@@ -22837,6 +24532,10 @@ class ModifyApiRequest(TeaModel):
             result['AppCodeAuthType'] = self.app_code_auth_type
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
+        if self.backend_enable is not None:
+            result['BackendEnable'] = self.backend_enable
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
         if self.constant_parameters is not None:
             result['ConstantParameters'] = self.constant_parameters
         if self.description is not None:
@@ -22893,6 +24592,10 @@ class ModifyApiRequest(TeaModel):
             self.app_code_auth_type = m.get('AppCodeAuthType')
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
+        if m.get('BackendEnable') is not None:
+            self.backend_enable = m.get('BackendEnable')
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
         if m.get('ConstantParameters') is not None:
             self.constant_parameters = m.get('ConstantParameters')
         if m.get('Description') is not None:
@@ -23491,6 +25194,254 @@ class ModifyAppResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ModifyAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyBackendRequest(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        backend_name: str = None,
+        backend_type: str = None,
+        description: str = None,
+        security_token: str = None,
+    ):
+        self.backend_id = backend_id
+        self.backend_name = backend_name
+        self.backend_type = backend_type
+        self.description = description
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.backend_name is not None:
+            result['BackendName'] = self.backend_name
+        if self.backend_type is not None:
+            result['BackendType'] = self.backend_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('BackendName') is not None:
+            self.backend_name = m.get('BackendName')
+        if m.get('BackendType') is not None:
+            self.backend_type = m.get('BackendType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class ModifyBackendResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyBackendResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyBackendResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyBackendResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyBackendModelRequest(TeaModel):
+    def __init__(
+        self,
+        backend_id: str = None,
+        backend_model_data: str = None,
+        backend_model_id: str = None,
+        backend_type: str = None,
+        description: str = None,
+        security_token: str = None,
+        stage_name: str = None,
+    ):
+        self.backend_id = backend_id
+        self.backend_model_data = backend_model_data
+        self.backend_model_id = backend_model_id
+        self.backend_type = backend_type
+        self.description = description
+        self.security_token = security_token
+        self.stage_name = stage_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_id is not None:
+            result['BackendId'] = self.backend_id
+        if self.backend_model_data is not None:
+            result['BackendModelData'] = self.backend_model_data
+        if self.backend_model_id is not None:
+            result['BackendModelId'] = self.backend_model_id
+        if self.backend_type is not None:
+            result['BackendType'] = self.backend_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendId') is not None:
+            self.backend_id = m.get('BackendId')
+        if m.get('BackendModelData') is not None:
+            self.backend_model_data = m.get('BackendModelData')
+        if m.get('BackendModelId') is not None:
+            self.backend_model_id = m.get('BackendModelId')
+        if m.get('BackendType') is not None:
+            self.backend_type = m.get('BackendType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        return self
+
+
+class ModifyBackendModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        operation_id: str = None,
+        request_id: str = None,
+    ):
+        self.operation_id = operation_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyBackendModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyBackendModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyBackendModelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
