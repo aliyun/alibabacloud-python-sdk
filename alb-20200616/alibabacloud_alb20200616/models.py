@@ -2091,6 +2091,41 @@ class CreateRuleRequestRuleActionsFixedResponseConfig(TeaModel):
         return self
 
 
+class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        timeout: int = None,
+    ):
+        # 是否开启会话保持
+        self.enabled = enabled
+        # 超时时间
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
 class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
     def __init__(
         self,
@@ -2122,12 +2157,17 @@ class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
 class CreateRuleRequestRuleActionsForwardGroupConfig(TeaModel):
     def __init__(
         self,
+        server_group_sticky_session: CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
+        # 服务器组之间会话保持
+        self.server_group_sticky_session = server_group_sticky_session
         # 转发到的目的服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
+        if self.server_group_sticky_session:
+            self.server_group_sticky_session.validate()
         if self.server_group_tuples:
             for k in self.server_group_tuples:
                 if k:
@@ -2139,6 +2179,8 @@ class CreateRuleRequestRuleActionsForwardGroupConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.server_group_sticky_session is not None:
+            result['ServerGroupStickySession'] = self.server_group_sticky_session.to_map()
         result['ServerGroupTuples'] = []
         if self.server_group_tuples is not None:
             for k in self.server_group_tuples:
@@ -2147,6 +2189,9 @@ class CreateRuleRequestRuleActionsForwardGroupConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ServerGroupStickySession') is not None:
+            temp_model = CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession()
+            self.server_group_sticky_session = temp_model.from_map(m['ServerGroupStickySession'])
         self.server_group_tuples = []
         if m.get('ServerGroupTuples') is not None:
             for k in m.get('ServerGroupTuples'):
@@ -2302,6 +2347,132 @@ class CreateRuleRequestRuleActionsRewriteConfig(TeaModel):
         return self
 
 
+class CreateRuleRequestRuleActionsTrafficLimitConfig(TeaModel):
+    def __init__(
+        self,
+        qps: int = None,
+    ):
+        self.qps = qps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qps is not None:
+            result['QPS'] = self.qps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QPS') is not None:
+            self.qps = m.get('QPS')
+        return self
+
+
+class CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples(TeaModel):
+    def __init__(
+        self,
+        server_group_id: str = None,
+    ):
+        self.server_group_id = server_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        return self
+
+
+class CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig(TeaModel):
+    def __init__(
+        self,
+        server_group_tuples: List[CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
+    ):
+        self.server_group_tuples = server_group_tuples
+
+    def validate(self):
+        if self.server_group_tuples:
+            for k in self.server_group_tuples:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ServerGroupTuples'] = []
+        if self.server_group_tuples is not None:
+            for k in self.server_group_tuples:
+                result['ServerGroupTuples'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.server_group_tuples = []
+        if m.get('ServerGroupTuples') is not None:
+            for k in m.get('ServerGroupTuples'):
+                temp_model = CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples()
+                self.server_group_tuples.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRuleRequestRuleActionsTrafficMirrorConfig(TeaModel):
+    def __init__(
+        self,
+        mirror_group_config: CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
+        target_type: str = None,
+    ):
+        # 镜像至服务器组
+        self.mirror_group_config = mirror_group_config
+        # 镜像目标类型
+        self.target_type = target_type
+
+    def validate(self):
+        if self.mirror_group_config:
+            self.mirror_group_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mirror_group_config is not None:
+            result['MirrorGroupConfig'] = self.mirror_group_config.to_map()
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MirrorGroupConfig') is not None:
+            temp_model = CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig()
+            self.mirror_group_config = temp_model.from_map(m['MirrorGroupConfig'])
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
 class CreateRuleRequestRuleActions(TeaModel):
     def __init__(
         self,
@@ -2311,6 +2482,8 @@ class CreateRuleRequestRuleActions(TeaModel):
         order: int = None,
         redirect_config: CreateRuleRequestRuleActionsRedirectConfig = None,
         rewrite_config: CreateRuleRequestRuleActionsRewriteConfig = None,
+        traffic_limit_config: CreateRuleRequestRuleActionsTrafficLimitConfig = None,
+        traffic_mirror_config: CreateRuleRequestRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
         # 返回固定内容动作配置
@@ -2325,6 +2498,10 @@ class CreateRuleRequestRuleActions(TeaModel):
         self.redirect_config = redirect_config
         # 内部重定向动作配置
         self.rewrite_config = rewrite_config
+        # 流量限速
+        self.traffic_limit_config = traffic_limit_config
+        # 流量镜像
+        self.traffic_mirror_config = traffic_mirror_config
         # 转发规则动作类型
         self.type = type
 
@@ -2339,6 +2516,10 @@ class CreateRuleRequestRuleActions(TeaModel):
             self.redirect_config.validate()
         if self.rewrite_config:
             self.rewrite_config.validate()
+        if self.traffic_limit_config:
+            self.traffic_limit_config.validate()
+        if self.traffic_mirror_config:
+            self.traffic_mirror_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2358,6 +2539,10 @@ class CreateRuleRequestRuleActions(TeaModel):
             result['RedirectConfig'] = self.redirect_config.to_map()
         if self.rewrite_config is not None:
             result['RewriteConfig'] = self.rewrite_config.to_map()
+        if self.traffic_limit_config is not None:
+            result['TrafficLimitConfig'] = self.traffic_limit_config.to_map()
+        if self.traffic_mirror_config is not None:
+            result['TrafficMirrorConfig'] = self.traffic_mirror_config.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -2381,6 +2566,12 @@ class CreateRuleRequestRuleActions(TeaModel):
         if m.get('RewriteConfig') is not None:
             temp_model = CreateRuleRequestRuleActionsRewriteConfig()
             self.rewrite_config = temp_model.from_map(m['RewriteConfig'])
+        if m.get('TrafficLimitConfig') is not None:
+            temp_model = CreateRuleRequestRuleActionsTrafficLimitConfig()
+            self.traffic_limit_config = temp_model.from_map(m['TrafficLimitConfig'])
+        if m.get('TrafficMirrorConfig') is not None:
+            temp_model = CreateRuleRequestRuleActionsTrafficMirrorConfig()
+            self.traffic_mirror_config = temp_model.from_map(m['TrafficMirrorConfig'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -2647,6 +2838,34 @@ class CreateRuleRequestRuleConditionsQueryStringConfig(TeaModel):
         return self
 
 
+class CreateRuleRequestRuleConditionsSourceIpConfig(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # 基于源IP业务流量匹配
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class CreateRuleRequestRuleConditions(TeaModel):
     def __init__(
         self,
@@ -2656,6 +2875,7 @@ class CreateRuleRequestRuleConditions(TeaModel):
         method_config: CreateRuleRequestRuleConditionsMethodConfig = None,
         path_config: CreateRuleRequestRuleConditionsPathConfig = None,
         query_string_config: CreateRuleRequestRuleConditionsQueryStringConfig = None,
+        source_ip_config: CreateRuleRequestRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
         # Cookie条件配置
@@ -2670,6 +2890,8 @@ class CreateRuleRequestRuleConditions(TeaModel):
         self.path_config = path_config
         # 查询字符串条件配置
         self.query_string_config = query_string_config
+        # 基于源IP业务流量匹配
+        self.source_ip_config = source_ip_config
         # 条件类型
         self.type = type
 
@@ -2686,6 +2908,8 @@ class CreateRuleRequestRuleConditions(TeaModel):
             self.path_config.validate()
         if self.query_string_config:
             self.query_string_config.validate()
+        if self.source_ip_config:
+            self.source_ip_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2705,6 +2929,8 @@ class CreateRuleRequestRuleConditions(TeaModel):
             result['PathConfig'] = self.path_config.to_map()
         if self.query_string_config is not None:
             result['QueryStringConfig'] = self.query_string_config.to_map()
+        if self.source_ip_config is not None:
+            result['SourceIpConfig'] = self.source_ip_config.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -2729,6 +2955,9 @@ class CreateRuleRequestRuleConditions(TeaModel):
         if m.get('QueryStringConfig') is not None:
             temp_model = CreateRuleRequestRuleConditionsQueryStringConfig()
             self.query_string_config = temp_model.from_map(m['QueryStringConfig'])
+        if m.get('SourceIpConfig') is not None:
+            temp_model = CreateRuleRequestRuleConditionsSourceIpConfig()
+            self.source_ip_config = temp_model.from_map(m['SourceIpConfig'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -2942,6 +3171,41 @@ class CreateRulesRequestRulesRuleActionsFixedResponseConfig(TeaModel):
         return self
 
 
+class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        timeout: int = None,
+    ):
+        # 是否开启会话保持
+        self.enabled = enabled
+        # 超时时间
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
 class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
     def __init__(
         self,
@@ -2973,12 +3237,17 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples(TeaM
 class CreateRulesRequestRulesRuleActionsForwardGroupConfig(TeaModel):
     def __init__(
         self,
+        server_group_sticky_session: CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
+        # 服务器组之间会话保持
+        self.server_group_sticky_session = server_group_sticky_session
         # 转发到的目的服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
+        if self.server_group_sticky_session:
+            self.server_group_sticky_session.validate()
         if self.server_group_tuples:
             for k in self.server_group_tuples:
                 if k:
@@ -2990,6 +3259,8 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.server_group_sticky_session is not None:
+            result['ServerGroupStickySession'] = self.server_group_sticky_session.to_map()
         result['ServerGroupTuples'] = []
         if self.server_group_tuples is not None:
             for k in self.server_group_tuples:
@@ -2998,6 +3269,9 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ServerGroupStickySession') is not None:
+            temp_model = CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession()
+            self.server_group_sticky_session = temp_model.from_map(m['ServerGroupStickySession'])
         self.server_group_tuples = []
         if m.get('ServerGroupTuples') is not None:
             for k in m.get('ServerGroupTuples'):
@@ -3153,6 +3427,132 @@ class CreateRulesRequestRulesRuleActionsRewriteConfig(TeaModel):
         return self
 
 
+class CreateRulesRequestRulesRuleActionsTrafficLimitConfig(TeaModel):
+    def __init__(
+        self,
+        qps: int = None,
+    ):
+        self.qps = qps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qps is not None:
+            result['QPS'] = self.qps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QPS') is not None:
+            self.qps = m.get('QPS')
+        return self
+
+
+class CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples(TeaModel):
+    def __init__(
+        self,
+        server_group_id: str = None,
+    ):
+        self.server_group_id = server_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        return self
+
+
+class CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig(TeaModel):
+    def __init__(
+        self,
+        server_group_tuples: List[CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
+    ):
+        self.server_group_tuples = server_group_tuples
+
+    def validate(self):
+        if self.server_group_tuples:
+            for k in self.server_group_tuples:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ServerGroupTuples'] = []
+        if self.server_group_tuples is not None:
+            for k in self.server_group_tuples:
+                result['ServerGroupTuples'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.server_group_tuples = []
+        if m.get('ServerGroupTuples') is not None:
+            for k in m.get('ServerGroupTuples'):
+                temp_model = CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples()
+                self.server_group_tuples.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRulesRequestRulesRuleActionsTrafficMirrorConfig(TeaModel):
+    def __init__(
+        self,
+        mirror_group_config: CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
+        target_type: str = None,
+    ):
+        # 镜像至服务器组
+        self.mirror_group_config = mirror_group_config
+        # 镜像目标类型
+        self.target_type = target_type
+
+    def validate(self):
+        if self.mirror_group_config:
+            self.mirror_group_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mirror_group_config is not None:
+            result['MirrorGroupConfig'] = self.mirror_group_config.to_map()
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MirrorGroupConfig') is not None:
+            temp_model = CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig()
+            self.mirror_group_config = temp_model.from_map(m['MirrorGroupConfig'])
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
 class CreateRulesRequestRulesRuleActions(TeaModel):
     def __init__(
         self,
@@ -3162,6 +3562,8 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
         order: int = None,
         redirect_config: CreateRulesRequestRulesRuleActionsRedirectConfig = None,
         rewrite_config: CreateRulesRequestRulesRuleActionsRewriteConfig = None,
+        traffic_limit_config: CreateRulesRequestRulesRuleActionsTrafficLimitConfig = None,
+        traffic_mirror_config: CreateRulesRequestRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
         # 返回固定内容动作配置
@@ -3176,6 +3578,10 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
         self.redirect_config = redirect_config
         # 内部重定向动作配置
         self.rewrite_config = rewrite_config
+        # 流量限速
+        self.traffic_limit_config = traffic_limit_config
+        # 流量镜像
+        self.traffic_mirror_config = traffic_mirror_config
         # 转发规则动作类型
         self.type = type
 
@@ -3190,6 +3596,10 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
             self.redirect_config.validate()
         if self.rewrite_config:
             self.rewrite_config.validate()
+        if self.traffic_limit_config:
+            self.traffic_limit_config.validate()
+        if self.traffic_mirror_config:
+            self.traffic_mirror_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3209,6 +3619,10 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
             result['RedirectConfig'] = self.redirect_config.to_map()
         if self.rewrite_config is not None:
             result['RewriteConfig'] = self.rewrite_config.to_map()
+        if self.traffic_limit_config is not None:
+            result['TrafficLimitConfig'] = self.traffic_limit_config.to_map()
+        if self.traffic_mirror_config is not None:
+            result['TrafficMirrorConfig'] = self.traffic_mirror_config.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -3232,6 +3646,12 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
         if m.get('RewriteConfig') is not None:
             temp_model = CreateRulesRequestRulesRuleActionsRewriteConfig()
             self.rewrite_config = temp_model.from_map(m['RewriteConfig'])
+        if m.get('TrafficLimitConfig') is not None:
+            temp_model = CreateRulesRequestRulesRuleActionsTrafficLimitConfig()
+            self.traffic_limit_config = temp_model.from_map(m['TrafficLimitConfig'])
+        if m.get('TrafficMirrorConfig') is not None:
+            temp_model = CreateRulesRequestRulesRuleActionsTrafficMirrorConfig()
+            self.traffic_mirror_config = temp_model.from_map(m['TrafficMirrorConfig'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -3533,6 +3953,34 @@ class CreateRulesRequestRulesRuleConditionsResponseHeaderConfig(TeaModel):
         return self
 
 
+class CreateRulesRequestRulesRuleConditionsSourceIpConfig(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # 基于源IP业务流量匹配
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class CreateRulesRequestRulesRuleConditions(TeaModel):
     def __init__(
         self,
@@ -3543,6 +3991,7 @@ class CreateRulesRequestRulesRuleConditions(TeaModel):
         path_config: CreateRulesRequestRulesRuleConditionsPathConfig = None,
         query_string_config: CreateRulesRequestRulesRuleConditionsQueryStringConfig = None,
         response_header_config: CreateRulesRequestRulesRuleConditionsResponseHeaderConfig = None,
+        source_ip_config: CreateRulesRequestRulesRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
         # Cookie条件配置
@@ -3559,6 +4008,8 @@ class CreateRulesRequestRulesRuleConditions(TeaModel):
         self.query_string_config = query_string_config
         # 返回HTTP标头
         self.response_header_config = response_header_config
+        # 基于源IP业务流量匹配
+        self.source_ip_config = source_ip_config
         # 条件类型
         self.type = type
 
@@ -3577,6 +4028,8 @@ class CreateRulesRequestRulesRuleConditions(TeaModel):
             self.query_string_config.validate()
         if self.response_header_config:
             self.response_header_config.validate()
+        if self.source_ip_config:
+            self.source_ip_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3598,6 +4051,8 @@ class CreateRulesRequestRulesRuleConditions(TeaModel):
             result['QueryStringConfig'] = self.query_string_config.to_map()
         if self.response_header_config is not None:
             result['ResponseHeaderConfig'] = self.response_header_config.to_map()
+        if self.source_ip_config is not None:
+            result['SourceIpConfig'] = self.source_ip_config.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -3625,6 +4080,9 @@ class CreateRulesRequestRulesRuleConditions(TeaModel):
         if m.get('ResponseHeaderConfig') is not None:
             temp_model = CreateRulesRequestRulesRuleConditionsResponseHeaderConfig()
             self.response_header_config = temp_model.from_map(m['ResponseHeaderConfig'])
+        if m.get('SourceIpConfig') is not None:
+            temp_model = CreateRulesRequestRulesRuleConditionsSourceIpConfig()
+            self.source_ip_config = temp_model.from_map(m['SourceIpConfig'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -4182,6 +4640,7 @@ class CreateServerGroupRequest(TeaModel):
         scheduler: str = None,
         server_group_name: str = None,
         server_group_type: str = None,
+        service_name: str = None,
         sticky_session_config: CreateServerGroupRequestStickySessionConfig = None,
         vpc_id: str = None,
     ):
@@ -4201,6 +4660,8 @@ class CreateServerGroupRequest(TeaModel):
         self.server_group_name = server_group_name
         # 服务器组类型
         self.server_group_type = server_group_type
+        # 服务器名称
+        self.service_name = service_name
         # 会话保持配置
         self.sticky_session_config = sticky_session_config
         # VpcId
@@ -4234,6 +4695,8 @@ class CreateServerGroupRequest(TeaModel):
             result['ServerGroupName'] = self.server_group_name
         if self.server_group_type is not None:
             result['ServerGroupType'] = self.server_group_type
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
         if self.sticky_session_config is not None:
             result['StickySessionConfig'] = self.sticky_session_config.to_map()
         if self.vpc_id is not None:
@@ -4259,6 +4722,8 @@ class CreateServerGroupRequest(TeaModel):
             self.server_group_name = m.get('ServerGroupName')
         if m.get('ServerGroupType') is not None:
             self.server_group_type = m.get('ServerGroupType')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
         if m.get('StickySessionConfig') is not None:
             temp_model = CreateServerGroupRequestStickySessionConfig()
             self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])
@@ -12917,6 +13382,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         server_group_name: str = None,
         server_group_status: str = None,
         server_group_type: str = None,
+        service_name: str = None,
         sticky_session_config: ListServerGroupsResponseBodyServerGroupsStickySessionConfig = None,
         tags: List[ListServerGroupsResponseBodyServerGroupsTags] = None,
         upstream_keepalive_enabled: bool = None,
@@ -12944,6 +13410,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self.server_group_status = server_group_status
         # 服务器组类型
         self.server_group_type = server_group_type
+        # 服务器名称
+        self.service_name = service_name
         # 会话保持配置
         self.sticky_session_config = sticky_session_config
         # 标签列表
@@ -12991,6 +13459,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             result['ServerGroupStatus'] = self.server_group_status
         if self.server_group_type is not None:
             result['ServerGroupType'] = self.server_group_type
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
         if self.sticky_session_config is not None:
             result['StickySessionConfig'] = self.sticky_session_config.to_map()
         result['Tags'] = []
@@ -13028,6 +13498,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             self.server_group_status = m.get('ServerGroupStatus')
         if m.get('ServerGroupType') is not None:
             self.server_group_type = m.get('ServerGroupType')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
         if m.get('StickySessionConfig') is not None:
             temp_model = ListServerGroupsResponseBodyServerGroupsStickySessionConfig()
             self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])
@@ -16720,6 +17192,41 @@ class UpdateRuleAttributeRequestRuleActionsFixedResponseConfig(TeaModel):
         return self
 
 
+class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        timeout: int = None,
+    ):
+        # 是否开启会话保持
+        self.enabled = enabled
+        # 超时时间
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
 class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
     def __init__(
         self,
@@ -16751,12 +17258,17 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples(T
 class UpdateRuleAttributeRequestRuleActionsForwardGroupConfig(TeaModel):
     def __init__(
         self,
+        server_group_sticky_session: UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
+        # 服务器组之间会话保持
+        self.server_group_sticky_session = server_group_sticky_session
         # 转发到的目的服务器组列表
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
+        if self.server_group_sticky_session:
+            self.server_group_sticky_session.validate()
         if self.server_group_tuples:
             for k in self.server_group_tuples:
                 if k:
@@ -16768,6 +17280,8 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.server_group_sticky_session is not None:
+            result['ServerGroupStickySession'] = self.server_group_sticky_session.to_map()
         result['ServerGroupTuples'] = []
         if self.server_group_tuples is not None:
             for k in self.server_group_tuples:
@@ -16776,6 +17290,9 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ServerGroupStickySession') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession()
+            self.server_group_sticky_session = temp_model.from_map(m['ServerGroupStickySession'])
         self.server_group_tuples = []
         if m.get('ServerGroupTuples') is not None:
             for k in m.get('ServerGroupTuples'):
@@ -16931,6 +17448,132 @@ class UpdateRuleAttributeRequestRuleActionsRewriteConfig(TeaModel):
         return self
 
 
+class UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig(TeaModel):
+    def __init__(
+        self,
+        qps: int = None,
+    ):
+        self.qps = qps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qps is not None:
+            result['QPS'] = self.qps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QPS') is not None:
+            self.qps = m.get('QPS')
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples(TeaModel):
+    def __init__(
+        self,
+        server_group_id: str = None,
+    ):
+        self.server_group_id = server_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig(TeaModel):
+    def __init__(
+        self,
+        server_group_tuples: List[UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
+    ):
+        self.server_group_tuples = server_group_tuples
+
+    def validate(self):
+        if self.server_group_tuples:
+            for k in self.server_group_tuples:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ServerGroupTuples'] = []
+        if self.server_group_tuples is not None:
+            for k in self.server_group_tuples:
+                result['ServerGroupTuples'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.server_group_tuples = []
+        if m.get('ServerGroupTuples') is not None:
+            for k in m.get('ServerGroupTuples'):
+                temp_model = UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples()
+                self.server_group_tuples.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig(TeaModel):
+    def __init__(
+        self,
+        mirror_group_config: UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
+        target_type: str = None,
+    ):
+        # 镜像至服务器组
+        self.mirror_group_config = mirror_group_config
+        # 镜像目标类型
+        self.target_type = target_type
+
+    def validate(self):
+        if self.mirror_group_config:
+            self.mirror_group_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mirror_group_config is not None:
+            result['MirrorGroupConfig'] = self.mirror_group_config.to_map()
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MirrorGroupConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig()
+            self.mirror_group_config = temp_model.from_map(m['MirrorGroupConfig'])
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
 class UpdateRuleAttributeRequestRuleActions(TeaModel):
     def __init__(
         self,
@@ -16940,6 +17583,8 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
         order: int = None,
         redirect_config: UpdateRuleAttributeRequestRuleActionsRedirectConfig = None,
         rewrite_config: UpdateRuleAttributeRequestRuleActionsRewriteConfig = None,
+        traffic_limit_config: UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig = None,
+        traffic_mirror_config: UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
         # 返回固定内容动作配置
@@ -16954,6 +17599,10 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
         self.redirect_config = redirect_config
         # 内部重定向动作配置
         self.rewrite_config = rewrite_config
+        # 流量限速
+        self.traffic_limit_config = traffic_limit_config
+        # 流量镜像
+        self.traffic_mirror_config = traffic_mirror_config
         # 转发规则动作类型
         self.type = type
 
@@ -16968,6 +17617,10 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
             self.redirect_config.validate()
         if self.rewrite_config:
             self.rewrite_config.validate()
+        if self.traffic_limit_config:
+            self.traffic_limit_config.validate()
+        if self.traffic_mirror_config:
+            self.traffic_mirror_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16987,6 +17640,10 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
             result['RedirectConfig'] = self.redirect_config.to_map()
         if self.rewrite_config is not None:
             result['RewriteConfig'] = self.rewrite_config.to_map()
+        if self.traffic_limit_config is not None:
+            result['TrafficLimitConfig'] = self.traffic_limit_config.to_map()
+        if self.traffic_mirror_config is not None:
+            result['TrafficMirrorConfig'] = self.traffic_mirror_config.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -17010,6 +17667,12 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
         if m.get('RewriteConfig') is not None:
             temp_model = UpdateRuleAttributeRequestRuleActionsRewriteConfig()
             self.rewrite_config = temp_model.from_map(m['RewriteConfig'])
+        if m.get('TrafficLimitConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig()
+            self.traffic_limit_config = temp_model.from_map(m['TrafficLimitConfig'])
+        if m.get('TrafficMirrorConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig()
+            self.traffic_mirror_config = temp_model.from_map(m['TrafficMirrorConfig'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -17276,6 +17939,34 @@ class UpdateRuleAttributeRequestRuleConditionsQueryStringConfig(TeaModel):
         return self
 
 
+class UpdateRuleAttributeRequestRuleConditionsSourceIpConfig(TeaModel):
+    def __init__(
+        self,
+        values: List[str] = None,
+    ):
+        # 基于源IP业务流量匹配
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class UpdateRuleAttributeRequestRuleConditions(TeaModel):
     def __init__(
         self,
@@ -17285,6 +17976,7 @@ class UpdateRuleAttributeRequestRuleConditions(TeaModel):
         method_config: UpdateRuleAttributeRequestRuleConditionsMethodConfig = None,
         path_config: UpdateRuleAttributeRequestRuleConditionsPathConfig = None,
         query_string_config: UpdateRuleAttributeRequestRuleConditionsQueryStringConfig = None,
+        source_ip_config: UpdateRuleAttributeRequestRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
         # Cookie条件配置
@@ -17299,6 +17991,8 @@ class UpdateRuleAttributeRequestRuleConditions(TeaModel):
         self.path_config = path_config
         # 查询字符串条件配置
         self.query_string_config = query_string_config
+        # 基于源IP业务流量匹配
+        self.source_ip_config = source_ip_config
         # 条件类型
         self.type = type
 
@@ -17315,6 +18009,8 @@ class UpdateRuleAttributeRequestRuleConditions(TeaModel):
             self.path_config.validate()
         if self.query_string_config:
             self.query_string_config.validate()
+        if self.source_ip_config:
+            self.source_ip_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -17334,6 +18030,8 @@ class UpdateRuleAttributeRequestRuleConditions(TeaModel):
             result['PathConfig'] = self.path_config.to_map()
         if self.query_string_config is not None:
             result['QueryStringConfig'] = self.query_string_config.to_map()
+        if self.source_ip_config is not None:
+            result['SourceIpConfig'] = self.source_ip_config.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -17358,6 +18056,9 @@ class UpdateRuleAttributeRequestRuleConditions(TeaModel):
         if m.get('QueryStringConfig') is not None:
             temp_model = UpdateRuleAttributeRequestRuleConditionsQueryStringConfig()
             self.query_string_config = temp_model.from_map(m['QueryStringConfig'])
+        if m.get('SourceIpConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleConditionsSourceIpConfig()
+            self.source_ip_config = temp_model.from_map(m['SourceIpConfig'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -19063,6 +19764,7 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         scheduler: str = None,
         server_group_id: str = None,
         server_group_name: str = None,
+        service_name: str = None,
         sticky_session_config: UpdateServerGroupAttributeRequestStickySessionConfig = None,
     ):
         # 幂等标识
@@ -19077,6 +19779,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
         self.server_group_id = server_group_id
         # Acl名称
         self.server_group_name = server_group_name
+        # 服务器名称
+        self.service_name = service_name
         # 会话保持配置
         self.sticky_session_config = sticky_session_config
 
@@ -19104,6 +19808,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             result['ServerGroupId'] = self.server_group_id
         if self.server_group_name is not None:
             result['ServerGroupName'] = self.server_group_name
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
         if self.sticky_session_config is not None:
             result['StickySessionConfig'] = self.sticky_session_config.to_map()
         return result
@@ -19123,6 +19829,8 @@ class UpdateServerGroupAttributeRequest(TeaModel):
             self.server_group_id = m.get('ServerGroupId')
         if m.get('ServerGroupName') is not None:
             self.server_group_name = m.get('ServerGroupName')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
         if m.get('StickySessionConfig') is not None:
             temp_model = UpdateServerGroupAttributeRequestStickySessionConfig()
             self.sticky_session_config = temp_model.from_map(m['StickySessionConfig'])

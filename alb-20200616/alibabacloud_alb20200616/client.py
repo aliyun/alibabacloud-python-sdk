@@ -48,10 +48,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AddEntriesToAclResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclEntries'] = request.acl_entries
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.acl_entries):
+            query['AclEntries'] = request.acl_entries
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -78,10 +82,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AddEntriesToAclResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclEntries'] = request.acl_entries
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.acl_entries):
+            query['AclEntries'] = request.acl_entries
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -122,10 +130,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AddServersToServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ServerGroupId'] = request.server_group_id
-        query['Servers'] = request.servers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.servers):
+            query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -152,10 +164,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AddServersToServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ServerGroupId'] = request.server_group_id
-        query['Servers'] = request.servers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.servers):
+            query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -196,10 +212,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckTemplateId'] = request.health_check_template_id
-        query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_template_id):
+            query['HealthCheckTemplateId'] = request.health_check_template_id
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -226,10 +246,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ApplyHealthCheckTemplateToServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckTemplateId'] = request.health_check_template_id
-        query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_template_id):
+            query['HealthCheckTemplateId'] = request.health_check_template_id
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -270,11 +294,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AssociateAclsWithListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclIds'] = request.acl_ids
-        query['AclType'] = request.acl_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.acl_ids):
+            query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -301,11 +330,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AssociateAclsWithListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclIds'] = request.acl_ids
-        query['AclType'] = request.acl_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.acl_ids):
+            query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -346,10 +380,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Certificates'] = request.certificates
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.certificates):
+            query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -376,10 +414,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AssociateAdditionalCertificatesWithListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Certificates'] = request.certificates
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.certificates):
+            query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -420,11 +462,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -451,11 +498,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.AttachCommonBandwidthPackageToLoadBalancerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -496,10 +548,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateAclResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclName'] = request.acl_name
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -526,10 +582,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateAclResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclName'] = request.acl_name
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -570,20 +630,34 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateHealthCheckTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckCodes'] = request.health_check_codes
-        query['HealthCheckConnectPort'] = request.health_check_connect_port
-        query['HealthCheckHost'] = request.health_check_host
-        query['HealthCheckHttpVersion'] = request.health_check_http_version
-        query['HealthCheckInterval'] = request.health_check_interval
-        query['HealthCheckMethod'] = request.health_check_method
-        query['HealthCheckPath'] = request.health_check_path
-        query['HealthCheckProtocol'] = request.health_check_protocol
-        query['HealthCheckTemplateName'] = request.health_check_template_name
-        query['HealthCheckTimeout'] = request.health_check_timeout
-        query['HealthyThreshold'] = request.healthy_threshold
-        query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_codes):
+            query['HealthCheckCodes'] = request.health_check_codes
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_host):
+            query['HealthCheckHost'] = request.health_check_host
+        if not UtilClient.is_unset(request.health_check_http_version):
+            query['HealthCheckHttpVersion'] = request.health_check_http_version
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_path):
+            query['HealthCheckPath'] = request.health_check_path
+        if not UtilClient.is_unset(request.health_check_protocol):
+            query['HealthCheckProtocol'] = request.health_check_protocol
+        if not UtilClient.is_unset(request.health_check_template_name):
+            query['HealthCheckTemplateName'] = request.health_check_template_name
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -610,20 +684,34 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateHealthCheckTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckCodes'] = request.health_check_codes
-        query['HealthCheckConnectPort'] = request.health_check_connect_port
-        query['HealthCheckHost'] = request.health_check_host
-        query['HealthCheckHttpVersion'] = request.health_check_http_version
-        query['HealthCheckInterval'] = request.health_check_interval
-        query['HealthCheckMethod'] = request.health_check_method
-        query['HealthCheckPath'] = request.health_check_path
-        query['HealthCheckProtocol'] = request.health_check_protocol
-        query['HealthCheckTemplateName'] = request.health_check_template_name
-        query['HealthCheckTimeout'] = request.health_check_timeout
-        query['HealthyThreshold'] = request.healthy_threshold
-        query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_codes):
+            query['HealthCheckCodes'] = request.health_check_codes
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_host):
+            query['HealthCheckHost'] = request.health_check_host
+        if not UtilClient.is_unset(request.health_check_http_version):
+            query['HealthCheckHttpVersion'] = request.health_check_http_version
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_path):
+            query['HealthCheckPath'] = request.health_check_path
+        if not UtilClient.is_unset(request.health_check_protocol):
+            query['HealthCheckProtocol'] = request.health_check_protocol
+        if not UtilClient.is_unset(request.health_check_template_name):
+            query['HealthCheckTemplateName'] = request.health_check_template_name
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -664,23 +752,40 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CaCertificates'] = request.ca_certificates
-        query['CaEnabled'] = request.ca_enabled
-        query['Certificates'] = request.certificates
-        query['ClientToken'] = request.client_token
-        query['DefaultActions'] = request.default_actions
-        query['DryRun'] = request.dry_run
-        query['GzipEnabled'] = request.gzip_enabled
-        query['Http2Enabled'] = request.http_2enabled
-        query['IdleTimeout'] = request.idle_timeout
-        query['ListenerDescription'] = request.listener_description
-        query['ListenerPort'] = request.listener_port
-        query['ListenerProtocol'] = request.listener_protocol
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['QuicConfig'] = request.quic_config
-        query['RequestTimeout'] = request.request_timeout
-        query['SecurityPolicyId'] = request.security_policy_id
-        query['XForwardedForConfig'] = request.xforwarded_for_config
+        if not UtilClient.is_unset(request.ca_certificates):
+            query['CaCertificates'] = request.ca_certificates
+        if not UtilClient.is_unset(request.ca_enabled):
+            query['CaEnabled'] = request.ca_enabled
+        if not UtilClient.is_unset(request.certificates):
+            query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_actions):
+            query['DefaultActions'] = request.default_actions
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.gzip_enabled):
+            query['GzipEnabled'] = request.gzip_enabled
+        if not UtilClient.is_unset(request.http_2enabled):
+            query['Http2Enabled'] = request.http_2enabled
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_description):
+            query['ListenerDescription'] = request.listener_description
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.quic_config):
+            query['QuicConfig'] = request.quic_config
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
+        if not UtilClient.is_unset(request.xforwarded_for_config):
+            query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -707,23 +812,40 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CaCertificates'] = request.ca_certificates
-        query['CaEnabled'] = request.ca_enabled
-        query['Certificates'] = request.certificates
-        query['ClientToken'] = request.client_token
-        query['DefaultActions'] = request.default_actions
-        query['DryRun'] = request.dry_run
-        query['GzipEnabled'] = request.gzip_enabled
-        query['Http2Enabled'] = request.http_2enabled
-        query['IdleTimeout'] = request.idle_timeout
-        query['ListenerDescription'] = request.listener_description
-        query['ListenerPort'] = request.listener_port
-        query['ListenerProtocol'] = request.listener_protocol
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['QuicConfig'] = request.quic_config
-        query['RequestTimeout'] = request.request_timeout
-        query['SecurityPolicyId'] = request.security_policy_id
-        query['XForwardedForConfig'] = request.xforwarded_for_config
+        if not UtilClient.is_unset(request.ca_certificates):
+            query['CaCertificates'] = request.ca_certificates
+        if not UtilClient.is_unset(request.ca_enabled):
+            query['CaEnabled'] = request.ca_enabled
+        if not UtilClient.is_unset(request.certificates):
+            query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_actions):
+            query['DefaultActions'] = request.default_actions
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.gzip_enabled):
+            query['GzipEnabled'] = request.gzip_enabled
+        if not UtilClient.is_unset(request.http_2enabled):
+            query['Http2Enabled'] = request.http_2enabled
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_description):
+            query['ListenerDescription'] = request.listener_description
+        if not UtilClient.is_unset(request.listener_port):
+            query['ListenerPort'] = request.listener_port
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.quic_config):
+            query['QuicConfig'] = request.quic_config
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
+        if not UtilClient.is_unset(request.xforwarded_for_config):
+            query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -764,18 +886,30 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateLoadBalancerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AddressAllocatedMode'] = request.address_allocated_mode
-        query['AddressType'] = request.address_type
-        query['ClientToken'] = request.client_token
-        query['DeletionProtectionEnabled'] = request.deletion_protection_enabled
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
-        query['LoadBalancerEdition'] = request.load_balancer_edition
-        query['LoadBalancerName'] = request.load_balancer_name
-        query['ModificationProtectionConfig'] = request.modification_protection_config
-        query['ResourceGroupId'] = request.resource_group_id
-        query['VpcId'] = request.vpc_id
-        query['ZoneMappings'] = request.zone_mappings
+        if not UtilClient.is_unset(request.address_allocated_mode):
+            query['AddressAllocatedMode'] = request.address_allocated_mode
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deletion_protection_enabled):
+            query['DeletionProtectionEnabled'] = request.deletion_protection_enabled
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_billing_config):
+            query['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
+        if not UtilClient.is_unset(request.load_balancer_edition):
+            query['LoadBalancerEdition'] = request.load_balancer_edition
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.modification_protection_config):
+            query['ModificationProtectionConfig'] = request.modification_protection_config
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -802,18 +936,30 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateLoadBalancerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AddressAllocatedMode'] = request.address_allocated_mode
-        query['AddressType'] = request.address_type
-        query['ClientToken'] = request.client_token
-        query['DeletionProtectionEnabled'] = request.deletion_protection_enabled
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
-        query['LoadBalancerEdition'] = request.load_balancer_edition
-        query['LoadBalancerName'] = request.load_balancer_name
-        query['ModificationProtectionConfig'] = request.modification_protection_config
-        query['ResourceGroupId'] = request.resource_group_id
-        query['VpcId'] = request.vpc_id
-        query['ZoneMappings'] = request.zone_mappings
+        if not UtilClient.is_unset(request.address_allocated_mode):
+            query['AddressAllocatedMode'] = request.address_allocated_mode
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deletion_protection_enabled):
+            query['DeletionProtectionEnabled'] = request.deletion_protection_enabled
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_billing_config):
+            query['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
+        if not UtilClient.is_unset(request.load_balancer_edition):
+            query['LoadBalancerEdition'] = request.load_balancer_edition
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.modification_protection_config):
+            query['ModificationProtectionConfig'] = request.modification_protection_config
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -854,13 +1000,20 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
-        query['Priority'] = request.priority
-        query['RuleActions'] = request.rule_actions
-        query['RuleConditions'] = request.rule_conditions
-        query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.rule_actions):
+            query['RuleActions'] = request.rule_actions
+        if not UtilClient.is_unset(request.rule_conditions):
+            query['RuleConditions'] = request.rule_conditions
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -887,13 +1040,20 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
-        query['Priority'] = request.priority
-        query['RuleActions'] = request.rule_actions
-        query['RuleConditions'] = request.rule_conditions
-        query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.rule_actions):
+            query['RuleActions'] = request.rule_actions
+        if not UtilClient.is_unset(request.rule_conditions):
+            query['RuleConditions'] = request.rule_conditions
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -934,10 +1094,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
-        query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -964,10 +1128,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
-        query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1008,12 +1176,18 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateSecurityPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ciphers'] = request.ciphers
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityPolicyName'] = request.security_policy_name
-        query['TLSVersions'] = request.tlsversions
+        if not UtilClient.is_unset(request.ciphers):
+            query['Ciphers'] = request.ciphers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_policy_name):
+            query['SecurityPolicyName'] = request.security_policy_name
+        if not UtilClient.is_unset(request.tlsversions):
+            query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1040,12 +1214,18 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateSecurityPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ciphers'] = request.ciphers
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityPolicyName'] = request.security_policy_name
-        query['TLSVersions'] = request.tlsversions
+        if not UtilClient.is_unset(request.ciphers):
+            query['Ciphers'] = request.ciphers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_policy_name):
+            query['SecurityPolicyName'] = request.security_policy_name
+        if not UtilClient.is_unset(request.tlsversions):
+            query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1086,16 +1266,28 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckConfig'] = request.health_check_config
-        query['Protocol'] = request.protocol
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Scheduler'] = request.scheduler
-        query['ServerGroupName'] = request.server_group_name
-        query['ServerGroupType'] = request.server_group_type
-        query['StickySessionConfig'] = request.sticky_session_config
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_config):
+            query['HealthCheckConfig'] = request.health_check_config
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.server_group_name):
+            query['ServerGroupName'] = request.server_group_name
+        if not UtilClient.is_unset(request.server_group_type):
+            query['ServerGroupType'] = request.server_group_type
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.sticky_session_config):
+            query['StickySessionConfig'] = request.sticky_session_config
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1122,16 +1314,28 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.CreateServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckConfig'] = request.health_check_config
-        query['Protocol'] = request.protocol
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Scheduler'] = request.scheduler
-        query['ServerGroupName'] = request.server_group_name
-        query['ServerGroupType'] = request.server_group_type
-        query['StickySessionConfig'] = request.sticky_session_config
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_config):
+            query['HealthCheckConfig'] = request.health_check_config
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.server_group_name):
+            query['ServerGroupName'] = request.server_group_name
+        if not UtilClient.is_unset(request.server_group_type):
+            query['ServerGroupType'] = request.server_group_type
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.sticky_session_config):
+            query['StickySessionConfig'] = request.sticky_session_config
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1172,9 +1376,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteAclResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1201,9 +1408,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteAclResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1244,9 +1454,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteHealthCheckTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckTemplateIds'] = request.health_check_template_ids
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_template_ids):
+            query['HealthCheckTemplateIds'] = request.health_check_template_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1273,9 +1486,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteHealthCheckTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckTemplateIds'] = request.health_check_template_ids
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_template_ids):
+            query['HealthCheckTemplateIds'] = request.health_check_template_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1316,9 +1532,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1345,9 +1564,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1388,9 +1610,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteLoadBalancerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1417,9 +1642,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteLoadBalancerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1460,9 +1688,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1489,9 +1720,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1532,9 +1766,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1561,9 +1798,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1604,9 +1844,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteSecurityPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['SecurityPolicyId'] = request.security_policy_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1633,9 +1876,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteSecurityPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['SecurityPolicyId'] = request.security_policy_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1676,9 +1922,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1705,9 +1954,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DeleteServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1748,7 +2000,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1775,7 +2028,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1866,11 +2120,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1897,11 +2156,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DetachCommonBandwidthPackageFromLoadBalancerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BandwidthPackageId'] = request.bandwidth_package_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1942,9 +2206,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DisableDeletionProtectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1971,9 +2238,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DisableDeletionProtectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2014,9 +2284,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DisableLoadBalancerAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2043,9 +2316,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DisableLoadBalancerAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2086,10 +2362,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DissociateAclsFromListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclIds'] = request.acl_ids
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.acl_ids):
+            query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2116,10 +2396,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DissociateAclsFromListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclIds'] = request.acl_ids
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.acl_ids):
+            query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2160,10 +2444,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Certificates'] = request.certificates
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.certificates):
+            query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2190,10 +2478,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.DissociateAdditionalCertificatesFromListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Certificates'] = request.certificates
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.certificates):
+            query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2234,9 +2526,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.EnableDeletionProtectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2263,9 +2558,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.EnableDeletionProtectionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2306,11 +2604,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.EnableLoadBalancerAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['LogProject'] = request.log_project
-        query['LogStore'] = request.log_store
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.log_project):
+            query['LogProject'] = request.log_project
+        if not UtilClient.is_unset(request.log_store):
+            query['LogStore'] = request.log_store
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2337,11 +2640,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.EnableLoadBalancerAccessLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['LogProject'] = request.log_project
-        query['LogStore'] = request.log_store
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.log_project):
+            query['LogProject'] = request.log_project
+        if not UtilClient.is_unset(request.log_store):
+            query['LogStore'] = request.log_store
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2382,7 +2690,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.GetHealthCheckTemplateAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['HealthCheckTemplateId'] = request.health_check_template_id
+        if not UtilClient.is_unset(request.health_check_template_id):
+            query['HealthCheckTemplateId'] = request.health_check_template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2409,7 +2718,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.GetHealthCheckTemplateAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['HealthCheckTemplateId'] = request.health_check_template_id
+        if not UtilClient.is_unset(request.health_check_template_id):
+            query['HealthCheckTemplateId'] = request.health_check_template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2450,7 +2760,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.GetListenerAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2477,7 +2788,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.GetListenerAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2518,10 +2830,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.GetListenerHealthStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IncludeRule'] = request.include_rule
-        query['ListenerId'] = request.listener_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.include_rule):
+            query['IncludeRule'] = request.include_rule
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2548,10 +2864,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.GetListenerHealthStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IncludeRule'] = request.include_rule
-        query['ListenerId'] = request.listener_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.include_rule):
+            query['IncludeRule'] = request.include_rule
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2592,7 +2912,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.GetLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2619,7 +2940,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.GetLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2660,9 +2982,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListAclEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclId'] = request.acl_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2689,9 +3014,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListAclEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclId'] = request.acl_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2732,7 +3060,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListAclRelationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.acl_ids):
+            query['AclIds'] = request.acl_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2759,7 +3088,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListAclRelationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.acl_ids):
+            query['AclIds'] = request.acl_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2800,11 +3130,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListAclsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclIds'] = request.acl_ids
-        query['AclNames'] = request.acl_names
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.acl_ids):
+            query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.acl_names):
+            query['AclNames'] = request.acl_names
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2831,11 +3166,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListAclsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclIds'] = request.acl_ids
-        query['AclNames'] = request.acl_names
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.acl_ids):
+            query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.acl_names):
+            query['AclNames'] = request.acl_names
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2876,14 +3216,22 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListAsynJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ApiName'] = request.api_name
-        query['BeginTime'] = request.begin_time
-        query['EndTime'] = request.end_time
-        query['JobIds'] = request.job_ids
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceIds'] = request.resource_ids
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2910,14 +3258,22 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListAsynJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ApiName'] = request.api_name
-        query['BeginTime'] = request.begin_time
-        query['EndTime'] = request.end_time
-        query['JobIds'] = request.job_ids
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceIds'] = request.resource_ids
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2958,10 +3314,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListHealthCheckTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['HealthCheckTemplateIds'] = request.health_check_template_ids
-        query['HealthCheckTemplateNames'] = request.health_check_template_names
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.health_check_template_ids):
+            query['HealthCheckTemplateIds'] = request.health_check_template_ids
+        if not UtilClient.is_unset(request.health_check_template_names):
+            query['HealthCheckTemplateNames'] = request.health_check_template_names
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2988,10 +3348,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListHealthCheckTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['HealthCheckTemplateIds'] = request.health_check_template_ids
-        query['HealthCheckTemplateNames'] = request.health_check_template_names
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.health_check_template_ids):
+            query['HealthCheckTemplateIds'] = request.health_check_template_ids
+        if not UtilClient.is_unset(request.health_check_template_names):
+            query['HealthCheckTemplateNames'] = request.health_check_template_names
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3032,10 +3396,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListListenerCertificatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertificateType'] = request.certificate_type
-        query['ListenerId'] = request.listener_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.certificate_type):
+            query['CertificateType'] = request.certificate_type
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3062,10 +3430,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListListenerCertificatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertificateType'] = request.certificate_type
-        query['ListenerId'] = request.listener_id
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.certificate_type):
+            query['CertificateType'] = request.certificate_type
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3106,11 +3478,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListListenersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ListenerIds'] = request.listener_ids
-        query['ListenerProtocol'] = request.listener_protocol
-        query['LoadBalancerIds'] = request.load_balancer_ids
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.listener_ids):
+            query['ListenerIds'] = request.listener_ids
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_ids):
+            query['LoadBalancerIds'] = request.load_balancer_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3137,11 +3514,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListListenersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ListenerIds'] = request.listener_ids
-        query['ListenerProtocol'] = request.listener_protocol
-        query['LoadBalancerIds'] = request.load_balancer_ids
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.listener_ids):
+            query['ListenerIds'] = request.listener_ids
+        if not UtilClient.is_unset(request.listener_protocol):
+            query['ListenerProtocol'] = request.listener_protocol
+        if not UtilClient.is_unset(request.load_balancer_ids):
+            query['LoadBalancerIds'] = request.load_balancer_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3182,18 +3564,30 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListLoadBalancersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AddressType'] = request.address_type
-        query['LoadBalancerBussinessStatus'] = request.load_balancer_bussiness_status
-        query['LoadBalancerIds'] = request.load_balancer_ids
-        query['LoadBalancerNames'] = request.load_balancer_names
-        query['LoadBalancerStatus'] = request.load_balancer_status
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['PayType'] = request.pay_type
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Tag'] = request.tag
-        query['VpcIds'] = request.vpc_ids
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.load_balancer_bussiness_status):
+            query['LoadBalancerBussinessStatus'] = request.load_balancer_bussiness_status
+        if not UtilClient.is_unset(request.load_balancer_ids):
+            query['LoadBalancerIds'] = request.load_balancer_ids
+        if not UtilClient.is_unset(request.load_balancer_names):
+            query['LoadBalancerNames'] = request.load_balancer_names
+        if not UtilClient.is_unset(request.load_balancer_status):
+            query['LoadBalancerStatus'] = request.load_balancer_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vpc_ids):
+            query['VpcIds'] = request.vpc_ids
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3220,18 +3614,30 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListLoadBalancersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AddressType'] = request.address_type
-        query['LoadBalancerBussinessStatus'] = request.load_balancer_bussiness_status
-        query['LoadBalancerIds'] = request.load_balancer_ids
-        query['LoadBalancerNames'] = request.load_balancer_names
-        query['LoadBalancerStatus'] = request.load_balancer_status
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['PayType'] = request.pay_type
-        query['ResourceGroupId'] = request.resource_group_id
-        query['Tag'] = request.tag
-        query['VpcIds'] = request.vpc_ids
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.load_balancer_bussiness_status):
+            query['LoadBalancerBussinessStatus'] = request.load_balancer_bussiness_status
+        if not UtilClient.is_unset(request.load_balancer_ids):
+            query['LoadBalancerIds'] = request.load_balancer_ids
+        if not UtilClient.is_unset(request.load_balancer_names):
+            query['LoadBalancerNames'] = request.load_balancer_names
+        if not UtilClient.is_unset(request.load_balancer_status):
+            query['LoadBalancerStatus'] = request.load_balancer_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vpc_ids):
+            query['VpcIds'] = request.vpc_ids
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3272,11 +3678,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ListenerIds'] = request.listener_ids
-        query['LoadBalancerIds'] = request.load_balancer_ids
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.listener_ids):
+            query['ListenerIds'] = request.listener_ids
+        if not UtilClient.is_unset(request.load_balancer_ids):
+            query['LoadBalancerIds'] = request.load_balancer_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3303,11 +3714,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListRulesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ListenerIds'] = request.listener_ids
-        query['LoadBalancerIds'] = request.load_balancer_ids
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['RuleIds'] = request.rule_ids
+        if not UtilClient.is_unset(request.listener_ids):
+            query['ListenerIds'] = request.listener_ids
+        if not UtilClient.is_unset(request.load_balancer_ids):
+            query['LoadBalancerIds'] = request.load_balancer_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3348,11 +3764,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListSecurityPoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityPolicyIds'] = request.security_policy_ids
-        query['SecurityPolicyNames'] = request.security_policy_names
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_policy_ids):
+            query['SecurityPolicyIds'] = request.security_policy_ids
+        if not UtilClient.is_unset(request.security_policy_names):
+            query['SecurityPolicyNames'] = request.security_policy_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3379,11 +3800,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListSecurityPoliciesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceGroupId'] = request.resource_group_id
-        query['SecurityPolicyIds'] = request.security_policy_ids
-        query['SecurityPolicyNames'] = request.security_policy_names
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_policy_ids):
+            query['SecurityPolicyIds'] = request.security_policy_ids
+        if not UtilClient.is_unset(request.security_policy_names):
+            query['SecurityPolicyNames'] = request.security_policy_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3424,7 +3850,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListSecurityPolicyRelationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SecurityPolicyIds'] = request.security_policy_ids
+        if not UtilClient.is_unset(request.security_policy_ids):
+            query['SecurityPolicyIds'] = request.security_policy_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3451,7 +3878,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListSecurityPolicyRelationsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SecurityPolicyIds'] = request.security_policy_ids
+        if not UtilClient.is_unset(request.security_policy_ids):
+            query['SecurityPolicyIds'] = request.security_policy_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3492,11 +3920,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListServerGroupServersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ServerGroupId'] = request.server_group_id
-        query['ServerIds'] = request.server_ids
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.server_ids):
+            query['ServerIds'] = request.server_ids
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3523,11 +3956,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListServerGroupServersResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ServerGroupId'] = request.server_group_id
-        query['ServerIds'] = request.server_ids
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.server_ids):
+            query['ServerIds'] = request.server_ids
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3568,13 +4006,20 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListServerGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ServerGroupIds'] = request.server_group_ids
-        query['ServerGroupNames'] = request.server_group_names
-        query['Tag'] = request.tag
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.server_group_ids):
+            query['ServerGroupIds'] = request.server_group_ids
+        if not UtilClient.is_unset(request.server_group_names):
+            query['ServerGroupNames'] = request.server_group_names
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3601,13 +4046,20 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListServerGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceGroupId'] = request.resource_group_id
-        query['ServerGroupIds'] = request.server_group_ids
-        query['ServerGroupNames'] = request.server_group_names
-        query['Tag'] = request.tag
-        query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.server_group_ids):
+            query['ServerGroupIds'] = request.server_group_ids
+        if not UtilClient.is_unset(request.server_group_names):
+            query['ServerGroupNames'] = request.server_group_names
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3698,11 +4150,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Category'] = request.category
-        query['Keyword'] = request.keyword
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3729,11 +4186,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListTagKeysResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Category'] = request.category
-        query['Keyword'] = request.keyword
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3774,11 +4236,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3805,11 +4272,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3850,11 +4322,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3881,11 +4358,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListTagValuesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3926,9 +4408,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NewResourceGroupId'] = request.new_resource_group_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3955,9 +4440,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NewResourceGroupId'] = request.new_resource_group_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3998,10 +4486,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.RemoveEntriesFromAclResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Entries'] = request.entries
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.entries):
+            query['Entries'] = request.entries
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4028,10 +4520,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.RemoveEntriesFromAclResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclId'] = request.acl_id
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Entries'] = request.entries
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.entries):
+            query['Entries'] = request.entries
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4072,10 +4568,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.RemoveServersFromServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ServerGroupId'] = request.server_group_id
-        query['Servers'] = request.servers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.servers):
+            query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4102,10 +4602,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.RemoveServersFromServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ServerGroupId'] = request.server_group_id
-        query['Servers'] = request.servers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.servers):
+            query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4146,11 +4650,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AddedServers'] = request.added_servers
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RemovedServers'] = request.removed_servers
-        query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.added_servers):
+            query['AddedServers'] = request.added_servers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.removed_servers):
+            query['RemovedServers'] = request.removed_servers
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4177,11 +4686,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ReplaceServersInServerGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AddedServers'] = request.added_servers
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['RemovedServers'] = request.removed_servers
-        query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.added_servers):
+            query['AddedServers'] = request.added_servers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.removed_servers):
+            query['RemovedServers'] = request.removed_servers
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4222,9 +4736,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.StartListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4251,9 +4768,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.StartListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4294,9 +4814,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.StopListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4323,9 +4846,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.StopListenerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4366,9 +4892,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4395,9 +4924,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4438,10 +4970,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4468,10 +5004,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4512,10 +5052,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateAclAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclId'] = request.acl_id
-        query['AclName'] = request.acl_name
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4542,10 +5086,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateAclAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AclId'] = request.acl_id
-        query['AclName'] = request.acl_name
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.acl_id):
+            query['AclId'] = request.acl_id
+        if not UtilClient.is_unset(request.acl_name):
+            query['AclName'] = request.acl_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4586,21 +5134,36 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckCodes'] = request.health_check_codes
-        query['HealthCheckConnectPort'] = request.health_check_connect_port
-        query['HealthCheckHost'] = request.health_check_host
-        query['HealthCheckHttpVersion'] = request.health_check_http_version
-        query['HealthCheckInterval'] = request.health_check_interval
-        query['HealthCheckMethod'] = request.health_check_method
-        query['HealthCheckPath'] = request.health_check_path
-        query['HealthCheckProtocol'] = request.health_check_protocol
-        query['HealthCheckTemplateId'] = request.health_check_template_id
-        query['HealthCheckTemplateName'] = request.health_check_template_name
-        query['HealthCheckTimeout'] = request.health_check_timeout
-        query['HealthyThreshold'] = request.healthy_threshold
-        query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_codes):
+            query['HealthCheckCodes'] = request.health_check_codes
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_host):
+            query['HealthCheckHost'] = request.health_check_host
+        if not UtilClient.is_unset(request.health_check_http_version):
+            query['HealthCheckHttpVersion'] = request.health_check_http_version
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_path):
+            query['HealthCheckPath'] = request.health_check_path
+        if not UtilClient.is_unset(request.health_check_protocol):
+            query['HealthCheckProtocol'] = request.health_check_protocol
+        if not UtilClient.is_unset(request.health_check_template_id):
+            query['HealthCheckTemplateId'] = request.health_check_template_id
+        if not UtilClient.is_unset(request.health_check_template_name):
+            query['HealthCheckTemplateName'] = request.health_check_template_name
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4627,21 +5190,36 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateHealthCheckTemplateAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckCodes'] = request.health_check_codes
-        query['HealthCheckConnectPort'] = request.health_check_connect_port
-        query['HealthCheckHost'] = request.health_check_host
-        query['HealthCheckHttpVersion'] = request.health_check_http_version
-        query['HealthCheckInterval'] = request.health_check_interval
-        query['HealthCheckMethod'] = request.health_check_method
-        query['HealthCheckPath'] = request.health_check_path
-        query['HealthCheckProtocol'] = request.health_check_protocol
-        query['HealthCheckTemplateId'] = request.health_check_template_id
-        query['HealthCheckTemplateName'] = request.health_check_template_name
-        query['HealthCheckTimeout'] = request.health_check_timeout
-        query['HealthyThreshold'] = request.healthy_threshold
-        query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_codes):
+            query['HealthCheckCodes'] = request.health_check_codes
+        if not UtilClient.is_unset(request.health_check_connect_port):
+            query['HealthCheckConnectPort'] = request.health_check_connect_port
+        if not UtilClient.is_unset(request.health_check_host):
+            query['HealthCheckHost'] = request.health_check_host
+        if not UtilClient.is_unset(request.health_check_http_version):
+            query['HealthCheckHttpVersion'] = request.health_check_http_version
+        if not UtilClient.is_unset(request.health_check_interval):
+            query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_method):
+            query['HealthCheckMethod'] = request.health_check_method
+        if not UtilClient.is_unset(request.health_check_path):
+            query['HealthCheckPath'] = request.health_check_path
+        if not UtilClient.is_unset(request.health_check_protocol):
+            query['HealthCheckProtocol'] = request.health_check_protocol
+        if not UtilClient.is_unset(request.health_check_template_id):
+            query['HealthCheckTemplateId'] = request.health_check_template_id
+        if not UtilClient.is_unset(request.health_check_template_name):
+            query['HealthCheckTemplateName'] = request.health_check_template_name
+        if not UtilClient.is_unset(request.health_check_timeout):
+            query['HealthCheckTimeout'] = request.health_check_timeout
+        if not UtilClient.is_unset(request.healthy_threshold):
+            query['HealthyThreshold'] = request.healthy_threshold
+        if not UtilClient.is_unset(request.unhealthy_threshold):
+            query['UnhealthyThreshold'] = request.unhealthy_threshold
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4682,21 +5260,36 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateListenerAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CaCertificates'] = request.ca_certificates
-        query['CaEnabled'] = request.ca_enabled
-        query['Certificates'] = request.certificates
-        query['ClientToken'] = request.client_token
-        query['DefaultActions'] = request.default_actions
-        query['DryRun'] = request.dry_run
-        query['GzipEnabled'] = request.gzip_enabled
-        query['Http2Enabled'] = request.http_2enabled
-        query['IdleTimeout'] = request.idle_timeout
-        query['ListenerDescription'] = request.listener_description
-        query['ListenerId'] = request.listener_id
-        query['QuicConfig'] = request.quic_config
-        query['RequestTimeout'] = request.request_timeout
-        query['SecurityPolicyId'] = request.security_policy_id
-        query['XForwardedForConfig'] = request.xforwarded_for_config
+        if not UtilClient.is_unset(request.ca_certificates):
+            query['CaCertificates'] = request.ca_certificates
+        if not UtilClient.is_unset(request.ca_enabled):
+            query['CaEnabled'] = request.ca_enabled
+        if not UtilClient.is_unset(request.certificates):
+            query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_actions):
+            query['DefaultActions'] = request.default_actions
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.gzip_enabled):
+            query['GzipEnabled'] = request.gzip_enabled
+        if not UtilClient.is_unset(request.http_2enabled):
+            query['Http2Enabled'] = request.http_2enabled
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_description):
+            query['ListenerDescription'] = request.listener_description
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.quic_config):
+            query['QuicConfig'] = request.quic_config
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
+        if not UtilClient.is_unset(request.xforwarded_for_config):
+            query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4723,21 +5316,36 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateListenerAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CaCertificates'] = request.ca_certificates
-        query['CaEnabled'] = request.ca_enabled
-        query['Certificates'] = request.certificates
-        query['ClientToken'] = request.client_token
-        query['DefaultActions'] = request.default_actions
-        query['DryRun'] = request.dry_run
-        query['GzipEnabled'] = request.gzip_enabled
-        query['Http2Enabled'] = request.http_2enabled
-        query['IdleTimeout'] = request.idle_timeout
-        query['ListenerDescription'] = request.listener_description
-        query['ListenerId'] = request.listener_id
-        query['QuicConfig'] = request.quic_config
-        query['RequestTimeout'] = request.request_timeout
-        query['SecurityPolicyId'] = request.security_policy_id
-        query['XForwardedForConfig'] = request.xforwarded_for_config
+        if not UtilClient.is_unset(request.ca_certificates):
+            query['CaCertificates'] = request.ca_certificates
+        if not UtilClient.is_unset(request.ca_enabled):
+            query['CaEnabled'] = request.ca_enabled
+        if not UtilClient.is_unset(request.certificates):
+            query['Certificates'] = request.certificates
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_actions):
+            query['DefaultActions'] = request.default_actions
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.gzip_enabled):
+            query['GzipEnabled'] = request.gzip_enabled
+        if not UtilClient.is_unset(request.http_2enabled):
+            query['Http2Enabled'] = request.http_2enabled
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
+        if not UtilClient.is_unset(request.listener_description):
+            query['ListenerDescription'] = request.listener_description
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.quic_config):
+            query['QuicConfig'] = request.quic_config
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
+        if not UtilClient.is_unset(request.xforwarded_for_config):
+            query['XForwardedForConfig'] = request.xforwarded_for_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4778,11 +5386,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateListenerLogConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessLogRecordCustomizedHeadersEnabled'] = request.access_log_record_customized_headers_enabled
-        query['AccessLogTracingConfig'] = request.access_log_tracing_config
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.access_log_record_customized_headers_enabled):
+            query['AccessLogRecordCustomizedHeadersEnabled'] = request.access_log_record_customized_headers_enabled
+        if not UtilClient.is_unset(request.access_log_tracing_config):
+            query['AccessLogTracingConfig'] = request.access_log_tracing_config
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4809,11 +5422,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateListenerLogConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccessLogRecordCustomizedHeadersEnabled'] = request.access_log_record_customized_headers_enabled
-        query['AccessLogTracingConfig'] = request.access_log_tracing_config
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ListenerId'] = request.listener_id
+        if not UtilClient.is_unset(request.access_log_record_customized_headers_enabled):
+            query['AccessLogRecordCustomizedHeadersEnabled'] = request.access_log_record_customized_headers_enabled
+        if not UtilClient.is_unset(request.access_log_tracing_config):
+            query['AccessLogTracingConfig'] = request.access_log_tracing_config
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.listener_id):
+            query['ListenerId'] = request.listener_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4854,11 +5472,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AddressType'] = request.address_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['ZoneMappings'] = request.zone_mappings
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4885,11 +5508,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateLoadBalancerAddressTypeConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AddressType'] = request.address_type
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['ZoneMappings'] = request.zone_mappings
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4930,11 +5558,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['LoadBalancerName'] = request.load_balancer_name
-        query['ModificationProtectionConfig'] = request.modification_protection_config
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.modification_protection_config):
+            query['ModificationProtectionConfig'] = request.modification_protection_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4961,11 +5594,16 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateLoadBalancerAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['LoadBalancerName'] = request.load_balancer_name
-        query['ModificationProtectionConfig'] = request.modification_protection_config
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.load_balancer_name):
+            query['LoadBalancerName'] = request.load_balancer_name
+        if not UtilClient.is_unset(request.modification_protection_config):
+            query['ModificationProtectionConfig'] = request.modification_protection_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5006,10 +5644,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateLoadBalancerEditionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerEdition'] = request.load_balancer_edition
-        query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_edition):
+            query['LoadBalancerEdition'] = request.load_balancer_edition
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5036,10 +5678,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateLoadBalancerEditionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerEdition'] = request.load_balancer_edition
-        query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_edition):
+            query['LoadBalancerEdition'] = request.load_balancer_edition
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5080,10 +5726,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['ZoneMappings'] = request.zone_mappings
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5110,10 +5760,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateLoadBalancerZonesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['LoadBalancerId'] = request.load_balancer_id
-        query['ZoneMappings'] = request.zone_mappings
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5154,13 +5808,20 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Priority'] = request.priority
-        query['RuleActions'] = request.rule_actions
-        query['RuleConditions'] = request.rule_conditions
-        query['RuleId'] = request.rule_id
-        query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.rule_actions):
+            query['RuleActions'] = request.rule_actions
+        if not UtilClient.is_unset(request.rule_conditions):
+            query['RuleConditions'] = request.rule_conditions
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5187,13 +5848,20 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Priority'] = request.priority
-        query['RuleActions'] = request.rule_actions
-        query['RuleConditions'] = request.rule_conditions
-        query['RuleId'] = request.rule_id
-        query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.rule_actions):
+            query['RuleActions'] = request.rule_actions
+        if not UtilClient.is_unset(request.rule_conditions):
+            query['RuleConditions'] = request.rule_conditions
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5234,9 +5902,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateRulesAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5263,9 +5934,12 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateRulesAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5306,12 +5980,18 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateSecurityPolicyAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ciphers'] = request.ciphers
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['SecurityPolicyId'] = request.security_policy_id
-        query['SecurityPolicyName'] = request.security_policy_name
-        query['TLSVersions'] = request.tlsversions
+        if not UtilClient.is_unset(request.ciphers):
+            query['Ciphers'] = request.ciphers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
+        if not UtilClient.is_unset(request.security_policy_name):
+            query['SecurityPolicyName'] = request.security_policy_name
+        if not UtilClient.is_unset(request.tlsversions):
+            query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5338,12 +6018,18 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateSecurityPolicyAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ciphers'] = request.ciphers
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['SecurityPolicyId'] = request.security_policy_id
-        query['SecurityPolicyName'] = request.security_policy_name
-        query['TLSVersions'] = request.tlsversions
+        if not UtilClient.is_unset(request.ciphers):
+            query['Ciphers'] = request.ciphers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
+        if not UtilClient.is_unset(request.security_policy_name):
+            query['SecurityPolicyName'] = request.security_policy_name
+        if not UtilClient.is_unset(request.tlsversions):
+            query['TLSVersions'] = request.tlsversions
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5384,13 +6070,22 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateServerGroupAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckConfig'] = request.health_check_config
-        query['Scheduler'] = request.scheduler
-        query['ServerGroupId'] = request.server_group_id
-        query['ServerGroupName'] = request.server_group_name
-        query['StickySessionConfig'] = request.sticky_session_config
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_config):
+            query['HealthCheckConfig'] = request.health_check_config
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.server_group_name):
+            query['ServerGroupName'] = request.server_group_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.sticky_session_config):
+            query['StickySessionConfig'] = request.sticky_session_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5417,13 +6112,22 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateServerGroupAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['HealthCheckConfig'] = request.health_check_config
-        query['Scheduler'] = request.scheduler
-        query['ServerGroupId'] = request.server_group_id
-        query['ServerGroupName'] = request.server_group_name
-        query['StickySessionConfig'] = request.sticky_session_config
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.health_check_config):
+            query['HealthCheckConfig'] = request.health_check_config
+        if not UtilClient.is_unset(request.scheduler):
+            query['Scheduler'] = request.scheduler
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.server_group_name):
+            query['ServerGroupName'] = request.server_group_name
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.sticky_session_config):
+            query['StickySessionConfig'] = request.sticky_session_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5464,10 +6168,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateServerGroupServersAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ServerGroupId'] = request.server_group_id
-        query['Servers'] = request.servers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.servers):
+            query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5494,10 +6202,14 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.UpdateServerGroupServersAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['DryRun'] = request.dry_run
-        query['ServerGroupId'] = request.server_group_id
-        query['Servers'] = request.servers
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.server_group_id):
+            query['ServerGroupId'] = request.server_group_id
+        if not UtilClient.is_unset(request.servers):
+            query['Servers'] = request.servers
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
