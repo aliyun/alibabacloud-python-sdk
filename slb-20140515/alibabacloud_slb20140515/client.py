@@ -1937,8 +1937,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.tlsversions):
             query['TLSVersions'] = request.tlsversions
-        if not UtilClient.is_unset(request.access_key_id):
-            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1981,8 +1979,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.tlsversions):
             query['TLSVersions'] = request.tlsversions
-        if not UtilClient.is_unset(request.access_key_id):
-            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2861,8 +2857,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.tlscipher_policy_id):
             query['TLSCipherPolicyId'] = request.tlscipher_policy_id
-        if not UtilClient.is_unset(request.access_key_id):
-            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2901,8 +2895,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.tlscipher_policy_id):
             query['TLSCipherPolicyId'] = request.tlscipher_policy_id
-        if not UtilClient.is_unset(request.access_key_id):
-            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5491,8 +5483,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.tlscipher_policy_id):
             query['TLSCipherPolicyId'] = request.tlscipher_policy_id
-        if not UtilClient.is_unset(request.access_key_id):
-            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5539,8 +5529,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.tlscipher_policy_id):
             query['TLSCipherPolicyId'] = request.tlscipher_policy_id
-        if not UtilClient.is_unset(request.access_key_id):
-            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8481,8 +8469,6 @@ class Client(OpenApiClient):
             query['TLSCipherPolicyId'] = request.tlscipher_policy_id
         if not UtilClient.is_unset(request.tlsversions):
             query['TLSVersions'] = request.tlsversions
-        if not UtilClient.is_unset(request.access_key_id):
-            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8527,8 +8513,6 @@ class Client(OpenApiClient):
             query['TLSCipherPolicyId'] = request.tlscipher_policy_id
         if not UtilClient.is_unset(request.tlsversions):
             query['TLSVersions'] = request.tlsversions
-        if not UtilClient.is_unset(request.access_key_id):
-            query['access_key_id'] = request.access_key_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

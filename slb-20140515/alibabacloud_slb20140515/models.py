@@ -3009,7 +3009,6 @@ class CreateTLSCipherPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tlsversions: List[str] = None,
-        access_key_id: str = None,
     ):
         self.ciphers = ciphers
         self.name = name
@@ -3019,7 +3018,6 @@ class CreateTLSCipherPolicyRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.tlsversions = tlsversions
-        self.access_key_id = access_key_id
 
     def validate(self):
         pass
@@ -3046,8 +3044,6 @@ class CreateTLSCipherPolicyRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.tlsversions is not None:
             result['TLSVersions'] = self.tlsversions
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3068,8 +3064,6 @@ class CreateTLSCipherPolicyRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('TLSVersions') is not None:
             self.tlsversions = m.get('TLSVersions')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         return self
 
 
@@ -4365,7 +4359,6 @@ class DeleteTLSCipherPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tlscipher_policy_id: str = None,
-        access_key_id: str = None,
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4373,7 +4366,6 @@ class DeleteTLSCipherPolicyRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.tlscipher_policy_id = tlscipher_policy_id
-        self.access_key_id = access_key_id
 
     def validate(self):
         pass
@@ -4396,8 +4388,6 @@ class DeleteTLSCipherPolicyRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.tlscipher_policy_id is not None:
             result['TLSCipherPolicyId'] = self.tlscipher_policy_id
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4414,8 +4404,6 @@ class DeleteTLSCipherPolicyRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('TLSCipherPolicyId') is not None:
             self.tlscipher_policy_id = m.get('TLSCipherPolicyId')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         return self
 
 
@@ -12780,7 +12768,6 @@ class ListTLSCipherPoliciesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tlscipher_policy_id: str = None,
-        access_key_id: str = None,
     ):
         self.include_listener = include_listener
         self.max_items = max_items
@@ -12792,7 +12779,6 @@ class ListTLSCipherPoliciesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.tlscipher_policy_id = tlscipher_policy_id
-        self.access_key_id = access_key_id
 
     def validate(self):
         pass
@@ -12823,8 +12809,6 @@ class ListTLSCipherPoliciesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.tlscipher_policy_id is not None:
             result['TLSCipherPolicyId'] = self.tlscipher_policy_id
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12849,8 +12833,6 @@ class ListTLSCipherPoliciesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('TLSCipherPolicyId') is not None:
             self.tlscipher_policy_id = m.get('TLSCipherPolicyId')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         return self
 
 
@@ -17586,7 +17568,6 @@ class SetTLSCipherPolicyAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         tlscipher_policy_id: str = None,
         tlsversions: List[str] = None,
-        access_key_id: str = None,
     ):
         self.ciphers = ciphers
         self.name = name
@@ -17597,7 +17578,6 @@ class SetTLSCipherPolicyAttributeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.tlscipher_policy_id = tlscipher_policy_id
         self.tlsversions = tlsversions
-        self.access_key_id = access_key_id
 
     def validate(self):
         pass
@@ -17626,8 +17606,6 @@ class SetTLSCipherPolicyAttributeRequest(TeaModel):
             result['TLSCipherPolicyId'] = self.tlscipher_policy_id
         if self.tlsversions is not None:
             result['TLSVersions'] = self.tlsversions
-        if self.access_key_id is not None:
-            result['access_key_id'] = self.access_key_id
         return result
 
     def from_map(self, m: dict = None):
@@ -17650,8 +17628,6 @@ class SetTLSCipherPolicyAttributeRequest(TeaModel):
             self.tlscipher_policy_id = m.get('TLSCipherPolicyId')
         if m.get('TLSVersions') is not None:
             self.tlsversions = m.get('TLSVersions')
-        if m.get('access_key_id') is not None:
-            self.access_key_id = m.get('access_key_id')
         return self
 
 
