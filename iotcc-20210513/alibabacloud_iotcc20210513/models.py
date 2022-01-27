@@ -4620,18 +4620,22 @@ class ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo(TeaModel):
         begin_time: int = None,
         card_ip: str = None,
         destination: str = None,
+        diagnose_time: int = None,
         end_time: int = None,
         iccid: str = None,
         io_tcloud_connector_id: str = None,
         status: str = None,
+        task_id: str = None,
     ):
         self.begin_time = begin_time
         self.card_ip = card_ip
         self.destination = destination
+        self.diagnose_time = diagnose_time
         self.end_time = end_time
         self.iccid = iccid
         self.io_tcloud_connector_id = io_tcloud_connector_id
         self.status = status
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -4648,6 +4652,8 @@ class ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo(TeaModel):
             result['CardIp'] = self.card_ip
         if self.destination is not None:
             result['Destination'] = self.destination
+        if self.diagnose_time is not None:
+            result['DiagnoseTime'] = self.diagnose_time
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.iccid is not None:
@@ -4656,6 +4662,8 @@ class ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo(TeaModel):
             result['IoTCloudConnectorId'] = self.io_tcloud_connector_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4666,6 +4674,8 @@ class ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo(TeaModel):
             self.card_ip = m.get('CardIp')
         if m.get('Destination') is not None:
             self.destination = m.get('Destination')
+        if m.get('DiagnoseTime') is not None:
+            self.diagnose_time = m.get('DiagnoseTime')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Iccid') is not None:
@@ -4674,6 +4684,8 @@ class ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo(TeaModel):
             self.io_tcloud_connector_id = m.get('IoTCloudConnectorId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         return self
 
 
@@ -4682,13 +4694,15 @@ class ListDiagnoseInfoForSingleCardResponseBody(TeaModel):
         self,
         diagnose_info: List[ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo] = None,
         max_results: int = None,
-        next_token: int = None,
+        next_token: str = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         self.diagnose_info = diagnose_info
         self.max_results = max_results
         self.next_token = next_token
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.diagnose_info:
@@ -4712,6 +4726,8 @@ class ListDiagnoseInfoForSingleCardResponseBody(TeaModel):
             result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -4727,6 +4743,8 @@ class ListDiagnoseInfoForSingleCardResponseBody(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
