@@ -1,3 +1,6 @@
+2022-01-27 Version: 2.0.7
+- Supported query optimize open API.
+
 2021-12-28 Version: 2.0.6
 - Fixed useless variables.
 
