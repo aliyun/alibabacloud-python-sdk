@@ -1165,6 +1165,156 @@ class DeleteServiceMeshResponse(TeaModel):
         return self
 
 
+class DescribeASMGatewayImportedServicesRequest(TeaModel):
+    def __init__(
+        self,
+        asmgateway_name: str = None,
+        service_mesh_id: str = None,
+        service_namespace: str = None,
+    ):
+        self.asmgateway_name = asmgateway_name
+        self.service_mesh_id = service_mesh_id
+        self.service_namespace = service_namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asmgateway_name is not None:
+            result['ASMGatewayName'] = self.asmgateway_name
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_namespace is not None:
+            result['ServiceNamespace'] = self.service_namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ASMGatewayName') is not None:
+            self.asmgateway_name = m.get('ASMGatewayName')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        if m.get('ServiceNamespace') is not None:
+            self.service_namespace = m.get('ServiceNamespace')
+        return self
+
+
+class DescribeASMGatewayImportedServicesResponseBodyImportedServices(TeaModel):
+    def __init__(
+        self,
+        service_name: str = None,
+        service_namespace: str = None,
+    ):
+        self.service_name = service_name
+        self.service_namespace = service_namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.service_namespace is not None:
+            result['ServiceNamespace'] = self.service_namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('ServiceNamespace') is not None:
+            self.service_namespace = m.get('ServiceNamespace')
+        return self
+
+
+class DescribeASMGatewayImportedServicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        imported_services: List[DescribeASMGatewayImportedServicesResponseBodyImportedServices] = None,
+        request_id: str = None,
+    ):
+        self.imported_services = imported_services
+        self.request_id = request_id
+
+    def validate(self):
+        if self.imported_services:
+            for k in self.imported_services:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ImportedServices'] = []
+        if self.imported_services is not None:
+            for k in self.imported_services:
+                result['ImportedServices'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.imported_services = []
+        if m.get('ImportedServices') is not None:
+            for k in m.get('ImportedServices'):
+                temp_model = DescribeASMGatewayImportedServicesResponseBodyImportedServices()
+                self.imported_services.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeASMGatewayImportedServicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeASMGatewayImportedServicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeASMGatewayImportedServicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAlertActionPoliciesRequest(TeaModel):
     def __init__(
         self,
@@ -1408,6 +1558,162 @@ class DescribeAvailableNacosInstancesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeAvailableNacosInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCCMVersionRequest(TeaModel):
+    def __init__(
+        self,
+        service_mesh_id: str = None,
+    ):
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class CCMVersionsValue(TeaModel):
+    def __init__(
+        self,
+        query_state: str = None,
+        version: str = None,
+        slbgraceful_drain_support: bool = None,
+        cluster_id: str = None,
+        message: str = None,
+    ):
+        self.query_state = query_state
+        self.version = version
+        self.slbgraceful_drain_support = slbgraceful_drain_support
+        self.cluster_id = cluster_id
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_state is not None:
+            result['QueryState'] = self.query_state
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.slbgraceful_drain_support is not None:
+            result['SLBGracefulDrainSupport'] = self.slbgraceful_drain_support
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryState') is not None:
+            self.query_state = m.get('QueryState')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('SLBGracefulDrainSupport') is not None:
+            self.slbgraceful_drain_support = m.get('SLBGracefulDrainSupport')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class DescribeCCMVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        ccmversions: Dict[str, CCMVersionsValue] = None,
+        request_id: str = None,
+    ):
+        self.ccmversions = ccmversions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ccmversions:
+            for v in self.ccmversions.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CCMVersions'] = {}
+        if self.ccmversions is not None:
+            for k, v in self.ccmversions.items():
+                result['CCMVersions'][k] = v.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ccmversions = {}
+        if m.get('CCMVersions') is not None:
+            for k, v in m.get('CCMVersions').items():
+                temp_model = CCMVersionsValue()
+                self.ccmversions[k] = temp_model.from_map(v)
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCCMVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeCCMVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeCCMVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2807,6 +3113,239 @@ class DescribeGuestClusterPodsResponse(TeaModel):
         return self
 
 
+class DescribeImportedServicesDetailRequest(TeaModel):
+    def __init__(
+        self,
+        asmgateway_name: str = None,
+        service_mesh_id: str = None,
+        service_namespace: str = None,
+    ):
+        self.asmgateway_name = asmgateway_name
+        self.service_mesh_id = service_mesh_id
+        self.service_namespace = service_namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asmgateway_name is not None:
+            result['ASMGatewayName'] = self.asmgateway_name
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_namespace is not None:
+            result['ServiceNamespace'] = self.service_namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ASMGatewayName') is not None:
+            self.asmgateway_name = m.get('ASMGatewayName')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        if m.get('ServiceNamespace') is not None:
+            self.service_namespace = m.get('ServiceNamespace')
+        return self
+
+
+class DescribeImportedServicesDetailResponseBodyDetailsPorts(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        node_port: int = None,
+        port: int = None,
+        protocol: str = None,
+        target_port: int = None,
+    ):
+        self.name = name
+        self.node_port = node_port
+        self.port = port
+        self.protocol = protocol
+        self.target_port = target_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.node_port is not None:
+            result['NodePort'] = self.node_port
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.target_port is not None:
+            result['TargetPort'] = self.target_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NodePort') is not None:
+            self.node_port = m.get('NodePort')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TargetPort') is not None:
+            self.target_port = m.get('TargetPort')
+        return self
+
+
+class DescribeImportedServicesDetailResponseBodyDetails(TeaModel):
+    def __init__(
+        self,
+        cluster_ids: List[str] = None,
+        labels: Dict[str, str] = None,
+        namespace: str = None,
+        ports: List[DescribeImportedServicesDetailResponseBodyDetailsPorts] = None,
+        service_name: str = None,
+        service_type: str = None,
+    ):
+        self.cluster_ids = cluster_ids
+        self.labels = labels
+        self.namespace = namespace
+        self.ports = ports
+        self.service_name = service_name
+        self.service_type = service_type
+
+    def validate(self):
+        if self.ports:
+            for k in self.ports:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_ids is not None:
+            result['ClusterIds'] = self.cluster_ids
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        result['Ports'] = []
+        if self.ports is not None:
+            for k in self.ports:
+                result['Ports'].append(k.to_map() if k else None)
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterIds') is not None:
+            self.cluster_ids = m.get('ClusterIds')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        self.ports = []
+        if m.get('Ports') is not None:
+            for k in m.get('Ports'):
+                temp_model = DescribeImportedServicesDetailResponseBodyDetailsPorts()
+                self.ports.append(temp_model.from_map(k))
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        return self
+
+
+class DescribeImportedServicesDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        details: List[DescribeImportedServicesDetailResponseBodyDetails] = None,
+        request_id: str = None,
+    ):
+        self.details = details
+        self.request_id = request_id
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = DescribeImportedServicesDetailResponseBodyDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeImportedServicesDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeImportedServicesDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeImportedServicesDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeIngressGatewaysRequest(TeaModel):
     def __init__(
         self,
@@ -3247,6 +3786,144 @@ class DescribeNamespaceScopeSidecarConfigResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeNamespaceScopeSidecarConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNodesInstanceTypeRequest(TeaModel):
+    def __init__(
+        self,
+        service_mesh_id: str = None,
+    ):
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class DescribeNodesInstanceTypeResponseBodyInstanceTypes(TeaModel):
+    def __init__(
+        self,
+        multi_buffer_enabled: bool = None,
+        node_type: str = None,
+    ):
+        self.multi_buffer_enabled = multi_buffer_enabled
+        self.node_type = node_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.multi_buffer_enabled is not None:
+            result['MultiBufferEnabled'] = self.multi_buffer_enabled
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MultiBufferEnabled') is not None:
+            self.multi_buffer_enabled = m.get('MultiBufferEnabled')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        return self
+
+
+class DescribeNodesInstanceTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_types: List[DescribeNodesInstanceTypeResponseBodyInstanceTypes] = None,
+        request_id: str = None,
+    ):
+        self.instance_types = instance_types
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_types:
+            for k in self.instance_types:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceTypes'] = []
+        if self.instance_types is not None:
+            for k in self.instance_types:
+                result['InstanceTypes'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_types = []
+        if m.get('InstanceTypes') is not None:
+            for k in m.get('InstanceTypes'):
+                temp_model = DescribeNodesInstanceTypeResponseBodyInstanceTypes()
+                self.instance_types.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeNodesInstanceTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeNodesInstanceTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeNodesInstanceTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6936,6 +7613,103 @@ class DescribeUpgradeVersionResponse(TeaModel):
         return self
 
 
+class DescribeUsersWithPermissionsRequest(TeaModel):
+    def __init__(
+        self,
+        user_type: str = None,
+    ):
+        self.user_type = user_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        return self
+
+
+class DescribeUsersWithPermissionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        uids: List[str] = None,
+    ):
+        self.request_id = request_id
+        self.uids = uids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.uids is not None:
+            result['UIDs'] = self.uids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('UIDs') is not None:
+            self.uids = m.get('UIDs')
+        return self
+
+
+class DescribeUsersWithPermissionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeUsersWithPermissionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeUsersWithPermissionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVMsInServiceMeshRequest(TeaModel):
     def __init__(
         self,
@@ -8455,13 +9229,17 @@ class GetEcsListResponse(TeaModel):
 class GetRegisteredServiceEndpointsRequest(TeaModel):
     def __init__(
         self,
+        cluster_ids: str = None,
         name: str = None,
         namespace: str = None,
         service_mesh_id: str = None,
+        service_type: str = None,
     ):
+        self.cluster_ids = cluster_ids
         self.name = name
         self.namespace = namespace
         self.service_mesh_id = service_mesh_id
+        self.service_type = service_type
 
     def validate(self):
         pass
@@ -8472,22 +9250,140 @@ class GetRegisteredServiceEndpointsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_ids is not None:
+            result['ClusterIds'] = self.cluster_ids
         if self.name is not None:
             result['Name'] = self.name
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterIds') is not None:
+            self.cluster_ids = m.get('ClusterIds')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        return self
+
+
+class GetRegisteredServiceEndpointsResponseBodyEndPointSliceEndpointsDetails(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        hostname: str = None,
+        pod_name: str = None,
+        ports: List[int] = None,
+        region: str = None,
+        sidecar_injected: bool = None,
+    ):
+        self.address = address
+        self.hostname = hostname
+        self.pod_name = pod_name
+        self.ports = ports
+        self.region = region
+        self.sidecar_injected = sidecar_injected
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.pod_name is not None:
+            result['PodName'] = self.pod_name
+        if self.ports is not None:
+            result['Ports'] = self.ports
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.sidecar_injected is not None:
+            result['SidecarInjected'] = self.sidecar_injected
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('PodName') is not None:
+            self.pod_name = m.get('PodName')
+        if m.get('Ports') is not None:
+            self.ports = m.get('Ports')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SidecarInjected') is not None:
+            self.sidecar_injected = m.get('SidecarInjected')
+        return self
+
+
+class GetRegisteredServiceEndpointsResponseBodyEndPointSlice(TeaModel):
+    def __init__(
+        self,
+        endpoints_details: List[GetRegisteredServiceEndpointsResponseBodyEndPointSliceEndpointsDetails] = None,
+        location: str = None,
+        namespace: str = None,
+        service_name: str = None,
+    ):
+        self.endpoints_details = endpoints_details
+        self.location = location
+        self.namespace = namespace
+        self.service_name = service_name
+
+    def validate(self):
+        if self.endpoints_details:
+            for k in self.endpoints_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EndpointsDetails'] = []
+        if self.endpoints_details is not None:
+            for k in self.endpoints_details:
+                result['EndpointsDetails'].append(k.to_map() if k else None)
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.endpoints_details = []
+        if m.get('EndpointsDetails') is not None:
+            for k in m.get('EndpointsDetails'):
+                temp_model = GetRegisteredServiceEndpointsResponseBodyEndPointSliceEndpointsDetails()
+                self.endpoints_details.append(temp_model.from_map(k))
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
         return self
 
 
@@ -8527,13 +9423,17 @@ class GetRegisteredServiceEndpointsResponseBodyServiceEndpoints(TeaModel):
 class GetRegisteredServiceEndpointsResponseBody(TeaModel):
     def __init__(
         self,
+        end_point_slice: GetRegisteredServiceEndpointsResponseBodyEndPointSlice = None,
         request_id: str = None,
         service_endpoints: List[GetRegisteredServiceEndpointsResponseBodyServiceEndpoints] = None,
     ):
+        self.end_point_slice = end_point_slice
         self.request_id = request_id
         self.service_endpoints = service_endpoints
 
     def validate(self):
+        if self.end_point_slice:
+            self.end_point_slice.validate()
         if self.service_endpoints:
             for k in self.service_endpoints:
                 if k:
@@ -8545,6 +9445,8 @@ class GetRegisteredServiceEndpointsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.end_point_slice is not None:
+            result['EndPointSlice'] = self.end_point_slice.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['ServiceEndpoints'] = []
@@ -8555,6 +9457,9 @@ class GetRegisteredServiceEndpointsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndPointSlice') is not None:
+            temp_model = GetRegisteredServiceEndpointsResponseBodyEndPointSlice()
+            self.end_point_slice = temp_model.from_map(m['EndPointSlice'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.service_endpoints = []
@@ -8702,9 +9607,19 @@ class GetRegisteredServiceNamespacesResponse(TeaModel):
 class GetRegisteredServicesRequest(TeaModel):
     def __init__(
         self,
+        guest_clusters: str = None,
+        guest_limits: str = None,
+        guest_markers: str = None,
+        mesh_limit: int = None,
+        mesh_marker: str = None,
         namespace: str = None,
         service_mesh_id: str = None,
     ):
+        self.guest_clusters = guest_clusters
+        self.guest_limits = guest_limits
+        self.guest_markers = guest_markers
+        self.mesh_limit = mesh_limit
+        self.mesh_marker = mesh_marker
         self.namespace = namespace
         self.service_mesh_id = service_mesh_id
 
@@ -8717,6 +9632,16 @@ class GetRegisteredServicesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.guest_clusters is not None:
+            result['GuestClusters'] = self.guest_clusters
+        if self.guest_limits is not None:
+            result['GuestLimits'] = self.guest_limits
+        if self.guest_markers is not None:
+            result['GuestMarkers'] = self.guest_markers
+        if self.mesh_limit is not None:
+            result['MeshLimit'] = self.mesh_limit
+        if self.mesh_marker is not None:
+            result['MeshMarker'] = self.mesh_marker
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.service_mesh_id is not None:
@@ -8725,6 +9650,16 @@ class GetRegisteredServicesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GuestClusters') is not None:
+            self.guest_clusters = m.get('GuestClusters')
+        if m.get('GuestLimits') is not None:
+            self.guest_limits = m.get('GuestLimits')
+        if m.get('GuestMarkers') is not None:
+            self.guest_markers = m.get('GuestMarkers')
+        if m.get('MeshLimit') is not None:
+            self.mesh_limit = m.get('MeshLimit')
+        if m.get('MeshMarker') is not None:
+            self.mesh_marker = m.get('MeshMarker')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('ServiceMeshId') is not None:
@@ -8732,14 +9667,14 @@ class GetRegisteredServicesRequest(TeaModel):
         return self
 
 
-class GetRegisteredServicesResponseBody(TeaModel):
+class GetRegisteredServicesResponseBodyServiceDirectoryServiceListStages(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        services: List[str] = None,
+        cluster_id: str = None,
+        marker: str = None,
     ):
-        self.request_id = request_id
-        self.services = services
+        self.cluster_id = cluster_id
+        self.marker = marker
 
     def validate(self):
         pass
@@ -8750,8 +9685,212 @@ class GetRegisteredServicesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.marker is not None:
+            result['Marker'] = self.marker
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
+        return self
+
+
+class ServiceDirectoryServicesValuePorts(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        protocol: str = None,
+        port: int = None,
+        target_port: int = None,
+        node_port: int = None,
+    ):
+        self.name = name
+        self.protocol = protocol
+        self.port = port
+        self.target_port = target_port
+        self.node_port = node_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.target_port is not None:
+            result['TargetPort'] = self.target_port
+        if self.node_port is not None:
+            result['NodePort'] = self.node_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TargetPort') is not None:
+            self.target_port = m.get('TargetPort')
+        if m.get('NodePort') is not None:
+            self.node_port = m.get('NodePort')
+        return self
+
+
+class ServiceDirectoryServicesValue(TeaModel):
+    def __init__(
+        self,
+        ports: List[ServiceDirectoryServicesValuePorts] = None,
+        service_name: str = None,
+        namespace: str = None,
+        service_type: str = None,
+        labels: Dict[str, str] = None,
+        cluster_ids: List[str] = None,
+    ):
+        self.ports = ports
+        self.service_name = service_name
+        self.namespace = namespace
+        self.service_type = service_type
+        self.labels = labels
+        self.cluster_ids = cluster_ids
+
+    def validate(self):
+        if self.ports:
+            for k in self.ports:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Ports'] = []
+        if self.ports is not None:
+            for k in self.ports:
+                result['Ports'].append(k.to_map() if k else None)
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.cluster_ids is not None:
+            result['ClusterIds'] = self.cluster_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ports = []
+        if m.get('Ports') is not None:
+            for k in m.get('Ports'):
+                temp_model = ServiceDirectoryServicesValuePorts()
+                self.ports.append(temp_model.from_map(k))
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('ClusterIds') is not None:
+            self.cluster_ids = m.get('ClusterIds')
+        return self
+
+
+class GetRegisteredServicesResponseBodyServiceDirectory(TeaModel):
+    def __init__(
+        self,
+        service_list_stages: List[GetRegisteredServicesResponseBodyServiceDirectoryServiceListStages] = None,
+        services: Dict[str, ServiceDirectoryServicesValue] = None,
+    ):
+        self.service_list_stages = service_list_stages
+        self.services = services
+
+    def validate(self):
+        if self.service_list_stages:
+            for k in self.service_list_stages:
+                if k:
+                    k.validate()
+        if self.services:
+            for v in self.services.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ServiceListStages'] = []
+        if self.service_list_stages is not None:
+            for k in self.service_list_stages:
+                result['ServiceListStages'].append(k.to_map() if k else None)
+        result['Services'] = {}
+        if self.services is not None:
+            for k, v in self.services.items():
+                result['Services'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.service_list_stages = []
+        if m.get('ServiceListStages') is not None:
+            for k in m.get('ServiceListStages'):
+                temp_model = GetRegisteredServicesResponseBodyServiceDirectoryServiceListStages()
+                self.service_list_stages.append(temp_model.from_map(k))
+        self.services = {}
+        if m.get('Services') is not None:
+            for k, v in m.get('Services').items():
+                temp_model = ServiceDirectoryServicesValue()
+                self.services[k] = temp_model.from_map(v)
+        return self
+
+
+class GetRegisteredServicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        service_directory: GetRegisteredServicesResponseBodyServiceDirectory = None,
+        services: List[str] = None,
+    ):
+        self.request_id = request_id
+        self.service_directory = service_directory
+        self.services = services
+
+    def validate(self):
+        if self.service_directory:
+            self.service_directory.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.service_directory is not None:
+            result['ServiceDirectory'] = self.service_directory.to_map()
         if self.services is not None:
             result['Services'] = self.services
         return result
@@ -8760,6 +9899,9 @@ class GetRegisteredServicesResponseBody(TeaModel):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ServiceDirectory') is not None:
+            temp_model = GetRegisteredServicesResponseBodyServiceDirectory()
+            self.service_directory = temp_model.from_map(m['ServiceDirectory'])
         if m.get('Services') is not None:
             self.services = m.get('Services')
         return self
@@ -10552,6 +11694,115 @@ class SetServiceRegistrySourceResponse(TeaModel):
         return self
 
 
+class UpdateASMGatewayImportedServicesRequest(TeaModel):
+    def __init__(
+        self,
+        asmgateway_name: str = None,
+        service_mesh_id: str = None,
+        service_names: str = None,
+        service_namespace: str = None,
+    ):
+        self.asmgateway_name = asmgateway_name
+        self.service_mesh_id = service_mesh_id
+        self.service_names = service_names
+        self.service_namespace = service_namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asmgateway_name is not None:
+            result['ASMGatewayName'] = self.asmgateway_name
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        if self.service_names is not None:
+            result['ServiceNames'] = self.service_names
+        if self.service_namespace is not None:
+            result['ServiceNamespace'] = self.service_namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ASMGatewayName') is not None:
+            self.asmgateway_name = m.get('ASMGatewayName')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        if m.get('ServiceNames') is not None:
+            self.service_names = m.get('ServiceNames')
+        if m.get('ServiceNamespace') is not None:
+            self.service_namespace = m.get('ServiceNamespace')
+        return self
+
+
+class UpdateASMGatewayImportedServicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateASMGatewayImportedServicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateASMGatewayImportedServicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateASMGatewayImportedServicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateControlPlaneLogAlertActionPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -11762,6 +13013,57 @@ class UpgradeMeshVersionResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = UpgradeMeshVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ServiceDirectoryServicesValueValue(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        protocol: str = None,
+        port: int = None,
+        target_port: int = None,
+        node_port: int = None,
+    ):
+        self.name = name
+        self.protocol = protocol
+        self.port = port
+        self.target_port = target_port
+        self.node_port = node_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.target_port is not None:
+            result['TargetPort'] = self.target_port
+        if self.node_port is not None:
+            result['NodePort'] = self.node_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TargetPort') is not None:
+            self.target_port = m.get('TargetPort')
+        if m.get('NodePort') is not None:
+            self.node_port = m.get('NodePort')
         return self
 
 
