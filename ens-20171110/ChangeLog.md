@@ -1,3 +1,6 @@
+2022-01-28 Version: 3.0.0
+- Support cloud disk.
+
 2021-02-20 Version: 2.0.0
 - AMP Version Change.
 
