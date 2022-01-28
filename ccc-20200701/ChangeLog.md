@@ -1,3 +1,6 @@
+2022-01-28 Version: 2.3.0
+- Support SIP phone management.
+
 2022-01-06 Version: 2.2.1
 - Generated python 2020-07-01 for CCC.
 
