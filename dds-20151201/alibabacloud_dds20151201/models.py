@@ -722,6 +722,7 @@ class CreateDBInstanceRequest(TeaModel):
         database_names: str = None,
         engine: str = None,
         engine_version: str = None,
+        hidden_zone_id: str = None,
         network_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -733,6 +734,7 @@ class CreateDBInstanceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         restore_time: str = None,
+        secondary_zone_id: str = None,
         security_iplist: str = None,
         security_token: str = None,
         src_dbinstance_id: str = None,
@@ -755,6 +757,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.database_names = database_names
         self.engine = engine
         self.engine_version = engine_version
+        self.hidden_zone_id = hidden_zone_id
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -766,6 +769,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.restore_time = restore_time
+        self.secondary_zone_id = secondary_zone_id
         self.security_iplist = security_iplist
         self.security_token = security_token
         self.src_dbinstance_id = src_dbinstance_id
@@ -811,6 +815,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['Engine'] = self.engine
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
+        if self.hidden_zone_id is not None:
+            result['HiddenZoneId'] = self.hidden_zone_id
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
         if self.owner_account is not None:
@@ -833,6 +839,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.restore_time is not None:
             result['RestoreTime'] = self.restore_time
+        if self.secondary_zone_id is not None:
+            result['SecondaryZoneId'] = self.secondary_zone_id
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
         if self.security_token is not None:
@@ -879,6 +887,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+        if m.get('HiddenZoneId') is not None:
+            self.hidden_zone_id = m.get('HiddenZoneId')
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
         if m.get('OwnerAccount') is not None:
@@ -901,6 +911,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RestoreTime') is not None:
             self.restore_time = m.get('RestoreTime')
+        if m.get('SecondaryZoneId') is not None:
+            self.secondary_zone_id = m.get('SecondaryZoneId')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
         if m.get('SecurityToken') is not None:
@@ -8025,6 +8037,7 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
         network_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -8042,6 +8055,7 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8077,6 +8091,8 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
@@ -8113,6 +8129,8 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -9824,14 +9842,30 @@ class DescribeMongoDBLogConfigRequest(TeaModel):
 class DescribeMongoDBLogConfigResponseBody(TeaModel):
     def __init__(
         self,
+        enable_audit: bool = None,
         is_etl_meta_exist: int = None,
         is_user_project_logstore_exist: int = None,
+        preserve_storage_for_standard: int = None,
+        preserve_storage_for_trail: int = None,
         request_id: str = None,
+        service_type: str = None,
+        ttl_for_standard: int = None,
+        ttl_for_trail: int = None,
+        used_storage_for_standard: int = None,
+        used_storage_for_trail: int = None,
         user_project_name: str = None,
     ):
+        self.enable_audit = enable_audit
         self.is_etl_meta_exist = is_etl_meta_exist
         self.is_user_project_logstore_exist = is_user_project_logstore_exist
+        self.preserve_storage_for_standard = preserve_storage_for_standard
+        self.preserve_storage_for_trail = preserve_storage_for_trail
         self.request_id = request_id
+        self.service_type = service_type
+        self.ttl_for_standard = ttl_for_standard
+        self.ttl_for_trail = ttl_for_trail
+        self.used_storage_for_standard = used_storage_for_standard
+        self.used_storage_for_trail = used_storage_for_trail
         self.user_project_name = user_project_name
 
     def validate(self):
@@ -9843,24 +9877,56 @@ class DescribeMongoDBLogConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_audit is not None:
+            result['EnableAudit'] = self.enable_audit
         if self.is_etl_meta_exist is not None:
             result['IsEtlMetaExist'] = self.is_etl_meta_exist
         if self.is_user_project_logstore_exist is not None:
             result['IsUserProjectLogstoreExist'] = self.is_user_project_logstore_exist
+        if self.preserve_storage_for_standard is not None:
+            result['PreserveStorageForStandard'] = self.preserve_storage_for_standard
+        if self.preserve_storage_for_trail is not None:
+            result['PreserveStorageForTrail'] = self.preserve_storage_for_trail
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        if self.ttl_for_standard is not None:
+            result['TtlForStandard'] = self.ttl_for_standard
+        if self.ttl_for_trail is not None:
+            result['TtlForTrail'] = self.ttl_for_trail
+        if self.used_storage_for_standard is not None:
+            result['UsedStorageForStandard'] = self.used_storage_for_standard
+        if self.used_storage_for_trail is not None:
+            result['UsedStorageForTrail'] = self.used_storage_for_trail
         if self.user_project_name is not None:
             result['UserProjectName'] = self.user_project_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableAudit') is not None:
+            self.enable_audit = m.get('EnableAudit')
         if m.get('IsEtlMetaExist') is not None:
             self.is_etl_meta_exist = m.get('IsEtlMetaExist')
         if m.get('IsUserProjectLogstoreExist') is not None:
             self.is_user_project_logstore_exist = m.get('IsUserProjectLogstoreExist')
+        if m.get('PreserveStorageForStandard') is not None:
+            self.preserve_storage_for_standard = m.get('PreserveStorageForStandard')
+        if m.get('PreserveStorageForTrail') is not None:
+            self.preserve_storage_for_trail = m.get('PreserveStorageForTrail')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        if m.get('TtlForStandard') is not None:
+            self.ttl_for_standard = m.get('TtlForStandard')
+        if m.get('TtlForTrail') is not None:
+            self.ttl_for_trail = m.get('TtlForTrail')
+        if m.get('UsedStorageForStandard') is not None:
+            self.used_storage_for_standard = m.get('UsedStorageForStandard')
+        if m.get('UsedStorageForTrail') is not None:
+            self.used_storage_for_trail = m.get('UsedStorageForTrail')
         if m.get('UserProjectName') is not None:
             self.user_project_name = m.get('UserProjectName')
         return self
@@ -15393,6 +15459,7 @@ class ModifyAuditLogFilterResponse(TeaModel):
 class ModifyAuditPolicyRequest(TeaModel):
     def __init__(
         self,
+        audit_log_switch_source: str = None,
         audit_status: str = None,
         dbinstance_id: str = None,
         owner_account: str = None,
@@ -15400,8 +15467,10 @@ class ModifyAuditPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        service_type: str = None,
         storage_period: int = None,
     ):
+        self.audit_log_switch_source = audit_log_switch_source
         self.audit_status = audit_status
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
@@ -15409,6 +15478,7 @@ class ModifyAuditPolicyRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.service_type = service_type
         self.storage_period = storage_period
 
     def validate(self):
@@ -15420,6 +15490,8 @@ class ModifyAuditPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.audit_log_switch_source is not None:
+            result['AuditLogSwitchSource'] = self.audit_log_switch_source
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
         if self.dbinstance_id is not None:
@@ -15434,12 +15506,16 @@ class ModifyAuditPolicyRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
         if self.storage_period is not None:
             result['StoragePeriod'] = self.storage_period
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuditLogSwitchSource') is not None:
+            self.audit_log_switch_source = m.get('AuditLogSwitchSource')
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
         if m.get('DBInstanceId') is not None:
@@ -15454,6 +15530,8 @@ class ModifyAuditPolicyRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
         if m.get('StoragePeriod') is not None:
             self.storage_period = m.get('StoragePeriod')
         return self

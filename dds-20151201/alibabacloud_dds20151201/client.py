@@ -629,6 +629,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.hidden_zone_id):
+            query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.owner_account):
@@ -651,6 +653,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.restore_time):
             query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.security_token):
@@ -719,6 +723,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.hidden_zone_id):
+            query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.owner_account):
@@ -741,6 +747,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.restore_time):
             query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.security_token):
@@ -3715,6 +3723,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -3773,6 +3783,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -6593,6 +6605,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ModifyAuditPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.audit_log_switch_source):
+            query['AuditLogSwitchSource'] = request.audit_log_switch_source
         if not UtilClient.is_unset(request.audit_status):
             query['AuditStatus'] = request.audit_status
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6607,6 +6621,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.storage_period):
             query['StoragePeriod'] = request.storage_period
         req = open_api_models.OpenApiRequest(
@@ -6635,6 +6651,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ModifyAuditPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.audit_log_switch_source):
+            query['AuditLogSwitchSource'] = request.audit_log_switch_source
         if not UtilClient.is_unset(request.audit_status):
             query['AuditStatus'] = request.audit_status
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6649,6 +6667,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.storage_period):
             query['StoragePeriod'] = request.storage_period
         req = open_api_models.OpenApiRequest(
