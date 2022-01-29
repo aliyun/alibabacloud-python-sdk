@@ -1,3 +1,6 @@
+2022-01-29 Version: 1.1.9
+- Add CreateWorkitem Api.
+
 2022-01-10 Version: 1.1.8
 - Add CreateSprint Api.
 

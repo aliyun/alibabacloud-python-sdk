@@ -779,6 +779,140 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def create_workitem(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.CreateWorkitemRequest,
+    ) -> devops_20210625_models.CreateWorkitemResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_workitem_with_options(organization_id, request, headers, runtime)
+
+    async def create_workitem_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.CreateWorkitemRequest,
+    ) -> devops_20210625_models.CreateWorkitemResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_workitem_with_options_async(organization_id, request, headers, runtime)
+
+    def create_workitem_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.CreateWorkitemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateWorkitemResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        body = {}
+        if not UtilClient.is_unset(request.assigned_to):
+            body['assignedTo'] = request.assigned_to
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.description_format):
+            body['descriptionFormat'] = request.description_format
+        if not UtilClient.is_unset(request.field_value_list):
+            body['fieldValueList'] = request.field_value_list
+        if not UtilClient.is_unset(request.participant):
+            body['participant'] = request.participant
+        if not UtilClient.is_unset(request.space):
+            body['space'] = request.space
+        if not UtilClient.is_unset(request.space_identifier):
+            body['spaceIdentifier'] = request.space_identifier
+        if not UtilClient.is_unset(request.space_type):
+            body['spaceType'] = request.space_type
+        if not UtilClient.is_unset(request.sprint):
+            body['sprint'] = request.sprint
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        if not UtilClient.is_unset(request.tracker):
+            body['tracker'] = request.tracker
+        if not UtilClient.is_unset(request.verifier):
+            body['verifier'] = request.verifier
+        if not UtilClient.is_unset(request.workitem_type):
+            body['workitemType'] = request.workitem_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkitem',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/workitems/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateWorkitemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workitem_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.CreateWorkitemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateWorkitemResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        body = {}
+        if not UtilClient.is_unset(request.assigned_to):
+            body['assignedTo'] = request.assigned_to
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.description_format):
+            body['descriptionFormat'] = request.description_format
+        if not UtilClient.is_unset(request.field_value_list):
+            body['fieldValueList'] = request.field_value_list
+        if not UtilClient.is_unset(request.participant):
+            body['participant'] = request.participant
+        if not UtilClient.is_unset(request.space):
+            body['space'] = request.space
+        if not UtilClient.is_unset(request.space_identifier):
+            body['spaceIdentifier'] = request.space_identifier
+        if not UtilClient.is_unset(request.space_type):
+            body['spaceType'] = request.space_type
+        if not UtilClient.is_unset(request.sprint):
+            body['sprint'] = request.sprint
+        if not UtilClient.is_unset(request.subject):
+            body['subject'] = request.subject
+        if not UtilClient.is_unset(request.tracker):
+            body['tracker'] = request.tracker
+        if not UtilClient.is_unset(request.verifier):
+            body['verifier'] = request.verifier
+        if not UtilClient.is_unset(request.workitem_type):
+            body['workitemType'] = request.workitem_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkitem',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/workitems/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateWorkitemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_workspace(
         self,
         request: devops_20210625_models.CreateWorkspaceRequest,
@@ -1182,46 +1316,42 @@ class Client(OpenApiClient):
     def delete_project(
         self,
         organization_id: str,
-        project_id: str,
         request: devops_20210625_models.DeleteProjectRequest,
     ) -> devops_20210625_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_project_with_options(organization_id, project_id, request, headers, runtime)
+        return self.delete_project_with_options(organization_id, request, headers, runtime)
 
     async def delete_project_async(
         self,
         organization_id: str,
-        project_id: str,
         request: devops_20210625_models.DeleteProjectRequest,
     ) -> devops_20210625_models.DeleteProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_project_with_options_async(organization_id, project_id, request, headers, runtime)
+        return await self.delete_project_with_options_async(organization_id, request, headers, runtime)
 
     def delete_project_with_options(
         self,
         organization_id: str,
-        project_id: str,
         request: devops_20210625_models.DeleteProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
         organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
-        body = {}
-        if not UtilClient.is_unset(request.project_id):
-            body['projectId'] = request.project_id
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/{project_id}/delete',
+            pathname=f'/organization/{organization_id}/projects/delete',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1236,26 +1366,24 @@ class Client(OpenApiClient):
     async def delete_project_with_options_async(
         self,
         organization_id: str,
-        project_id: str,
         request: devops_20210625_models.DeleteProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
         organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
-        body = {}
-        if not UtilClient.is_unset(request.project_id):
-            body['projectId'] = request.project_id
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteProject',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/{project_id}/delete',
+            pathname=f'/organization/{organization_id}/projects/delete',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2312,6 +2440,80 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.GetProjectInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sprint_info(
+        self,
+        organization_id: str,
+        sprint_id: str,
+    ) -> devops_20210625_models.GetSprintInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_sprint_info_with_options(organization_id, sprint_id, headers, runtime)
+
+    async def get_sprint_info_async(
+        self,
+        organization_id: str,
+        sprint_id: str,
+    ) -> devops_20210625_models.GetSprintInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_sprint_info_with_options_async(organization_id, sprint_id, headers, runtime)
+
+    def get_sprint_info_with_options(
+        self,
+        organization_id: str,
+        sprint_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetSprintInfoResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        sprint_id = OpenApiUtilClient.get_encode_param(sprint_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSprintInfo',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/sprints/{sprint_id}/getSprintinfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetSprintInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sprint_info_with_options_async(
+        self,
+        organization_id: str,
+        sprint_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetSprintInfoResponse:
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        sprint_id = OpenApiUtilClient.get_encode_param(sprint_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSprintInfo',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/sprints/{sprint_id}/getSprintinfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetSprintInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -3567,6 +3769,282 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def list_project_templates(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListProjectTemplatesRequest,
+    ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_project_templates_with_options(organization_id, request, headers, runtime)
+
+    async def list_project_templates_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListProjectTemplatesRequest,
+    ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_project_templates_with_options_async(organization_id, request, headers, runtime)
+
+    def list_project_templates_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListProjectTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjectTemplates',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/projects/listTemplates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListProjectTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_project_templates_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListProjectTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjectTemplates',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/projects/listTemplates',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListProjectTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_project_workitem_types(
+        self,
+        organization_id: str,
+        project_id: str,
+        request: devops_20210625_models.ListProjectWorkitemTypesRequest,
+    ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_project_workitem_types_with_options(organization_id, project_id, request, headers, runtime)
+
+    async def list_project_workitem_types_async(
+        self,
+        organization_id: str,
+        project_id: str,
+        request: devops_20210625_models.ListProjectWorkitemTypesRequest,
+    ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_project_workitem_types_with_options_async(organization_id, project_id, request, headers, runtime)
+
+    def list_project_workitem_types_with_options(
+        self,
+        organization_id: str,
+        project_id: str,
+        request: devops_20210625_models.ListProjectWorkitemTypesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        project_id = OpenApiUtilClient.get_encode_param(project_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.space_type):
+            query['spaceType'] = request.space_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjectWorkitemTypes',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/projects/{project_id}/getWorkitemType',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListProjectWorkitemTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_project_workitem_types_with_options_async(
+        self,
+        organization_id: str,
+        project_id: str,
+        request: devops_20210625_models.ListProjectWorkitemTypesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        project_id = OpenApiUtilClient.get_encode_param(project_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.space_type):
+            query['spaceType'] = request.space_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjectWorkitemTypes',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/projects/{project_id}/getWorkitemType',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListProjectWorkitemTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_projects(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListProjectsRequest,
+    ) -> devops_20210625_models.ListProjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_projects_with_options(organization_id, request, headers, runtime)
+
+    async def list_projects_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListProjectsRequest,
+    ) -> devops_20210625_models.ListProjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_projects_with_options_async(organization_id, request, headers, runtime)
+
+    def list_projects_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListProjectsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListProjectsResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.conditions):
+            query['conditions'] = request.conditions
+        if not UtilClient.is_unset(request.extra_conditions):
+            query['extraConditions'] = request.extra_conditions
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.scope):
+            query['scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/listProjects',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_projects_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListProjectsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListProjectsResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.conditions):
+            query['conditions'] = request.conditions
+        if not UtilClient.is_unset(request.extra_conditions):
+            query['extraConditions'] = request.extra_conditions
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.scope):
+            query['scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/listProjects',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_resource_members(
         self,
         organization_id: str,
@@ -3729,6 +4207,100 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def list_sprints(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListSprintsRequest,
+    ) -> devops_20210625_models.ListSprintsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_sprints_with_options(organization_id, request, headers, runtime)
+
+    async def list_sprints_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListSprintsRequest,
+    ) -> devops_20210625_models.ListSprintsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_sprints_with_options_async(organization_id, request, headers, runtime)
+
+    def list_sprints_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListSprintsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListSprintsResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.space_identifier):
+            query['spaceIdentifier'] = request.space_identifier
+        if not UtilClient.is_unset(request.space_type):
+            query['spaceType'] = request.space_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSprints',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/sprints/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListSprintsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sprints_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListSprintsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListSprintsResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.space_identifier):
+            query['spaceIdentifier'] = request.space_identifier
+        if not UtilClient.is_unset(request.space_type):
+            query['spaceType'] = request.space_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSprints',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/sprints/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListSprintsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_variable_groups(
         self,
         organization_id: str,
@@ -3820,6 +4392,190 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.ListVariableGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_work_item_all_fields(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListWorkItemAllFieldsRequest,
+    ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_work_item_all_fields_with_options(organization_id, request, headers, runtime)
+
+    async def list_work_item_all_fields_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListWorkItemAllFieldsRequest,
+    ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_work_item_all_fields_with_options_async(organization_id, request, headers, runtime)
+
+    def list_work_item_all_fields_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListWorkItemAllFieldsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.space_identifier):
+            query['spaceIdentifier'] = request.space_identifier
+        if not UtilClient.is_unset(request.space_type):
+            query['spaceType'] = request.space_type
+        if not UtilClient.is_unset(request.workitem_type_identifier):
+            query['workitemTypeIdentifier'] = request.workitem_type_identifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkItemAllFields',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/workitems/fields/listAll',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListWorkItemAllFieldsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_work_item_all_fields_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListWorkItemAllFieldsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.space_identifier):
+            query['spaceIdentifier'] = request.space_identifier
+        if not UtilClient.is_unset(request.space_type):
+            query['spaceType'] = request.space_type
+        if not UtilClient.is_unset(request.workitem_type_identifier):
+            query['workitemTypeIdentifier'] = request.workitem_type_identifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkItemAllFields',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/workitems/fields/listAll',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListWorkItemAllFieldsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_work_item_work_flow_status(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
+    ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_work_item_work_flow_status_with_options(organization_id, request, headers, runtime)
+
+    async def list_work_item_work_flow_status_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
+    ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_work_item_work_flow_status_with_options_async(organization_id, request, headers, runtime)
+
+    def list_work_item_work_flow_status_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.space_identifier):
+            query['spaceIdentifier'] = request.space_identifier
+        if not UtilClient.is_unset(request.space_type):
+            query['spaceType'] = request.space_type
+        if not UtilClient.is_unset(request.workitem_category_identifier):
+            query['workitemCategoryIdentifier'] = request.workitem_category_identifier
+        if not UtilClient.is_unset(request.workitem_type_identifier):
+            query['workitemTypeIdentifier'] = request.workitem_type_identifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkItemWorkFlowStatus',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/workitems/workflow/listWorkflowStatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListWorkItemWorkFlowStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_work_item_work_flow_status_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        UtilClient.validate_model(request)
+        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
+        query = {}
+        if not UtilClient.is_unset(request.space_identifier):
+            query['spaceIdentifier'] = request.space_identifier
+        if not UtilClient.is_unset(request.space_type):
+            query['spaceType'] = request.space_type
+        if not UtilClient.is_unset(request.workitem_category_identifier):
+            query['workitemCategoryIdentifier'] = request.workitem_category_identifier
+        if not UtilClient.is_unset(request.workitem_type_identifier):
+            query['workitemTypeIdentifier'] = request.workitem_type_identifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkItemWorkFlowStatus',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{organization_id}/workitems/workflow/listWorkflowStatus',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListWorkItemWorkFlowStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
