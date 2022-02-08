@@ -514,12 +514,16 @@ class CreateRateRequest(TeaModel):
     def __init__(
         self,
         content: str = None,
+        customer_labels: str = None,
         order_id: str = None,
+        package_version: str = None,
         request_id: str = None,
         score: str = None,
     ):
         self.content = content
+        self.customer_labels = customer_labels
         self.order_id = order_id
+        self.package_version = package_version
         self.request_id = request_id
         self.score = score
 
@@ -534,8 +538,12 @@ class CreateRateRequest(TeaModel):
         result = dict()
         if self.content is not None:
             result['Content'] = self.content
+        if self.customer_labels is not None:
+            result['CustomerLabels'] = self.customer_labels
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.score is not None:
@@ -546,8 +554,12 @@ class CreateRateRequest(TeaModel):
         m = m or dict()
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CustomerLabels') is not None:
+            self.customer_labels = m.get('CustomerLabels')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Score') is not None:
@@ -5441,6 +5453,7 @@ class DescribeRateResponseBody(TeaModel):
         additional_explaintion: str = None,
         ali_uid: int = None,
         content: str = None,
+        customer_labels: str = None,
         explaintion: str = None,
         gmt_additional: int = None,
         gmt_additional_explaintion: int = None,
@@ -5449,6 +5462,7 @@ class DescribeRateResponseBody(TeaModel):
         id: int = None,
         instance_id: str = None,
         order_id: str = None,
+        package_version: str = None,
         product_id: str = None,
         request_id: str = None,
         score: str = None,
@@ -5458,6 +5472,7 @@ class DescribeRateResponseBody(TeaModel):
         self.additional_explaintion = additional_explaintion
         self.ali_uid = ali_uid
         self.content = content
+        self.customer_labels = customer_labels
         self.explaintion = explaintion
         self.gmt_additional = gmt_additional
         self.gmt_additional_explaintion = gmt_additional_explaintion
@@ -5466,6 +5481,7 @@ class DescribeRateResponseBody(TeaModel):
         self.id = id
         self.instance_id = instance_id
         self.order_id = order_id
+        self.package_version = package_version
         self.product_id = product_id
         self.request_id = request_id
         self.score = score
@@ -5488,6 +5504,8 @@ class DescribeRateResponseBody(TeaModel):
             result['AliUid'] = self.ali_uid
         if self.content is not None:
             result['Content'] = self.content
+        if self.customer_labels is not None:
+            result['CustomerLabels'] = self.customer_labels
         if self.explaintion is not None:
             result['Explaintion'] = self.explaintion
         if self.gmt_additional is not None:
@@ -5504,6 +5522,8 @@ class DescribeRateResponseBody(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
         if self.product_id is not None:
             result['ProductId'] = self.product_id
         if self.request_id is not None:
@@ -5524,6 +5544,8 @@ class DescribeRateResponseBody(TeaModel):
             self.ali_uid = m.get('AliUid')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CustomerLabels') is not None:
+            self.customer_labels = m.get('CustomerLabels')
         if m.get('Explaintion') is not None:
             self.explaintion = m.get('Explaintion')
         if m.get('GmtAdditional') is not None:
@@ -5540,6 +5562,8 @@ class DescribeRateResponseBody(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
         if m.get('RequestId') is not None:

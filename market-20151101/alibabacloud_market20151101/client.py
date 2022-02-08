@@ -391,8 +391,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.customer_labels):
+            query['CustomerLabels'] = request.customer_labels
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.package_version):
+            query['PackageVersion'] = request.package_version
         if not UtilClient.is_unset(request.request_id):
             query['RequestId'] = request.request_id
         if not UtilClient.is_unset(request.score):
@@ -425,8 +429,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.customer_labels):
+            query['CustomerLabels'] = request.customer_labels
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.package_version):
+            query['PackageVersion'] = request.package_version
         if not UtilClient.is_unset(request.request_id):
             query['RequestId'] = request.request_id
         if not UtilClient.is_unset(request.score):
