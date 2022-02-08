@@ -1,3 +1,6 @@
+2022-02-08 Version: 1.0.8
+- Generated python 2020-02-02 for polardbx.
+
 2021-12-30 Version: 1.0.7
 - Fixed some bugs.
 
