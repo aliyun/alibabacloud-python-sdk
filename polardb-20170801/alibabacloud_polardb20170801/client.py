@@ -95,12 +95,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CancelScheduleTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelScheduleTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CancelScheduleTasksResponse(),
-            self.do_rpcrequest('CancelScheduleTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def cancel_schedule_tasks_with_options_async(
@@ -109,12 +133,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CancelScheduleTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelScheduleTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CancelScheduleTasksResponse(),
-            await self.do_rpcrequest_async('CancelScheduleTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def cancel_schedule_tasks(
@@ -137,12 +185,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CheckAccountNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckAccountName',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CheckAccountNameResponse(),
-            self.do_rpcrequest('CheckAccountName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def check_account_name_with_options_async(
@@ -151,12 +223,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CheckAccountNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckAccountName',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CheckAccountNameResponse(),
-            await self.do_rpcrequest_async('CheckAccountName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_account_name(
@@ -179,12 +275,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CheckDBNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckDBName',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CheckDBNameResponse(),
-            self.do_rpcrequest('CheckDBName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def check_dbname_with_options_async(
@@ -193,12 +313,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CheckDBNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckDBName',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CheckDBNameResponse(),
-            await self.do_rpcrequest_async('CheckDBName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_dbname(
@@ -221,12 +365,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CloseDBClusterMigrationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.continue_enable_binlog):
+            query['ContinueEnableBinlog'] = request.continue_enable_binlog
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseDBClusterMigration',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CloseDBClusterMigrationResponse(),
-            self.do_rpcrequest('CloseDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def close_dbcluster_migration_with_options_async(
@@ -235,12 +403,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CloseDBClusterMigrationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.continue_enable_binlog):
+            query['ContinueEnableBinlog'] = request.continue_enable_binlog
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseDBClusterMigration',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CloseDBClusterMigrationResponse(),
-            await self.do_rpcrequest_async('CloseDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def close_dbcluster_migration(
@@ -263,12 +455,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccount',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateAccountResponse(),
-            self.do_rpcrequest('CreateAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_account_with_options_async(
@@ -277,12 +505,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccount',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateAccountResponse(),
-            await self.do_rpcrequest_async('CreateAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_account(
@@ -305,12 +569,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateBackupResponse(),
-            self.do_rpcrequest('CreateBackup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_backup_with_options_async(
@@ -319,12 +607,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateBackupResponse(),
-            await self.do_rpcrequest_async('CreateBackup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_backup(
@@ -341,60 +653,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
-    def create_database_with_options(
-        self,
-        request: polardb_20170801_models.CreateDatabaseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.CreateDatabaseResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDatabaseResponse(),
-            self.do_rpcrequest('CreateDatabase', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_database_with_options_async(
-        self,
-        request: polardb_20170801_models.CreateDatabaseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.CreateDatabaseResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.CreateDatabaseResponse(),
-            await self.do_rpcrequest_async('CreateDatabase', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_database(
-        self,
-        request: polardb_20170801_models.CreateDatabaseRequest,
-    ) -> polardb_20170801_models.CreateDatabaseResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_database_with_options(request, runtime)
-
-    async def create_database_async(
-        self,
-        request: polardb_20170801_models.CreateDatabaseRequest,
-    ) -> polardb_20170801_models.CreateDatabaseResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_database_with_options_async(request, runtime)
-
     def create_dbcluster_with_options(
         self,
         request: polardb_20170801_models.CreateDBClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
+            query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.clone_data_point):
+            query['CloneDataPoint'] = request.clone_data_point
+        if not UtilClient.is_unset(request.cluster_network_type):
+            query['ClusterNetworkType'] = request.cluster_network_type
+        if not UtilClient.is_unset(request.creation_category):
+            query['CreationCategory'] = request.creation_category
+        if not UtilClient.is_unset(request.creation_option):
+            query['CreationOption'] = request.creation_option
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbminor_version):
+            query['DBMinorVersion'] = request.dbminor_version
+        if not UtilClient.is_unset(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.default_time_zone):
+            query['DefaultTimeZone'] = request.default_time_zone
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.lower_case_table_names):
+            query['LowerCaseTableNames'] = request.lower_case_table_names
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.source_resource_id):
+            query['SourceResourceId'] = request.source_resource_id
+        if not UtilClient.is_unset(request.tdestatus):
+            query['TDEStatus'] = request.tdestatus
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBClusterResponse(),
-            self.do_rpcrequest('CreateDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_dbcluster_with_options_async(
@@ -403,12 +747,86 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
+            query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.clone_data_point):
+            query['CloneDataPoint'] = request.clone_data_point
+        if not UtilClient.is_unset(request.cluster_network_type):
+            query['ClusterNetworkType'] = request.cluster_network_type
+        if not UtilClient.is_unset(request.creation_category):
+            query['CreationCategory'] = request.creation_category
+        if not UtilClient.is_unset(request.creation_option):
+            query['CreationOption'] = request.creation_option
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbminor_version):
+            query['DBMinorVersion'] = request.dbminor_version
+        if not UtilClient.is_unset(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.default_time_zone):
+            query['DefaultTimeZone'] = request.default_time_zone
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.lower_case_table_names):
+            query['LowerCaseTableNames'] = request.lower_case_table_names
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.source_resource_id):
+            query['SourceResourceId'] = request.source_resource_id
+        if not UtilClient.is_unset(request.tdestatus):
+            query['TDEStatus'] = request.tdestatus
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBClusterResponse(),
-            await self.do_rpcrequest_async('CreateDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dbcluster(
@@ -431,12 +849,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBClusterEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_add_new_nodes):
+            query['AutoAddNewNodes'] = request.auto_add_new_nodes
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_description):
+            query['DBEndpointDescription'] = request.dbendpoint_description
+        if not UtilClient.is_unset(request.endpoint_config):
+            query['EndpointConfig'] = request.endpoint_config
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.nodes):
+            query['Nodes'] = request.nodes
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_write_mode):
+            query['ReadWriteMode'] = request.read_write_mode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBClusterEndpoint',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBClusterEndpointResponse(),
-            self.do_rpcrequest('CreateDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_dbcluster_endpoint_with_options_async(
@@ -445,12 +899,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBClusterEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_add_new_nodes):
+            query['AutoAddNewNodes'] = request.auto_add_new_nodes
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_description):
+            query['DBEndpointDescription'] = request.dbendpoint_description
+        if not UtilClient.is_unset(request.endpoint_config):
+            query['EndpointConfig'] = request.endpoint_config
+        if not UtilClient.is_unset(request.endpoint_type):
+            query['EndpointType'] = request.endpoint_type
+        if not UtilClient.is_unset(request.nodes):
+            query['Nodes'] = request.nodes
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_write_mode):
+            query['ReadWriteMode'] = request.read_write_mode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBClusterEndpoint',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBClusterEndpointResponse(),
-            await self.do_rpcrequest_async('CreateDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dbcluster_endpoint(
@@ -473,12 +963,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBEndpointAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBEndpointAddressResponse(),
-            self.do_rpcrequest('CreateDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_dbendpoint_address_with_options_async(
@@ -487,12 +1005,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBEndpointAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBEndpointAddressResponse(),
-            await self.do_rpcrequest_async('CreateDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dbendpoint_address(
@@ -515,12 +1061,56 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBLinkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dblink_name):
+            query['DBLinkName'] = request.dblink_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbname):
+            query['SourceDBName'] = request.source_dbname
+        if not UtilClient.is_unset(request.target_dbaccount):
+            query['TargetDBAccount'] = request.target_dbaccount
+        if not UtilClient.is_unset(request.target_dbinstance_name):
+            query['TargetDBInstanceName'] = request.target_dbinstance_name
+        if not UtilClient.is_unset(request.target_dbname):
+            query['TargetDBName'] = request.target_dbname
+        if not UtilClient.is_unset(request.target_dbpasswd):
+            query['TargetDBPasswd'] = request.target_dbpasswd
+        if not UtilClient.is_unset(request.target_ip):
+            query['TargetIp'] = request.target_ip
+        if not UtilClient.is_unset(request.target_port):
+            query['TargetPort'] = request.target_port
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBLink',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBLinkResponse(),
-            self.do_rpcrequest('CreateDBLink', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_dblink_with_options_async(
@@ -529,12 +1119,56 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBLinkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dblink_name):
+            query['DBLinkName'] = request.dblink_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbname):
+            query['SourceDBName'] = request.source_dbname
+        if not UtilClient.is_unset(request.target_dbaccount):
+            query['TargetDBAccount'] = request.target_dbaccount
+        if not UtilClient.is_unset(request.target_dbinstance_name):
+            query['TargetDBInstanceName'] = request.target_dbinstance_name
+        if not UtilClient.is_unset(request.target_dbname):
+            query['TargetDBName'] = request.target_dbname
+        if not UtilClient.is_unset(request.target_dbpasswd):
+            query['TargetDBPasswd'] = request.target_dbpasswd
+        if not UtilClient.is_unset(request.target_ip):
+            query['TargetIp'] = request.target_ip
+        if not UtilClient.is_unset(request.target_port):
+            query['TargetPort'] = request.target_port
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBLink',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBLinkResponse(),
-            await self.do_rpcrequest_async('CreateDBLink', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dblink(
@@ -557,12 +1191,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBNodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode):
+            query['DBNode'] = request.dbnode
+        if not UtilClient.is_unset(request.endpoint_bind_list):
+            query['EndpointBindList'] = request.endpoint_bind_list
+        if not UtilClient.is_unset(request.imci_switch):
+            query['ImciSwitch'] = request.imci_switch
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBNodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBNodesResponse(),
-            self.do_rpcrequest('CreateDBNodes', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_dbnodes_with_options_async(
@@ -571,12 +1239,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateDBNodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode):
+            query['DBNode'] = request.dbnode
+        if not UtilClient.is_unset(request.endpoint_bind_list):
+            query['EndpointBindList'] = request.endpoint_bind_list
+        if not UtilClient.is_unset(request.imci_switch):
+            query['ImciSwitch'] = request.imci_switch
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBNodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateDBNodesResponse(),
-            await self.do_rpcrequest_async('CreateDBNodes', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dbnodes(
@@ -593,18 +1295,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dbnodes_with_options_async(request, runtime)
 
+    def create_database_with_options(
+        self,
+        request: polardb_20170801_models.CreateDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.character_set_name):
+            query['CharacterSetName'] = request.character_set_name
+        if not UtilClient.is_unset(request.collate):
+            query['Collate'] = request.collate
+        if not UtilClient.is_unset(request.ctype):
+            query['Ctype'] = request.ctype
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbdescription):
+            query['DBDescription'] = request.dbdescription
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabase',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_database_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.character_set_name):
+            query['CharacterSetName'] = request.character_set_name
+        if not UtilClient.is_unset(request.collate):
+            query['Collate'] = request.collate
+        if not UtilClient.is_unset(request.ctype):
+            query['Ctype'] = request.ctype
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbdescription):
+            query['DBDescription'] = request.dbdescription
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDatabase',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_database(
+        self,
+        request: polardb_20170801_models.CreateDatabaseRequest,
+    ) -> polardb_20170801_models.CreateDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_database_with_options(request, runtime)
+
+    async def create_database_async(
+        self,
+        request: polardb_20170801_models.CreateDatabaseRequest,
+    ) -> polardb_20170801_models.CreateDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_database_with_options_async(request, runtime)
+
     def create_global_database_network_with_options(
         self,
         request: polardb_20170801_models.CreateGlobalDatabaseNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.gdndescription):
+            query['GDNDescription'] = request.gdndescription
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
-            self.do_rpcrequest('CreateGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_global_database_network_with_options_async(
@@ -613,12 +1455,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.gdndescription):
+            query['GDNDescription'] = request.gdndescription
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateGlobalDatabaseNetworkResponse(),
-            await self.do_rpcrequest_async('CreateGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_global_database_network(
@@ -641,12 +1509,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateParameterGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_desc):
+            query['ParameterGroupDesc'] = request.parameter_group_desc
+        if not UtilClient.is_unset(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateParameterGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateParameterGroupResponse(),
-            self.do_rpcrequest('CreateParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_parameter_group_with_options_async(
@@ -655,12 +1555,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.CreateParameterGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_desc):
+            query['ParameterGroupDesc'] = request.parameter_group_desc
+        if not UtilClient.is_unset(request.parameter_group_name):
+            query['ParameterGroupName'] = request.parameter_group_name
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateParameterGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.CreateParameterGroupResponse(),
-            await self.do_rpcrequest_async('CreateParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_parameter_group(
@@ -677,18 +1609,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_parameter_group_with_options_async(request, runtime)
 
+    def create_storage_plan_with_options(
+        self,
+        request: polardb_20170801_models.CreateStoragePlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateStoragePlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_class):
+            query['StorageClass'] = request.storage_class
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStoragePlan',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateStoragePlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_storage_plan_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateStoragePlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateStoragePlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_class):
+            query['StorageClass'] = request.storage_class
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStoragePlan',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateStoragePlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_storage_plan(
+        self,
+        request: polardb_20170801_models.CreateStoragePlanRequest,
+    ) -> polardb_20170801_models.CreateStoragePlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_storage_plan_with_options(request, runtime)
+
+    async def create_storage_plan_async(
+        self,
+        request: polardb_20170801_models.CreateStoragePlanRequest,
+    ) -> polardb_20170801_models.CreateStoragePlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_storage_plan_with_options_async(request, runtime)
+
     def delete_account_with_options(
         self,
         request: polardb_20170801_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccount',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteAccountResponse(),
-            self.do_rpcrequest('DeleteAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_account_with_options_async(
@@ -697,12 +1755,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccount',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteAccountResponse(),
-            await self.do_rpcrequest_async('DeleteAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_account(
@@ -725,12 +1807,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteBackupResponse(),
-            self.do_rpcrequest('DeleteBackup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_backup_with_options_async(
@@ -739,12 +1845,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteBackupResponse(),
-            await self.do_rpcrequest_async('DeleteBackup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_backup(
@@ -761,60 +1891,42 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_backup_with_options_async(request, runtime)
 
-    def delete_database_with_options(
-        self,
-        request: polardb_20170801_models.DeleteDatabaseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DeleteDatabaseResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDatabaseResponse(),
-            self.do_rpcrequest('DeleteDatabase', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_database_with_options_async(
-        self,
-        request: polardb_20170801_models.DeleteDatabaseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DeleteDatabaseResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DeleteDatabaseResponse(),
-            await self.do_rpcrequest_async('DeleteDatabase', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_database(
-        self,
-        request: polardb_20170801_models.DeleteDatabaseRequest,
-    ) -> polardb_20170801_models.DeleteDatabaseResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_database_with_options(request, runtime)
-
-    async def delete_database_async(
-        self,
-        request: polardb_20170801_models.DeleteDatabaseRequest,
-    ) -> polardb_20170801_models.DeleteDatabaseResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_database_with_options_async(request, runtime)
-
     def delete_dbcluster_with_options(
         self,
         request: polardb_20170801_models.DeleteDBClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
+            query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBClusterResponse(),
-            self.do_rpcrequest('DeleteDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dbcluster_with_options_async(
@@ -823,12 +1935,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
+            query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBClusterResponse(),
-            await self.do_rpcrequest_async('DeleteDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dbcluster(
@@ -851,12 +1987,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBClusterEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBClusterEndpoint',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBClusterEndpointResponse(),
-            self.do_rpcrequest('DeleteDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dbcluster_endpoint_with_options_async(
@@ -865,12 +2025,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBClusterEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBClusterEndpoint',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBClusterEndpointResponse(),
-            await self.do_rpcrequest_async('DeleteDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dbcluster_endpoint(
@@ -893,12 +2077,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBEndpointAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBEndpointAddressResponse(),
-            self.do_rpcrequest('DeleteDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dbendpoint_address_with_options_async(
@@ -907,12 +2117,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBEndpointAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBEndpointAddressResponse(),
-            await self.do_rpcrequest_async('DeleteDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dbendpoint_address(
@@ -935,12 +2171,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBLinkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dblink_name):
+            query['DBLinkName'] = request.dblink_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBLink',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBLinkResponse(),
-            self.do_rpcrequest('DeleteDBLink', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dblink_with_options_async(
@@ -949,12 +2209,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBLinkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dblink_name):
+            query['DBLinkName'] = request.dblink_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBLink',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBLinkResponse(),
-            await self.do_rpcrequest_async('DeleteDBLink', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dblink(
@@ -977,12 +2261,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBNodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBNodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBNodesResponse(),
-            self.do_rpcrequest('DeleteDBNodes', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dbnodes_with_options_async(
@@ -991,12 +2301,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteDBNodesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBNodes',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteDBNodesResponse(),
-            await self.do_rpcrequest_async('DeleteDBNodes', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dbnodes(
@@ -1013,18 +2349,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbnodes_with_options_async(request, runtime)
 
+    def delete_database_with_options(
+        self,
+        request: polardb_20170801_models.DeleteDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatabase',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_database_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatabase',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_database(
+        self,
+        request: polardb_20170801_models.DeleteDatabaseRequest,
+    ) -> polardb_20170801_models.DeleteDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_database_with_options(request, runtime)
+
+    async def delete_database_async(
+        self,
+        request: polardb_20170801_models.DeleteDatabaseRequest,
+    ) -> polardb_20170801_models.DeleteDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_database_with_options_async(request, runtime)
+
     def delete_global_database_network_with_options(
         self,
         request: polardb_20170801_models.DeleteGlobalDatabaseNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
-            self.do_rpcrequest('DeleteGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_global_database_network_with_options_async(
@@ -1033,12 +2483,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse(),
-            await self.do_rpcrequest_async('DeleteGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_global_database_network(
@@ -1055,18 +2529,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_global_database_network_with_options_async(request, runtime)
 
+    def delete_masking_rules_with_options(
+        self,
+        request: polardb_20170801_models.DeleteMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.rule_name_list):
+            query['RuleNameList'] = request.rule_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMaskingRules',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteMaskingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_masking_rules_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.rule_name_list):
+            query['RuleNameList'] = request.rule_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMaskingRules',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteMaskingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_masking_rules(
+        self,
+        request: polardb_20170801_models.DeleteMaskingRulesRequest,
+    ) -> polardb_20170801_models.DeleteMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_masking_rules_with_options(request, runtime)
+
+    async def delete_masking_rules_async(
+        self,
+        request: polardb_20170801_models.DeleteMaskingRulesRequest,
+    ) -> polardb_20170801_models.DeleteMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_masking_rules_with_options_async(request, runtime)
+
     def delete_parameter_group_with_options(
         self,
         request: polardb_20170801_models.DeleteParameterGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteParameterGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteParameterGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteParameterGroupResponse(),
-            self.do_rpcrequest('DeleteParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_parameter_group_with_options_async(
@@ -1075,12 +2647,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DeleteParameterGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteParameterGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DeleteParameterGroupResponse(),
-            await self.do_rpcrequest_async('DeleteParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_parameter_group(
@@ -1103,12 +2699,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeAccountsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccounts',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeAccountsResponse(),
-            self.do_rpcrequest('DescribeAccounts', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_accounts_with_options_async(
@@ -1117,12 +2741,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeAccountsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccounts',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeAccountsResponse(),
-            await self.do_rpcrequest_async('DescribeAccounts', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_accounts(
@@ -1145,12 +2797,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeAutoRenewAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoRenewAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
-            self.do_rpcrequest('DescribeAutoRenewAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_auto_renew_attribute_with_options_async(
@@ -1159,12 +2841,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeAutoRenewAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoRenewAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeAutoRenewAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeAutoRenewAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_auto_renew_attribute(
@@ -1187,12 +2899,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeBackupLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupLogs',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeBackupLogsResponse(),
-            self.do_rpcrequest('DescribeBackupLogs', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_logs_with_options_async(
@@ -1201,12 +2943,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeBackupLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupLogs',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeBackupLogsResponse(),
-            await self.do_rpcrequest_async('DescribeBackupLogs', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_logs(
@@ -1229,12 +3001,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeBackupPolicyResponse(),
-            self.do_rpcrequest('DescribeBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_policy_with_options_async(
@@ -1243,12 +3037,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeBackupPolicyResponse(),
-            await self.do_rpcrequest_async('DescribeBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_policy(
@@ -1265,60 +3081,44 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
 
-    def describe_backups_with_options(
-        self,
-        request: polardb_20170801_models.DescribeBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeBackupsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupsResponse(),
-            self.do_rpcrequest('DescribeBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_backups_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeBackupsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeBackupsResponse(),
-            await self.do_rpcrequest_async('DescribeBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_backups(
-        self,
-        request: polardb_20170801_models.DescribeBackupsRequest,
-    ) -> polardb_20170801_models.DescribeBackupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_backups_with_options(request, runtime)
-
-    async def describe_backups_async(
-        self,
-        request: polardb_20170801_models.DescribeBackupsRequest,
-    ) -> polardb_20170801_models.DescribeBackupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_backups_with_options_async(request, runtime)
-
     def describe_backup_tasks_with_options(
         self,
         request: polardb_20170801_models.DescribeBackupTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeBackupTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeBackupTasksResponse(),
-            self.do_rpcrequest('DescribeBackupTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_tasks_with_options_async(
@@ -1327,12 +3127,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeBackupTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_job_id):
+            query['BackupJobId'] = request.backup_job_id
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeBackupTasksResponse(),
-            await self.do_rpcrequest_async('DescribeBackupTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_tasks(
@@ -1349,18 +3175,156 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_tasks_with_options_async(request, runtime)
 
+    def describe_backups_with_options(
+        self,
+        request: polardb_20170801_models.DescribeBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackups',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backups_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackups',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backups(
+        self,
+        request: polardb_20170801_models.DescribeBackupsRequest,
+    ) -> polardb_20170801_models.DescribeBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backups_with_options(request, runtime)
+
+    async def describe_backups_async(
+        self,
+        request: polardb_20170801_models.DescribeBackupsRequest,
+    ) -> polardb_20170801_models.DescribeBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backups_with_options_async(request, runtime)
+
     def describe_character_set_name_with_options(
         self,
         request: polardb_20170801_models.DescribeCharacterSetNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeCharacterSetNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCharacterSetName',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeCharacterSetNameResponse(),
-            self.do_rpcrequest('DescribeCharacterSetName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_character_set_name_with_options_async(
@@ -1369,12 +3333,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeCharacterSetNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCharacterSetName',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeCharacterSetNameResponse(),
-            await self.do_rpcrequest_async('DescribeCharacterSetName', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_character_set_name(
@@ -1391,60 +3379,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_character_set_name_with_options_async(request, runtime)
 
-    def describe_databases_with_options(
-        self,
-        request: polardb_20170801_models.DescribeDatabasesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeDatabasesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDatabasesResponse(),
-            self.do_rpcrequest('DescribeDatabases', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_databases_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeDatabasesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeDatabasesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDatabasesResponse(),
-            await self.do_rpcrequest_async('DescribeDatabases', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_databases(
-        self,
-        request: polardb_20170801_models.DescribeDatabasesRequest,
-    ) -> polardb_20170801_models.DescribeDatabasesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_databases_with_options(request, runtime)
-
-    async def describe_databases_async(
-        self,
-        request: polardb_20170801_models.DescribeDatabasesRequest,
-    ) -> polardb_20170801_models.DescribeDatabasesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_databases_with_options_async(request, runtime)
-
     def describe_dbcluster_access_whitelist_with_options(
         self,
         request: polardb_20170801_models.DescribeDBClusterAccessWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterAccessWhitelist',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
-            self.do_rpcrequest('DescribeDBClusterAccessWhitelist', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_access_whitelist_with_options_async(
@@ -1453,12 +3421,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterAccessWhitelist',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterAccessWhitelistResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterAccessWhitelist', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_access_whitelist(
@@ -1481,12 +3471,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterAttributeResponse(),
-            self.do_rpcrequest('DescribeDBClusterAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_attribute_with_options_async(
@@ -1495,12 +3507,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_attribute(
@@ -1523,12 +3557,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterAuditLogCollector',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
-            self.do_rpcrequest('DescribeDBClusterAuditLogCollector', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_audit_log_collector_with_options_async(
@@ -1537,12 +3593,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterAuditLogCollector',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterAuditLogCollectorResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterAuditLogCollector', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_audit_log_collector(
@@ -1565,12 +3643,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterAvailableResources',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
-            self.do_rpcrequest('DescribeDBClusterAvailableResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_available_resources_with_options_async(
@@ -1579,12 +3689,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterAvailableResources',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterAvailableResourcesResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterAvailableResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_available_resources(
@@ -1607,12 +3749,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterEndpointsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterEndpoints',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
-            self.do_rpcrequest('DescribeDBClusterEndpoints', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_endpoints_with_options_async(
@@ -1621,12 +3787,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterEndpointsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterEndpoints',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterEndpointsResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterEndpoints', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_endpoints(
@@ -1649,12 +3839,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterMigration',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterMigrationResponse(),
-            self.do_rpcrequest('DescribeDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_migration_with_options_async(
@@ -1663,12 +3875,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterMigrationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterMigration',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterMigrationResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_migration(
@@ -1691,12 +3925,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterMonitorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterMonitor',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterMonitorResponse(),
-            self.do_rpcrequest('DescribeDBClusterMonitor', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_monitor_with_options_async(
@@ -1705,12 +3961,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterMonitorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterMonitor',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterMonitorResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterMonitor', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_monitor(
@@ -1733,12 +4011,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterParametersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterParameters',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterParametersResponse(),
-            self.do_rpcrequest('DescribeDBClusterParameters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_parameters_with_options_async(
@@ -1747,12 +4047,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterParametersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterParameters',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterParametersResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterParameters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_parameters(
@@ -1775,12 +4097,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterPerformanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterPerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
-            self.do_rpcrequest('DescribeDBClusterPerformance', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_performance_with_options_async(
@@ -1789,12 +4131,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterPerformanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterPerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterPerformanceResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterPerformance', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_performance(
@@ -1811,60 +4173,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_performance_with_options_async(request, runtime)
 
-    def describe_dbclusters_with_options(
-        self,
-        request: polardb_20170801_models.DescribeDBClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeDBClustersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClustersResponse(),
-            self.do_rpcrequest('DescribeDBClusters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_dbclusters_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeDBClustersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeDBClustersResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClustersResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_dbclusters(
-        self,
-        request: polardb_20170801_models.DescribeDBClustersRequest,
-    ) -> polardb_20170801_models.DescribeDBClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dbclusters_with_options(request, runtime)
-
-    async def describe_dbclusters_async(
-        self,
-        request: polardb_20170801_models.DescribeDBClustersRequest,
-    ) -> polardb_20170801_models.DescribeDBClustersResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dbclusters_with_options_async(request, runtime)
-
     def describe_dbcluster_sslwith_options(
         self,
         request: polardb_20170801_models.DescribeDBClusterSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterSSLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterSSL',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterSSLResponse(),
-            self.do_rpcrequest('DescribeDBClusterSSL', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_sslwith_options_async(
@@ -1873,12 +4215,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterSSLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterSSL',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterSSLResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterSSL', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_ssl(
@@ -1895,60 +4259,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_sslwith_options_async(request, runtime)
 
-    def describe_dbclusters_with_backups_with_options(
-        self,
-        request: polardb_20170801_models.DescribeDBClustersWithBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeDBClustersWithBackupsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
-            self.do_rpcrequest('DescribeDBClustersWithBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_dbclusters_with_backups_with_options_async(
-        self,
-        request: polardb_20170801_models.DescribeDBClustersWithBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> polardb_20170801_models.DescribeDBClustersWithBackupsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
-            await self.do_rpcrequest_async('DescribeDBClustersWithBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_dbclusters_with_backups(
-        self,
-        request: polardb_20170801_models.DescribeDBClustersWithBackupsRequest,
-    ) -> polardb_20170801_models.DescribeDBClustersWithBackupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dbclusters_with_backups_with_options(request, runtime)
-
-    async def describe_dbclusters_with_backups_async(
-        self,
-        request: polardb_20170801_models.DescribeDBClustersWithBackupsRequest,
-    ) -> polardb_20170801_models.DescribeDBClustersWithBackupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dbclusters_with_backups_with_options_async(request, runtime)
-
     def describe_dbcluster_tdewith_options(
         self,
         request: polardb_20170801_models.DescribeDBClusterTDERequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterTDEResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterTDE',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterTDEResponse(),
-            self.do_rpcrequest('DescribeDBClusterTDE', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_tdewith_options_async(
@@ -1957,12 +4301,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterTDEResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterTDE',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterTDEResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterTDE', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_tde(
@@ -1985,12 +4351,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterVersion',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterVersionResponse(),
-            self.do_rpcrequest('DescribeDBClusterVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_version_with_options_async(
@@ -1999,12 +4387,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBClusterVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterVersion',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBClusterVersionResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_version(
@@ -2021,18 +4431,280 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_version_with_options_async(request, runtime)
 
+    def describe_dbclusters_with_options(
+        self,
+        request: polardb_20170801_models.DescribeDBClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.dbcluster_status):
+            query['DBClusterStatus'] = request.dbcluster_status
+        if not UtilClient.is_unset(request.dbnode_ids):
+            query['DBNodeIds'] = request.dbnode_ids
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusters',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbclusters_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeDBClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.dbcluster_status):
+            query['DBClusterStatus'] = request.dbcluster_status
+        if not UtilClient.is_unset(request.dbnode_ids):
+            query['DBNodeIds'] = request.dbnode_ids
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusters',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbclusters(
+        self,
+        request: polardb_20170801_models.DescribeDBClustersRequest,
+    ) -> polardb_20170801_models.DescribeDBClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbclusters_with_options(request, runtime)
+
+    async def describe_dbclusters_async(
+        self,
+        request: polardb_20170801_models.DescribeDBClustersRequest,
+    ) -> polardb_20170801_models.DescribeDBClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbclusters_with_options_async(request, runtime)
+
+    def describe_dbclusters_with_backups_with_options(
+        self,
+        request: polardb_20170801_models.DescribeDBClustersWithBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBClustersWithBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.is_deleted):
+            query['IsDeleted'] = request.is_deleted
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClustersWithBackups',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbclusters_with_backups_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeDBClustersWithBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBClustersWithBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.is_deleted):
+            query['IsDeleted'] = request.is_deleted
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClustersWithBackups',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClustersWithBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbclusters_with_backups(
+        self,
+        request: polardb_20170801_models.DescribeDBClustersWithBackupsRequest,
+    ) -> polardb_20170801_models.DescribeDBClustersWithBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbclusters_with_backups_with_options(request, runtime)
+
+    async def describe_dbclusters_with_backups_async(
+        self,
+        request: polardb_20170801_models.DescribeDBClustersWithBackupsRequest,
+    ) -> polardb_20170801_models.DescribeDBClustersWithBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbclusters_with_backups_with_options_async(request, runtime)
+
     def describe_dbinitialize_variable_with_options(
         self,
         request: polardb_20170801_models.DescribeDBInitializeVariableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBInitializeVariableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInitializeVariable',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBInitializeVariableResponse(),
-            self.do_rpcrequest('DescribeDBInitializeVariable', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbinitialize_variable_with_options_async(
@@ -2041,12 +4713,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBInitializeVariableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInitializeVariable',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBInitializeVariableResponse(),
-            await self.do_rpcrequest_async('DescribeDBInitializeVariable', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinitialize_variable(
@@ -2069,12 +4763,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBLinksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dblink_name):
+            query['DBLinkName'] = request.dblink_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBLinks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBLinksResponse(),
-            self.do_rpcrequest('DescribeDBLinks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dblinks_with_options_async(
@@ -2083,12 +4801,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBLinksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dblink_name):
+            query['DBLinkName'] = request.dblink_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBLinks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBLinksResponse(),
-            await self.do_rpcrequest_async('DescribeDBLinks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dblinks(
@@ -2111,12 +4853,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBNodePerformanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBNodePerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBNodePerformanceResponse(),
-            self.do_rpcrequest('DescribeDBNodePerformance', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbnode_performance_with_options_async(
@@ -2125,12 +4889,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDBNodePerformanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBNodePerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDBNodePerformanceResponse(),
-            await self.do_rpcrequest_async('DescribeDBNodePerformance', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbnode_performance(
@@ -2147,18 +4933,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbnode_performance_with_options_async(request, runtime)
 
+    def describe_dbproxy_performance_with_options(
+        self,
+        request: polardb_20170801_models.DescribeDBProxyPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBProxyPerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBProxyPerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBProxyPerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbproxy_performance_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeDBProxyPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBProxyPerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBProxyPerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBProxyPerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbproxy_performance(
+        self,
+        request: polardb_20170801_models.DescribeDBProxyPerformanceRequest,
+    ) -> polardb_20170801_models.DescribeDBProxyPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbproxy_performance_with_options(request, runtime)
+
+    async def describe_dbproxy_performance_async(
+        self,
+        request: polardb_20170801_models.DescribeDBProxyPerformanceRequest,
+    ) -> polardb_20170801_models.DescribeDBProxyPerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbproxy_performance_with_options_async(request, runtime)
+
+    def describe_databases_with_options(
+        self,
+        request: polardb_20170801_models.DescribeDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDatabasesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDatabases',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_databases_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDatabasesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDatabases',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_databases(
+        self,
+        request: polardb_20170801_models.DescribeDatabasesRequest,
+    ) -> polardb_20170801_models.DescribeDatabasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_databases_with_options(request, runtime)
+
+    async def describe_databases_async(
+        self,
+        request: polardb_20170801_models.DescribeDatabasesRequest,
+    ) -> polardb_20170801_models.DescribeDatabasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_databases_with_options_async(request, runtime)
+
     def describe_detached_backups_with_options(
         self,
         request: polardb_20170801_models.DescribeDetachedBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDetachedBackupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDetachedBackups',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDetachedBackupsResponse(),
-            self.do_rpcrequest('DescribeDetachedBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_detached_backups_with_options_async(
@@ -2167,12 +5169,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDetachedBackupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDetachedBackups',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeDetachedBackupsResponse(),
-            await self.do_rpcrequest_async('DescribeDetachedBackups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_detached_backups(
@@ -2195,12 +5233,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
-            self.do_rpcrequest('DescribeGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_global_database_network_with_options_async(
@@ -2209,12 +5271,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeGlobalDatabaseNetworkResponse(),
-            await self.do_rpcrequest_async('DescribeGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_global_database_network(
@@ -2237,12 +5323,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalDatabaseNetworks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
-            self.do_rpcrequest('DescribeGlobalDatabaseNetworks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_global_database_networks_with_options_async(
@@ -2251,12 +5365,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalDatabaseNetworks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse(),
-            await self.do_rpcrequest_async('DescribeGlobalDatabaseNetworks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_global_database_networks(
@@ -2279,12 +5421,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeLogBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogBackupPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeLogBackupPolicyResponse(),
-            self.do_rpcrequest('DescribeLogBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_log_backup_policy_with_options_async(
@@ -2293,12 +5457,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeLogBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogBackupPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeLogBackupPolicyResponse(),
-            await self.do_rpcrequest_async('DescribeLogBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_log_backup_policy(
@@ -2315,18 +5501,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_backup_policy_with_options_async(request, runtime)
 
+    def describe_masking_rules_with_options(
+        self,
+        request: polardb_20170801_models.DescribeMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.rule_name_list):
+            query['RuleNameList'] = request.rule_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMaskingRules',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeMaskingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_masking_rules_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.rule_name_list):
+            query['RuleNameList'] = request.rule_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMaskingRules',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeMaskingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_masking_rules(
+        self,
+        request: polardb_20170801_models.DescribeMaskingRulesRequest,
+    ) -> polardb_20170801_models.DescribeMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_masking_rules_with_options(request, runtime)
+
+    async def describe_masking_rules_async(
+        self,
+        request: polardb_20170801_models.DescribeMaskingRulesRequest,
+    ) -> polardb_20170801_models.DescribeMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_masking_rules_with_options_async(request, runtime)
+
     def describe_meta_list_with_options(
         self,
         request: polardb_20170801_models.DescribeMetaListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeMetaListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.get_db_name):
+            query['GetDbName'] = request.get_db_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetaList',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeMetaListResponse(),
-            self.do_rpcrequest('DescribeMetaList', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_meta_list_with_options_async(
@@ -2335,12 +5629,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeMetaListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.get_db_name):
+            query['GetDbName'] = request.get_db_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetaList',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeMetaListResponse(),
-            await self.do_rpcrequest_async('DescribeMetaList', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_meta_list(
@@ -2363,12 +5691,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeParameterGroupResponse(),
-            self.do_rpcrequest('DescribeParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_parameter_group_with_options_async(
@@ -2377,12 +5729,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeParameterGroupResponse(),
-            await self.do_rpcrequest_async('DescribeParameterGroup', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_parameter_group(
@@ -2405,12 +5781,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroups',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeParameterGroupsResponse(),
-            self.do_rpcrequest('DescribeParameterGroups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_parameter_groups_with_options_async(
@@ -2419,12 +5821,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterGroups',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeParameterGroupsResponse(),
-            await self.do_rpcrequest_async('DescribeParameterGroups', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_parameter_groups(
@@ -2447,12 +5875,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterTemplates',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeParameterTemplatesResponse(),
-            self.do_rpcrequest('DescribeParameterTemplates', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_parameter_templates_with_options_async(
@@ -2461,12 +5915,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeParameterTemplatesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterTemplates',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeParameterTemplatesResponse(),
-            await self.do_rpcrequest_async('DescribeParameterTemplates', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_parameter_templates(
@@ -2489,12 +5969,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribePendingMaintenanceActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_history):
+            query['IsHistory'] = request.is_history
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePendingMaintenanceAction',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
-            self.do_rpcrequest('DescribePendingMaintenanceAction', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_pending_maintenance_action_with_options_async(
@@ -2503,12 +6015,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribePendingMaintenanceActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_history):
+            query['IsHistory'] = request.is_history
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePendingMaintenanceAction',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribePendingMaintenanceActionResponse(),
-            await self.do_rpcrequest_async('DescribePendingMaintenanceAction', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_pending_maintenance_action(
@@ -2531,12 +6075,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribePendingMaintenanceActionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_history):
+            query['IsHistory'] = request.is_history
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePendingMaintenanceActions',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
-            self.do_rpcrequest('DescribePendingMaintenanceActions', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_pending_maintenance_actions_with_options_async(
@@ -2545,12 +6115,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribePendingMaintenanceActionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_history):
+            query['IsHistory'] = request.is_history
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePendingMaintenanceActions',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribePendingMaintenanceActionsResponse(),
-            await self.do_rpcrequest_async('DescribePendingMaintenanceActions', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_pending_maintenance_actions(
@@ -2575,11 +6171,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolarSQLCollectorPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
-            self.do_rpcrequest('DescribePolarSQLCollectorPolicy', '2017-08-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_polar_sqlcollector_policy_with_options_async(
@@ -2590,11 +6197,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePolarSQLCollectorPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribePolarSQLCollectorPolicyResponse(),
-            await self.do_rpcrequest_async('DescribePolarSQLCollectorPolicy', '2017-08-01', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_polar_sqlcollector_policy(
@@ -2617,12 +6235,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeRegionsResponse(),
-            self.do_rpcrequest('DescribeRegions', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -2631,12 +6269,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeRegionsResponse(),
-            await self.do_rpcrequest_async('DescribeRegions', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
@@ -2659,12 +6317,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeScheduleTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_action):
+            query['TaskAction'] = request.task_action
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScheduleTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeScheduleTasksResponse(),
-            self.do_rpcrequest('DescribeScheduleTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_schedule_tasks_with_options_async(
@@ -2673,12 +6367,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeScheduleTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_action):
+            query['TaskAction'] = request.task_action
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScheduleTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeScheduleTasksResponse(),
-            await self.do_rpcrequest_async('DescribeScheduleTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_schedule_tasks(
@@ -2701,12 +6431,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sqlhash):
+            query['SQLHASH'] = request.sqlhash
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowLogRecords',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeSlowLogRecordsResponse(),
-            self.do_rpcrequest('DescribeSlowLogRecords', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_slow_log_records_with_options_async(
@@ -2715,12 +6481,48 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeSlowLogRecordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sqlhash):
+            query['SQLHASH'] = request.sqlhash
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowLogRecords',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeSlowLogRecordsResponse(),
-            await self.do_rpcrequest_async('DescribeSlowLogRecords', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_slow_log_records(
@@ -2737,18 +6539,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_log_records_with_options_async(request, runtime)
 
+    def describe_storage_plan_with_options(
+        self,
+        request: polardb_20170801_models.DescribeStoragePlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeStoragePlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStoragePlan',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeStoragePlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_storage_plan_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeStoragePlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeStoragePlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStoragePlan',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeStoragePlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_storage_plan(
+        self,
+        request: polardb_20170801_models.DescribeStoragePlanRequest,
+    ) -> polardb_20170801_models.DescribeStoragePlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_storage_plan_with_options(request, runtime)
+
+    async def describe_storage_plan_async(
+        self,
+        request: polardb_20170801_models.DescribeStoragePlanRequest,
+    ) -> polardb_20170801_models.DescribeStoragePlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_storage_plan_with_options_async(request, runtime)
+
     def describe_tasks_with_options(
         self,
         request: polardb_20170801_models.DescribeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeTasksResponse(),
-            self.do_rpcrequest('DescribeTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_tasks_with_options_async(
@@ -2757,12 +6683,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeTasksResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTasks',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.DescribeTasksResponse(),
-            await self.do_rpcrequest_async('DescribeTasks', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_tasks(
@@ -2785,12 +6745,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.FailoverDBClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_dbnode_id):
+            query['TargetDBNodeId'] = request.target_dbnode_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FailoverDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.FailoverDBClusterResponse(),
-            self.do_rpcrequest('FailoverDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def failover_dbcluster_with_options_async(
@@ -2799,12 +6785,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.FailoverDBClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_dbnode_id):
+            query['TargetDBNodeId'] = request.target_dbnode_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FailoverDBCluster',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.FailoverDBClusterResponse(),
-            await self.do_rpcrequest_async('FailoverDBCluster', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def failover_dbcluster(
@@ -2827,12 +6839,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.GrantAccountPrivilegeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantAccountPrivilege',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.GrantAccountPrivilegeResponse(),
-            self.do_rpcrequest('GrantAccountPrivilege', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def grant_account_privilege_with_options_async(
@@ -2841,12 +6881,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.GrantAccountPrivilegeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantAccountPrivilege',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.GrantAccountPrivilegeResponse(),
-            await self.do_rpcrequest_async('GrantAccountPrivilege', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def grant_account_privilege(
@@ -2869,12 +6937,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ListTagResourcesResponse(),
-            self.do_rpcrequest('ListTagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -2883,12 +6981,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ListTagResourcesResponse(),
-            await self.do_rpcrequest_async('ListTagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -2905,18 +7033,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def list_tag_resources_for_region_with_options(
+        self,
+        request: polardb_20170801_models.ListTagResourcesForRegionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ListTagResourcesForRegionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResourcesForRegion',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ListTagResourcesForRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_for_region_with_options_async(
+        self,
+        request: polardb_20170801_models.ListTagResourcesForRegionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ListTagResourcesForRegionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResourcesForRegion',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ListTagResourcesForRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources_for_region(
+        self,
+        request: polardb_20170801_models.ListTagResourcesForRegionRequest,
+    ) -> polardb_20170801_models.ListTagResourcesForRegionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_for_region_with_options(request, runtime)
+
+    async def list_tag_resources_for_region_async(
+        self,
+        request: polardb_20170801_models.ListTagResourcesForRegionRequest,
+    ) -> polardb_20170801_models.ListTagResourcesForRegionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_for_region_with_options_async(request, runtime)
+
     def modify_account_description_with_options(
         self,
         request: polardb_20170801_models.ModifyAccountDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyAccountDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyAccountDescriptionResponse(),
-            self.do_rpcrequest('ModifyAccountDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_account_description_with_options_async(
@@ -2925,12 +7169,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyAccountDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyAccountDescriptionResponse(),
-            await self.do_rpcrequest_async('ModifyAccountDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_account_description(
@@ -2953,12 +7223,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyAccountPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.new_account_password):
+            query['NewAccountPassword'] = request.new_account_password
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountPassword',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyAccountPasswordResponse(),
-            self.do_rpcrequest('ModifyAccountPassword', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_account_password_with_options_async(
@@ -2967,12 +7263,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyAccountPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.new_account_password):
+            query['NewAccountPassword'] = request.new_account_password
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountPassword',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyAccountPasswordResponse(),
-            await self.do_rpcrequest_async('ModifyAccountPassword', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_account_password(
@@ -2995,12 +7317,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyAutoRenewAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renewal_status):
+            query['RenewalStatus'] = request.renewal_status
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoRenewAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
-            self.do_rpcrequest('ModifyAutoRenewAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_auto_renew_attribute_with_options_async(
@@ -3009,12 +7363,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyAutoRenewAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_ids):
+            query['DBClusterIds'] = request.dbcluster_ids
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.renewal_status):
+            query['RenewalStatus'] = request.renewal_status
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoRenewAttribute',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyAutoRenewAttributeResponse(),
-            await self.do_rpcrequest_async('ModifyAutoRenewAttribute', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_auto_renew_attribute(
@@ -3037,12 +7423,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_frequency):
+            query['BackupFrequency'] = request.backup_frequency
+        if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
+            query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.data_level_1backup_retention_period):
+            query['DataLevel1BackupRetentionPeriod'] = request.data_level_1backup_retention_period
+        if not UtilClient.is_unset(request.data_level_2backup_retention_period):
+            query['DataLevel2BackupRetentionPeriod'] = request.data_level_2backup_retention_period
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyBackupPolicyResponse(),
-            self.do_rpcrequest('ModifyBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_backup_policy_with_options_async(
@@ -3051,12 +7471,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_frequency):
+            query['BackupFrequency'] = request.backup_frequency
+        if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
+            query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.data_level_1backup_retention_period):
+            query['DataLevel1BackupRetentionPeriod'] = request.data_level_1backup_retention_period
+        if not UtilClient.is_unset(request.data_level_2backup_retention_period):
+            query['DataLevel2BackupRetentionPeriod'] = request.data_level_2backup_retention_period
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyBackupPolicyResponse(),
-            await self.do_rpcrequest_async('ModifyBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_backup_policy(
@@ -3079,12 +7533,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_iparray_attribute):
+            query['DBClusterIPArrayAttribute'] = request.dbcluster_iparray_attribute
+        if not UtilClient.is_unset(request.dbcluster_iparray_name):
+            query['DBClusterIPArrayName'] = request.dbcluster_iparray_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_ips):
+            query['SecurityIps'] = request.security_ips
+        if not UtilClient.is_unset(request.white_list_type):
+            query['WhiteListType'] = request.white_list_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterAccessWhitelist',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
-            self.do_rpcrequest('ModifyDBClusterAccessWhitelist', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_access_whitelist_with_options_async(
@@ -3093,12 +7581,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_iparray_attribute):
+            query['DBClusterIPArrayAttribute'] = request.dbcluster_iparray_attribute
+        if not UtilClient.is_unset(request.dbcluster_iparray_name):
+            query['DBClusterIPArrayName'] = request.dbcluster_iparray_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_ips):
+            query['SecurityIps'] = request.security_ips
+        if not UtilClient.is_unset(request.white_list_type):
+            query['WhiteListType'] = request.white_list_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterAccessWhitelist',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterAccessWhitelistResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterAccessWhitelist', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_access_whitelist(
@@ -3121,12 +7643,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collector_status):
+            query['CollectorStatus'] = request.collector_status
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterAuditLogCollector',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
-            self.do_rpcrequest('ModifyDBClusterAuditLogCollector', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_audit_log_collector_with_options_async(
@@ -3135,12 +7681,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collector_status):
+            query['CollectorStatus'] = request.collector_status
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterAuditLogCollector',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterAuditLogCollectorResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterAuditLogCollector', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_audit_log_collector(
@@ -3163,12 +7733,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
-            self.do_rpcrequest('ModifyDBClusterDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_description_with_options_async(
@@ -3177,12 +7771,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_description):
+            query['DBClusterDescription'] = request.dbcluster_description
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterDescriptionResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_description(
@@ -3205,12 +7823,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_add_new_nodes):
+            query['AutoAddNewNodes'] = request.auto_add_new_nodes
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_description):
+            query['DBEndpointDescription'] = request.dbendpoint_description
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.endpoint_config):
+            query['EndpointConfig'] = request.endpoint_config
+        if not UtilClient.is_unset(request.nodes):
+            query['Nodes'] = request.nodes
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_write_mode):
+            query['ReadWriteMode'] = request.read_write_mode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterEndpoint',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterEndpointResponse(),
-            self.do_rpcrequest('ModifyDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_endpoint_with_options_async(
@@ -3219,12 +7871,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterEndpointResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_add_new_nodes):
+            query['AutoAddNewNodes'] = request.auto_add_new_nodes
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_description):
+            query['DBEndpointDescription'] = request.dbendpoint_description
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.endpoint_config):
+            query['EndpointConfig'] = request.endpoint_config
+        if not UtilClient.is_unset(request.nodes):
+            query['Nodes'] = request.nodes
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.read_write_mode):
+            query['ReadWriteMode'] = request.read_write_mode
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterEndpoint',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterEndpointResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterEndpoint', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_endpoint(
@@ -3247,12 +7933,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMaintainTimeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.maintain_time):
+            query['MaintainTime'] = request.maintain_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterMaintainTime',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
-            self.do_rpcrequest('ModifyDBClusterMaintainTime', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_maintain_time_with_options_async(
@@ -3261,12 +7971,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMaintainTimeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.maintain_time):
+            query['MaintainTime'] = request.maintain_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterMaintainTime',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterMaintainTimeResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterMaintainTime', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_maintain_time(
@@ -3289,12 +8023,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMigrationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.new_master_instance_id):
+            query['NewMasterInstanceId'] = request.new_master_instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_rdsdbinstance_id):
+            query['SourceRDSDBInstanceId'] = request.source_rdsdbinstance_id
+        if not UtilClient.is_unset(request.swap_connection_string):
+            query['SwapConnectionString'] = request.swap_connection_string
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterMigration',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterMigrationResponse(),
-            self.do_rpcrequest('ModifyDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_migration_with_options_async(
@@ -3303,12 +8067,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMigrationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.new_master_instance_id):
+            query['NewMasterInstanceId'] = request.new_master_instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.source_rdsdbinstance_id):
+            query['SourceRDSDBInstanceId'] = request.source_rdsdbinstance_id
+        if not UtilClient.is_unset(request.swap_connection_string):
+            query['SwapConnectionString'] = request.swap_connection_string
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterMigration',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterMigrationResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterMigration', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_migration(
@@ -3331,12 +8125,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMonitorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterMonitor',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterMonitorResponse(),
-            self.do_rpcrequest('ModifyDBClusterMonitor', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_monitor_with_options_async(
@@ -3345,12 +8163,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterMonitorResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterMonitor',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterMonitorResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterMonitor', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_monitor(
@@ -3373,12 +8215,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterParametersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterParameters',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterParametersResponse(),
-            self.do_rpcrequest('ModifyDBClusterParameters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_parameters_with_options_async(
@@ -3387,12 +8255,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterParametersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterParameters',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterParametersResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterParameters', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_parameters(
@@ -3415,12 +8309,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterPrimaryZone',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
-            self.do_rpcrequest('ModifyDBClusterPrimaryZone', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_primary_zone_with_options_async(
@@ -3429,12 +8355,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterPrimaryZone',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterPrimaryZoneResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterPrimaryZone', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_primary_zone(
@@ -3457,12 +8415,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterSSLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sslauto_rotate):
+            query['SSLAutoRotate'] = request.sslauto_rotate
+        if not UtilClient.is_unset(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterSSL',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterSSLResponse(),
-            self.do_rpcrequest('ModifyDBClusterSSL', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_sslwith_options_async(
@@ -3471,12 +8459,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterSSLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sslauto_rotate):
+            query['SSLAutoRotate'] = request.sslauto_rotate
+        if not UtilClient.is_unset(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterSSL',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterSSLResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterSSL', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_ssl(
@@ -3499,12 +8517,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.encrypt_new_tables):
+            query['EncryptNewTables'] = request.encrypt_new_tables
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.tdestatus):
+            query['TDEStatus'] = request.tdestatus
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterTDE',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterTDEResponse(),
-            self.do_rpcrequest('ModifyDBClusterTDE', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbcluster_tdewith_options_async(
@@ -3513,12 +8561,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBClusterTDEResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.encrypt_new_tables):
+            query['EncryptNewTables'] = request.encrypt_new_tables
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.tdestatus):
+            query['TDEStatus'] = request.tdestatus
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterTDE',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBClusterTDEResponse(),
-            await self.do_rpcrequest_async('ModifyDBClusterTDE', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbcluster_tde(
@@ -3541,12 +8619,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbdescription):
+            query['DBDescription'] = request.dbdescription
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBDescriptionResponse(),
-            self.do_rpcrequest('ModifyDBDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbdescription_with_options_async(
@@ -3555,12 +8659,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbdescription):
+            query['DBDescription'] = request.dbdescription
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBDescriptionResponse(),
-            await self.do_rpcrequest_async('ModifyDBDescription', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbdescription(
@@ -3583,12 +8713,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBEndpointAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.private_zone_address_prefix):
+            query['PrivateZoneAddressPrefix'] = request.private_zone_address_prefix
+        if not UtilClient.is_unset(request.private_zone_name):
+            query['PrivateZoneName'] = request.private_zone_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBEndpointAddressResponse(),
-            self.do_rpcrequest('ModifyDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbendpoint_address_with_options_async(
@@ -3597,12 +8761,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBEndpointAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbendpoint_id):
+            query['DBEndpointId'] = request.dbendpoint_id
+        if not UtilClient.is_unset(request.net_type):
+            query['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.private_zone_address_prefix):
+            query['PrivateZoneAddressPrefix'] = request.private_zone_address_prefix
+        if not UtilClient.is_unset(request.private_zone_name):
+            query['PrivateZoneName'] = request.private_zone_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBEndpointAddress',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBEndpointAddressResponse(),
-            await self.do_rpcrequest_async('ModifyDBEndpointAddress', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbendpoint_address(
@@ -3625,12 +8823,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBNodeClassResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_target_class):
+            query['DBNodeTargetClass'] = request.dbnode_target_class
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBNodeClass',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBNodeClassResponse(),
-            self.do_rpcrequest('ModifyDBNodeClass', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbnode_class_with_options_async(
@@ -3639,12 +8869,44 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyDBNodeClassResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_target_class):
+            query['DBNodeTargetClass'] = request.dbnode_target_class
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBNodeClass',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyDBNodeClassResponse(),
-            await self.do_rpcrequest_async('ModifyDBNodeClass', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbnode_class(
@@ -3661,18 +8923,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbnode_class_with_options_async(request, runtime)
 
+    def modify_dbnode_hot_replica_mode_with_options(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.hot_replica_mode):
+            query['HotReplicaMode'] = request.hot_replica_mode
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBNodeHotReplicaMode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbnode_hot_replica_mode_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.hot_replica_mode):
+            query['HotReplicaMode'] = request.hot_replica_mode
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBNodeHotReplicaMode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbnode_hot_replica_mode(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
+    ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbnode_hot_replica_mode_with_options(request, runtime)
+
+    async def modify_dbnode_hot_replica_mode_async(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeHotReplicaModeRequest,
+    ) -> polardb_20170801_models.ModifyDBNodeHotReplicaModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbnode_hot_replica_mode_with_options_async(request, runtime)
+
     def modify_global_database_network_with_options(
         self,
         request: polardb_20170801_models.ModifyGlobalDatabaseNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gdndescription):
+            query['GDNDescription'] = request.gdndescription
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
-            self.do_rpcrequest('ModifyGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_global_database_network_with_options_async(
@@ -3681,12 +9063,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gdndescription):
+            query['GDNDescription'] = request.gdndescription
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalDatabaseNetwork',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse(),
-            await self.do_rpcrequest_async('ModifyGlobalDatabaseNetwork', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_global_database_network(
@@ -3709,12 +9117,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyLogBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.log_backup_retention_period):
+            query['LogBackupRetentionPeriod'] = request.log_backup_retention_period
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLogBackupPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyLogBackupPolicyResponse(),
-            self.do_rpcrequest('ModifyLogBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_log_backup_policy_with_options_async(
@@ -3723,12 +9155,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyLogBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.log_backup_retention_period):
+            query['LogBackupRetentionPeriod'] = request.log_backup_retention_period
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLogBackupPolicy',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyLogBackupPolicyResponse(),
-            await self.do_rpcrequest_async('ModifyLogBackupPolicy', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_log_backup_policy(
@@ -3745,18 +9201,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_log_backup_policy_with_options_async(request, runtime)
 
+    def modify_masking_rules_with_options(
+        self,
+        request: polardb_20170801_models.ModifyMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.rule_config):
+            query['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_name_list):
+            query['RuleNameList'] = request.rule_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMaskingRules',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyMaskingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_masking_rules_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.rule_config):
+            query['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_name_list):
+            query['RuleNameList'] = request.rule_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMaskingRules',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyMaskingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_masking_rules(
+        self,
+        request: polardb_20170801_models.ModifyMaskingRulesRequest,
+    ) -> polardb_20170801_models.ModifyMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_masking_rules_with_options(request, runtime)
+
+    async def modify_masking_rules_async(
+        self,
+        request: polardb_20170801_models.ModifyMaskingRulesRequest,
+    ) -> polardb_20170801_models.ModifyMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_masking_rules_with_options_async(request, runtime)
+
     def modify_pending_maintenance_action_with_options(
         self,
         request: polardb_20170801_models.ModifyPendingMaintenanceActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyPendingMaintenanceActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPendingMaintenanceAction',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
-            self.do_rpcrequest('ModifyPendingMaintenanceAction', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_pending_maintenance_action_with_options_async(
@@ -3765,12 +9335,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyPendingMaintenanceActionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPendingMaintenanceAction',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ModifyPendingMaintenanceActionResponse(),
-            await self.do_rpcrequest_async('ModifyPendingMaintenanceAction', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_pending_maintenance_action(
@@ -3793,12 +9391,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveDBClusterFromGDN',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
-            self.do_rpcrequest('RemoveDBClusterFromGDN', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_dbcluster_from_gdnwith_options_async(
@@ -3807,12 +9431,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RemoveDBClusterFromGDNResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.gdnid):
+            query['GDNId'] = request.gdnid
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveDBClusterFromGDN',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.RemoveDBClusterFromGDNResponse(),
-            await self.do_rpcrequest_async('RemoveDBClusterFromGDN', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_dbcluster_from_gdn(
@@ -3835,12 +9485,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ResetAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetAccount',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ResetAccountResponse(),
-            self.do_rpcrequest('ResetAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def reset_account_with_options_async(
@@ -3849,12 +9525,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ResetAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetAccount',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.ResetAccountResponse(),
-            await self.do_rpcrequest_async('ResetAccount', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_account(
@@ -3877,12 +9579,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RestartDBNodeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDBNode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.RestartDBNodeResponse(),
-            self.do_rpcrequest('RestartDBNode', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def restart_dbnode_with_options_async(
@@ -3891,12 +9615,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RestartDBNodeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDBNode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.RestartDBNodeResponse(),
-            await self.do_rpcrequest_async('RestartDBNode', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def restart_dbnode(
@@ -3919,12 +9665,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RestoreTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.table_meta):
+            query['TableMeta'] = request.table_meta
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreTable',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.RestoreTableResponse(),
-            self.do_rpcrequest('RestoreTable', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def restore_table_with_options_async(
@@ -3933,12 +9709,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RestoreTableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.table_meta):
+            query['TableMeta'] = request.table_meta
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreTable',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.RestoreTableResponse(),
-            await self.do_rpcrequest_async('RestoreTable', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def restore_table(
@@ -3961,12 +9767,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RevokeAccountPrivilegeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeAccountPrivilege',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.RevokeAccountPrivilegeResponse(),
-            self.do_rpcrequest('RevokeAccountPrivilege', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def revoke_account_privilege_with_options_async(
@@ -3975,12 +9807,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.RevokeAccountPrivilegeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeAccountPrivilege',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.RevokeAccountPrivilegeResponse(),
-            await self.do_rpcrequest_async('RevokeAccountPrivilege', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def revoke_account_privilege(
@@ -4003,12 +9861,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.TagResourcesResponse(),
-            self.do_rpcrequest('TagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -4017,12 +9903,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.TagResourcesResponse(),
-            await self.do_rpcrequest_async('TagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -4039,18 +9953,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
+    def temp_modify_dbnode_with_options(
+        self,
+        request: polardb_20170801_models.TempModifyDBNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.TempModifyDBNodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode):
+            query['DBNode'] = request.dbnode
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TempModifyDBNode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.TempModifyDBNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def temp_modify_dbnode_with_options_async(
+        self,
+        request: polardb_20170801_models.TempModifyDBNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.TempModifyDBNodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode):
+            query['DBNode'] = request.dbnode
+        if not UtilClient.is_unset(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TempModifyDBNode',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.TempModifyDBNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def temp_modify_dbnode(
+        self,
+        request: polardb_20170801_models.TempModifyDBNodeRequest,
+    ) -> polardb_20170801_models.TempModifyDBNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.temp_modify_dbnode_with_options(request, runtime)
+
+    async def temp_modify_dbnode_async(
+        self,
+        request: polardb_20170801_models.TempModifyDBNodeRequest,
+    ) -> polardb_20170801_models.TempModifyDBNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.temp_modify_dbnode_with_options_async(request, runtime)
+
     def transform_dbcluster_pay_type_with_options(
         self,
         request: polardb_20170801_models.TransformDBClusterPayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransformDBClusterPayType',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.TransformDBClusterPayTypeResponse(),
-            self.do_rpcrequest('TransformDBClusterPayType', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def transform_dbcluster_pay_type_with_options_async(
@@ -4059,12 +10113,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.TransformDBClusterPayTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransformDBClusterPayType',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.TransformDBClusterPayTypeResponse(),
-            await self.do_rpcrequest_async('TransformDBClusterPayType', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def transform_dbcluster_pay_type(
@@ -4087,12 +10175,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.UntagResourcesResponse(),
-            self.do_rpcrequest('UntagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -4101,12 +10219,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.UntagResourcesResponse(),
-            await self.do_rpcrequest_async('UntagResources', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -4129,12 +10277,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UpgradeDBClusterMinorVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBClusterMinorVersion',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.UpgradeDBClusterMinorVersionResponse(),
-            self.do_rpcrequest('UpgradeDBClusterMinorVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_dbcluster_minor_version_with_options_async(
@@ -4143,12 +10319,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UpgradeDBClusterMinorVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBClusterMinorVersion',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.UpgradeDBClusterMinorVersionResponse(),
-            await self.do_rpcrequest_async('UpgradeDBClusterMinorVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_dbcluster_minor_version(
@@ -4171,12 +10375,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UpgradeDBClusterVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.upgrade_type):
+            query['UpgradeType'] = request.upgrade_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBClusterVersion',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.UpgradeDBClusterVersionResponse(),
-            self.do_rpcrequest('UpgradeDBClusterVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_dbcluster_version_with_options_async(
@@ -4185,12 +10419,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.UpgradeDBClusterVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.upgrade_type):
+            query['UpgradeType'] = request.upgrade_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBClusterVersion',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             polardb_20170801_models.UpgradeDBClusterVersionResponse(),
-            await self.do_rpcrequest_async('UpgradeDBClusterVersion', '2017-08-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_dbcluster_version(
