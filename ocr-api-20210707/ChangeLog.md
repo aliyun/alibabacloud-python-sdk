@@ -1,3 +1,6 @@
+2022-02-09 Version: 1.1.2
+- Phase 2.
+
 2021-11-25 Version: 1.1.1
 - First version.
 

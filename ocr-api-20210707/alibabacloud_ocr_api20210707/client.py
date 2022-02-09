@@ -48,14 +48,27 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeAdvancedResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['NeedSortPage'] = request.need_sort_page
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.no_stamp):
+            query['NoStamp'] = request.no_stamp
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.paragraph):
+            query['Paragraph'] = request.paragraph
+        if not UtilClient.is_unset(request.row):
+            query['Row'] = request.row
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -66,7 +79,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -81,14 +94,27 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeAdvancedResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['NeedSortPage'] = request.need_sort_page
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.no_stamp):
+            query['NoStamp'] = request.no_stamp
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.paragraph):
+            query['Paragraph'] = request.paragraph
+        if not UtilClient.is_unset(request.row):
+            query['Row'] = request.row
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -99,7 +125,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -128,10 +154,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeAirItineraryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -142,7 +169,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -157,10 +184,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeAirItineraryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -171,7 +199,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -200,10 +228,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBankAccountLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -214,7 +243,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -229,10 +258,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBankAccountLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -243,7 +273,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -272,10 +302,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBankCardResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -286,7 +317,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -301,10 +332,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBankCardResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -315,7 +347,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -344,10 +376,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBasicResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -358,7 +391,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -373,10 +406,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBasicResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -387,7 +421,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -409,6 +443,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_basic_with_options_async(request, runtime)
 
+    def recognize_batch_recognize_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeBatchRecognizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeBatchRecognizeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.image_op):
+            query['ImageOp'] = request.image_op
+        if not UtilClient.is_unset(request.image_oss_key):
+            query['ImageOssKey'] = request.image_oss_key
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeBatchRecognize',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeBatchRecognizeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_batch_recognize_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeBatchRecognizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeBatchRecognizeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.image_op):
+            query['ImageOp'] = request.image_op
+        if not UtilClient.is_unset(request.image_oss_key):
+            query['ImageOssKey'] = request.image_oss_key
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeBatchRecognize',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeBatchRecognizeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_batch_recognize(
+        self,
+        request: ocr_api_20210707_models.RecognizeBatchRecognizeRequest,
+    ) -> ocr_api_20210707_models.RecognizeBatchRecognizeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_batch_recognize_with_options(request, runtime)
+
+    async def recognize_batch_recognize_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeBatchRecognizeRequest,
+    ) -> ocr_api_20210707_models.RecognizeBatchRecognizeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_batch_recognize_with_options_async(request, runtime)
+
     def recognize_birth_certification_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeBirthCertificationRequest,
@@ -416,10 +548,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBirthCertificationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -430,7 +563,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -445,10 +578,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBirthCertificationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -459,7 +593,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -481,6 +615,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_birth_certification_with_options_async(request, runtime)
 
+    def recognize_bus_ship_ticket_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeBusShipTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeBusShipTicketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeBusShipTicket',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeBusShipTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_bus_ship_ticket_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeBusShipTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeBusShipTicketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeBusShipTicket',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeBusShipTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_bus_ship_ticket(
+        self,
+        request: ocr_api_20210707_models.RecognizeBusShipTicketRequest,
+    ) -> ocr_api_20210707_models.RecognizeBusShipTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_bus_ship_ticket_with_options(request, runtime)
+
+    async def recognize_bus_ship_ticket_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeBusShipTicketRequest,
+    ) -> ocr_api_20210707_models.RecognizeBusShipTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_bus_ship_ticket_with_options_async(request, runtime)
+
     def recognize_business_license_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeBusinessLicenseRequest,
@@ -488,10 +696,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBusinessLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -502,7 +711,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -517,10 +726,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeBusinessLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -531,7 +741,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -560,10 +770,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCarInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -574,7 +785,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -589,10 +800,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCarInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -603,7 +815,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -632,10 +844,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCarNumberResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -646,7 +859,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -661,10 +874,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCarNumberResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -675,7 +889,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -704,10 +918,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCarVinCodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -718,7 +933,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -733,10 +948,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCarVinCodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -747,7 +963,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -769,6 +985,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_car_vin_code_with_options_async(request, runtime)
 
+    def recognize_chinese_passport_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeChinesePassportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeChinesePassportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeChinesePassport',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeChinesePassportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_chinese_passport_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeChinesePassportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeChinesePassportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeChinesePassport',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeChinesePassportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_chinese_passport(
+        self,
+        request: ocr_api_20210707_models.RecognizeChinesePassportRequest,
+    ) -> ocr_api_20210707_models.RecognizeChinesePassportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_chinese_passport_with_options(request, runtime)
+
+    async def recognize_chinese_passport_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeChinesePassportRequest,
+    ) -> ocr_api_20210707_models.RecognizeChinesePassportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_chinese_passport_with_options_async(request, runtime)
+
+    def recognize_common_printed_invoice_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeCommonPrintedInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeCommonPrintedInvoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeCommonPrintedInvoice',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeCommonPrintedInvoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_common_printed_invoice_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeCommonPrintedInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeCommonPrintedInvoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeCommonPrintedInvoice',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeCommonPrintedInvoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_common_printed_invoice(
+        self,
+        request: ocr_api_20210707_models.RecognizeCommonPrintedInvoiceRequest,
+    ) -> ocr_api_20210707_models.RecognizeCommonPrintedInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_common_printed_invoice_with_options(request, runtime)
+
+    async def recognize_common_printed_invoice_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeCommonPrintedInvoiceRequest,
+    ) -> ocr_api_20210707_models.RecognizeCommonPrintedInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_common_printed_invoice_with_options_async(request, runtime)
+
     def recognize_ctwo_medical_device_manage_license_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeCtwoMedicalDeviceManageLicenseRequest,
@@ -776,10 +1144,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCtwoMedicalDeviceManageLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -790,7 +1159,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -805,10 +1174,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeCtwoMedicalDeviceManageLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -819,7 +1189,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -841,6 +1211,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_ctwo_medical_device_manage_license_with_options_async(request, runtime)
 
+    def recognize_delete_excel_record_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeDeleteExcelRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeDeleteExcelRecord',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_delete_excel_record_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeDeleteExcelRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeDeleteExcelRecord',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_delete_excel_record(
+        self,
+        request: ocr_api_20210707_models.RecognizeDeleteExcelRecordRequest,
+    ) -> ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_delete_excel_record_with_options(request, runtime)
+
+    async def recognize_delete_excel_record_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeDeleteExcelRecordRequest,
+    ) -> ocr_api_20210707_models.RecognizeDeleteExcelRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_delete_excel_record_with_options_async(request, runtime)
+
     def recognize_driving_license_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeDrivingLicenseRequest,
@@ -848,10 +1288,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeDrivingLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -862,7 +1303,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -877,10 +1318,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeDrivingLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -891,7 +1333,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -920,10 +1362,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduFormulaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -934,7 +1377,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -949,10 +1392,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduFormulaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -963,7 +1407,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -992,10 +1436,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduOralCalculationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1006,7 +1451,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1021,10 +1466,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduOralCalculationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1035,7 +1481,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1064,13 +1510,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduPaperCutResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CutType'] = request.cut_type
-        query['ImageType'] = request.image_type
-        query['Subject'] = request.subject
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.cut_type):
+            query['CutType'] = request.cut_type
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1081,7 +1531,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1096,13 +1546,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduPaperCutResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CutType'] = request.cut_type
-        query['ImageType'] = request.image_type
-        query['Subject'] = request.subject
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.cut_type):
+            query['CutType'] = request.cut_type
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1113,7 +1567,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1142,13 +1596,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduPaperOcrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ImageType'] = request.image_type
-        query['OutputOricoord'] = request.output_oricoord
-        query['Subject'] = request.subject
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.output_oricoord):
+            query['OutputOricoord'] = request.output_oricoord
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1159,7 +1617,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1174,13 +1632,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduPaperOcrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ImageType'] = request.image_type
-        query['OutputOricoord'] = request.output_oricoord
-        query['Subject'] = request.subject
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.output_oricoord):
+            query['OutputOricoord'] = request.output_oricoord
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1191,7 +1653,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1220,11 +1682,15 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduPaperStructedResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1235,7 +1701,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1250,11 +1716,15 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduPaperStructedResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1265,7 +1735,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1294,11 +1764,13 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduQuestionOcrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1309,7 +1781,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1324,11 +1796,13 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEduQuestionOcrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1339,7 +1813,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1368,12 +1842,15 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEnglishResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1384,7 +1861,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1399,12 +1876,15 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEnglishResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1415,7 +1895,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1444,10 +1924,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEstateCertificationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1458,7 +1939,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1473,10 +1954,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeEstateCertificationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1487,7 +1969,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1509,6 +1991,322 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_estate_certification_with_options_async(request, runtime)
 
+    def recognize_excel_export_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeExcelExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeExcelExportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.image_op):
+            query['ImageOp'] = request.image_op
+        if not UtilClient.is_unset(request.ocr_image_count):
+            query['OcrImageCount'] = request.ocr_image_count
+        if not UtilClient.is_unset(request.ocr_result):
+            query['OcrResult'] = request.ocr_result
+        if not UtilClient.is_unset(request.ocr_type):
+            query['OcrType'] = request.ocr_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeExcelExport',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeExcelExportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_excel_export_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeExcelExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeExcelExportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.image_op):
+            query['ImageOp'] = request.image_op
+        if not UtilClient.is_unset(request.ocr_image_count):
+            query['OcrImageCount'] = request.ocr_image_count
+        if not UtilClient.is_unset(request.ocr_result):
+            query['OcrResult'] = request.ocr_result
+        if not UtilClient.is_unset(request.ocr_type):
+            query['OcrType'] = request.ocr_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeExcelExport',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeExcelExportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_excel_export(
+        self,
+        request: ocr_api_20210707_models.RecognizeExcelExportRequest,
+    ) -> ocr_api_20210707_models.RecognizeExcelExportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_excel_export_with_options(request, runtime)
+
+    async def recognize_excel_export_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeExcelExportRequest,
+    ) -> ocr_api_20210707_models.RecognizeExcelExportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_excel_export_with_options_async(request, runtime)
+
+    def recognize_excel_record_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeExcelRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeExcelRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.curr_page):
+            query['CurrPage'] = request.curr_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeExcelRecord',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeExcelRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_excel_record_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeExcelRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeExcelRecordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.curr_page):
+            query['CurrPage'] = request.curr_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RecognizeExcelRecord',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeExcelRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_excel_record(
+        self,
+        request: ocr_api_20210707_models.RecognizeExcelRecordRequest,
+    ) -> ocr_api_20210707_models.RecognizeExcelRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_excel_record_with_options(request, runtime)
+
+    async def recognize_excel_record_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeExcelRecordRequest,
+    ) -> ocr_api_20210707_models.RecognizeExcelRecordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_excel_record_with_options_async(request, runtime)
+
+    def recognize_exit_entry_permit_to_hkwith_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeExitEntryPermitToHKRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeExitEntryPermitToHKResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeExitEntryPermitToHK',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeExitEntryPermitToHKResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_exit_entry_permit_to_hkwith_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeExitEntryPermitToHKRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeExitEntryPermitToHKResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeExitEntryPermitToHK',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeExitEntryPermitToHKResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_exit_entry_permit_to_hk(
+        self,
+        request: ocr_api_20210707_models.RecognizeExitEntryPermitToHKRequest,
+    ) -> ocr_api_20210707_models.RecognizeExitEntryPermitToHKResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_exit_entry_permit_to_hkwith_options(request, runtime)
+
+    async def recognize_exit_entry_permit_to_hk_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeExitEntryPermitToHKRequest,
+    ) -> ocr_api_20210707_models.RecognizeExitEntryPermitToHKResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_exit_entry_permit_to_hkwith_options_async(request, runtime)
+
+    def recognize_exit_entry_permit_to_mainland_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeExitEntryPermitToMainland',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_exit_entry_permit_to_mainland_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeExitEntryPermitToMainland',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_exit_entry_permit_to_mainland(
+        self,
+        request: ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandRequest,
+    ) -> ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_exit_entry_permit_to_mainland_with_options(request, runtime)
+
+    async def recognize_exit_entry_permit_to_mainland_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandRequest,
+    ) -> ocr_api_20210707_models.RecognizeExitEntryPermitToMainlandResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_exit_entry_permit_to_mainland_with_options_async(request, runtime)
+
     def recognize_food_manage_license_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeFoodManageLicenseRequest,
@@ -1516,10 +2314,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeFoodManageLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1530,7 +2329,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1545,10 +2344,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeFoodManageLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1559,7 +2359,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1588,10 +2388,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeFoodProduceLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1602,7 +2403,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1617,10 +2418,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeFoodProduceLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1631,7 +2433,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1660,10 +2462,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeGeneralResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1674,7 +2477,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1689,10 +2492,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeGeneralResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1703,7 +2507,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1732,14 +2536,19 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeHandwritingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['NeedSortPage'] = request.need_sort_page
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1750,7 +2559,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1765,14 +2574,19 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeHandwritingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['NeedSortPage'] = request.need_sort_page
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1783,7 +2597,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1812,10 +2626,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeHouseholdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1826,7 +2641,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1841,10 +2656,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeHouseholdResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1855,7 +2671,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1884,10 +2700,13 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeIdcardResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1898,7 +2717,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1913,10 +2732,13 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeIdcardResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.output_figure):
+            query['OutputFigure'] = request.output_figure
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1927,7 +2749,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1956,10 +2778,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1970,7 +2793,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1985,10 +2808,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -1999,7 +2823,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2028,13 +2852,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeJanpaneseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2045,7 +2873,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2060,13 +2888,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeJanpaneseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2077,7 +2909,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2106,13 +2938,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeKoreanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2123,7 +2959,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2138,13 +2974,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeKoreanResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2155,7 +2995,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2184,13 +3024,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeLatinResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2201,7 +3045,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2216,13 +3060,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeLatinResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2233,7 +3081,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2262,10 +3110,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMedicalDeviceManageLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2276,7 +3125,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2291,10 +3140,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMedicalDeviceManageLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2305,7 +3155,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2334,10 +3184,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMedicalDeviceProduceLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2348,7 +3199,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2363,10 +3214,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMedicalDeviceProduceLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2377,7 +3229,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2406,10 +3258,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMixedInvoicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2420,7 +3273,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2435,10 +3288,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeMixedInvoicesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2449,7 +3303,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2482,15 +3336,21 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.languages):
             request.languages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.languages, 'Languages', 'simple')
         query = {}
-        query['Languages'] = request.languages_shrink
-        query['NeedRotate'] = request.need_rotate
-        query['NeedSortPage'] = request.need_sort_page
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.languages_shrink):
+            query['Languages'] = request.languages_shrink
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2501,7 +3361,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2520,15 +3380,21 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.languages):
             request.languages_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.languages, 'Languages', 'simple')
         query = {}
-        query['Languages'] = request.languages_shrink
-        query['NeedRotate'] = request.need_rotate
-        query['NeedSortPage'] = request.need_sort_page
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.languages_shrink):
+            query['Languages'] = request.languages_shrink
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.need_sort_page):
+            query['NeedSortPage'] = request.need_sort_page
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2539,7 +3405,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2568,10 +3434,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizePassportResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2582,7 +3449,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2597,10 +3464,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizePassportResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2611,7 +3479,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2640,10 +3508,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeQuotaInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2654,7 +3523,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2669,10 +3538,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeQuotaInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2683,7 +3553,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2705,6 +3575,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_quota_invoice_with_options_async(request, runtime)
 
+    def recognize_ride_hailing_itinerary_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeRideHailingItineraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeRideHailingItineraryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeRideHailingItinerary',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeRideHailingItineraryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_ride_hailing_itinerary_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeRideHailingItineraryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeRideHailingItineraryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeRideHailingItinerary',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeRideHailingItineraryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_ride_hailing_itinerary(
+        self,
+        request: ocr_api_20210707_models.RecognizeRideHailingItineraryRequest,
+    ) -> ocr_api_20210707_models.RecognizeRideHailingItineraryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_ride_hailing_itinerary_with_options(request, runtime)
+
+    async def recognize_ride_hailing_itinerary_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeRideHailingItineraryRequest,
+    ) -> ocr_api_20210707_models.RecognizeRideHailingItineraryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_ride_hailing_itinerary_with_options_async(request, runtime)
+
     def recognize_roll_ticket_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeRollTicketRequest,
@@ -2712,10 +3656,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeRollTicketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2726,7 +3671,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2741,10 +3686,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeRollTicketResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2755,7 +3701,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2784,13 +3730,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeRussianResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2801,7 +3751,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2816,13 +3766,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeRussianResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2833,7 +3787,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2855,6 +3809,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_russian_with_options_async(request, runtime)
 
+    def recognize_social_security_card_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeSocialSecurityCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeSocialSecurityCardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeSocialSecurityCard',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeSocialSecurityCardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_social_security_card_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeSocialSecurityCardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeSocialSecurityCardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeSocialSecurityCard',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeSocialSecurityCardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_social_security_card(
+        self,
+        request: ocr_api_20210707_models.RecognizeSocialSecurityCardRequest,
+    ) -> ocr_api_20210707_models.RecognizeSocialSecurityCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_social_security_card_with_options(request, runtime)
+
+    async def recognize_social_security_card_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeSocialSecurityCardRequest,
+    ) -> ocr_api_20210707_models.RecognizeSocialSecurityCardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_social_security_card_with_options_async(request, runtime)
+
     def recognize_table_ocr_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeTableOcrRequest,
@@ -2862,10 +3890,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeTableOcrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.line_less):
+            query['LineLess'] = request.line_less
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.skip_detection):
+            query['SkipDetection'] = request.skip_detection
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2876,7 +3911,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2891,10 +3926,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeTableOcrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.line_less):
+            query['LineLess'] = request.line_less
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.skip_detection):
+            query['SkipDetection'] = request.skip_detection
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2905,7 +3947,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2927,6 +3969,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_table_ocr_with_options_async(request, runtime)
 
+    def recognize_tax_clearance_certificate_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeTaxClearanceCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeTaxClearanceCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeTaxClearanceCertificate',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeTaxClearanceCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_tax_clearance_certificate_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeTaxClearanceCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeTaxClearanceCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeTaxClearanceCertificate',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeTaxClearanceCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_tax_clearance_certificate(
+        self,
+        request: ocr_api_20210707_models.RecognizeTaxClearanceCertificateRequest,
+    ) -> ocr_api_20210707_models.RecognizeTaxClearanceCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_tax_clearance_certificate_with_options(request, runtime)
+
+    async def recognize_tax_clearance_certificate_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeTaxClearanceCertificateRequest,
+    ) -> ocr_api_20210707_models.RecognizeTaxClearanceCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_tax_clearance_certificate_with_options_async(request, runtime)
+
     def recognize_taxi_invoice_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeTaxiInvoiceRequest,
@@ -2934,10 +4050,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeTaxiInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2948,7 +4065,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2963,10 +4080,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeTaxiInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -2977,7 +4095,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3006,13 +4124,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeThaiResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3023,7 +4145,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3038,13 +4160,17 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeThaiResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['NeedRotate'] = request.need_rotate
-        query['OutputCharInfo'] = request.output_char_info
-        query['OutputTable'] = request.output_table
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.need_rotate):
+            query['NeedRotate'] = request.need_rotate
+        if not UtilClient.is_unset(request.output_char_info):
+            query['OutputCharInfo'] = request.output_char_info
+        if not UtilClient.is_unset(request.output_table):
+            query['OutputTable'] = request.output_table
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3055,7 +4181,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3077,6 +4203,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_thai_with_options_async(request, runtime)
 
+    def recognize_toll_invoice_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeTollInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeTollInvoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeTollInvoice',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeTollInvoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_toll_invoice_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeTollInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeTollInvoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeTollInvoice',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeTollInvoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_toll_invoice(
+        self,
+        request: ocr_api_20210707_models.RecognizeTollInvoiceRequest,
+    ) -> ocr_api_20210707_models.RecognizeTollInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_toll_invoice_with_options(request, runtime)
+
+    async def recognize_toll_invoice_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeTollInvoiceRequest,
+    ) -> ocr_api_20210707_models.RecognizeTollInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_toll_invoice_with_options_async(request, runtime)
+
     def recognize_trade_mark_certification_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeTradeMarkCertificationRequest,
@@ -3084,10 +4284,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeTradeMarkCertificationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3098,7 +4299,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3113,10 +4314,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeTradeMarkCertificationResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3127,7 +4329,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3156,10 +4358,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeTrainInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3170,7 +4373,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3185,10 +4388,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeTrainInvoiceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3199,7 +4403,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3221,6 +4425,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_train_invoice_with_options_async(request, runtime)
 
+    def recognize_used_car_invoice_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeUsedCarInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeUsedCarInvoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeUsedCarInvoice',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeUsedCarInvoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_used_car_invoice_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeUsedCarInvoiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeUsedCarInvoiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeUsedCarInvoice',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeUsedCarInvoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_used_car_invoice(
+        self,
+        request: ocr_api_20210707_models.RecognizeUsedCarInvoiceRequest,
+    ) -> ocr_api_20210707_models.RecognizeUsedCarInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_used_car_invoice_with_options(request, runtime)
+
+    async def recognize_used_car_invoice_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeUsedCarInvoiceRequest,
+    ) -> ocr_api_20210707_models.RecognizeUsedCarInvoiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_used_car_invoice_with_options_async(request, runtime)
+
+    def recognize_vehicle_certification_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeVehicleCertificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeVehicleCertificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeVehicleCertification',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeVehicleCertificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_vehicle_certification_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeVehicleCertificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeVehicleCertificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeVehicleCertification',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeVehicleCertificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_vehicle_certification(
+        self,
+        request: ocr_api_20210707_models.RecognizeVehicleCertificationRequest,
+    ) -> ocr_api_20210707_models.RecognizeVehicleCertificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_vehicle_certification_with_options(request, runtime)
+
+    async def recognize_vehicle_certification_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeVehicleCertificationRequest,
+    ) -> ocr_api_20210707_models.RecognizeVehicleCertificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_vehicle_certification_with_options_async(request, runtime)
+
     def recognize_vehicle_license_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeVehicleLicenseRequest,
@@ -3228,10 +4580,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeVehicleLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3242,7 +4595,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3257,10 +4610,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeVehicleLicenseResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3271,7 +4625,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3293,6 +4647,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_vehicle_license_with_options_async(request, runtime)
 
+    def recognize_vehicle_registration_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeVehicleRegistrationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeVehicleRegistrationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeVehicleRegistration',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeVehicleRegistrationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_vehicle_registration_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeVehicleRegistrationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeVehicleRegistrationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeVehicleRegistration',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeVehicleRegistrationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_vehicle_registration(
+        self,
+        request: ocr_api_20210707_models.RecognizeVehicleRegistrationRequest,
+    ) -> ocr_api_20210707_models.RecognizeVehicleRegistrationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_vehicle_registration_with_options(request, runtime)
+
+    async def recognize_vehicle_registration_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeVehicleRegistrationRequest,
+    ) -> ocr_api_20210707_models.RecognizeVehicleRegistrationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_vehicle_registration_with_options_async(request, runtime)
+
     def recognize_waybill_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeWaybillRequest,
@@ -3300,10 +4728,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeWaybillResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3314,7 +4743,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3329,10 +4758,11 @@ class Client(OpenApiClient):
     ) -> ocr_api_20210707_models.RecognizeWaybillResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Url'] = request.url
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request),
+            body=request.body,
             stream=request.body
         )
         params = open_api_models.Params(
@@ -3343,7 +4773,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
