@@ -1180,76 +1180,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_vpc_honey_pot_with_options_async(request, runtime)
 
-    def describe_access_key_leak_detail_with_options(
-        self,
-        request: sas_20181203_models.DescribeAccessKeyLeakDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeAccessKeyLeakDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAccessKeyLeakDetail',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeAccessKeyLeakDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_access_key_leak_detail_with_options_async(
-        self,
-        request: sas_20181203_models.DescribeAccessKeyLeakDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeAccessKeyLeakDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAccessKeyLeakDetail',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeAccessKeyLeakDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_access_key_leak_detail(
-        self,
-        request: sas_20181203_models.DescribeAccessKeyLeakDetailRequest,
-    ) -> sas_20181203_models.DescribeAccessKeyLeakDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_access_key_leak_detail_with_options(request, runtime)
-
-    async def describe_access_key_leak_detail_async(
-        self,
-        request: sas_20181203_models.DescribeAccessKeyLeakDetailRequest,
-    ) -> sas_20181203_models.DescribeAccessKeyLeakDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_access_key_leak_detail_with_options_async(request, runtime)
-
     def describe_accesskey_leak_list_with_options(
         self,
         request: sas_20181203_models.DescribeAccesskeyLeakListRequest,
@@ -2917,6 +2847,8 @@ class Client(OpenApiClient):
             query['LogicalExp'] = request.logical_exp
         if not UtilClient.is_unset(request.machine_types):
             query['MachineTypes'] = request.machine_types
+        if not UtilClient.is_unset(request.no_group_trace):
+            query['NoGroupTrace'] = request.no_group_trace
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
@@ -2957,6 +2889,8 @@ class Client(OpenApiClient):
             query['LogicalExp'] = request.logical_exp
         if not UtilClient.is_unset(request.machine_types):
             query['MachineTypes'] = request.machine_types
+        if not UtilClient.is_unset(request.no_group_trace):
+            query['NoGroupTrace'] = request.no_group_trace
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
@@ -3183,100 +3117,6 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeContainerStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_container_statistics_with_options_async(request, runtime)
-
-    def describe_container_tags_with_options(
-        self,
-        request: sas_20181203_models.DescribeContainerTagsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeContainerTagsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.field_name):
-            query['FieldName'] = request.field_name
-        if not UtilClient.is_unset(request.field_value):
-            query['FieldValue'] = request.field_value
-        if not UtilClient.is_unset(request.namespace):
-            query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeContainerTags',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeContainerTagsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_container_tags_with_options_async(
-        self,
-        request: sas_20181203_models.DescribeContainerTagsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeContainerTagsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.field_name):
-            query['FieldName'] = request.field_name
-        if not UtilClient.is_unset(request.field_value):
-            query['FieldValue'] = request.field_value
-        if not UtilClient.is_unset(request.namespace):
-            query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeContainerTags',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeContainerTagsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_container_tags(
-        self,
-        request: sas_20181203_models.DescribeContainerTagsRequest,
-    ) -> sas_20181203_models.DescribeContainerTagsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_container_tags_with_options(request, runtime)
-
-    async def describe_container_tags_async(
-        self,
-        request: sas_20181203_models.DescribeContainerTagsRequest,
-    ) -> sas_20181203_models.DescribeContainerTagsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_container_tags_with_options_async(request, runtime)
 
     def describe_criteria_with_options(
         self,
@@ -4956,6 +4796,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_honey_pot_susp_statistics_with_options_async(request, runtime)
 
+    def describe_image_baseline_check_summary_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageBaselineCheckSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageBaselineCheckSummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.criteria_type):
+            query['CriteriaType'] = request.criteria_type
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageBaselineCheckSummary',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageBaselineCheckSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_baseline_check_summary_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageBaselineCheckSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageBaselineCheckSummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.criteria_type):
+            query['CriteriaType'] = request.criteria_type
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageBaselineCheckSummary',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageBaselineCheckSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_baseline_check_summary(
+        self,
+        request: sas_20181203_models.DescribeImageBaselineCheckSummaryRequest,
+    ) -> sas_20181203_models.DescribeImageBaselineCheckSummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_baseline_check_summary_with_options(request, runtime)
+
+    async def describe_image_baseline_check_summary_async(
+        self,
+        request: sas_20181203_models.DescribeImageBaselineCheckSummaryRequest,
+    ) -> sas_20181203_models.DescribeImageBaselineCheckSummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_baseline_check_summary_with_options_async(request, runtime)
+
     def describe_image_fix_task_with_options(
         self,
         request: sas_20181203_models.DescribeImageFixTaskRequest,
@@ -5187,6 +5117,112 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeImageGroupedVulListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_grouped_vul_list_with_options_async(request, runtime)
+
+    def describe_image_list_with_baseline_name_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageListWithBaselineNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageListWithBaselineNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.baseline_name_key):
+            query['BaselineNameKey'] = request.baseline_name_key
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.criteria_type):
+            query['CriteriaType'] = request.criteria_type
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.image_digest):
+            query['ImageDigest'] = request.image_digest
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_instance_id):
+            query['RepoInstanceId'] = request.repo_instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace):
+            query['RepoNamespace'] = request.repo_namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageListWithBaselineName',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageListWithBaselineNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_list_with_baseline_name_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageListWithBaselineNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageListWithBaselineNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.baseline_name_key):
+            query['BaselineNameKey'] = request.baseline_name_key
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.criteria_type):
+            query['CriteriaType'] = request.criteria_type
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.image_digest):
+            query['ImageDigest'] = request.image_digest
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_instance_id):
+            query['RepoInstanceId'] = request.repo_instance_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace):
+            query['RepoNamespace'] = request.repo_namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageListWithBaselineName',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageListWithBaselineNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_list_with_baseline_name(
+        self,
+        request: sas_20181203_models.DescribeImageListWithBaselineNameRequest,
+    ) -> sas_20181203_models.DescribeImageListWithBaselineNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_list_with_baseline_name_with_options(request, runtime)
+
+    async def describe_image_list_with_baseline_name_async(
+        self,
+        request: sas_20181203_models.DescribeImageListWithBaselineNameRequest,
+    ) -> sas_20181203_models.DescribeImageListWithBaselineNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_list_with_baseline_name_with_options_async(request, runtime)
 
     def describe_image_scan_auth_count_with_options(
         self,
@@ -6165,6 +6201,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribePropertyPortDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bind_ip):
+            query['BindIp'] = request.bind_ip
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
@@ -6203,6 +6241,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribePropertyPortDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bind_ip):
+            query['BindIp'] = request.bind_ip
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
@@ -6345,6 +6385,10 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proc_time_end):
+            query['ProcTimeEnd'] = request.proc_time_end
+        if not UtilClient.is_unset(request.proc_time_start):
+            query['ProcTimeStart'] = request.proc_time_start
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.user):
@@ -6385,6 +6429,10 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proc_time_end):
+            query['ProcTimeEnd'] = request.proc_time_end
+        if not UtilClient.is_unset(request.proc_time_start):
+            query['ProcTimeStart'] = request.proc_time_start
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.user):
@@ -6513,6 +6561,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribePropertyScaDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz):
+            query['Biz'] = request.biz
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.current_page):
@@ -6523,10 +6573,22 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.process_started_end):
+            query['ProcessStartedEnd'] = request.process_started_end
+        if not UtilClient.is_unset(request.process_started_start):
+            query['ProcessStartedStart'] = request.process_started_start
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.sca_name):
             query['ScaName'] = request.sca_name
+        if not UtilClient.is_unset(request.sca_name_pattern):
+            query['ScaNamePattern'] = request.sca_name_pattern
+        if not UtilClient.is_unset(request.sca_version):
+            query['ScaVersion'] = request.sca_version
         if not UtilClient.is_unset(request.search_info):
             query['SearchInfo'] = request.search_info
         if not UtilClient.is_unset(request.search_info_sub):
@@ -6535,6 +6597,8 @@ class Client(OpenApiClient):
             query['SearchItem'] = request.search_item
         if not UtilClient.is_unset(request.search_item_sub):
             query['SearchItemSub'] = request.search_item_sub
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -6563,6 +6627,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribePropertyScaDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz):
+            query['Biz'] = request.biz
         if not UtilClient.is_unset(request.biz_type):
             query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.current_page):
@@ -6573,10 +6639,22 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.process_started_end):
+            query['ProcessStartedEnd'] = request.process_started_end
+        if not UtilClient.is_unset(request.process_started_start):
+            query['ProcessStartedStart'] = request.process_started_start
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.sca_name):
             query['ScaName'] = request.sca_name
+        if not UtilClient.is_unset(request.sca_name_pattern):
+            query['ScaNamePattern'] = request.sca_name_pattern
+        if not UtilClient.is_unset(request.sca_version):
+            query['ScaVersion'] = request.sca_version
         if not UtilClient.is_unset(request.search_info):
             query['SearchInfo'] = request.search_info
         if not UtilClient.is_unset(request.search_info_sub):
@@ -6585,6 +6663,8 @@ class Client(OpenApiClient):
             query['SearchItem'] = request.search_item
         if not UtilClient.is_unset(request.search_item_sub):
             query['SearchItemSub'] = request.search_item_sub
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -6629,6 +6709,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.install_time_end):
+            query['InstallTimeEnd'] = request.install_time_end
+        if not UtilClient.is_unset(request.install_time_start):
+            query['InstallTimeStart'] = request.install_time_start
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
@@ -6669,6 +6753,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.install_time_end):
+            query['InstallTimeEnd'] = request.install_time_end
+        if not UtilClient.is_unset(request.install_time_start):
+            query['InstallTimeStart'] = request.install_time_start
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
@@ -6877,6 +6965,10 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.is_root):
             query['IsRoot'] = request.is_root
+        if not UtilClient.is_unset(request.last_login_time_end):
+            query['LastLoginTimeEnd'] = request.last_login_time_end
+        if not UtilClient.is_unset(request.last_login_time_start):
+            query['LastLoginTimeStart'] = request.last_login_time_start
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
@@ -6915,6 +7007,10 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.is_root):
             query['IsRoot'] = request.is_root
+        if not UtilClient.is_unset(request.last_login_time_end):
+            query['LastLoginTimeEnd'] = request.last_login_time_end
+        if not UtilClient.is_unset(request.last_login_time_start):
+            query['LastLoginTimeStart'] = request.last_login_time_start
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
@@ -8786,84 +8882,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_susp_event_detail_with_options_async(request, runtime)
 
-    def describe_susp_event_export_info_with_options(
-        self,
-        request: sas_20181203_models.DescribeSuspEventExportInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeSuspEventExportInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.export_id):
-            query['ExportId'] = request.export_id
-        if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSuspEventExportInfo',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeSuspEventExportInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_susp_event_export_info_with_options_async(
-        self,
-        request: sas_20181203_models.DescribeSuspEventExportInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeSuspEventExportInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.export_id):
-            query['ExportId'] = request.export_id
-        if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSuspEventExportInfo',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeSuspEventExportInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_susp_event_export_info(
-        self,
-        request: sas_20181203_models.DescribeSuspEventExportInfoRequest,
-    ) -> sas_20181203_models.DescribeSuspEventExportInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_susp_event_export_info_with_options(request, runtime)
-
-    async def describe_susp_event_export_info_async(
-        self,
-        request: sas_20181203_models.DescribeSuspEventExportInfoRequest,
-    ) -> sas_20181203_models.DescribeSuspEventExportInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_susp_event_export_info_with_options_async(request, runtime)
-
     def describe_susp_event_quara_files_with_options(
         self,
         request: sas_20181203_models.DescribeSuspEventQuaraFilesRequest,
@@ -9185,92 +9203,6 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeSuspiciousUUIDConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_suspicious_uuidconfig_with_options_async(request, runtime)
-
-    def describe_uni_backup_policies_with_options(
-        self,
-        request: sas_20181203_models.DescribeUniBackupPoliciesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeUniBackupPoliciesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_name):
-            query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeUniBackupPolicies',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeUniBackupPoliciesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_uni_backup_policies_with_options_async(
-        self,
-        request: sas_20181203_models.DescribeUniBackupPoliciesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeUniBackupPoliciesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_name):
-            query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeUniBackupPolicies',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeUniBackupPoliciesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_uni_backup_policies(
-        self,
-        request: sas_20181203_models.DescribeUniBackupPoliciesRequest,
-    ) -> sas_20181203_models.DescribeUniBackupPoliciesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_uni_backup_policies_with_options(request, runtime)
-
-    async def describe_uni_backup_policies_async(
-        self,
-        request: sas_20181203_models.DescribeUniBackupPoliciesRequest,
-    ) -> sas_20181203_models.DescribeUniBackupPoliciesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_uni_backup_policies_with_options_async(request, runtime)
 
     def describe_user_backup_machines_with_options(
         self,
@@ -10082,92 +10014,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vul_list_with_options_async(request, runtime)
 
-    def describe_vul_list_page_with_options(
-        self,
-        request: sas_20181203_models.DescribeVulListPageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeVulListPageResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.cve_id):
-            query['CveId'] = request.cve_id
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.vul_name_like):
-            query['VulNameLike'] = request.vul_name_like
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVulListPage',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeVulListPageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_vul_list_page_with_options_async(
-        self,
-        request: sas_20181203_models.DescribeVulListPageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeVulListPageResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.cve_id):
-            query['CveId'] = request.cve_id
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.vul_name_like):
-            query['VulNameLike'] = request.vul_name_like
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVulListPage',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.DescribeVulListPageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_vul_list_page(
-        self,
-        request: sas_20181203_models.DescribeVulListPageRequest,
-    ) -> sas_20181203_models.DescribeVulListPageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_vul_list_page_with_options(request, runtime)
-
-    async def describe_vul_list_page_async(
-        self,
-        request: sas_20181203_models.DescribeVulListPageRequest,
-    ) -> sas_20181203_models.DescribeVulListPageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_vul_list_page_with_options_async(request, runtime)
-
     def describe_vul_whitelist_with_options(
         self,
         request: sas_20181203_models.DescribeVulWhitelistRequest,
@@ -10586,132 +10432,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_record_with_options_async(request, runtime)
 
-    def export_susp_events_with_options(
-        self,
-        request: sas_20181203_models.ExportSuspEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ExportSuspEventsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.container_field_name):
-            query['ContainerFieldName'] = request.container_field_name
-        if not UtilClient.is_unset(request.container_field_value):
-            query['ContainerFieldValue'] = request.container_field_value
-        if not UtilClient.is_unset(request.dealed):
-            query['Dealed'] = request.dealed
-        if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.levels):
-            query['Levels'] = request.levels
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.parent_event_types):
-            query['ParentEventTypes'] = request.parent_event_types
-        if not UtilClient.is_unset(request.remark):
-            query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.target_type):
-            query['TargetType'] = request.target_type
-        if not UtilClient.is_unset(request.time_end):
-            query['TimeEnd'] = request.time_end
-        if not UtilClient.is_unset(request.time_start):
-            query['TimeStart'] = request.time_start
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ExportSuspEvents',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ExportSuspEventsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def export_susp_events_with_options_async(
-        self,
-        request: sas_20181203_models.ExportSuspEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ExportSuspEventsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.container_field_name):
-            query['ContainerFieldName'] = request.container_field_name
-        if not UtilClient.is_unset(request.container_field_value):
-            query['ContainerFieldValue'] = request.container_field_value
-        if not UtilClient.is_unset(request.dealed):
-            query['Dealed'] = request.dealed
-        if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.levels):
-            query['Levels'] = request.levels
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.parent_event_types):
-            query['ParentEventTypes'] = request.parent_event_types
-        if not UtilClient.is_unset(request.remark):
-            query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.target_type):
-            query['TargetType'] = request.target_type
-        if not UtilClient.is_unset(request.time_end):
-            query['TimeEnd'] = request.time_end
-        if not UtilClient.is_unset(request.time_start):
-            query['TimeStart'] = request.time_start
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ExportSuspEvents',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ExportSuspEventsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def export_susp_events(
-        self,
-        request: sas_20181203_models.ExportSuspEventsRequest,
-    ) -> sas_20181203_models.ExportSuspEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.export_susp_events_with_options(request, runtime)
-
-    async def export_susp_events_async(
-        self,
-        request: sas_20181203_models.ExportSuspEventsRequest,
-    ) -> sas_20181203_models.ExportSuspEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.export_susp_events_with_options_async(request, runtime)
-
     def export_vul_with_options(
         self,
         request: sas_20181203_models.ExportVulRequest,
@@ -10817,132 +10537,6 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ExportVulResponse:
         runtime = util_models.RuntimeOptions()
         return await self.export_vul_with_options_async(request, runtime)
-
-    def export_warning_with_options(
-        self,
-        request: sas_20181203_models.ExportWarningRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ExportWarningResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dealed):
-            query['Dealed'] = request.dealed
-        if not UtilClient.is_unset(request.export_type):
-            query['ExportType'] = request.export_type
-        if not UtilClient.is_unset(request.is_cleartext_pwd):
-            query['IsCleartextPwd'] = request.is_cleartext_pwd
-        if not UtilClient.is_unset(request.is_summary_export):
-            query['IsSummaryExport'] = request.is_summary_export
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.risk_ids):
-            query['RiskIds'] = request.risk_ids
-        if not UtilClient.is_unset(request.risk_levels):
-            query['RiskLevels'] = request.risk_levels
-        if not UtilClient.is_unset(request.risk_name):
-            query['RiskName'] = request.risk_name
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status_list):
-            query['StatusList'] = request.status_list
-        if not UtilClient.is_unset(request.strategy_id):
-            query['StrategyId'] = request.strategy_id
-        if not UtilClient.is_unset(request.sub_type_names):
-            query['SubTypeNames'] = request.sub_type_names
-        if not UtilClient.is_unset(request.type_name):
-            query['TypeName'] = request.type_name
-        if not UtilClient.is_unset(request.type_names):
-            query['TypeNames'] = request.type_names
-        if not UtilClient.is_unset(request.uuids):
-            query['Uuids'] = request.uuids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ExportWarning',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ExportWarningResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def export_warning_with_options_async(
-        self,
-        request: sas_20181203_models.ExportWarningRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ExportWarningResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dealed):
-            query['Dealed'] = request.dealed
-        if not UtilClient.is_unset(request.export_type):
-            query['ExportType'] = request.export_type
-        if not UtilClient.is_unset(request.is_cleartext_pwd):
-            query['IsCleartextPwd'] = request.is_cleartext_pwd
-        if not UtilClient.is_unset(request.is_summary_export):
-            query['IsSummaryExport'] = request.is_summary_export
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.risk_ids):
-            query['RiskIds'] = request.risk_ids
-        if not UtilClient.is_unset(request.risk_levels):
-            query['RiskLevels'] = request.risk_levels
-        if not UtilClient.is_unset(request.risk_name):
-            query['RiskName'] = request.risk_name
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status_list):
-            query['StatusList'] = request.status_list
-        if not UtilClient.is_unset(request.strategy_id):
-            query['StrategyId'] = request.strategy_id
-        if not UtilClient.is_unset(request.sub_type_names):
-            query['SubTypeNames'] = request.sub_type_names
-        if not UtilClient.is_unset(request.type_name):
-            query['TypeName'] = request.type_name
-        if not UtilClient.is_unset(request.type_names):
-            query['TypeNames'] = request.type_names
-        if not UtilClient.is_unset(request.uuids):
-            query['Uuids'] = request.uuids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ExportWarning',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ExportWarningResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def export_warning(
-        self,
-        request: sas_20181203_models.ExportWarningRequest,
-    ) -> sas_20181203_models.ExportWarningResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.export_warning_with_options(request, runtime)
-
-    async def export_warning_async(
-        self,
-        request: sas_20181203_models.ExportWarningRequest,
-    ) -> sas_20181203_models.ExportWarningResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.export_warning_with_options_async(request, runtime)
 
     def fix_check_warnings_with_options(
         self,
@@ -11935,80 +11529,6 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ModifyBackupPolicyStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_policy_status_with_options_async(request, runtime)
-
-    def modify_clear_logstore_storage_with_options(
-        self,
-        request: sas_20181203_models.ModifyClearLogstoreStorageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ModifyClearLogstoreStorageResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyClearLogstoreStorage',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ModifyClearLogstoreStorageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_clear_logstore_storage_with_options_async(
-        self,
-        request: sas_20181203_models.ModifyClearLogstoreStorageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ModifyClearLogstoreStorageResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyClearLogstoreStorage',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ModifyClearLogstoreStorageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_clear_logstore_storage(
-        self,
-        request: sas_20181203_models.ModifyClearLogstoreStorageRequest,
-    ) -> sas_20181203_models.ModifyClearLogstoreStorageResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_clear_logstore_storage_with_options(request, runtime)
-
-    async def modify_clear_logstore_storage_async(
-        self,
-        request: sas_20181203_models.ModifyClearLogstoreStorageRequest,
-    ) -> sas_20181203_models.ModifyClearLogstoreStorageResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_clear_logstore_storage_with_options_async(request, runtime)
 
     def modify_create_vul_whitelist_with_options(
         self,
@@ -14399,76 +13919,6 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.RefreshContainerAssetsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.refresh_container_assets_with_options_async(request, runtime)
-
-    def refresh_container_network_with_options(
-        self,
-        request: sas_20181203_models.RefreshContainerNetworkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.RefreshContainerNetworkResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RefreshContainerNetwork',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.RefreshContainerNetworkResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def refresh_container_network_with_options_async(
-        self,
-        request: sas_20181203_models.RefreshContainerNetworkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.RefreshContainerNetworkResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RefreshContainerNetwork',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.RefreshContainerNetworkResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def refresh_container_network(
-        self,
-        request: sas_20181203_models.RefreshContainerNetworkRequest,
-    ) -> sas_20181203_models.RefreshContainerNetworkResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.refresh_container_network_with_options(request, runtime)
-
-    async def refresh_container_network_async(
-        self,
-        request: sas_20181203_models.RefreshContainerNetworkRequest,
-    ) -> sas_20181203_models.RefreshContainerNetworkResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.refresh_container_network_with_options_async(request, runtime)
 
     def rollback_susp_event_quara_file_with_options(
         self,

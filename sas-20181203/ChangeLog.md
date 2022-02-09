@@ -1,3 +1,6 @@
+2022-02-09 Version: 1.0.12
+- AMP Version Change.
+
 2021-12-27 Version: 1.0.11
 - Support DescribeAccessKeyLeakDetail API.
 
