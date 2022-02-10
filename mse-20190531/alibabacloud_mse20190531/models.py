@@ -84,9 +84,15 @@ class GatewayOptionTraceDetails(TeaModel):
 class GatewayOption(TeaModel):
     def __init__(
         self,
+        disable_http_2alpn: bool = None,
+        enable_hardware_acceleration: bool = None,
         log_config_details: GatewayOptionLogConfigDetails = None,
         trace_details: GatewayOptionTraceDetails = None,
     ):
+        # 是否禁用http
+        self.disable_http_2alpn = disable_http_2alpn
+        # 是否开启硬件加速
+        self.enable_hardware_acceleration = enable_hardware_acceleration
         # 日志配置详情
         self.log_config_details = log_config_details
         # xtrace config option
@@ -104,6 +110,10 @@ class GatewayOption(TeaModel):
             return _map
 
         result = dict()
+        if self.disable_http_2alpn is not None:
+            result['DisableHttp2Alpn'] = self.disable_http_2alpn
+        if self.enable_hardware_acceleration is not None:
+            result['EnableHardwareAcceleration'] = self.enable_hardware_acceleration
         if self.log_config_details is not None:
             result['LogConfigDetails'] = self.log_config_details.to_map()
         if self.trace_details is not None:
@@ -112,6 +122,10 @@ class GatewayOption(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DisableHttp2Alpn') is not None:
+            self.disable_http_2alpn = m.get('DisableHttp2Alpn')
+        if m.get('EnableHardwareAcceleration') is not None:
+            self.enable_hardware_acceleration = m.get('EnableHardwareAcceleration')
         if m.get('LogConfigDetails') is not None:
             temp_model = GatewayOptionLogConfigDetails()
             self.log_config_details = temp_model.from_map(m['LogConfigDetails'])
