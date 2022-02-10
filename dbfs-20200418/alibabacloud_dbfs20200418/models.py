@@ -2310,11 +2310,15 @@ class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
         self,
         instance_type_family: str = None,
         osname: str = None,
+        status: str = None,
+        zone_id: str = None,
         label: str = None,
         value: str = None,
     ):
         self.instance_type_family = instance_type_family
         self.osname = osname
+        self.status = status
+        self.zone_id = zone_id
         self.label = label
         self.value = value
 
@@ -2331,6 +2335,10 @@ class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
             result['InstanceTypeFamily'] = self.instance_type_family
         if self.osname is not None:
             result['OSName'] = self.osname
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         if self.label is not None:
             result['label'] = self.label
         if self.value is not None:
@@ -2343,6 +2351,10 @@ class ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo(TeaModel):
             self.instance_type_family = m.get('InstanceTypeFamily')
         if m.get('OSName') is not None:
             self.osname = m.get('OSName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         if m.get('label') is not None:
             self.label = m.get('label')
         if m.get('value') is not None:
