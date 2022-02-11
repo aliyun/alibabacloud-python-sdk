@@ -1,3 +1,6 @@
+2022-02-11 Version: 2.16.8
+- Add media entity APIs.
+
 2021-12-22 Version: 2.16.6
 - Add return fields to UploadStreamByURL.
 - Set DescribeVodDomainSrcTrafficData pulic.

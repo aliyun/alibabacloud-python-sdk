@@ -98,9 +98,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateConfig'] = request.template_config
-        query['TemplateName'] = request.template_name
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -127,9 +130,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateConfig'] = request.template_config
-        query['TemplateName'] = request.template_name
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -170,9 +176,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateName'] = request.cate_name
-        query['ParentId'] = request.parent_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.cate_name):
+            query['CateName'] = request.cate_name
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -199,9 +208,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateName'] = request.cate_name
-        query['ParentId'] = request.parent_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.cate_name):
+            query['CateName'] = request.cate_name
+        if not UtilClient.is_unset(request.parent_id):
+            query['ParentId'] = request.parent_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -242,15 +254,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['Division'] = request.division
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.division):
+            query['Division'] = request.division
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -277,15 +298,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['Division'] = request.division
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.division):
+            query['Division'] = request.division
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -319,6 +349,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_editing_project_with_options_async(request, runtime)
 
+    def add_file_info_with_options(
+        self,
+        request: vod_20170321_models.AddFileInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.AddFileInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.filename):
+            query['Filename'] = request.filename
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddFileInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.AddFileInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_file_info_with_options_async(
+        self,
+        request: vod_20170321_models.AddFileInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.AddFileInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.filename):
+            query['Filename'] = request.filename
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddFileInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.AddFileInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_file_info(
+        self,
+        request: vod_20170321_models.AddFileInfoRequest,
+    ) -> vod_20170321_models.AddFileInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_file_info_with_options(request, runtime)
+
+    async def add_file_info_async(
+        self,
+        request: vod_20170321_models.AddFileInfoRequest,
+    ) -> vod_20170321_models.AddFileInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_file_info_with_options_async(request, runtime)
+
     def add_transcode_template_group_with_options(
         self,
         request: vod_20170321_models.AddTranscodeTemplateGroupRequest,
@@ -326,10 +446,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['Name'] = request.name
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
-        query['TranscodeTemplateList'] = request.transcode_template_list
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_list):
+            query['TranscodeTemplateList'] = request.transcode_template_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -356,10 +480,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['Name'] = request.name
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
-        query['TranscodeTemplateList'] = request.transcode_template_list
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_list):
+            query['TranscodeTemplateList'] = request.transcode_template_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -400,14 +528,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CheckUrl'] = request.check_url
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Scope'] = request.scope
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.check_url):
+            query['CheckUrl'] = request.check_url
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -434,14 +570,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CheckUrl'] = request.check_url
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['Scope'] = request.scope
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.check_url):
+            query['CheckUrl'] = request.check_url
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -482,10 +626,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['Name'] = request.name
-        query['TemplateConfig'] = request.template_config
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -512,10 +660,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['Name'] = request.name
-        query['TemplateConfig'] = request.template_config
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -556,11 +708,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['FileUrl'] = request.file_url
-        query['Name'] = request.name
-        query['Type'] = request.type
-        query['WatermarkConfig'] = request.watermark_config
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.watermark_config):
+            query['WatermarkConfig'] = request.watermark_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -587,11 +744,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AddWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['FileUrl'] = request.file_url
-        query['Name'] = request.name
-        query['Type'] = request.type
-        query['WatermarkConfig'] = request.watermark_config
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.watermark_config):
+            query['WatermarkConfig'] = request.watermark_config
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -632,10 +794,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AttachAppPolicyToIdentityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['IdentityName'] = request.identity_name
-        query['IdentityType'] = request.identity_type
-        query['PolicyNames'] = request.policy_names
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.policy_names):
+            query['PolicyNames'] = request.policy_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -662,10 +828,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.AttachAppPolicyToIdentityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['IdentityName'] = request.identity_name
-        query['IdentityType'] = request.identity_type
-        query['PolicyNames'] = request.policy_names
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.policy_names):
+            query['PolicyNames'] = request.policy_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -706,11 +876,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.BatchSetVodDomainConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['Functions'] = request.functions
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.functions):
+            query['Functions'] = request.functions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -737,11 +912,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.BatchSetVodDomainConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['Functions'] = request.functions
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.functions):
+            query['Functions'] = request.functions
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -782,9 +962,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.BatchStartVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -811,9 +994,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.BatchStartVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -854,9 +1040,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.BatchStopVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -883,9 +1072,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.BatchStopVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainNames'] = request.domain_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -926,8 +1118,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CancelUrlUploadJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['UploadUrls'] = request.upload_urls
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.upload_urls):
+            query['UploadUrls'] = request.upload_urls
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -954,8 +1148,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CancelUrlUploadJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['UploadUrls'] = request.upload_urls
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.upload_urls):
+            query['UploadUrls'] = request.upload_urls
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -996,8 +1192,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateAppInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Description'] = request.description
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1024,8 +1222,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateAppInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Description'] = request.description
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1066,7 +1266,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateAuditResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuditContent'] = request.audit_content
+        if not UtilClient.is_unset(request.audit_content):
+            query['AuditContent'] = request.audit_content
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1093,7 +1294,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateAuditResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuditContent'] = request.audit_content
+        if not UtilClient.is_unset(request.audit_content):
+            query['AuditContent'] = request.audit_content
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1134,17 +1336,28 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateUploadAttachedMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['BusinessType'] = request.business_type
-        query['CateIds'] = request.cate_ids
-        query['Description'] = request.description
-        query['FileName'] = request.file_name
-        query['FileSize'] = request.file_size
-        query['MediaExt'] = request.media_ext
-        query['StorageLocation'] = request.storage_location
-        query['Tags'] = request.tags
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.cate_ids):
+            query['CateIds'] = request.cate_ids
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_size):
+            query['FileSize'] = request.file_size
+        if not UtilClient.is_unset(request.media_ext):
+            query['MediaExt'] = request.media_ext
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1171,17 +1384,28 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateUploadAttachedMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['BusinessType'] = request.business_type
-        query['CateIds'] = request.cate_ids
-        query['Description'] = request.description
-        query['FileName'] = request.file_name
-        query['FileSize'] = request.file_size
-        query['MediaExt'] = request.media_ext
-        query['StorageLocation'] = request.storage_location
-        query['Tags'] = request.tags
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.cate_ids):
+            query['CateIds'] = request.cate_ids
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_size):
+            query['FileSize'] = request.file_size
+        if not UtilClient.is_unset(request.media_ext):
+            query['MediaExt'] = request.media_ext
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1222,15 +1446,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateUploadImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['CateId'] = request.cate_id
-        query['Description'] = request.description
-        query['ImageExt'] = request.image_ext
-        query['ImageType'] = request.image_type
-        query['StorageLocation'] = request.storage_location
-        query['Tags'] = request.tags
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_ext):
+            query['ImageExt'] = request.image_ext
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1257,15 +1490,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateUploadImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['CateId'] = request.cate_id
-        query['Description'] = request.description
-        query['ImageExt'] = request.image_ext
-        query['ImageType'] = request.image_type
-        query['StorageLocation'] = request.storage_location
-        query['Tags'] = request.tags
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_ext):
+            query['ImageExt'] = request.image_ext
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1306,18 +1548,30 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateUploadVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['CateId'] = request.cate_id
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['FileName'] = request.file_name
-        query['FileSize'] = request.file_size
-        query['StorageLocation'] = request.storage_location
-        query['Tags'] = request.tags
-        query['TemplateGroupId'] = request.template_group_id
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_size):
+            query['FileSize'] = request.file_size
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.template_group_id):
+            query['TemplateGroupId'] = request.template_group_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1344,18 +1598,30 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.CreateUploadVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['CateId'] = request.cate_id
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['FileName'] = request.file_name
-        query['FileSize'] = request.file_size
-        query['StorageLocation'] = request.storage_location
-        query['Tags'] = request.tags
-        query['TemplateGroupId'] = request.template_group_id
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
-        query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_size):
+            query['FileSize'] = request.file_size
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.template_group_id):
+            query['TemplateGroupId'] = request.template_group_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1462,7 +1728,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteAIImageInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AIImageInfoIds'] = request.aiimage_info_ids
+        if not UtilClient.is_unset(request.aiimage_info_ids):
+            query['AIImageInfoIds'] = request.aiimage_info_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1489,7 +1756,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteAIImageInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AIImageInfoIds'] = request.aiimage_info_ids
+        if not UtilClient.is_unset(request.aiimage_info_ids):
+            query['AIImageInfoIds'] = request.aiimage_info_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1530,7 +1798,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1557,7 +1826,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1598,7 +1868,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteAppInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1625,7 +1896,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteAppInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1666,7 +1938,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteAttachedMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1693,7 +1966,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteAttachedMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1734,7 +2008,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1761,7 +2036,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1802,8 +2078,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteDynamicImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DynamicImageIds'] = request.dynamic_image_ids
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.dynamic_image_ids):
+            query['DynamicImageIds'] = request.dynamic_image_ids
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1830,8 +2108,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteDynamicImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DynamicImageIds'] = request.dynamic_image_ids
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.dynamic_image_ids):
+            query['DynamicImageIds'] = request.dynamic_image_ids
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1872,11 +2152,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectIds'] = request.project_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1903,11 +2188,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectIds'] = request.project_ids
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1948,11 +2238,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeleteImageType'] = request.delete_image_type
-        query['ImageIds'] = request.image_ids
-        query['ImageType'] = request.image_type
-        query['ImageURLs'] = request.image_urls
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.delete_image_type):
+            query['DeleteImageType'] = request.delete_image_type
+        if not UtilClient.is_unset(request.image_ids):
+            query['ImageIds'] = request.image_ids
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.image_urls):
+            query['ImageURLs'] = request.image_urls
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1979,11 +2274,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DeleteImageType'] = request.delete_image_type
-        query['ImageIds'] = request.image_ids
-        query['ImageType'] = request.image_type
-        query['ImageURLs'] = request.image_urls
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.delete_image_type):
+            query['DeleteImageType'] = request.delete_image_type
+        if not UtilClient.is_unset(request.image_ids):
+            query['ImageIds'] = request.image_ids
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.image_urls):
+            query['ImageURLs'] = request.image_urls
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2017,6 +2317,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_image_with_options_async(request, runtime)
 
+    def delete_media_info_with_options(
+        self,
+        request: vod_20170321_models.DeleteMediaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DeleteMediaInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DeleteMediaInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_media_info_with_options_async(
+        self,
+        request: vod_20170321_models.DeleteMediaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DeleteMediaInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMediaInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DeleteMediaInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_media_info(
+        self,
+        request: vod_20170321_models.DeleteMediaInfoRequest,
+    ) -> vod_20170321_models.DeleteMediaInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_media_info_with_options(request, runtime)
+
+    async def delete_media_info_async(
+        self,
+        request: vod_20170321_models.DeleteMediaInfoRequest,
+    ) -> vod_20170321_models.DeleteMediaInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_media_info_with_options_async(request, runtime)
+
     def delete_message_callback_with_options(
         self,
         request: vod_20170321_models.DeleteMessageCallbackRequest,
@@ -2024,8 +2398,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteMessageCallbackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2052,8 +2428,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteMessageCallbackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2094,8 +2472,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteMezzaninesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Force'] = request.force
-        query['VideoIds'] = request.video_ids
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.video_ids):
+            query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2122,8 +2502,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteMezzaninesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Force'] = request.force
-        query['VideoIds'] = request.video_ids
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.video_ids):
+            query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2164,9 +2546,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteMultipartUploadResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['MediaType'] = request.media_type
-        query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2193,9 +2578,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteMultipartUploadResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['MediaType'] = request.media_type
-        query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2236,8 +2624,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteStreamResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2264,8 +2654,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteStreamResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2306,9 +2698,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ForceDelGroup'] = request.force_del_group
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
-        query['TranscodeTemplateIds'] = request.transcode_template_ids
+        if not UtilClient.is_unset(request.force_del_group):
+            query['ForceDelGroup'] = request.force_del_group
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_ids):
+            query['TranscodeTemplateIds'] = request.transcode_template_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2335,9 +2730,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ForceDelGroup'] = request.force_del_group
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
-        query['TranscodeTemplateIds'] = request.transcode_template_ids
+        if not UtilClient.is_unset(request.force_del_group):
+            query['ForceDelGroup'] = request.force_del_group
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_ids):
+            query['TranscodeTemplateIds'] = request.transcode_template_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2378,7 +2776,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoIds'] = request.video_ids
+        if not UtilClient.is_unset(request.video_ids):
+            query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2405,7 +2804,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoIds'] = request.video_ids
+        if not UtilClient.is_unset(request.video_ids):
+            query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2446,10 +2846,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2476,10 +2880,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2586,10 +2994,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteVodSpecificConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2616,10 +3028,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteVodSpecificConfigResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ConfigId'] = request.config_id
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2660,7 +3076,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VodTemplateId'] = request.vod_template_id
+        if not UtilClient.is_unset(request.vod_template_id):
+            query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2687,7 +3104,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VodTemplateId'] = request.vod_template_id
+        if not UtilClient.is_unset(request.vod_template_id):
+            query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2728,7 +3146,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['WatermarkId'] = request.watermark_id
+        if not UtilClient.is_unset(request.watermark_id):
+            query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2755,7 +3174,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DeleteWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['WatermarkId'] = request.watermark_id
+        if not UtilClient.is_unset(request.watermark_id):
+            query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2796,10 +3216,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribePlayTopVideosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizDate'] = request.biz_date
-        query['OwnerId'] = request.owner_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.biz_date):
+            query['BizDate'] = request.biz_date
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2826,10 +3250,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribePlayTopVideosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BizDate'] = request.biz_date
-        query['OwnerId'] = request.owner_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.biz_date):
+            query['BizDate'] = request.biz_date
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2870,9 +3298,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribePlayUserAvgResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2899,9 +3330,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribePlayUserAvgResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2942,9 +3376,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribePlayUserTotalResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2971,9 +3408,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribePlayUserTotalResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3014,10 +3454,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribePlayVideoStatisResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3044,10 +3488,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribePlayVideoStatisResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3088,11 +3536,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodAIDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AIType'] = request.aitype
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['Region'] = request.region
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.aitype):
+            query['AIType'] = request.aitype
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3119,11 +3572,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodAIDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AIType'] = request.aitype
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['Region'] = request.region
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.aitype):
+            query['AIType'] = request.aitype
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3164,9 +3622,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodCertificateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3193,9 +3654,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodCertificateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3236,13 +3700,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3269,13 +3740,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3316,8 +3794,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3344,8 +3824,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3386,10 +3868,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['FunctionNames'] = request.function_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_names):
+            query['FunctionNames'] = request.function_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3416,10 +3902,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['FunctionNames'] = request.function_names
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.function_names):
+            query['FunctionNames'] = request.function_names
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3460,9 +3950,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3489,9 +3982,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3532,12 +4028,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3564,12 +4066,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainLogResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3676,11 +4184,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3707,11 +4220,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainSrcBpsDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3752,11 +4270,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainSrcTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3783,11 +4306,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainSrcTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3828,13 +4356,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3861,13 +4396,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainTrafficDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['IspNameEn'] = request.isp_name_en
-        query['LocationNameEn'] = request.location_name_en
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3908,13 +4450,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainUsageDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Field'] = request.field
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3941,13 +4490,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodDomainUsageDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Area'] = request.area
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['Field'] = request.field
-        query['OwnerId'] = request.owner_id
-        query['StartTime'] = request.start_time
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.area):
+            query['Area'] = request.area
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.field):
+            query['Field'] = request.field
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3988,8 +4544,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodRefreshQuotaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4016,8 +4574,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodRefreshQuotaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4058,17 +4618,28 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodRefreshTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['ObjectPath'] = request.object_path
-        query['ObjectType'] = request.object_type
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SecurityToken'] = request.security_token
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4095,17 +4666,28 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodRefreshTasksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['ObjectPath'] = request.object_path
-        query['ObjectType'] = request.object_type
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SecurityToken'] = request.security_token
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4146,12 +4728,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodStorageDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['Region'] = request.region
-        query['StartTime'] = request.start_time
-        query['Storage'] = request.storage
-        query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4178,12 +4766,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodStorageDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerId'] = request.owner_id
-        query['Region'] = request.region
-        query['StartTime'] = request.start_time
-        query['Storage'] = request.storage
-        query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4224,10 +4818,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4254,10 +4852,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4298,13 +4900,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodTranscodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['Region'] = request.region
-        query['Specification'] = request.specification
-        query['StartTime'] = request.start_time
-        query['Storage'] = request.storage
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.specification):
+            query['Specification'] = request.specification
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4331,13 +4940,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodTranscodeDataResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['Interval'] = request.interval
-        query['OwnerId'] = request.owner_id
-        query['Region'] = request.region
-        query['Specification'] = request.specification
-        query['StartTime'] = request.start_time
-        query['Storage'] = request.storage
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.specification):
+            query['Specification'] = request.specification
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4378,14 +4994,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodUserDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['DomainSearchType'] = request.domain_search_type
-        query['DomainStatus'] = request.domain_status
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SecurityToken'] = request.security_token
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_search_type):
+            query['DomainSearchType'] = request.domain_search_type
+        if not UtilClient.is_unset(request.domain_status):
+            query['DomainStatus'] = request.domain_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4412,14 +5036,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodUserDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['DomainSearchType'] = request.domain_search_type
-        query['DomainStatus'] = request.domain_status
-        query['OwnerId'] = request.owner_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['SecurityToken'] = request.security_token
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.domain_search_type):
+            query['DomainSearchType'] = request.domain_search_type
+        if not UtilClient.is_unset(request.domain_status):
+            query['DomainStatus'] = request.domain_status
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4460,7 +5092,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodUserTagsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4487,7 +5120,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodUserTagsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4528,8 +5162,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodVerifyContentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4556,8 +5192,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DescribeVodVerifyContentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4598,10 +5236,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DetachAppPolicyFromIdentityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['IdentityName'] = request.identity_name
-        query['IdentityType'] = request.identity_type
-        query['PolicyNames'] = request.policy_names
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.policy_names):
+            query['PolicyNames'] = request.policy_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4628,10 +5270,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.DetachAppPolicyFromIdentityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['IdentityName'] = request.identity_name
-        query['IdentityType'] = request.identity_type
-        query['PolicyNames'] = request.policy_names
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.policy_names):
+            query['PolicyNames'] = request.policy_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4804,11 +5450,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAIImageJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4835,11 +5486,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAIImageJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4880,7 +5536,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAIMediaAuditJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4907,7 +5564,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAIMediaAuditJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4948,7 +5606,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4975,7 +5634,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5016,11 +5676,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAIVideoTagResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5047,11 +5712,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAIVideoTagResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5092,7 +5762,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAppInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5119,7 +5790,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAppInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5160,9 +5832,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAttachedMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthTimeout'] = request.auth_timeout
-        query['MediaIds'] = request.media_ids
-        query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5189,9 +5864,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAttachedMediaInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthTimeout'] = request.auth_timeout
-        query['MediaIds'] = request.media_ids
-        query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5232,10 +5910,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAuditHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5262,10 +5944,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetAuditHistoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5306,11 +5992,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetCategoriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5337,11 +6028,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetCategoriesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5382,7 +6078,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetDefaultAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5409,7 +6106,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetDefaultAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5450,11 +6148,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5481,11 +6184,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5526,13 +6234,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaterialType'] = request.material_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.material_type):
+            query['MaterialType'] = request.material_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5559,13 +6274,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaterialType'] = request.material_type
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Type'] = request.type
+        if not UtilClient.is_unset(request.material_type):
+            query['MaterialType'] = request.material_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5606,9 +6328,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetImageInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthTimeout'] = request.auth_timeout
-        query['ImageId'] = request.image_id
-        query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5635,9 +6360,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetImageInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthTimeout'] = request.auth_timeout
-        query['ImageId'] = request.image_id
-        query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5678,12 +6406,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaAuditAudioResultDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNo'] = request.page_no
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5710,12 +6444,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaAuditAudioResultDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNo'] = request.page_no
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5756,7 +6496,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaAuditResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5783,7 +6524,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaAuditResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5824,8 +6566,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaAuditResultDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5852,8 +6596,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaAuditResultDetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5894,7 +6640,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaAuditResultTimelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5921,7 +6668,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaAuditResultTimelineResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5962,11 +6710,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaDNAResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5993,11 +6746,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMediaDNAResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6038,8 +6796,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMessageCallbackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6066,8 +6826,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMessageCallbackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6108,10 +6870,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMezzanineInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AdditionType'] = request.addition_type
-        query['AuthTimeout'] = request.auth_timeout
-        query['OutputType'] = request.output_type
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.addition_type):
+            query['AdditionType'] = request.addition_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6138,10 +6904,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetMezzanineInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AdditionType'] = request.addition_type
-        query['AuthTimeout'] = request.auth_timeout
-        query['OutputType'] = request.output_type
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.addition_type):
+            query['AdditionType'] = request.addition_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6182,16 +6952,26 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetPlayInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AdditionType'] = request.addition_type
-        query['AuthTimeout'] = request.auth_timeout
-        query['Definition'] = request.definition
-        query['Formats'] = request.formats
-        query['OutputType'] = request.output_type
-        query['PlayConfig'] = request.play_config
-        query['ReAuthInfo'] = request.re_auth_info
-        query['ResultType'] = request.result_type
-        query['StreamType'] = request.stream_type
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.addition_type):
+            query['AdditionType'] = request.addition_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.definition):
+            query['Definition'] = request.definition
+        if not UtilClient.is_unset(request.formats):
+            query['Formats'] = request.formats
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.play_config):
+            query['PlayConfig'] = request.play_config
+        if not UtilClient.is_unset(request.re_auth_info):
+            query['ReAuthInfo'] = request.re_auth_info
+        if not UtilClient.is_unset(request.result_type):
+            query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.stream_type):
+            query['StreamType'] = request.stream_type
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6218,16 +6998,26 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetPlayInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AdditionType'] = request.addition_type
-        query['AuthTimeout'] = request.auth_timeout
-        query['Definition'] = request.definition
-        query['Formats'] = request.formats
-        query['OutputType'] = request.output_type
-        query['PlayConfig'] = request.play_config
-        query['ReAuthInfo'] = request.re_auth_info
-        query['ResultType'] = request.result_type
-        query['StreamType'] = request.stream_type
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.addition_type):
+            query['AdditionType'] = request.addition_type
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.definition):
+            query['Definition'] = request.definition
+        if not UtilClient.is_unset(request.formats):
+            query['Formats'] = request.formats
+        if not UtilClient.is_unset(request.output_type):
+            query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.play_config):
+            query['PlayConfig'] = request.play_config
+        if not UtilClient.is_unset(request.re_auth_info):
+            query['ReAuthInfo'] = request.re_auth_info
+        if not UtilClient.is_unset(request.result_type):
+            query['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.stream_type):
+            query['StreamType'] = request.stream_type
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6268,7 +7058,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetTranscodeSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoIds'] = request.video_ids
+        if not UtilClient.is_unset(request.video_ids):
+            query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6295,7 +7086,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetTranscodeSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoIds'] = request.video_ids
+        if not UtilClient.is_unset(request.video_ids):
+            query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6336,7 +7128,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetTranscodeTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TranscodeTaskId'] = request.transcode_task_id
+        if not UtilClient.is_unset(request.transcode_task_id):
+            query['TranscodeTaskId'] = request.transcode_task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6363,7 +7156,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetTranscodeTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TranscodeTaskId'] = request.transcode_task_id
+        if not UtilClient.is_unset(request.transcode_task_id):
+            query['TranscodeTaskId'] = request.transcode_task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6404,7 +7198,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6431,7 +7226,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6472,8 +7268,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetURLUploadInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['UploadURLs'] = request.upload_urls
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.upload_urls):
+            query['UploadURLs'] = request.upload_urls
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6500,8 +7298,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetURLUploadInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['UploadURLs'] = request.upload_urls
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.upload_urls):
+            query['UploadURLs'] = request.upload_urls
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6542,8 +7342,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetUploadDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
-        query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6570,8 +7372,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetUploadDetailsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaIds'] = request.media_ids
-        query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6612,7 +7416,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVideoInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6639,7 +7444,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVideoInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6680,7 +7486,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVideoInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoIds'] = request.video_ids
+        if not UtilClient.is_unset(request.video_ids):
+            query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6707,7 +7514,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVideoInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoIds'] = request.video_ids
+        if not UtilClient.is_unset(request.video_ids):
+            query['VideoIds'] = request.video_ids
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6748,14 +7556,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVideoListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['EndTime'] = request.end_time
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6782,14 +7598,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVideoListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['EndTime'] = request.end_time
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6830,9 +7654,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVideoPlayAuthResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ApiVersion'] = request.api_version
-        query['AuthInfoTimeout'] = request.auth_info_timeout
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.api_version):
+            query['ApiVersion'] = request.api_version
+        if not UtilClient.is_unset(request.auth_info_timeout):
+            query['AuthInfoTimeout'] = request.auth_info_timeout
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6859,9 +7686,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVideoPlayAuthResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ApiVersion'] = request.api_version
-        query['AuthInfoTimeout'] = request.auth_info_timeout
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.api_version):
+            query['ApiVersion'] = request.api_version
+        if not UtilClient.is_unset(request.auth_info_timeout):
+            query['AuthInfoTimeout'] = request.auth_info_timeout
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6902,7 +7732,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VodTemplateId'] = request.vod_template_id
+        if not UtilClient.is_unset(request.vod_template_id):
+            query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6929,7 +7760,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VodTemplateId'] = request.vod_template_id
+        if not UtilClient.is_unset(request.vod_template_id):
+            query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6970,7 +7802,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['WatermarkId'] = request.watermark_id
+        if not UtilClient.is_unset(request.watermark_id):
+            query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6997,7 +7830,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.GetWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['WatermarkId'] = request.watermark_id
+        if not UtilClient.is_unset(request.watermark_id):
+            query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7038,7 +7872,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAIImageInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7065,7 +7900,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAIImageInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7106,11 +7942,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAIJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7137,11 +7978,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAIJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7182,7 +8028,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7209,7 +8056,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7250,9 +8098,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAppInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7279,9 +8130,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAppInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7322,9 +8176,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAppPoliciesForIdentityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['IdentityName'] = request.identity_name
-        query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7351,9 +8208,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAppPoliciesForIdentityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['IdentityName'] = request.identity_name
-        query['IdentityType'] = request.identity_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7394,7 +8254,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAuditSecurityIpResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SecurityGroupName'] = request.security_group_name
+        if not UtilClient.is_unset(request.security_group_name):
+            query['SecurityGroupName'] = request.security_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7421,7 +8282,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListAuditSecurityIpResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SecurityGroupName'] = request.security_group_name
+        if not UtilClient.is_unset(request.security_group_name):
+            query['SecurityGroupName'] = request.security_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7462,7 +8324,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListDynamicImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7489,7 +8352,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListDynamicImageResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7530,14 +8394,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListLiveRecordVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
-        query['StreamName'] = request.stream_name
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.stream_name):
+            query['StreamName'] = request.stream_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7564,14 +8436,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListLiveRecordVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['DomainName'] = request.domain_name
-        query['EndTime'] = request.end_time
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
-        query['StreamName'] = request.stream_name
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.stream_name):
+            query['StreamName'] = request.stream_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7612,11 +8492,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListMediaDNADeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7643,11 +8528,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListMediaDNADeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobIds'] = request.job_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7688,11 +8578,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListSnapshotsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthTimeout'] = request.auth_timeout
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SnapshotType'] = request.snapshot_type
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.snapshot_type):
+            query['SnapshotType'] = request.snapshot_type
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7719,11 +8614,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListSnapshotsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthTimeout'] = request.auth_timeout
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['SnapshotType'] = request.snapshot_type
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.auth_timeout):
+            query['AuthTimeout'] = request.auth_timeout
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.snapshot_type):
+            query['SnapshotType'] = request.snapshot_type
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7764,11 +8664,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListTranscodeTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7795,11 +8700,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListTranscodeTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['StartTime'] = request.start_time
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7840,7 +8750,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7867,7 +8778,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8040,8 +8952,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8068,8 +8982,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8110,7 +9026,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8137,7 +9054,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ListWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8171,6 +9089,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_watermark_with_options_async(request, runtime)
 
+    def modify_media_info_with_options(
+        self,
+        request: vod_20170321_models.ModifyMediaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.ModifyMediaInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ai_label_url):
+            query['AiLabelUrl'] = request.ai_label_url
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_data):
+            query['DynamicData'] = request.dynamic_data
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMediaInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.ModifyMediaInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_media_info_with_options_async(
+        self,
+        request: vod_20170321_models.ModifyMediaInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.ModifyMediaInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ai_label_url):
+            query['AiLabelUrl'] = request.ai_label_url
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dynamic_data):
+            query['DynamicData'] = request.dynamic_data
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMediaInfo',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.ModifyMediaInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_media_info(
+        self,
+        request: vod_20170321_models.ModifyMediaInfoRequest,
+    ) -> vod_20170321_models.ModifyMediaInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_media_info_with_options(request, runtime)
+
+    async def modify_media_info_async(
+        self,
+        request: vod_20170321_models.ModifyMediaInfoRequest,
+    ) -> vod_20170321_models.ModifyMediaInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_media_info_with_options_async(request, runtime)
+
     def move_app_resource_with_options(
         self,
         request: vod_20170321_models.MoveAppResourceRequest,
@@ -8178,9 +9214,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.MoveAppResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceIds'] = request.resource_ids
-        query['ResourceType'] = request.resource_type
-        query['TargetAppId'] = request.target_app_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.target_app_id):
+            query['TargetAppId'] = request.target_app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8207,9 +9246,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.MoveAppResourceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceIds'] = request.resource_ids
-        query['ResourceType'] = request.resource_type
-        query['TargetAppId'] = request.target_app_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.target_app_id):
+            query['TargetAppId'] = request.target_app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8250,9 +9292,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.PreloadVodObjectCachesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ObjectPath'] = request.object_path
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8279,9 +9324,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.PreloadVodObjectCachesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ObjectPath'] = request.object_path
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8322,17 +9370,28 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ProduceEditingProjectVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['MediaMetadata'] = request.media_metadata
-        query['OwnerId'] = request.owner_id
-        query['ProduceConfig'] = request.produce_config
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.media_metadata):
+            query['MediaMetadata'] = request.media_metadata
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.produce_config):
+            query['ProduceConfig'] = request.produce_config
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8359,17 +9418,28 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.ProduceEditingProjectVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['MediaMetadata'] = request.media_metadata
-        query['OwnerId'] = request.owner_id
-        query['ProduceConfig'] = request.produce_config
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.media_metadata):
+            query['MediaMetadata'] = request.media_metadata
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.produce_config):
+            query['ProduceConfig'] = request.produce_config
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8410,10 +9480,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.RefreshUploadVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8440,10 +9514,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.RefreshUploadVideoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8484,10 +9562,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.RefreshVodObjectCachesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ObjectPath'] = request.object_path
-        query['ObjectType'] = request.object_type
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8514,10 +9596,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.RefreshVodObjectCachesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ObjectPath'] = request.object_path
-        query['ObjectType'] = request.object_type
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.object_path):
+            query['ObjectPath'] = request.object_path
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8558,10 +9644,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.RegisterMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegisterMetadatas'] = request.register_metadatas
-        query['TemplateGroupId'] = request.template_group_id
-        query['UserData'] = request.user_data
-        query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.register_metadatas):
+            query['RegisterMetadatas'] = request.register_metadatas
+        if not UtilClient.is_unset(request.template_group_id):
+            query['TemplateGroupId'] = request.template_group_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8588,10 +9678,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.RegisterMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RegisterMetadatas'] = request.register_metadatas
-        query['TemplateGroupId'] = request.template_group_id
-        query['UserData'] = request.user_data
-        query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.register_metadatas):
+            query['RegisterMetadatas'] = request.register_metadatas
+        if not UtilClient.is_unset(request.template_group_id):
+            query['TemplateGroupId'] = request.template_group_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8632,17 +9726,28 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SearchEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8669,17 +9774,28 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SearchEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EndTime'] = request.end_time
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SortBy'] = request.sort_by
-        query['StartTime'] = request.start_time
-        query['Status'] = request.status
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8720,13 +9836,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SearchMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Fields'] = request.fields
-        query['Match'] = request.match
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['ScrollToken'] = request.scroll_token
-        query['SearchType'] = request.search_type
-        query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
+        if not UtilClient.is_unset(request.match):
+            query['Match'] = request.match
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_token):
+            query['ScrollToken'] = request.scroll_token
+        if not UtilClient.is_unset(request.search_type):
+            query['SearchType'] = request.search_type
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8753,13 +9876,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SearchMediaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Fields'] = request.fields
-        query['Match'] = request.match
-        query['PageNo'] = request.page_no
-        query['PageSize'] = request.page_size
-        query['ScrollToken'] = request.scroll_token
-        query['SearchType'] = request.search_type
-        query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
+        if not UtilClient.is_unset(request.match):
+            query['Match'] = request.match
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_token):
+            query['ScrollToken'] = request.scroll_token
+        if not UtilClient.is_unset(request.search_type):
+            query['SearchType'] = request.search_type
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8800,9 +9930,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetAuditSecurityIpResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ips'] = request.ips
-        query['OperateMode'] = request.operate_mode
-        query['SecurityGroupName'] = request.security_group_name
+        if not UtilClient.is_unset(request.ips):
+            query['Ips'] = request.ips
+        if not UtilClient.is_unset(request.operate_mode):
+            query['OperateMode'] = request.operate_mode
+        if not UtilClient.is_unset(request.security_group_name):
+            query['SecurityGroupName'] = request.security_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8829,9 +9962,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetAuditSecurityIpResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Ips'] = request.ips
-        query['OperateMode'] = request.operate_mode
-        query['SecurityGroupName'] = request.security_group_name
+        if not UtilClient.is_unset(request.ips):
+            query['Ips'] = request.ips
+        if not UtilClient.is_unset(request.operate_mode):
+            query['OperateMode'] = request.operate_mode
+        if not UtilClient.is_unset(request.security_group_name):
+            query['SecurityGroupName'] = request.security_group_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8872,13 +10008,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetCrossdomainContentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Content'] = request.content
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceRealOwnerId'] = request.resource_real_owner_id
-        query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_real_owner_id):
+            query['ResourceRealOwnerId'] = request.resource_real_owner_id
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8905,13 +10048,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetCrossdomainContentResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Content'] = request.content
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceRealOwnerId'] = request.resource_real_owner_id
-        query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_real_owner_id):
+            query['ResourceRealOwnerId'] = request.resource_real_owner_id
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8952,7 +10102,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8979,7 +10130,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetDefaultAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9020,7 +10172,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetDefaultTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9047,7 +10200,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetDefaultTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9088,7 +10242,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetDefaultWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['WatermarkId'] = request.watermark_id
+        if not UtilClient.is_unset(request.watermark_id):
+            query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9115,7 +10270,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetDefaultWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['WatermarkId'] = request.watermark_id
+        if not UtilClient.is_unset(request.watermark_id):
+            query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9156,12 +10312,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaterialIds'] = request.material_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.material_ids):
+            query['MaterialIds'] = request.material_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9188,12 +10350,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetEditingProjectMaterialsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MaterialIds'] = request.material_ids
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.material_ids):
+            query['MaterialIds'] = request.material_ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9234,15 +10402,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetMessageCallbackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['AuthKey'] = request.auth_key
-        query['AuthSwitch'] = request.auth_switch
-        query['CallbackType'] = request.callback_type
-        query['CallbackURL'] = request.callback_url
-        query['EventTypeList'] = request.event_type_list
-        query['MnsEndpoint'] = request.mns_endpoint
-        query['MnsQueueName'] = request.mns_queue_name
-        query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.auth_key):
+            query['AuthKey'] = request.auth_key
+        if not UtilClient.is_unset(request.auth_switch):
+            query['AuthSwitch'] = request.auth_switch
+        if not UtilClient.is_unset(request.callback_type):
+            query['CallbackType'] = request.callback_type
+        if not UtilClient.is_unset(request.callback_url):
+            query['CallbackURL'] = request.callback_url
+        if not UtilClient.is_unset(request.event_type_list):
+            query['EventTypeList'] = request.event_type_list
+        if not UtilClient.is_unset(request.mns_endpoint):
+            query['MnsEndpoint'] = request.mns_endpoint
+        if not UtilClient.is_unset(request.mns_queue_name):
+            query['MnsQueueName'] = request.mns_queue_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9269,15 +10446,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetMessageCallbackResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['AuthKey'] = request.auth_key
-        query['AuthSwitch'] = request.auth_switch
-        query['CallbackType'] = request.callback_type
-        query['CallbackURL'] = request.callback_url
-        query['EventTypeList'] = request.event_type_list
-        query['MnsEndpoint'] = request.mns_endpoint
-        query['MnsQueueName'] = request.mns_queue_name
-        query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.auth_key):
+            query['AuthKey'] = request.auth_key
+        if not UtilClient.is_unset(request.auth_switch):
+            query['AuthSwitch'] = request.auth_switch
+        if not UtilClient.is_unset(request.callback_type):
+            query['CallbackType'] = request.callback_type
+        if not UtilClient.is_unset(request.callback_url):
+            query['CallbackURL'] = request.callback_url
+        if not UtilClient.is_unset(request.event_type_list):
+            query['EventTypeList'] = request.event_type_list
+        if not UtilClient.is_unset(request.mns_endpoint):
+            query['MnsEndpoint'] = request.mns_endpoint
+        if not UtilClient.is_unset(request.mns_queue_name):
+            query['MnsQueueName'] = request.mns_queue_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9318,13 +10504,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetVodDomainCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertName'] = request.cert_name
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SSLPri'] = request.sslpri
-        query['SSLProtocol'] = request.sslprotocol
-        query['SSLPub'] = request.sslpub
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslpri):
+            query['SSLPri'] = request.sslpri
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9351,13 +10544,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SetVodDomainCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CertName'] = request.cert_name
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SSLPri'] = request.sslpri
-        query['SSLProtocol'] = request.sslprotocol
-        query['SSLPub'] = request.sslpub
-        query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslpri):
+            query['SSLPri'] = request.sslpri
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9398,13 +10598,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitAIImageAuditJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaAuditConfiguration'] = request.media_audit_configuration
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.media_audit_configuration):
+            query['MediaAuditConfiguration'] = request.media_audit_configuration
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9431,13 +10638,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitAIImageAuditJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaAuditConfiguration'] = request.media_audit_configuration
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.media_audit_configuration):
+            query['MediaAuditConfiguration'] = request.media_audit_configuration
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9478,14 +10692,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitAIImageJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AIPipelineId'] = request.aipipeline_id
-        query['AITemplateId'] = request.aitemplate_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.aipipeline_id):
+            query['AIPipelineId'] = request.aipipeline_id
+        if not UtilClient.is_unset(request.aitemplate_id):
+            query['AITemplateId'] = request.aitemplate_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9512,14 +10734,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitAIImageJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AIPipelineId'] = request.aipipeline_id
-        query['AITemplateId'] = request.aitemplate_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UserData'] = request.user_data
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.aipipeline_id):
+            query['AIPipelineId'] = request.aipipeline_id
+        if not UtilClient.is_unset(request.aitemplate_id):
+            query['AITemplateId'] = request.aitemplate_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9560,14 +10790,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitAIJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Types'] = request.types
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9594,14 +10832,22 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitAIJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Config'] = request.config
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Types'] = request.types
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9642,11 +10888,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitAIMediaAuditJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaAuditConfiguration'] = request.media_audit_configuration
-        query['MediaId'] = request.media_id
-        query['MediaType'] = request.media_type
-        query['TemplateId'] = request.template_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.media_audit_configuration):
+            query['MediaAuditConfiguration'] = request.media_audit_configuration
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9673,11 +10924,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitAIMediaAuditJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaAuditConfiguration'] = request.media_audit_configuration
-        query['MediaId'] = request.media_id
-        query['MediaType'] = request.media_type
-        query['TemplateId'] = request.template_id
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.media_audit_configuration):
+            query['MediaAuditConfiguration'] = request.media_audit_configuration
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9718,9 +10974,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitDynamicImageJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DynamicImageTemplateId'] = request.dynamic_image_template_id
-        query['OverrideParams'] = request.override_params
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.dynamic_image_template_id):
+            query['DynamicImageTemplateId'] = request.dynamic_image_template_id
+        if not UtilClient.is_unset(request.override_params):
+            query['OverrideParams'] = request.override_params
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9747,9 +11006,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitDynamicImageJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DynamicImageTemplateId'] = request.dynamic_image_template_id
-        query['OverrideParams'] = request.override_params
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.dynamic_image_template_id):
+            query['DynamicImageTemplateId'] = request.dynamic_image_template_id
+        if not UtilClient.is_unset(request.override_params):
+            query['OverrideParams'] = request.override_params
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9790,19 +11052,32 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitLiveEditingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Clips'] = request.clips
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['DomainName'] = request.domain_name
-        query['MediaMetadata'] = request.media_metadata
-        query['OwnerId'] = request.owner_id
-        query['ProduceConfig'] = request.produce_config
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StreamName'] = request.stream_name
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.clips):
+            query['Clips'] = request.clips
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.media_metadata):
+            query['MediaMetadata'] = request.media_metadata
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.produce_config):
+            query['ProduceConfig'] = request.produce_config
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.stream_name):
+            query['StreamName'] = request.stream_name
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9829,19 +11104,32 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitLiveEditingResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Clips'] = request.clips
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['DomainName'] = request.domain_name
-        query['MediaMetadata'] = request.media_metadata
-        query['OwnerId'] = request.owner_id
-        query['ProduceConfig'] = request.produce_config
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StreamName'] = request.stream_name
-        query['Title'] = request.title
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.clips):
+            query['Clips'] = request.clips
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.media_metadata):
+            query['MediaMetadata'] = request.media_metadata
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.produce_config):
+            query['ProduceConfig'] = request.produce_config
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.stream_name):
+            query['StreamName'] = request.stream_name
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9882,11 +11170,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitMediaDNADeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9913,11 +11206,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitMediaDNADeleteJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9958,8 +11256,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitPreprocessJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PreprocessType'] = request.preprocess_type
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.preprocess_type):
+            query['PreprocessType'] = request.preprocess_type
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9986,8 +11286,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitPreprocessJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['PreprocessType'] = request.preprocess_type
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.preprocess_type):
+            query['PreprocessType'] = request.preprocess_type
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10028,15 +11330,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitSnapshotJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Count'] = request.count
-        query['Height'] = request.height
-        query['Interval'] = request.interval
-        query['SnapshotTemplateId'] = request.snapshot_template_id
-        query['SpecifiedOffsetTime'] = request.specified_offset_time
-        query['SpriteSnapshotConfig'] = request.sprite_snapshot_config
-        query['UserData'] = request.user_data
-        query['VideoId'] = request.video_id
-        query['Width'] = request.width
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.height):
+            query['Height'] = request.height
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.snapshot_template_id):
+            query['SnapshotTemplateId'] = request.snapshot_template_id
+        if not UtilClient.is_unset(request.specified_offset_time):
+            query['SpecifiedOffsetTime'] = request.specified_offset_time
+        if not UtilClient.is_unset(request.sprite_snapshot_config):
+            query['SpriteSnapshotConfig'] = request.sprite_snapshot_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.width):
+            query['Width'] = request.width
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10063,15 +11374,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitSnapshotJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Count'] = request.count
-        query['Height'] = request.height
-        query['Interval'] = request.interval
-        query['SnapshotTemplateId'] = request.snapshot_template_id
-        query['SpecifiedOffsetTime'] = request.specified_offset_time
-        query['SpriteSnapshotConfig'] = request.sprite_snapshot_config
-        query['UserData'] = request.user_data
-        query['VideoId'] = request.video_id
-        query['Width'] = request.width
+        if not UtilClient.is_unset(request.count):
+            query['Count'] = request.count
+        if not UtilClient.is_unset(request.height):
+            query['Height'] = request.height
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.snapshot_template_id):
+            query['SnapshotTemplateId'] = request.snapshot_template_id
+        if not UtilClient.is_unset(request.specified_offset_time):
+            query['SpecifiedOffsetTime'] = request.specified_offset_time
+        if not UtilClient.is_unset(request.sprite_snapshot_config):
+            query['SpriteSnapshotConfig'] = request.sprite_snapshot_config
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.width):
+            query['Width'] = request.width
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10112,13 +11432,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitTranscodeJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EncryptConfig'] = request.encrypt_config
-        query['OverrideParams'] = request.override_params
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['TemplateGroupId'] = request.template_group_id
-        query['UserData'] = request.user_data
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.encrypt_config):
+            query['EncryptConfig'] = request.encrypt_config
+        if not UtilClient.is_unset(request.override_params):
+            query['OverrideParams'] = request.override_params
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.template_group_id):
+            query['TemplateGroupId'] = request.template_group_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10145,13 +11472,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitTranscodeJobsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EncryptConfig'] = request.encrypt_config
-        query['OverrideParams'] = request.override_params
-        query['PipelineId'] = request.pipeline_id
-        query['Priority'] = request.priority
-        query['TemplateGroupId'] = request.template_group_id
-        query['UserData'] = request.user_data
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.encrypt_config):
+            query['EncryptConfig'] = request.encrypt_config
+        if not UtilClient.is_unset(request.override_params):
+            query['OverrideParams'] = request.override_params
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.template_group_id):
+            query['TemplateGroupId'] = request.template_group_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10192,8 +11526,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitWorkflowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10220,8 +11556,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.SubmitWorkflowJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['MediaId'] = request.media_id
-        query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10262,10 +11600,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.TagVodResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10292,10 +11634,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.TagVodResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10336,11 +11682,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UnTagVodResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10367,11 +11718,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UnTagVodResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerId'] = request.owner_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10412,9 +11768,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateConfig'] = request.template_config
-        query['TemplateId'] = request.template_id
-        query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10441,9 +11800,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateAITemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateConfig'] = request.template_config
-        query['TemplateId'] = request.template_id
-        query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10484,10 +11846,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateAppInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['AppName'] = request.app_name
-        query['Description'] = request.description
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10514,10 +11880,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateAppInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['AppName'] = request.app_name
-        query['Description'] = request.description
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10558,7 +11928,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateAttachedMediaInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UpdateContent'] = request.update_content
+        if not UtilClient.is_unset(request.update_content):
+            query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10585,7 +11956,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateAttachedMediaInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UpdateContent'] = request.update_content
+        if not UtilClient.is_unset(request.update_content):
+            query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10626,8 +11998,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CateName'] = request.cate_name
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cate_name):
+            query['CateName'] = request.cate_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10654,8 +12028,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateCategoryResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CateName'] = request.cate_name
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cate_name):
+            query['CateName'] = request.cate_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10696,15 +12072,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10731,15 +12116,24 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateEditingProjectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['OwnerAccount'] = request.owner_account
-        query['OwnerId'] = request.owner_id
-        query['ProjectId'] = request.project_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Timeline'] = request.timeline
-        query['Title'] = request.title
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.timeline):
+            query['Timeline'] = request.timeline
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10780,7 +12174,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateImageInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UpdateContent'] = request.update_content
+        if not UtilClient.is_unset(request.update_content):
+            query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10807,7 +12202,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateImageInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UpdateContent'] = request.update_content
+        if not UtilClient.is_unset(request.update_content):
+            query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10848,8 +12244,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateStreamInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10876,8 +12274,10 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateStreamInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['JobId'] = request.job_id
-        query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10918,10 +12318,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Locked'] = request.locked
-        query['Name'] = request.name
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
-        query['TranscodeTemplateList'] = request.transcode_template_list
+        if not UtilClient.is_unset(request.locked):
+            query['Locked'] = request.locked
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_list):
+            query['TranscodeTemplateList'] = request.transcode_template_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10948,10 +12352,14 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Locked'] = request.locked
-        query['Name'] = request.name
-        query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
-        query['TranscodeTemplateList'] = request.transcode_template_list
+        if not UtilClient.is_unset(request.locked):
+            query['Locked'] = request.locked
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.transcode_template_group_id):
+            query['TranscodeTemplateGroupId'] = request.transcode_template_group_id
+        if not UtilClient.is_unset(request.transcode_template_list):
+            query['TranscodeTemplateList'] = request.transcode_template_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10992,12 +12400,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateVideoInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['Tags'] = request.tags
-        query['Title'] = request.title
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11024,12 +12438,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateVideoInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CateId'] = request.cate_id
-        query['CoverURL'] = request.cover_url
-        query['Description'] = request.description
-        query['Tags'] = request.tags
-        query['Title'] = request.title
-        query['VideoId'] = request.video_id
+        if not UtilClient.is_unset(request.cate_id):
+            query['CateId'] = request.cate_id
+        if not UtilClient.is_unset(request.cover_url):
+            query['CoverURL'] = request.cover_url
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.video_id):
+            query['VideoId'] = request.video_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11070,7 +12490,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateVideoInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UpdateContent'] = request.update_content
+        if not UtilClient.is_unset(request.update_content):
+            query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11097,7 +12518,8 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateVideoInfosResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['UpdateContent'] = request.update_content
+        if not UtilClient.is_unset(request.update_content):
+            query['UpdateContent'] = request.update_content
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11138,11 +12560,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11169,11 +12596,16 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateVodDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['SecurityToken'] = request.security_token
-        query['Sources'] = request.sources
-        query['TopLevelDomain'] = request.top_level_domain
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.sources):
+            query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.top_level_domain):
+            query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11214,9 +12646,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['TemplateConfig'] = request.template_config
-        query['VodTemplateId'] = request.vod_template_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not UtilClient.is_unset(request.vod_template_id):
+            query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11243,9 +12678,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateVodTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['TemplateConfig'] = request.template_config
-        query['VodTemplateId'] = request.vod_template_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_config):
+            query['TemplateConfig'] = request.template_config
+        if not UtilClient.is_unset(request.vod_template_id):
+            query['VodTemplateId'] = request.vod_template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11286,9 +12724,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['WatermarkConfig'] = request.watermark_config
-        query['WatermarkId'] = request.watermark_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.watermark_config):
+            query['WatermarkConfig'] = request.watermark_config
+        if not UtilClient.is_unset(request.watermark_id):
+            query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11315,9 +12756,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UpdateWatermarkResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Name'] = request.name
-        query['WatermarkConfig'] = request.watermark_config
-        query['WatermarkId'] = request.watermark_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.watermark_config):
+            query['WatermarkConfig'] = request.watermark_config
+        if not UtilClient.is_unset(request.watermark_id):
+            query['WatermarkId'] = request.watermark_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11358,13 +12802,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UploadMediaByURLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['StorageLocation'] = request.storage_location
-        query['TemplateGroupId'] = request.template_group_id
-        query['UploadMetadatas'] = request.upload_metadatas
-        query['UploadURLs'] = request.upload_urls
-        query['UserData'] = request.user_data
-        query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.template_group_id):
+            query['TemplateGroupId'] = request.template_group_id
+        if not UtilClient.is_unset(request.upload_metadatas):
+            query['UploadMetadatas'] = request.upload_metadatas
+        if not UtilClient.is_unset(request.upload_urls):
+            query['UploadURLs'] = request.upload_urls
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11391,13 +12842,20 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UploadMediaByURLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppId'] = request.app_id
-        query['StorageLocation'] = request.storage_location
-        query['TemplateGroupId'] = request.template_group_id
-        query['UploadMetadatas'] = request.upload_metadatas
-        query['UploadURLs'] = request.upload_urls
-        query['UserData'] = request.user_data
-        query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.template_group_id):
+            query['TemplateGroupId'] = request.template_group_id
+        if not UtilClient.is_unset(request.upload_metadatas):
+            query['UploadMetadatas'] = request.upload_metadatas
+        if not UtilClient.is_unset(request.upload_urls):
+            query['UploadURLs'] = request.upload_urls
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11438,12 +12896,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UploadStreamByURLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Definition'] = request.definition
-        query['FileExtension'] = request.file_extension
-        query['HDRType'] = request.hdrtype
-        query['MediaId'] = request.media_id
-        query['StreamURL'] = request.stream_url
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.definition):
+            query['Definition'] = request.definition
+        if not UtilClient.is_unset(request.file_extension):
+            query['FileExtension'] = request.file_extension
+        if not UtilClient.is_unset(request.hdrtype):
+            query['HDRType'] = request.hdrtype
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.stream_url):
+            query['StreamURL'] = request.stream_url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11470,12 +12934,18 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.UploadStreamByURLResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Definition'] = request.definition
-        query['FileExtension'] = request.file_extension
-        query['HDRType'] = request.hdrtype
-        query['MediaId'] = request.media_id
-        query['StreamURL'] = request.stream_url
-        query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.definition):
+            query['Definition'] = request.definition
+        if not UtilClient.is_unset(request.file_extension):
+            query['FileExtension'] = request.file_extension
+        if not UtilClient.is_unset(request.hdrtype):
+            query['HDRType'] = request.hdrtype
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.stream_url):
+            query['StreamURL'] = request.stream_url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11516,9 +12986,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.VerifyVodDomainOwnerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['VerifyType'] = request.verify_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11545,9 +13018,12 @@ class Client(OpenApiClient):
     ) -> vod_20170321_models.VerifyVodDomainOwnerResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['OwnerId'] = request.owner_id
-        query['VerifyType'] = request.verify_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
