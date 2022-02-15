@@ -468,16 +468,22 @@ class CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions(Tea
 class CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(TeaModel):
     def __init__(
         self,
+        enable_webhook: bool = None,
         notice_channels: List[str] = None,
         notice_objects: List[int] = None,
         notice_time: str = None,
+        service_group_ids: List[int] = None,
     ):
+        # 是否支持群通知
+        self.enable_webhook = enable_webhook
         # 升级通知策略
         self.notice_channels = notice_channels
         # 升级通知对象id列表
         self.notice_objects = notice_objects
         # 通知时间
         self.notice_time = notice_time
+        # 服务组id
+        self.service_group_ids = service_group_ids
 
     def validate(self):
         pass
@@ -488,22 +494,30 @@ class CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
             return _map
 
         result = dict()
+        if self.enable_webhook is not None:
+            result['enableWebhook'] = self.enable_webhook
         if self.notice_channels is not None:
             result['noticeChannels'] = self.notice_channels
         if self.notice_objects is not None:
             result['noticeObjects'] = self.notice_objects
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
+        if self.service_group_ids is not None:
+            result['serviceGroupIds'] = self.service_group_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('enableWebhook') is not None:
+            self.enable_webhook = m.get('enableWebhook')
         if m.get('noticeChannels') is not None:
             self.notice_channels = m.get('noticeChannels')
         if m.get('noticeObjects') is not None:
             self.notice_objects = m.get('noticeObjects')
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
+        if m.get('serviceGroupIds') is not None:
+            self.service_group_ids = m.get('serviceGroupIds')
         return self
 
 
@@ -1252,6 +1266,7 @@ class CreateProblemRequest(TeaModel):
         problem_notify_type: str = None,
         problem_status: str = None,
         progress_summary: str = None,
+        progress_summary_rich_text_id: int = None,
         recovery_time: str = None,
         related_service_id: int = None,
         service_group_ids: List[int] = None,
@@ -1278,6 +1293,8 @@ class CreateProblemRequest(TeaModel):
         self.problem_status = problem_status
         # 进展摘要
         self.progress_summary = progress_summary
+        # 进展摘要富文本id
+        self.progress_summary_rich_text_id = progress_summary_rich_text_id
         # 恢复时间
         self.recovery_time = recovery_time
         # 所属服务
@@ -1316,6 +1333,8 @@ class CreateProblemRequest(TeaModel):
             result['problemStatus'] = self.problem_status
         if self.progress_summary is not None:
             result['progressSummary'] = self.progress_summary
+        if self.progress_summary_rich_text_id is not None:
+            result['progressSummaryRichTextId'] = self.progress_summary_rich_text_id
         if self.recovery_time is not None:
             result['recoveryTime'] = self.recovery_time
         if self.related_service_id is not None:
@@ -1348,6 +1367,8 @@ class CreateProblemRequest(TeaModel):
             self.problem_status = m.get('problemStatus')
         if m.get('progressSummary') is not None:
             self.progress_summary = m.get('progressSummary')
+        if m.get('progressSummaryRichTextId') is not None:
+            self.progress_summary_rich_text_id = m.get('progressSummaryRichTextId')
         if m.get('recoveryTime') is not None:
             self.recovery_time = m.get('recoveryTime')
         if m.get('relatedServiceId') is not None:
@@ -2262,6 +2283,164 @@ class CreateProblemTimelinesResponse(TeaModel):
         return self
 
 
+class CreateRichTextRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        instance_type: str = None,
+        rich_text: str = None,
+    ):
+        # 资源id
+        self.instance_id = instance_id
+        # 资源类型
+        self.instance_type = instance_type
+        # 文本内容
+        self.rich_text = rich_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.rich_text is not None:
+            result['richText'] = self.rich_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('richText') is not None:
+            self.rich_text = m.get('richText')
+        return self
+
+
+class CreateRichTextResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        instance_type: int = None,
+        rich_text: str = None,
+    ):
+        # 资源id
+        self.instance_id = instance_id
+        # 资源类型
+        self.instance_type = instance_type
+        # 富文本内容
+        self.rich_text = rich_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.rich_text is not None:
+            result['richText'] = self.rich_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('richText') is not None:
+            self.rich_text = m.get('richText')
+        return self
+
+
+class CreateRichTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateRichTextResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # data
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = CreateRichTextResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateRichTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateRichTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateRichTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateRouteRuleRequestRouteChildRulesConditions(TeaModel):
     def __init__(
         self,
@@ -2307,9 +2486,12 @@ class CreateRouteRuleRequestRouteChildRulesConditions(TeaModel):
 class CreateRouteRuleRequestRouteChildRules(TeaModel):
     def __init__(
         self,
+        child_condition_relation: int = None,
         conditions: List[CreateRouteRuleRequestRouteChildRulesConditions] = None,
         monitor_source_id: int = None,
     ):
+        # 0-与，1-或
+        self.child_condition_relation = child_condition_relation
         # 条件
         self.conditions = conditions
         # 监控源ID
@@ -2327,6 +2509,8 @@ class CreateRouteRuleRequestRouteChildRules(TeaModel):
             return _map
 
         result = dict()
+        if self.child_condition_relation is not None:
+            result['childConditionRelation'] = self.child_condition_relation
         result['conditions'] = []
         if self.conditions is not None:
             for k in self.conditions:
@@ -2337,6 +2521,8 @@ class CreateRouteRuleRequestRouteChildRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('childConditionRelation') is not None:
+            self.child_condition_relation = m.get('childConditionRelation')
         self.conditions = []
         if m.get('conditions') is not None:
             for k in m.get('conditions'):
@@ -2352,6 +2538,7 @@ class CreateRouteRuleRequest(TeaModel):
         self,
         assign_object_id: int = None,
         assign_object_type: str = None,
+        child_rule_relation: str = None,
         client_token: str = None,
         effection: str = None,
         enable_status: str = None,
@@ -2369,6 +2556,8 @@ class CreateRouteRuleRequest(TeaModel):
         self.assign_object_id = assign_object_id
         # 事件分派对象类型 SERVICEGROUP服务组 USER 单个用户
         self.assign_object_type = assign_object_type
+        # 子规则关系AND,OR
+        self.child_rule_relation = child_rule_relation
         # 幂等号
         self.client_token = client_token
         # 影响程度 LOW-一般 HIGH-严重
@@ -2410,6 +2599,8 @@ class CreateRouteRuleRequest(TeaModel):
             result['assignObjectId'] = self.assign_object_id
         if self.assign_object_type is not None:
             result['assignObjectType'] = self.assign_object_type
+        if self.child_rule_relation is not None:
+            result['childRuleRelation'] = self.child_rule_relation
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         if self.effection is not None:
@@ -2444,6 +2635,8 @@ class CreateRouteRuleRequest(TeaModel):
             self.assign_object_id = m.get('assignObjectId')
         if m.get('assignObjectType') is not None:
             self.assign_object_type = m.get('assignObjectType')
+        if m.get('childRuleRelation') is not None:
+            self.child_rule_relation = m.get('childRuleRelation')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         if m.get('effection') is not None:
@@ -2720,11 +2913,61 @@ class CreateServiceResponse(TeaModel):
         return self
 
 
+class CreateServiceGroupRequestMonitorSourceTemplates(TeaModel):
+    def __init__(
+        self,
+        monitor_source_id: int = None,
+        monitor_source_name: str = None,
+        template_content: str = None,
+        template_id: int = None,
+    ):
+        # 监控源ID
+        self.monitor_source_id = monitor_source_id
+        # 监控源名字
+        self.monitor_source_name = monitor_source_name
+        # 模板内容
+        self.template_content = template_content
+        # 消息模版ID
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.monitor_source_id is not None:
+            result['monitorSourceId'] = self.monitor_source_id
+        if self.monitor_source_name is not None:
+            result['monitorSourceName'] = self.monitor_source_name
+        if self.template_content is not None:
+            result['templateContent'] = self.template_content
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('monitorSourceId') is not None:
+            self.monitor_source_id = m.get('monitorSourceId')
+        if m.get('monitorSourceName') is not None:
+            self.monitor_source_name = m.get('monitorSourceName')
+        if m.get('templateContent') is not None:
+            self.template_content = m.get('templateContent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
 class CreateServiceGroupRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
         enable_webhook: str = None,
+        monitor_source_templates: List[CreateServiceGroupRequestMonitorSourceTemplates] = None,
         service_group_description: str = None,
         service_group_name: str = None,
         user_ids: List[int] = None,
@@ -2735,6 +2978,8 @@ class CreateServiceGroupRequest(TeaModel):
         self.client_token = client_token
         # ENABLE 启用 DISABLE 禁用
         self.enable_webhook = enable_webhook
+        # 监控源消息模版
+        self.monitor_source_templates = monitor_source_templates
         # 服务描述
         self.service_group_description = service_group_description
         # 服务小组名称
@@ -2747,7 +2992,10 @@ class CreateServiceGroupRequest(TeaModel):
         self.webhook_type = webhook_type
 
     def validate(self):
-        pass
+        if self.monitor_source_templates:
+            for k in self.monitor_source_templates:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2759,6 +3007,10 @@ class CreateServiceGroupRequest(TeaModel):
             result['clientToken'] = self.client_token
         if self.enable_webhook is not None:
             result['enableWebhook'] = self.enable_webhook
+        result['monitorSourceTemplates'] = []
+        if self.monitor_source_templates is not None:
+            for k in self.monitor_source_templates:
+                result['monitorSourceTemplates'].append(k.to_map() if k else None)
         if self.service_group_description is not None:
             result['serviceGroupDescription'] = self.service_group_description
         if self.service_group_name is not None:
@@ -2777,6 +3029,11 @@ class CreateServiceGroupRequest(TeaModel):
             self.client_token = m.get('clientToken')
         if m.get('enableWebhook') is not None:
             self.enable_webhook = m.get('enableWebhook')
+        self.monitor_source_templates = []
+        if m.get('monitorSourceTemplates') is not None:
+            for k in m.get('monitorSourceTemplates'):
+                temp_model = CreateServiceGroupRequestMonitorSourceTemplates()
+                self.monitor_source_templates.append(temp_model.from_map(k))
         if m.get('serviceGroupDescription') is not None:
             self.service_group_description = m.get('serviceGroupDescription')
         if m.get('serviceGroupName') is not None:
@@ -6732,6 +6989,471 @@ class FinishProblemResponse(TeaModel):
         return self
 
 
+class GeneratePictureLinkRequest(TeaModel):
+    def __init__(
+        self,
+        keys: List[str] = None,
+        problem_id: int = None,
+    ):
+        # keys
+        self.keys = keys
+        # 故障id
+        self.problem_id = problem_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keys is not None:
+            result['keys'] = self.keys
+        if self.problem_id is not None:
+            result['problemId'] = self.problem_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keys') is not None:
+            self.keys = m.get('keys')
+        if m.get('problemId') is not None:
+            self.problem_id = m.get('problemId')
+        return self
+
+
+class GeneratePictureLinkResponseBodyDataLinks(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        link: str = None,
+    ):
+        # oss key
+        self.key = key
+        # url
+        self.link = link
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.link is not None:
+            result['link'] = self.link
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('link') is not None:
+            self.link = m.get('link')
+        return self
+
+
+class GeneratePictureLinkResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        links: List[GeneratePictureLinkResponseBodyDataLinks] = None,
+    ):
+        # array
+        self.links = links
+
+    def validate(self):
+        if self.links:
+            for k in self.links:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['links'] = []
+        if self.links is not None:
+            for k in self.links:
+                result['links'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.links = []
+        if m.get('links') is not None:
+            for k in m.get('links'):
+                temp_model = GeneratePictureLinkResponseBodyDataLinks()
+                self.links.append(temp_model.from_map(k))
+        return self
+
+
+class GeneratePictureLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GeneratePictureLinkResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GeneratePictureLinkResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GeneratePictureLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GeneratePictureLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GeneratePictureLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GeneratePictureUploadSignRequestFiles(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_size: int = None,
+        file_type: str = None,
+    ):
+        # 文件名称
+        self.file_name = file_name
+        # 文件大小
+        self.file_size = file_size
+        # 文件类型
+        self.file_type = file_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_size is not None:
+            result['fileSize'] = self.file_size
+        if self.file_type is not None:
+            result['fileType'] = self.file_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileSize') is not None:
+            self.file_size = m.get('fileSize')
+        if m.get('fileType') is not None:
+            self.file_type = m.get('fileType')
+        return self
+
+
+class GeneratePictureUploadSignRequest(TeaModel):
+    def __init__(
+        self,
+        files: List[GeneratePictureUploadSignRequestFiles] = None,
+        instance_id: int = None,
+        instance_type: str = None,
+    ):
+        # 文件
+        self.files = files
+        # 资源id
+        self.instance_id = instance_id
+        # 资源类型
+        self.instance_type = instance_type
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['files'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.files = []
+        if m.get('files') is not None:
+            for k in m.get('files'):
+                temp_model = GeneratePictureUploadSignRequestFiles()
+                self.files.append(temp_model.from_map(k))
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        return self
+
+
+class GeneratePictureUploadSignResponseBodyDataFiles(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_size: int = None,
+        file_type: str = None,
+        key: str = None,
+    ):
+        # 文件名称
+        self.file_name = file_name
+        # 文件大小
+        self.file_size = file_size
+        # 文件类型
+        self.file_type = file_type
+        # oss key
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_size is not None:
+            result['fileSize'] = self.file_size
+        if self.file_type is not None:
+            result['fileType'] = self.file_type
+        if self.key is not None:
+            result['key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileSize') is not None:
+            self.file_size = m.get('fileSize')
+        if m.get('fileType') is not None:
+            self.file_type = m.get('fileType')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        return self
+
+
+class GeneratePictureUploadSignResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        bucket_name: str = None,
+        files: List[GeneratePictureUploadSignResponseBodyDataFiles] = None,
+        policy: str = None,
+        signature: str = None,
+        url: str = None,
+    ):
+        # accessKeyId
+        self.access_key_id = access_key_id
+        # oss bucket name
+        self.bucket_name = bucket_name
+        # files
+        self.files = files
+        # policy
+        self.policy = policy
+        # signature
+        self.signature = signature
+        # url
+        self.url = url
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['accessKeyId'] = self.access_key_id
+        if self.bucket_name is not None:
+            result['bucketName'] = self.bucket_name
+        result['files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['files'].append(k.to_map() if k else None)
+        if self.policy is not None:
+            result['policy'] = self.policy
+        if self.signature is not None:
+            result['signature'] = self.signature
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessKeyId') is not None:
+            self.access_key_id = m.get('accessKeyId')
+        if m.get('bucketName') is not None:
+            self.bucket_name = m.get('bucketName')
+        self.files = []
+        if m.get('files') is not None:
+            for k in m.get('files'):
+                temp_model = GeneratePictureUploadSignResponseBodyDataFiles()
+                self.files.append(temp_model.from_map(k))
+        if m.get('policy') is not None:
+            self.policy = m.get('policy')
+        if m.get('signature') is not None:
+            self.signature = m.get('signature')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class GeneratePictureUploadSignResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GeneratePictureUploadSignResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # data
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GeneratePictureUploadSignResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GeneratePictureUploadSignResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GeneratePictureUploadSignResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GeneratePictureUploadSignResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GenerateProblemPictureLinkRequest(TeaModel):
     def __init__(
         self,
@@ -7201,14 +7923,53 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
         return self
 
 
+class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        service_group_name: str = None,
+    ):
+        # 服务组id
+        self.id = id
+        # 服务组名称
+        self.service_group_name = service_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.service_group_name is not None:
+            result['serviceGroupName'] = self.service_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('serviceGroupName') is not None:
+            self.service_group_name = m.get('serviceGroupName')
+        return self
+
+
 class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategies(TeaModel):
     def __init__(
         self,
+        enable_webhook: bool = None,
         escalation_plan_type: str = None,
         notice_channels: str = None,
         notice_object_list: List[GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesNoticeObjectList] = None,
         notice_time: int = None,
+        service_groups: List[GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups] = None,
     ):
+        # 是否支持群通知
+        self.enable_webhook = enable_webhook
         # 升级计划类型
         self.escalation_plan_type = escalation_plan_type
         # 通知对象渠道
@@ -7217,10 +7978,16 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
         self.notice_object_list = notice_object_list
         # 通知时间
         self.notice_time = notice_time
+        # 服务组列表
+        self.service_groups = service_groups
 
     def validate(self):
         if self.notice_object_list:
             for k in self.notice_object_list:
+                if k:
+                    k.validate()
+        if self.service_groups:
+            for k in self.service_groups:
                 if k:
                     k.validate()
 
@@ -7230,6 +7997,8 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
             return _map
 
         result = dict()
+        if self.enable_webhook is not None:
+            result['enableWebhook'] = self.enable_webhook
         if self.escalation_plan_type is not None:
             result['escalationPlanType'] = self.escalation_plan_type
         if self.notice_channels is not None:
@@ -7240,10 +8009,16 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
                 result['noticeObjectList'].append(k.to_map() if k else None)
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
+        result['serviceGroups'] = []
+        if self.service_groups is not None:
+            for k in self.service_groups:
+                result['serviceGroups'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('enableWebhook') is not None:
+            self.enable_webhook = m.get('enableWebhook')
         if m.get('escalationPlanType') is not None:
             self.escalation_plan_type = m.get('escalationPlanType')
         if m.get('noticeChannels') is not None:
@@ -7255,6 +8030,11 @@ class GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategi
                 self.notice_object_list.append(temp_model.from_map(k))
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
+        self.service_groups = []
+        if m.get('serviceGroups') is not None:
+            for k in m.get('serviceGroups'):
+                temp_model = GetEscalationPlanResponseBodyDataEscalationPlanRulesEscalationPlanStrategiesServiceGroups()
+                self.service_groups.append(temp_model.from_map(k))
         return self
 
 
@@ -7866,9 +8646,12 @@ class GetIncidentResponseBodyData(TeaModel):
         incident_title: str = None,
         is_manual: bool = None,
         is_upgrade: bool = None,
+        notify_channels: List[str] = None,
         problem_id: int = None,
         problem_number: str = None,
         related_service_description: str = None,
+        related_service_group_id: int = None,
+        related_service_group_name: str = None,
         related_service_id: int = None,
         related_service_name: str = None,
         route_rule_id: int = None,
@@ -7902,12 +8685,18 @@ class GetIncidentResponseBodyData(TeaModel):
         self.is_manual = is_manual
         # 是否升级 是 否
         self.is_upgrade = is_upgrade
+        # 通知渠道
+        self.notify_channels = notify_channels
         # 故障Id
         self.problem_id = problem_id
         # 故障编号
         self.problem_number = problem_number
         # 关联服务描述
         self.related_service_description = related_service_description
+        # 关联服服务id
+        self.related_service_group_id = related_service_group_id
+        # 关联服务组名称
+        self.related_service_group_name = related_service_group_name
         # 关联服务ID
         self.related_service_id = related_service_id
         # 关联服务名称
@@ -7954,12 +8743,18 @@ class GetIncidentResponseBodyData(TeaModel):
             result['isManual'] = self.is_manual
         if self.is_upgrade is not None:
             result['isUpgrade'] = self.is_upgrade
+        if self.notify_channels is not None:
+            result['notifyChannels'] = self.notify_channels
         if self.problem_id is not None:
             result['problemId'] = self.problem_id
         if self.problem_number is not None:
             result['problemNumber'] = self.problem_number
         if self.related_service_description is not None:
             result['relatedServiceDescription'] = self.related_service_description
+        if self.related_service_group_id is not None:
+            result['relatedServiceGroupId'] = self.related_service_group_id
+        if self.related_service_group_name is not None:
+            result['relatedServiceGroupName'] = self.related_service_group_name
         if self.related_service_id is not None:
             result['relatedServiceId'] = self.related_service_id
         if self.related_service_name is not None:
@@ -8000,12 +8795,18 @@ class GetIncidentResponseBodyData(TeaModel):
             self.is_manual = m.get('isManual')
         if m.get('isUpgrade') is not None:
             self.is_upgrade = m.get('isUpgrade')
+        if m.get('notifyChannels') is not None:
+            self.notify_channels = m.get('notifyChannels')
         if m.get('problemId') is not None:
             self.problem_id = m.get('problemId')
         if m.get('problemNumber') is not None:
             self.problem_number = m.get('problemNumber')
         if m.get('relatedServiceDescription') is not None:
             self.related_service_description = m.get('relatedServiceDescription')
+        if m.get('relatedServiceGroupId') is not None:
+            self.related_service_group_id = m.get('relatedServiceGroupId')
+        if m.get('relatedServiceGroupName') is not None:
+            self.related_service_group_name = m.get('relatedServiceGroupName')
         if m.get('relatedServiceId') is not None:
             self.related_service_id = m.get('relatedServiceId')
         if m.get('relatedServiceName') is not None:
@@ -8977,6 +9778,7 @@ class GetProblemResponseBodyData(TeaModel):
         problem_number: str = None,
         problem_status: int = None,
         progress_summary: str = None,
+        progress_summary_rich_text_id: int = None,
         recovery_time: str = None,
         related_service_id: int = None,
         replay_problem_operate_logs: List[GetProblemResponseBodyDataReplayProblemOperateLogs] = None,
@@ -9029,6 +9831,8 @@ class GetProblemResponseBodyData(TeaModel):
         self.problem_status = problem_status
         # 进展摘要
         self.progress_summary = progress_summary
+        # 进展摘要富文本id
+        self.progress_summary_rich_text_id = progress_summary_rich_text_id
         # 恢复时间
         self.recovery_time = recovery_time
         # 关联服务ID
@@ -9136,6 +9940,8 @@ class GetProblemResponseBodyData(TeaModel):
             result['problemStatus'] = self.problem_status
         if self.progress_summary is not None:
             result['progressSummary'] = self.progress_summary
+        if self.progress_summary_rich_text_id is not None:
+            result['progressSummaryRichTextId'] = self.progress_summary_rich_text_id
         if self.recovery_time is not None:
             result['recoveryTime'] = self.recovery_time
         if self.related_service_id is not None:
@@ -9218,6 +10024,8 @@ class GetProblemResponseBodyData(TeaModel):
             self.problem_status = m.get('problemStatus')
         if m.get('progressSummary') is not None:
             self.progress_summary = m.get('progressSummary')
+        if m.get('progressSummaryRichTextId') is not None:
+            self.progress_summary_rich_text_id = m.get('progressSummaryRichTextId')
         if m.get('recoveryTime') is not None:
             self.recovery_time = m.get('recoveryTime')
         if m.get('relatedServiceId') is not None:
@@ -10129,6 +10937,7 @@ class GetProblemPreviewResponseBodyDataProblem(TeaModel):
         problem_name: str = None,
         problem_status: str = None,
         progress_summary: str = None,
+        progress_summary_rich_text_id: int = None,
         recovery_time: str = None,
         related_service_id: int = None,
         service_name: str = None,
@@ -10161,6 +10970,8 @@ class GetProblemPreviewResponseBodyDataProblem(TeaModel):
         self.problem_status = problem_status
         # 进展摘要
         self.progress_summary = progress_summary
+        # 富文本id
+        self.progress_summary_rich_text_id = progress_summary_rich_text_id
         # 恢复时间
         self.recovery_time = recovery_time
         # 关联服务ID
@@ -10216,6 +11027,8 @@ class GetProblemPreviewResponseBodyDataProblem(TeaModel):
             result['problemStatus'] = self.problem_status
         if self.progress_summary is not None:
             result['progressSummary'] = self.progress_summary
+        if self.progress_summary_rich_text_id is not None:
+            result['progressSummaryRichTextId'] = self.progress_summary_rich_text_id
         if self.recovery_time is not None:
             result['recoveryTime'] = self.recovery_time
         if self.related_service_id is not None:
@@ -10260,6 +11073,8 @@ class GetProblemPreviewResponseBodyDataProblem(TeaModel):
             self.problem_status = m.get('problemStatus')
         if m.get('progressSummary') is not None:
             self.progress_summary = m.get('progressSummary')
+        if m.get('progressSummaryRichTextId') is not None:
+            self.progress_summary_rich_text_id = m.get('progressSummaryRichTextId')
         if m.get('recoveryTime') is not None:
             self.recovery_time = m.get('recoveryTime')
         if m.get('relatedServiceId') is not None:
@@ -10800,6 +11615,163 @@ class GetResourceStatisticsResponse(TeaModel):
         return self
 
 
+class GetRichTextRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        instance_type: str = None,
+        rich_text_id: int = None,
+    ):
+        # 资源类型
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        # 资源id
+        self.rich_text_id = rich_text_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.rich_text_id is not None:
+            result['richTextId'] = self.rich_text_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('richTextId') is not None:
+            self.rich_text_id = m.get('richTextId')
+        return self
+
+
+class GetRichTextResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        instance_type: int = None,
+        rich_text: str = None,
+    ):
+        # 资源id
+        self.instance_id = instance_id
+        # 资源类型
+        self.instance_type = instance_type
+        # 富文本内容
+        self.rich_text = rich_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.rich_text is not None:
+            result['richText'] = self.rich_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('richText') is not None:
+            self.rich_text = m.get('richText')
+        return self
+
+
+class GetRichTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetRichTextResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # data
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetRichTextResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetRichTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetRichTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetRichTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRouteRuleRequest(TeaModel):
     def __init__(
         self,
@@ -10880,6 +11852,7 @@ class GetRouteRuleResponseBodyDataEventRouteChildRulesConditions(TeaModel):
 class GetRouteRuleResponseBodyDataEventRouteChildRules(TeaModel):
     def __init__(
         self,
+        child_condition_relation: int = None,
         child_route_rule_id: int = None,
         conditions: List[GetRouteRuleResponseBodyDataEventRouteChildRulesConditions] = None,
         is_valid_child_rule: bool = None,
@@ -10888,8 +11861,11 @@ class GetRouteRuleResponseBodyDataEventRouteChildRules(TeaModel):
         monitor_source_name: str = None,
         parent_rule_id: int = None,
     ):
+        # 子条件计算关系，0-与，1-或
+        self.child_condition_relation = child_condition_relation
         # 子规则ID
         self.child_route_rule_id = child_route_rule_id
+        # 条件
         self.conditions = conditions
         # 是否有效得规则true有效 false无效
         self.is_valid_child_rule = is_valid_child_rule
@@ -10914,6 +11890,8 @@ class GetRouteRuleResponseBodyDataEventRouteChildRules(TeaModel):
             return _map
 
         result = dict()
+        if self.child_condition_relation is not None:
+            result['childConditionRelation'] = self.child_condition_relation
         if self.child_route_rule_id is not None:
             result['childRouteRuleId'] = self.child_route_rule_id
         result['conditions'] = []
@@ -10934,6 +11912,8 @@ class GetRouteRuleResponseBodyDataEventRouteChildRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('childConditionRelation') is not None:
+            self.child_condition_relation = m.get('childConditionRelation')
         if m.get('childRouteRuleId') is not None:
             self.child_route_rule_id = m.get('childRouteRuleId')
         self.conditions = []
@@ -10960,6 +11940,7 @@ class GetRouteRuleResponseBodyData(TeaModel):
         assign_object_id: int = None,
         assign_object_name: str = None,
         assign_object_type: str = None,
+        child_rule_relation: str = None,
         create_time: str = None,
         effection: str = None,
         enable_status: str = None,
@@ -10982,6 +11963,8 @@ class GetRouteRuleResponseBodyData(TeaModel):
         self.assign_object_name = assign_object_name
         # 事件分派对象类型 SERVICEGROUP 服务组  USER 单个用户
         self.assign_object_type = assign_object_type
+        # 子规则关系，0与，1或
+        self.child_rule_relation = child_rule_relation
         # 创建时间
         self.create_time = create_time
         # 影响程度  LOW一般  HIGH-严重
@@ -11031,6 +12014,8 @@ class GetRouteRuleResponseBodyData(TeaModel):
             result['assignObjectName'] = self.assign_object_name
         if self.assign_object_type is not None:
             result['assignObjectType'] = self.assign_object_type
+        if self.child_rule_relation is not None:
+            result['childRuleRelation'] = self.child_rule_relation
         if self.create_time is not None:
             result['createTime'] = self.create_time
         if self.effection is not None:
@@ -11073,6 +12058,8 @@ class GetRouteRuleResponseBodyData(TeaModel):
             self.assign_object_name = m.get('assignObjectName')
         if m.get('assignObjectType') is not None:
             self.assign_object_type = m.get('assignObjectType')
+        if m.get('childRuleRelation') is not None:
+            self.child_rule_relation = m.get('childRuleRelation')
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
         if m.get('effection') is not None:
@@ -14331,6 +15318,7 @@ class ListAlertsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         related_service_id: int = None,
+        rule_name: str = None,
         start_time: str = None,
     ):
         # 报警等级 P1 P2 P3 P4
@@ -14347,6 +15335,8 @@ class ListAlertsRequest(TeaModel):
         self.page_size = page_size
         # 服务id
         self.related_service_id = related_service_id
+        # 流转规则名字
+        self.rule_name = rule_name
         # 开始时间
         self.start_time = start_time
 
@@ -14373,6 +15363,8 @@ class ListAlertsRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.related_service_id is not None:
             result['relatedServiceId'] = self.related_service_id
+        if self.rule_name is not None:
+            result['ruleName'] = self.rule_name
         if self.start_time is not None:
             result['startTime'] = self.start_time
         return result
@@ -14393,6 +15385,8 @@ class ListAlertsRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('relatedServiceId') is not None:
             self.related_service_id = m.get('relatedServiceId')
+        if m.get('ruleName') is not None:
+            self.rule_name = m.get('ruleName')
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
         return self
@@ -14403,11 +15397,13 @@ class ListAlertsResponseBodyData(TeaModel):
         self,
         alert_id: int = None,
         alert_level: str = None,
+        alert_number: str = None,
         alert_source_name: str = None,
         create_time: str = None,
         first_event_time: str = None,
         related_service_name: str = None,
         route_rule_id: int = None,
+        route_rule_name: str = None,
         source_event_count: int = None,
         title: str = None,
     ):
@@ -14415,6 +15411,8 @@ class ListAlertsResponseBodyData(TeaModel):
         self.alert_id = alert_id
         # 告警优先级  1，2，3，4  对应 p1,p2,p3,p4
         self.alert_level = alert_level
+        # 报警编号
+        self.alert_number = alert_number
         # 报警源
         self.alert_source_name = alert_source_name
         # 创建时间
@@ -14425,6 +15423,8 @@ class ListAlertsResponseBodyData(TeaModel):
         self.related_service_name = related_service_name
         # 关联流转规则ID
         self.route_rule_id = route_rule_id
+        # 流转规则名字
+        self.route_rule_name = route_rule_name
         # 收敛量
         self.source_event_count = source_event_count
         # 报警标题
@@ -14443,6 +15443,8 @@ class ListAlertsResponseBodyData(TeaModel):
             result['alertId'] = self.alert_id
         if self.alert_level is not None:
             result['alertLevel'] = self.alert_level
+        if self.alert_number is not None:
+            result['alertNumber'] = self.alert_number
         if self.alert_source_name is not None:
             result['alertSourceName'] = self.alert_source_name
         if self.create_time is not None:
@@ -14453,6 +15455,8 @@ class ListAlertsResponseBodyData(TeaModel):
             result['relatedServiceName'] = self.related_service_name
         if self.route_rule_id is not None:
             result['routeRuleId'] = self.route_rule_id
+        if self.route_rule_name is not None:
+            result['routeRuleName'] = self.route_rule_name
         if self.source_event_count is not None:
             result['sourceEventCount'] = self.source_event_count
         if self.title is not None:
@@ -14465,6 +15469,8 @@ class ListAlertsResponseBodyData(TeaModel):
             self.alert_id = m.get('alertId')
         if m.get('alertLevel') is not None:
             self.alert_level = m.get('alertLevel')
+        if m.get('alertNumber') is not None:
+            self.alert_number = m.get('alertNumber')
         if m.get('alertSourceName') is not None:
             self.alert_source_name = m.get('alertSourceName')
         if m.get('createTime') is not None:
@@ -14475,6 +15481,8 @@ class ListAlertsResponseBodyData(TeaModel):
             self.related_service_name = m.get('relatedServiceName')
         if m.get('routeRuleId') is not None:
             self.route_rule_id = m.get('routeRuleId')
+        if m.get('routeRuleName') is not None:
+            self.route_rule_name = m.get('routeRuleName')
         if m.get('sourceEventCount') is not None:
             self.source_event_count = m.get('sourceEventCount')
         if m.get('title') is not None:
@@ -15242,6 +16250,7 @@ class ListDataReportForServiceGroupResponseBodyData(TeaModel):
     def __init__(
         self,
         escalation_incident_count: int = None,
+        finish_incident_count: int = None,
         finish_proportion: str = None,
         incident_count: int = None,
         mean_time_to_acknowledge: int = None,
@@ -15253,6 +16262,8 @@ class ListDataReportForServiceGroupResponseBodyData(TeaModel):
     ):
         # 升级事件数量
         self.escalation_incident_count = escalation_incident_count
+        # 事件完结数
+        self.finish_incident_count = finish_incident_count
         # 完结率
         self.finish_proportion = finish_proportion
         # 事件数量
@@ -15281,6 +16292,8 @@ class ListDataReportForServiceGroupResponseBodyData(TeaModel):
         result = dict()
         if self.escalation_incident_count is not None:
             result['escalationIncidentCount'] = self.escalation_incident_count
+        if self.finish_incident_count is not None:
+            result['finishIncidentCount'] = self.finish_incident_count
         if self.finish_proportion is not None:
             result['finishProportion'] = self.finish_proportion
         if self.incident_count is not None:
@@ -15303,6 +16316,8 @@ class ListDataReportForServiceGroupResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('escalationIncidentCount') is not None:
             self.escalation_incident_count = m.get('escalationIncidentCount')
+        if m.get('finishIncidentCount') is not None:
+            self.finish_incident_count = m.get('finishIncidentCount')
         if m.get('finishProportion') is not None:
             self.finish_proportion = m.get('finishProportion')
         if m.get('incidentCount') is not None:
@@ -16252,6 +17267,41 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
         return self
 
 
+class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        # 服务组id
+        self.id = id
+        # 服务组名称
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
 class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlan(TeaModel):
     def __init__(
         self,
@@ -16259,6 +17309,7 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
         notice_channels: List[str] = None,
         notice_object_list: List[ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanNoticeObjectList] = None,
         notice_time: int = None,
+        service_group_list: List[ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList] = None,
         start_time: int = None,
         status: str = None,
     ):
@@ -16270,6 +17321,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
         self.notice_object_list = notice_object_list
         # 延迟时间
         self.notice_time = notice_time
+        # 通知群
+        self.service_group_list = service_group_list
         # 开始时间
         self.start_time = start_time
         # 规则触发状态
@@ -16278,6 +17331,10 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
     def validate(self):
         if self.notice_object_list:
             for k in self.notice_object_list:
+                if k:
+                    k.validate()
+        if self.service_group_list:
+            for k in self.service_group_list:
                 if k:
                     k.validate()
 
@@ -16297,6 +17354,10 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
                 result['noticeObjectList'].append(k.to_map() if k else None)
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
+        result['serviceGroupList'] = []
+        if self.service_group_list is not None:
+            for k in self.service_group_list:
+                result['serviceGroupList'].append(k.to_map() if k else None)
         if self.start_time is not None:
             result['startTime'] = self.start_time
         if self.status is not None:
@@ -16316,6 +17377,11 @@ class ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPl
                 self.notice_object_list.append(temp_model.from_map(k))
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
+        self.service_group_list = []
+        if m.get('serviceGroupList') is not None:
+            for k in m.get('serviceGroupList'):
+                temp_model = ListIncidentDetailEscalationPlansResponseBodyDataNuAcknowledgeEscalationPlanServiceGroupList()
+                self.service_group_list.append(temp_model.from_map(k))
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
         if m.get('status') is not None:
@@ -16365,6 +17431,41 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNot
         return self
 
 
+class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        # 服务组id
+        self.id = id
+        # 服务组名称
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
 class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(TeaModel):
     def __init__(
         self,
@@ -16372,6 +17473,7 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
         notice_channels: List[str] = None,
         notice_object_list: List[ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanNoticeObjectList] = None,
         notice_time: int = None,
+        service_group_list: List[ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList] = None,
         start_time: int = None,
         status: str = None,
     ):
@@ -16383,6 +17485,8 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
         self.notice_object_list = notice_object_list
         # 延迟时间
         self.notice_time = notice_time
+        # 消息群
+        self.service_group_list = service_group_list
         # 开始时间
         self.start_time = start_time
         # 规则触发状态
@@ -16391,6 +17495,10 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
     def validate(self):
         if self.notice_object_list:
             for k in self.notice_object_list:
+                if k:
+                    k.validate()
+        if self.service_group_list:
+            for k in self.service_group_list:
                 if k:
                     k.validate()
 
@@ -16410,6 +17518,10 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
                 result['noticeObjectList'].append(k.to_map() if k else None)
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
+        result['serviceGroupList'] = []
+        if self.service_group_list is not None:
+            for k in self.service_group_list:
+                result['serviceGroupList'].append(k.to_map() if k else None)
         if self.start_time is not None:
             result['startTime'] = self.start_time
         if self.status is not None:
@@ -16429,6 +17541,11 @@ class ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlan(Te
                 self.notice_object_list.append(temp_model.from_map(k))
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
+        self.service_group_list = []
+        if m.get('serviceGroupList') is not None:
+            for k in m.get('serviceGroupList'):
+                temp_model = ListIncidentDetailEscalationPlansResponseBodyDataUnFinishEscalationPlanServiceGroupList()
+                self.service_group_list.append(temp_model.from_map(k))
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
         if m.get('status') is not None:
@@ -17213,6 +18330,7 @@ class ListIncidentsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         relation_service_id: int = None,
+        rule_name: str = None,
     ):
         # 幂等校验id
         self.client_token = client_token
@@ -17234,6 +18352,8 @@ class ListIncidentsRequest(TeaModel):
         self.page_size = page_size
         # 关联服务ID
         self.relation_service_id = relation_service_id
+        # 流转规则名字
+        self.rule_name = rule_name
 
     def validate(self):
         pass
@@ -17264,6 +18384,8 @@ class ListIncidentsRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.relation_service_id is not None:
             result['relationServiceId'] = self.relation_service_id
+        if self.rule_name is not None:
+            result['ruleName'] = self.rule_name
         return result
 
     def from_map(self, m: dict = None):
@@ -17288,6 +18410,8 @@ class ListIncidentsRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('relationServiceId') is not None:
             self.relation_service_id = m.get('relationServiceId')
+        if m.get('ruleName') is not None:
+            self.rule_name = m.get('ruleName')
         return self
 
 
@@ -17337,6 +18461,7 @@ class ListIncidentsResponseBodyData(TeaModel):
         self.related_service_name = related_service_name
         # 流转规则ID
         self.route_rule_id = route_rule_id
+        # 流转规则
         self.route_rule_name = route_rule_name
 
     def validate(self):
@@ -19325,6 +20450,7 @@ class ListRouteRulesRequest(TeaModel):
         client_token: str = None,
         page_number: int = None,
         page_size: int = None,
+        route_type: int = None,
         rule_name: bytes = None,
         service_name: bytes = None,
     ):
@@ -19334,6 +20460,8 @@ class ListRouteRulesRequest(TeaModel):
         self.page_number = page_number
         # 页的大小
         self.page_size = page_size
+        # 路由类型：0触发事件 1仅触发报警 r
+        self.route_type = route_type
         # 规则名称
         self.rule_name = rule_name
         # 服务名称
@@ -19354,6 +20482,8 @@ class ListRouteRulesRequest(TeaModel):
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.route_type is not None:
+            result['routeType'] = self.route_type
         if self.rule_name is not None:
             result['ruleName'] = self.rule_name
         if self.service_name is not None:
@@ -19368,6 +20498,8 @@ class ListRouteRulesRequest(TeaModel):
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('routeType') is not None:
+            self.route_type = m.get('routeType')
         if m.get('ruleName') is not None:
             self.rule_name = m.get('ruleName')
         if m.get('serviceName') is not None:
@@ -19385,6 +20517,7 @@ class ListRouteRulesResponseBodyData(TeaModel):
         enable_status: str = None,
         incident_level: str = None,
         match_count: int = None,
+        monitor_source_names: str = None,
         related_service_id: int = None,
         related_service_name: str = None,
         route_rule_id: int = None,
@@ -19409,6 +20542,8 @@ class ListRouteRulesResponseBodyData(TeaModel):
         self.incident_level = incident_level
         # 命中次数
         self.match_count = match_count
+        # 监控源名称
+        self.monitor_source_names = monitor_source_names
         # 关联服务ID
         self.related_service_id = related_service_id
         # 服务名称
@@ -19451,6 +20586,8 @@ class ListRouteRulesResponseBodyData(TeaModel):
             result['incidentLevel'] = self.incident_level
         if self.match_count is not None:
             result['matchCount'] = self.match_count
+        if self.monitor_source_names is not None:
+            result['monitorSourceNames'] = self.monitor_source_names
         if self.related_service_id is not None:
             result['relatedServiceId'] = self.related_service_id
         if self.related_service_name is not None:
@@ -19487,6 +20624,8 @@ class ListRouteRulesResponseBodyData(TeaModel):
             self.incident_level = m.get('incidentLevel')
         if m.get('matchCount') is not None:
             self.match_count = m.get('matchCount')
+        if m.get('monitorSourceNames') is not None:
+            self.monitor_source_names = m.get('monitorSourceNames')
         if m.get('relatedServiceId') is not None:
             self.related_service_id = m.get('relatedServiceId')
         if m.get('relatedServiceName') is not None:
@@ -19605,6 +20744,184 @@ class ListRouteRulesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListRouteRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListServiceGroupMonitorSourceTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        request_id: str = None,
+        service_group_id: int = None,
+    ):
+        # 幂等号
+        self.client_token = client_token
+        # 请求ID
+        self.request_id = request_id
+        # 服务组ID
+        self.service_group_id = service_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.service_group_id is not None:
+            result['serviceGroupId'] = self.service_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('serviceGroupId') is not None:
+            self.service_group_id = m.get('serviceGroupId')
+        return self
+
+
+class ListServiceGroupMonitorSourceTemplatesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        fields: List[str] = None,
+        monitor_source_id: int = None,
+        monitor_source_name: str = None,
+        template_content: str = None,
+        template_id: int = None,
+    ):
+        # 字段
+        self.fields = fields
+        # 监控源ID
+        self.monitor_source_id = monitor_source_id
+        # 监控报警源名字
+        self.monitor_source_name = monitor_source_name
+        # 模板内容
+        self.template_content = template_content
+        # 消息模版ID
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fields is not None:
+            result['fields'] = self.fields
+        if self.monitor_source_id is not None:
+            result['monitorSourceId'] = self.monitor_source_id
+        if self.monitor_source_name is not None:
+            result['monitorSourceName'] = self.monitor_source_name
+        if self.template_content is not None:
+            result['templateContent'] = self.template_content
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fields') is not None:
+            self.fields = m.get('fields')
+        if m.get('monitorSourceId') is not None:
+            self.monitor_source_id = m.get('monitorSourceId')
+        if m.get('monitorSourceName') is not None:
+            self.monitor_source_name = m.get('monitorSourceName')
+        if m.get('templateContent') is not None:
+            self.template_content = m.get('templateContent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
+class ListServiceGroupMonitorSourceTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListServiceGroupMonitorSourceTemplatesResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        # data
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListServiceGroupMonitorSourceTemplatesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListServiceGroupMonitorSourceTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListServiceGroupMonitorSourceTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListServiceGroupMonitorSourceTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21104,6 +22421,205 @@ class ListSubscriptionsResponse(TeaModel):
         return self
 
 
+class ListTrendForSourceEventRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        instance_id: int = None,
+        instance_type: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        time_unit: int = None,
+    ):
+        # 结束时间
+        self.end_time = end_time
+        # 报警ID
+        self.instance_id = instance_id
+        # 类型
+        self.instance_type = instance_type
+        # 请求ID
+        self.request_id = request_id
+        # 开始时间
+        self.start_time = start_time
+        # 时间单位毫秒
+        self.time_unit = time_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.time_unit is not None:
+            result['timeUnit'] = self.time_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timeUnit') is not None:
+            self.time_unit = m.get('timeUnit')
+        return self
+
+
+class ListTrendForSourceEventResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        convergence_rate: str = None,
+        max_sustain_time: int = None,
+        skip_day: bool = None,
+        source_events_stat_map: Dict[str, Any] = None,
+        unit: str = None,
+    ):
+        # 收敛率
+        self.convergence_rate = convergence_rate
+        # 最大持续时长
+        self.max_sustain_time = max_sustain_time
+        # 是否跨天
+        self.skip_day = skip_day
+        # 按监控源分组统计数据
+        self.source_events_stat_map = source_events_stat_map
+        # 时间单位
+        self.unit = unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.convergence_rate is not None:
+            result['convergenceRate'] = self.convergence_rate
+        if self.max_sustain_time is not None:
+            result['maxSustainTime'] = self.max_sustain_time
+        if self.skip_day is not None:
+            result['skipDay'] = self.skip_day
+        if self.source_events_stat_map is not None:
+            result['sourceEventsStatMap'] = self.source_events_stat_map
+        if self.unit is not None:
+            result['unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('convergenceRate') is not None:
+            self.convergence_rate = m.get('convergenceRate')
+        if m.get('maxSustainTime') is not None:
+            self.max_sustain_time = m.get('maxSustainTime')
+        if m.get('skipDay') is not None:
+            self.skip_day = m.get('skipDay')
+        if m.get('sourceEventsStatMap') is not None:
+            self.source_events_stat_map = m.get('sourceEventsStatMap')
+        if m.get('unit') is not None:
+            self.unit = m.get('unit')
+        return self
+
+
+class ListTrendForSourceEventResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ListTrendForSourceEventResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        # 统计列表
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListTrendForSourceEventResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListTrendForSourceEventResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTrendForSourceEventResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListTrendForSourceEventResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUserSerivceGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -22288,16 +23804,22 @@ class UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions(Tea
 class UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(TeaModel):
     def __init__(
         self,
+        enable_webhook: bool = None,
         notice_channels: List[str] = None,
         notice_objects: List[int] = None,
         notice_time: int = None,
+        service_group_ids: List[int] = None,
     ):
+        # 是否支持群通知
+        self.enable_webhook = enable_webhook
         # 通知渠道
         self.notice_channels = notice_channels
         # 通知对象id
         self.notice_objects = notice_objects
         # 通知时间
         self.notice_time = notice_time
+        # 服务组id
+        self.service_group_ids = service_group_ids
 
     def validate(self):
         pass
@@ -22308,22 +23830,30 @@ class UpdateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
             return _map
 
         result = dict()
+        if self.enable_webhook is not None:
+            result['enableWebhook'] = self.enable_webhook
         if self.notice_channels is not None:
             result['noticeChannels'] = self.notice_channels
         if self.notice_objects is not None:
             result['noticeObjects'] = self.notice_objects
         if self.notice_time is not None:
             result['noticeTime'] = self.notice_time
+        if self.service_group_ids is not None:
+            result['serviceGroupIds'] = self.service_group_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('enableWebhook') is not None:
+            self.enable_webhook = m.get('enableWebhook')
         if m.get('noticeChannels') is not None:
             self.notice_channels = m.get('noticeChannels')
         if m.get('noticeObjects') is not None:
             self.notice_objects = m.get('noticeObjects')
         if m.get('noticeTime') is not None:
             self.notice_time = m.get('noticeTime')
+        if m.get('serviceGroupIds') is not None:
+            self.service_group_ids = m.get('serviceGroupIds')
         return self
 
 
@@ -22853,6 +24383,7 @@ class UpdateProblemRequest(TeaModel):
         problem_id: int = None,
         problem_name: str = None,
         progress_summary: str = None,
+        progress_summary_rich_text_id: int = None,
         related_service_id: int = None,
         service_group_ids: List[int] = None,
     ):
@@ -22870,6 +24401,8 @@ class UpdateProblemRequest(TeaModel):
         self.problem_name = problem_name
         # 进展摘要
         self.progress_summary = progress_summary
+        # 进展摘要富文本id
+        self.progress_summary_rich_text_id = progress_summary_rich_text_id
         # 所属服务
         self.related_service_id = related_service_id
         # 应急协同组
@@ -22898,6 +24431,8 @@ class UpdateProblemRequest(TeaModel):
             result['problemName'] = self.problem_name
         if self.progress_summary is not None:
             result['progressSummary'] = self.progress_summary
+        if self.progress_summary_rich_text_id is not None:
+            result['progressSummaryRichTextId'] = self.progress_summary_rich_text_id
         if self.related_service_id is not None:
             result['relatedServiceId'] = self.related_service_id
         if self.service_group_ids is not None:
@@ -22920,6 +24455,8 @@ class UpdateProblemRequest(TeaModel):
             self.problem_name = m.get('problemName')
         if m.get('progressSummary') is not None:
             self.progress_summary = m.get('progressSummary')
+        if m.get('progressSummaryRichTextId') is not None:
+            self.progress_summary_rich_text_id = m.get('progressSummaryRichTextId')
         if m.get('relatedServiceId') is not None:
             self.related_service_id = m.get('relatedServiceId')
         if m.get('serviceGroupIds') is not None:
@@ -23722,6 +25259,157 @@ class UpdateProblemTimelineResponse(TeaModel):
         return self
 
 
+class UpdateRichTextRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: int = None,
+        instance_type: str = None,
+        rich_text: str = None,
+        rich_text_id: int = None,
+    ):
+        # 资源id
+        self.instance_id = instance_id
+        # 资源类型
+        self.instance_type = instance_type
+        # 文本内容
+        self.rich_text = rich_text
+        # 富文本id
+        self.rich_text_id = rich_text_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.rich_text is not None:
+            result['richText'] = self.rich_text
+        if self.rich_text_id is not None:
+            result['richTextId'] = self.rich_text_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('richText') is not None:
+            self.rich_text = m.get('richText')
+        if m.get('richTextId') is not None:
+            self.rich_text_id = m.get('richTextId')
+        return self
+
+
+class UpdateRichTextResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        # 富文本id
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        return self
+
+
+class UpdateRichTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: UpdateRichTextResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # data
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = UpdateRichTextResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateRichTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateRichTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateRichTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateRouteRuleRequestRouteChildRulesConditions(TeaModel):
     def __init__(
         self,
@@ -23767,11 +25455,14 @@ class UpdateRouteRuleRequestRouteChildRulesConditions(TeaModel):
 class UpdateRouteRuleRequestRouteChildRules(TeaModel):
     def __init__(
         self,
+        child_condition_relation: int = None,
         child_route_rule_id: int = None,
         conditions: List[UpdateRouteRuleRequestRouteChildRulesConditions] = None,
         is_valid_child_rule: bool = None,
         monitor_source_id: int = None,
     ):
+        # 子条件计算关系
+        self.child_condition_relation = child_condition_relation
         # 子规则ID 不填表示新增
         self.child_route_rule_id = child_route_rule_id
         # 条件
@@ -23793,6 +25484,8 @@ class UpdateRouteRuleRequestRouteChildRules(TeaModel):
             return _map
 
         result = dict()
+        if self.child_condition_relation is not None:
+            result['childConditionRelation'] = self.child_condition_relation
         if self.child_route_rule_id is not None:
             result['childRouteRuleId'] = self.child_route_rule_id
         result['conditions'] = []
@@ -23807,6 +25500,8 @@ class UpdateRouteRuleRequestRouteChildRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('childConditionRelation') is not None:
+            self.child_condition_relation = m.get('childConditionRelation')
         if m.get('childRouteRuleId') is not None:
             self.child_route_rule_id = m.get('childRouteRuleId')
         self.conditions = []
@@ -23826,6 +25521,7 @@ class UpdateRouteRuleRequest(TeaModel):
         self,
         assign_object_id: int = None,
         assign_object_type: str = None,
+        child_rule_relation: str = None,
         client_token: str = None,
         effection: str = None,
         incident_level: str = None,
@@ -23843,6 +25539,8 @@ class UpdateRouteRuleRequest(TeaModel):
         self.assign_object_id = assign_object_id
         # 事件分派对象类型 SERVICEGROUP服务组  USER 单个用户
         self.assign_object_type = assign_object_type
+        # AND
+        self.child_rule_relation = child_rule_relation
         # 幂等号
         self.client_token = client_token
         # 影响程度 LOW-一般 HIGH-严重
@@ -23884,6 +25582,8 @@ class UpdateRouteRuleRequest(TeaModel):
             result['assignObjectId'] = self.assign_object_id
         if self.assign_object_type is not None:
             result['assignObjectType'] = self.assign_object_type
+        if self.child_rule_relation is not None:
+            result['childRuleRelation'] = self.child_rule_relation
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         if self.effection is not None:
@@ -23918,6 +25618,8 @@ class UpdateRouteRuleRequest(TeaModel):
             self.assign_object_id = m.get('assignObjectId')
         if m.get('assignObjectType') is not None:
             self.assign_object_type = m.get('assignObjectType')
+        if m.get('childRuleRelation') is not None:
+            self.child_rule_relation = m.get('childRuleRelation')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         if m.get('effection') is not None:
@@ -24139,11 +25841,61 @@ class UpdateServiceResponse(TeaModel):
         return self
 
 
+class UpdateServiceGroupRequestMonitorSourceTemplates(TeaModel):
+    def __init__(
+        self,
+        monitor_source_id: int = None,
+        monitor_source_name: str = None,
+        template_content: str = None,
+        template_id: int = None,
+    ):
+        # 监控报警源Id
+        self.monitor_source_id = monitor_source_id
+        # 监控报警源
+        self.monitor_source_name = monitor_source_name
+        # 消息模版内容
+        self.template_content = template_content
+        # 消息模版ID
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.monitor_source_id is not None:
+            result['monitorSourceId'] = self.monitor_source_id
+        if self.monitor_source_name is not None:
+            result['monitorSourceName'] = self.monitor_source_name
+        if self.template_content is not None:
+            result['templateContent'] = self.template_content
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('monitorSourceId') is not None:
+            self.monitor_source_id = m.get('monitorSourceId')
+        if m.get('monitorSourceName') is not None:
+            self.monitor_source_name = m.get('monitorSourceName')
+        if m.get('templateContent') is not None:
+            self.template_content = m.get('templateContent')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        return self
+
+
 class UpdateServiceGroupRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
         enable_webhook: str = None,
+        monitor_source_templates: List[UpdateServiceGroupRequestMonitorSourceTemplates] = None,
         service_group_description: str = None,
         service_group_id: int = None,
         service_group_name: str = None,
@@ -24155,6 +25907,8 @@ class UpdateServiceGroupRequest(TeaModel):
         self.client_token = client_token
         # ENABLE 启用 DISABLE 禁用
         self.enable_webhook = enable_webhook
+        # 监控源模版列表
+        self.monitor_source_templates = monitor_source_templates
         # 服务描述
         self.service_group_description = service_group_description
         # 服务组ID
@@ -24169,7 +25923,10 @@ class UpdateServiceGroupRequest(TeaModel):
         self.webhook_type = webhook_type
 
     def validate(self):
-        pass
+        if self.monitor_source_templates:
+            for k in self.monitor_source_templates:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24181,6 +25938,10 @@ class UpdateServiceGroupRequest(TeaModel):
             result['clientToken'] = self.client_token
         if self.enable_webhook is not None:
             result['enableWebhook'] = self.enable_webhook
+        result['monitorSourceTemplates'] = []
+        if self.monitor_source_templates is not None:
+            for k in self.monitor_source_templates:
+                result['monitorSourceTemplates'].append(k.to_map() if k else None)
         if self.service_group_description is not None:
             result['serviceGroupDescription'] = self.service_group_description
         if self.service_group_id is not None:
@@ -24201,6 +25962,11 @@ class UpdateServiceGroupRequest(TeaModel):
             self.client_token = m.get('clientToken')
         if m.get('enableWebhook') is not None:
             self.enable_webhook = m.get('enableWebhook')
+        self.monitor_source_templates = []
+        if m.get('monitorSourceTemplates') is not None:
+            for k in m.get('monitorSourceTemplates'):
+                temp_model = UpdateServiceGroupRequestMonitorSourceTemplates()
+                self.monitor_source_templates.append(temp_model.from_map(k))
         if m.get('serviceGroupDescription') is not None:
             self.service_group_description = m.get('serviceGroupDescription')
         if m.get('serviceGroupId') is not None:
@@ -25558,6 +27324,322 @@ class UpdateUserGuideStatusResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateUserGuideStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VerifyRouteRuleRequestTestSourceEvents(TeaModel):
+    def __init__(
+        self,
+        event_json: str = None,
+        event_time: str = None,
+        monitor_source_id: int = None,
+        monitor_source_name: str = None,
+    ):
+        # 告警内容
+        self.event_json = event_json
+        # 告警上报时间
+        self.event_time = event_time
+        # 监控告警源ID
+        self.monitor_source_id = monitor_source_id
+        # 监控告警源名称
+        self.monitor_source_name = monitor_source_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_json is not None:
+            result['eventJson'] = self.event_json
+        if self.event_time is not None:
+            result['eventTime'] = self.event_time
+        if self.monitor_source_id is not None:
+            result['monitorSourceId'] = self.monitor_source_id
+        if self.monitor_source_name is not None:
+            result['monitorSourceName'] = self.monitor_source_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('eventJson') is not None:
+            self.event_json = m.get('eventJson')
+        if m.get('eventTime') is not None:
+            self.event_time = m.get('eventTime')
+        if m.get('monitorSourceId') is not None:
+            self.monitor_source_id = m.get('monitorSourceId')
+        if m.get('monitorSourceName') is not None:
+            self.monitor_source_name = m.get('monitorSourceName')
+        return self
+
+
+class VerifyRouteRuleRequest(TeaModel):
+    def __init__(
+        self,
+        route_rule_id: int = None,
+        test_source_events: List[VerifyRouteRuleRequestTestSourceEvents] = None,
+    ):
+        # 规则id
+        self.route_rule_id = route_rule_id
+        # 测试告警
+        self.test_source_events = test_source_events
+
+    def validate(self):
+        if self.test_source_events:
+            for k in self.test_source_events:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_rule_id is not None:
+            result['routeRuleId'] = self.route_rule_id
+        result['testSourceEvents'] = []
+        if self.test_source_events is not None:
+            for k in self.test_source_events:
+                result['testSourceEvents'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('routeRuleId') is not None:
+            self.route_rule_id = m.get('routeRuleId')
+        self.test_source_events = []
+        if m.get('testSourceEvents') is not None:
+            for k in m.get('testSourceEvents'):
+                temp_model = VerifyRouteRuleRequestTestSourceEvents()
+                self.test_source_events.append(temp_model.from_map(k))
+        return self
+
+
+class VerifyRouteRuleResponseBodyDataEscalationPlans(TeaModel):
+    def __init__(
+        self,
+        escalation_plan_id: int = None,
+        escalation_plan_name: str = None,
+    ):
+        # 升级计划ID
+        self.escalation_plan_id = escalation_plan_id
+        # 升级计划名称
+        self.escalation_plan_name = escalation_plan_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.escalation_plan_id is not None:
+            result['escalationPlanId'] = self.escalation_plan_id
+        if self.escalation_plan_name is not None:
+            result['escalationPlanName'] = self.escalation_plan_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('escalationPlanId') is not None:
+            self.escalation_plan_id = m.get('escalationPlanId')
+        if m.get('escalationPlanName') is not None:
+            self.escalation_plan_name = m.get('escalationPlanName')
+        return self
+
+
+class VerifyRouteRuleResponseBodyDataNotifySubscriptionNames(TeaModel):
+    def __init__(
+        self,
+        subscription_id: int = None,
+        title: str = None,
+    ):
+        # 订阅ID
+        self.subscription_id = subscription_id
+        # 订阅名称
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.subscription_id is not None:
+            result['subscriptionId'] = self.subscription_id
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('subscriptionId') is not None:
+            self.subscription_id = m.get('subscriptionId')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class VerifyRouteRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        escalation_plans: List[VerifyRouteRuleResponseBodyDataEscalationPlans] = None,
+        is_valid_rule: bool = None,
+        monitor_source_ids: List[int] = None,
+        notify_subscription_names: List[VerifyRouteRuleResponseBodyDataNotifySubscriptionNames] = None,
+        route_rule_fail_reason: List[str] = None,
+        route_type: str = None,
+    ):
+        # 升级策略名称
+        self.escalation_plans = escalation_plans
+        # 验证是否成功
+        self.is_valid_rule = is_valid_rule
+        # 验证失败监控源ID
+        self.monitor_source_ids = monitor_source_ids
+        # 订阅名称
+        self.notify_subscription_names = notify_subscription_names
+        # 流转规则验证失败的原因
+        self.route_rule_fail_reason = route_rule_fail_reason
+        # 事件或者报警
+        self.route_type = route_type
+
+    def validate(self):
+        if self.escalation_plans:
+            for k in self.escalation_plans:
+                if k:
+                    k.validate()
+        if self.notify_subscription_names:
+            for k in self.notify_subscription_names:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['escalationPlans'] = []
+        if self.escalation_plans is not None:
+            for k in self.escalation_plans:
+                result['escalationPlans'].append(k.to_map() if k else None)
+        if self.is_valid_rule is not None:
+            result['isValidRule'] = self.is_valid_rule
+        if self.monitor_source_ids is not None:
+            result['monitorSourceIds'] = self.monitor_source_ids
+        result['notifySubscriptionNames'] = []
+        if self.notify_subscription_names is not None:
+            for k in self.notify_subscription_names:
+                result['notifySubscriptionNames'].append(k.to_map() if k else None)
+        if self.route_rule_fail_reason is not None:
+            result['routeRuleFailReason'] = self.route_rule_fail_reason
+        if self.route_type is not None:
+            result['routeType'] = self.route_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.escalation_plans = []
+        if m.get('escalationPlans') is not None:
+            for k in m.get('escalationPlans'):
+                temp_model = VerifyRouteRuleResponseBodyDataEscalationPlans()
+                self.escalation_plans.append(temp_model.from_map(k))
+        if m.get('isValidRule') is not None:
+            self.is_valid_rule = m.get('isValidRule')
+        if m.get('monitorSourceIds') is not None:
+            self.monitor_source_ids = m.get('monitorSourceIds')
+        self.notify_subscription_names = []
+        if m.get('notifySubscriptionNames') is not None:
+            for k in m.get('notifySubscriptionNames'):
+                temp_model = VerifyRouteRuleResponseBodyDataNotifySubscriptionNames()
+                self.notify_subscription_names.append(temp_model.from_map(k))
+        if m.get('routeRuleFailReason') is not None:
+            self.route_rule_fail_reason = m.get('routeRuleFailReason')
+        if m.get('routeType') is not None:
+            self.route_type = m.get('routeType')
+        return self
+
+
+class VerifyRouteRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: VerifyRouteRuleResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # 验证结果
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = VerifyRouteRuleResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class VerifyRouteRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: VerifyRouteRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = VerifyRouteRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
