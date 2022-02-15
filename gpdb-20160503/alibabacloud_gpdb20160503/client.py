@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_gpdb20160503 import models as gpdb_20160503_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -61,12 +62,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.AddBuDBInstanceRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_unit):
+            query['BusinessUnit'] = request.business_unit
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddBuDBInstanceRelation',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.AddBuDBInstanceRelationResponse(),
-            self.do_rpcrequest('AddBuDBInstanceRelation', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_bu_dbinstance_relation_with_options_async(
@@ -75,12 +94,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.AddBuDBInstanceRelationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_unit):
+            query['BusinessUnit'] = request.business_unit
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddBuDBInstanceRelation',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.AddBuDBInstanceRelationResponse(),
-            await self.do_rpcrequest_async('AddBuDBInstanceRelation', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_bu_dbinstance_relation(
@@ -103,12 +140,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.AllocateInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllocateInstancePublicConnection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.AllocateInstancePublicConnectionResponse(),
-            self.do_rpcrequest('AllocateInstancePublicConnection', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def allocate_instance_public_connection_with_options_async(
@@ -117,12 +180,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.AllocateInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllocateInstancePublicConnection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.AllocateInstancePublicConnectionResponse(),
-            await self.do_rpcrequest_async('AllocateInstancePublicConnection', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def allocate_instance_public_connection(
@@ -145,12 +234,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CheckServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRole',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CheckServiceLinkedRoleResponse(),
-            self.do_rpcrequest('CheckServiceLinkedRole', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def check_service_linked_role_with_options_async(
@@ -159,12 +262,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CheckServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceLinkedRole',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CheckServiceLinkedRoleResponse(),
-            await self.do_rpcrequest_async('CheckServiceLinkedRole', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_service_linked_role(
@@ -187,12 +304,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccount',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CreateAccountResponse(),
-            self.do_rpcrequest('CreateAccount', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_account_with_options_async(
@@ -201,12 +342,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccount',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CreateAccountResponse(),
-            await self.do_rpcrequest_async('CreateAccount', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_account(
@@ -229,12 +394,74 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_category):
+            query['DBInstanceCategory'] = request.dbinstance_category
+        if not UtilClient.is_unset(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbinstance_group_count):
+            query['DBInstanceGroupCount'] = request.dbinstance_group_count
+        if not UtilClient.is_unset(request.dbinstance_mode):
+            query['DBInstanceMode'] = request.dbinstance_mode
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.instance_spec):
+            query['InstanceSpec'] = request.instance_spec
+        if not UtilClient.is_unset(request.master_node_num):
+            query['MasterNodeNum'] = request.master_node_num
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.seg_node_num):
+            query['SegNodeNum'] = request.seg_node_num
+        if not UtilClient.is_unset(request.seg_storage_type):
+            query['SegStorageType'] = request.seg_storage_type
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CreateDBInstanceResponse(),
-            self.do_rpcrequest('CreateDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_dbinstance_with_options_async(
@@ -243,12 +470,74 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_category):
+            query['DBInstanceCategory'] = request.dbinstance_category
+        if not UtilClient.is_unset(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbinstance_group_count):
+            query['DBInstanceGroupCount'] = request.dbinstance_group_count
+        if not UtilClient.is_unset(request.dbinstance_mode):
+            query['DBInstanceMode'] = request.dbinstance_mode
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.instance_spec):
+            query['InstanceSpec'] = request.instance_spec
+        if not UtilClient.is_unset(request.master_node_num):
+            query['MasterNodeNum'] = request.master_node_num
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.seg_node_num):
+            query['SegNodeNum'] = request.seg_node_num
+        if not UtilClient.is_unset(request.seg_storage_type):
+            query['SegStorageType'] = request.seg_storage_type
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CreateDBInstanceResponse(),
-            await self.do_rpcrequest_async('CreateDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dbinstance(
@@ -271,12 +560,74 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateECSDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_category):
+            query['DBInstanceCategory'] = request.dbinstance_category
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.instance_spec):
+            query['InstanceSpec'] = request.instance_spec
+        if not UtilClient.is_unset(request.master_node_num):
+            query['MasterNodeNum'] = request.master_node_num
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.seg_node_num):
+            query['SegNodeNum'] = request.seg_node_num
+        if not UtilClient.is_unset(request.seg_storage_type):
+            query['SegStorageType'] = request.seg_storage_type
+        if not UtilClient.is_unset(request.src_db_instance_name):
+            query['SrcDbInstanceName'] = request.src_db_instance_name
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateECSDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CreateECSDBInstanceResponse(),
-            self.do_rpcrequest('CreateECSDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_ecsdbinstance_with_options_async(
@@ -285,12 +636,74 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateECSDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_category):
+            query['DBInstanceCategory'] = request.dbinstance_category
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.instance_spec):
+            query['InstanceSpec'] = request.instance_spec
+        if not UtilClient.is_unset(request.master_node_num):
+            query['MasterNodeNum'] = request.master_node_num
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.seg_node_num):
+            query['SegNodeNum'] = request.seg_node_num
+        if not UtilClient.is_unset(request.seg_storage_type):
+            query['SegStorageType'] = request.seg_storage_type
+        if not UtilClient.is_unset(request.src_db_instance_name):
+            query['SrcDbInstanceName'] = request.src_db_instance_name
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateECSDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CreateECSDBInstanceResponse(),
-            await self.do_rpcrequest_async('CreateECSDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_ecsdbinstance(
@@ -313,12 +726,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CreateServiceLinkedRoleResponse(),
-            self.do_rpcrequest('CreateServiceLinkedRole', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_service_linked_role_with_options_async(
@@ -327,12 +756,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateServiceLinkedRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceLinkedRole',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.CreateServiceLinkedRoleResponse(),
-            await self.do_rpcrequest_async('CreateServiceLinkedRole', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_service_linked_role(
@@ -349,60 +794,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_service_linked_role_with_options_async(request, runtime)
 
-    def delete_database_with_options(
-        self,
-        request: gpdb_20160503_models.DeleteDatabaseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DeleteDatabaseResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDatabaseResponse(),
-            self.do_rpcrequest('DeleteDatabase', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_database_with_options_async(
-        self,
-        request: gpdb_20160503_models.DeleteDatabaseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DeleteDatabaseResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteDatabaseResponse(),
-            await self.do_rpcrequest_async('DeleteDatabase', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_database(
-        self,
-        request: gpdb_20160503_models.DeleteDatabaseRequest,
-    ) -> gpdb_20160503_models.DeleteDatabaseResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_database_with_options(request, runtime)
-
-    async def delete_database_async(
-        self,
-        request: gpdb_20160503_models.DeleteDatabaseRequest,
-    ) -> gpdb_20160503_models.DeleteDatabaseResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_database_with_options_async(request, runtime)
-
     def delete_dbinstance_with_options(
         self,
         request: gpdb_20160503_models.DeleteDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DeleteDBInstanceResponse(),
-            self.do_rpcrequest('DeleteDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dbinstance_with_options_async(
@@ -411,12 +832,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DeleteDBInstanceResponse(),
-            await self.do_rpcrequest_async('DeleteDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dbinstance(
@@ -433,18 +872,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
 
+    def delete_database_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatabase',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_database_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteDatabaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteDatabaseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDatabase',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_database(
+        self,
+        request: gpdb_20160503_models.DeleteDatabaseRequest,
+    ) -> gpdb_20160503_models.DeleteDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_database_with_options(request, runtime)
+
+    async def delete_database_async(
+        self,
+        request: gpdb_20160503_models.DeleteDatabaseRequest,
+    ) -> gpdb_20160503_models.DeleteDatabaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_database_with_options_async(request, runtime)
+
+    def delete_instance_spinfo_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteInstanceSPInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteInstanceSPInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbinstance_infos):
+            query['DBInstanceInfos'] = request.dbinstance_infos
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceSPInfo',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteInstanceSPInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instance_spinfo_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteInstanceSPInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteInstanceSPInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbinstance_infos):
+            query['DBInstanceInfos'] = request.dbinstance_infos
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceSPInfo',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteInstanceSPInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instance_spinfo(
+        self,
+        request: gpdb_20160503_models.DeleteInstanceSPInfoRequest,
+    ) -> gpdb_20160503_models.DeleteInstanceSPInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_instance_spinfo_with_options(request, runtime)
+
+    async def delete_instance_spinfo_async(
+        self,
+        request: gpdb_20160503_models.DeleteInstanceSPInfoRequest,
+    ) -> gpdb_20160503_models.DeleteInstanceSPInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_instance_spinfo_with_options_async(request, runtime)
+
     def describe_accounts_with_options(
         self,
         request: gpdb_20160503_models.DescribeAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeAccountsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccounts',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeAccountsResponse(),
-            self.do_rpcrequest('DescribeAccounts', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_accounts_with_options_async(
@@ -453,12 +1056,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeAccountsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccounts',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeAccountsResponse(),
-            await self.do_rpcrequest_async('DescribeAccounts', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_accounts(
@@ -481,12 +1100,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeAvailableResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableResources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeAvailableResourcesResponse(),
-            self.do_rpcrequest('DescribeAvailableResources', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_available_resources_with_options_async(
@@ -495,12 +1132,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeAvailableResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableResources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeAvailableResourcesResponse(),
-            await self.do_rpcrequest_async('DescribeAvailableResources', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_available_resources(
@@ -523,12 +1178,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeBackupPolicyResponse(),
-            self.do_rpcrequest('DescribeBackupPolicy', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_policy_with_options_async(
@@ -537,12 +1206,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeBackupPolicyResponse(),
-            await self.do_rpcrequest_async('DescribeBackupPolicy', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_policy(
@@ -559,47 +1242,153 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
 
-    def describe_data_backups_with_options(
+    def describe_dbcluster_node_with_options(
         self,
-        request: gpdb_20160503_models.DescribeDataBackupsRequest,
+        request: gpdb_20160503_models.DescribeDBClusterNodeRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
+    ) -> gpdb_20160503_models.DescribeDBClusterNodeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterNode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataBackupsResponse(),
-            self.do_rpcrequest('DescribeDataBackups', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            gpdb_20160503_models.DescribeDBClusterNodeResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def describe_data_backups_with_options_async(
+    async def describe_dbcluster_node_with_options_async(
         self,
-        request: gpdb_20160503_models.DescribeDataBackupsRequest,
+        request: gpdb_20160503_models.DescribeDBClusterNodeRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
+    ) -> gpdb_20160503_models.DescribeDBClusterNodeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterNode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDataBackupsResponse(),
-            await self.do_rpcrequest_async('DescribeDataBackups', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            gpdb_20160503_models.DescribeDBClusterNodeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def describe_data_backups(
+    def describe_dbcluster_node(
         self,
-        request: gpdb_20160503_models.DescribeDataBackupsRequest,
-    ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
+        request: gpdb_20160503_models.DescribeDBClusterNodeRequest,
+    ) -> gpdb_20160503_models.DescribeDBClusterNodeResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_data_backups_with_options(request, runtime)
+        return self.describe_dbcluster_node_with_options(request, runtime)
 
-    async def describe_data_backups_async(
+    async def describe_dbcluster_node_async(
         self,
-        request: gpdb_20160503_models.DescribeDataBackupsRequest,
-    ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
+        request: gpdb_20160503_models.DescribeDBClusterNodeRequest,
+    ) -> gpdb_20160503_models.DescribeDBClusterNodeResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_data_backups_with_options_async(request, runtime)
+        return await self.describe_dbcluster_node_with_options_async(request, runtime)
+
+    def describe_dbcluster_nodes_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBClusterNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBClusterNodesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterNodes',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBClusterNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_nodes_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBClusterNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBClusterNodesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterNodes',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBClusterNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_nodes(
+        self,
+        request: gpdb_20160503_models.DescribeDBClusterNodesRequest,
+    ) -> gpdb_20160503_models.DescribeDBClusterNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_nodes_with_options(request, runtime)
+
+    async def describe_dbcluster_nodes_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBClusterNodesRequest,
+    ) -> gpdb_20160503_models.DescribeDBClusterNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_nodes_with_options_async(request, runtime)
 
     def describe_dbcluster_performance_with_options(
         self,
@@ -607,12 +1396,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBClusterPerformanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.nodes):
+            query['Nodes'] = request.nodes
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterPerformance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBClusterPerformanceResponse(),
-            self.do_rpcrequest('DescribeDBClusterPerformance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbcluster_performance_with_options_async(
@@ -621,12 +1434,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBClusterPerformanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.nodes):
+            query['Nodes'] = request.nodes
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterPerformance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBClusterPerformanceResponse(),
-            await self.do_rpcrequest_async('DescribeDBClusterPerformance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbcluster_performance(
@@ -649,12 +1486,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceAttribute',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceAttributeResponse(),
-            self.do_rpcrequest('DescribeDBInstanceAttribute', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_attribute_with_options_async(
@@ -663,12 +1516,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceAttribute',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeDBInstanceAttribute', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_attribute(
@@ -691,12 +1560,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceIPArrayList',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse(),
-            self.do_rpcrequest('DescribeDBInstanceIPArrayList', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_iparray_list_with_options_async(
@@ -705,12 +1588,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceIPArrayList',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse(),
-            await self.do_rpcrequest_async('DescribeDBInstanceIPArrayList', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_iparray_list(
@@ -733,12 +1630,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceNetInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceNetInfo',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceNetInfoResponse(),
-            self.do_rpcrequest('DescribeDBInstanceNetInfo', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_net_info_with_options_async(
@@ -747,12 +1658,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceNetInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceNetInfo',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceNetInfoResponse(),
-            await self.do_rpcrequest_async('DescribeDBInstanceNetInfo', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_net_info(
@@ -775,12 +1700,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceOnECSAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceOnECSAttribute',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceOnECSAttributeResponse(),
-            self.do_rpcrequest('DescribeDBInstanceOnECSAttribute', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_on_ecsattribute_with_options_async(
@@ -789,12 +1730,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceOnECSAttributeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceOnECSAttribute',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceOnECSAttributeResponse(),
-            await self.do_rpcrequest_async('DescribeDBInstanceOnECSAttribute', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_on_ecsattribute(
@@ -811,102 +1768,44 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_on_ecsattribute_with_options_async(request, runtime)
 
-    def describe_dbinstance_performance_with_options(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
-            self.do_rpcrequest('DescribeDBInstancePerformance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_dbinstance_performance_with_options_async(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
-            await self.do_rpcrequest_async('DescribeDBInstancePerformance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_dbinstance_performance(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
-    ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dbinstance_performance_with_options(request, runtime)
-
-    async def describe_dbinstance_performance_async(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
-    ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dbinstance_performance_with_options_async(request, runtime)
-
-    def describe_dbinstances_with_options(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancesResponse(),
-            self.do_rpcrequest('DescribeDBInstances', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_dbinstances_with_options_async(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBInstancesResponse(),
-            await self.do_rpcrequest_async('DescribeDBInstances', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_dbinstances(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancesRequest,
-    ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dbinstances_with_options(request, runtime)
-
-    async def describe_dbinstances_async(
-        self,
-        request: gpdb_20160503_models.DescribeDBInstancesRequest,
-    ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dbinstances_with_options_async(request, runtime)
-
     def describe_dbinstance_sqlpatterns_with_options(
         self,
         request: gpdb_20160503_models.DescribeDBInstanceSQLPatternsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceSQLPatternsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIP'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceSQLPatterns',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceSQLPatternsResponse(),
-            self.do_rpcrequest('DescribeDBInstanceSQLPatterns', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_sqlpatterns_with_options_async(
@@ -915,12 +1814,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceSQLPatternsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIP'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceSQLPatterns',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceSQLPatternsResponse(),
-            await self.do_rpcrequest_async('DescribeDBInstanceSQLPatterns', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_sqlpatterns(
@@ -943,12 +1868,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceSSLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceSSL',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceSSLResponse(),
-            self.do_rpcrequest('DescribeDBInstanceSSL', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_sslwith_options_async(
@@ -957,12 +1896,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceSSLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceSSL',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeDBInstanceSSLResponse(),
-            await self.do_rpcrequest_async('DescribeDBInstanceSSL', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_ssl(
@@ -979,18 +1932,436 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_sslwith_options_async(request, runtime)
 
+    def describe_dbinstances_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.DescribeDBInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.DescribeDBInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbinstance_categories):
+            request.dbinstance_categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbinstance_categories, 'DBInstanceCategories', 'simple')
+        if not UtilClient.is_unset(tmp_req.dbinstance_modes):
+            request.dbinstance_modes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbinstance_modes, 'DBInstanceModes', 'simple')
+        if not UtilClient.is_unset(tmp_req.dbinstance_statuses):
+            request.dbinstance_statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbinstance_statuses, 'DBInstanceStatuses', 'simple')
+        if not UtilClient.is_unset(tmp_req.instance_deploy_types):
+            request.instance_deploy_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_deploy_types, 'InstanceDeployTypes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_categories_shrink):
+            query['DBInstanceCategories'] = request.dbinstance_categories_shrink
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbinstance_ids):
+            query['DBInstanceIds'] = request.dbinstance_ids
+        if not UtilClient.is_unset(request.dbinstance_modes_shrink):
+            query['DBInstanceModes'] = request.dbinstance_modes_shrink
+        if not UtilClient.is_unset(request.dbinstance_statuses_shrink):
+            query['DBInstanceStatuses'] = request.dbinstance_statuses_shrink
+        if not UtilClient.is_unset(request.instance_deploy_types_shrink):
+            query['InstanceDeployTypes'] = request.instance_deploy_types_shrink
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstances',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstances_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.DescribeDBInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.DescribeDBInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbinstance_categories):
+            request.dbinstance_categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbinstance_categories, 'DBInstanceCategories', 'simple')
+        if not UtilClient.is_unset(tmp_req.dbinstance_modes):
+            request.dbinstance_modes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbinstance_modes, 'DBInstanceModes', 'simple')
+        if not UtilClient.is_unset(tmp_req.dbinstance_statuses):
+            request.dbinstance_statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbinstance_statuses, 'DBInstanceStatuses', 'simple')
+        if not UtilClient.is_unset(tmp_req.instance_deploy_types):
+            request.instance_deploy_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_deploy_types, 'InstanceDeployTypes', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_categories_shrink):
+            query['DBInstanceCategories'] = request.dbinstance_categories_shrink
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbinstance_ids):
+            query['DBInstanceIds'] = request.dbinstance_ids
+        if not UtilClient.is_unset(request.dbinstance_modes_shrink):
+            query['DBInstanceModes'] = request.dbinstance_modes_shrink
+        if not UtilClient.is_unset(request.dbinstance_statuses_shrink):
+            query['DBInstanceStatuses'] = request.dbinstance_statuses_shrink
+        if not UtilClient.is_unset(request.instance_deploy_types_shrink):
+            query['InstanceDeployTypes'] = request.instance_deploy_types_shrink
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstances',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstances(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancesRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstances_with_options(request, runtime)
+
+    async def describe_dbinstances_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancesRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstances_with_options_async(request, runtime)
+
+    def describe_data_backups_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDataBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataBackups',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDataBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_backups_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDataBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataBackups',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDataBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_backups(
+        self,
+        request: gpdb_20160503_models.DescribeDataBackupsRequest,
+    ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_data_backups_with_options(request, runtime)
+
+    async def describe_data_backups_async(
+        self,
+        request: gpdb_20160503_models.DescribeDataBackupsRequest,
+    ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_data_backups_with_options_async(request, runtime)
+
+    def describe_data_share_instances_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDataShareInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDataShareInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.search_value):
+            query['SearchValue'] = request.search_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataShareInstances',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDataShareInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_share_instances_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDataShareInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDataShareInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.search_value):
+            query['SearchValue'] = request.search_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataShareInstances',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDataShareInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_share_instances(
+        self,
+        request: gpdb_20160503_models.DescribeDataShareInstancesRequest,
+    ) -> gpdb_20160503_models.DescribeDataShareInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_data_share_instances_with_options(request, runtime)
+
+    async def describe_data_share_instances_async(
+        self,
+        request: gpdb_20160503_models.DescribeDataShareInstancesRequest,
+    ) -> gpdb_20160503_models.DescribeDataShareInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_data_share_instances_with_options_async(request, runtime)
+
+    def describe_health_status_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeHealthStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeHealthStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHealthStatus',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeHealthStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_health_status_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeHealthStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeHealthStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHealthStatus',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeHealthStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_health_status(
+        self,
+        request: gpdb_20160503_models.DescribeHealthStatusRequest,
+    ) -> gpdb_20160503_models.DescribeHealthStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_health_status_with_options(request, runtime)
+
+    async def describe_health_status_async(
+        self,
+        request: gpdb_20160503_models.DescribeHealthStatusRequest,
+    ) -> gpdb_20160503_models.DescribeHealthStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_health_status_with_options_async(request, runtime)
+
     def describe_log_backups_with_options(
         self,
         request: gpdb_20160503_models.DescribeLogBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeLogBackupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogBackups',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeLogBackupsResponse(),
-            self.do_rpcrequest('DescribeLogBackups', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_log_backups_with_options_async(
@@ -999,12 +2370,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeLogBackupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeLogBackups',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeLogBackupsResponse(),
-            await self.do_rpcrequest_async('DescribeLogBackups', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_log_backups(
@@ -1027,12 +2420,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeModifyParameterLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModifyParameterLog',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeModifyParameterLogResponse(),
-            self.do_rpcrequest('DescribeModifyParameterLog', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_modify_parameter_log_with_options_async(
@@ -1041,12 +2452,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeModifyParameterLogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModifyParameterLog',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeModifyParameterLogResponse(),
-            await self.do_rpcrequest_async('DescribeModifyParameterLog', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_modify_parameter_log(
@@ -1069,12 +2498,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeParametersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameters',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeParametersResponse(),
-            self.do_rpcrequest('DescribeParameters', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_parameters_with_options_async(
@@ -1083,12 +2526,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeParametersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameters',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeParametersResponse(),
-            await self.do_rpcrequest_async('DescribeParameters', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_parameters(
@@ -1105,60 +2562,46 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameters_with_options_async(request, runtime)
 
-    def describe_rds_vpcs_with_options(
-        self,
-        request: gpdb_20160503_models.DescribeRdsVpcsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRdsVpcsResponse(),
-            self.do_rpcrequest('DescribeRdsVpcs', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_rds_vpcs_with_options_async(
-        self,
-        request: gpdb_20160503_models.DescribeRdsVpcsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeRdsVpcsResponse(),
-            await self.do_rpcrequest_async('DescribeRdsVpcs', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_rds_vpcs(
-        self,
-        request: gpdb_20160503_models.DescribeRdsVpcsRequest,
-    ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rds_vpcs_with_options(request, runtime)
-
-    async def describe_rds_vpcs_async(
-        self,
-        request: gpdb_20160503_models.DescribeRdsVpcsRequest,
-    ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rds_vpcs_with_options_async(request, runtime)
-
     def describe_rds_vswitchs_with_options(
         self,
         request: gpdb_20160503_models.DescribeRdsVSwitchsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRdsVSwitchsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRdsVSwitchs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeRdsVSwitchsResponse(),
-            self.do_rpcrequest('DescribeRdsVSwitchs', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_rds_vswitchs_with_options_async(
@@ -1167,12 +2610,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRdsVSwitchsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRdsVSwitchs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeRdsVSwitchsResponse(),
-            await self.do_rpcrequest_async('DescribeRdsVSwitchs', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_rds_vswitchs(
@@ -1189,18 +2660,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_rds_vswitchs_with_options_async(request, runtime)
 
+    def describe_rds_vpcs_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeRdsVpcsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRdsVpcs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeRdsVpcsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rds_vpcs_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeRdsVpcsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRdsVpcs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeRdsVpcsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rds_vpcs(
+        self,
+        request: gpdb_20160503_models.DescribeRdsVpcsRequest,
+    ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rds_vpcs_with_options(request, runtime)
+
+    async def describe_rds_vpcs_async(
+        self,
+        request: gpdb_20160503_models.DescribeRdsVpcsRequest,
+    ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rds_vpcs_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: gpdb_20160503_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeRegionsResponse(),
-            self.do_rpcrequest('DescribeRegions', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -1209,12 +2788,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeRegionsResponse(),
-            await self.do_rpcrequest_async('DescribeRegions', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
@@ -1237,12 +2830,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeResourceUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceUsage',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeResourceUsageResponse(),
-            self.do_rpcrequest('DescribeResourceUsage', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_resource_usage_with_options_async(
@@ -1251,12 +2858,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeResourceUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResourceUsage',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeResourceUsageResponse(),
-            await self.do_rpcrequest_async('DescribeResourceUsage', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_resource_usage(
@@ -1273,144 +2894,32 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_usage_with_options_async(request, runtime)
 
-    def describe_slow_log_records_with_options(
-        self,
-        request: gpdb_20160503_models.DescribeSlowLogRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeSlowLogRecordsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSlowLogRecordsResponse(),
-            self.do_rpcrequest('DescribeSlowLogRecords', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_slow_log_records_with_options_async(
-        self,
-        request: gpdb_20160503_models.DescribeSlowLogRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeSlowLogRecordsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSlowLogRecordsResponse(),
-            await self.do_rpcrequest_async('DescribeSlowLogRecords', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_slow_log_records(
-        self,
-        request: gpdb_20160503_models.DescribeSlowLogRecordsRequest,
-    ) -> gpdb_20160503_models.DescribeSlowLogRecordsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_slow_log_records_with_options(request, runtime)
-
-    async def describe_slow_log_records_async(
-        self,
-        request: gpdb_20160503_models.DescribeSlowLogRecordsRequest,
-    ) -> gpdb_20160503_models.DescribeSlowLogRecordsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_slow_log_records_with_options_async(request, runtime)
-
-    def describe_slow_sqllogs_with_options(
-        self,
-        request: gpdb_20160503_models.DescribeSlowSQLLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeSlowSQLLogsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSlowSQLLogsResponse(),
-            self.do_rpcrequest('DescribeSlowSQLLogs', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_slow_sqllogs_with_options_async(
-        self,
-        request: gpdb_20160503_models.DescribeSlowSQLLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeSlowSQLLogsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSlowSQLLogsResponse(),
-            await self.do_rpcrequest_async('DescribeSlowSQLLogs', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_slow_sqllogs(
-        self,
-        request: gpdb_20160503_models.DescribeSlowSQLLogsRequest,
-    ) -> gpdb_20160503_models.DescribeSlowSQLLogsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_slow_sqllogs_with_options(request, runtime)
-
-    async def describe_slow_sqllogs_async(
-        self,
-        request: gpdb_20160503_models.DescribeSlowSQLLogsRequest,
-    ) -> gpdb_20160503_models.DescribeSlowSQLLogsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_slow_sqllogs_with_options_async(request, runtime)
-
-    def describe_specification_with_options(
-        self,
-        request: gpdb_20160503_models.DescribeSpecificationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeSpecificationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSpecificationResponse(),
-            self.do_rpcrequest('DescribeSpecification', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_specification_with_options_async(
-        self,
-        request: gpdb_20160503_models.DescribeSpecificationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeSpecificationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSpecificationResponse(),
-            await self.do_rpcrequest_async('DescribeSpecification', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_specification(
-        self,
-        request: gpdb_20160503_models.DescribeSpecificationRequest,
-    ) -> gpdb_20160503_models.DescribeSpecificationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_specification_with_options(request, runtime)
-
-    async def describe_specification_async(
-        self,
-        request: gpdb_20160503_models.DescribeSpecificationRequest,
-    ) -> gpdb_20160503_models.DescribeSpecificationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_specification_with_options_async(request, runtime)
-
     def describe_sqlcollector_policy_with_options(
         self,
         request: gpdb_20160503_models.DescribeSQLCollectorPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLCollectorPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLCollectorPolicy',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLCollectorPolicyResponse(),
-            self.do_rpcrequest('DescribeSQLCollectorPolicy', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sqlcollector_policy_with_options_async(
@@ -1419,12 +2928,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLCollectorPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLCollectorPolicy',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLCollectorPolicyResponse(),
-            await self.do_rpcrequest_async('DescribeSQLCollectorPolicy', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sqlcollector_policy(
@@ -1441,18 +2964,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqlcollector_policy_with_options_async(request, runtime)
 
+    def describe_sqllog_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeSQLLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSQLLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.query_id):
+            query['QueryId'] = request.query_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLog',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSQLLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sqllog_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeSQLLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSQLLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.query_id):
+            query['QueryId'] = request.query_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLog',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSQLLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sqllog(
+        self,
+        request: gpdb_20160503_models.DescribeSQLLogRequest,
+    ) -> gpdb_20160503_models.DescribeSQLLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sqllog_with_options(request, runtime)
+
+    async def describe_sqllog_async(
+        self,
+        request: gpdb_20160503_models.DescribeSQLLogRequest,
+    ) -> gpdb_20160503_models.DescribeSQLLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sqllog_with_options_async(request, runtime)
+
     def describe_sqllog_by_query_id_with_options(
         self,
         request: gpdb_20160503_models.DescribeSQLLogByQueryIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogByQueryIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.query_id):
+            query['QueryId'] = request.query_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogByQueryId',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogByQueryIdResponse(),
-            self.do_rpcrequest('DescribeSQLLogByQueryId', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sqllog_by_query_id_with_options_async(
@@ -1461,12 +3074,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogByQueryIdResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.query_id):
+            query['QueryId'] = request.query_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogByQueryId',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogByQueryIdResponse(),
-            await self.do_rpcrequest_async('DescribeSQLLogByQueryId', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sqllog_by_query_id(
@@ -1489,12 +3118,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.execute_cost):
+            query['ExecuteCost'] = request.execute_cost
+        if not UtilClient.is_unset(request.execute_state):
+            query['ExecuteState'] = request.execute_state
+        if not UtilClient.is_unset(request.max_execute_cost):
+            query['MaxExecuteCost'] = request.max_execute_cost
+        if not UtilClient.is_unset(request.min_execute_cost):
+            query['MinExecuteCost'] = request.min_execute_cost
+        if not UtilClient.is_unset(request.operation_class):
+            query['OperationClass'] = request.operation_class
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIP'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogCount',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogCountResponse(),
-            self.do_rpcrequest('DescribeSQLLogCount', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sqllog_count_with_options_async(
@@ -1503,12 +3170,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.execute_cost):
+            query['ExecuteCost'] = request.execute_cost
+        if not UtilClient.is_unset(request.execute_state):
+            query['ExecuteState'] = request.execute_state
+        if not UtilClient.is_unset(request.max_execute_cost):
+            query['MaxExecuteCost'] = request.max_execute_cost
+        if not UtilClient.is_unset(request.min_execute_cost):
+            query['MinExecuteCost'] = request.min_execute_cost
+        if not UtilClient.is_unset(request.operation_class):
+            query['OperationClass'] = request.operation_class
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIP'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogCount',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogCountResponse(),
-            await self.do_rpcrequest_async('DescribeSQLLogCount', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sqllog_count(
@@ -1531,12 +3236,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogFilesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogFiles',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogFilesResponse(),
-            self.do_rpcrequest('DescribeSQLLogFiles', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sqllog_files_with_options_async(
@@ -1545,12 +3270,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogFilesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogFiles',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogFilesResponse(),
-            await self.do_rpcrequest_async('DescribeSQLLogFiles', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sqllog_files(
@@ -1573,12 +3318,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogRecordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.form):
+            query['Form'] = request.form
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogRecordsResponse(),
-            self.do_rpcrequest('DescribeSQLLogRecords', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sqllog_records_with_options_async(
@@ -1587,12 +3362,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogRecordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.form):
+            query['Form'] = request.form
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogRecordsResponse(),
-            await self.do_rpcrequest_async('DescribeSQLLogRecords', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sqllog_records(
@@ -1615,12 +3420,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.execute_cost):
+            query['ExecuteCost'] = request.execute_cost
+        if not UtilClient.is_unset(request.execute_state):
+            query['ExecuteState'] = request.execute_state
+        if not UtilClient.is_unset(request.max_execute_cost):
+            query['MaxExecuteCost'] = request.max_execute_cost
+        if not UtilClient.is_unset(request.min_execute_cost):
+            query['MinExecuteCost'] = request.min_execute_cost
+        if not UtilClient.is_unset(request.operation_class):
+            query['OperationClass'] = request.operation_class
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIP'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogsResponse(),
-            self.do_rpcrequest('DescribeSQLLogs', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sqllogs_with_options_async(
@@ -1629,12 +3476,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.execute_cost):
+            query['ExecuteCost'] = request.execute_cost
+        if not UtilClient.is_unset(request.execute_state):
+            query['ExecuteState'] = request.execute_state
+        if not UtilClient.is_unset(request.max_execute_cost):
+            query['MaxExecuteCost'] = request.max_execute_cost
+        if not UtilClient.is_unset(request.min_execute_cost):
+            query['MinExecuteCost'] = request.min_execute_cost
+        if not UtilClient.is_unset(request.operation_class):
+            query['OperationClass'] = request.operation_class
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIP'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogsResponse(),
-            await self.do_rpcrequest_async('DescribeSQLLogs', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sqllogs(
@@ -1657,12 +3546,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogsOnSliceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.execute_state):
+            query['ExecuteState'] = request.execute_state
+        if not UtilClient.is_unset(request.max_execute_cost):
+            query['MaxExecuteCost'] = request.max_execute_cost
+        if not UtilClient.is_unset(request.min_execute_cost):
+            query['MinExecuteCost'] = request.min_execute_cost
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_id):
+            query['QueryId'] = request.query_id
+        if not UtilClient.is_unset(request.slice_id):
+            query['SliceId'] = request.slice_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogsOnSlice',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogsOnSliceResponse(),
-            self.do_rpcrequest('DescribeSQLLogsOnSlice', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sqllogs_on_slice_with_options_async(
@@ -1671,12 +3588,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogsOnSliceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.execute_state):
+            query['ExecuteState'] = request.execute_state
+        if not UtilClient.is_unset(request.max_execute_cost):
+            query['MaxExecuteCost'] = request.max_execute_cost
+        if not UtilClient.is_unset(request.min_execute_cost):
+            query['MinExecuteCost'] = request.min_execute_cost
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_id):
+            query['QueryId'] = request.query_id
+        if not UtilClient.is_unset(request.slice_id):
+            query['SliceId'] = request.slice_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLLogsOnSlice',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeSQLLogsOnSliceResponse(),
-            await self.do_rpcrequest_async('DescribeSQLLogsOnSlice', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sqllogs_on_slice(
@@ -1693,18 +3638,344 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqllogs_on_slice_with_options_async(request, runtime)
 
+    def describe_slow_log_records_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeSlowLogRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSlowLogRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sqlid):
+            query['SQLId'] = request.sqlid
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowLogRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSlowLogRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_slow_log_records_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeSlowLogRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSlowLogRecordsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbname):
+            query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sqlid):
+            query['SQLId'] = request.sqlid
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowLogRecords',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSlowLogRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_slow_log_records(
+        self,
+        request: gpdb_20160503_models.DescribeSlowLogRecordsRequest,
+    ) -> gpdb_20160503_models.DescribeSlowLogRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_slow_log_records_with_options(request, runtime)
+
+    async def describe_slow_log_records_async(
+        self,
+        request: gpdb_20160503_models.DescribeSlowLogRecordsRequest,
+    ) -> gpdb_20160503_models.DescribeSlowLogRecordsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_slow_log_records_with_options_async(request, runtime)
+
+    def describe_slow_sqllogs_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeSlowSQLLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSlowSQLLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.execute_state):
+            query['ExecuteState'] = request.execute_state
+        if not UtilClient.is_unset(request.max_execute_cost):
+            query['MaxExecuteCost'] = request.max_execute_cost
+        if not UtilClient.is_unset(request.min_execute_cost):
+            query['MinExecuteCost'] = request.min_execute_cost
+        if not UtilClient.is_unset(request.operation_class):
+            query['OperationClass'] = request.operation_class
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIP'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowSQLLogs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSlowSQLLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_slow_sqllogs_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeSlowSQLLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSlowSQLLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.execute_state):
+            query['ExecuteState'] = request.execute_state
+        if not UtilClient.is_unset(request.max_execute_cost):
+            query['MaxExecuteCost'] = request.max_execute_cost
+        if not UtilClient.is_unset(request.min_execute_cost):
+            query['MinExecuteCost'] = request.min_execute_cost
+        if not UtilClient.is_unset(request.operation_class):
+            query['OperationClass'] = request.operation_class
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_keywords):
+            query['QueryKeywords'] = request.query_keywords
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIP'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user):
+            query['User'] = request.user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSlowSQLLogs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSlowSQLLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_slow_sqllogs(
+        self,
+        request: gpdb_20160503_models.DescribeSlowSQLLogsRequest,
+    ) -> gpdb_20160503_models.DescribeSlowSQLLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_slow_sqllogs_with_options(request, runtime)
+
+    async def describe_slow_sqllogs_async(
+        self,
+        request: gpdb_20160503_models.DescribeSlowSQLLogsRequest,
+    ) -> gpdb_20160503_models.DescribeSlowSQLLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_slow_sqllogs_with_options_async(request, runtime)
+
+    def describe_specification_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeSpecificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSpecificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_cores):
+            query['CpuCores'] = request.cpu_cores
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.total_node_num):
+            query['TotalNodeNum'] = request.total_node_num
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSpecification',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSpecificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_specification_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeSpecificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSpecificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cpu_cores):
+            query['CpuCores'] = request.cpu_cores
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.total_node_num):
+            query['TotalNodeNum'] = request.total_node_num
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSpecification',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSpecificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_specification(
+        self,
+        request: gpdb_20160503_models.DescribeSpecificationRequest,
+    ) -> gpdb_20160503_models.DescribeSpecificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_specification_with_options(request, runtime)
+
+    async def describe_specification_async(
+        self,
+        request: gpdb_20160503_models.DescribeSpecificationRequest,
+    ) -> gpdb_20160503_models.DescribeSpecificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_specification_with_options_async(request, runtime)
+
     def describe_tags_with_options(
         self,
         request: gpdb_20160503_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTags',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeTagsResponse(),
-            self.do_rpcrequest('DescribeTags', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_tags_with_options_async(
@@ -1713,12 +3984,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTags',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeTagsResponse(),
-            await self.do_rpcrequest_async('DescribeTags', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_tags(
@@ -1741,12 +4036,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeUserEncryptionKeyListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEncryptionKeyList',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeUserEncryptionKeyListResponse(),
-            self.do_rpcrequest('DescribeUserEncryptionKeyList', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_user_encryption_key_list_with_options_async(
@@ -1755,12 +4068,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeUserEncryptionKeyListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserEncryptionKeyList',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.DescribeUserEncryptionKeyListResponse(),
-            await self.do_rpcrequest_async('DescribeUserEncryptionKeyList', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_encryption_key_list(
@@ -1783,12 +4114,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ListTagResourcesResponse(),
-            self.do_rpcrequest('ListTagResources', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -1797,12 +4158,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ListTagResourcesResponse(),
-            await self.do_rpcrequest_async('ListTagResources', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -1825,12 +4216,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyAccountDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountDescription',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyAccountDescriptionResponse(),
-            self.do_rpcrequest('ModifyAccountDescription', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_account_description_with_options_async(
@@ -1839,12 +4248,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyAccountDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_description):
+            query['AccountDescription'] = request.account_description
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountDescription',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyAccountDescriptionResponse(),
-            await self.do_rpcrequest_async('ModifyAccountDescription', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_account_description(
@@ -1867,12 +4294,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.enable_recovery_point):
+            query['EnableRecoveryPoint'] = request.enable_recovery_point
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.recovery_point_period):
+            query['RecoveryPointPeriod'] = request.recovery_point_period
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyBackupPolicyResponse(),
-            self.do_rpcrequest('ModifyBackupPolicy', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_backup_policy_with_options_async(
@@ -1881,12 +4332,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.enable_recovery_point):
+            query['EnableRecoveryPoint'] = request.enable_recovery_point
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.recovery_point_period):
+            query['RecoveryPointPeriod'] = request.recovery_point_period
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyBackupPolicyResponse(),
-            await self.do_rpcrequest_async('ModifyBackupPolicy', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_backup_policy(
@@ -1909,12 +4384,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceConnectionModeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_mode):
+            query['ConnectionMode'] = request.connection_mode
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceConnectionMode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceConnectionModeResponse(),
-            self.do_rpcrequest('ModifyDBInstanceConnectionMode', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_connection_mode_with_options_async(
@@ -1923,12 +4414,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceConnectionModeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_mode):
+            query['ConnectionMode'] = request.connection_mode
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceConnectionMode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceConnectionModeResponse(),
-            await self.do_rpcrequest_async('ModifyDBInstanceConnectionMode', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_connection_mode(
@@ -1951,12 +4458,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceConnectionString',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse(),
-            self.do_rpcrequest('ModifyDBInstanceConnectionString', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_connection_string_with_options_async(
@@ -1965,12 +4492,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceConnectionString',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse(),
-            await self.do_rpcrequest_async('ModifyDBInstanceConnectionString', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_connection_string(
@@ -1993,12 +4540,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceDescription',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceDescriptionResponse(),
-            self.do_rpcrequest('ModifyDBInstanceDescription', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_description_with_options_async(
@@ -2007,12 +4570,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceDescriptionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceDescription',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceDescriptionResponse(),
-            await self.do_rpcrequest_async('ModifyDBInstanceDescription', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_description(
@@ -2035,12 +4614,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceMaintainTime',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse(),
-            self.do_rpcrequest('ModifyDBInstanceMaintainTime', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_maintain_time_with_options_async(
@@ -2049,12 +4646,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceMaintainTime',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse(),
-            await self.do_rpcrequest_async('ModifyDBInstanceMaintainTime', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_maintain_time(
@@ -2077,12 +4692,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceNetworkType',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
-            self.do_rpcrequest('ModifyDBInstanceNetworkType', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_network_type_with_options_async(
@@ -2091,12 +4728,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceNetworkType',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse(),
-            await self.do_rpcrequest_async('ModifyDBInstanceNetworkType', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_network_type(
@@ -2119,12 +4778,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceSSLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceSSL',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceSSLResponse(),
-            self.do_rpcrequest('ModifyDBInstanceSSL', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_dbinstance_sslwith_options_async(
@@ -2133,12 +4810,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceSSLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceSSL',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyDBInstanceSSLResponse(),
-            await self.do_rpcrequest_async('ModifyDBInstanceSSL', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_dbinstance_ssl(
@@ -2161,12 +4856,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyParametersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.force_restart_instance):
+            query['ForceRestartInstance'] = request.force_restart_instance
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyParameters',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyParametersResponse(),
-            self.do_rpcrequest('ModifyParameters', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_parameters_with_options_async(
@@ -2175,12 +4888,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyParametersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.force_restart_instance):
+            query['ForceRestartInstance'] = request.force_restart_instance
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyParameters',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifyParametersResponse(),
-            await self.do_rpcrequest_async('ModifyParameters', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_parameters(
@@ -2197,60 +4928,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_parameters_with_options_async(request, runtime)
 
-    def modify_security_ips_with_options(
-        self,
-        request: gpdb_20160503_models.ModifySecurityIpsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifySecurityIpsResponse(),
-            self.do_rpcrequest('ModifySecurityIps', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_security_ips_with_options_async(
-        self,
-        request: gpdb_20160503_models.ModifySecurityIpsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.ModifySecurityIpsResponse(),
-            await self.do_rpcrequest_async('ModifySecurityIps', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_security_ips(
-        self,
-        request: gpdb_20160503_models.ModifySecurityIpsRequest,
-    ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_security_ips_with_options(request, runtime)
-
-    async def modify_security_ips_async(
-        self,
-        request: gpdb_20160503_models.ModifySecurityIpsRequest,
-    ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_security_ips_with_options_async(request, runtime)
-
     def modify_sqlcollector_policy_with_options(
         self,
         request: gpdb_20160503_models.ModifySQLCollectorPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifySQLCollectorPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.sqlcollector_status):
+            query['SQLCollectorStatus'] = request.sqlcollector_status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySQLCollectorPolicy',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifySQLCollectorPolicyResponse(),
-            self.do_rpcrequest('ModifySQLCollectorPolicy', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def modify_sqlcollector_policy_with_options_async(
@@ -2259,12 +4964,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifySQLCollectorPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.sqlcollector_status):
+            query['SQLCollectorStatus'] = request.sqlcollector_status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySQLCollectorPolicy',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ModifySQLCollectorPolicyResponse(),
-            await self.do_rpcrequest_async('ModifySQLCollectorPolicy', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_sqlcollector_policy(
@@ -2281,18 +5002,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_sqlcollector_policy_with_options_async(request, runtime)
 
+    def modify_security_ips_with_options(
+        self,
+        request: gpdb_20160503_models.ModifySecurityIpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_iparray_attribute):
+            query['DBInstanceIPArrayAttribute'] = request.dbinstance_iparray_attribute
+        if not UtilClient.is_unset(request.dbinstance_iparray_name):
+            query['DBInstanceIPArrayName'] = request.dbinstance_iparray_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySecurityIps',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifySecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_security_ips_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifySecurityIpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_iparray_attribute):
+            query['DBInstanceIPArrayAttribute'] = request.dbinstance_iparray_attribute
+        if not UtilClient.is_unset(request.dbinstance_iparray_name):
+            query['DBInstanceIPArrayName'] = request.dbinstance_iparray_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySecurityIps',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifySecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_security_ips(
+        self,
+        request: gpdb_20160503_models.ModifySecurityIpsRequest,
+    ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_security_ips_with_options(request, runtime)
+
+    async def modify_security_ips_async(
+        self,
+        request: gpdb_20160503_models.ModifySecurityIpsRequest,
+    ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_security_ips_with_options_async(request, runtime)
+
     def release_instance_public_connection_with_options(
         self,
         request: gpdb_20160503_models.ReleaseInstancePublicConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ReleaseInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseInstancePublicConnection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ReleaseInstancePublicConnectionResponse(),
-            self.do_rpcrequest('ReleaseInstancePublicConnection', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def release_instance_public_connection_with_options_async(
@@ -2301,12 +5122,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ReleaseInstancePublicConnectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseInstancePublicConnection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ReleaseInstancePublicConnectionResponse(),
-            await self.do_rpcrequest_async('ReleaseInstancePublicConnection', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def release_instance_public_connection(
@@ -2329,12 +5168,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ResetAccountPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetAccountPassword',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ResetAccountPasswordResponse(),
-            self.do_rpcrequest('ResetAccountPassword', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def reset_account_password_with_options_async(
@@ -2343,12 +5200,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ResetAccountPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetAccountPassword',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.ResetAccountPasswordResponse(),
-            await self.do_rpcrequest_async('ResetAccountPassword', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_account_password(
@@ -2371,12 +5246,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.RestartDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.RestartDBInstanceResponse(),
-            self.do_rpcrequest('RestartDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def restart_dbinstance_with_options_async(
@@ -2385,12 +5276,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.RestartDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.RestartDBInstanceResponse(),
-            await self.do_rpcrequest_async('RestartDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def restart_dbinstance(
@@ -2407,18 +5314,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.restart_dbinstance_with_options_async(request, runtime)
 
+    def set_data_share_instance_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.SetDataShareInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.SetDataShareInstanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.SetDataShareInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_list):
+            request.instance_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_list, 'InstanceList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_list_shrink):
+            query['InstanceList'] = request.instance_list_shrink
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDataShareInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.SetDataShareInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_data_share_instance_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.SetDataShareInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.SetDataShareInstanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.SetDataShareInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_list):
+            request.instance_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_list, 'InstanceList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_list_shrink):
+            query['InstanceList'] = request.instance_list_shrink
+        if not UtilClient.is_unset(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDataShareInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.SetDataShareInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_data_share_instance(
+        self,
+        request: gpdb_20160503_models.SetDataShareInstanceRequest,
+    ) -> gpdb_20160503_models.SetDataShareInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_data_share_instance_with_options(request, runtime)
+
+    async def set_data_share_instance_async(
+        self,
+        request: gpdb_20160503_models.SetDataShareInstanceRequest,
+    ) -> gpdb_20160503_models.SetDataShareInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_data_share_instance_with_options_async(request, runtime)
+
     def switch_dbinstance_net_type_with_options(
         self,
         request: gpdb_20160503_models.SwitchDBInstanceNetTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.SwitchDBInstanceNetTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchDBInstanceNetType',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.SwitchDBInstanceNetTypeResponse(),
-            self.do_rpcrequest('SwitchDBInstanceNetType', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def switch_dbinstance_net_type_with_options_async(
@@ -2427,12 +5442,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.SwitchDBInstanceNetTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchDBInstanceNetType',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.SwitchDBInstanceNetTypeResponse(),
-            await self.do_rpcrequest_async('SwitchDBInstanceNetType', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def switch_dbinstance_net_type(
@@ -2455,12 +5488,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.TagResourcesResponse(),
-            self.do_rpcrequest('TagResources', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -2469,12 +5530,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.TagResourcesResponse(),
-            await self.do_rpcrequest_async('TagResources', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -2497,12 +5586,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.UntagResourcesResponse(),
-            self.do_rpcrequest('UntagResources', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -2511,12 +5630,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.UntagResourcesResponse(),
-            await self.do_rpcrequest_async('UntagResources', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -2539,12 +5688,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpgradeDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not UtilClient.is_unset(request.dbinstance_group_count):
+            query['DBInstanceGroupCount'] = request.dbinstance_group_count
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.UpgradeDBInstanceResponse(),
-            self.do_rpcrequest('UpgradeDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_dbinstance_with_options_async(
@@ -2553,12 +5726,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpgradeDBInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not UtilClient.is_unset(request.dbinstance_group_count):
+            query['DBInstanceGroupCount'] = request.dbinstance_group_count
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBInstance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.UpgradeDBInstanceResponse(),
-            await self.do_rpcrequest_async('UpgradeDBInstance', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_dbinstance(
@@ -2581,12 +5778,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpgradeDBVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.major_version):
+            query['MajorVersion'] = request.major_version
+        if not UtilClient.is_unset(request.minor_version):
+            query['MinorVersion'] = request.minor_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBVersion',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.UpgradeDBVersionResponse(),
-            self.do_rpcrequest('UpgradeDBVersion', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_dbversion_with_options_async(
@@ -2595,12 +5818,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpgradeDBVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.major_version):
+            query['MajorVersion'] = request.major_version
+        if not UtilClient.is_unset(request.minor_version):
+            query['MinorVersion'] = request.minor_version
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeDBVersion',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             gpdb_20160503_models.UpgradeDBVersionResponse(),
-            await self.do_rpcrequest_async('UpgradeDBVersion', '2016-05-03', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_dbversion(
