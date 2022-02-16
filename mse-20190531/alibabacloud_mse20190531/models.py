@@ -6196,11 +6196,13 @@ class GetBlackWhiteListRequest(TeaModel):
         self,
         accept_language: str = None,
         gateway_unique_id: str = None,
+        is_white: bool = None,
         resource_type: str = None,
         type: str = None,
     ):
         self.accept_language = accept_language
         self.gateway_unique_id = gateway_unique_id
+        self.is_white = is_white
         self.resource_type = resource_type
         self.type = type
 
@@ -6217,6 +6219,8 @@ class GetBlackWhiteListRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.gateway_unique_id is not None:
             result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.is_white is not None:
+            result['IsWhite'] = self.is_white
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.type is not None:
@@ -6229,6 +6233,8 @@ class GetBlackWhiteListRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('GatewayUniqueId') is not None:
             self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('IsWhite') is not None:
+            self.is_white = m.get('IsWhite')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('Type') is not None:
@@ -12193,9 +12199,12 @@ class ListClusterTypesRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        connect_type: str = None,
         region_id: str = None,
     ):
         self.accept_language = accept_language
+        # 网络连接类型
+        self.connect_type = connect_type
         self.region_id = region_id
 
     def validate(self):
@@ -12209,6 +12218,8 @@ class ListClusterTypesRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.connect_type is not None:
+            result['ConnectType'] = self.connect_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -12217,6 +12228,8 @@ class ListClusterTypesRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('ConnectType') is not None:
+            self.connect_type = m.get('ConnectType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -17863,8 +17876,11 @@ class QueryClusterSpecificationRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        connect_type: str = None,
     ):
         self.accept_language = accept_language
+        # 网络连接类型
+        self.connect_type = connect_type
 
     def validate(self):
         pass
@@ -17877,12 +17893,16 @@ class QueryClusterSpecificationRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.connect_type is not None:
+            result['ConnectType'] = self.connect_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('ConnectType') is not None:
+            self.connect_type = m.get('ConnectType')
         return self
 
 
@@ -20080,6 +20100,7 @@ class UpdateBlackWhiteListRequest(TeaModel):
         content: str = None,
         gateway_unique_id: str = None,
         id: int = None,
+        is_white: bool = None,
         resource_type: str = None,
         status: str = None,
         type: str = None,
@@ -20088,6 +20109,7 @@ class UpdateBlackWhiteListRequest(TeaModel):
         self.content = content
         self.gateway_unique_id = gateway_unique_id
         self.id = id
+        self.is_white = is_white
         self.resource_type = resource_type
         self.status = status
         self.type = type
@@ -20109,6 +20131,8 @@ class UpdateBlackWhiteListRequest(TeaModel):
             result['GatewayUniqueId'] = self.gateway_unique_id
         if self.id is not None:
             result['Id'] = self.id
+        if self.is_white is not None:
+            result['IsWhite'] = self.is_white
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.status is not None:
@@ -20127,6 +20151,8 @@ class UpdateBlackWhiteListRequest(TeaModel):
             self.gateway_unique_id = m.get('GatewayUniqueId')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IsWhite') is not None:
+            self.is_white = m.get('IsWhite')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:

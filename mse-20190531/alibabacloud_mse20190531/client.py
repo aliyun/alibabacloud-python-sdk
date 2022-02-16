@@ -4790,6 +4790,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.connect_type):
+            query['ConnectType'] = request.connect_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -4820,6 +4822,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.connect_type):
+            query['ConnectType'] = request.connect_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -6482,6 +6486,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.connect_type):
+            query['ConnectType'] = request.connect_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6510,6 +6516,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.connect_type):
+            query['ConnectType'] = request.connect_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7418,6 +7426,8 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.is_white):
+            query['IsWhite'] = request.is_white
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.status):
@@ -7458,6 +7468,8 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
+        if not UtilClient.is_unset(request.is_white):
+            query['IsWhite'] = request.is_white
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.status):
