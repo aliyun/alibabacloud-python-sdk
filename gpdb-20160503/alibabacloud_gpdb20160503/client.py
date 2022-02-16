@@ -946,80 +946,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_database_with_options_async(request, runtime)
 
-    def delete_instance_spinfo_with_options(
-        self,
-        request: gpdb_20160503_models.DeleteInstanceSPInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DeleteInstanceSPInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbinstance_infos):
-            query['DBInstanceInfos'] = request.dbinstance_infos
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteInstanceSPInfo',
-            version='2016-05-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteInstanceSPInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_instance_spinfo_with_options_async(
-        self,
-        request: gpdb_20160503_models.DeleteInstanceSPInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DeleteInstanceSPInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.dbinstance_infos):
-            query['DBInstanceInfos'] = request.dbinstance_infos
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteInstanceSPInfo',
-            version='2016-05-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DeleteInstanceSPInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_instance_spinfo(
-        self,
-        request: gpdb_20160503_models.DeleteInstanceSPInfoRequest,
-    ) -> gpdb_20160503_models.DeleteInstanceSPInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_instance_spinfo_with_options(request, runtime)
-
-    async def delete_instance_spinfo_async(
-        self,
-        request: gpdb_20160503_models.DeleteInstanceSPInfoRequest,
-    ) -> gpdb_20160503_models.DeleteInstanceSPInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_instance_spinfo_with_options_async(request, runtime)
-
     def describe_accounts_with_options(
         self,
         request: gpdb_20160503_models.DescribeAccountsRequest,
@@ -1315,80 +1241,6 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeDBClusterNodeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_node_with_options_async(request, runtime)
-
-    def describe_dbcluster_nodes_with_options(
-        self,
-        request: gpdb_20160503_models.DescribeDBClusterNodesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDBClusterNodesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.node_type):
-            query['NodeType'] = request.node_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDBClusterNodes',
-            version='2016-05-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBClusterNodesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_dbcluster_nodes_with_options_async(
-        self,
-        request: gpdb_20160503_models.DescribeDBClusterNodesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeDBClusterNodesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.node_type):
-            query['NodeType'] = request.node_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDBClusterNodes',
-            version='2016-05-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeDBClusterNodesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_dbcluster_nodes(
-        self,
-        request: gpdb_20160503_models.DescribeDBClusterNodesRequest,
-    ) -> gpdb_20160503_models.DescribeDBClusterNodesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dbcluster_nodes_with_options(request, runtime)
-
-    async def describe_dbcluster_nodes_async(
-        self,
-        request: gpdb_20160503_models.DescribeDBClusterNodesRequest,
-    ) -> gpdb_20160503_models.DescribeDBClusterNodesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dbcluster_nodes_with_options_async(request, runtime)
 
     def describe_dbcluster_performance_with_options(
         self,
@@ -1767,6 +1619,88 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeDBInstanceOnECSAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_on_ecsattribute_with_options_async(request, runtime)
+
+    def describe_dbinstance_performance_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstancePerformance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_performance_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstancePerformance',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstancePerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_performance(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_performance_with_options(request, runtime)
+
+    async def describe_dbinstance_performance_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_performance_with_options_async(request, runtime)
 
     def describe_dbinstance_sqlpatterns_with_options(
         self,
@@ -2963,80 +2897,6 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeSQLCollectorPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqlcollector_policy_with_options_async(request, runtime)
-
-    def describe_sqllog_with_options(
-        self,
-        request: gpdb_20160503_models.DescribeSQLLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeSQLLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.query_id):
-            query['QueryId'] = request.query_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSQLLog',
-            version='2016-05-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSQLLogResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_sqllog_with_options_async(
-        self,
-        request: gpdb_20160503_models.DescribeSQLLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> gpdb_20160503_models.DescribeSQLLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.query_id):
-            query['QueryId'] = request.query_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSQLLog',
-            version='2016-05-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            gpdb_20160503_models.DescribeSQLLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_sqllog(
-        self,
-        request: gpdb_20160503_models.DescribeSQLLogRequest,
-    ) -> gpdb_20160503_models.DescribeSQLLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sqllog_with_options(request, runtime)
-
-    async def describe_sqllog_async(
-        self,
-        request: gpdb_20160503_models.DescribeSQLLogRequest,
-    ) -> gpdb_20160503_models.DescribeSQLLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sqllog_with_options_async(request, runtime)
 
     def describe_sqllog_by_query_id_with_options(
         self,

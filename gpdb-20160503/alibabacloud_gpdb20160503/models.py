@@ -1285,103 +1285,6 @@ class DeleteDatabaseResponse(TeaModel):
         return self
 
 
-class DeleteInstanceSPInfoRequest(TeaModel):
-    def __init__(
-        self,
-        dbinstance_id: str = None,
-        dbinstance_infos: str = None,
-    ):
-        self.dbinstance_id = dbinstance_id
-        self.dbinstance_infos = dbinstance_infos
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.dbinstance_infos is not None:
-            result['DBInstanceInfos'] = self.dbinstance_infos
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('DBInstanceInfos') is not None:
-            self.dbinstance_infos = m.get('DBInstanceInfos')
-        return self
-
-
-class DeleteInstanceSPInfoResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteInstanceSPInfoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DeleteInstanceSPInfoResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DeleteInstanceSPInfoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeAccountsRequest(TeaModel):
     def __init__(
         self,
@@ -2179,150 +2082,6 @@ class DescribeDBClusterNodeResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeDBClusterNodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeDBClusterNodesRequest(TeaModel):
-    def __init__(
-        self,
-        dbinstance_id: str = None,
-        node_type: str = None,
-    ):
-        self.dbinstance_id = dbinstance_id
-        self.node_type = node_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.node_type is not None:
-            result['NodeType'] = self.node_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('NodeType') is not None:
-            self.node_type = m.get('NodeType')
-        return self
-
-
-class DescribeDBClusterNodesResponseBodyNodes(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-    ):
-        self.name = name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        return self
-
-
-class DescribeDBClusterNodesResponseBody(TeaModel):
-    def __init__(
-        self,
-        dbcluster_id: str = None,
-        nodes: List[DescribeDBClusterNodesResponseBodyNodes] = None,
-        request_id: str = None,
-    ):
-        self.dbcluster_id = dbcluster_id
-        self.nodes = nodes
-        self.request_id = request_id
-
-    def validate(self):
-        if self.nodes:
-            for k in self.nodes:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbcluster_id is not None:
-            result['DBClusterId'] = self.dbcluster_id
-        result['Nodes'] = []
-        if self.nodes is not None:
-            for k in self.nodes:
-                result['Nodes'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBClusterId') is not None:
-            self.dbcluster_id = m.get('DBClusterId')
-        self.nodes = []
-        if m.get('Nodes') is not None:
-            for k in m.get('Nodes'):
-                temp_model = DescribeDBClusterNodesResponseBodyNodes()
-                self.nodes.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeDBClusterNodesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeDBClusterNodesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeDBClusterNodesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3939,6 +3698,145 @@ class DescribeDBInstanceOnECSAttributeResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeDBInstanceOnECSAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDBInstancePerformanceRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        end_time: str = None,
+        key: str = None,
+        start_time: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.end_time = end_time
+        self.key = key
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDBInstancePerformanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        end_time: str = None,
+        engine: str = None,
+        performance_keys: List[str] = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.end_time = end_time
+        self.engine = engine
+        self.performance_keys = performance_keys
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.performance_keys is not None:
+            result['PerformanceKeys'] = self.performance_keys
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('PerformanceKeys') is not None:
+            self.performance_keys = m.get('PerformanceKeys')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDBInstancePerformanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDBInstancePerformanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDBInstancePerformanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7538,228 +7436,6 @@ class DescribeSQLCollectorPolicyResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeSQLCollectorPolicyResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeSQLLogRequest(TeaModel):
-    def __init__(
-        self,
-        dbinstance_id: str = None,
-        query_id: str = None,
-    ):
-        self.dbinstance_id = dbinstance_id
-        self.query_id = query_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.query_id is not None:
-            result['QueryId'] = self.query_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('QueryId') is not None:
-            self.query_id = m.get('QueryId')
-        return self
-
-
-class DescribeSQLLogResponseBodyItems(TeaModel):
-    def __init__(
-        self,
-        account_name: str = None,
-        dbname: str = None,
-        dbrole: str = None,
-        execute_cost: float = None,
-        execute_state: str = None,
-        operation_class: str = None,
-        operation_execute_time: str = None,
-        operation_type: str = None,
-        query_id: str = None,
-        return_row_counts: int = None,
-        sqlplan: str = None,
-        sqltext: str = None,
-        scan_row_counts: int = None,
-        source_ip: str = None,
-        source_port: int = None,
-    ):
-        self.account_name = account_name
-        self.dbname = dbname
-        self.dbrole = dbrole
-        self.execute_cost = execute_cost
-        self.execute_state = execute_state
-        self.operation_class = operation_class
-        self.operation_execute_time = operation_execute_time
-        self.operation_type = operation_type
-        self.query_id = query_id
-        self.return_row_counts = return_row_counts
-        self.sqlplan = sqlplan
-        self.sqltext = sqltext
-        self.scan_row_counts = scan_row_counts
-        self.source_ip = source_ip
-        self.source_port = source_port
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.account_name is not None:
-            result['AccountName'] = self.account_name
-        if self.dbname is not None:
-            result['DBName'] = self.dbname
-        if self.dbrole is not None:
-            result['DBRole'] = self.dbrole
-        if self.execute_cost is not None:
-            result['ExecuteCost'] = self.execute_cost
-        if self.execute_state is not None:
-            result['ExecuteState'] = self.execute_state
-        if self.operation_class is not None:
-            result['OperationClass'] = self.operation_class
-        if self.operation_execute_time is not None:
-            result['OperationExecuteTime'] = self.operation_execute_time
-        if self.operation_type is not None:
-            result['OperationType'] = self.operation_type
-        if self.query_id is not None:
-            result['QueryId'] = self.query_id
-        if self.return_row_counts is not None:
-            result['ReturnRowCounts'] = self.return_row_counts
-        if self.sqlplan is not None:
-            result['SQLPlan'] = self.sqlplan
-        if self.sqltext is not None:
-            result['SQLText'] = self.sqltext
-        if self.scan_row_counts is not None:
-            result['ScanRowCounts'] = self.scan_row_counts
-        if self.source_ip is not None:
-            result['SourceIP'] = self.source_ip
-        if self.source_port is not None:
-            result['SourcePort'] = self.source_port
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AccountName') is not None:
-            self.account_name = m.get('AccountName')
-        if m.get('DBName') is not None:
-            self.dbname = m.get('DBName')
-        if m.get('DBRole') is not None:
-            self.dbrole = m.get('DBRole')
-        if m.get('ExecuteCost') is not None:
-            self.execute_cost = m.get('ExecuteCost')
-        if m.get('ExecuteState') is not None:
-            self.execute_state = m.get('ExecuteState')
-        if m.get('OperationClass') is not None:
-            self.operation_class = m.get('OperationClass')
-        if m.get('OperationExecuteTime') is not None:
-            self.operation_execute_time = m.get('OperationExecuteTime')
-        if m.get('OperationType') is not None:
-            self.operation_type = m.get('OperationType')
-        if m.get('QueryId') is not None:
-            self.query_id = m.get('QueryId')
-        if m.get('ReturnRowCounts') is not None:
-            self.return_row_counts = m.get('ReturnRowCounts')
-        if m.get('SQLPlan') is not None:
-            self.sqlplan = m.get('SQLPlan')
-        if m.get('SQLText') is not None:
-            self.sqltext = m.get('SQLText')
-        if m.get('ScanRowCounts') is not None:
-            self.scan_row_counts = m.get('ScanRowCounts')
-        if m.get('SourceIP') is not None:
-            self.source_ip = m.get('SourceIP')
-        if m.get('SourcePort') is not None:
-            self.source_port = m.get('SourcePort')
-        return self
-
-
-class DescribeSQLLogResponseBody(TeaModel):
-    def __init__(
-        self,
-        items: List[DescribeSQLLogResponseBodyItems] = None,
-        request_id: str = None,
-    ):
-        self.items = items
-        self.request_id = request_id
-
-    def validate(self):
-        if self.items:
-            for k in self.items:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['Items'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.items = []
-        if m.get('Items') is not None:
-            for k in m.get('Items'):
-                temp_model = DescribeSQLLogResponseBodyItems()
-                self.items.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeSQLLogResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeSQLLogResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeSQLLogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
