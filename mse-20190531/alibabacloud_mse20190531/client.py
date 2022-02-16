@@ -1703,6 +1703,254 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_nacos_service_with_options_async(request, runtime)
 
+    def create_or_update_swimming_lane_with_options(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.enable_rules):
+            query['EnableRules'] = request.enable_rules
+        if not UtilClient.is_unset(request.entry_rule):
+            query['EntryRule'] = request.entry_rule
+        if not UtilClient.is_unset(request.entry_rules):
+            query['EntryRules'] = request.entry_rules
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLane',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateOrUpdateSwimmingLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_or_update_swimming_lane_with_options_async(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.enable_rules):
+            query['EnableRules'] = request.enable_rules
+        if not UtilClient.is_unset(request.entry_rule):
+            query['EntryRule'] = request.entry_rule
+        if not UtilClient.is_unset(request.entry_rules):
+            query['EntryRules'] = request.entry_rules
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLane',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateOrUpdateSwimmingLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_or_update_swimming_lane(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_or_update_swimming_lane_with_options(request, runtime)
+
+    async def create_or_update_swimming_lane_async(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_or_update_swimming_lane_with_options_async(request, runtime)
+
+    def create_or_update_swimming_lane_group_with_options(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.entry_app):
+            query['EntryApp'] = request.entry_app
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLaneGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_or_update_swimming_lane_group_with_options_async(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.entry_app):
+            query['EntryApp'] = request.entry_app
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLaneGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_or_update_swimming_lane_group(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_or_update_swimming_lane_group_with_options(request, runtime)
+
+    async def create_or_update_swimming_lane_group_async(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_or_update_swimming_lane_group_with_options_async(request, runtime)
+
     def create_znode_with_options(
         self,
         request: mse_20190531_models.CreateZnodeRequest,
@@ -2688,6 +2936,154 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.DeleteServiceSourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_service_source_with_options_async(request, runtime)
+
+    def delete_swimming_lane_with_options(
+        self,
+        request: mse_20190531_models.DeleteSwimmingLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteSwimmingLaneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimmingLane',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteSwimmingLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_swimming_lane_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteSwimmingLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteSwimmingLaneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimmingLane',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteSwimmingLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_swimming_lane(
+        self,
+        request: mse_20190531_models.DeleteSwimmingLaneRequest,
+    ) -> mse_20190531_models.DeleteSwimmingLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_swimming_lane_with_options(request, runtime)
+
+    async def delete_swimming_lane_async(
+        self,
+        request: mse_20190531_models.DeleteSwimmingLaneRequest,
+    ) -> mse_20190531_models.DeleteSwimmingLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_swimming_lane_with_options_async(request, runtime)
+
+    def delete_swimming_lane_group_with_options(
+        self,
+        request: mse_20190531_models.DeleteSwimmingLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteSwimmingLaneGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimmingLaneGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteSwimmingLaneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_swimming_lane_group_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteSwimmingLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteSwimmingLaneGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimmingLaneGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteSwimmingLaneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_swimming_lane_group(
+        self,
+        request: mse_20190531_models.DeleteSwimmingLaneGroupRequest,
+    ) -> mse_20190531_models.DeleteSwimmingLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_swimming_lane_group_with_options(request, runtime)
+
+    async def delete_swimming_lane_group_async(
+        self,
+        request: mse_20190531_models.DeleteSwimmingLaneGroupRequest,
+    ) -> mse_20190531_models.DeleteSwimmingLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_swimming_lane_group_with_options_async(request, runtime)
 
     def delete_znode_with_options(
         self,
@@ -4069,6 +4465,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_overview_with_options_async(request, runtime)
 
+    def get_tags_by_swimming_lane_group_id_with_options(
+        self,
+        request: mse_20190531_models.GetTagsBySwimmingLaneGroupIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTagsBySwimmingLaneGroupId',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tags_by_swimming_lane_group_id_with_options_async(
+        self,
+        request: mse_20190531_models.GetTagsBySwimmingLaneGroupIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTagsBySwimmingLaneGroupId',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tags_by_swimming_lane_group_id(
+        self,
+        request: mse_20190531_models.GetTagsBySwimmingLaneGroupIdRequest,
+    ) -> mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_tags_by_swimming_lane_group_id_with_options(request, runtime)
+
+    async def get_tags_by_swimming_lane_group_id_async(
+        self,
+        request: mse_20190531_models.GetTagsBySwimmingLaneGroupIdRequest,
+    ) -> mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_tags_by_swimming_lane_group_id_with_options_async(request, runtime)
+
     def import_nacos_config_with_options(
         self,
         request: mse_20190531_models.ImportNacosConfigRequest,
@@ -4710,6 +5180,84 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.ListAnsServicesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_ans_services_with_options_async(request, runtime)
+
+    def list_app_by_swimming_lane_group_tag_with_options(
+        self,
+        request: mse_20190531_models.ListAppBySwimmingLaneGroupTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppBySwimmingLaneGroupTag',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_by_swimming_lane_group_tag_with_options_async(
+        self,
+        request: mse_20190531_models.ListAppBySwimmingLaneGroupTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppBySwimmingLaneGroupTag',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_by_swimming_lane_group_tag(
+        self,
+        request: mse_20190531_models.ListAppBySwimmingLaneGroupTagRequest,
+    ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_app_by_swimming_lane_group_tag_with_options(request, runtime)
+
+    async def list_app_by_swimming_lane_group_tag_async(
+        self,
+        request: mse_20190531_models.ListAppBySwimmingLaneGroupTagRequest,
+    ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_app_by_swimming_lane_group_tag_with_options_async(request, runtime)
 
     def list_cluster_connection_types_with_options(
         self,
@@ -6259,6 +6807,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pull_services_with_options_async(request, runtime)
 
+    def query_all_swimming_lane_with_options(
+        self,
+        request: mse_20190531_models.QueryAllSwimmingLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QueryAllSwimmingLaneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAllSwimmingLane',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QueryAllSwimmingLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_all_swimming_lane_with_options_async(
+        self,
+        request: mse_20190531_models.QueryAllSwimmingLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QueryAllSwimmingLaneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAllSwimmingLane',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QueryAllSwimmingLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_all_swimming_lane(
+        self,
+        request: mse_20190531_models.QueryAllSwimmingLaneRequest,
+    ) -> mse_20190531_models.QueryAllSwimmingLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_all_swimming_lane_with_options(request, runtime)
+
+    async def query_all_swimming_lane_async(
+        self,
+        request: mse_20190531_models.QueryAllSwimmingLaneRequest,
+    ) -> mse_20190531_models.QueryAllSwimmingLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_all_swimming_lane_with_options_async(request, runtime)
+
+    def query_all_swimming_lane_group_with_options(
+        self,
+        request: mse_20190531_models.QueryAllSwimmingLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QueryAllSwimmingLaneGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAllSwimmingLaneGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QueryAllSwimmingLaneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_all_swimming_lane_group_with_options_async(
+        self,
+        request: mse_20190531_models.QueryAllSwimmingLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QueryAllSwimmingLaneGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAllSwimmingLaneGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QueryAllSwimmingLaneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_all_swimming_lane_group(
+        self,
+        request: mse_20190531_models.QueryAllSwimmingLaneGroupRequest,
+    ) -> mse_20190531_models.QueryAllSwimmingLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_all_swimming_lane_group_with_options(request, runtime)
+
+    async def query_all_swimming_lane_group_async(
+        self,
+        request: mse_20190531_models.QueryAllSwimmingLaneGroupRequest,
+    ) -> mse_20190531_models.QueryAllSwimmingLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_all_swimming_lane_group_with_options_async(request, runtime)
+
     def query_business_locations_with_options(
         self,
         request: mse_20190531_models.QueryBusinessLocationsRequest,
@@ -6946,6 +7638,80 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.QuerySlbSpecResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_slb_spec_with_options_async(request, runtime)
+
+    def query_swimming_lane_by_id_with_options(
+        self,
+        request: mse_20190531_models.QuerySwimmingLaneByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QuerySwimmingLaneByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySwimmingLaneById',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QuerySwimmingLaneByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_swimming_lane_by_id_with_options_async(
+        self,
+        request: mse_20190531_models.QuerySwimmingLaneByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.QuerySwimmingLaneByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.lane_id):
+            query['LaneId'] = request.lane_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySwimmingLaneById',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.QuerySwimmingLaneByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_swimming_lane_by_id(
+        self,
+        request: mse_20190531_models.QuerySwimmingLaneByIdRequest,
+    ) -> mse_20190531_models.QuerySwimmingLaneByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_swimming_lane_by_id_with_options(request, runtime)
+
+    async def query_swimming_lane_by_id_async(
+        self,
+        request: mse_20190531_models.QuerySwimmingLaneByIdRequest,
+    ) -> mse_20190531_models.QuerySwimmingLaneByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_swimming_lane_by_id_with_options_async(request, runtime)
 
     def query_znode_detail_with_options(
         self,

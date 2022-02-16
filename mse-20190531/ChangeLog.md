@@ -1,3 +1,6 @@
+2022-02-16 Version: 3.0.8
+- Fix QueryMonitor response data.
+
 2022-02-16 Version: 3.0.7
 - Fix normandy query api.
 
