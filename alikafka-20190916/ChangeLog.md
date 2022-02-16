@@ -1,3 +1,7 @@
+2022-02-16 Version: 2.0.1
+- Support domain.
+- Some params added.
+
 2021-08-09 Version: 1.0.3
 - Generated python 2019-09-16 for alikafka.
 
