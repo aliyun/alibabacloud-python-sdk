@@ -612,10 +612,10 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateDNSServiceRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.authorization_rule_description):
-            query['AuthorizationRuleDescription'] = request.authorization_rule_description
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dnsservice_rule_description):
+            query['DNSServiceRuleDescription'] = request.dnsservice_rule_description
         if not UtilClient.is_unset(request.dnsservice_rule_name):
             query['DNSServiceRuleName'] = request.dnsservice_rule_name
         if not UtilClient.is_unset(request.destination):
@@ -656,10 +656,10 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateDNSServiceRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.authorization_rule_description):
-            query['AuthorizationRuleDescription'] = request.authorization_rule_description
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dnsservice_rule_description):
+            query['DNSServiceRuleDescription'] = request.dnsservice_rule_description
         if not UtilClient.is_unset(request.dnsservice_rule_name):
             query['DNSServiceRuleName'] = request.dnsservice_rule_name
         if not UtilClient.is_unset(request.destination):
@@ -2914,6 +2914,8 @@ class Client(OpenApiClient):
             query['AuthorizationRuleName'] = request.authorization_rule_name
         if not UtilClient.is_unset(request.authorization_rule_status):
             query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        if not UtilClient.is_unset(request.authorization_rule_type):
+            query['AuthorizationRuleType'] = request.authorization_rule_type
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
@@ -2960,6 +2962,8 @@ class Client(OpenApiClient):
             query['AuthorizationRuleName'] = request.authorization_rule_name
         if not UtilClient.is_unset(request.authorization_rule_status):
             query['AuthorizationRuleStatus'] = request.authorization_rule_status
+        if not UtilClient.is_unset(request.authorization_rule_type):
+            query['AuthorizationRuleType'] = request.authorization_rule_type
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
@@ -4890,14 +4894,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateDNSServiceRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.authorization_rule_name):
-            query['AuthorizationRuleName'] = request.authorization_rule_name
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dnsservice_rule_description):
             query['DNSServiceRuleDescription'] = request.dnsservice_rule_description
         if not UtilClient.is_unset(request.dnsservice_rule_id):
             query['DNSServiceRuleId'] = request.dnsservice_rule_id
+        if not UtilClient.is_unset(request.dnsservice_rule_name):
+            query['DNSServiceRuleName'] = request.dnsservice_rule_name
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.dry_run):
@@ -4936,14 +4940,14 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateDNSServiceRuleAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.authorization_rule_name):
-            query['AuthorizationRuleName'] = request.authorization_rule_name
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dnsservice_rule_description):
             query['DNSServiceRuleDescription'] = request.dnsservice_rule_description
         if not UtilClient.is_unset(request.dnsservice_rule_id):
             query['DNSServiceRuleId'] = request.dnsservice_rule_id
+        if not UtilClient.is_unset(request.dnsservice_rule_name):
+            query['DNSServiceRuleName'] = request.dnsservice_rule_name
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.dry_run):
