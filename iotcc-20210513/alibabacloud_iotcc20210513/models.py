@@ -782,8 +782,8 @@ class CreateDNSServiceRuleRequest(TeaModel):
     def __init__(
         self,
         authorization_rule_description: str = None,
-        authorization_rule_name: str = None,
         client_token: str = None,
+        dnsservice_rule_name: str = None,
         destination: str = None,
         dry_run: bool = None,
         io_tcloud_connector_id: str = None,
@@ -792,8 +792,8 @@ class CreateDNSServiceRuleRequest(TeaModel):
         source: str = None,
     ):
         self.authorization_rule_description = authorization_rule_description
-        self.authorization_rule_name = authorization_rule_name
         self.client_token = client_token
+        self.dnsservice_rule_name = dnsservice_rule_name
         self.destination = destination
         self.dry_run = dry_run
         self.io_tcloud_connector_id = io_tcloud_connector_id
@@ -812,10 +812,10 @@ class CreateDNSServiceRuleRequest(TeaModel):
         result = dict()
         if self.authorization_rule_description is not None:
             result['AuthorizationRuleDescription'] = self.authorization_rule_description
-        if self.authorization_rule_name is not None:
-            result['AuthorizationRuleName'] = self.authorization_rule_name
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dnsservice_rule_name is not None:
+            result['DNSServiceRuleName'] = self.dnsservice_rule_name
         if self.destination is not None:
             result['Destination'] = self.destination
         if self.dry_run is not None:
@@ -834,10 +834,10 @@ class CreateDNSServiceRuleRequest(TeaModel):
         m = m or dict()
         if m.get('AuthorizationRuleDescription') is not None:
             self.authorization_rule_description = m.get('AuthorizationRuleDescription')
-        if m.get('AuthorizationRuleName') is not None:
-            self.authorization_rule_name = m.get('AuthorizationRuleName')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DNSServiceRuleName') is not None:
+            self.dnsservice_rule_name = m.get('DNSServiceRuleName')
         if m.get('Destination') is not None:
             self.destination = m.get('Destination')
         if m.get('DryRun') is not None:
@@ -8225,9 +8225,9 @@ class UpdateConnectionPoolAttributeResponse(TeaModel):
 class UpdateDNSServiceRuleAttributeRequest(TeaModel):
     def __init__(
         self,
-        authorization_rule_description: str = None,
         authorization_rule_name: str = None,
         client_token: str = None,
+        dnsservice_rule_description: str = None,
         dnsservice_rule_id: str = None,
         destination: str = None,
         dry_run: bool = None,
@@ -8236,9 +8236,9 @@ class UpdateDNSServiceRuleAttributeRequest(TeaModel):
         service_type: str = None,
         source: str = None,
     ):
-        self.authorization_rule_description = authorization_rule_description
         self.authorization_rule_name = authorization_rule_name
         self.client_token = client_token
+        self.dnsservice_rule_description = dnsservice_rule_description
         self.dnsservice_rule_id = dnsservice_rule_id
         self.destination = destination
         self.dry_run = dry_run
@@ -8256,12 +8256,12 @@ class UpdateDNSServiceRuleAttributeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.authorization_rule_description is not None:
-            result['AuthorizationRuleDescription'] = self.authorization_rule_description
         if self.authorization_rule_name is not None:
             result['AuthorizationRuleName'] = self.authorization_rule_name
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dnsservice_rule_description is not None:
+            result['DNSServiceRuleDescription'] = self.dnsservice_rule_description
         if self.dnsservice_rule_id is not None:
             result['DNSServiceRuleId'] = self.dnsservice_rule_id
         if self.destination is not None:
@@ -8280,12 +8280,12 @@ class UpdateDNSServiceRuleAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AuthorizationRuleDescription') is not None:
-            self.authorization_rule_description = m.get('AuthorizationRuleDescription')
         if m.get('AuthorizationRuleName') is not None:
             self.authorization_rule_name = m.get('AuthorizationRuleName')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DNSServiceRuleDescription') is not None:
+            self.dnsservice_rule_description = m.get('DNSServiceRuleDescription')
         if m.get('DNSServiceRuleId') is not None:
             self.dnsservice_rule_id = m.get('DNSServiceRuleId')
         if m.get('Destination') is not None:

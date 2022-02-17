@@ -1,3 +1,6 @@
+2022-02-17 Version: 2.1.1
+- Support iotcc for iot.
+
 2022-02-16 Version: 2.0.9
 - Support iotcc for iot.
 
