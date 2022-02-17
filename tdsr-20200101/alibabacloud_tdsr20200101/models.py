@@ -3898,6 +3898,635 @@ class GetSceneBuildTaskStatusResponse(TeaModel):
         return self
 
 
+class GetScenePreviewDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        enabled: bool = None,
+        preview_token: str = None,
+        show_tag: bool = None,
+    ):
+        # 自定义oss域名（可为cdn域名）
+        self.domain = domain
+        # 是否开启自用资源访问（默认false）
+        self.enabled = enabled
+        # 预览token
+        self.preview_token = preview_token
+        # 是否返回热点数据（默认false）
+        self.show_tag = show_tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.preview_token is not None:
+            result['PreviewToken'] = self.preview_token
+        if self.show_tag is not None:
+            result['ShowTag'] = self.show_tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('PreviewToken') is not None:
+            self.preview_token = m.get('PreviewToken')
+        if m.get('ShowTag') is not None:
+            self.show_tag = m.get('ShowTag')
+        return self
+
+
+class GetScenePreviewDataResponseBodyDataModelPanoListPosition(TeaModel):
+    def __init__(
+        self,
+        rotation: List[float] = None,
+        spot: List[float] = None,
+        viewpoint: List[float] = None,
+    ):
+        # 当前点位在场景中的旋转四元素
+        self.rotation = rotation
+        # 当前点位在场景中的坐标
+        self.spot = spot
+        # 当前子场景名标签在场景中的坐标
+        self.viewpoint = viewpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rotation is not None:
+            result['Rotation'] = self.rotation
+        if self.spot is not None:
+            result['Spot'] = self.spot
+        if self.viewpoint is not None:
+            result['Viewpoint'] = self.viewpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rotation') is not None:
+            self.rotation = m.get('Rotation')
+        if m.get('Spot') is not None:
+            self.spot = m.get('Spot')
+        if m.get('Viewpoint') is not None:
+            self.viewpoint = m.get('Viewpoint')
+        return self
+
+
+class GetScenePreviewDataResponseBodyDataModelPanoList(TeaModel):
+    def __init__(
+        self,
+        cur_room_pic_list: List[str] = None,
+        enabled: bool = None,
+        floor_idx: str = None,
+        id: str = None,
+        main_image: bool = None,
+        neighbours: List[str] = None,
+        position: GetScenePreviewDataResponseBodyDataModelPanoListPosition = None,
+        raw_name: str = None,
+        resource: str = None,
+        room_idx: str = None,
+        sub_scene_id: str = None,
+        token: str = None,
+        virtual_id: str = None,
+        virtual_name: str = None,
+    ):
+        # 当前房间的所有点位
+        self.cur_room_pic_list = cur_room_pic_list
+        # 当前点位是否渲染，false不渲染，场景无法跳转
+        self.enabled = enabled
+        # 楼层号
+        self.floor_idx = floor_idx
+        # 点位ID
+        self.id = id
+        # 单房间多图情况下，是否为主图，默认true
+        self.main_image = main_image
+        # 当前房间邻近可视的点位id
+        self.neighbours = neighbours
+        # 位置数据
+        self.position = position
+        # 一个名称，无实际意义
+        self.raw_name = raw_name
+        # 全景贴图路径
+        self.resource = resource
+        # 房间号
+        self.room_idx = room_idx
+        # 子场景ID
+        self.sub_scene_id = sub_scene_id
+        # token
+        self.token = token
+        # 图片虚拟ID
+        self.virtual_id = virtual_id
+        # 图片名称
+        self.virtual_name = virtual_name
+
+    def validate(self):
+        if self.position:
+            self.position.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cur_room_pic_list is not None:
+            result['CurRoomPicList'] = self.cur_room_pic_list
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.floor_idx is not None:
+            result['FloorIdx'] = self.floor_idx
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.main_image is not None:
+            result['MainImage'] = self.main_image
+        if self.neighbours is not None:
+            result['Neighbours'] = self.neighbours
+        if self.position is not None:
+            result['Position'] = self.position.to_map()
+        if self.raw_name is not None:
+            result['RawName'] = self.raw_name
+        if self.resource is not None:
+            result['Resource'] = self.resource
+        if self.room_idx is not None:
+            result['RoomIdx'] = self.room_idx
+        if self.sub_scene_id is not None:
+            result['SubSceneId'] = self.sub_scene_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.virtual_id is not None:
+            result['VirtualId'] = self.virtual_id
+        if self.virtual_name is not None:
+            result['VirtualName'] = self.virtual_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurRoomPicList') is not None:
+            self.cur_room_pic_list = m.get('CurRoomPicList')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('FloorIdx') is not None:
+            self.floor_idx = m.get('FloorIdx')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MainImage') is not None:
+            self.main_image = m.get('MainImage')
+        if m.get('Neighbours') is not None:
+            self.neighbours = m.get('Neighbours')
+        if m.get('Position') is not None:
+            temp_model = GetScenePreviewDataResponseBodyDataModelPanoListPosition()
+            self.position = temp_model.from_map(m['Position'])
+        if m.get('RawName') is not None:
+            self.raw_name = m.get('RawName')
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+        if m.get('RoomIdx') is not None:
+            self.room_idx = m.get('RoomIdx')
+        if m.get('SubSceneId') is not None:
+            self.sub_scene_id = m.get('SubSceneId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('VirtualId') is not None:
+            self.virtual_id = m.get('VirtualId')
+        if m.get('VirtualName') is not None:
+            self.virtual_name = m.get('VirtualName')
+        return self
+
+
+class GetScenePreviewDataResponseBodyDataModel(TeaModel):
+    def __init__(
+        self,
+        model_path: str = None,
+        pano_list: List[GetScenePreviewDataResponseBodyDataModelPanoList] = None,
+        texture_model_path: str = None,
+        texture_pano_path: str = None,
+    ):
+        # 模型地址
+        self.model_path = model_path
+        # 点位数据
+        self.pano_list = pano_list
+        # 模型的贴图路径
+        self.texture_model_path = texture_model_path
+        # 漫游后预览图片路径
+        self.texture_pano_path = texture_pano_path
+
+    def validate(self):
+        if self.pano_list:
+            for k in self.pano_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_path is not None:
+            result['ModelPath'] = self.model_path
+        result['PanoList'] = []
+        if self.pano_list is not None:
+            for k in self.pano_list:
+                result['PanoList'].append(k.to_map() if k else None)
+        if self.texture_model_path is not None:
+            result['TextureModelPath'] = self.texture_model_path
+        if self.texture_pano_path is not None:
+            result['TexturePanoPath'] = self.texture_pano_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelPath') is not None:
+            self.model_path = m.get('ModelPath')
+        self.pano_list = []
+        if m.get('PanoList') is not None:
+            for k in m.get('PanoList'):
+                temp_model = GetScenePreviewDataResponseBodyDataModelPanoList()
+                self.pano_list.append(temp_model.from_map(k))
+        if m.get('TextureModelPath') is not None:
+            self.texture_model_path = m.get('TextureModelPath')
+        if m.get('TexturePanoPath') is not None:
+            self.texture_pano_path = m.get('TexturePanoPath')
+        return self
+
+
+class GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig(TeaModel):
+    def __init__(
+        self,
+        custom_text: str = None,
+        type: str = None,
+    ):
+        self.custom_text = custom_text
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_text is not None:
+            result['CustomText'] = self.custom_text
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomText') is not None:
+            self.custom_text = m.get('CustomText')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetScenePreviewDataResponseBodyDataTagsConfig(TeaModel):
+    def __init__(
+        self,
+        background_color: str = None,
+        button_config: GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig = None,
+        content: str = None,
+        form_img_size: List[int] = None,
+        form_jump_type: bool = None,
+        form_select_img_type: str = None,
+        images: List[str] = None,
+        is_tag_visible_by_3d: bool = None,
+        link: str = None,
+        pano_id: str = None,
+        position: List[float] = None,
+        position_pano_cube: List[float] = None,
+        related_pano_ids: List[str] = None,
+        scene_id: int = None,
+        title: str = None,
+        video: str = None,
+    ):
+        # 背景色
+        self.background_color = background_color
+        # 按钮配置
+        self.button_config = button_config
+        # 内容
+        self.content = content
+        self.form_img_size = form_img_size
+        self.form_jump_type = form_jump_type
+        self.form_select_img_type = form_select_img_type
+        # 图片链接
+        self.images = images
+        # 是否在鸟瞰模式下显示
+        self.is_tag_visible_by_3d = is_tag_visible_by_3d
+        # 超链接
+        self.link = link
+        # 点位ID
+        self.pano_id = pano_id
+        # 坐标
+        self.position = position
+        self.position_pano_cube = position_pano_cube
+        self.related_pano_ids = related_pano_ids
+        # 场景ID
+        self.scene_id = scene_id
+        # 标题
+        self.title = title
+        # 视频链接
+        self.video = video
+
+    def validate(self):
+        if self.button_config:
+            self.button_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.background_color is not None:
+            result['BackgroundColor'] = self.background_color
+        if self.button_config is not None:
+            result['ButtonConfig'] = self.button_config.to_map()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.form_img_size is not None:
+            result['FormImgSize'] = self.form_img_size
+        if self.form_jump_type is not None:
+            result['FormJumpType'] = self.form_jump_type
+        if self.form_select_img_type is not None:
+            result['FormSelectImgType'] = self.form_select_img_type
+        if self.images is not None:
+            result['Images'] = self.images
+        if self.is_tag_visible_by_3d is not None:
+            result['IsTagVisibleBy3d'] = self.is_tag_visible_by_3d
+        if self.link is not None:
+            result['Link'] = self.link
+        if self.pano_id is not None:
+            result['PanoId'] = self.pano_id
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.position_pano_cube is not None:
+            result['PositionPanoCube'] = self.position_pano_cube
+        if self.related_pano_ids is not None:
+            result['RelatedPanoIds'] = self.related_pano_ids
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.video is not None:
+            result['Video'] = self.video
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackgroundColor') is not None:
+            self.background_color = m.get('BackgroundColor')
+        if m.get('ButtonConfig') is not None:
+            temp_model = GetScenePreviewDataResponseBodyDataTagsConfigButtonConfig()
+            self.button_config = temp_model.from_map(m['ButtonConfig'])
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('FormImgSize') is not None:
+            self.form_img_size = m.get('FormImgSize')
+        if m.get('FormJumpType') is not None:
+            self.form_jump_type = m.get('FormJumpType')
+        if m.get('FormSelectImgType') is not None:
+            self.form_select_img_type = m.get('FormSelectImgType')
+        if m.get('Images') is not None:
+            self.images = m.get('Images')
+        if m.get('IsTagVisibleBy3d') is not None:
+            self.is_tag_visible_by_3d = m.get('IsTagVisibleBy3d')
+        if m.get('Link') is not None:
+            self.link = m.get('Link')
+        if m.get('PanoId') is not None:
+            self.pano_id = m.get('PanoId')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('PositionPanoCube') is not None:
+            self.position_pano_cube = m.get('PositionPanoCube')
+        if m.get('RelatedPanoIds') is not None:
+            self.related_pano_ids = m.get('RelatedPanoIds')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Video') is not None:
+            self.video = m.get('Video')
+        return self
+
+
+class GetScenePreviewDataResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        config: GetScenePreviewDataResponseBodyDataTagsConfig = None,
+        id: str = None,
+        position: List[float] = None,
+        position_pano_cube: List[float] = None,
+        type: str = None,
+    ):
+        # 配置
+        self.config = config
+        # 标签ID
+        self.id = id
+        # 坐标
+        self.position = position
+        self.position_pano_cube = position_pano_cube
+        # 热点类型
+        self.type = type
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.position_pano_cube is not None:
+            result['PositionPanoCube'] = self.position_pano_cube
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            temp_model = GetScenePreviewDataResponseBodyDataTagsConfig()
+            self.config = temp_model.from_map(m['Config'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('PositionPanoCube') is not None:
+            self.position_pano_cube = m.get('PositionPanoCube')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetScenePreviewDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        model: GetScenePreviewDataResponseBodyDataModel = None,
+        tags: List[GetScenePreviewDataResponseBodyDataTags] = None,
+    ):
+        # 模型数据
+        self.model = model
+        # 热点数据
+        self.tags = tags
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Model') is not None:
+            temp_model = GetScenePreviewDataResponseBodyDataModel()
+            self.model = temp_model.from_map(m['Model'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetScenePreviewDataResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class GetScenePreviewDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetScenePreviewDataResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # 返回码
+        self.code = code
+        self.data = data
+        # 错误消息
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        # 是否请求成功
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetScenePreviewDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetScenePreviewDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetScenePreviewDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetScenePreviewDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetScenePreviewInfoRequest(TeaModel):
     def __init__(
         self,
