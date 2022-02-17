@@ -633,6 +633,8 @@ class Client(OpenApiClient):
             body['CallBack'] = request.call_back
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
@@ -667,6 +669,8 @@ class Client(OpenApiClient):
             body['CallBack'] = request.call_back
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
@@ -925,6 +929,10 @@ class Client(OpenApiClient):
             body['Level'] = request.level
         if not UtilClient.is_unset(request.output):
             body['Output'] = request.output
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            body['TotalTime'] = request.total_time
         if not UtilClient.is_unset(request.url):
             body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
@@ -965,6 +973,10 @@ class Client(OpenApiClient):
             body['Level'] = request.level
         if not UtilClient.is_unset(request.output):
             body['Output'] = request.output
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            body['TotalTime'] = request.total_time
         if not UtilClient.is_unset(request.url):
             body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
@@ -1017,6 +1029,8 @@ class Client(OpenApiClient):
             body['CallBack'] = request.call_back
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
@@ -1051,6 +1065,8 @@ class Client(OpenApiClient):
             body['CallBack'] = request.call_back
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         if not UtilClient.is_unset(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(

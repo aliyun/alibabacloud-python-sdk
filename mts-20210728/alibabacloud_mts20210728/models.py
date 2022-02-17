@@ -1276,12 +1276,15 @@ class SubmitCopyrightExtractRequest(TeaModel):
         self,
         call_back: str = None,
         input: str = None,
+        url: str = None,
         user_data: str = None,
     ):
         # 任务完成回调
         self.call_back = call_back
         # 输入文件oss地址
         self.input = input
+        # url链接
+        self.url = url
         # 用户数据
         self.user_data = user_data
 
@@ -1298,6 +1301,8 @@ class SubmitCopyrightExtractRequest(TeaModel):
             result['CallBack'] = self.call_back
         if self.input is not None:
             result['Input'] = self.input
+        if self.url is not None:
+            result['Url'] = self.url
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -1308,6 +1313,8 @@ class SubmitCopyrightExtractRequest(TeaModel):
             self.call_back = m.get('CallBack')
         if m.get('Input') is not None:
             self.input = m.get('Input')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
@@ -1813,6 +1820,8 @@ class SubmitTraceAbRequest(TeaModel):
         input: str = None,
         level: int = None,
         output: str = None,
+        start_time: int = None,
+        total_time: int = None,
         url: str = None,
         user_data: str = None,
     ):
@@ -1824,6 +1833,10 @@ class SubmitTraceAbRequest(TeaModel):
         self.level = level
         # 溯源水印ab流处理输出
         self.output = output
+        # 嵌入水印开始时间
+        self.start_time = start_time
+        # 嵌入水印总时长
+        self.total_time = total_time
         # 外部url链接(Input和url二选一)
         self.url = url
         # 用户自定义数据，最大长度1024个字节
@@ -1846,6 +1859,10 @@ class SubmitTraceAbRequest(TeaModel):
             result['Level'] = self.level
         if self.output is not None:
             result['Output'] = self.output
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.total_time is not None:
+            result['TotalTime'] = self.total_time
         if self.url is not None:
             result['Url'] = self.url
         if self.user_data is not None:
@@ -1862,6 +1879,10 @@ class SubmitTraceAbRequest(TeaModel):
             self.level = m.get('Level')
         if m.get('Output') is not None:
             self.output = m.get('Output')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TotalTime') is not None:
+            self.total_time = m.get('TotalTime')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         if m.get('UserData') is not None:
@@ -1997,12 +2018,15 @@ class SubmitTraceExtractRequest(TeaModel):
         self,
         call_back: str = None,
         input: str = None,
+        url: str = None,
         user_data: str = None,
     ):
         # 任务完成回调
         self.call_back = call_back
         # 输入文件oss地址
         self.input = input
+        # url链接
+        self.url = url
         # 用户数据
         self.user_data = user_data
 
@@ -2019,6 +2043,8 @@ class SubmitTraceExtractRequest(TeaModel):
             result['CallBack'] = self.call_back
         if self.input is not None:
             result['Input'] = self.input
+        if self.url is not None:
+            result['Url'] = self.url
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -2029,6 +2055,8 @@ class SubmitTraceExtractRequest(TeaModel):
             self.call_back = m.get('CallBack')
         if m.get('Input') is not None:
             self.input = m.get('Input')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
