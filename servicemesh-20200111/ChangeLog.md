@@ -1,3 +1,7 @@
+2022-02-17 Version: 2.0.6
+- New build from amp.
+
+
 2022-01-27 Version: 2.0.5
 - New build from amp.
 

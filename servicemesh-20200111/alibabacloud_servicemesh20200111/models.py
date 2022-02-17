@@ -423,6 +423,109 @@ class AddVMIntoServiceMeshResponse(TeaModel):
         return self
 
 
+class CreateASMGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        body: str = None,
+        istio_gateway_name: str = None,
+        service_mesh_id: str = None,
+    ):
+        self.body = body
+        self.istio_gateway_name = istio_gateway_name
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.istio_gateway_name is not None:
+            result['IstioGatewayName'] = self.istio_gateway_name
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('IstioGatewayName') is not None:
+            self.istio_gateway_name = m.get('IstioGatewayName')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class CreateASMGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateASMGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateASMGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateASMGatewayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateExtensionProviderRequest(TeaModel):
     def __init__(
         self,
@@ -11690,6 +11793,109 @@ class SetServiceRegistrySourceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SetServiceRegistrySourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateASMGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        body: str = None,
+        istio_gateway_name: str = None,
+        service_mesh_id: str = None,
+    ):
+        self.body = body
+        self.istio_gateway_name = istio_gateway_name
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.istio_gateway_name is not None:
+            result['IstioGatewayName'] = self.istio_gateway_name
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('IstioGatewayName') is not None:
+            self.istio_gateway_name = m.get('IstioGatewayName')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class UpdateASMGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateASMGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateASMGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateASMGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

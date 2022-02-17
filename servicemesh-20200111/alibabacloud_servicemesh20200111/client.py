@@ -349,6 +349,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_vminto_service_mesh_with_options_async(request, runtime)
 
+    def create_asmgateway_with_options(
+        self,
+        request: servicemesh_20200111_models.CreateASMGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.CreateASMGatewayResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.istio_gateway_name):
+            body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateASMGateway',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.CreateASMGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_asmgateway_with_options_async(
+        self,
+        request: servicemesh_20200111_models.CreateASMGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.CreateASMGatewayResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.istio_gateway_name):
+            body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateASMGateway',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.CreateASMGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_asmgateway(
+        self,
+        request: servicemesh_20200111_models.CreateASMGatewayRequest,
+    ) -> servicemesh_20200111_models.CreateASMGatewayResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_asmgateway_with_options(request, runtime)
+
+    async def create_asmgateway_async(
+        self,
+        request: servicemesh_20200111_models.CreateASMGatewayRequest,
+    ) -> servicemesh_20200111_models.CreateASMGatewayResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_asmgateway_with_options_async(request, runtime)
+
     def create_extension_provider_with_options(
         self,
         request: servicemesh_20200111_models.CreateExtensionProviderRequest,
@@ -5170,6 +5248,84 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.SetServiceRegistrySourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_service_registry_source_with_options_async(request, runtime)
+
+    def update_asmgateway_with_options(
+        self,
+        request: servicemesh_20200111_models.UpdateASMGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateASMGatewayResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.istio_gateway_name):
+            body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateASMGateway',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateASMGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_asmgateway_with_options_async(
+        self,
+        request: servicemesh_20200111_models.UpdateASMGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateASMGatewayResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.istio_gateway_name):
+            body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateASMGateway',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateASMGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_asmgateway(
+        self,
+        request: servicemesh_20200111_models.UpdateASMGatewayRequest,
+    ) -> servicemesh_20200111_models.UpdateASMGatewayResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_asmgateway_with_options(request, runtime)
+
+    async def update_asmgateway_async(
+        self,
+        request: servicemesh_20200111_models.UpdateASMGatewayRequest,
+    ) -> servicemesh_20200111_models.UpdateASMGatewayResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_asmgateway_with_options_async(request, runtime)
 
     def update_asmgateway_imported_services_with_options(
         self,
