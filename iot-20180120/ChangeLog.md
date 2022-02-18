@@ -1,3 +1,6 @@
+2022-02-18 Version: 3.0.2
+- Add DOP apiSource add data api.
+
 2022-02-11 Version: 3.0.1
 - Add OTA API, including ReupgradeOTATask.
 
