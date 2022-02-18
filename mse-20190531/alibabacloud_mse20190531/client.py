@@ -421,6 +421,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_domain_with_options_async(request, runtime)
 
+    def add_gateway_route_with_options(
+        self,
+        tmp_req: mse_20190531_models.AddGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.AddGatewayRouteResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.AddGatewayRouteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.direct_response_json):
+            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.direct_response_json), 'DirectResponseJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.predicates):
+            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.predicates), 'Predicates', 'json')
+        if not UtilClient.is_unset(tmp_req.redirect_json):
+            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect_json), 'RedirectJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.services):
+            request.services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.services, 'Services', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direct_response_jsonshrink):
+            query['DirectResponseJSON'] = request.direct_response_jsonshrink
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.domain_id_list_json):
+            query['DomainIdListJSON'] = request.domain_id_list_json
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.predicates_shrink):
+            query['Predicates'] = request.predicates_shrink
+        if not UtilClient.is_unset(request.redirect_jsonshrink):
+            query['RedirectJSON'] = request.redirect_jsonshrink
+        if not UtilClient.is_unset(request.route_order):
+            query['RouteOrder'] = request.route_order
+        if not UtilClient.is_unset(request.services_shrink):
+            query['Services'] = request.services_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.AddGatewayRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_gateway_route_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.AddGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.AddGatewayRouteResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.AddGatewayRouteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.direct_response_json):
+            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.direct_response_json), 'DirectResponseJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.predicates):
+            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.predicates), 'Predicates', 'json')
+        if not UtilClient.is_unset(tmp_req.redirect_json):
+            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect_json), 'RedirectJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.services):
+            request.services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.services, 'Services', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direct_response_jsonshrink):
+            query['DirectResponseJSON'] = request.direct_response_jsonshrink
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.domain_id_list_json):
+            query['DomainIdListJSON'] = request.domain_id_list_json
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.predicates_shrink):
+            query['Predicates'] = request.predicates_shrink
+        if not UtilClient.is_unset(request.redirect_jsonshrink):
+            query['RedirectJSON'] = request.redirect_jsonshrink
+        if not UtilClient.is_unset(request.route_order):
+            query['RouteOrder'] = request.route_order
+        if not UtilClient.is_unset(request.services_shrink):
+            query['Services'] = request.services_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.AddGatewayRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_gateway_route(
+        self,
+        request: mse_20190531_models.AddGatewayRouteRequest,
+    ) -> mse_20190531_models.AddGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_gateway_route_with_options(request, runtime)
+
+    async def add_gateway_route_async(
+        self,
+        request: mse_20190531_models.AddGatewayRouteRequest,
+    ) -> mse_20190531_models.AddGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_gateway_route_with_options_async(request, runtime)
+
     def add_gateway_service_version_with_options(
         self,
         request: mse_20190531_models.AddGatewayServiceVersionRequest,
@@ -854,6 +988,72 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.AddServiceSourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.add_service_source_with_options_async(request, runtime)
+
+    def apply_gateway_route_with_options(
+        self,
+        request: mse_20190531_models.ApplyGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ApplyGatewayRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ApplyGatewayRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_gateway_route_with_options_async(
+        self,
+        request: mse_20190531_models.ApplyGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ApplyGatewayRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ApplyGatewayRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_gateway_route(
+        self,
+        request: mse_20190531_models.ApplyGatewayRouteRequest,
+    ) -> mse_20190531_models.ApplyGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.apply_gateway_route_with_options(request, runtime)
+
+    async def apply_gateway_route_async(
+        self,
+        request: mse_20190531_models.ApplyGatewayRouteRequest,
+    ) -> mse_20190531_models.ApplyGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_gateway_route_with_options_async(request, runtime)
 
     def clone_nacos_config_with_options(
         self,
@@ -2465,6 +2665,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_domain_with_options_async(request, runtime)
 
+    def delete_gateway_route_with_options(
+        self,
+        request: mse_20190531_models.DeleteGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_route_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway_route(
+        self,
+        request: mse_20190531_models.DeleteGatewayRouteRequest,
+    ) -> mse_20190531_models.DeleteGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_gateway_route_with_options(request, runtime)
+
+    async def delete_gateway_route_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayRouteRequest,
+    ) -> mse_20190531_models.DeleteGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_gateway_route_with_options_async(request, runtime)
+
     def delete_gateway_service_version_with_options(
         self,
         request: mse_20190531_models.DeleteGatewayServiceVersionRequest,
@@ -3618,6 +3884,72 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.GetGatewayOptionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_option_with_options_async(request, runtime)
+
+    def get_gateway_route_detail_with_options(
+        self,
+        request: mse_20190531_models.GetGatewayRouteDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGatewayRouteDetail',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetGatewayRouteDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_route_detail_with_options_async(
+        self,
+        request: mse_20190531_models.GetGatewayRouteDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGatewayRouteDetail',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetGatewayRouteDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_route_detail(
+        self,
+        request: mse_20190531_models.GetGatewayRouteDetailRequest,
+    ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_gateway_route_detail_with_options(request, runtime)
+
+    async def get_gateway_route_detail_async(
+        self,
+        request: mse_20190531_models.GetGatewayRouteDetailRequest,
+    ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_gateway_route_detail_with_options_async(request, runtime)
 
     def get_gateway_service_detail_with_options(
         self,
@@ -5909,6 +6241,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_domain_with_options_async(request, runtime)
 
+    def list_gateway_route_with_options(
+        self,
+        tmp_req: mse_20190531_models.ListGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayRouteResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.ListGatewayRouteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_params):
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.filter_params), 'FilterParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.desc_sort):
+            query['DescSort'] = request.desc_sort
+        if not UtilClient.is_unset(request.filter_params_shrink):
+            query['FilterParams'] = request.filter_params_shrink
+        if not UtilClient.is_unset(request.order_item):
+            query['OrderItem'] = request.order_item
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_route_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.ListGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListGatewayRouteResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.ListGatewayRouteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_params):
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.filter_params), 'FilterParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.desc_sort):
+            query['DescSort'] = request.desc_sort
+        if not UtilClient.is_unset(request.filter_params_shrink):
+            query['FilterParams'] = request.filter_params_shrink
+        if not UtilClient.is_unset(request.order_item):
+            query['OrderItem'] = request.order_item
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListGatewayRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_route(
+        self,
+        request: mse_20190531_models.ListGatewayRouteRequest,
+    ) -> mse_20190531_models.ListGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_gateway_route_with_options(request, runtime)
+
+    async def list_gateway_route_async(
+        self,
+        request: mse_20190531_models.ListGatewayRouteRequest,
+    ) -> mse_20190531_models.ListGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_gateway_route_with_options_async(request, runtime)
+
     def list_gateway_service_with_options(
         self,
         tmp_req: mse_20190531_models.ListGatewayServiceRequest,
@@ -6740,6 +7170,72 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.ModifyGovernanceKubernetesClusterResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_governance_kubernetes_cluster_with_options_async(request, runtime)
+
+    def offline_gateway_route_with_options(
+        self,
+        request: mse_20190531_models.OfflineGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.OfflineGatewayRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OfflineGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.OfflineGatewayRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def offline_gateway_route_with_options_async(
+        self,
+        request: mse_20190531_models.OfflineGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.OfflineGatewayRouteResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OfflineGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.OfflineGatewayRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def offline_gateway_route(
+        self,
+        request: mse_20190531_models.OfflineGatewayRouteRequest,
+    ) -> mse_20190531_models.OfflineGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.offline_gateway_route_with_options(request, runtime)
+
+    async def offline_gateway_route_async(
+        self,
+        request: mse_20190531_models.OfflineGatewayRouteRequest,
+    ) -> mse_20190531_models.OfflineGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.offline_gateway_route_with_options_async(request, runtime)
 
     def pull_services_with_options(
         self,
@@ -8847,6 +9343,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_option_with_options_async(request, runtime)
 
+    def update_gateway_route_with_options(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayRouteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.direct_response_json):
+            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.direct_response_json), 'DirectResponseJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.predicates):
+            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.predicates), 'Predicates', 'json')
+        if not UtilClient.is_unset(tmp_req.redirect_json):
+            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect_json), 'RedirectJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.services):
+            request.services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.services, 'Services', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direct_response_jsonshrink):
+            query['DirectResponseJSON'] = request.direct_response_jsonshrink
+        if not UtilClient.is_unset(request.domain_id_list_json):
+            query['DomainIdListJSON'] = request.domain_id_list_json
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.predicates_shrink):
+            query['Predicates'] = request.predicates_shrink
+        if not UtilClient.is_unset(request.redirect_jsonshrink):
+            query['RedirectJSON'] = request.redirect_jsonshrink
+        if not UtilClient.is_unset(request.route_order):
+            query['RouteOrder'] = request.route_order
+        if not UtilClient.is_unset(request.services_shrink):
+            query['Services'] = request.services_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_route_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayRouteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.direct_response_json):
+            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.direct_response_json), 'DirectResponseJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.predicates):
+            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.predicates), 'Predicates', 'json')
+        if not UtilClient.is_unset(tmp_req.redirect_json):
+            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect_json), 'RedirectJSON', 'json')
+        if not UtilClient.is_unset(tmp_req.services):
+            request.services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.services, 'Services', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direct_response_jsonshrink):
+            query['DirectResponseJSON'] = request.direct_response_jsonshrink
+        if not UtilClient.is_unset(request.domain_id_list_json):
+            query['DomainIdListJSON'] = request.domain_id_list_json
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.predicates_shrink):
+            query['Predicates'] = request.predicates_shrink
+        if not UtilClient.is_unset(request.redirect_jsonshrink):
+            query['RedirectJSON'] = request.redirect_jsonshrink
+        if not UtilClient.is_unset(request.route_order):
+            query['RouteOrder'] = request.route_order
+        if not UtilClient.is_unset(request.services_shrink):
+            query['Services'] = request.services_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_route(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_route_with_options(request, runtime)
+
+    async def update_gateway_route_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_route_with_options_async(request, runtime)
+
+    def update_gateway_route_corswith_options(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayRouteCORSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteCORSResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayRouteCORSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cors_json):
+            request.cors_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cors_json), 'CorsJSON', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cors_jsonshrink):
+            query['CorsJSON'] = request.cors_jsonshrink
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteCORS',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteCORSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_route_corswith_options_async(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayRouteCORSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteCORSResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayRouteCORSShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cors_json):
+            request.cors_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cors_json), 'CorsJSON', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cors_jsonshrink):
+            query['CorsJSON'] = request.cors_jsonshrink
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteCORS',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteCORSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_route_cors(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteCORSRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteCORSResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_route_corswith_options(request, runtime)
+
+    async def update_gateway_route_cors_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteCORSRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteCORSResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_route_corswith_options_async(request, runtime)
+
     def update_gateway_route_httprewrite_with_options(
         self,
         request: mse_20190531_models.UpdateGatewayRouteHTTPRewriteRequest,
@@ -8932,6 +9656,280 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.UpdateGatewayRouteHTTPRewriteResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_httprewrite_with_options_async(request, runtime)
+
+    def update_gateway_route_header_op_with_options(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteHeaderOpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteHeaderOpResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.header_op_json):
+            query['HeaderOpJSON'] = request.header_op_json
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteHeaderOp',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteHeaderOpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_route_header_op_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteHeaderOpRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteHeaderOpResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.header_op_json):
+            query['HeaderOpJSON'] = request.header_op_json
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteHeaderOp',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteHeaderOpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_route_header_op(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteHeaderOpRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteHeaderOpResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_route_header_op_with_options(request, runtime)
+
+    async def update_gateway_route_header_op_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteHeaderOpRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteHeaderOpResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_route_header_op_with_options_async(request, runtime)
+
+    def update_gateway_route_retry_with_options(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayRouteRetryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteRetryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayRouteRetryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.retry_json):
+            request.retry_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.retry_json), 'RetryJSON', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.retry_jsonshrink):
+            query['RetryJSON'] = request.retry_jsonshrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteRetry',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteRetryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_route_retry_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayRouteRetryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteRetryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayRouteRetryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.retry_json):
+            request.retry_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.retry_json), 'RetryJSON', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.retry_jsonshrink):
+            query['RetryJSON'] = request.retry_jsonshrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteRetry',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteRetryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_route_retry(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteRetryRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteRetryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_route_retry_with_options(request, runtime)
+
+    async def update_gateway_route_retry_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteRetryRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteRetryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_route_retry_with_options_async(request, runtime)
+
+    def update_gateway_route_timeout_with_options(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayRouteTimeoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteTimeoutResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayRouteTimeoutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.timeout_json):
+            request.timeout_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timeout_json), 'TimeoutJSON', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.timeout_jsonshrink):
+            query['TimeoutJSON'] = request.timeout_jsonshrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteTimeout',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteTimeoutResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_route_timeout_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayRouteTimeoutRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteTimeoutResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayRouteTimeoutShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.timeout_json):
+            request.timeout_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timeout_json), 'TimeoutJSON', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.timeout_jsonshrink):
+            query['TimeoutJSON'] = request.timeout_jsonshrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteTimeout',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteTimeoutResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_route_timeout(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteTimeoutRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteTimeoutResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_route_timeout_with_options(request, runtime)
+
+    async def update_gateway_route_timeout_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteTimeoutRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteTimeoutResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_route_timeout_with_options_async(request, runtime)
 
     def update_gateway_service_version_with_options(
         self,
