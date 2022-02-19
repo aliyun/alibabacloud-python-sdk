@@ -1,3 +1,6 @@
+2022-02-19 Version: 3.0.10
+- Add Gateway route api.
+
 2022-02-18 Version: 3.0.9
 - Add Gateway route api.
 

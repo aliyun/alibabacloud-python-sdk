@@ -2718,6 +2718,252 @@ class ApplyGatewayRouteResponse(TeaModel):
         return self
 
 
+class ApplyTagPoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        enable: bool = None,
+        namespace_id: str = None,
+        region: str = None,
+        rules: str = None,
+        source: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.enable = enable
+        self.namespace_id = namespace_id
+        self.region = region
+        self.rules = rules
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.rules is not None:
+            result['Rules'] = self.rules
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Rules') is not None:
+            self.rules = m.get('Rules')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class ApplyTagPoliciesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        carry_data: bool = None,
+        enable: bool = None,
+        id: int = None,
+        instance_num: int = None,
+        name: str = None,
+        rate: int = None,
+        remove: bool = None,
+        rules: str = None,
+        status: int = None,
+        tag: str = None,
+    ):
+        self.carry_data = carry_data
+        self.enable = enable
+        self.id = id
+        self.instance_num = instance_num
+        self.name = name
+        self.rate = rate
+        self.remove = remove
+        self.rules = rules
+        self.status = status
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.carry_data is not None:
+            result['CarryData'] = self.carry_data
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_num is not None:
+            result['InstanceNum'] = self.instance_num
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.remove is not None:
+            result['Remove'] = self.remove
+        if self.rules is not None:
+            result['Rules'] = self.rules
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CarryData') is not None:
+            self.carry_data = m.get('CarryData')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceNum') is not None:
+            self.instance_num = m.get('InstanceNum')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Remove') is not None:
+            self.remove = m.get('Remove')
+        if m.get('Rules') is not None:
+            self.rules = m.get('Rules')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class ApplyTagPoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[ApplyTagPoliciesResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ApplyTagPoliciesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ApplyTagPoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ApplyTagPoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ApplyTagPoliciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CloneNacosConfigRequest(TeaModel):
     def __init__(
         self,
@@ -12535,6 +12781,311 @@ class GetOverviewResponse(TeaModel):
         return self
 
 
+class GetServiceListRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        ip: str = None,
+        region: str = None,
+        service_name: str = None,
+        service_type: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.ip = ip
+        self.region = region
+        self.service_name = service_name
+        self.service_type = service_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        return self
+
+
+class GetServiceListResponseBodyDataMethods(TeaModel):
+    def __init__(
+        self,
+        method_controller: str = None,
+        name: str = None,
+        parameter_types: List[str] = None,
+        paths: List[str] = None,
+        request_methods: List[str] = None,
+        return_type: str = None,
+    ):
+        self.method_controller = method_controller
+        self.name = name
+        self.parameter_types = parameter_types
+        self.paths = paths
+        self.request_methods = request_methods
+        self.return_type = return_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.method_controller is not None:
+            result['MethodController'] = self.method_controller
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parameter_types is not None:
+            result['ParameterTypes'] = self.parameter_types
+        if self.paths is not None:
+            result['Paths'] = self.paths
+        if self.request_methods is not None:
+            result['RequestMethods'] = self.request_methods
+        if self.return_type is not None:
+            result['ReturnType'] = self.return_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MethodController') is not None:
+            self.method_controller = m.get('MethodController')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParameterTypes') is not None:
+            self.parameter_types = m.get('ParameterTypes')
+        if m.get('Paths') is not None:
+            self.paths = m.get('Paths')
+        if m.get('RequestMethods') is not None:
+            self.request_methods = m.get('RequestMethods')
+        if m.get('ReturnType') is not None:
+            self.return_type = m.get('ReturnType')
+        return self
+
+
+class GetServiceListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        dubbo_application_name: str = None,
+        edas_app_name: str = None,
+        group: str = None,
+        metadata: Dict[str, Any] = None,
+        methods: List[GetServiceListResponseBodyDataMethods] = None,
+        registry_type: str = None,
+        service_name: str = None,
+        service_type: str = None,
+        spring_application_name: str = None,
+        version: str = None,
+    ):
+        self.dubbo_application_name = dubbo_application_name
+        self.edas_app_name = edas_app_name
+        self.group = group
+        self.metadata = metadata
+        self.methods = methods
+        self.registry_type = registry_type
+        self.service_name = service_name
+        self.service_type = service_type
+        self.spring_application_name = spring_application_name
+        self.version = version
+
+    def validate(self):
+        if self.methods:
+            for k in self.methods:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dubbo_application_name is not None:
+            result['DubboApplicationName'] = self.dubbo_application_name
+        if self.edas_app_name is not None:
+            result['EdasAppName'] = self.edas_app_name
+        if self.group is not None:
+            result['Group'] = self.group
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        result['Methods'] = []
+        if self.methods is not None:
+            for k in self.methods:
+                result['Methods'].append(k.to_map() if k else None)
+        if self.registry_type is not None:
+            result['RegistryType'] = self.registry_type
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        if self.spring_application_name is not None:
+            result['SpringApplicationName'] = self.spring_application_name
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DubboApplicationName') is not None:
+            self.dubbo_application_name = m.get('DubboApplicationName')
+        if m.get('EdasAppName') is not None:
+            self.edas_app_name = m.get('EdasAppName')
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        self.methods = []
+        if m.get('Methods') is not None:
+            for k in m.get('Methods'):
+                temp_model = GetServiceListResponseBodyDataMethods()
+                self.methods.append(temp_model.from_map(k))
+        if m.get('RegistryType') is not None:
+            self.registry_type = m.get('RegistryType')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        if m.get('SpringApplicationName') is not None:
+            self.spring_application_name = m.get('SpringApplicationName')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetServiceListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetServiceListResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetServiceListResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetServiceListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetServiceListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetServiceListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTagsBySwimmingLaneGroupIdRequest(TeaModel):
     def __init__(
         self,
@@ -15129,6 +15680,358 @@ class ListAppBySwimmingLaneGroupTagResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListAppBySwimmingLaneGroupTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListApplicationsWithTagRulesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region: str = None,
+        source: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.app_name = app_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region = region
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class ListApplicationsWithTagRulesResponseBodyDataResultRouteRules(TeaModel):
+    def __init__(
+        self,
+        carry_data: bool = None,
+        enable: bool = None,
+        gmt_modified: int = None,
+        id: int = None,
+        instance_num: int = None,
+        name: str = None,
+        rate: int = None,
+        remove: bool = None,
+        rules: str = None,
+        status: int = None,
+        tag: str = None,
+    ):
+        self.carry_data = carry_data
+        self.enable = enable
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.instance_num = instance_num
+        self.name = name
+        self.rate = rate
+        self.remove = remove
+        self.rules = rules
+        self.status = status
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.carry_data is not None:
+            result['CarryData'] = self.carry_data
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_num is not None:
+            result['InstanceNum'] = self.instance_num
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.remove is not None:
+            result['Remove'] = self.remove
+        if self.rules is not None:
+            result['Rules'] = self.rules
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CarryData') is not None:
+            self.carry_data = m.get('CarryData')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceNum') is not None:
+            self.instance_num = m.get('InstanceNum')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Remove') is not None:
+            self.remove = m.get('Remove')
+        if m.get('Rules') is not None:
+            self.rules = m.get('Rules')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class ListApplicationsWithTagRulesResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+        route_rules: List[ListApplicationsWithTagRulesResponseBodyDataResultRouteRules] = None,
+        route_status: int = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+        self.route_rules = route_rules
+        self.route_status = route_status
+
+    def validate(self):
+        if self.route_rules:
+            for k in self.route_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        result['RouteRules'] = []
+        if self.route_rules is not None:
+            for k in self.route_rules:
+                result['RouteRules'].append(k.to_map() if k else None)
+        if self.route_status is not None:
+            result['RouteStatus'] = self.route_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        self.route_rules = []
+        if m.get('RouteRules') is not None:
+            for k in m.get('RouteRules'):
+                temp_model = ListApplicationsWithTagRulesResponseBodyDataResultRouteRules()
+                self.route_rules.append(temp_model.from_map(k))
+        if m.get('RouteStatus') is not None:
+            self.route_status = m.get('RouteStatus')
+        return self
+
+
+class ListApplicationsWithTagRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        result: List[ListApplicationsWithTagRulesResponseBodyDataResult] = None,
+        total_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.result = result
+        self.total_size = total_size
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListApplicationsWithTagRulesResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class ListApplicationsWithTagRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListApplicationsWithTagRulesResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListApplicationsWithTagRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListApplicationsWithTagRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListApplicationsWithTagRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListApplicationsWithTagRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

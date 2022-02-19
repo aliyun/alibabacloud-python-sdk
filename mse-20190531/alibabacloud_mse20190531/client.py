@@ -1055,6 +1055,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.apply_gateway_route_with_options_async(request, runtime)
 
+    def apply_tag_policies_with_options(
+        self,
+        request: mse_20190531_models.ApplyTagPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ApplyTagPoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyTagPolicies',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ApplyTagPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_tag_policies_with_options_async(
+        self,
+        request: mse_20190531_models.ApplyTagPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ApplyTagPoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.rules):
+            query['Rules'] = request.rules
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyTagPolicies',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ApplyTagPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_tag_policies(
+        self,
+        request: mse_20190531_models.ApplyTagPoliciesRequest,
+    ) -> mse_20190531_models.ApplyTagPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.apply_tag_policies_with_options(request, runtime)
+
+    async def apply_tag_policies_async(
+        self,
+        request: mse_20190531_models.ApplyTagPoliciesRequest,
+    ) -> mse_20190531_models.ApplyTagPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_tag_policies_with_options_async(request, runtime)
+
     def clone_nacos_config_with_options(
         self,
         request: mse_20190531_models.CloneNacosConfigRequest,
@@ -4797,6 +4891,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_overview_with_options_async(request, runtime)
 
+    def get_service_list_with_options(
+        self,
+        request: mse_20190531_models.GetServiceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetServiceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetServiceList',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetServiceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_list_with_options_async(
+        self,
+        request: mse_20190531_models.GetServiceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetServiceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetServiceList',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetServiceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_list(
+        self,
+        request: mse_20190531_models.GetServiceListRequest,
+    ) -> mse_20190531_models.GetServiceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_list_with_options(request, runtime)
+
+    async def get_service_list_async(
+        self,
+        request: mse_20190531_models.GetServiceListRequest,
+    ) -> mse_20190531_models.GetServiceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_list_with_options_async(request, runtime)
+
     def get_tags_by_swimming_lane_group_id_with_options(
         self,
         request: mse_20190531_models.GetTagsBySwimmingLaneGroupIdRequest,
@@ -5590,6 +5774,72 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_app_by_swimming_lane_group_tag_with_options_async(request, runtime)
+
+    def list_applications_with_tag_rules_with_options(
+        self,
+        request: mse_20190531_models.ListApplicationsWithTagRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListApplicationsWithTagRulesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsWithTagRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListApplicationsWithTagRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_applications_with_tag_rules_with_options_async(
+        self,
+        request: mse_20190531_models.ListApplicationsWithTagRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListApplicationsWithTagRulesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApplicationsWithTagRules',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListApplicationsWithTagRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_applications_with_tag_rules(
+        self,
+        request: mse_20190531_models.ListApplicationsWithTagRulesRequest,
+    ) -> mse_20190531_models.ListApplicationsWithTagRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_applications_with_tag_rules_with_options(request, runtime)
+
+    async def list_applications_with_tag_rules_async(
+        self,
+        request: mse_20190531_models.ListApplicationsWithTagRulesRequest,
+    ) -> mse_20190531_models.ListApplicationsWithTagRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_applications_with_tag_rules_with_options_async(request, runtime)
 
     def list_cluster_connection_types_with_options(
         self,
