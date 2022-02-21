@@ -3429,13 +3429,13 @@ class DeployPolicyInstanceRequest(TeaModel):
     def __init__(
         self,
         action: str = None,
-        namespace: str = None,
+        namespaces: List[str] = None,
         parameters: Dict[str, Any] = None,
     ):
         # 规则治理动作
         self.action = action
-        # 策略实例实施范围
-        self.namespace = namespace
+        # 策略实例实施范围（限定命名空间）。默认 [] 代表集群所有命名空间。
+        self.namespaces = namespaces
         # 当前规则实例的配置参数
         self.parameters = parameters
 
@@ -3450,8 +3450,8 @@ class DeployPolicyInstanceRequest(TeaModel):
         result = dict()
         if self.action is not None:
             result['action'] = self.action
-        if self.namespace is not None:
-            result['namespace'] = self.namespace
+        if self.namespaces is not None:
+            result['namespaces'] = self.namespaces
         if self.parameters is not None:
             result['parameters'] = self.parameters
         return result
@@ -3460,8 +3460,8 @@ class DeployPolicyInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('action') is not None:
             self.action = m.get('action')
-        if m.get('namespace') is not None:
-            self.namespace = m.get('namespace')
+        if m.get('namespaces') is not None:
+            self.namespaces = m.get('namespaces')
         if m.get('parameters') is not None:
             self.parameters = m.get('parameters')
         return self
@@ -5648,9 +5648,9 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling(TeaModel):
         self.enable = enable
         # 是否绑定EIP
         self.is_bond_eip = is_bond_eip
-        # 最大节点数	
+        # 最大节点数
         self.max_instances = max_instances
-        # 最小节点数	
+        # 最小节点数
         self.min_instances = min_instances
         # 扩容组类型
         self.type = type
@@ -5767,17 +5767,17 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
         taints: List[Taint] = None,
         user_data: str = None,
     ):
-        # 是否开启云监控	
+        # 是否开启云监控
         self.cms_enabled = cms_enabled
-        # CPU管理策略	
+        # CPU管理策略
         self.cpu_policy = cpu_policy
         # ECS标签
         self.labels = labels
         # 自定义节点名称
         self.node_name_mode = node_name_mode
-        # 容器运行时	
+        # 容器运行时
         self.runtime = runtime
-        # 容器运行时版本	
+        # 容器运行时版本
         self.runtime_version = runtime_version
         # 污点配置
         self.taints = taints
@@ -6092,23 +6092,23 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         tags: List[Tag] = None,
         vswitch_ids: List[str] = None,
     ):
-        # 自动续费	
+        # 自动续费
         self.auto_renew = auto_renew
-        # 自动付费时长	
+        # 自动付费时长
         self.auto_renew_period = auto_renew_period
         # 当MultiAZPolicy取值为COST_OPTIMIZED时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值范围：true：允许。false：不允许。默认值：true
         self.compensate_with_on_demand = compensate_with_on_demand
-        # 数据盘配置	
+        # 数据盘配置
         self.data_disks = data_disks
         # 部署集ID。
         self.deploymentset_id = deploymentset_id
         # 节点池期望节点数
         self.desired_size = desired_size
-        # 镜像ID	
+        # 镜像ID
         self.image_id = image_id
-        # 节点付费类型	
+        # 节点付费类型
         self.instance_charge_type = instance_charge_type
-        # 节点类型	
+        # 节点类型
         self.instance_types = instance_types
         # 节点公网IP网络计费类型
         self.internet_charge_type = internet_charge_type
@@ -6124,19 +6124,19 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.on_demand_base_capacity = on_demand_base_capacity
         # 伸缩组满足最小按量实例数（OnDemandBaseCapacity）要求后，超出的实例中按量实例应占的比例，取值范围：0～100
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
-        # 包年包月时长	
+        # 包年包月时长
         self.period = period
-        # 自动付费周期	
+        # 自动付费周期
         self.period_unit = period_unit
         # 操作系统发行版。取值： CentOS，AliyunLinux，Windows，WindowsCore
         self.platform = platform
-        # RAM 角色名称	
+        # RAM 角色名称
         self.ram_policy = ram_policy
-        # RDS列表	
+        # RDS列表
         self.rds_instances = rds_instances
-        # 扩容组ID	
+        # 扩容组ID
         self.scaling_group_id = scaling_group_id
-        # 扩容节点策略	
+        # 扩容节点策略
         self.scaling_policy = scaling_policy
         # 安全组ID。
         self.security_group_id = security_group_id
@@ -6150,13 +6150,13 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.spot_price_limit = spot_price_limit
         # 抢占式实例类型
         self.spot_strategy = spot_strategy
-        # 系统盘类型。	
+        # 系统盘类型。
         self.system_disk_category = system_disk_category
         # 节点系统盘磁盘性能，只针对ESSD磁盘生效
         self.system_disk_performance_level = system_disk_performance_level
-        # 系统盘大小	
+        # 系统盘大小
         self.system_disk_size = system_disk_size
-        # 节点标签	
+        # 节点标签
         self.tags = tags
         # 虚拟交换机ID
         self.vswitch_ids = vswitch_ids
@@ -6351,21 +6351,21 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsStatus(TeaModel):
         state: str = None,
         total_nodes: int = None,
     ):
-        # 失败的节点数	
+        # 失败的节点数
         self.failed_nodes = failed_nodes
-        # 处于健康状态的节点数	
+        # 处于健康状态的节点数
         self.healthy_nodes = healthy_nodes
-        # 正在创建的节点数	
+        # 正在创建的节点数
         self.initial_nodes = initial_nodes
-        # 离线节点数	
+        # 离线节点数
         self.offline_nodes = offline_nodes
         # 正在被移除的节点数
         self.removing_nodes = removing_nodes
-        # 正在工作节点数	
+        # 正在工作节点数
         self.serving_nodes = serving_nodes
-        # 节点池状态	
+        # 节点池状态
         self.state = state
-        # 节点总数	
+        # 节点总数
         self.total_nodes = total_nodes
 
     def validate(self):
@@ -6421,7 +6421,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsTeeConfig(TeaModel):
         self,
         tee_enable: bool = None,
     ):
-        # 是否为加密计算节点池	
+        # 是否为加密计算节点池
         self.tee_enable = tee_enable
 
     def validate(self):
@@ -9121,15 +9121,15 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(TeaModel):
         os_type: str = None,
         image_category: str = None,
     ):
-        # 镜像ID。	
+        # 镜像ID。
         self.image_id = image_id
-        # 镜像名称。	
+        # 镜像名称。
         self.image_name = image_name
         # 操作系统发行版。取值范围： CentOS,AliyunLinux,Windows,WindowsCore。
         self.platform = platform
         # 镜像版本。
         self.os_version = os_version
-        # 镜像类型。	
+        # 镜像类型。
         self.image_type = image_type
         # 操作系统发行版本号。
         self.os_type = os_type
@@ -9190,15 +9190,15 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
         version: str = None,
         multi_az: str = None,
     ):
-        # Kubernetes版本特性。	
+        # Kubernetes版本特性。
         self.capabilities = capabilities
-        # ECS系统镜像列表。	
+        # ECS系统镜像列表。
         self.images = images
-        # Kubernetes版本元数据信息。	
+        # Kubernetes版本元数据信息。
         self.meta_data = meta_data
-        # 容器运行时详情。	
+        # 容器运行时详情。
         self.runtimes = runtimes
-        # Kubernetes版本。	
+        # Kubernetes版本。
         self.version = version
         # 是否为多可用区。
         self.multi_az = multi_az
@@ -10442,13 +10442,13 @@ class DescribeTemplateAttributeResponseBody(TeaModel):
         created: str = None,
         updated: str = None,
     ):
-        # 编排模板ID，模板每次修改，这个ID都会改变。	
+        # 编排模板ID，模板每次修改，这个ID都会改变。
         self.id = id
         # 编排模板权限。取值：private，public，shared。
         self.acl = acl
-        # 编排模板名称。	
+        # 编排模板名称。
         self.name = name
-        # 编排模板内容。	
+        # 编排模板内容。
         self.template = template
         # 编排模板类型
         self.template_type = template_type
@@ -10456,11 +10456,11 @@ class DescribeTemplateAttributeResponseBody(TeaModel):
         self.description = description
         # 部署模板的标签。
         self.tags = tags
-        # 编排模板ID，该ID唯一不随更新而改变。	
+        # 编排模板ID，该ID唯一不随更新而改变。
         self.template_with_hist_id = template_with_hist_id
         # 编排模板创建时间。
         self.created = created
-        # 编排模板修改时间。	
+        # 编排模板修改时间。
         self.updated = updated
 
     def validate(self):
@@ -13786,6 +13786,106 @@ class RemoveWorkflowResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        return self
+
+
+class RepairClusterNodePoolRequest(TeaModel):
+    def __init__(
+        self,
+        nodes: List[str] = None,
+    ):
+        # 节点列表，如果不指定则表示当前节点池内所有节点
+        self.nodes = nodes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nodes is not None:
+            result['nodes'] = self.nodes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nodes') is not None:
+            self.nodes = m.get('nodes')
+        return self
+
+
+class RepairClusterNodePoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # 请求ID
+        self.request_id = request_id
+        # 任务ID
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class RepairClusterNodePoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RepairClusterNodePoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RepairClusterNodePoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 

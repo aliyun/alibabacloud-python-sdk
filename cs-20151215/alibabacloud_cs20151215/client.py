@@ -2090,8 +2090,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
-        if not UtilClient.is_unset(request.namespace):
-            body['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespaces):
+            body['namespaces'] = request.namespaces
         if not UtilClient.is_unset(request.parameters):
             body['parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(
@@ -2128,8 +2128,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
-        if not UtilClient.is_unset(request.namespace):
-            body['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespaces):
+            body['namespaces'] = request.namespaces
         if not UtilClient.is_unset(request.parameters):
             body['parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(
@@ -6509,6 +6509,94 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.RemoveWorkflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def repair_cluster_node_pool(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RepairClusterNodePoolRequest,
+    ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.repair_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
+
+    async def repair_cluster_node_pool_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RepairClusterNodePoolRequest,
+    ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.repair_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+
+    def repair_cluster_node_pool_with_options(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RepairClusterNodePoolRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
+        body = {}
+        if not UtilClient.is_unset(request.nodes):
+            body['nodes'] = request.nodes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RepairClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/repair',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.RepairClusterNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def repair_cluster_node_pool_with_options_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RepairClusterNodePoolRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
+        body = {}
+        if not UtilClient.is_unset(request.nodes):
+            body['nodes'] = request.nodes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RepairClusterNodePool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/repair',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.RepairClusterNodePoolResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

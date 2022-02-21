@@ -1,3 +1,6 @@
+2022-02-21 Version: 3.0.6
+- Update DeployPolicyInstance.
+
 2022-01-07 Version: 3.0.5
 - The node pool supports the desired number of nodes.
 
