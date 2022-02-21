@@ -1,3 +1,6 @@
+2022-02-21 Version: 1.0.6
+- Add CreateCdnComputeDomain.
+
 2022-02-17 Version: 1.0.5
 - AMP version.
 
