@@ -24355,10 +24355,49 @@ class QueryMonitorRequest(TeaModel):
         return self
 
 
+class QueryMonitorResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cluster_name_prefix: str = None,
+        pod_name: str = None,
+        values: List[Dict[str, Any]] = None,
+    ):
+        self.cluster_name_prefix = cluster_name_prefix
+        self.pod_name = pod_name
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name_prefix is not None:
+            result['clusterNamePrefix'] = self.cluster_name_prefix
+        if self.pod_name is not None:
+            result['podName'] = self.pod_name
+        if self.values is not None:
+            result['values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterNamePrefix') is not None:
+            self.cluster_name_prefix = m.get('clusterNamePrefix')
+        if m.get('podName') is not None:
+            self.pod_name = m.get('podName')
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        return self
+
+
 class QueryMonitorResponseBody(TeaModel):
     def __init__(
         self,
-        data: str = None,
+        data: List[QueryMonitorResponseBodyData] = None,
         error_code: str = None,
         message: str = None,
         request_id: str = None,
@@ -24371,7 +24410,10 @@ class QueryMonitorResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        pass
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -24379,8 +24421,10 @@ class QueryMonitorResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.message is not None:
@@ -24393,8 +24437,11 @@ class QueryMonitorResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.data = []
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            for k in m.get('Data'):
+                temp_model = QueryMonitorResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('Message') is not None:
