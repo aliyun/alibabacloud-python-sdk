@@ -1464,8 +1464,6 @@ class Client(OpenApiClient):
             query['ClusterVersion'] = request.cluster_version
         if not UtilClient.is_unset(request.connection_type):
             query['ConnectionType'] = request.connection_type
-        if not UtilClient.is_unset(request.disk_capacity):
-            query['DiskCapacity'] = request.disk_capacity
         if not UtilClient.is_unset(request.disk_type):
             query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.instance_count):
@@ -1524,8 +1522,6 @@ class Client(OpenApiClient):
             query['ClusterVersion'] = request.cluster_version
         if not UtilClient.is_unset(request.connection_type):
             query['ConnectionType'] = request.connection_type
-        if not UtilClient.is_unset(request.disk_capacity):
-            query['DiskCapacity'] = request.disk_capacity
         if not UtilClient.is_unset(request.disk_type):
             query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.instance_count):
@@ -3144,6 +3140,108 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_nacos_configs_with_options_async(request, runtime)
+
+    def delete_nacos_instance_with_options(
+        self,
+        request: mse_20190531_models.DeleteNacosInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteNacosInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.ephemeral):
+            query['Ephemeral'] = request.ephemeral
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNacosInstance',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteNacosInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_nacos_instance_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteNacosInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteNacosInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.ephemeral):
+            query['Ephemeral'] = request.ephemeral
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNacosInstance',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteNacosInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_nacos_instance(
+        self,
+        request: mse_20190531_models.DeleteNacosInstanceRequest,
+    ) -> mse_20190531_models.DeleteNacosInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_nacos_instance_with_options(request, runtime)
+
+    async def delete_nacos_instance_async(
+        self,
+        request: mse_20190531_models.DeleteNacosInstanceRequest,
+    ) -> mse_20190531_models.DeleteNacosInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_nacos_instance_with_options_async(request, runtime)
 
     def delete_nacos_service_with_options(
         self,

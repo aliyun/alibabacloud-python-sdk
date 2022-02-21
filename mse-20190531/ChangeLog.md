@@ -1,3 +1,8 @@
+2022-02-21 Version: 3.0.11
+- Add DleteNacosInstance.
+- Change CreateCluster parameter.
+- Change UpdateNacosInstance errorCode.
+
 2022-02-19 Version: 3.0.10
 - Add Gateway route api.
 

@@ -3749,7 +3749,6 @@ class CreateClusterRequest(TeaModel):
         cluster_type: str = None,
         cluster_version: str = None,
         connection_type: str = None,
-        disk_capacity: int = None,
         disk_type: str = None,
         instance_count: int = None,
         mse_version: str = None,
@@ -3767,7 +3766,6 @@ class CreateClusterRequest(TeaModel):
         self.cluster_type = cluster_type
         self.cluster_version = cluster_version
         self.connection_type = connection_type
-        self.disk_capacity = disk_capacity
         self.disk_type = disk_type
         self.instance_count = instance_count
         # 用于区分基础/专业版本
@@ -3800,8 +3798,6 @@ class CreateClusterRequest(TeaModel):
             result['ClusterVersion'] = self.cluster_version
         if self.connection_type is not None:
             result['ConnectionType'] = self.connection_type
-        if self.disk_capacity is not None:
-            result['DiskCapacity'] = self.disk_capacity
         if self.disk_type is not None:
             result['DiskType'] = self.disk_type
         if self.instance_count is not None:
@@ -3838,8 +3834,6 @@ class CreateClusterRequest(TeaModel):
             self.cluster_version = m.get('ClusterVersion')
         if m.get('ConnectionType') is not None:
             self.connection_type = m.get('ConnectionType')
-        if m.get('DiskCapacity') is not None:
-            self.disk_capacity = m.get('DiskCapacity')
         if m.get('DiskType') is not None:
             self.disk_type = m.get('DiskType')
         if m.get('InstanceCount') is not None:
@@ -7342,6 +7336,189 @@ class DeleteNacosConfigsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteNacosConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNacosInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        cluster_name: str = None,
+        ephemeral: bool = None,
+        group_name: str = None,
+        instance_id: str = None,
+        ip: str = None,
+        namespace_id: str = None,
+        port: int = None,
+        service_name: str = None,
+    ):
+        self.accept_language = accept_language
+        self.cluster_name = cluster_name
+        self.ephemeral = ephemeral
+        self.group_name = group_name
+        self.instance_id = instance_id
+        self.ip = ip
+        self.namespace_id = namespace_id
+        self.port = port
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.ephemeral is not None:
+            result['Ephemeral'] = self.ephemeral
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('Ephemeral') is not None:
+            self.ephemeral = m.get('Ephemeral')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class DeleteNacosInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        dynamic_message: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # code仅仅用来和success同步
+        self.code = code
+        self.data = data
+        # 动态错误信息中的占位符
+        self.dynamic_message = dynamic_message
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteNacosInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteNacosInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteNacosInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
