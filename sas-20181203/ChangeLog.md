@@ -1,3 +1,6 @@
+2022-02-21 Version: 1.0.13
+- Support DescribeImageListWithBaselineName API.
+
 2022-02-09 Version: 1.0.12
 - AMP Version Change.
 
