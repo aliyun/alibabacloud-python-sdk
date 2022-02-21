@@ -1,3 +1,6 @@
+2022-02-21 Version: 1.0.2
+- Update API Documents.
+
 2021-07-12 Version: 1.0.1
 - Generated python 2018-12-12 for vs.
 
