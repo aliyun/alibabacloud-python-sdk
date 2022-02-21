@@ -2548,7 +2548,7 @@ class CreateRouteRuleRequest(TeaModel):
         related_service_id: int = None,
         route_child_rules: List[CreateRouteRuleRequestRouteChildRules] = None,
         route_type: str = None,
-        rule_name: bytes = None,
+        rule_name: str = None,
         time_window: int = None,
         time_window_unit: str = None,
     ):
