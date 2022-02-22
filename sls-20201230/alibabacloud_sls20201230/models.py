@@ -363,7 +363,6 @@ class Shard(TeaModel):
         create_time: int = None,
         exclusive_end_key: str = None,
         inclusive_begin_key: str = None,
-        server_ip: str = None,
         shard_id: int = None,
         status: str = None,
     ):
@@ -373,8 +372,6 @@ class Shard(TeaModel):
         self.exclusive_end_key = exclusive_end_key
         # inclusiveBeginKey
         self.inclusive_begin_key = inclusive_begin_key
-        # serverIp
-        self.server_ip = server_ip
         # shard id
         self.shard_id = shard_id
         # status
@@ -395,8 +392,6 @@ class Shard(TeaModel):
             result['exclusiveEndKey'] = self.exclusive_end_key
         if self.inclusive_begin_key is not None:
             result['inclusiveBeginKey'] = self.inclusive_begin_key
-        if self.server_ip is not None:
-            result['serverIp'] = self.server_ip
         if self.shard_id is not None:
             result['shardId'] = self.shard_id
         if self.status is not None:
@@ -411,8 +406,6 @@ class Shard(TeaModel):
             self.exclusive_end_key = m.get('exclusiveEndKey')
         if m.get('inclusiveBeginKey') is not None:
             self.inclusive_begin_key = m.get('inclusiveBeginKey')
-        if m.get('serverIp') is not None:
-            self.server_ip = m.get('serverIp')
         if m.get('shardId') is not None:
             self.shard_id = m.get('shardId')
         if m.get('status') is not None:
@@ -546,75 +539,6 @@ class CreateLogStoreRequest(TeaModel):
         if m.get('encrypt_conf') is not None:
             temp_model = EncryptConf()
             self.encrypt_conf = temp_model.from_map(m['encrypt_conf'])
-        if m.get('logstoreName') is not None:
-            self.logstore_name = m.get('logstoreName')
-        if m.get('maxSplitShard') is not None:
-            self.max_split_shard = m.get('maxSplitShard')
-        if m.get('shardCount') is not None:
-            self.shard_count = m.get('shardCount')
-        if m.get('ttl') is not None:
-            self.ttl = m.get('ttl')
-        return self
-
-
-class CreateLogStoreShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        append_meta: bool = None,
-        auto_split: bool = None,
-        enable_tracking: bool = None,
-        encrypt_conf_shrink: str = None,
-        logstore_name: str = None,
-        max_split_shard: int = None,
-        shard_count: int = None,
-        ttl: int = None,
-    ):
-        self.append_meta = append_meta
-        self.auto_split = auto_split
-        self.enable_tracking = enable_tracking
-        self.encrypt_conf_shrink = encrypt_conf_shrink
-        self.logstore_name = logstore_name
-        self.max_split_shard = max_split_shard
-        self.shard_count = shard_count
-        self.ttl = ttl
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.append_meta is not None:
-            result['appendMeta'] = self.append_meta
-        if self.auto_split is not None:
-            result['autoSplit'] = self.auto_split
-        if self.enable_tracking is not None:
-            result['enable_tracking'] = self.enable_tracking
-        if self.encrypt_conf_shrink is not None:
-            result['encrypt_conf'] = self.encrypt_conf_shrink
-        if self.logstore_name is not None:
-            result['logstoreName'] = self.logstore_name
-        if self.max_split_shard is not None:
-            result['maxSplitShard'] = self.max_split_shard
-        if self.shard_count is not None:
-            result['shardCount'] = self.shard_count
-        if self.ttl is not None:
-            result['ttl'] = self.ttl
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('appendMeta') is not None:
-            self.append_meta = m.get('appendMeta')
-        if m.get('autoSplit') is not None:
-            self.auto_split = m.get('autoSplit')
-        if m.get('enable_tracking') is not None:
-            self.enable_tracking = m.get('enable_tracking')
-        if m.get('encrypt_conf') is not None:
-            self.encrypt_conf_shrink = m.get('encrypt_conf')
         if m.get('logstoreName') is not None:
             self.logstore_name = m.get('logstoreName')
         if m.get('maxSplitShard') is not None:
@@ -1448,6 +1372,7 @@ class UpdateLogStoreRequest(TeaModel):
         auto_split: bool = None,
         enable_tracking: bool = None,
         encrypt_conf: EncryptConf = None,
+        logstore: str = None,
         logstore_name: str = None,
         max_split_shard: int = None,
         shard_count: int = None,
@@ -1457,6 +1382,7 @@ class UpdateLogStoreRequest(TeaModel):
         self.auto_split = auto_split
         self.enable_tracking = enable_tracking
         self.encrypt_conf = encrypt_conf
+        self.logstore = logstore
         self.logstore_name = logstore_name
         self.max_split_shard = max_split_shard
         self.shard_count = shard_count
@@ -1480,6 +1406,8 @@ class UpdateLogStoreRequest(TeaModel):
             result['enable_tracking'] = self.enable_tracking
         if self.encrypt_conf is not None:
             result['encrypt_conf'] = self.encrypt_conf.to_map()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
         if self.logstore_name is not None:
             result['logstoreName'] = self.logstore_name
         if self.max_split_shard is not None:
@@ -1501,75 +1429,8 @@ class UpdateLogStoreRequest(TeaModel):
         if m.get('encrypt_conf') is not None:
             temp_model = EncryptConf()
             self.encrypt_conf = temp_model.from_map(m['encrypt_conf'])
-        if m.get('logstoreName') is not None:
-            self.logstore_name = m.get('logstoreName')
-        if m.get('maxSplitShard') is not None:
-            self.max_split_shard = m.get('maxSplitShard')
-        if m.get('shardCount') is not None:
-            self.shard_count = m.get('shardCount')
-        if m.get('ttl') is not None:
-            self.ttl = m.get('ttl')
-        return self
-
-
-class UpdateLogStoreShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        append_meta: bool = None,
-        auto_split: bool = None,
-        enable_tracking: bool = None,
-        encrypt_conf_shrink: str = None,
-        logstore_name: str = None,
-        max_split_shard: int = None,
-        shard_count: int = None,
-        ttl: int = None,
-    ):
-        self.append_meta = append_meta
-        self.auto_split = auto_split
-        self.enable_tracking = enable_tracking
-        self.encrypt_conf_shrink = encrypt_conf_shrink
-        self.logstore_name = logstore_name
-        self.max_split_shard = max_split_shard
-        self.shard_count = shard_count
-        self.ttl = ttl
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.append_meta is not None:
-            result['appendMeta'] = self.append_meta
-        if self.auto_split is not None:
-            result['autoSplit'] = self.auto_split
-        if self.enable_tracking is not None:
-            result['enable_tracking'] = self.enable_tracking
-        if self.encrypt_conf_shrink is not None:
-            result['encrypt_conf'] = self.encrypt_conf_shrink
-        if self.logstore_name is not None:
-            result['logstoreName'] = self.logstore_name
-        if self.max_split_shard is not None:
-            result['maxSplitShard'] = self.max_split_shard
-        if self.shard_count is not None:
-            result['shardCount'] = self.shard_count
-        if self.ttl is not None:
-            result['ttl'] = self.ttl
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('appendMeta') is not None:
-            self.append_meta = m.get('appendMeta')
-        if m.get('autoSplit') is not None:
-            self.auto_split = m.get('autoSplit')
-        if m.get('enable_tracking') is not None:
-            self.enable_tracking = m.get('enable_tracking')
-        if m.get('encrypt_conf') is not None:
-            self.encrypt_conf_shrink = m.get('encrypt_conf')
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
         if m.get('logstoreName') is not None:
             self.logstore_name = m.get('logstoreName')
         if m.get('maxSplitShard') is not None:
