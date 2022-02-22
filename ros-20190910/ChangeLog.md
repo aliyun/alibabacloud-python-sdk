@@ -1,3 +1,10 @@
+2022-02-22 Version: 3.2.0
+- The parameter of GetStack, GetTemplate, ListTemplates, ListTemplateVersions adds AcceptLanguage.
+- The response of GetStack, GetTemplate adds Interface.
+- The parameter of CreateStack, CreateChangeSet adds ServiceManaged.
+- The response of GetStack adds ServiceManaged, ServiceName.
+- The response of ListStacks adds ServiceManaged, ServiceName in Stacks.
+
 2022-01-18 Version: 3.1.0
 - Added EntityType to ListResourceTypes parameters.
 - Added EntityType to GetResourceType return value.

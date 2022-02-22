@@ -5545,6 +5545,7 @@ class GetStackResponseBody(TeaModel):
         description: str = None,
         disable_rollback: bool = None,
         drift_detection_time: str = None,
+        interface: str = None,
         log: GetStackResponseBodyLog = None,
         notification_urls: List[str] = None,
         outputs: List[Dict[str, Any]] = None,
@@ -5576,6 +5577,7 @@ class GetStackResponseBody(TeaModel):
         self.description = description
         self.disable_rollback = disable_rollback
         self.drift_detection_time = drift_detection_time
+        self.interface = interface
         self.log = log
         self.notification_urls = notification_urls
         self.outputs = outputs
@@ -5632,6 +5634,8 @@ class GetStackResponseBody(TeaModel):
             result['DisableRollback'] = self.disable_rollback
         if self.drift_detection_time is not None:
             result['DriftDetectionTime'] = self.drift_detection_time
+        if self.interface is not None:
+            result['Interface'] = self.interface
         if self.log is not None:
             result['Log'] = self.log.to_map()
         if self.notification_urls is not None:
@@ -5700,6 +5704,8 @@ class GetStackResponseBody(TeaModel):
             self.disable_rollback = m.get('DisableRollback')
         if m.get('DriftDetectionTime') is not None:
             self.drift_detection_time = m.get('DriftDetectionTime')
+        if m.get('Interface') is not None:
+            self.interface = m.get('Interface')
         if m.get('Log') is not None:
             temp_model = GetStackResponseBodyLog()
             self.log = temp_model.from_map(m['Log'])
@@ -7352,6 +7358,7 @@ class GetTemplateResponseBody(TeaModel):
         change_set_id: str = None,
         create_time: str = None,
         description: str = None,
+        interface: str = None,
         owner_id: str = None,
         permissions: List[GetTemplateResponseBodyPermissions] = None,
         region_id: str = None,
@@ -7370,6 +7377,7 @@ class GetTemplateResponseBody(TeaModel):
         self.change_set_id = change_set_id
         self.create_time = create_time
         self.description = description
+        self.interface = interface
         self.owner_id = owner_id
         self.permissions = permissions
         self.region_id = region_id
@@ -7403,6 +7411,8 @@ class GetTemplateResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.interface is not None:
+            result['Interface'] = self.interface
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         result['Permissions'] = []
@@ -7443,6 +7453,8 @@ class GetTemplateResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Interface') is not None:
+            self.interface = m.get('Interface')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         self.permissions = []
