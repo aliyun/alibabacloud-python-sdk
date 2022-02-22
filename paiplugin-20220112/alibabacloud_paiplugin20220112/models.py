@@ -4,6 +4,862 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class CreateGroupRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        column: str = None,
+        filter: str = None,
+        inference_job: str = None,
+        name: str = None,
+        project: str = None,
+        remark: str = None,
+        source: int = None,
+        table: str = None,
+        text: str = None,
+        uri: str = None,
+    ):
+        # 算法名称
+        self.algorithm = algorithm
+        # 手机号列名
+        self.column = column
+        # ODPS过滤语句
+        self.filter = filter
+        # 推理任务
+        self.inference_job = inference_job
+        # 人群名称
+        self.name = name
+        # ODPS项目名
+        self.project = project
+        # 备注
+        self.remark = remark
+        # 人群来源
+        # - 0: Text，每行一个手机号
+        # - 1: 无header的csv文件，每行一个手机号
+        # - 2: 带header的csv文件，需指定手机号列名
+        # - 3: Odps，需指定手机号列名
+        # - 4: Algorithm，由算法预测生成
+        self.source = source
+        # ODPS表名
+        self.table = table
+        # 文本
+        self.text = text
+        # 文件地址
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.inference_job is not None:
+            result['InferenceJob'] = self.inference_job
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.table is not None:
+            result['Table'] = self.table
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('InferenceJob') is not None:
+            self.inference_job = m.get('InferenceJob')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class CreateGroupResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        amount: int = None,
+        column: str = None,
+        created_time: str = None,
+        filter: str = None,
+        id: str = None,
+        inference_job: str = None,
+        name: str = None,
+        project: str = None,
+        remark: str = None,
+        source: int = None,
+        status: int = None,
+        table: str = None,
+        text: str = None,
+        updated_time: str = None,
+        uri: str = None,
+    ):
+        # 算法名称
+        self.algorithm = algorithm
+        # 人群数量
+        self.amount = amount
+        # 手机号列名
+        self.column = column
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # ODPS过滤语句
+        self.filter = filter
+        # 人群Id
+        self.id = id
+        # 推理任务
+        self.inference_job = inference_job
+        # 人群名称
+        self.name = name
+        # ODPS项目名
+        self.project = project
+        # 备注
+        self.remark = remark
+        # 人群来源
+        # - 0: Text，每行一个手机号
+        # - 1: 无header的csv文件，每行一个手机号
+        # - 2: 带header的csv文件，需指定手机号列名
+        # - 3: Odps，需指定手机号列名
+        # - 4: Algorithm，由算法预测生成
+        self.source = source
+        # 人群状态
+        self.status = status
+        # ODPS表名
+        self.table = table
+        # 文本
+        self.text = text
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+        # 文件地址
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.inference_job is not None:
+            result['InferenceJob'] = self.inference_job
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.table is not None:
+            result['Table'] = self.table
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InferenceJob') is not None:
+            self.inference_job = m.get('InferenceJob')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class CreateGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateGroupResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateGroupResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class CreateGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateInferenceJobRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        name: str = None,
+        remark: str = None,
+        training_job_id: str = None,
+        user_config: str = None,
+    ):
+        # 关联算法
+        self.algorithm = algorithm
+        # 训练任务名称
+        self.name = name
+        # 备注
+        self.remark = remark
+        # 关联训练任务
+        self.training_job_id = training_job_id
+        # 用户配置
+        self.user_config = user_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.training_job_id is not None:
+            result['TrainingJobId'] = self.training_job_id
+        if self.user_config is not None:
+            result['UserConfig'] = self.user_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('TrainingJobId') is not None:
+            self.training_job_id = m.get('TrainingJobId')
+        if m.get('UserConfig') is not None:
+            self.user_config = m.get('UserConfig')
+        return self
+
+
+class CreateInferenceJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        created_time: str = None,
+        group_id: str = None,
+        history: str = None,
+        id: str = None,
+        name: str = None,
+        remark: str = None,
+        status: int = None,
+        training_job_id: str = None,
+        updated_time: str = None,
+        user_config: str = None,
+    ):
+        # 关联算法
+        self.algorithm = algorithm
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # 关联人群Id，如果任务失败则人群无效
+        self.group_id = group_id
+        # 训练任务日志
+        self.history = history
+        # 训练任务Id
+        self.id = id
+        # 训练任务名称
+        self.name = name
+        # 备注
+        self.remark = remark
+        # 训练任务状态
+        self.status = status
+        # 关联训练任务
+        self.training_job_id = training_job_id
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+        # 用户配置
+        self.user_config = user_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.history is not None:
+            result['History'] = self.history
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.training_job_id is not None:
+            result['TrainingJobId'] = self.training_job_id
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.user_config is not None:
+            result['UserConfig'] = self.user_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('History') is not None:
+            self.history = m.get('History')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TrainingJobId') is not None:
+            self.training_job_id = m.get('TrainingJobId')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('UserConfig') is not None:
+            self.user_config = m.get('UserConfig')
+        return self
+
+
+class CreateInferenceJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateInferenceJobResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateInferenceJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class CreateInferenceJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateInferenceJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateInferenceJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateScheduleRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        execute_time: str = None,
+        group_id: str = None,
+        name: str = None,
+        repeat_cycle: int = None,
+        repeat_cycle_unit: int = None,
+        repeat_times: int = None,
+        signature_id: str = None,
+        template_id: str = None,
+    ):
+        # 终止时间（UTC+8），精确到分钟。
+        self.end_time = end_time
+        # 执行时间 (UTC+8)，为空立即执行。
+        self.execute_time = execute_time
+        # 人群Id。
+        self.group_id = group_id
+        # 发送计划名称。
+        self.name = name
+        # 重复周期，按重复周期与重复周期单位执行。
+        self.repeat_cycle = repeat_cycle
+        # 重复周期单位，若指定执行时间，则重复周期生效。
+        # - 0: 从不（默认）
+        # - 1: 小时
+        # - 2: 天
+        # - 3: 周
+        # - 4: 月
+        self.repeat_cycle_unit = repeat_cycle_unit
+        # 重复次数。
+        # - -1: 不设终止时间
+        # - 0: 不重复
+        # - N: 重复N次后终止
+        self.repeat_times = repeat_times
+        # 签名Id。
+        self.signature_id = signature_id
+        # 模板Id。
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.repeat_cycle is not None:
+            result['RepeatCycle'] = self.repeat_cycle
+        if self.repeat_cycle_unit is not None:
+            result['RepeatCycleUnit'] = self.repeat_cycle_unit
+        if self.repeat_times is not None:
+            result['RepeatTimes'] = self.repeat_times
+        if self.signature_id is not None:
+            result['SignatureId'] = self.signature_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RepeatCycle') is not None:
+            self.repeat_cycle = m.get('RepeatCycle')
+        if m.get('RepeatCycleUnit') is not None:
+            self.repeat_cycle_unit = m.get('RepeatCycleUnit')
+        if m.get('RepeatTimes') is not None:
+            self.repeat_times = m.get('RepeatTimes')
+        if m.get('SignatureId') is not None:
+            self.signature_id = m.get('SignatureId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class CreateScheduleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        end_time: int = None,
+        execute_time: str = None,
+        group_id: str = None,
+        id: str = None,
+        name: str = None,
+        repeat_cycle: int = None,
+        repeat_cycle_unit: int = None,
+        repeat_times: int = None,
+        signature_id: str = None,
+        status: int = None,
+        template_id: str = None,
+        updated_time: str = None,
+    ):
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # 终止时间（UTC+8），精确到分钟。
+        self.end_time = end_time
+        # 执行时间 (UTC+8)，为空立即执行。
+        self.execute_time = execute_time
+        # 人群Id。
+        self.group_id = group_id
+        # Id
+        self.id = id
+        # 发送计划名称。
+        self.name = name
+        # 重复周期，按重复周期与重复周期单位执行。
+        self.repeat_cycle = repeat_cycle
+        # 重复周期单位，若指定执行时间，则重复周期生效。
+        # - 0: 从不（默认）
+        # - 1: 小时
+        # - 2: 天
+        # - 3: 周
+        # - 4: 月
+        self.repeat_cycle_unit = repeat_cycle_unit
+        # 重复次数。
+        # - -1: 不设终止时间
+        # - 0: 不重复
+        # - N: 重复N次后终止
+        self.repeat_times = repeat_times
+        # 签名Id。
+        self.signature_id = signature_id
+        # 状态
+        # - 0: 检查中
+        # - 1: 检查成功
+        # - 2: 检查失败
+        # - 3: 发送中
+        # - 4: 发送成功
+        # - 5: 发送失败
+        self.status = status
+        # 模板Id。
+        self.template_id = template_id
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.repeat_cycle is not None:
+            result['RepeatCycle'] = self.repeat_cycle
+        if self.repeat_cycle_unit is not None:
+            result['RepeatCycleUnit'] = self.repeat_cycle_unit
+        if self.repeat_times is not None:
+            result['RepeatTimes'] = self.repeat_times
+        if self.signature_id is not None:
+            result['SignatureId'] = self.signature_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RepeatCycle') is not None:
+            self.repeat_cycle = m.get('RepeatCycle')
+        if m.get('RepeatCycleUnit') is not None:
+            self.repeat_cycle_unit = m.get('RepeatCycleUnit')
+        if m.get('RepeatTimes') is not None:
+            self.repeat_times = m.get('RepeatTimes')
+        if m.get('SignatureId') is not None:
+            self.signature_id = m.get('SignatureId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class CreateScheduleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateScheduleResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateScheduleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class CreateScheduleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateScheduleResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateScheduleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSignatureRequest(TeaModel):
     def __init__(
         self,
@@ -425,6 +1281,457 @@ class CreateTemplateResponse(TeaModel):
         return self
 
 
+class CreateTrainingJobRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        name: str = None,
+        remark: str = None,
+        user_config: str = None,
+    ):
+        # 关联算法
+        self.algorithm = algorithm
+        # 训练任务名称
+        self.name = name
+        # 备注
+        self.remark = remark
+        # 用户配置
+        self.user_config = user_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.user_config is not None:
+            result['UserConfig'] = self.user_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('UserConfig') is not None:
+            self.user_config = m.get('UserConfig')
+        return self
+
+
+class CreateTrainingJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        created_time: str = None,
+        history: str = None,
+        id: str = None,
+        name: str = None,
+        remark: str = None,
+        status: int = None,
+        updated_time: str = None,
+        user_config: str = None,
+    ):
+        # 关联算法
+        self.algorithm = algorithm
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # 训练任务日志
+        self.history = history
+        # 训练任务Id
+        self.id = id
+        # 训练任务名称
+        self.name = name
+        # 备注
+        self.remark = remark
+        # 训练任务状态
+        self.status = status
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+        # 用户配置
+        self.user_config = user_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.history is not None:
+            result['History'] = self.history
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.user_config is not None:
+            result['UserConfig'] = self.user_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('History') is not None:
+            self.history = m.get('History')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('UserConfig') is not None:
+            self.user_config = m.get('UserConfig')
+        return self
+
+
+class CreateTrainingJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateTrainingJobResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateTrainingJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class CreateTrainingJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateTrainingJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateTrainingJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DeleteGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteInferenceJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DeleteInferenceJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteInferenceJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteInferenceJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteScheduleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DeleteScheduleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteScheduleResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteScheduleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSignatureResponseBody(TeaModel):
     def __init__(
         self,
@@ -579,6 +1886,697 @@ class DeleteTemplateResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTrainingJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class DeleteTrainingJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteTrainingJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteTrainingJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetGroupResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        amount: int = None,
+        column: str = None,
+        created_time: str = None,
+        filter: str = None,
+        id: str = None,
+        inference_job: str = None,
+        name: str = None,
+        project: str = None,
+        remark: str = None,
+        source: int = None,
+        status: int = None,
+        table: str = None,
+        text: str = None,
+        updated_time: str = None,
+        uri: str = None,
+    ):
+        # 算法名称
+        self.algorithm = algorithm
+        # 人群数量
+        self.amount = amount
+        # 手机号列名
+        self.column = column
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # ODPS过滤语句
+        self.filter = filter
+        # 人群Id
+        self.id = id
+        # 推理任务
+        self.inference_job = inference_job
+        # 人群名称
+        self.name = name
+        # ODPS项目名
+        self.project = project
+        # 备注
+        self.remark = remark
+        # 人群来源
+        # - 0: Text，每行一个手机号
+        # - 1: 无header的csv文件，每行一个手机号
+        # - 2: 带header的csv文件，需指定手机号列名
+        # - 3: Odps，需指定手机号列名
+        # - 4: Algorithm，由算法预测生成
+        self.source = source
+        # 人群状态
+        self.status = status
+        # ODPS表名
+        self.table = table
+        # 文本
+        self.text = text
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+        # 文件地址
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.inference_job is not None:
+            result['InferenceJob'] = self.inference_job
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.table is not None:
+            result['Table'] = self.table
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InferenceJob') is not None:
+            self.inference_job = m.get('InferenceJob')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class GetGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetGroupResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetGroupResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class GetGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetInferenceJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        created_time: str = None,
+        group_id: str = None,
+        history: str = None,
+        id: str = None,
+        name: str = None,
+        remark: str = None,
+        status: int = None,
+        training_job_id: str = None,
+        updated_time: str = None,
+        user_config: str = None,
+    ):
+        # 关联算法
+        self.algorithm = algorithm
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # 关联人群Id，如果任务失败则人群无效
+        self.group_id = group_id
+        # 训练任务日志
+        self.history = history
+        # 训练任务Id
+        self.id = id
+        # 训练任务名称
+        self.name = name
+        # 备注
+        self.remark = remark
+        # 训练任务状态
+        self.status = status
+        # 关联训练任务
+        self.training_job_id = training_job_id
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+        # 用户配置
+        self.user_config = user_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.history is not None:
+            result['History'] = self.history
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.training_job_id is not None:
+            result['TrainingJobId'] = self.training_job_id
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.user_config is not None:
+            result['UserConfig'] = self.user_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('History') is not None:
+            self.history = m.get('History')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TrainingJobId') is not None:
+            self.training_job_id = m.get('TrainingJobId')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('UserConfig') is not None:
+            self.user_config = m.get('UserConfig')
+        return self
+
+
+class GetInferenceJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetInferenceJobResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetInferenceJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class GetInferenceJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetInferenceJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetInferenceJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetScheduleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        end_time: int = None,
+        execute_time: str = None,
+        group_id: str = None,
+        history: str = None,
+        id: str = None,
+        name: str = None,
+        repeat_cycle: int = None,
+        repeat_cycle_unit: int = None,
+        repeat_times: int = None,
+        signature_id: str = None,
+        status: int = None,
+        template_id: str = None,
+        updated_time: str = None,
+    ):
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # 终止时间（UTC+8），精确到分钟。
+        self.end_time = end_time
+        # 执行时间 (UTC+8)，为空立即执行。
+        self.execute_time = execute_time
+        # 人群Id。
+        self.group_id = group_id
+        # 历史记录
+        self.history = history
+        # Id
+        self.id = id
+        # 发送计划名称。
+        self.name = name
+        # 重复周期，按重复周期与重复周期单位执行。
+        self.repeat_cycle = repeat_cycle
+        # 重复周期单位，若指定执行时间，则重复周期生效。
+        # - 0: 从不（默认）
+        # - 1: 小时
+        # - 2: 天
+        # - 3: 周
+        # - 4: 月
+        self.repeat_cycle_unit = repeat_cycle_unit
+        # 重复次数。
+        # - -1: 不设终止时间
+        # - 0: 不重复
+        # - N: 重复N次后终止
+        self.repeat_times = repeat_times
+        # 签名Id。
+        self.signature_id = signature_id
+        # 状态
+        # - 0: 检查中
+        # - 1: 检查成功
+        # - 2: 检查失败
+        # - 3: 发送中
+        # - 4: 发送成功
+        # - 5: 发送失败
+        self.status = status
+        # 模板Id。
+        self.template_id = template_id
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.history is not None:
+            result['History'] = self.history
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.repeat_cycle is not None:
+            result['RepeatCycle'] = self.repeat_cycle
+        if self.repeat_cycle_unit is not None:
+            result['RepeatCycleUnit'] = self.repeat_cycle_unit
+        if self.repeat_times is not None:
+            result['RepeatTimes'] = self.repeat_times
+        if self.signature_id is not None:
+            result['SignatureId'] = self.signature_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('History') is not None:
+            self.history = m.get('History')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RepeatCycle') is not None:
+            self.repeat_cycle = m.get('RepeatCycle')
+        if m.get('RepeatCycleUnit') is not None:
+            self.repeat_cycle_unit = m.get('RepeatCycleUnit')
+        if m.get('RepeatTimes') is not None:
+            self.repeat_times = m.get('RepeatTimes')
+        if m.get('SignatureId') is not None:
+            self.signature_id = m.get('SignatureId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class GetScheduleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetScheduleResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetScheduleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class GetScheduleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetScheduleResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetScheduleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -919,6 +2917,1688 @@ class GetTemplateResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTrainingJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        created_time: str = None,
+        history: str = None,
+        id: str = None,
+        name: str = None,
+        remark: str = None,
+        status: int = None,
+        updated_time: str = None,
+        user_config: str = None,
+    ):
+        # 关联算法
+        self.algorithm = algorithm
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # 训练任务日志
+        self.history = history
+        # 训练任务Id
+        self.id = id
+        # 训练任务名称
+        self.name = name
+        # 备注
+        self.remark = remark
+        # 训练任务状态
+        self.status = status
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+        # 用户配置
+        self.user_config = user_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.history is not None:
+            result['History'] = self.history
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.user_config is not None:
+            result['UserConfig'] = self.user_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('History') is not None:
+            self.history = m.get('History')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('UserConfig') is not None:
+            self.user_config = m.get('UserConfig')
+        return self
+
+
+class GetTrainingJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetTrainingJobResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetTrainingJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class GetTrainingJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetTrainingJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetTrainingJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        source: int = None,
+        status: int = None,
+    ):
+        # 人群名称过滤，使用%name%模糊匹配
+        self.name = name
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 人群备注过滤，使用%name%模糊匹配
+        self.remark = remark
+        # 来源过滤
+        self.source = source
+        # 审核状态过滤
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListGroupsResponseBodyDataGroups(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        amount: int = None,
+        column: str = None,
+        created_time: str = None,
+        filter: str = None,
+        id: str = None,
+        inference_job: str = None,
+        name: str = None,
+        project: str = None,
+        remark: str = None,
+        source: int = None,
+        status: int = None,
+        table: str = None,
+        text: str = None,
+        updated_time: str = None,
+        uri: str = None,
+    ):
+        # 算法名称
+        self.algorithm = algorithm
+        # 人群数量
+        self.amount = amount
+        # 手机号列名
+        self.column = column
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # ODPS过滤语句
+        self.filter = filter
+        # 人群Id
+        self.id = id
+        # 推理任务
+        self.inference_job = inference_job
+        # 人群名称
+        self.name = name
+        # ODPS项目名
+        self.project = project
+        # 备注
+        self.remark = remark
+        # 人群来源
+        # - 0: Text，每行一个手机号
+        # - 1: 无header的csv文件，每行一个手机号
+        # - 2: 带header的csv文件，需指定手机号列名
+        # - 3: Odps，需指定手机号列名
+        # - 4: Algorithm，由算法预测生成
+        self.source = source
+        # 人群状态
+        self.status = status
+        # ODPS表名
+        self.table = table
+        # 文本
+        self.text = text
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+        # 文件地址
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.inference_job is not None:
+            result['InferenceJob'] = self.inference_job
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.table is not None:
+            result['Table'] = self.table
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InferenceJob') is not None:
+            self.inference_job = m.get('InferenceJob')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class ListGroupsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        groups: List[ListGroupsResponseBodyDataGroups] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # 人群列表
+        self.groups = groups
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 总人群数量
+        self.total_count = total_count
+
+    def validate(self):
+        if self.groups:
+            for k in self.groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Groups'] = []
+        if self.groups is not None:
+            for k in self.groups:
+                result['Groups'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.groups = []
+        if m.get('Groups') is not None:
+            for k in m.get('Groups'):
+                temp_model = ListGroupsResponseBodyDataGroups()
+                self.groups.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListGroupsResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListGroupsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class ListGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListInferenceJobsRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        status: int = None,
+    ):
+        # 训练任务名称过滤，使用%name%模糊匹配
+        self.name = name
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 训练任务备注过滤，使用%name%模糊匹配
+        self.remark = remark
+        # 训练任务状态过滤
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListInferenceJobsResponseBodyDataInferenceJobs(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        created_time: str = None,
+        group_id: str = None,
+        history: str = None,
+        id: str = None,
+        name: str = None,
+        remark: str = None,
+        status: int = None,
+        training_job_id: str = None,
+        updated_time: str = None,
+        user_config: str = None,
+    ):
+        # 关联算法
+        self.algorithm = algorithm
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # 关联人群Id，如果任务失败则人群无效
+        self.group_id = group_id
+        # 训练任务日志
+        self.history = history
+        # 训练任务Id
+        self.id = id
+        # 训练任务名称
+        self.name = name
+        # 备注
+        self.remark = remark
+        # 训练任务状态
+        self.status = status
+        # 关联训练任务
+        self.training_job_id = training_job_id
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+        # 用户配置
+        self.user_config = user_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.history is not None:
+            result['History'] = self.history
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.training_job_id is not None:
+            result['TrainingJobId'] = self.training_job_id
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.user_config is not None:
+            result['UserConfig'] = self.user_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('History') is not None:
+            self.history = m.get('History')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TrainingJobId') is not None:
+            self.training_job_id = m.get('TrainingJobId')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('UserConfig') is not None:
+            self.user_config = m.get('UserConfig')
+        return self
+
+
+class ListInferenceJobsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        inference_jobs: List[ListInferenceJobsResponseBodyDataInferenceJobs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # 训练任务列表
+        self.inference_jobs = inference_jobs
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 总训练任务数量
+        self.total_count = total_count
+
+    def validate(self):
+        if self.inference_jobs:
+            for k in self.inference_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InferenceJobs'] = []
+        if self.inference_jobs is not None:
+            for k in self.inference_jobs:
+                result['InferenceJobs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inference_jobs = []
+        if m.get('InferenceJobs') is not None:
+            for k in m.get('InferenceJobs'):
+                temp_model = ListInferenceJobsResponseBodyDataInferenceJobs()
+                self.inference_jobs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListInferenceJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListInferenceJobsResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListInferenceJobsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class ListInferenceJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListInferenceJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListInferenceJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMessageMetricsRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        start_date: str = None,
+    ):
+        # 结束日期
+        self.end_date = end_date
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 开始日期
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class ListMessageMetricsResponseBodyDataMetrics(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        fail: int = None,
+        pending: int = None,
+        rate: float = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 日期
+        self.date = date
+        # 失败
+        self.fail = fail
+        # 挂起
+        self.pending = pending
+        # 非失败率
+        self.rate = rate
+        # 成功
+        self.success = success
+        # 总计
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.fail is not None:
+            result['Fail'] = self.fail
+        if self.pending is not None:
+            result['Pending'] = self.pending
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('Fail') is not None:
+            self.fail = m.get('Fail')
+        if m.get('Pending') is not None:
+            self.pending = m.get('Pending')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListMessageMetricsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        metrics: List[ListMessageMetricsResponseBodyDataMetrics] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # 统计数据列表
+        self.metrics = metrics
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 总统计数量
+        self.total_count = total_count
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = ListMessageMetricsResponseBodyDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListMessageMetricsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListMessageMetricsResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListMessageMetricsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class ListMessageMetricsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListMessageMetricsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListMessageMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMessagesRequest(TeaModel):
+    def __init__(
+        self,
+        datetime: str = None,
+        group_id: str = None,
+        message_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        phone_number: str = None,
+        request_id: str = None,
+        schedule_id: str = None,
+        signature: str = None,
+        template_code: str = None,
+    ):
+        # 发送日期，格式为20220101
+        self.datetime = datetime
+        # 关联人群Id。
+        self.group_id = group_id
+        # 短信序列号。
+        self.message_id = message_id
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 手机号码。
+        self.phone_number = phone_number
+        # 请求序列号。
+        self.request_id = request_id
+        # 关联发送计划Id。
+        self.schedule_id = schedule_id
+        # 签名名称。
+        self.signature = signature
+        # 模板号。
+        self.template_code = template_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.datetime is not None:
+            result['Datetime'] = self.datetime
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schedule_id is not None:
+            result['ScheduleId'] = self.schedule_id
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Datetime') is not None:
+            self.datetime = m.get('Datetime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScheduleId') is not None:
+            self.schedule_id = m.get('ScheduleId')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        return self
+
+
+class ListMessagesResponseBodyDataMessages(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        group_id: str = None,
+        id: str = None,
+        out_id: str = None,
+        phone_number: str = None,
+        schedule_id: str = None,
+        signature: str = None,
+        status: int = None,
+        template_code: str = None,
+        template_params: str = None,
+    ):
+        # 错误码。
+        self.error_code = error_code
+        # 关联人群Id。
+        self.group_id = group_id
+        # 短信序列号。
+        self.id = id
+        # 外部拓展字段。
+        self.out_id = out_id
+        # 手机号码。
+        self.phone_number = phone_number
+        # 关联发送计划Id。
+        self.schedule_id = schedule_id
+        # 签名名称。
+        self.signature = signature
+        # 短信发送状态
+        # - 0 : 发送中。
+        # - 1 : 发送成功。
+        # - 2 : 发送失败。
+        self.status = status
+        # 模板号。
+        self.template_code = template_code
+        # 模板参数。
+        self.template_params = template_params
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.schedule_id is not None:
+            result['ScheduleId'] = self.schedule_id
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_params is not None:
+            result['TemplateParams'] = self.template_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ScheduleId') is not None:
+            self.schedule_id = m.get('ScheduleId')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateParams') is not None:
+            self.template_params = m.get('TemplateParams')
+        return self
+
+
+class ListMessagesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        messages: List[ListMessagesResponseBodyDataMessages] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        # 短信列表。
+        self.messages = messages
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 短信数量。
+        self.total_count = total_count
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = ListMessagesResponseBodyDataMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListMessagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListMessagesResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListMessagesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class ListMessagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListMessagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListMessagesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSchedulesRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        status: int = None,
+    ):
+        # 发送计划名称，用于名称过滤或搜索，使用%name%模糊匹配
+        self.name = name
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 发送状态过滤
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListSchedulesResponseBodyDataSchedules(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        end_time: int = None,
+        execute_time: str = None,
+        group_id: str = None,
+        id: str = None,
+        name: str = None,
+        repeat_cycle: int = None,
+        repeat_cycle_unit: int = None,
+        repeat_times: int = None,
+        signature_id: str = None,
+        status: int = None,
+        template_id: str = None,
+        updated_time: str = None,
+    ):
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # 终止时间（UTC+8），精确到分钟。
+        self.end_time = end_time
+        # 执行时间 (UTC+8)，为空立即执行。
+        self.execute_time = execute_time
+        # 人群Id。
+        self.group_id = group_id
+        # Id
+        self.id = id
+        # 发送计划名称。
+        self.name = name
+        # 重复周期，按重复周期与重复周期单位执行。
+        self.repeat_cycle = repeat_cycle
+        # 重复周期单位，若指定执行时间，则重复周期生效。
+        # - 0: 从不（默认）
+        # - 1: 小时
+        # - 2: 天
+        # - 3: 周
+        # - 4: 月
+        self.repeat_cycle_unit = repeat_cycle_unit
+        # 重复次数。
+        # - -1: 不设终止时间
+        # - 0: 不重复
+        # - N: 重复N次后终止
+        self.repeat_times = repeat_times
+        # 签名Id。
+        self.signature_id = signature_id
+        # 状态
+        # - 0: 检查中
+        # - 1: 检查成功
+        # - 2: 检查失败
+        # - 3: 发送中
+        # - 4: 发送成功
+        # - 5: 发送失败
+        self.status = status
+        # 模板Id。
+        self.template_id = template_id
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.repeat_cycle is not None:
+            result['RepeatCycle'] = self.repeat_cycle
+        if self.repeat_cycle_unit is not None:
+            result['RepeatCycleUnit'] = self.repeat_cycle_unit
+        if self.repeat_times is not None:
+            result['RepeatTimes'] = self.repeat_times
+        if self.signature_id is not None:
+            result['SignatureId'] = self.signature_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RepeatCycle') is not None:
+            self.repeat_cycle = m.get('RepeatCycle')
+        if m.get('RepeatCycleUnit') is not None:
+            self.repeat_cycle_unit = m.get('RepeatCycleUnit')
+        if m.get('RepeatTimes') is not None:
+            self.repeat_times = m.get('RepeatTimes')
+        if m.get('SignatureId') is not None:
+            self.signature_id = m.get('SignatureId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class ListSchedulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        schedules: List[ListSchedulesResponseBodyDataSchedules] = None,
+        total_count: int = None,
+    ):
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 发送计划列表
+        self.schedules = schedules
+        # 发送计划数量
+        self.total_count = total_count
+
+    def validate(self):
+        if self.schedules:
+            for k in self.schedules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Schedules'] = []
+        if self.schedules is not None:
+            for k in self.schedules:
+                result['Schedules'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.schedules = []
+        if m.get('Schedules') is not None:
+            for k in m.get('Schedules'):
+                temp_model = ListSchedulesResponseBodyDataSchedules()
+                self.schedules.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSchedulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListSchedulesResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListSchedulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class ListSchedulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListSchedulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListSchedulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1475,6 +5155,284 @@ class ListTemplatesResponse(TeaModel):
         return self
 
 
+class ListTrainingJobsRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        status: int = None,
+    ):
+        # 训练任务名称过滤，使用%name%模糊匹配
+        self.name = name
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 训练任务备注过滤，使用%name%模糊匹配
+        self.remark = remark
+        # 训练任务状态过滤
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListTrainingJobsResponseBodyDataTrainingJobs(TeaModel):
+    def __init__(
+        self,
+        algorithm: str = None,
+        created_time: str = None,
+        history: str = None,
+        id: str = None,
+        name: str = None,
+        remark: str = None,
+        status: int = None,
+        updated_time: str = None,
+        user_config: str = None,
+    ):
+        # 关联算法
+        self.algorithm = algorithm
+        # 创建时间 (UTC+8)
+        self.created_time = created_time
+        # 训练任务日志
+        self.history = history
+        # 训练任务Id
+        self.id = id
+        # 训练任务名称
+        self.name = name
+        # 备注
+        self.remark = remark
+        # 训练任务状态
+        self.status = status
+        # 更新时间 (UTC+8)
+        self.updated_time = updated_time
+        # 用户配置
+        self.user_config = user_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.history is not None:
+            result['History'] = self.history
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.user_config is not None:
+            result['UserConfig'] = self.user_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('History') is not None:
+            self.history = m.get('History')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('UserConfig') is not None:
+            self.user_config = m.get('UserConfig')
+        return self
+
+
+class ListTrainingJobsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+        training_jobs: List[ListTrainingJobsResponseBodyDataTrainingJobs] = None,
+    ):
+        # 分页数，从1开始，默认为1。
+        self.page_number = page_number
+        # 分页大小，默认为10。
+        self.page_size = page_size
+        # 总训练任务数量
+        self.total_count = total_count
+        # 训练任务列表
+        self.training_jobs = training_jobs
+
+    def validate(self):
+        if self.training_jobs:
+            for k in self.training_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['TrainingJobs'] = []
+        if self.training_jobs is not None:
+            for k in self.training_jobs:
+                result['TrainingJobs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.training_jobs = []
+        if m.get('TrainingJobs') is not None:
+            for k in m.get('TrainingJobs'):
+                temp_model = ListTrainingJobsResponseBodyDataTrainingJobs()
+                self.training_jobs.append(temp_model.from_map(k))
+        return self
+
+
+class ListTrainingJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListTrainingJobsResponseBodyData = None,
+        error_code: int = None,
+        error_message: str = None,
+    ):
+        # 返回数据
+        self.data = data
+        # 错误码
+        self.error_code = error_code
+        # 错误信息
+        self.error_message = error_message
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListTrainingJobsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class ListTrainingJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTrainingJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListTrainingJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SendMessageRequest(TeaModel):
     def __init__(
         self,
@@ -1566,10 +5524,84 @@ class SendMessageRequest(TeaModel):
         return self
 
 
+class SendMessageResponseBodyDataMessages(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        phone_number: str = None,
+    ):
+        self.id = id
+        self.phone_number = phone_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        return self
+
+
+class SendMessageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        messages: List[SendMessageResponseBodyDataMessages] = None,
+        request_id: str = None,
+    ):
+        self.messages = messages
+        self.request_id = request_id
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = SendMessageResponseBodyDataMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
 class SendMessageResponseBody(TeaModel):
     def __init__(
         self,
-        data: str = None,
+        data: SendMessageResponseBodyData = None,
         error_code: int = None,
         error_message: str = None,
     ):
@@ -1581,7 +5613,8 @@ class SendMessageResponseBody(TeaModel):
         self.error_message = error_message
 
     def validate(self):
-        pass
+        if self.data:
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1590,7 +5623,7 @@ class SendMessageResponseBody(TeaModel):
 
         result = dict()
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
         if self.error_message is not None:
@@ -1600,7 +5633,8 @@ class SendMessageResponseBody(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = SendMessageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
