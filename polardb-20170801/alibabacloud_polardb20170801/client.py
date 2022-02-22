@@ -8844,6 +8844,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_category):
+            query['SubCategory'] = request.sub_category
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8890,6 +8892,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sub_category):
+            query['SubCategory'] = request.sub_category
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9384,6 +9388,108 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.ModifyPendingMaintenanceActionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_pending_maintenance_action_with_options_async(request, runtime)
+
+    def refresh_proxy_level_with_options(
+        self,
+        request: polardb_20170801_models.RefreshProxyLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.RefreshProxyLevelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.proxy_target_class):
+            query['ProxyTargetClass'] = request.proxy_target_class
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshProxyLevel',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.RefreshProxyLevelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_proxy_level_with_options_async(
+        self,
+        request: polardb_20170801_models.RefreshProxyLevelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.RefreshProxyLevelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.from_time_service):
+            query['FromTimeService'] = request.from_time_service
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.planned_end_time):
+            query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_start_time):
+            query['PlannedStartTime'] = request.planned_start_time
+        if not UtilClient.is_unset(request.proxy_target_class):
+            query['ProxyTargetClass'] = request.proxy_target_class
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshProxyLevel',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.RefreshProxyLevelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_proxy_level(
+        self,
+        request: polardb_20170801_models.RefreshProxyLevelRequest,
+    ) -> polardb_20170801_models.RefreshProxyLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.refresh_proxy_level_with_options(request, runtime)
+
+    async def refresh_proxy_level_async(
+        self,
+        request: polardb_20170801_models.RefreshProxyLevelRequest,
+    ) -> polardb_20170801_models.RefreshProxyLevelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.refresh_proxy_level_with_options_async(request, runtime)
 
     def remove_dbcluster_from_gdnwith_options(
         self,

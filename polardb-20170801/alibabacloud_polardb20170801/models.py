@@ -17999,6 +17999,7 @@ class ModifyDBNodeClassRequest(TeaModel):
         planned_start_time: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        sub_category: str = None,
     ):
         self.client_token = client_token
         self.dbcluster_id = dbcluster_id
@@ -18010,6 +18011,7 @@ class ModifyDBNodeClassRequest(TeaModel):
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.sub_category = sub_category
 
     def validate(self):
         pass
@@ -18040,6 +18042,8 @@ class ModifyDBNodeClassRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sub_category is not None:
+            result['SubCategory'] = self.sub_category
         return result
 
     def from_map(self, m: dict = None):
@@ -18064,6 +18068,8 @@ class ModifyDBNodeClassRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SubCategory') is not None:
+            self.sub_category = m.get('SubCategory')
         return self
 
 
@@ -18792,6 +18798,145 @@ class ModifyPendingMaintenanceActionResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ModifyPendingMaintenanceActionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RefreshProxyLevelRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        from_time_service: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        planned_end_time: str = None,
+        planned_start_time: str = None,
+        proxy_target_class: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.from_time_service = from_time_service
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.planned_end_time = planned_end_time
+        self.planned_start_time = planned_start_time
+        self.proxy_target_class = proxy_target_class
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.from_time_service is not None:
+            result['FromTimeService'] = self.from_time_service
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.planned_end_time is not None:
+            result['PlannedEndTime'] = self.planned_end_time
+        if self.planned_start_time is not None:
+            result['PlannedStartTime'] = self.planned_start_time
+        if self.proxy_target_class is not None:
+            result['ProxyTargetClass'] = self.proxy_target_class
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('FromTimeService') is not None:
+            self.from_time_service = m.get('FromTimeService')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PlannedEndTime') is not None:
+            self.planned_end_time = m.get('PlannedEndTime')
+        if m.get('PlannedStartTime') is not None:
+            self.planned_start_time = m.get('PlannedStartTime')
+        if m.get('ProxyTargetClass') is not None:
+            self.proxy_target_class = m.get('ProxyTargetClass')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class RefreshProxyLevelResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RefreshProxyLevelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RefreshProxyLevelResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RefreshProxyLevelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

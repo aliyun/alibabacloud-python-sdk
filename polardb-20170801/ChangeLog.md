@@ -1,3 +1,6 @@
+2022-02-22 Version: 2.0.5
+ - Support RefreshProxyLevel.
+
 2022-02-09 Version: 2.0.4
 - Supported the latested feature.
 
