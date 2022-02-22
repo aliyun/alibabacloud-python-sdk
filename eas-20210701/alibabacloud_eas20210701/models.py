@@ -121,7 +121,6 @@ class Resource(TeaModel):
         message: str = None,
         post_paid_instance_count: int = None,
         pre_paid_instance_count: int = None,
-        request_id: str = None,
         resource_id: str = None,
         resource_name: str = None,
         status: str = None,
@@ -145,8 +144,6 @@ class Resource(TeaModel):
         self.post_paid_instance_count = post_paid_instance_count
         # 资源组预付费实例个数
         self.pre_paid_instance_count = pre_paid_instance_count
-        # 请求ID
-        self.request_id = request_id
         # 资源组ID
         self.resource_id = resource_id
         # 资源组名字
@@ -183,8 +180,6 @@ class Resource(TeaModel):
             result['PostPaidInstanceCount'] = self.post_paid_instance_count
         if self.pre_paid_instance_count is not None:
             result['PrePaidInstanceCount'] = self.pre_paid_instance_count
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_name is not None:
@@ -215,8 +210,6 @@ class Resource(TeaModel):
             self.post_paid_instance_count = m.get('PostPaidInstanceCount')
         if m.get('PrePaidInstanceCount') is not None:
             self.pre_paid_instance_count = m.get('PrePaidInstanceCount')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceName') is not None:
@@ -1393,6 +1386,162 @@ class CreateServiceAutoScalerResponse(TeaModel):
         return self
 
 
+class CreateServiceCronScalerRequestScaleJobs(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        schedule: str = None,
+        target_size: int = None,
+    ):
+        self.name = name
+        # 要执行伸缩任务的cron表达式
+        self.schedule = schedule
+        # 执行伸缩任务的目标replica
+        self.target_size = target_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.schedule is not None:
+            result['Schedule'] = self.schedule
+        if self.target_size is not None:
+            result['TargetSize'] = self.target_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Schedule') is not None:
+            self.schedule = m.get('Schedule')
+        if m.get('TargetSize') is not None:
+            self.target_size = m.get('TargetSize')
+        return self
+
+
+class CreateServiceCronScalerRequest(TeaModel):
+    def __init__(
+        self,
+        exclude_dates: List[str] = None,
+        scale_jobs: List[CreateServiceCronScalerRequestScaleJobs] = None,
+    ):
+        # 需要排除的时间点的cron表达式
+        self.exclude_dates = exclude_dates
+        # 定时伸缩任务描述
+        self.scale_jobs = scale_jobs
+
+    def validate(self):
+        if self.scale_jobs:
+            for k in self.scale_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_dates is not None:
+            result['ExcludeDates'] = self.exclude_dates
+        result['ScaleJobs'] = []
+        if self.scale_jobs is not None:
+            for k in self.scale_jobs:
+                result['ScaleJobs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeDates') is not None:
+            self.exclude_dates = m.get('ExcludeDates')
+        self.scale_jobs = []
+        if m.get('ScaleJobs') is not None:
+            for k in m.get('ScaleJobs'):
+                temp_model = CreateServiceCronScalerRequestScaleJobs()
+                self.scale_jobs.append(temp_model.from_map(k))
+        return self
+
+
+class CreateServiceCronScalerResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # 操作成功消息
+        self.message = message
+        # 请求ID
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateServiceCronScalerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateServiceCronScalerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateServiceCronScalerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateServiceMirrorRequest(TeaModel):
     def __init__(
         self,
@@ -1958,6 +2107,77 @@ class DeleteServiceAutoScalerResponse(TeaModel):
         return self
 
 
+class DeleteServiceCronScalerResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteServiceCronScalerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteServiceCronScalerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteServiceCronScalerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteServiceInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -2128,11 +2348,122 @@ class DeleteServiceMirrorResponse(TeaModel):
         return self
 
 
+class DescribeResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cpu_count: int = None,
+        create_time: str = None,
+        extra_data: str = None,
+        gpu_count: int = None,
+        instance_count: int = None,
+        message: str = None,
+        owner_uid: str = None,
+        post_paid_instance_count: int = None,
+        pre_paid_instance_count: int = None,
+        request_id: str = None,
+        resource_id: str = None,
+        resource_name: str = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cpu_count = cpu_count
+        self.create_time = create_time
+        self.extra_data = extra_data
+        self.gpu_count = gpu_count
+        self.instance_count = instance_count
+        self.message = message
+        self.owner_uid = owner_uid
+        self.post_paid_instance_count = post_paid_instance_count
+        self.pre_paid_instance_count = pre_paid_instance_count
+        self.request_id = request_id
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cpu_count is not None:
+            result['CpuCount'] = self.cpu_count
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.extra_data is not None:
+            result['ExtraData'] = self.extra_data
+        if self.gpu_count is not None:
+            result['GpuCount'] = self.gpu_count
+        if self.instance_count is not None:
+            result['InstanceCount'] = self.instance_count
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.owner_uid is not None:
+            result['OwnerUid'] = self.owner_uid
+        if self.post_paid_instance_count is not None:
+            result['PostPaidInstanceCount'] = self.post_paid_instance_count
+        if self.pre_paid_instance_count is not None:
+            result['PrePaidInstanceCount'] = self.pre_paid_instance_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('CpuCount') is not None:
+            self.cpu_count = m.get('CpuCount')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ExtraData') is not None:
+            self.extra_data = m.get('ExtraData')
+        if m.get('GpuCount') is not None:
+            self.gpu_count = m.get('GpuCount')
+        if m.get('InstanceCount') is not None:
+            self.instance_count = m.get('InstanceCount')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('OwnerUid') is not None:
+            self.owner_uid = m.get('OwnerUid')
+        if m.get('PostPaidInstanceCount') is not None:
+            self.post_paid_instance_count = m.get('PostPaidInstanceCount')
+        if m.get('PrePaidInstanceCount') is not None:
+            self.pre_paid_instance_count = m.get('PrePaidInstanceCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
 class DescribeResourceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: Resource = None,
+        body: DescribeResourceResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -2160,7 +2491,7 @@ class DescribeResourceResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = Resource()
+            temp_model = DescribeResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2561,6 +2892,153 @@ class DescribeServiceAutoScalerResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeServiceAutoScalerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeServiceCronScalerResponseBodyScaleJobs(TeaModel):
+    def __init__(
+        self,
+        last_probe_time: str = None,
+        message: str = None,
+        name: str = None,
+        schedule: str = None,
+        state: str = None,
+        target_size: int = None,
+    ):
+        self.last_probe_time = last_probe_time
+        self.message = message
+        self.name = name
+        self.schedule = schedule
+        self.state = state
+        self.target_size = target_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.last_probe_time is not None:
+            result['LastProbeTime'] = self.last_probe_time
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.schedule is not None:
+            result['Schedule'] = self.schedule
+        if self.state is not None:
+            result['State'] = self.state
+        if self.target_size is not None:
+            result['TargetSize'] = self.target_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LastProbeTime') is not None:
+            self.last_probe_time = m.get('LastProbeTime')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Schedule') is not None:
+            self.schedule = m.get('Schedule')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('TargetSize') is not None:
+            self.target_size = m.get('TargetSize')
+        return self
+
+
+class DescribeServiceCronScalerResponseBody(TeaModel):
+    def __init__(
+        self,
+        exclude_dates: List[str] = None,
+        request_id: str = None,
+        scale_jobs: List[DescribeServiceCronScalerResponseBodyScaleJobs] = None,
+        service_name: str = None,
+    ):
+        self.exclude_dates = exclude_dates
+        self.request_id = request_id
+        self.scale_jobs = scale_jobs
+        self.service_name = service_name
+
+    def validate(self):
+        if self.scale_jobs:
+            for k in self.scale_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_dates is not None:
+            result['ExcludeDates'] = self.exclude_dates
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ScaleJobs'] = []
+        if self.scale_jobs is not None:
+            for k in self.scale_jobs:
+                result['ScaleJobs'].append(k.to_map() if k else None)
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeDates') is not None:
+            self.exclude_dates = m.get('ExcludeDates')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.scale_jobs = []
+        if m.get('ScaleJobs') is not None:
+            for k in m.get('ScaleJobs'):
+                temp_model = DescribeServiceCronScalerResponseBodyScaleJobs()
+                self.scale_jobs.append(temp_model.from_map(k))
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class DescribeServiceCronScalerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeServiceCronScalerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeServiceCronScalerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4333,6 +4811,161 @@ class UpdateServiceAutoScalerResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateServiceAutoScalerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateServiceCronScalerRequestScaleJobs(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        schedule: str = None,
+        target_size: int = None,
+    ):
+        self.name = name
+        # 要执行伸缩任务的cron表达式
+        self.schedule = schedule
+        # 执行伸缩任务的目标replica
+        self.target_size = target_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.schedule is not None:
+            result['Schedule'] = self.schedule
+        if self.target_size is not None:
+            result['TargetSize'] = self.target_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Schedule') is not None:
+            self.schedule = m.get('Schedule')
+        if m.get('TargetSize') is not None:
+            self.target_size = m.get('TargetSize')
+        return self
+
+
+class UpdateServiceCronScalerRequest(TeaModel):
+    def __init__(
+        self,
+        exclude_dates: List[str] = None,
+        scale_jobs: List[UpdateServiceCronScalerRequestScaleJobs] = None,
+    ):
+        # 需要排除的时间点的cron表达式
+        self.exclude_dates = exclude_dates
+        # 定时伸缩任务描述
+        self.scale_jobs = scale_jobs
+
+    def validate(self):
+        if self.scale_jobs:
+            for k in self.scale_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exclude_dates is not None:
+            result['ExcludeDates'] = self.exclude_dates
+        result['ScaleJobs'] = []
+        if self.scale_jobs is not None:
+            for k in self.scale_jobs:
+                result['ScaleJobs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExcludeDates') is not None:
+            self.exclude_dates = m.get('ExcludeDates')
+        self.scale_jobs = []
+        if m.get('ScaleJobs') is not None:
+            for k in m.get('ScaleJobs'):
+                temp_model = UpdateServiceCronScalerRequestScaleJobs()
+                self.scale_jobs.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateServiceCronScalerResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateServiceCronScalerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateServiceCronScalerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateServiceCronScalerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

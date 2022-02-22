@@ -608,6 +608,98 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def create_service_cron_scaler(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.CreateServiceCronScalerRequest,
+    ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def create_service_cron_scaler_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.CreateServiceCronScalerRequest,
+    ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def create_service_cron_scaler_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.CreateServiceCronScalerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        body = {}
+        if not UtilClient.is_unset(request.exclude_dates):
+            body['ExcludeDates'] = request.exclude_dates
+        if not UtilClient.is_unset(request.scale_jobs):
+            body['ScaleJobs'] = request.scale_jobs
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceCronScaler',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceCronScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_cron_scaler_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.CreateServiceCronScalerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        body = {}
+        if not UtilClient.is_unset(request.exclude_dates):
+            body['ExcludeDates'] = request.exclude_dates
+        if not UtilClient.is_unset(request.scale_jobs):
+            body['ScaleJobs'] = request.scale_jobs
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceCronScaler',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateServiceCronScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_service_mirror(
         self,
         cluster_id: str,
@@ -1159,6 +1251,80 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eas_20210701_models.DeleteServiceAutoScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_cron_scaler(
+        self,
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
+
+    async def delete_service_cron_scaler_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+
+    def delete_service_cron_scaler_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceCronScaler',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceCronScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_cron_scaler_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceCronScaler',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteServiceCronScalerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1749,6 +1915,80 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eas_20210701_models.DescribeServiceAutoScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_service_cron_scaler(
+        self,
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
+
+    async def describe_service_cron_scaler_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+    ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
+
+    def describe_service_cron_scaler_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceCronScaler',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceCronScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_service_cron_scaler_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceCronScaler',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceCronScalerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -3079,6 +3319,98 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eas_20210701_models.UpdateServiceAutoScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_cron_scaler(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceCronScalerRequest,
+    ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def update_service_cron_scaler_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceCronScalerRequest,
+    ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def update_service_cron_scaler_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceCronScalerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        body = {}
+        if not UtilClient.is_unset(request.exclude_dates):
+            body['ExcludeDates'] = request.exclude_dates
+        if not UtilClient.is_unset(request.scale_jobs):
+            body['ScaleJobs'] = request.scale_jobs
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceCronScaler',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceCronScalerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_cron_scaler_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.UpdateServiceCronScalerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        service_name = OpenApiUtilClient.get_encode_param(service_name)
+        body = {}
+        if not UtilClient.is_unset(request.exclude_dates):
+            body['ExcludeDates'] = request.exclude_dates
+        if not UtilClient.is_unset(request.scale_jobs):
+            body['ScaleJobs'] = request.scale_jobs
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceCronScaler',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.UpdateServiceCronScalerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

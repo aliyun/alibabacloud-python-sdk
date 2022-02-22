@@ -1,3 +1,6 @@
+2022-02-22 Version: 1.1.0
+- Add cron scaler related api.
+
 2021-12-09 Version: 1.0.3
 - Add accesstoken to service struct.
 
