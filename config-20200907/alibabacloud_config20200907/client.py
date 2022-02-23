@@ -531,6 +531,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_aggregate_config_rule_with_options_async(request, runtime)
 
+    def create_aggregate_remediation_with_options(
+        self,
+        request: config_20200907_models.CreateAggregateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateAggregateRemediationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.remediation_template_id):
+            body['RemediationTemplateId'] = request.remediation_template_id
+        if not UtilClient.is_unset(request.remediation_type):
+            body['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAggregateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateAggregateRemediationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aggregate_remediation_with_options_async(
+        self,
+        request: config_20200907_models.CreateAggregateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateAggregateRemediationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.remediation_template_id):
+            body['RemediationTemplateId'] = request.remediation_template_id
+        if not UtilClient.is_unset(request.remediation_type):
+            body['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAggregateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateAggregateRemediationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aggregate_remediation(
+        self,
+        request: config_20200907_models.CreateAggregateRemediationRequest,
+    ) -> config_20200907_models.CreateAggregateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_aggregate_remediation_with_options(request, runtime)
+
+    async def create_aggregate_remediation_async(
+        self,
+        request: config_20200907_models.CreateAggregateRemediationRequest,
+    ) -> config_20200907_models.CreateAggregateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aggregate_remediation_with_options_async(request, runtime)
+
     def create_aggregator_with_options(
         self,
         tmp_req: config_20200907_models.CreateAggregatorRequest,
@@ -865,6 +963,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_config_rule_with_options_async(request, runtime)
 
+    def create_remediation_with_options(
+        self,
+        request: config_20200907_models.CreateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateRemediationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.remediation_template_id):
+            body['RemediationTemplateId'] = request.remediation_template_id
+        if not UtilClient.is_unset(request.remediation_type):
+            body['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateRemediationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_remediation_with_options_async(
+        self,
+        request: config_20200907_models.CreateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.CreateRemediationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_rule_id):
+            body['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.remediation_template_id):
+            body['RemediationTemplateId'] = request.remediation_template_id
+        if not UtilClient.is_unset(request.remediation_type):
+            body['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.CreateRemediationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_remediation(
+        self,
+        request: config_20200907_models.CreateRemediationRequest,
+    ) -> config_20200907_models.CreateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_remediation_with_options(request, runtime)
+
+    async def create_remediation_async(
+        self,
+        request: config_20200907_models.CreateRemediationRequest,
+    ) -> config_20200907_models.CreateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_remediation_with_options_async(request, runtime)
+
     def deactive_aggregate_config_rules_with_options(
         self,
         request: config_20200907_models.DeactiveAggregateConfigRulesRequest,
@@ -1165,6 +1357,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_aggregate_config_rules_with_options_async(request, runtime)
 
+    def delete_aggregate_remediations_with_options(
+        self,
+        request: config_20200907_models.DeleteAggregateRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DeleteAggregateRemediationsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.remediation_ids):
+            body['RemediationIds'] = request.remediation_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAggregateRemediations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DeleteAggregateRemediationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aggregate_remediations_with_options_async(
+        self,
+        request: config_20200907_models.DeleteAggregateRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DeleteAggregateRemediationsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.remediation_ids):
+            body['RemediationIds'] = request.remediation_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAggregateRemediations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DeleteAggregateRemediationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aggregate_remediations(
+        self,
+        request: config_20200907_models.DeleteAggregateRemediationsRequest,
+    ) -> config_20200907_models.DeleteAggregateRemediationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_aggregate_remediations_with_options(request, runtime)
+
+    async def delete_aggregate_remediations_async(
+        self,
+        request: config_20200907_models.DeleteAggregateRemediationsRequest,
+    ) -> config_20200907_models.DeleteAggregateRemediationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_aggregate_remediations_with_options_async(request, runtime)
+
     def delete_aggregators_with_options(
         self,
         request: config_20200907_models.DeleteAggregatorsRequest,
@@ -1316,6 +1582,76 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.DeleteCompliancePacksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_compliance_packs_with_options_async(request, runtime)
+
+    def delete_remediations_with_options(
+        self,
+        request: config_20200907_models.DeleteRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DeleteRemediationsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.remediation_ids):
+            body['RemediationIds'] = request.remediation_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRemediations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DeleteRemediationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_remediations_with_options_async(
+        self,
+        request: config_20200907_models.DeleteRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.DeleteRemediationsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.remediation_ids):
+            body['RemediationIds'] = request.remediation_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRemediations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.DeleteRemediationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_remediations(
+        self,
+        request: config_20200907_models.DeleteRemediationsRequest,
+    ) -> config_20200907_models.DeleteRemediationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_remediations_with_options(request, runtime)
+
+    async def delete_remediations_async(
+        self,
+        request: config_20200907_models.DeleteRemediationsRequest,
+    ) -> config_20200907_models.DeleteRemediationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_remediations_with_options_async(request, runtime)
 
     def detach_aggregate_config_rule_to_compliance_pack_with_options(
         self,
@@ -2251,6 +2587,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_config_rules_report_with_options_async(request, runtime)
 
+    def get_aggregate_discovered_resource_with_options(
+        self,
+        request: config_20200907_models.GetAggregateDiscoveredResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAggregateDiscoveredResource',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAggregateDiscoveredResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aggregate_discovered_resource_with_options_async(
+        self,
+        request: config_20200907_models.GetAggregateDiscoveredResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAggregateDiscoveredResource',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetAggregateDiscoveredResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aggregate_discovered_resource(
+        self,
+        request: config_20200907_models.GetAggregateDiscoveredResourceRequest,
+    ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_aggregate_discovered_resource_with_options(request, runtime)
+
+    async def get_aggregate_discovered_resource_async(
+        self,
+        request: config_20200907_models.GetAggregateDiscoveredResourceRequest,
+    ) -> config_20200907_models.GetAggregateDiscoveredResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aggregate_discovered_resource_with_options_async(request, runtime)
+
     def get_aggregate_resource_compliance_by_config_rule_with_options(
         self,
         request: config_20200907_models.GetAggregateResourceComplianceByConfigRuleRequest,
@@ -2264,6 +2666,8 @@ class Client(OpenApiClient):
             query['ComplianceType'] = request.compliance_type
         if not UtilClient.is_unset(request.config_rule_id):
             query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2296,6 +2700,8 @@ class Client(OpenApiClient):
             query['ComplianceType'] = request.compliance_type
         if not UtilClient.is_unset(request.config_rule_id):
             query['ConfigRuleId'] = request.config_rule_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3260,6 +3666,72 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.GetConfigRulesReportResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_config_rules_report_with_options_async(request, runtime)
+
+    def get_discovered_resource_with_options(
+        self,
+        request: config_20200907_models.GetDiscoveredResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetDiscoveredResourceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDiscoveredResource',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetDiscoveredResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_discovered_resource_with_options_async(
+        self,
+        request: config_20200907_models.GetDiscoveredResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.GetDiscoveredResourceResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDiscoveredResource',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.GetDiscoveredResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_discovered_resource(
+        self,
+        request: config_20200907_models.GetDiscoveredResourceRequest,
+    ) -> config_20200907_models.GetDiscoveredResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_discovered_resource_with_options(request, runtime)
+
+    async def get_discovered_resource_async(
+        self,
+        request: config_20200907_models.GetDiscoveredResourceRequest,
+    ) -> config_20200907_models.GetDiscoveredResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_discovered_resource_with_options_async(request, runtime)
 
     def get_discovered_resource_counts_group_by_region_with_options(
         self,
@@ -4241,6 +4713,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_config_rules_with_options_async(request, runtime)
 
+    def list_aggregate_discovered_resources_with_options(
+        self,
+        request: config_20200907_models.ListAggregateDiscoveredResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateDiscoveredResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateDiscoveredResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aggregate_discovered_resources_with_options_async(
+        self,
+        request: config_20200907_models.ListAggregateDiscoveredResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateDiscoveredResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateDiscoveredResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aggregate_discovered_resources(
+        self,
+        request: config_20200907_models.ListAggregateDiscoveredResourcesRequest,
+    ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_aggregate_discovered_resources_with_options(request, runtime)
+
+    async def list_aggregate_discovered_resources_async(
+        self,
+        request: config_20200907_models.ListAggregateDiscoveredResourcesRequest,
+    ) -> config_20200907_models.ListAggregateDiscoveredResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aggregate_discovered_resources_with_options_async(request, runtime)
+
+    def list_aggregate_remediations_with_options(
+        self,
+        request: config_20200907_models.ListAggregateRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateRemediationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateRemediations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateRemediationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aggregate_remediations_with_options_async(
+        self,
+        request: config_20200907_models.ListAggregateRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListAggregateRemediationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAggregateRemediations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListAggregateRemediationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aggregate_remediations(
+        self,
+        request: config_20200907_models.ListAggregateRemediationsRequest,
+    ) -> config_20200907_models.ListAggregateRemediationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_aggregate_remediations_with_options(request, runtime)
+
+    async def list_aggregate_remediations_async(
+        self,
+        request: config_20200907_models.ListAggregateRemediationsRequest,
+    ) -> config_20200907_models.ListAggregateRemediationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aggregate_remediations_with_options_async(request, runtime)
+
     def list_aggregate_resource_evaluation_results_with_options(
         self,
         request: config_20200907_models.ListAggregateResourceEvaluationResultsRequest,
@@ -4599,6 +5243,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_config_rule_evaluation_results_with_options_async(request, runtime)
 
+    def list_discovered_resources_with_options(
+        self,
+        request: config_20200907_models.ListDiscoveredResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListDiscoveredResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDiscoveredResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListDiscoveredResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_discovered_resources_with_options_async(
+        self,
+        request: config_20200907_models.ListDiscoveredResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListDiscoveredResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.resource_deleted):
+            query['ResourceDeleted'] = request.resource_deleted
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDiscoveredResources',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListDiscoveredResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_discovered_resources(
+        self,
+        request: config_20200907_models.ListDiscoveredResourcesRequest,
+    ) -> config_20200907_models.ListDiscoveredResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_discovered_resources_with_options(request, runtime)
+
+    async def list_discovered_resources_async(
+        self,
+        request: config_20200907_models.ListDiscoveredResourcesRequest,
+    ) -> config_20200907_models.ListDiscoveredResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_discovered_resources_with_options_async(request, runtime)
+
     def list_managed_rules_with_options(
         self,
         request: config_20200907_models.ListManagedRulesRequest,
@@ -4680,6 +5414,150 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.ListManagedRulesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_managed_rules_with_options_async(request, runtime)
+
+    def list_remediation_templates_with_options(
+        self,
+        request: config_20200907_models.ListRemediationTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListRemediationTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.managed_rule_identifier):
+            query['ManagedRuleIdentifier'] = request.managed_rule_identifier
+        if not UtilClient.is_unset(request.remediation_type):
+            query['RemediationType'] = request.remediation_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRemediationTemplates',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListRemediationTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_remediation_templates_with_options_async(
+        self,
+        request: config_20200907_models.ListRemediationTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListRemediationTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.managed_rule_identifier):
+            query['ManagedRuleIdentifier'] = request.managed_rule_identifier
+        if not UtilClient.is_unset(request.remediation_type):
+            query['RemediationType'] = request.remediation_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRemediationTemplates',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListRemediationTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_remediation_templates(
+        self,
+        request: config_20200907_models.ListRemediationTemplatesRequest,
+    ) -> config_20200907_models.ListRemediationTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_remediation_templates_with_options(request, runtime)
+
+    async def list_remediation_templates_async(
+        self,
+        request: config_20200907_models.ListRemediationTemplatesRequest,
+    ) -> config_20200907_models.ListRemediationTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_remediation_templates_with_options_async(request, runtime)
+
+    def list_remediations_with_options(
+        self,
+        request: config_20200907_models.ListRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListRemediationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRemediations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListRemediationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_remediations_with_options_async(
+        self,
+        request: config_20200907_models.ListRemediationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.ListRemediationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_rule_ids):
+            query['ConfigRuleIds'] = request.config_rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRemediations',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.ListRemediationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_remediations(
+        self,
+        request: config_20200907_models.ListRemediationsRequest,
+    ) -> config_20200907_models.ListRemediationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_remediations_with_options(request, runtime)
+
+    async def list_remediations_async(
+        self,
+        request: config_20200907_models.ListRemediationsRequest,
+    ) -> config_20200907_models.ListRemediationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_remediations_with_options_async(request, runtime)
 
     def list_resource_evaluation_results_with_options(
         self,
@@ -5021,6 +5899,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_aggregate_config_rule_evaluation_with_options_async(request, runtime)
 
+    def start_aggregate_remediation_with_options(
+        self,
+        request: config_20200907_models.StartAggregateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.StartAggregateRemediationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAggregateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.StartAggregateRemediationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_aggregate_remediation_with_options_async(
+        self,
+        request: config_20200907_models.StartAggregateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.StartAggregateRemediationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartAggregateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.StartAggregateRemediationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_aggregate_remediation(
+        self,
+        request: config_20200907_models.StartAggregateRemediationRequest,
+    ) -> config_20200907_models.StartAggregateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_aggregate_remediation_with_options(request, runtime)
+
+    async def start_aggregate_remediation_async(
+        self,
+        request: config_20200907_models.StartAggregateRemediationRequest,
+    ) -> config_20200907_models.StartAggregateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_aggregate_remediation_with_options_async(request, runtime)
+
+    def start_remediation_with_options(
+        self,
+        request: config_20200907_models.StartRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.StartRemediationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.StartRemediationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_remediation_with_options_async(
+        self,
+        request: config_20200907_models.StartRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.StartRemediationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_rule_id):
+            query['ConfigRuleId'] = request.config_rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.StartRemediationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_remediation(
+        self,
+        request: config_20200907_models.StartRemediationRequest,
+    ) -> config_20200907_models.StartRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_remediation_with_options(request, runtime)
+
+    async def start_remediation_async(
+        self,
+        request: config_20200907_models.StartRemediationRequest,
+    ) -> config_20200907_models.StartRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_remediation_with_options_async(request, runtime)
+
     def update_aggregate_compliance_pack_with_options(
         self,
         tmp_req: config_20200907_models.UpdateAggregateCompliancePackRequest,
@@ -5276,6 +6298,100 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateAggregateConfigRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_aggregate_config_rule_with_options_async(request, runtime)
+
+    def update_aggregate_remediation_with_options(
+        self,
+        request: config_20200907_models.UpdateAggregateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateAggregateRemediationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.remediation_id):
+            body['RemediationId'] = request.remediation_id
+        if not UtilClient.is_unset(request.remediation_template_id):
+            body['RemediationTemplateId'] = request.remediation_template_id
+        if not UtilClient.is_unset(request.remediation_type):
+            body['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAggregateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateAggregateRemediationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_aggregate_remediation_with_options_async(
+        self,
+        request: config_20200907_models.UpdateAggregateRemediationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> config_20200907_models.UpdateAggregateRemediationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            body['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.invoke_type):
+            body['InvokeType'] = request.invoke_type
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.remediation_id):
+            body['RemediationId'] = request.remediation_id
+        if not UtilClient.is_unset(request.remediation_template_id):
+            body['RemediationTemplateId'] = request.remediation_template_id
+        if not UtilClient.is_unset(request.remediation_type):
+            body['RemediationType'] = request.remediation_type
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAggregateRemediation',
+            version='2020-09-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            config_20200907_models.UpdateAggregateRemediationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_aggregate_remediation(
+        self,
+        request: config_20200907_models.UpdateAggregateRemediationRequest,
+    ) -> config_20200907_models.UpdateAggregateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_aggregate_remediation_with_options(request, runtime)
+
+    async def update_aggregate_remediation_async(
+        self,
+        request: config_20200907_models.UpdateAggregateRemediationRequest,
+    ) -> config_20200907_models.UpdateAggregateRemediationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_aggregate_remediation_with_options_async(request, runtime)
 
     def update_aggregator_with_options(
         self,

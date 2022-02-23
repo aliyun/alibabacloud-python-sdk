@@ -1272,6 +1272,145 @@ class CreateAggregateConfigRuleResponse(TeaModel):
         return self
 
 
+class CreateAggregateRemediationRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        client_token: str = None,
+        config_rule_id: str = None,
+        invoke_type: str = None,
+        params: str = None,
+        remediation_template_id: str = None,
+        remediation_type: str = None,
+        source_type: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.client_token = client_token
+        self.config_rule_id = config_rule_id
+        self.invoke_type = invoke_type
+        self.params = params
+        self.remediation_template_id = remediation_template_id
+        self.remediation_type = remediation_type
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        if self.invoke_type is not None:
+            result['InvokeType'] = self.invoke_type
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.remediation_template_id is not None:
+            result['RemediationTemplateId'] = self.remediation_template_id
+        if self.remediation_type is not None:
+            result['RemediationType'] = self.remediation_type
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('InvokeType') is not None:
+            self.invoke_type = m.get('InvokeType')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RemediationTemplateId') is not None:
+            self.remediation_template_id = m.get('RemediationTemplateId')
+        if m.get('RemediationType') is not None:
+            self.remediation_type = m.get('RemediationType')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class CreateAggregateRemediationResponseBody(TeaModel):
+    def __init__(
+        self,
+        remediation_id: str = None,
+        request_id: str = None,
+    ):
+        self.remediation_id = remediation_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.remediation_id is not None:
+            result['RemediationId'] = self.remediation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RemediationId') is not None:
+            self.remediation_id = m.get('RemediationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAggregateRemediationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateAggregateRemediationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateAggregateRemediationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAggregatorRequestAggregatorAccounts(TeaModel):
     def __init__(
         self,
@@ -2085,6 +2224,139 @@ class CreateConfigRuleResponse(TeaModel):
         return self
 
 
+class CreateRemediationRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        config_rule_id: str = None,
+        invoke_type: str = None,
+        params: str = None,
+        remediation_template_id: str = None,
+        remediation_type: str = None,
+        source_type: str = None,
+    ):
+        self.client_token = client_token
+        self.config_rule_id = config_rule_id
+        self.invoke_type = invoke_type
+        self.params = params
+        self.remediation_template_id = remediation_template_id
+        self.remediation_type = remediation_type
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        if self.invoke_type is not None:
+            result['InvokeType'] = self.invoke_type
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.remediation_template_id is not None:
+            result['RemediationTemplateId'] = self.remediation_template_id
+        if self.remediation_type is not None:
+            result['RemediationType'] = self.remediation_type
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('InvokeType') is not None:
+            self.invoke_type = m.get('InvokeType')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RemediationTemplateId') is not None:
+            self.remediation_template_id = m.get('RemediationTemplateId')
+        if m.get('RemediationType') is not None:
+            self.remediation_type = m.get('RemediationType')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class CreateRemediationResponseBody(TeaModel):
+    def __init__(
+        self,
+        remediation_id: str = None,
+        request_id: str = None,
+    ):
+        self.remediation_id = remediation_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.remediation_id is not None:
+            result['RemediationId'] = self.remediation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RemediationId') is not None:
+            self.remediation_id = m.get('RemediationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateRemediationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateRemediationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateRemediationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeactiveAggregateConfigRulesRequest(TeaModel):
     def __init__(
         self,
@@ -2807,6 +3079,156 @@ class DeleteAggregateConfigRulesResponse(TeaModel):
         return self
 
 
+class DeleteAggregateRemediationsRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        remediation_ids: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.remediation_ids = remediation_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.remediation_ids is not None:
+            result['RemediationIds'] = self.remediation_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('RemediationIds') is not None:
+            self.remediation_ids = m.get('RemediationIds')
+        return self
+
+
+class DeleteAggregateRemediationsResponseBodyRemediationDeleteResults(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        remediation_id: str = None,
+        success: bool = None,
+    ):
+        self.error_message = error_message
+        self.remediation_id = remediation_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.remediation_id is not None:
+            result['RemediationId'] = self.remediation_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RemediationId') is not None:
+            self.remediation_id = m.get('RemediationId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteAggregateRemediationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        remediation_delete_results: List[DeleteAggregateRemediationsResponseBodyRemediationDeleteResults] = None,
+        request_id: str = None,
+    ):
+        self.remediation_delete_results = remediation_delete_results
+        self.request_id = request_id
+
+    def validate(self):
+        if self.remediation_delete_results:
+            for k in self.remediation_delete_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RemediationDeleteResults'] = []
+        if self.remediation_delete_results is not None:
+            for k in self.remediation_delete_results:
+                result['RemediationDeleteResults'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.remediation_delete_results = []
+        if m.get('RemediationDeleteResults') is not None:
+            for k in m.get('RemediationDeleteResults'):
+                temp_model = DeleteAggregateRemediationsResponseBodyRemediationDeleteResults()
+                self.remediation_delete_results.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAggregateRemediationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteAggregateRemediationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteAggregateRemediationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAggregatorsRequest(TeaModel):
     def __init__(
         self,
@@ -3167,6 +3589,150 @@ class DeleteCompliancePacksResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteCompliancePacksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRemediationsRequest(TeaModel):
+    def __init__(
+        self,
+        remediation_ids: str = None,
+    ):
+        self.remediation_ids = remediation_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.remediation_ids is not None:
+            result['RemediationIds'] = self.remediation_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RemediationIds') is not None:
+            self.remediation_ids = m.get('RemediationIds')
+        return self
+
+
+class DeleteRemediationsResponseBodyRemediationDeleteResults(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        remediation_id: str = None,
+        success: bool = None,
+    ):
+        self.error_message = error_message
+        self.remediation_id = remediation_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.remediation_id is not None:
+            result['RemediationId'] = self.remediation_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RemediationId') is not None:
+            self.remediation_id = m.get('RemediationId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteRemediationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        remediation_delete_results: List[DeleteRemediationsResponseBodyRemediationDeleteResults] = None,
+        request_id: str = None,
+    ):
+        self.remediation_delete_results = remediation_delete_results
+        self.request_id = request_id
+
+    def validate(self):
+        if self.remediation_delete_results:
+            for k in self.remediation_delete_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RemediationDeleteResults'] = []
+        if self.remediation_delete_results is not None:
+            for k in self.remediation_delete_results:
+                result['RemediationDeleteResults'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.remediation_delete_results = []
+        if m.get('RemediationDeleteResults') is not None:
+            for k in m.get('RemediationDeleteResults'):
+                temp_model = DeleteRemediationsResponseBodyRemediationDeleteResults()
+                self.remediation_delete_results.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRemediationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteRemediationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteRemediationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5734,16 +6300,228 @@ class GetAggregateConfigRulesReportResponse(TeaModel):
         return self
 
 
+class GetAggregateDiscoveredResourceRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        region: str = None,
+        resource_id: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.region = region
+        self.resource_id = resource_id
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        availability_zone: str = None,
+        configuration: str = None,
+        region: str = None,
+        resource_creation_time: int = None,
+        resource_deleted: int = None,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_status: str = None,
+        resource_type: str = None,
+        tags: str = None,
+    ):
+        self.account_id = account_id
+        self.availability_zone = availability_zone
+        self.configuration = configuration
+        self.region = region
+        self.resource_creation_time = resource_creation_time
+        self.resource_deleted = resource_deleted
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_status = resource_status
+        self.resource_type = resource_type
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.availability_zone is not None:
+            result['AvailabilityZone'] = self.availability_zone
+        if self.configuration is not None:
+            result['Configuration'] = self.configuration
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_creation_time is not None:
+            result['ResourceCreationTime'] = self.resource_creation_time
+        if self.resource_deleted is not None:
+            result['ResourceDeleted'] = self.resource_deleted
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_status is not None:
+            result['ResourceStatus'] = self.resource_status
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AvailabilityZone') is not None:
+            self.availability_zone = m.get('AvailabilityZone')
+        if m.get('Configuration') is not None:
+            self.configuration = m.get('Configuration')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceCreationTime') is not None:
+            self.resource_creation_time = m.get('ResourceCreationTime')
+        if m.get('ResourceDeleted') is not None:
+            self.resource_deleted = m.get('ResourceDeleted')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceStatus') is not None:
+            self.resource_status = m.get('ResourceStatus')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class GetAggregateDiscoveredResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        discovered_resource_detail: GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail = None,
+        request_id: str = None,
+    ):
+        self.discovered_resource_detail = discovered_resource_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.discovered_resource_detail:
+            self.discovered_resource_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discovered_resource_detail is not None:
+            result['DiscoveredResourceDetail'] = self.discovered_resource_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscoveredResourceDetail') is not None:
+            temp_model = GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail()
+            self.discovered_resource_detail = temp_model.from_map(m['DiscoveredResourceDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAggregateDiscoveredResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAggregateDiscoveredResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAggregateDiscoveredResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAggregateResourceComplianceByConfigRuleRequest(TeaModel):
     def __init__(
         self,
         aggregator_id: str = None,
         compliance_type: str = None,
         config_rule_id: str = None,
+        resource_owner_id: int = None,
     ):
         self.aggregator_id = aggregator_id
         self.compliance_type = compliance_type
         self.config_rule_id = config_rule_id
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -5760,6 +6538,8 @@ class GetAggregateResourceComplianceByConfigRuleRequest(TeaModel):
             result['ComplianceType'] = self.compliance_type
         if self.config_rule_id is not None:
             result['ConfigRuleId'] = self.config_rule_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5770,6 +6550,8 @@ class GetAggregateResourceComplianceByConfigRuleRequest(TeaModel):
             self.compliance_type = m.get('ComplianceType')
         if m.get('ConfigRuleId') is not None:
             self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -9069,6 +9851,204 @@ class GetConfigRulesReportResponse(TeaModel):
         return self
 
 
+class GetDiscoveredResourceRequest(TeaModel):
+    def __init__(
+        self,
+        region: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.region = region
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class GetDiscoveredResourceResponseBodyDiscoveredResourceDetail(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        availability_zone: str = None,
+        configuration: str = None,
+        region: str = None,
+        resource_creation_time: int = None,
+        resource_deleted: int = None,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_status: str = None,
+        resource_type: str = None,
+        tags: str = None,
+    ):
+        self.account_id = account_id
+        self.availability_zone = availability_zone
+        self.configuration = configuration
+        self.region = region
+        self.resource_creation_time = resource_creation_time
+        self.resource_deleted = resource_deleted
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_status = resource_status
+        self.resource_type = resource_type
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.availability_zone is not None:
+            result['AvailabilityZone'] = self.availability_zone
+        if self.configuration is not None:
+            result['Configuration'] = self.configuration
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_creation_time is not None:
+            result['ResourceCreationTime'] = self.resource_creation_time
+        if self.resource_deleted is not None:
+            result['ResourceDeleted'] = self.resource_deleted
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_status is not None:
+            result['ResourceStatus'] = self.resource_status
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AvailabilityZone') is not None:
+            self.availability_zone = m.get('AvailabilityZone')
+        if m.get('Configuration') is not None:
+            self.configuration = m.get('Configuration')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceCreationTime') is not None:
+            self.resource_creation_time = m.get('ResourceCreationTime')
+        if m.get('ResourceDeleted') is not None:
+            self.resource_deleted = m.get('ResourceDeleted')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceStatus') is not None:
+            self.resource_status = m.get('ResourceStatus')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class GetDiscoveredResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        discovered_resource_detail: GetDiscoveredResourceResponseBodyDiscoveredResourceDetail = None,
+        request_id: str = None,
+    ):
+        self.discovered_resource_detail = discovered_resource_detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.discovered_resource_detail:
+            self.discovered_resource_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discovered_resource_detail is not None:
+            result['DiscoveredResourceDetail'] = self.discovered_resource_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscoveredResourceDetail') is not None:
+            temp_model = GetDiscoveredResourceResponseBodyDiscoveredResourceDetail()
+            self.discovered_resource_detail = temp_model.from_map(m['DiscoveredResourceDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDiscoveredResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDiscoveredResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDiscoveredResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDiscoveredResourceCountsGroupByRegionRequest(TeaModel):
     def __init__(
         self,
@@ -12277,6 +13257,485 @@ class ListAggregateConfigRulesResponse(TeaModel):
         return self
 
 
+class ListAggregateDiscoveredResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        regions: str = None,
+        resource_deleted: int = None,
+        resource_id: str = None,
+        resource_owner_id: int = None,
+        resource_types: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.regions = regions
+        self.resource_deleted = resource_deleted
+        self.resource_id = resource_id
+        self.resource_owner_id = resource_owner_id
+        self.resource_types = resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.regions is not None:
+            result['Regions'] = self.regions
+        if self.resource_deleted is not None:
+            result['ResourceDeleted'] = self.resource_deleted
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Regions') is not None:
+            self.regions = m.get('Regions')
+        if m.get('ResourceDeleted') is not None:
+            self.resource_deleted = m.get('ResourceDeleted')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+        return self
+
+
+class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        region: str = None,
+        resource_creation_time: int = None,
+        resource_deleted: int = None,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_owner_id: int = None,
+        resource_status: str = None,
+        resource_type: str = None,
+        tags: str = None,
+    ):
+        self.account_id = account_id
+        self.region = region
+        self.resource_creation_time = resource_creation_time
+        self.resource_deleted = resource_deleted
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_owner_id = resource_owner_id
+        self.resource_status = resource_status
+        self.resource_type = resource_type
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_creation_time is not None:
+            result['ResourceCreationTime'] = self.resource_creation_time
+        if self.resource_deleted is not None:
+            result['ResourceDeleted'] = self.resource_deleted
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_status is not None:
+            result['ResourceStatus'] = self.resource_status
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceCreationTime') is not None:
+            self.resource_creation_time = m.get('ResourceCreationTime')
+        if m.get('ResourceDeleted') is not None:
+            self.resource_deleted = m.get('ResourceDeleted')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceStatus') is not None:
+            self.resource_status = m.get('ResourceStatus')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(TeaModel):
+    def __init__(
+        self,
+        discovered_resource_profile_list: List[ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList] = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        self.discovered_resource_profile_list = discovered_resource_profile_list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.previous_token = previous_token
+
+    def validate(self):
+        if self.discovered_resource_profile_list:
+            for k in self.discovered_resource_profile_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DiscoveredResourceProfileList'] = []
+        if self.discovered_resource_profile_list is not None:
+            for k in self.discovered_resource_profile_list:
+                result['DiscoveredResourceProfileList'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.discovered_resource_profile_list = []
+        if m.get('DiscoveredResourceProfileList') is not None:
+            for k in m.get('DiscoveredResourceProfileList'):
+                temp_model = ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList()
+                self.discovered_resource_profile_list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListAggregateDiscoveredResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        discovered_resource_profiles: ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles = None,
+        request_id: str = None,
+    ):
+        self.discovered_resource_profiles = discovered_resource_profiles
+        self.request_id = request_id
+
+    def validate(self):
+        if self.discovered_resource_profiles:
+            self.discovered_resource_profiles.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discovered_resource_profiles is not None:
+            result['DiscoveredResourceProfiles'] = self.discovered_resource_profiles.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscoveredResourceProfiles') is not None:
+            temp_model = ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles()
+            self.discovered_resource_profiles = temp_model.from_map(m['DiscoveredResourceProfiles'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAggregateDiscoveredResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListAggregateDiscoveredResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListAggregateDiscoveredResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAggregateRemediationsRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        config_rule_ids: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.config_rule_ids = config_rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.config_rule_ids is not None:
+            result['ConfigRuleIds'] = self.config_rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ConfigRuleIds') is not None:
+            self.config_rule_ids = m.get('ConfigRuleIds')
+        return self
+
+
+class ListAggregateRemediationsResponseBodyRemediations(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        aggregator_id: str = None,
+        config_rule_id: str = None,
+        invoke_type: str = None,
+        last_successful_invocation_id: str = None,
+        last_successful_invocation_time: int = None,
+        last_successful_invocation_type: str = None,
+        remediation_dynamic_params: str = None,
+        remediation_id: str = None,
+        remediation_source_type: str = None,
+        remediation_template_id: str = None,
+        remediation_type: str = None,
+    ):
+        self.account_id = account_id
+        self.aggregator_id = aggregator_id
+        self.config_rule_id = config_rule_id
+        self.invoke_type = invoke_type
+        self.last_successful_invocation_id = last_successful_invocation_id
+        self.last_successful_invocation_time = last_successful_invocation_time
+        self.last_successful_invocation_type = last_successful_invocation_type
+        self.remediation_dynamic_params = remediation_dynamic_params
+        self.remediation_id = remediation_id
+        self.remediation_source_type = remediation_source_type
+        self.remediation_template_id = remediation_template_id
+        self.remediation_type = remediation_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        if self.invoke_type is not None:
+            result['InvokeType'] = self.invoke_type
+        if self.last_successful_invocation_id is not None:
+            result['LastSuccessfulInvocationId'] = self.last_successful_invocation_id
+        if self.last_successful_invocation_time is not None:
+            result['LastSuccessfulInvocationTime'] = self.last_successful_invocation_time
+        if self.last_successful_invocation_type is not None:
+            result['LastSuccessfulInvocationType'] = self.last_successful_invocation_type
+        if self.remediation_dynamic_params is not None:
+            result['RemediationDynamicParams'] = self.remediation_dynamic_params
+        if self.remediation_id is not None:
+            result['RemediationId'] = self.remediation_id
+        if self.remediation_source_type is not None:
+            result['RemediationSourceType'] = self.remediation_source_type
+        if self.remediation_template_id is not None:
+            result['RemediationTemplateId'] = self.remediation_template_id
+        if self.remediation_type is not None:
+            result['RemediationType'] = self.remediation_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('InvokeType') is not None:
+            self.invoke_type = m.get('InvokeType')
+        if m.get('LastSuccessfulInvocationId') is not None:
+            self.last_successful_invocation_id = m.get('LastSuccessfulInvocationId')
+        if m.get('LastSuccessfulInvocationTime') is not None:
+            self.last_successful_invocation_time = m.get('LastSuccessfulInvocationTime')
+        if m.get('LastSuccessfulInvocationType') is not None:
+            self.last_successful_invocation_type = m.get('LastSuccessfulInvocationType')
+        if m.get('RemediationDynamicParams') is not None:
+            self.remediation_dynamic_params = m.get('RemediationDynamicParams')
+        if m.get('RemediationId') is not None:
+            self.remediation_id = m.get('RemediationId')
+        if m.get('RemediationSourceType') is not None:
+            self.remediation_source_type = m.get('RemediationSourceType')
+        if m.get('RemediationTemplateId') is not None:
+            self.remediation_template_id = m.get('RemediationTemplateId')
+        if m.get('RemediationType') is not None:
+            self.remediation_type = m.get('RemediationType')
+        return self
+
+
+class ListAggregateRemediationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        remediations: List[ListAggregateRemediationsResponseBodyRemediations] = None,
+        request_id: str = None,
+    ):
+        self.remediations = remediations
+        self.request_id = request_id
+
+    def validate(self):
+        if self.remediations:
+            for k in self.remediations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Remediations'] = []
+        if self.remediations is not None:
+            for k in self.remediations:
+                result['Remediations'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.remediations = []
+        if m.get('Remediations') is not None:
+            for k in m.get('Remediations'):
+                temp_model = ListAggregateRemediationsResponseBodyRemediations()
+                self.remediations.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAggregateRemediationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListAggregateRemediationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListAggregateRemediationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAggregateResourceEvaluationResultsRequest(TeaModel):
     def __init__(
         self,
@@ -13748,6 +15207,263 @@ class ListConfigRuleEvaluationResultsResponse(TeaModel):
         return self
 
 
+class ListDiscoveredResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        regions: str = None,
+        resource_deleted: int = None,
+        resource_id: str = None,
+        resource_types: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.regions = regions
+        self.resource_deleted = resource_deleted
+        self.resource_id = resource_id
+        self.resource_types = resource_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.regions is not None:
+            result['Regions'] = self.regions
+        if self.resource_deleted is not None:
+            result['ResourceDeleted'] = self.resource_deleted
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Regions') is not None:
+            self.regions = m.get('Regions')
+        if m.get('ResourceDeleted') is not None:
+            self.resource_deleted = m.get('ResourceDeleted')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+        return self
+
+
+class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        region: str = None,
+        resource_creation_time: int = None,
+        resource_deleted: int = None,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_status: str = None,
+        resource_type: str = None,
+        tags: str = None,
+    ):
+        self.account_id = account_id
+        self.region = region
+        self.resource_creation_time = resource_creation_time
+        self.resource_deleted = resource_deleted
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_status = resource_status
+        self.resource_type = resource_type
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_creation_time is not None:
+            result['ResourceCreationTime'] = self.resource_creation_time
+        if self.resource_deleted is not None:
+            result['ResourceDeleted'] = self.resource_deleted
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_status is not None:
+            result['ResourceStatus'] = self.resource_status
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceCreationTime') is not None:
+            self.resource_creation_time = m.get('ResourceCreationTime')
+        if m.get('ResourceDeleted') is not None:
+            self.resource_deleted = m.get('ResourceDeleted')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceStatus') is not None:
+            self.resource_status = m.get('ResourceStatus')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(TeaModel):
+    def __init__(
+        self,
+        discovered_resource_profile_list: List[ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList] = None,
+        max_results: int = None,
+        next_token: str = None,
+        previous_token: str = None,
+    ):
+        self.discovered_resource_profile_list = discovered_resource_profile_list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.previous_token = previous_token
+
+    def validate(self):
+        if self.discovered_resource_profile_list:
+            for k in self.discovered_resource_profile_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DiscoveredResourceProfileList'] = []
+        if self.discovered_resource_profile_list is not None:
+            for k in self.discovered_resource_profile_list:
+                result['DiscoveredResourceProfileList'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.previous_token is not None:
+            result['PreviousToken'] = self.previous_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.discovered_resource_profile_list = []
+        if m.get('DiscoveredResourceProfileList') is not None:
+            for k in m.get('DiscoveredResourceProfileList'):
+                temp_model = ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList()
+                self.discovered_resource_profile_list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PreviousToken') is not None:
+            self.previous_token = m.get('PreviousToken')
+        return self
+
+
+class ListDiscoveredResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        discovered_resource_profiles: ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles = None,
+        request_id: str = None,
+    ):
+        self.discovered_resource_profiles = discovered_resource_profiles
+        self.request_id = request_id
+
+    def validate(self):
+        if self.discovered_resource_profiles:
+            self.discovered_resource_profiles.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discovered_resource_profiles is not None:
+            result['DiscoveredResourceProfiles'] = self.discovered_resource_profiles.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscoveredResourceProfiles') is not None:
+            temp_model = ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles()
+            self.discovered_resource_profiles = temp_model.from_map(m['DiscoveredResourceProfiles'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDiscoveredResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDiscoveredResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDiscoveredResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListManagedRulesRequest(TeaModel):
     def __init__(
         self,
@@ -13977,6 +15693,360 @@ class ListManagedRulesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListManagedRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRemediationTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        managed_rule_identifier: str = None,
+        remediation_type: str = None,
+    ):
+        self.managed_rule_identifier = managed_rule_identifier
+        self.remediation_type = remediation_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.managed_rule_identifier is not None:
+            result['ManagedRuleIdentifier'] = self.managed_rule_identifier
+        if self.remediation_type is not None:
+            result['RemediationType'] = self.remediation_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ManagedRuleIdentifier') is not None:
+            self.managed_rule_identifier = m.get('ManagedRuleIdentifier')
+        if m.get('RemediationType') is not None:
+            self.remediation_type = m.get('RemediationType')
+        return self
+
+
+class ListRemediationTemplatesResponseBodyRemediationTemplates(TeaModel):
+    def __init__(
+        self,
+        remediation_type: str = None,
+        template_definition: str = None,
+        template_identifier: str = None,
+        template_name: str = None,
+    ):
+        self.remediation_type = remediation_type
+        self.template_definition = template_definition
+        self.template_identifier = template_identifier
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.remediation_type is not None:
+            result['RemediationType'] = self.remediation_type
+        if self.template_definition is not None:
+            result['TemplateDefinition'] = self.template_definition
+        if self.template_identifier is not None:
+            result['TemplateIdentifier'] = self.template_identifier
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RemediationType') is not None:
+            self.remediation_type = m.get('RemediationType')
+        if m.get('TemplateDefinition') is not None:
+            self.template_definition = m.get('TemplateDefinition')
+        if m.get('TemplateIdentifier') is not None:
+            self.template_identifier = m.get('TemplateIdentifier')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ListRemediationTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        remediation_templates: List[ListRemediationTemplatesResponseBodyRemediationTemplates] = None,
+        request_id: str = None,
+    ):
+        self.remediation_templates = remediation_templates
+        self.request_id = request_id
+
+    def validate(self):
+        if self.remediation_templates:
+            for k in self.remediation_templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RemediationTemplates'] = []
+        if self.remediation_templates is not None:
+            for k in self.remediation_templates:
+                result['RemediationTemplates'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.remediation_templates = []
+        if m.get('RemediationTemplates') is not None:
+            for k in m.get('RemediationTemplates'):
+                temp_model = ListRemediationTemplatesResponseBodyRemediationTemplates()
+                self.remediation_templates.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListRemediationTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListRemediationTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListRemediationTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRemediationsRequest(TeaModel):
+    def __init__(
+        self,
+        config_rule_ids: str = None,
+    ):
+        self.config_rule_ids = config_rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_rule_ids is not None:
+            result['ConfigRuleIds'] = self.config_rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigRuleIds') is not None:
+            self.config_rule_ids = m.get('ConfigRuleIds')
+        return self
+
+
+class ListRemediationsResponseBodyRemediations(TeaModel):
+    def __init__(
+        self,
+        account_id: int = None,
+        config_rule_id: str = None,
+        invoke_type: str = None,
+        last_successful_invocation_id: str = None,
+        last_successful_invocation_time: int = None,
+        last_successful_invocation_type: str = None,
+        remediation_dynamic_params: str = None,
+        remediation_id: str = None,
+        remediation_origin_params: str = None,
+        remediation_source_type: str = None,
+        remediation_template_id: str = None,
+        remediation_type: str = None,
+    ):
+        self.account_id = account_id
+        self.config_rule_id = config_rule_id
+        self.invoke_type = invoke_type
+        self.last_successful_invocation_id = last_successful_invocation_id
+        self.last_successful_invocation_time = last_successful_invocation_time
+        self.last_successful_invocation_type = last_successful_invocation_type
+        self.remediation_dynamic_params = remediation_dynamic_params
+        self.remediation_id = remediation_id
+        self.remediation_origin_params = remediation_origin_params
+        self.remediation_source_type = remediation_source_type
+        self.remediation_template_id = remediation_template_id
+        self.remediation_type = remediation_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        if self.invoke_type is not None:
+            result['InvokeType'] = self.invoke_type
+        if self.last_successful_invocation_id is not None:
+            result['LastSuccessfulInvocationId'] = self.last_successful_invocation_id
+        if self.last_successful_invocation_time is not None:
+            result['LastSuccessfulInvocationTime'] = self.last_successful_invocation_time
+        if self.last_successful_invocation_type is not None:
+            result['LastSuccessfulInvocationType'] = self.last_successful_invocation_type
+        if self.remediation_dynamic_params is not None:
+            result['RemediationDynamicParams'] = self.remediation_dynamic_params
+        if self.remediation_id is not None:
+            result['RemediationId'] = self.remediation_id
+        if self.remediation_origin_params is not None:
+            result['RemediationOriginParams'] = self.remediation_origin_params
+        if self.remediation_source_type is not None:
+            result['RemediationSourceType'] = self.remediation_source_type
+        if self.remediation_template_id is not None:
+            result['RemediationTemplateId'] = self.remediation_template_id
+        if self.remediation_type is not None:
+            result['RemediationType'] = self.remediation_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        if m.get('InvokeType') is not None:
+            self.invoke_type = m.get('InvokeType')
+        if m.get('LastSuccessfulInvocationId') is not None:
+            self.last_successful_invocation_id = m.get('LastSuccessfulInvocationId')
+        if m.get('LastSuccessfulInvocationTime') is not None:
+            self.last_successful_invocation_time = m.get('LastSuccessfulInvocationTime')
+        if m.get('LastSuccessfulInvocationType') is not None:
+            self.last_successful_invocation_type = m.get('LastSuccessfulInvocationType')
+        if m.get('RemediationDynamicParams') is not None:
+            self.remediation_dynamic_params = m.get('RemediationDynamicParams')
+        if m.get('RemediationId') is not None:
+            self.remediation_id = m.get('RemediationId')
+        if m.get('RemediationOriginParams') is not None:
+            self.remediation_origin_params = m.get('RemediationOriginParams')
+        if m.get('RemediationSourceType') is not None:
+            self.remediation_source_type = m.get('RemediationSourceType')
+        if m.get('RemediationTemplateId') is not None:
+            self.remediation_template_id = m.get('RemediationTemplateId')
+        if m.get('RemediationType') is not None:
+            self.remediation_type = m.get('RemediationType')
+        return self
+
+
+class ListRemediationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        remediations: List[ListRemediationsResponseBodyRemediations] = None,
+        request_id: str = None,
+    ):
+        self.remediations = remediations
+        self.request_id = request_id
+
+    def validate(self):
+        if self.remediations:
+            for k in self.remediations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Remediations'] = []
+        if self.remediations is not None:
+            for k in self.remediations:
+                result['Remediations'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.remediations = []
+        if m.get('Remediations') is not None:
+            for k in m.get('Remediations'):
+                temp_model = ListRemediationsResponseBodyRemediations()
+                self.remediations.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListRemediationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListRemediationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListRemediationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14819,6 +16889,206 @@ class StartAggregateConfigRuleEvaluationResponse(TeaModel):
         return self
 
 
+class StartAggregateRemediationRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        config_rule_id: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.config_rule_id = config_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        return self
+
+
+class StartAggregateRemediationResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartAggregateRemediationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: StartAggregateRemediationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = StartAggregateRemediationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartRemediationRequest(TeaModel):
+    def __init__(
+        self,
+        config_rule_id: str = None,
+    ):
+        self.config_rule_id = config_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_rule_id is not None:
+            result['ConfigRuleId'] = self.config_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigRuleId') is not None:
+            self.config_rule_id = m.get('ConfigRuleId')
+        return self
+
+
+class StartRemediationResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartRemediationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: StartRemediationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = StartRemediationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters(TeaModel):
     def __init__(
         self,
@@ -15457,6 +17727,139 @@ class UpdateAggregateConfigRuleResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateAggregateConfigRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAggregateRemediationRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator_id: str = None,
+        invoke_type: str = None,
+        params: str = None,
+        remediation_id: str = None,
+        remediation_template_id: str = None,
+        remediation_type: str = None,
+        source_type: str = None,
+    ):
+        self.aggregator_id = aggregator_id
+        self.invoke_type = invoke_type
+        self.params = params
+        self.remediation_id = remediation_id
+        self.remediation_template_id = remediation_template_id
+        self.remediation_type = remediation_type
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator_id is not None:
+            result['AggregatorId'] = self.aggregator_id
+        if self.invoke_type is not None:
+            result['InvokeType'] = self.invoke_type
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.remediation_id is not None:
+            result['RemediationId'] = self.remediation_id
+        if self.remediation_template_id is not None:
+            result['RemediationTemplateId'] = self.remediation_template_id
+        if self.remediation_type is not None:
+            result['RemediationType'] = self.remediation_type
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AggregatorId') is not None:
+            self.aggregator_id = m.get('AggregatorId')
+        if m.get('InvokeType') is not None:
+            self.invoke_type = m.get('InvokeType')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RemediationId') is not None:
+            self.remediation_id = m.get('RemediationId')
+        if m.get('RemediationTemplateId') is not None:
+            self.remediation_template_id = m.get('RemediationTemplateId')
+        if m.get('RemediationType') is not None:
+            self.remediation_type = m.get('RemediationType')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class UpdateAggregateRemediationResponseBody(TeaModel):
+    def __init__(
+        self,
+        remediation_id: str = None,
+        request_id: str = None,
+    ):
+        self.remediation_id = remediation_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.remediation_id is not None:
+            result['RemediationId'] = self.remediation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RemediationId') is not None:
+            self.remediation_id = m.get('RemediationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAggregateRemediationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateAggregateRemediationResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateAggregateRemediationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
