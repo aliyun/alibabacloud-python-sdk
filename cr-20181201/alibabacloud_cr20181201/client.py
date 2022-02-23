@@ -5678,6 +5678,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.digest):
             query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_no):
@@ -5688,10 +5690,14 @@ class Client(OpenApiClient):
             query['RepoId'] = request.repo_id
         if not UtilClient.is_unset(request.scan_task_id):
             query['ScanTaskId'] = request.scan_task_id
+        if not UtilClient.is_unset(request.scan_type):
+            query['ScanType'] = request.scan_type
         if not UtilClient.is_unset(request.severity):
             query['Severity'] = request.severity
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vul_query_key):
+            query['VulQueryKey'] = request.vul_query_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5720,6 +5726,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.digest):
             query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.filter_value):
+            query['FilterValue'] = request.filter_value
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_no):
@@ -5730,10 +5738,14 @@ class Client(OpenApiClient):
             query['RepoId'] = request.repo_id
         if not UtilClient.is_unset(request.scan_task_id):
             query['ScanTaskId'] = request.scan_task_id
+        if not UtilClient.is_unset(request.scan_type):
+            query['ScanType'] = request.scan_type
         if not UtilClient.is_unset(request.severity):
             query['Severity'] = request.severity
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.vul_query_key):
+            query['VulQueryKey'] = request.vul_query_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -12217,22 +12217,28 @@ class ListRepoTagScanResultRequest(TeaModel):
     def __init__(
         self,
         digest: str = None,
+        filter_value: str = None,
         instance_id: str = None,
         page_no: int = None,
         page_size: int = None,
         repo_id: str = None,
         scan_task_id: str = None,
+        scan_type: str = None,
         severity: str = None,
         tag: str = None,
+        vul_query_key: str = None,
     ):
         self.digest = digest
+        self.filter_value = filter_value
         self.instance_id = instance_id
         self.page_no = page_no
         self.page_size = page_size
         self.repo_id = repo_id
         self.scan_task_id = scan_task_id
+        self.scan_type = scan_type
         self.severity = severity
         self.tag = tag
+        self.vul_query_key = vul_query_key
 
     def validate(self):
         pass
@@ -12245,6 +12251,8 @@ class ListRepoTagScanResultRequest(TeaModel):
         result = dict()
         if self.digest is not None:
             result['Digest'] = self.digest
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.page_no is not None:
@@ -12255,16 +12263,22 @@ class ListRepoTagScanResultRequest(TeaModel):
             result['RepoId'] = self.repo_id
         if self.scan_task_id is not None:
             result['ScanTaskId'] = self.scan_task_id
+        if self.scan_type is not None:
+            result['ScanType'] = self.scan_type
         if self.severity is not None:
             result['Severity'] = self.severity
         if self.tag is not None:
             result['Tag'] = self.tag
+        if self.vul_query_key is not None:
+            result['VulQueryKey'] = self.vul_query_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Digest') is not None:
             self.digest = m.get('Digest')
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('PageNo') is not None:
@@ -12275,10 +12289,14 @@ class ListRepoTagScanResultRequest(TeaModel):
             self.repo_id = m.get('RepoId')
         if m.get('ScanTaskId') is not None:
             self.scan_task_id = m.get('ScanTaskId')
+        if m.get('ScanType') is not None:
+            self.scan_type = m.get('ScanType')
         if m.get('Severity') is not None:
             self.severity = m.get('Severity')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
+        if m.get('VulQueryKey') is not None:
+            self.vul_query_key = m.get('VulQueryKey')
         return self
 
 
@@ -12286,22 +12304,28 @@ class ListRepoTagScanResultResponseBodyVulnerabilities(TeaModel):
     def __init__(
         self,
         added_by: str = None,
+        alias_name: str = None,
         cve_link: str = None,
+        cve_location: str = None,
         cve_name: str = None,
         description: str = None,
         feature: str = None,
         fix_cmd: str = None,
+        scan_type: str = None,
         severity: str = None,
         version: str = None,
         version_fixed: str = None,
         version_format: str = None,
     ):
         self.added_by = added_by
+        self.alias_name = alias_name
         self.cve_link = cve_link
+        self.cve_location = cve_location
         self.cve_name = cve_name
         self.description = description
         self.feature = feature
         self.fix_cmd = fix_cmd
+        self.scan_type = scan_type
         self.severity = severity
         self.version = version
         self.version_fixed = version_fixed
@@ -12318,8 +12342,12 @@ class ListRepoTagScanResultResponseBodyVulnerabilities(TeaModel):
         result = dict()
         if self.added_by is not None:
             result['AddedBy'] = self.added_by
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
         if self.cve_link is not None:
             result['CveLink'] = self.cve_link
+        if self.cve_location is not None:
+            result['CveLocation'] = self.cve_location
         if self.cve_name is not None:
             result['CveName'] = self.cve_name
         if self.description is not None:
@@ -12328,6 +12356,8 @@ class ListRepoTagScanResultResponseBodyVulnerabilities(TeaModel):
             result['Feature'] = self.feature
         if self.fix_cmd is not None:
             result['FixCmd'] = self.fix_cmd
+        if self.scan_type is not None:
+            result['ScanType'] = self.scan_type
         if self.severity is not None:
             result['Severity'] = self.severity
         if self.version is not None:
@@ -12342,8 +12372,12 @@ class ListRepoTagScanResultResponseBodyVulnerabilities(TeaModel):
         m = m or dict()
         if m.get('AddedBy') is not None:
             self.added_by = m.get('AddedBy')
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
         if m.get('CveLink') is not None:
             self.cve_link = m.get('CveLink')
+        if m.get('CveLocation') is not None:
+            self.cve_location = m.get('CveLocation')
         if m.get('CveName') is not None:
             self.cve_name = m.get('CveName')
         if m.get('Description') is not None:
@@ -12352,6 +12386,8 @@ class ListRepoTagScanResultResponseBodyVulnerabilities(TeaModel):
             self.feature = m.get('Feature')
         if m.get('FixCmd') is not None:
             self.fix_cmd = m.get('FixCmd')
+        if m.get('ScanType') is not None:
+            self.scan_type = m.get('ScanType')
         if m.get('Severity') is not None:
             self.severity = m.get('Severity')
         if m.get('Version') is not None:
