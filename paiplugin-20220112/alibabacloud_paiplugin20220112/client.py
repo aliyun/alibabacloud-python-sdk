@@ -1732,30 +1732,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.ListMessagesResponse:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.datetime):
-            body['Datetime'] = request.datetime
+            query['Datetime'] = request.datetime
         if not UtilClient.is_unset(request.group_id):
-            body['GroupId'] = request.group_id
+            query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.message_id):
-            body['MessageId'] = request.message_id
+            query['MessageId'] = request.message_id
         if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
+            query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.request_id):
-            body['RequestId'] = request.request_id
+            query['RequestId'] = request.request_id
         if not UtilClient.is_unset(request.schedule_id):
-            body['ScheduleId'] = request.schedule_id
+            query['ScheduleId'] = request.schedule_id
         if not UtilClient.is_unset(request.signature):
-            body['Signature'] = request.signature
+            query['Signature'] = request.signature
         if not UtilClient.is_unset(request.template_code):
-            body['TemplateCode'] = request.template_code
+            query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListMessages',
@@ -1780,30 +1780,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.ListMessagesResponse:
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.datetime):
-            body['Datetime'] = request.datetime
+            query['Datetime'] = request.datetime
         if not UtilClient.is_unset(request.group_id):
-            body['GroupId'] = request.group_id
+            query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.message_id):
-            body['MessageId'] = request.message_id
+            query['MessageId'] = request.message_id
         if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
+            query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.request_id):
-            body['RequestId'] = request.request_id
+            query['RequestId'] = request.request_id
         if not UtilClient.is_unset(request.schedule_id):
-            body['ScheduleId'] = request.schedule_id
+            query['ScheduleId'] = request.schedule_id
         if not UtilClient.is_unset(request.signature):
-            body['Signature'] = request.signature
+            query['Signature'] = request.signature
         if not UtilClient.is_unset(request.template_code):
-            body['TemplateCode'] = request.template_code
+            query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListMessages',

@@ -1,3 +1,6 @@
+2022-02-23 Version: 1.0.4
+- Upgrade ListMessages API.
+
 2022-02-22 Version: 1.0.2
 - Add ListMessages API.
 
