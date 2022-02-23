@@ -1451,8 +1451,11 @@ class UpdateDialogFlowModuleDefinition(TeaModel):
 class ActivatePerspectiveRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         perspective_id: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.perspective_id = perspective_id
 
     def validate(self):
@@ -1464,12 +1467,16 @@ class ActivatePerspectiveRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.perspective_id is not None:
             result['PerspectiveId'] = self.perspective_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('PerspectiveId') is not None:
             self.perspective_id = m.get('PerspectiveId')
         return self
@@ -1542,9 +1549,12 @@ class ActivatePerspectiveResponse(TeaModel):
 class AddSynonymRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         core_word_name: str = None,
         synonym: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.core_word_name = core_word_name
         self.synonym = synonym
 
@@ -1557,6 +1567,8 @@ class AddSynonymRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.core_word_name is not None:
             result['CoreWordName'] = self.core_word_name
         if self.synonym is not None:
@@ -1565,6 +1577,8 @@ class AddSynonymRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CoreWordName') is not None:
             self.core_word_name = m.get('CoreWordName')
         if m.get('Synonym') is not None:
@@ -1672,10 +1686,13 @@ class AppendEntityMemberRequestMember(TeaModel):
 class AppendEntityMemberRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         apply_type: str = None,
         entity_id: int = None,
         member: AppendEntityMemberRequestMember = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.apply_type = apply_type
         self.entity_id = entity_id
         self.member = member
@@ -1690,6 +1707,8 @@ class AppendEntityMemberRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.apply_type is not None:
             result['ApplyType'] = self.apply_type
         if self.entity_id is not None:
@@ -1700,6 +1719,8 @@ class AppendEntityMemberRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('ApplyType') is not None:
             self.apply_type = m.get('ApplyType')
         if m.get('EntityId') is not None:
@@ -1713,10 +1734,13 @@ class AppendEntityMemberRequest(TeaModel):
 class AppendEntityMemberShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         apply_type: str = None,
         entity_id: int = None,
         member_shrink: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.apply_type = apply_type
         self.entity_id = entity_id
         self.member_shrink = member_shrink
@@ -1730,6 +1754,8 @@ class AppendEntityMemberShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.apply_type is not None:
             result['ApplyType'] = self.apply_type
         if self.entity_id is not None:
@@ -1740,6 +1766,8 @@ class AppendEntityMemberShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('ApplyType') is not None:
             self.apply_type = m.get('ApplyType')
         if m.get('EntityId') is not None:
@@ -2593,12 +2621,15 @@ class ChatResponse(TeaModel):
 class CreateBotRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         avatar: str = None,
         introduction: str = None,
         language_code: str = None,
         name: str = None,
         robot_type: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.avatar = avatar
         self.introduction = introduction
         self.language_code = language_code
@@ -2614,6 +2645,8 @@ class CreateBotRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.avatar is not None:
             result['Avatar'] = self.avatar
         if self.introduction is not None:
@@ -2628,6 +2661,8 @@ class CreateBotRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Avatar') is not None:
             self.avatar = m.get('Avatar')
         if m.get('Introduction') is not None:
@@ -2714,11 +2749,14 @@ class CreateBotResponse(TeaModel):
 class CreateCategoryRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         biz_code: str = None,
         knowledge_type: int = None,
         name: str = None,
         parent_category_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.biz_code = biz_code
         self.knowledge_type = knowledge_type
         self.name = name
@@ -2733,6 +2771,8 @@ class CreateCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.biz_code is not None:
             result['BizCode'] = self.biz_code
         if self.knowledge_type is not None:
@@ -2745,6 +2785,8 @@ class CreateCategoryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('BizCode') is not None:
             self.biz_code = m.get('BizCode')
         if m.get('KnowledgeType') is not None:
@@ -2835,8 +2877,11 @@ class CreateCategoryResponse(TeaModel):
 class CreateCoreWordRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         core_word_name: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.core_word_name = core_word_name
 
     def validate(self):
@@ -2848,12 +2893,16 @@ class CreateCoreWordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.core_word_name is not None:
             result['CoreWordName'] = self.core_word_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CoreWordName') is not None:
             self.core_word_name = m.get('CoreWordName')
         return self
@@ -2932,10 +2981,13 @@ class CreateCoreWordResponse(TeaModel):
 class CreateDialogRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         description: str = None,
         dialog_name: str = None,
         instance_id: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.description = description
         self.dialog_name = dialog_name
         self.instance_id = instance_id
@@ -2949,6 +3001,8 @@ class CreateDialogRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.description is not None:
             result['Description'] = self.description
         if self.dialog_name is not None:
@@ -2959,6 +3013,8 @@ class CreateDialogRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DialogName') is not None:
@@ -3074,12 +3130,15 @@ class CreateEntityRequestMembers(TeaModel):
 class CreateEntityRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
         entity_name: str = None,
         entity_type: str = None,
         members: List[CreateEntityRequestMembers] = None,
         regex: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.entity_name = entity_name
         self.entity_type = entity_type
@@ -3098,6 +3157,8 @@ class CreateEntityRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         if self.entity_name is not None:
@@ -3114,6 +3175,8 @@ class CreateEntityRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         if m.get('EntityName') is not None:
@@ -3133,12 +3196,15 @@ class CreateEntityRequest(TeaModel):
 class CreateEntityShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
         entity_name: str = None,
         entity_type: str = None,
         members_shrink: str = None,
         regex: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.entity_name = entity_name
         self.entity_type = entity_type
@@ -3154,6 +3220,8 @@ class CreateEntityShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         if self.entity_name is not None:
@@ -3168,6 +3236,8 @@ class CreateEntityShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         if m.get('EntityName') is not None:
@@ -3254,9 +3324,12 @@ class CreateEntityResponse(TeaModel):
 class CreateIntentRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
         intent_definition: IntentCreateDTO = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.intent_definition = intent_definition
 
@@ -3270,6 +3343,8 @@ class CreateIntentRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         if self.intent_definition is not None:
@@ -3278,6 +3353,8 @@ class CreateIntentRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         if m.get('IntentDefinition') is not None:
@@ -3289,9 +3366,12 @@ class CreateIntentRequest(TeaModel):
 class CreateIntentShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
         intent_definition_shrink: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.intent_definition_shrink = intent_definition_shrink
 
@@ -3304,6 +3384,8 @@ class CreateIntentShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         if self.intent_definition_shrink is not None:
@@ -3312,6 +3394,8 @@ class CreateIntentShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         if m.get('IntentDefinition') is not None:
@@ -3586,8 +3670,11 @@ class CreateKnowledgeRequestKnowledge(TeaModel):
 class CreateKnowledgeRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         knowledge: CreateKnowledgeRequestKnowledge = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.knowledge = knowledge
 
     def validate(self):
@@ -3600,12 +3687,16 @@ class CreateKnowledgeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.knowledge is not None:
             result['Knowledge'] = self.knowledge.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Knowledge') is not None:
             temp_model = CreateKnowledgeRequestKnowledge()
             self.knowledge = temp_model.from_map(m['Knowledge'])
@@ -3615,8 +3706,11 @@ class CreateKnowledgeRequest(TeaModel):
 class CreateKnowledgeShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         knowledge_shrink: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.knowledge_shrink = knowledge_shrink
 
     def validate(self):
@@ -3628,12 +3722,16 @@ class CreateKnowledgeShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.knowledge_shrink is not None:
             result['Knowledge'] = self.knowledge_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Knowledge') is not None:
             self.knowledge_shrink = m.get('Knowledge')
         return self
@@ -3712,8 +3810,11 @@ class CreateKnowledgeResponse(TeaModel):
 class CreatePerspectiveRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         name: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.name = name
 
     def validate(self):
@@ -3725,12 +3826,16 @@ class CreatePerspectiveRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.name is not None:
             result['Name'] = self.name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
@@ -3809,8 +3914,11 @@ class CreatePerspectiveResponse(TeaModel):
 class DeleteBotRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         instance_id: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.instance_id = instance_id
 
     def validate(self):
@@ -3822,12 +3930,16 @@ class DeleteBotRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -3900,8 +4012,11 @@ class DeleteBotResponse(TeaModel):
 class DeleteCategoryRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         category_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.category_id = category_id
 
     def validate(self):
@@ -3913,12 +4028,16 @@ class DeleteCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         return self
@@ -3997,8 +4116,11 @@ class DeleteCategoryResponse(TeaModel):
 class DeleteCoreWordRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         core_word_name: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.core_word_name = core_word_name
 
     def validate(self):
@@ -4010,12 +4132,16 @@ class DeleteCoreWordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.core_word_name is not None:
             result['CoreWordName'] = self.core_word_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CoreWordName') is not None:
             self.core_word_name = m.get('CoreWordName')
         return self
@@ -4094,8 +4220,11 @@ class DeleteCoreWordResponse(TeaModel):
 class DeleteDialogRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
 
     def validate(self):
@@ -4107,12 +4236,16 @@ class DeleteDialogRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         return self
@@ -4185,8 +4318,11 @@ class DeleteDialogResponse(TeaModel):
 class DeleteEntityRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         entity_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.entity_id = entity_id
 
     def validate(self):
@@ -4198,12 +4334,16 @@ class DeleteEntityRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
         return self
@@ -4282,8 +4422,11 @@ class DeleteEntityResponse(TeaModel):
 class DeleteIntentRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         intent_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.intent_id = intent_id
 
     def validate(self):
@@ -4295,12 +4438,16 @@ class DeleteIntentRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.intent_id is not None:
             result['IntentId'] = self.intent_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('IntentId') is not None:
             self.intent_id = m.get('IntentId')
         return self
@@ -4379,8 +4526,11 @@ class DeleteIntentResponse(TeaModel):
 class DeleteKnowledgeRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         knowledge_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.knowledge_id = knowledge_id
 
     def validate(self):
@@ -4392,12 +4542,16 @@ class DeleteKnowledgeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.knowledge_id is not None:
             result['KnowledgeId'] = self.knowledge_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('KnowledgeId') is not None:
             self.knowledge_id = m.get('KnowledgeId')
         return self
@@ -4470,8 +4624,11 @@ class DeleteKnowledgeResponse(TeaModel):
 class DescribeBotRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         instance_id: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.instance_id = instance_id
 
     def validate(self):
@@ -4483,12 +4640,16 @@ class DescribeBotRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -4662,8 +4823,11 @@ class DescribeBotResponse(TeaModel):
 class DescribeCategoryRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         category_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.category_id = category_id
 
     def validate(self):
@@ -4675,12 +4839,16 @@ class DescribeCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         return self
@@ -4771,8 +4939,11 @@ class DescribeCategoryResponse(TeaModel):
 class DescribeCoreWordRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         core_word_name: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.core_word_name = core_word_name
 
     def validate(self):
@@ -4784,12 +4955,16 @@ class DescribeCoreWordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.core_word_name is not None:
             result['CoreWordName'] = self.core_word_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CoreWordName') is not None:
             self.core_word_name = m.get('CoreWordName')
         return self
@@ -4892,8 +5067,11 @@ class DescribeCoreWordResponse(TeaModel):
 class DescribeDialogRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
 
     def validate(self):
@@ -4905,12 +5083,16 @@ class DescribeDialogRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         return self
@@ -5055,8 +5237,11 @@ class DescribeDialogResponse(TeaModel):
 class DescribeDialogFlowRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
 
     def validate(self):
@@ -5068,12 +5253,16 @@ class DescribeDialogFlowRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         return self
@@ -5250,8 +5439,11 @@ class DescribeDialogFlowResponse(TeaModel):
 class DescribeEntitiesRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         entity_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.entity_id = entity_id
 
     def validate(self):
@@ -5263,12 +5455,16 @@ class DescribeEntitiesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
         return self
@@ -5448,8 +5644,11 @@ class DescribeEntitiesResponse(TeaModel):
 class DescribeIntentRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         intent_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.intent_id = intent_id
 
     def validate(self):
@@ -5461,12 +5660,16 @@ class DescribeIntentRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.intent_id is not None:
             result['IntentId'] = self.intent_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('IntentId') is not None:
             self.intent_id = m.get('IntentId')
         return self
@@ -5878,8 +6081,11 @@ class DescribeIntentResponse(TeaModel):
 class DescribeKnowledgeRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         knowledge_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.knowledge_id = knowledge_id
 
     def validate(self):
@@ -5891,12 +6097,16 @@ class DescribeKnowledgeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.knowledge_id is not None:
             result['KnowledgeId'] = self.knowledge_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('KnowledgeId') is not None:
             self.knowledge_id = m.get('KnowledgeId')
         return self
@@ -6244,8 +6454,11 @@ class DescribeKnowledgeResponse(TeaModel):
 class DescribePerspectiveRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         perspective_id: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.perspective_id = perspective_id
 
     def validate(self):
@@ -6257,12 +6470,16 @@ class DescribePerspectiveRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.perspective_id is not None:
             result['PerspectiveId'] = self.perspective_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('PerspectiveId') is not None:
             self.perspective_id = m.get('PerspectiveId')
         return self
@@ -6389,8 +6606,11 @@ class DescribePerspectiveResponse(TeaModel):
 class DisableDialogFlowRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
 
     def validate(self):
@@ -6402,12 +6622,16 @@ class DisableDialogFlowRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         return self
@@ -6480,8 +6704,11 @@ class DisableDialogFlowResponse(TeaModel):
 class DisableKnowledgeRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         knowledge_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.knowledge_id = knowledge_id
 
     def validate(self):
@@ -6493,12 +6720,16 @@ class DisableKnowledgeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.knowledge_id is not None:
             result['KnowledgeId'] = self.knowledge_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('KnowledgeId') is not None:
             self.knowledge_id = m.get('KnowledgeId')
         return self
@@ -6571,11 +6802,14 @@ class DisableKnowledgeResponse(TeaModel):
 class FeedbackRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         feedback: str = None,
         instance_id: str = None,
         message_id: str = None,
         session_id: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.feedback = feedback
         self.instance_id = instance_id
         self.message_id = message_id
@@ -6590,6 +6824,8 @@ class FeedbackRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.feedback is not None:
             result['Feedback'] = self.feedback
         if self.instance_id is not None:
@@ -6602,6 +6838,8 @@ class FeedbackRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Feedback') is not None:
             self.feedback = m.get('Feedback')
         if m.get('InstanceId') is not None:
@@ -6704,8 +6942,11 @@ class FeedbackResponse(TeaModel):
 class GetAsyncResultRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         task_id: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.task_id = task_id
 
     def validate(self):
@@ -6717,12 +6958,16 @@ class GetAsyncResultRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self
@@ -6819,10 +7064,13 @@ class GetAsyncResultResponse(TeaModel):
 class GetBotChatDataRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
         self.start_time = start_time
@@ -6836,6 +7084,8 @@ class GetBotChatDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.robot_instance_id is not None:
@@ -6846,6 +7096,8 @@ class GetBotChatDataRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('RobotInstanceId') is not None:
@@ -6934,10 +7186,13 @@ class GetBotChatDataResponse(TeaModel):
 class GetBotDsStatDataRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
         self.start_time = start_time
@@ -6951,6 +7206,8 @@ class GetBotDsStatDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.robot_instance_id is not None:
@@ -6961,6 +7218,8 @@ class GetBotDsStatDataRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('RobotInstanceId') is not None:
@@ -7049,10 +7308,13 @@ class GetBotDsStatDataResponse(TeaModel):
 class GetBotKnowledgeStatDataRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
         self.start_time = start_time
@@ -7066,6 +7328,8 @@ class GetBotKnowledgeStatDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.robot_instance_id is not None:
@@ -7076,6 +7340,8 @@ class GetBotKnowledgeStatDataRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('RobotInstanceId') is not None:
@@ -7164,10 +7430,13 @@ class GetBotKnowledgeStatDataResponse(TeaModel):
 class GetBotSessionDataRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
         self.start_time = start_time
@@ -7181,6 +7450,8 @@ class GetBotSessionDataRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.robot_instance_id is not None:
@@ -7191,6 +7462,8 @@ class GetBotSessionDataRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('RobotInstanceId') is not None:
@@ -7279,6 +7552,7 @@ class GetBotSessionDataResponse(TeaModel):
 class GetConversationListRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_date: str = None,
         instance_id: str = None,
         page_number: str = None,
@@ -7287,6 +7561,8 @@ class GetConversationListRequest(TeaModel):
         session_id: str = None,
         start_date: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_date = end_date
         self.instance_id = instance_id
         self.page_number = page_number
@@ -7304,6 +7580,8 @@ class GetConversationListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_date is not None:
             result['EndDate'] = self.end_date
         if self.instance_id is not None:
@@ -7322,6 +7600,8 @@ class GetConversationListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
         if m.get('InstanceId') is not None:
@@ -7430,11 +7710,14 @@ class GetConversationListResponse(TeaModel):
 class ListBotChatHistorysRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         limit: int = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
         self.robot_instance_id = robot_instance_id
@@ -7449,6 +7732,8 @@ class ListBotChatHistorysRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.limit is not None:
@@ -7461,6 +7746,8 @@ class ListBotChatHistorysRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
@@ -7551,11 +7838,14 @@ class ListBotChatHistorysResponse(TeaModel):
 class ListBotColdDsDatasRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         limit: int = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
         self.robot_instance_id = robot_instance_id
@@ -7570,6 +7860,8 @@ class ListBotColdDsDatasRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.limit is not None:
@@ -7582,6 +7874,8 @@ class ListBotColdDsDatasRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
@@ -7672,11 +7966,14 @@ class ListBotColdDsDatasResponse(TeaModel):
 class ListBotColdKnowledgesRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         limit: int = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
         self.robot_instance_id = robot_instance_id
@@ -7691,6 +7988,8 @@ class ListBotColdKnowledgesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.limit is not None:
@@ -7703,6 +8002,8 @@ class ListBotColdKnowledgesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
@@ -7793,11 +8094,14 @@ class ListBotColdKnowledgesResponse(TeaModel):
 class ListBotDsDetailsRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         limit: int = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
         self.robot_instance_id = robot_instance_id
@@ -7812,6 +8116,8 @@ class ListBotDsDetailsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.limit is not None:
@@ -7824,6 +8130,8 @@ class ListBotDsDetailsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
@@ -7914,11 +8222,14 @@ class ListBotDsDetailsResponse(TeaModel):
 class ListBotHotDsDatasRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         limit: int = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
         self.robot_instance_id = robot_instance_id
@@ -7933,6 +8244,8 @@ class ListBotHotDsDatasRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.limit is not None:
@@ -7945,6 +8258,8 @@ class ListBotHotDsDatasRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
@@ -8035,11 +8350,14 @@ class ListBotHotDsDatasResponse(TeaModel):
 class ListBotHotKnowledgesRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         limit: int = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
         self.robot_instance_id = robot_instance_id
@@ -8054,6 +8372,8 @@ class ListBotHotKnowledgesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.limit is not None:
@@ -8066,6 +8386,8 @@ class ListBotHotKnowledgesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
@@ -8156,11 +8478,14 @@ class ListBotHotKnowledgesResponse(TeaModel):
 class ListBotKnowledgeDetailsRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         limit: str = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.limit = limit
         self.robot_instance_id = robot_instance_id
@@ -8175,6 +8500,8 @@ class ListBotKnowledgeDetailsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.limit is not None:
@@ -8187,6 +8514,8 @@ class ListBotKnowledgeDetailsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
@@ -8277,10 +8606,13 @@ class ListBotKnowledgeDetailsResponse(TeaModel):
 class ListBotReceptionDetailDatasRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         end_time: str = None,
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.end_time = end_time
         self.robot_instance_id = robot_instance_id
         self.start_time = start_time
@@ -8294,6 +8626,8 @@ class ListBotReceptionDetailDatasRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.robot_instance_id is not None:
@@ -8304,6 +8638,8 @@ class ListBotReceptionDetailDatasRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('RobotInstanceId') is not None:
@@ -8392,8 +8728,11 @@ class ListBotReceptionDetailDatasResponse(TeaModel):
 class ListConversationLogsRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         session_id: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.session_id = session_id
 
     def validate(self):
@@ -8405,12 +8744,16 @@ class ListConversationLogsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.session_id is not None:
             result['SessionId'] = self.session_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
         return self
@@ -8495,9 +8838,12 @@ class ListConversationLogsResponse(TeaModel):
 class MoveKnowledgeCategoryRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         category_id: int = None,
         knowledge_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.category_id = category_id
         self.knowledge_id = knowledge_id
 
@@ -8510,6 +8856,8 @@ class MoveKnowledgeCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         if self.knowledge_id is not None:
@@ -8518,6 +8866,8 @@ class MoveKnowledgeCategoryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         if m.get('KnowledgeId') is not None:
@@ -8592,8 +8942,11 @@ class MoveKnowledgeCategoryResponse(TeaModel):
 class PublishDialogFlowRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
 
     def validate(self):
@@ -8605,12 +8958,16 @@ class PublishDialogFlowRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         return self
@@ -8683,9 +9040,12 @@ class PublishDialogFlowResponse(TeaModel):
 class PublishKnowledgeRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         async_: bool = None,
         knowledge_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.async_ = async_
         self.knowledge_id = knowledge_id
 
@@ -8698,6 +9058,8 @@ class PublishKnowledgeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.async_ is not None:
             result['Async'] = self.async_
         if self.knowledge_id is not None:
@@ -8706,6 +9068,8 @@ class PublishKnowledgeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Async') is not None:
             self.async_ = m.get('Async')
         if m.get('KnowledgeId') is not None:
@@ -8780,9 +9144,12 @@ class PublishKnowledgeResponse(TeaModel):
 class QueryBotsRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.page_number = page_number
         self.page_size = page_size
 
@@ -8795,6 +9162,8 @@ class QueryBotsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -8803,6 +9172,8 @@ class QueryBotsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -8972,10 +9343,13 @@ class QueryBotsResponse(TeaModel):
 class QueryCategoriesRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         knowledge_type: int = None,
         parent_category_id: int = None,
         show_childrens: bool = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.knowledge_type = knowledge_type
         self.parent_category_id = parent_category_id
         self.show_childrens = show_childrens
@@ -8989,6 +9363,8 @@ class QueryCategoriesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.knowledge_type is not None:
             result['KnowledgeType'] = self.knowledge_type
         if self.parent_category_id is not None:
@@ -8999,6 +9375,8 @@ class QueryCategoriesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('KnowledgeType') is not None:
             self.knowledge_type = m.get('KnowledgeType')
         if m.get('ParentCategoryId') is not None:
@@ -9089,11 +9467,14 @@ class QueryCategoriesResponse(TeaModel):
 class QueryCoreWordsRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         core_word_name: str = None,
         page_number: int = None,
         page_size: int = None,
         synonym: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.core_word_name = core_word_name
         self.page_number = page_number
         self.page_size = page_size
@@ -9108,6 +9489,8 @@ class QueryCoreWordsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.core_word_name is not None:
             result['CoreWordName'] = self.core_word_name
         if self.page_number is not None:
@@ -9120,6 +9503,8 @@ class QueryCoreWordsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CoreWordName') is not None:
             self.core_word_name = m.get('CoreWordName')
         if m.get('PageNumber') is not None:
@@ -9281,11 +9666,14 @@ class QueryCoreWordsResponse(TeaModel):
 class QueryDialogsRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_name: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_name = dialog_name
         self.instance_id = instance_id
         self.page_number = page_number
@@ -9300,6 +9688,8 @@ class QueryDialogsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_name is not None:
             result['DialogName'] = self.dialog_name
         if self.instance_id is not None:
@@ -9312,6 +9702,8 @@ class QueryDialogsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogName') is not None:
             self.dialog_name = m.get('DialogName')
         if m.get('InstanceId') is not None:
@@ -9515,11 +9907,14 @@ class QueryDialogsResponse(TeaModel):
 class QueryEntitiesRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
         entity_name: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.entity_name = entity_name
         self.page_number = page_number
@@ -9534,6 +9929,8 @@ class QueryEntitiesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         if self.entity_name is not None:
@@ -9546,6 +9943,8 @@ class QueryEntitiesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         if m.get('EntityName') is not None:
@@ -9784,11 +10183,14 @@ class QueryEntitiesResponse(TeaModel):
 class QueryIntentsRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
         intent_name: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.intent_name = intent_name
         self.page_number = page_number
@@ -9803,6 +10205,8 @@ class QueryIntentsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         if self.intent_name is not None:
@@ -9815,6 +10219,8 @@ class QueryIntentsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         if m.get('IntentName') is not None:
@@ -10273,12 +10679,15 @@ class QueryIntentsResponse(TeaModel):
 class QueryKnowledgesRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         category_id: int = None,
         core_word_name: str = None,
         knowledge_title: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.category_id = category_id
         self.core_word_name = core_word_name
         self.knowledge_title = knowledge_title
@@ -10294,6 +10703,8 @@ class QueryKnowledgesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         if self.core_word_name is not None:
@@ -10308,6 +10719,8 @@ class QueryKnowledgesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         if m.get('CoreWordName') is not None:
@@ -10510,6 +10923,34 @@ class QueryKnowledgesResponse(TeaModel):
         return self
 
 
+class QueryPerspectivesRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+    ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        return self
+
+
 class QueryPerspectivesResponseBodyPerspectives(TeaModel):
     def __init__(
         self,
@@ -10666,8 +11107,11 @@ class QueryPerspectivesResponse(TeaModel):
 class QuerySystemEntitiesRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         entity_name: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.entity_name = entity_name
 
     def validate(self):
@@ -10679,12 +11123,16 @@ class QuerySystemEntitiesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.entity_name is not None:
             result['EntityName'] = self.entity_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EntityName') is not None:
             self.entity_name = m.get('EntityName')
         return self
@@ -10843,10 +11291,13 @@ class RemoveEntityMemberRequestMember(TeaModel):
 class RemoveEntityMemberRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         entity_id: int = None,
         member: RemoveEntityMemberRequestMember = None,
         remove_type: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.entity_id = entity_id
         self.member = member
         self.remove_type = remove_type
@@ -10861,6 +11312,8 @@ class RemoveEntityMemberRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
         if self.member is not None:
@@ -10871,6 +11324,8 @@ class RemoveEntityMemberRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
         if m.get('Member') is not None:
@@ -10884,10 +11339,13 @@ class RemoveEntityMemberRequest(TeaModel):
 class RemoveEntityMemberShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         entity_id: int = None,
         member_shrink: str = None,
         remove_type: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.entity_id = entity_id
         self.member_shrink = member_shrink
         self.remove_type = remove_type
@@ -10901,6 +11359,8 @@ class RemoveEntityMemberShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
         if self.member_shrink is not None:
@@ -10911,6 +11371,8 @@ class RemoveEntityMemberShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
         if m.get('Member') is not None:
@@ -10993,9 +11455,12 @@ class RemoveEntityMemberResponse(TeaModel):
 class RemoveSynonymRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         core_word_name: str = None,
         synonym: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.core_word_name = core_word_name
         self.synonym = synonym
 
@@ -11008,6 +11473,8 @@ class RemoveSynonymRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.core_word_name is not None:
             result['CoreWordName'] = self.core_word_name
         if self.synonym is not None:
@@ -11016,6 +11483,8 @@ class RemoveSynonymRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CoreWordName') is not None:
             self.core_word_name = m.get('CoreWordName')
         if m.get('Synonym') is not None:
@@ -11090,8 +11559,11 @@ class RemoveSynonymResponse(TeaModel):
 class TestDialogFlowRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
 
     def validate(self):
@@ -11103,12 +11575,16 @@ class TestDialogFlowRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         return self
@@ -11181,9 +11657,12 @@ class TestDialogFlowResponse(TeaModel):
 class UpdateCategoryRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         category_id: int = None,
         name: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.category_id = category_id
         self.name = name
 
@@ -11196,6 +11675,8 @@ class UpdateCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         if self.name is not None:
@@ -11204,6 +11685,8 @@ class UpdateCategoryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         if m.get('Name') is not None:
@@ -11284,9 +11767,12 @@ class UpdateCategoryResponse(TeaModel):
 class UpdateCoreWordRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         core_word_code: str = None,
         core_word_name: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.core_word_code = core_word_code
         self.core_word_name = core_word_name
 
@@ -11299,6 +11785,8 @@ class UpdateCoreWordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.core_word_code is not None:
             result['CoreWordCode'] = self.core_word_code
         if self.core_word_name is not None:
@@ -11307,6 +11795,8 @@ class UpdateCoreWordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('CoreWordCode') is not None:
             self.core_word_code = m.get('CoreWordCode')
         if m.get('CoreWordName') is not None:
@@ -11387,10 +11877,13 @@ class UpdateCoreWordResponse(TeaModel):
 class UpdateDialogRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         description: str = None,
         dialog_id: int = None,
         dialog_name: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.description = description
         self.dialog_id = dialog_id
         self.dialog_name = dialog_name
@@ -11404,6 +11897,8 @@ class UpdateDialogRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.description is not None:
             result['Description'] = self.description
         if self.dialog_id is not None:
@@ -11414,6 +11909,8 @@ class UpdateDialogRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DialogId') is not None:
@@ -11525,9 +12022,12 @@ class UpdateDialogFlowRequestModuleDefinition(TeaModel):
 class UpdateDialogFlowRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
         module_definition: UpdateDialogFlowRequestModuleDefinition = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.module_definition = module_definition
 
@@ -11541,6 +12041,8 @@ class UpdateDialogFlowRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         if self.module_definition is not None:
@@ -11549,6 +12051,8 @@ class UpdateDialogFlowRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         if m.get('ModuleDefinition') is not None:
@@ -11560,9 +12064,12 @@ class UpdateDialogFlowRequest(TeaModel):
 class UpdateDialogFlowShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         dialog_id: int = None,
         module_definition_shrink: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.dialog_id = dialog_id
         self.module_definition_shrink = module_definition_shrink
 
@@ -11575,6 +12082,8 @@ class UpdateDialogFlowShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
         if self.module_definition_shrink is not None:
@@ -11583,6 +12092,8 @@ class UpdateDialogFlowShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
         if m.get('ModuleDefinition') is not None:
@@ -11690,12 +12201,15 @@ class UpdateEntityRequestMembers(TeaModel):
 class UpdateEntityRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         entity_id: int = None,
         entity_name: str = None,
         entity_type: str = None,
         members: List[UpdateEntityRequestMembers] = None,
         regex: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.entity_id = entity_id
         self.entity_name = entity_name
         self.entity_type = entity_type
@@ -11714,6 +12228,8 @@ class UpdateEntityRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
         if self.entity_name is not None:
@@ -11730,6 +12246,8 @@ class UpdateEntityRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
         if m.get('EntityName') is not None:
@@ -11749,12 +12267,15 @@ class UpdateEntityRequest(TeaModel):
 class UpdateEntityShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         entity_id: int = None,
         entity_name: str = None,
         entity_type: str = None,
         members_shrink: str = None,
         regex: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.entity_id = entity_id
         self.entity_name = entity_name
         self.entity_type = entity_type
@@ -11770,6 +12291,8 @@ class UpdateEntityShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
         if self.entity_name is not None:
@@ -11784,6 +12307,8 @@ class UpdateEntityShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
         if m.get('EntityName') is not None:
@@ -11870,9 +12395,12 @@ class UpdateEntityResponse(TeaModel):
 class UpdateIntentRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         intent_definition: IntentCreateDTO = None,
         intent_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.intent_definition = intent_definition
         self.intent_id = intent_id
 
@@ -11886,6 +12414,8 @@ class UpdateIntentRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.intent_definition is not None:
             result['IntentDefinition'] = self.intent_definition.to_map()
         if self.intent_id is not None:
@@ -11894,6 +12424,8 @@ class UpdateIntentRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('IntentDefinition') is not None:
             temp_model = IntentCreateDTO()
             self.intent_definition = temp_model.from_map(m['IntentDefinition'])
@@ -11905,9 +12437,12 @@ class UpdateIntentRequest(TeaModel):
 class UpdateIntentShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         intent_definition_shrink: str = None,
         intent_id: int = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.intent_definition_shrink = intent_definition_shrink
         self.intent_id = intent_id
 
@@ -11920,6 +12455,8 @@ class UpdateIntentShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.intent_definition_shrink is not None:
             result['IntentDefinition'] = self.intent_definition_shrink
         if self.intent_id is not None:
@@ -11928,6 +12465,8 @@ class UpdateIntentShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('IntentDefinition') is not None:
             self.intent_definition_shrink = m.get('IntentDefinition')
         if m.get('IntentId') is not None:
@@ -12244,8 +12783,11 @@ class UpdateKnowledgeRequestKnowledge(TeaModel):
 class UpdateKnowledgeRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         knowledge: UpdateKnowledgeRequestKnowledge = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.knowledge = knowledge
 
     def validate(self):
@@ -12258,12 +12800,16 @@ class UpdateKnowledgeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.knowledge is not None:
             result['Knowledge'] = self.knowledge.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Knowledge') is not None:
             temp_model = UpdateKnowledgeRequestKnowledge()
             self.knowledge = temp_model.from_map(m['Knowledge'])
@@ -12273,8 +12819,11 @@ class UpdateKnowledgeRequest(TeaModel):
 class UpdateKnowledgeShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         knowledge_shrink: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.knowledge_shrink = knowledge_shrink
 
     def validate(self):
@@ -12286,12 +12835,16 @@ class UpdateKnowledgeShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.knowledge_shrink is not None:
             result['Knowledge'] = self.knowledge_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Knowledge') is not None:
             self.knowledge_shrink = m.get('Knowledge')
         return self
@@ -12370,9 +12923,12 @@ class UpdateKnowledgeResponse(TeaModel):
 class UpdatePerspectiveRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         name: str = None,
         perspective_id: str = None,
     ):
+        # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+        self.agent_key = agent_key
         self.name = name
         self.perspective_id = perspective_id
 
@@ -12385,6 +12941,8 @@ class UpdatePerspectiveRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.name is not None:
             result['Name'] = self.name
         if self.perspective_id is not None:
@@ -12393,6 +12951,8 @@ class UpdatePerspectiveRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PerspectiveId') is not None:

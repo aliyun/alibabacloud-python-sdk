@@ -47,12 +47,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ActivatePerspectiveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.perspective_id):
+            query['PerspectiveId'] = request.perspective_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ActivatePerspective',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ActivatePerspectiveResponse(),
-            self.do_rpcrequest('ActivatePerspective', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def activate_perspective_with_options_async(
@@ -61,12 +77,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ActivatePerspectiveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.perspective_id):
+            query['PerspectiveId'] = request.perspective_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ActivatePerspective',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ActivatePerspectiveResponse(),
-            await self.do_rpcrequest_async('ActivatePerspective', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def activate_perspective(
@@ -89,12 +121,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.AddSynonymResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
+        if not UtilClient.is_unset(request.synonym):
+            query['Synonym'] = request.synonym
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSynonym',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.AddSynonymResponse(),
-            self.do_rpcrequest('AddSynonym', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_synonym_with_options_async(
@@ -103,12 +153,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.AddSynonymResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
+        if not UtilClient.is_unset(request.synonym):
+            query['Synonym'] = request.synonym
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSynonym',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.AddSynonymResponse(),
-            await self.do_rpcrequest_async('AddSynonym', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_synonym(
@@ -135,12 +203,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.member):
             request.member_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.member), 'Member', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.member_shrink):
+            query['Member'] = request.member_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AppendEntityMember',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.AppendEntityMemberResponse(),
-            self.do_rpcrequest('AppendEntityMember', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def append_entity_member_with_options_async(
@@ -153,12 +241,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.member):
             request.member_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.member), 'Member', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.apply_type):
+            query['ApplyType'] = request.apply_type
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.member_shrink):
+            query['Member'] = request.member_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AppendEntityMember',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.AppendEntityMemberResponse(),
-            await self.do_rpcrequest_async('AppendEntityMember', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def append_entity_member(
@@ -181,12 +289,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.AssociateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.perspective):
+            query['Perspective'] = request.perspective
+        if not UtilClient.is_unset(request.recommend_num):
+            query['RecommendNum'] = request.recommend_num
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.utterance):
+            query['Utterance'] = request.utterance
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Associate',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.AssociateResponse(),
-            self.do_rpcrequest('Associate', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def associate_with_options_async(
@@ -195,12 +325,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.AssociateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.perspective):
+            query['Perspective'] = request.perspective
+        if not UtilClient.is_unset(request.recommend_num):
+            query['RecommendNum'] = request.recommend_num
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.utterance):
+            query['Utterance'] = request.utterance
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Associate',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.AssociateResponse(),
-            await self.do_rpcrequest_async('Associate', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def associate(
@@ -223,12 +375,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ChatResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.intent_name):
+            query['IntentName'] = request.intent_name
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        if not UtilClient.is_unset(request.perspective):
+            query['Perspective'] = request.perspective
+        if not UtilClient.is_unset(request.recommend):
+            query['Recommend'] = request.recommend
+        if not UtilClient.is_unset(request.sender_id):
+            query['SenderId'] = request.sender_id
+        if not UtilClient.is_unset(request.sender_nick):
+            query['SenderNick'] = request.sender_nick
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.utterance):
+            query['Utterance'] = request.utterance
+        if not UtilClient.is_unset(request.vendor_param):
+            query['VendorParam'] = request.vendor_param
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Chat',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ChatResponse(),
-            self.do_rpcrequest('Chat', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def chat_with_options_async(
@@ -237,12 +423,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ChatResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.intent_name):
+            query['IntentName'] = request.intent_name
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        if not UtilClient.is_unset(request.perspective):
+            query['Perspective'] = request.perspective
+        if not UtilClient.is_unset(request.recommend):
+            query['Recommend'] = request.recommend
+        if not UtilClient.is_unset(request.sender_id):
+            query['SenderId'] = request.sender_id
+        if not UtilClient.is_unset(request.sender_nick):
+            query['SenderNick'] = request.sender_nick
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.utterance):
+            query['Utterance'] = request.utterance
+        if not UtilClient.is_unset(request.vendor_param):
+            query['VendorParam'] = request.vendor_param
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Chat',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ChatResponse(),
-            await self.do_rpcrequest_async('Chat', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def chat(
@@ -265,12 +485,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreateBotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.avatar):
+            query['Avatar'] = request.avatar
+        if not UtilClient.is_unset(request.introduction):
+            query['Introduction'] = request.introduction
+        if not UtilClient.is_unset(request.language_code):
+            query['LanguageCode'] = request.language_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.robot_type):
+            query['RobotType'] = request.robot_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBot',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateBotResponse(),
-            self.do_rpcrequest('CreateBot', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_bot_with_options_async(
@@ -279,12 +523,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreateBotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.avatar):
+            query['Avatar'] = request.avatar
+        if not UtilClient.is_unset(request.introduction):
+            query['Introduction'] = request.introduction
+        if not UtilClient.is_unset(request.language_code):
+            query['LanguageCode'] = request.language_code
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.robot_type):
+            query['RobotType'] = request.robot_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBot',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateBotResponse(),
-            await self.do_rpcrequest_async('CreateBot', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_bot(
@@ -307,12 +575,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreateCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.knowledge_type):
+            query['KnowledgeType'] = request.knowledge_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_category_id):
+            query['ParentCategoryId'] = request.parent_category_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateCategoryResponse(),
-            self.do_rpcrequest('CreateCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_category_with_options_async(
@@ -321,12 +611,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreateCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.biz_code):
+            query['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.knowledge_type):
+            query['KnowledgeType'] = request.knowledge_type
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.parent_category_id):
+            query['ParentCategoryId'] = request.parent_category_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateCategoryResponse(),
-            await self.do_rpcrequest_async('CreateCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_category(
@@ -349,12 +661,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreateCoreWordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCoreWord',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateCoreWordResponse(),
-            self.do_rpcrequest('CreateCoreWord', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_core_word_with_options_async(
@@ -363,12 +691,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreateCoreWordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCoreWord',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateCoreWordResponse(),
-            await self.do_rpcrequest_async('CreateCoreWord', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_core_word(
@@ -391,12 +735,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreateDialogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dialog_name):
+            query['DialogName'] = request.dialog_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDialog',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateDialogResponse(),
-            self.do_rpcrequest('CreateDialog', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_dialog_with_options_async(
@@ -405,12 +769,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreateDialogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dialog_name):
+            query['DialogName'] = request.dialog_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDialog',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateDialogResponse(),
-            await self.do_rpcrequest_async('CreateDialog', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_dialog(
@@ -437,12 +821,36 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.members):
             request.members_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.members, 'Members', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.members_shrink):
+            query['Members'] = request.members_shrink
+        if not UtilClient.is_unset(request.regex):
+            query['Regex'] = request.regex
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEntity',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateEntityResponse(),
-            self.do_rpcrequest('CreateEntity', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_entity_with_options_async(
@@ -455,12 +863,36 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.members):
             request.members_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.members, 'Members', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.members_shrink):
+            query['Members'] = request.members_shrink
+        if not UtilClient.is_unset(request.regex):
+            query['Regex'] = request.regex
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEntity',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateEntityResponse(),
-            await self.do_rpcrequest_async('CreateEntity', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_entity(
@@ -487,12 +919,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.intent_definition):
             request.intent_definition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.intent_definition), 'IntentDefinition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.intent_definition_shrink):
+            query['IntentDefinition'] = request.intent_definition_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIntent',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateIntentResponse(),
-            self.do_rpcrequest('CreateIntent', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_intent_with_options_async(
@@ -505,12 +955,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.intent_definition):
             request.intent_definition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.intent_definition), 'IntentDefinition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.intent_definition_shrink):
+            query['IntentDefinition'] = request.intent_definition_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIntent',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateIntentResponse(),
-            await self.do_rpcrequest_async('CreateIntent', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_intent(
@@ -537,12 +1005,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.knowledge):
             request.knowledge_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.knowledge), 'Knowledge', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.knowledge_shrink):
+            body['Knowledge'] = request.knowledge_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateKnowledgeResponse(),
-            self.do_rpcrequest('CreateKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_knowledge_with_options_async(
@@ -555,12 +1041,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.knowledge):
             request.knowledge_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.knowledge), 'Knowledge', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.knowledge_shrink):
+            body['Knowledge'] = request.knowledge_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreateKnowledgeResponse(),
-            await self.do_rpcrequest_async('CreateKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_knowledge(
@@ -583,12 +1087,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreatePerspectiveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePerspective',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreatePerspectiveResponse(),
-            self.do_rpcrequest('CreatePerspective', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_perspective_with_options_async(
@@ -597,12 +1117,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.CreatePerspectiveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePerspective',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.CreatePerspectiveResponse(),
-            await self.do_rpcrequest_async('CreatePerspective', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_perspective(
@@ -625,12 +1161,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteBotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBot',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteBotResponse(),
-            self.do_rpcrequest('DeleteBot', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_bot_with_options_async(
@@ -639,12 +1191,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteBotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBot',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteBotResponse(),
-            await self.do_rpcrequest_async('DeleteBot', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_bot(
@@ -667,12 +1235,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteCategoryResponse(),
-            self.do_rpcrequest('DeleteCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_category_with_options_async(
@@ -681,12 +1265,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteCategoryResponse(),
-            await self.do_rpcrequest_async('DeleteCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_category(
@@ -709,12 +1309,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteCoreWordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCoreWord',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteCoreWordResponse(),
-            self.do_rpcrequest('DeleteCoreWord', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_core_word_with_options_async(
@@ -723,12 +1339,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteCoreWordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCoreWord',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteCoreWordResponse(),
-            await self.do_rpcrequest_async('DeleteCoreWord', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_core_word(
@@ -751,12 +1383,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteDialogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDialog',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteDialogResponse(),
-            self.do_rpcrequest('DeleteDialog', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_dialog_with_options_async(
@@ -765,12 +1413,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteDialogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDialog',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteDialogResponse(),
-            await self.do_rpcrequest_async('DeleteDialog', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_dialog(
@@ -793,12 +1457,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteEntityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEntity',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteEntityResponse(),
-            self.do_rpcrequest('DeleteEntity', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_entity_with_options_async(
@@ -807,12 +1487,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteEntityResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEntity',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteEntityResponse(),
-            await self.do_rpcrequest_async('DeleteEntity', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_entity(
@@ -835,12 +1531,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteIntentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.intent_id):
+            query['IntentId'] = request.intent_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIntent',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteIntentResponse(),
-            self.do_rpcrequest('DeleteIntent', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_intent_with_options_async(
@@ -849,12 +1561,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteIntentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.intent_id):
+            query['IntentId'] = request.intent_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIntent',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteIntentResponse(),
-            await self.do_rpcrequest_async('DeleteIntent', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_intent(
@@ -877,12 +1605,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteKnowledgeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteKnowledgeResponse(),
-            self.do_rpcrequest('DeleteKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_knowledge_with_options_async(
@@ -891,12 +1635,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DeleteKnowledgeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DeleteKnowledgeResponse(),
-            await self.do_rpcrequest_async('DeleteKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_knowledge(
@@ -919,12 +1679,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeBotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBot',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeBotResponse(),
-            self.do_rpcrequest('DescribeBot', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_bot_with_options_async(
@@ -933,12 +1709,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeBotResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBot',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeBotResponse(),
-            await self.do_rpcrequest_async('DescribeBot', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_bot(
@@ -961,12 +1753,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeCategoryResponse(),
-            self.do_rpcrequest('DescribeCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_category_with_options_async(
@@ -975,12 +1783,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeCategoryResponse(),
-            await self.do_rpcrequest_async('DescribeCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_category(
@@ -1003,12 +1827,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeCoreWordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCoreWord',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeCoreWordResponse(),
-            self.do_rpcrequest('DescribeCoreWord', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_core_word_with_options_async(
@@ -1017,12 +1857,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeCoreWordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCoreWord',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeCoreWordResponse(),
-            await self.do_rpcrequest_async('DescribeCoreWord', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_core_word(
@@ -1045,12 +1901,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeDialogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDialog',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeDialogResponse(),
-            self.do_rpcrequest('DescribeDialog', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dialog_with_options_async(
@@ -1059,12 +1931,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeDialogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDialog',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeDialogResponse(),
-            await self.do_rpcrequest_async('DescribeDialog', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dialog(
@@ -1087,12 +1975,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeDialogFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeDialogFlowResponse(),
-            self.do_rpcrequest('DescribeDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dialog_flow_with_options_async(
@@ -1101,12 +2005,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeDialogFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeDialogFlowResponse(),
-            await self.do_rpcrequest_async('DescribeDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dialog_flow(
@@ -1129,12 +2049,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeEntitiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEntities',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeEntitiesResponse(),
-            self.do_rpcrequest('DescribeEntities', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_entities_with_options_async(
@@ -1143,12 +2079,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeEntitiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEntities',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeEntitiesResponse(),
-            await self.do_rpcrequest_async('DescribeEntities', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_entities(
@@ -1171,12 +2123,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeIntentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.intent_id):
+            query['IntentId'] = request.intent_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIntent',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeIntentResponse(),
-            self.do_rpcrequest('DescribeIntent', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_intent_with_options_async(
@@ -1185,12 +2153,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeIntentResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.intent_id):
+            query['IntentId'] = request.intent_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIntent',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeIntentResponse(),
-            await self.do_rpcrequest_async('DescribeIntent', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_intent(
@@ -1213,12 +2197,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeKnowledgeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeKnowledgeResponse(),
-            self.do_rpcrequest('DescribeKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_knowledge_with_options_async(
@@ -1227,12 +2227,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribeKnowledgeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribeKnowledgeResponse(),
-            await self.do_rpcrequest_async('DescribeKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_knowledge(
@@ -1255,12 +2271,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribePerspectiveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.perspective_id):
+            query['PerspectiveId'] = request.perspective_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePerspective',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribePerspectiveResponse(),
-            self.do_rpcrequest('DescribePerspective', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_perspective_with_options_async(
@@ -1269,12 +2301,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DescribePerspectiveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.perspective_id):
+            query['PerspectiveId'] = request.perspective_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePerspective',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DescribePerspectiveResponse(),
-            await self.do_rpcrequest_async('DescribePerspective', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_perspective(
@@ -1297,12 +2345,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DisableDialogFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DisableDialogFlowResponse(),
-            self.do_rpcrequest('DisableDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_dialog_flow_with_options_async(
@@ -1311,12 +2375,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DisableDialogFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DisableDialogFlowResponse(),
-            await self.do_rpcrequest_async('DisableDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_dialog_flow(
@@ -1339,12 +2419,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DisableKnowledgeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DisableKnowledgeResponse(),
-            self.do_rpcrequest('DisableKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def disable_knowledge_with_options_async(
@@ -1353,12 +2449,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.DisableKnowledgeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.DisableKnowledgeResponse(),
-            await self.do_rpcrequest_async('DisableKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def disable_knowledge(
@@ -1381,12 +2493,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.FeedbackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Feedback',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.FeedbackResponse(),
-            self.do_rpcrequest('Feedback', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def feedback_with_options_async(
@@ -1395,12 +2529,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.FeedbackResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.feedback):
+            query['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Feedback',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.FeedbackResponse(),
-            await self.do_rpcrequest_async('Feedback', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def feedback(
@@ -1423,12 +2579,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetAsyncResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAsyncResult',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetAsyncResultResponse(),
-            self.do_rpcrequest('GetAsyncResult', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_async_result_with_options_async(
@@ -1437,12 +2609,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetAsyncResultResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAsyncResult',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetAsyncResultResponse(),
-            await self.do_rpcrequest_async('GetAsyncResult', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_async_result(
@@ -1465,12 +2653,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetBotChatDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotChatData',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetBotChatDataResponse(),
-            self.do_rpcrequest('GetBotChatData', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_bot_chat_data_with_options_async(
@@ -1479,12 +2687,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetBotChatDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotChatData',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetBotChatDataResponse(),
-            await self.do_rpcrequest_async('GetBotChatData', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_bot_chat_data(
@@ -1507,12 +2735,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetBotDsStatDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotDsStatData',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetBotDsStatDataResponse(),
-            self.do_rpcrequest('GetBotDsStatData', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_bot_ds_stat_data_with_options_async(
@@ -1521,12 +2769,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetBotDsStatDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotDsStatData',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetBotDsStatDataResponse(),
-            await self.do_rpcrequest_async('GetBotDsStatData', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_bot_ds_stat_data(
@@ -1549,12 +2817,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetBotKnowledgeStatDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotKnowledgeStatData',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetBotKnowledgeStatDataResponse(),
-            self.do_rpcrequest('GetBotKnowledgeStatData', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_bot_knowledge_stat_data_with_options_async(
@@ -1563,12 +2851,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetBotKnowledgeStatDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotKnowledgeStatData',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetBotKnowledgeStatDataResponse(),
-            await self.do_rpcrequest_async('GetBotKnowledgeStatData', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_bot_knowledge_stat_data(
@@ -1591,12 +2899,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetBotSessionDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotSessionData',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetBotSessionDataResponse(),
-            self.do_rpcrequest('GetBotSessionData', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_bot_session_data_with_options_async(
@@ -1605,12 +2933,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetBotSessionDataResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBotSessionData',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetBotSessionDataResponse(),
-            await self.do_rpcrequest_async('GetBotSessionData', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_bot_session_data(
@@ -1633,12 +2981,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetConversationListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sender_id):
+            query['SenderId'] = request.sender_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConversationList',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetConversationListResponse(),
-            self.do_rpcrequest('GetConversationList', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_conversation_list_with_options_async(
@@ -1647,12 +3023,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.GetConversationListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sender_id):
+            query['SenderId'] = request.sender_id
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConversationList',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.GetConversationListResponse(),
-            await self.do_rpcrequest_async('GetConversationList', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_conversation_list(
@@ -1675,12 +3079,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotChatHistorysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotChatHistorys',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotChatHistorysResponse(),
-            self.do_rpcrequest('ListBotChatHistorys', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_bot_chat_historys_with_options_async(
@@ -1689,12 +3115,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotChatHistorysResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotChatHistorys',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotChatHistorysResponse(),
-            await self.do_rpcrequest_async('ListBotChatHistorys', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_bot_chat_historys(
@@ -1717,12 +3165,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotColdDsDatasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotColdDsDatas',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotColdDsDatasResponse(),
-            self.do_rpcrequest('ListBotColdDsDatas', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_bot_cold_ds_datas_with_options_async(
@@ -1731,12 +3201,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotColdDsDatasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotColdDsDatas',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotColdDsDatasResponse(),
-            await self.do_rpcrequest_async('ListBotColdDsDatas', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_bot_cold_ds_datas(
@@ -1759,12 +3251,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotColdKnowledgesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotColdKnowledges',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotColdKnowledgesResponse(),
-            self.do_rpcrequest('ListBotColdKnowledges', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_bot_cold_knowledges_with_options_async(
@@ -1773,12 +3287,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotColdKnowledgesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotColdKnowledges',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotColdKnowledgesResponse(),
-            await self.do_rpcrequest_async('ListBotColdKnowledges', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_bot_cold_knowledges(
@@ -1801,12 +3337,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotDsDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotDsDetails',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotDsDetailsResponse(),
-            self.do_rpcrequest('ListBotDsDetails', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_bot_ds_details_with_options_async(
@@ -1815,12 +3373,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotDsDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotDsDetails',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotDsDetailsResponse(),
-            await self.do_rpcrequest_async('ListBotDsDetails', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_bot_ds_details(
@@ -1843,12 +3423,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotHotDsDatasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotHotDsDatas',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotHotDsDatasResponse(),
-            self.do_rpcrequest('ListBotHotDsDatas', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_bot_hot_ds_datas_with_options_async(
@@ -1857,12 +3459,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotHotDsDatasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotHotDsDatas',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotHotDsDatasResponse(),
-            await self.do_rpcrequest_async('ListBotHotDsDatas', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_bot_hot_ds_datas(
@@ -1885,12 +3509,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotHotKnowledgesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotHotKnowledges',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotHotKnowledgesResponse(),
-            self.do_rpcrequest('ListBotHotKnowledges', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_bot_hot_knowledges_with_options_async(
@@ -1899,12 +3545,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotHotKnowledgesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotHotKnowledges',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotHotKnowledgesResponse(),
-            await self.do_rpcrequest_async('ListBotHotKnowledges', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_bot_hot_knowledges(
@@ -1927,12 +3595,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotKnowledgeDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotKnowledgeDetails',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotKnowledgeDetailsResponse(),
-            self.do_rpcrequest('ListBotKnowledgeDetails', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_bot_knowledge_details_with_options_async(
@@ -1941,12 +3631,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotKnowledgeDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotKnowledgeDetails',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotKnowledgeDetailsResponse(),
-            await self.do_rpcrequest_async('ListBotKnowledgeDetails', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_bot_knowledge_details(
@@ -1969,12 +3681,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotReceptionDetailDatasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotReceptionDetailDatas',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotReceptionDetailDatasResponse(),
-            self.do_rpcrequest('ListBotReceptionDetailDatas', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_bot_reception_detail_datas_with_options_async(
@@ -1983,12 +3715,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListBotReceptionDetailDatasResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBotReceptionDetailDatas',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListBotReceptionDetailDatasResponse(),
-            await self.do_rpcrequest_async('ListBotReceptionDetailDatas', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_bot_reception_detail_datas(
@@ -2011,12 +3763,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListConversationLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConversationLogs',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListConversationLogsResponse(),
-            self.do_rpcrequest('ListConversationLogs', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_conversation_logs_with_options_async(
@@ -2025,12 +3793,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.ListConversationLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConversationLogs',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.ListConversationLogsResponse(),
-            await self.do_rpcrequest_async('ListConversationLogs', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_conversation_logs(
@@ -2053,12 +3837,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.MoveKnowledgeCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveKnowledgeCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.MoveKnowledgeCategoryResponse(),
-            self.do_rpcrequest('MoveKnowledgeCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def move_knowledge_category_with_options_async(
@@ -2067,12 +3869,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.MoveKnowledgeCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveKnowledgeCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.MoveKnowledgeCategoryResponse(),
-            await self.do_rpcrequest_async('MoveKnowledgeCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def move_knowledge_category(
@@ -2095,12 +3915,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.PublishDialogFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.PublishDialogFlowResponse(),
-            self.do_rpcrequest('PublishDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_dialog_flow_with_options_async(
@@ -2109,12 +3945,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.PublishDialogFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.PublishDialogFlowResponse(),
-            await self.do_rpcrequest_async('PublishDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_dialog_flow(
@@ -2137,12 +3989,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.PublishKnowledgeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.async_):
+            query['Async'] = request.async_
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.PublishKnowledgeResponse(),
-            self.do_rpcrequest('PublishKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def publish_knowledge_with_options_async(
@@ -2151,12 +4021,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.PublishKnowledgeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.async_):
+            query['Async'] = request.async_
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.PublishKnowledgeResponse(),
-            await self.do_rpcrequest_async('PublishKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def publish_knowledge(
@@ -2179,12 +4067,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryBotsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryBots',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryBotsResponse(),
-            self.do_rpcrequest('QueryBots', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_bots_with_options_async(
@@ -2193,12 +4099,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryBotsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryBots',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryBotsResponse(),
-            await self.do_rpcrequest_async('QueryBots', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_bots(
@@ -2221,12 +4145,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryCategoriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_type):
+            query['KnowledgeType'] = request.knowledge_type
+        if not UtilClient.is_unset(request.parent_category_id):
+            query['ParentCategoryId'] = request.parent_category_id
+        if not UtilClient.is_unset(request.show_childrens):
+            query['ShowChildrens'] = request.show_childrens
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCategories',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryCategoriesResponse(),
-            self.do_rpcrequest('QueryCategories', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_categories_with_options_async(
@@ -2235,12 +4179,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryCategoriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_type):
+            query['KnowledgeType'] = request.knowledge_type
+        if not UtilClient.is_unset(request.parent_category_id):
+            query['ParentCategoryId'] = request.parent_category_id
+        if not UtilClient.is_unset(request.show_childrens):
+            query['ShowChildrens'] = request.show_childrens
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCategories',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryCategoriesResponse(),
-            await self.do_rpcrequest_async('QueryCategories', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_categories(
@@ -2263,12 +4227,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryCoreWordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.synonym):
+            query['Synonym'] = request.synonym
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCoreWords',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryCoreWordsResponse(),
-            self.do_rpcrequest('QueryCoreWords', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_core_words_with_options_async(
@@ -2277,12 +4263,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryCoreWordsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.synonym):
+            query['Synonym'] = request.synonym
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCoreWords',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryCoreWordsResponse(),
-            await self.do_rpcrequest_async('QueryCoreWords', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_core_words(
@@ -2305,12 +4313,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryDialogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_name):
+            query['DialogName'] = request.dialog_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDialogs',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryDialogsResponse(),
-            self.do_rpcrequest('QueryDialogs', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_dialogs_with_options_async(
@@ -2319,12 +4349,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryDialogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_name):
+            query['DialogName'] = request.dialog_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDialogs',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryDialogsResponse(),
-            await self.do_rpcrequest_async('QueryDialogs', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_dialogs(
@@ -2347,12 +4399,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryEntitiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEntities',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryEntitiesResponse(),
-            self.do_rpcrequest('QueryEntities', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_entities_with_options_async(
@@ -2361,12 +4435,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryEntitiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEntities',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryEntitiesResponse(),
-            await self.do_rpcrequest_async('QueryEntities', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_entities(
@@ -2389,12 +4485,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryIntentsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.intent_name):
+            query['IntentName'] = request.intent_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryIntents',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryIntentsResponse(),
-            self.do_rpcrequest('QueryIntents', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_intents_with_options_async(
@@ -2403,12 +4521,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryIntentsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.intent_name):
+            query['IntentName'] = request.intent_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryIntents',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryIntentsResponse(),
-            await self.do_rpcrequest_async('QueryIntents', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_intents(
@@ -2431,12 +4571,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryKnowledgesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
+        if not UtilClient.is_unset(request.knowledge_title):
+            query['KnowledgeTitle'] = request.knowledge_title
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryKnowledges',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryKnowledgesResponse(),
-            self.do_rpcrequest('QueryKnowledges', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_knowledges_with_options_async(
@@ -2445,12 +4609,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryKnowledgesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
+        if not UtilClient.is_unset(request.knowledge_title):
+            query['KnowledgeTitle'] = request.knowledge_title
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryKnowledges',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryKnowledgesResponse(),
-            await self.do_rpcrequest_async('QueryKnowledges', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_knowledges(
@@ -2469,31 +4657,73 @@ class Client(OpenApiClient):
 
     def query_perspectives_with_options(
         self,
+        request: chatbot_20171011_models.QueryPerspectivesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryPerspectivesResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryPerspectives',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryPerspectivesResponse(),
-            self.do_rpcrequest('QueryPerspectives', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_perspectives_with_options_async(
         self,
+        request: chatbot_20171011_models.QueryPerspectivesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QueryPerspectivesResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryPerspectives',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             chatbot_20171011_models.QueryPerspectivesResponse(),
-            await self.do_rpcrequest_async('QueryPerspectives', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def query_perspectives(self) -> chatbot_20171011_models.QueryPerspectivesResponse:
+    def query_perspectives(
+        self,
+        request: chatbot_20171011_models.QueryPerspectivesRequest,
+    ) -> chatbot_20171011_models.QueryPerspectivesResponse:
         runtime = util_models.RuntimeOptions()
-        return self.query_perspectives_with_options(runtime)
+        return self.query_perspectives_with_options(request, runtime)
 
-    async def query_perspectives_async(self) -> chatbot_20171011_models.QueryPerspectivesResponse:
+    async def query_perspectives_async(
+        self,
+        request: chatbot_20171011_models.QueryPerspectivesRequest,
+    ) -> chatbot_20171011_models.QueryPerspectivesResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.query_perspectives_with_options_async(runtime)
+        return await self.query_perspectives_with_options_async(request, runtime)
 
     def query_system_entities_with_options(
         self,
@@ -2501,12 +4731,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QuerySystemEntitiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySystemEntities',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QuerySystemEntitiesResponse(),
-            self.do_rpcrequest('QuerySystemEntities', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_system_entities_with_options_async(
@@ -2515,12 +4761,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.QuerySystemEntitiesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySystemEntities',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.QuerySystemEntitiesResponse(),
-            await self.do_rpcrequest_async('QuerySystemEntities', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_system_entities(
@@ -2547,12 +4809,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.member):
             request.member_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.member), 'Member', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.member_shrink):
+            query['Member'] = request.member_shrink
+        if not UtilClient.is_unset(request.remove_type):
+            query['RemoveType'] = request.remove_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveEntityMember',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.RemoveEntityMemberResponse(),
-            self.do_rpcrequest('RemoveEntityMember', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_entity_member_with_options_async(
@@ -2565,12 +4847,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.member):
             request.member_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.member), 'Member', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.member_shrink):
+            query['Member'] = request.member_shrink
+        if not UtilClient.is_unset(request.remove_type):
+            query['RemoveType'] = request.remove_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveEntityMember',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.RemoveEntityMemberResponse(),
-            await self.do_rpcrequest_async('RemoveEntityMember', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_entity_member(
@@ -2593,12 +4895,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.RemoveSynonymResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
+        if not UtilClient.is_unset(request.synonym):
+            query['Synonym'] = request.synonym
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveSynonym',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.RemoveSynonymResponse(),
-            self.do_rpcrequest('RemoveSynonym', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def remove_synonym_with_options_async(
@@ -2607,12 +4927,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.RemoveSynonymResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
+        if not UtilClient.is_unset(request.synonym):
+            query['Synonym'] = request.synonym
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveSynonym',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.RemoveSynonymResponse(),
-            await self.do_rpcrequest_async('RemoveSynonym', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def remove_synonym(
@@ -2635,12 +4973,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.TestDialogFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TestDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.TestDialogFlowResponse(),
-            self.do_rpcrequest('TestDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def test_dialog_flow_with_options_async(
@@ -2649,12 +5003,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.TestDialogFlowResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TestDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.TestDialogFlowResponse(),
-            await self.do_rpcrequest_async('TestDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def test_dialog_flow(
@@ -2677,12 +5047,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.UpdateCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateCategoryResponse(),
-            self.do_rpcrequest('UpdateCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_category_with_options_async(
@@ -2691,12 +5079,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.UpdateCategoryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCategory',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateCategoryResponse(),
-            await self.do_rpcrequest_async('UpdateCategory', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_category(
@@ -2719,12 +5125,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.UpdateCoreWordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_code):
+            query['CoreWordCode'] = request.core_word_code
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCoreWord',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateCoreWordResponse(),
-            self.do_rpcrequest('UpdateCoreWord', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_core_word_with_options_async(
@@ -2733,12 +5157,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.UpdateCoreWordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.core_word_code):
+            query['CoreWordCode'] = request.core_word_code
+        if not UtilClient.is_unset(request.core_word_name):
+            query['CoreWordName'] = request.core_word_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCoreWord',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateCoreWordResponse(),
-            await self.do_rpcrequest_async('UpdateCoreWord', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_core_word(
@@ -2761,12 +5203,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.UpdateDialogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.dialog_name):
+            query['DialogName'] = request.dialog_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDialog',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateDialogResponse(),
-            self.do_rpcrequest('UpdateDialog', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_dialog_with_options_async(
@@ -2775,12 +5237,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.UpdateDialogResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.dialog_name):
+            query['DialogName'] = request.dialog_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDialog',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateDialogResponse(),
-            await self.do_rpcrequest_async('UpdateDialog', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_dialog(
@@ -2807,12 +5289,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.module_definition):
             request.module_definition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.module_definition), 'ModuleDefinition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        body = {}
+        if not UtilClient.is_unset(request.module_definition_shrink):
+            body['ModuleDefinition'] = request.module_definition_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateDialogFlowResponse(),
-            self.do_rpcrequest('UpdateDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_dialog_flow_with_options_async(
@@ -2825,12 +5327,32 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.module_definition):
             request.module_definition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.module_definition), 'ModuleDefinition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.dialog_id):
+            query['DialogId'] = request.dialog_id
+        body = {}
+        if not UtilClient.is_unset(request.module_definition_shrink):
+            body['ModuleDefinition'] = request.module_definition_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDialogFlow',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateDialogFlowResponse(),
-            await self.do_rpcrequest_async('UpdateDialogFlow', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_dialog_flow(
@@ -2857,12 +5379,38 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.members):
             request.members_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.members, 'Members', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.regex):
+            query['Regex'] = request.regex
+        body = {}
+        if not UtilClient.is_unset(request.members_shrink):
+            body['Members'] = request.members_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEntity',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateEntityResponse(),
-            self.do_rpcrequest('UpdateEntity', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_entity_with_options_async(
@@ -2875,12 +5423,38 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.members):
             request.members_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.members, 'Members', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.entity_name):
+            query['EntityName'] = request.entity_name
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.regex):
+            query['Regex'] = request.regex
+        body = {}
+        if not UtilClient.is_unset(request.members_shrink):
+            body['Members'] = request.members_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEntity',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateEntityResponse(),
-            await self.do_rpcrequest_async('UpdateEntity', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_entity(
@@ -2907,12 +5481,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.intent_definition):
             request.intent_definition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.intent_definition), 'IntentDefinition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.intent_definition_shrink):
+            query['IntentDefinition'] = request.intent_definition_shrink
+        if not UtilClient.is_unset(request.intent_id):
+            query['IntentId'] = request.intent_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIntent',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateIntentResponse(),
-            self.do_rpcrequest('UpdateIntent', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_intent_with_options_async(
@@ -2925,12 +5517,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.intent_definition):
             request.intent_definition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.intent_definition), 'IntentDefinition', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.intent_definition_shrink):
+            query['IntentDefinition'] = request.intent_definition_shrink
+        if not UtilClient.is_unset(request.intent_id):
+            query['IntentId'] = request.intent_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIntent',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateIntentResponse(),
-            await self.do_rpcrequest_async('UpdateIntent', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_intent(
@@ -2957,12 +5567,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.knowledge):
             request.knowledge_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.knowledge), 'Knowledge', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.knowledge_shrink):
+            body['Knowledge'] = request.knowledge_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateKnowledgeResponse(),
-            self.do_rpcrequest('UpdateKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_knowledge_with_options_async(
@@ -2975,12 +5603,30 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.knowledge):
             request.knowledge_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.knowledge), 'Knowledge', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.knowledge_shrink):
+            body['Knowledge'] = request.knowledge_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateKnowledge',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdateKnowledgeResponse(),
-            await self.do_rpcrequest_async('UpdateKnowledge', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_knowledge(
@@ -3003,12 +5649,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.UpdatePerspectiveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.perspective_id):
+            query['PerspectiveId'] = request.perspective_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePerspective',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdatePerspectiveResponse(),
-            self.do_rpcrequest('UpdatePerspective', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_perspective_with_options_async(
@@ -3017,12 +5681,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20171011_models.UpdatePerspectiveResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.perspective_id):
+            query['PerspectiveId'] = request.perspective_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePerspective',
+            version='2017-10-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             chatbot_20171011_models.UpdatePerspectiveResponse(),
-            await self.do_rpcrequest_async('UpdatePerspective', '2017-10-11', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_perspective(
