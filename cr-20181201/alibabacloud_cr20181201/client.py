@@ -790,6 +790,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.build_args):
+            query['BuildArgs'] = request.build_args
         if not UtilClient.is_unset(request.dockerfile_location):
             query['DockerfileLocation'] = request.dockerfile_location
         if not UtilClient.is_unset(request.dockerfile_name):
@@ -798,6 +800,8 @@ class Client(OpenApiClient):
             query['ImageTag'] = request.image_tag
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.platforms):
+            query['Platforms'] = request.platforms
         if not UtilClient.is_unset(request.push_name):
             query['PushName'] = request.push_name
         if not UtilClient.is_unset(request.push_type):
@@ -830,6 +834,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.CreateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.build_args):
+            query['BuildArgs'] = request.build_args
         if not UtilClient.is_unset(request.dockerfile_location):
             query['DockerfileLocation'] = request.dockerfile_location
         if not UtilClient.is_unset(request.dockerfile_name):
@@ -838,6 +844,8 @@ class Client(OpenApiClient):
             query['ImageTag'] = request.image_tag
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.platforms):
+            query['Platforms'] = request.platforms
         if not UtilClient.is_unset(request.push_name):
             query['PushName'] = request.push_name
         if not UtilClient.is_unset(request.push_type):

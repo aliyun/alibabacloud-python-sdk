@@ -1120,18 +1120,22 @@ class CreateNamespaceResponse(TeaModel):
 class CreateRepoBuildRuleRequest(TeaModel):
     def __init__(
         self,
+        build_args: List[str] = None,
         dockerfile_location: str = None,
         dockerfile_name: str = None,
         image_tag: str = None,
         instance_id: str = None,
+        platforms: List[str] = None,
         push_name: str = None,
         push_type: str = None,
         repo_id: str = None,
     ):
+        self.build_args = build_args
         self.dockerfile_location = dockerfile_location
         self.dockerfile_name = dockerfile_name
         self.image_tag = image_tag
         self.instance_id = instance_id
+        self.platforms = platforms
         self.push_name = push_name
         self.push_type = push_type
         self.repo_id = repo_id
@@ -1145,6 +1149,8 @@ class CreateRepoBuildRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.build_args is not None:
+            result['BuildArgs'] = self.build_args
         if self.dockerfile_location is not None:
             result['DockerfileLocation'] = self.dockerfile_location
         if self.dockerfile_name is not None:
@@ -1153,6 +1159,8 @@ class CreateRepoBuildRuleRequest(TeaModel):
             result['ImageTag'] = self.image_tag
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.platforms is not None:
+            result['Platforms'] = self.platforms
         if self.push_name is not None:
             result['PushName'] = self.push_name
         if self.push_type is not None:
@@ -1163,6 +1171,8 @@ class CreateRepoBuildRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BuildArgs') is not None:
+            self.build_args = m.get('BuildArgs')
         if m.get('DockerfileLocation') is not None:
             self.dockerfile_location = m.get('DockerfileLocation')
         if m.get('DockerfileName') is not None:
@@ -1171,6 +1181,8 @@ class CreateRepoBuildRuleRequest(TeaModel):
             self.image_tag = m.get('ImageTag')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Platforms') is not None:
+            self.platforms = m.get('Platforms')
         if m.get('PushName') is not None:
             self.push_name = m.get('PushName')
         if m.get('PushType') is not None:
