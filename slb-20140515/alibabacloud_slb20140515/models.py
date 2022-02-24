@@ -6294,6 +6294,802 @@ class DescribeHealthStatusResponse(TeaModel):
         return self
 
 
+class DescribeHealthStatusExRequest(TeaModel):
+    def __init__(
+        self,
+        listener_port: int = None,
+        listener_protocol: str = None,
+        load_balancer_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.listener_port = listener_port
+        self.listener_protocol = listener_protocol
+        self.load_balancer_id = load_balancer_id
+        # 读取的最大数据记录数量
+        self.max_results = max_results
+        # 当前开始读取的位置
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.listener_port is not None:
+            result['ListenerPort'] = self.listener_port
+        if self.listener_protocol is not None:
+            result['ListenerProtocol'] = self.listener_protocol
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListenerPort') is not None:
+            self.listener_port = m.get('ListenerPort')
+        if m.get('ListenerProtocol') is not None:
+            self.listener_protocol = m.get('ListenerProtocol')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyListenerServerGroupNonNormalServersNonNormalServerReason(TeaModel):
+    def __init__(
+        self,
+        actual_response: str = None,
+        expected_response: str = None,
+        reason_code: str = None,
+    ):
+        self.actual_response = actual_response
+        self.expected_response = expected_response
+        self.reason_code = reason_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_response is not None:
+            result['ActualResponse'] = self.actual_response
+        if self.expected_response is not None:
+            result['ExpectedResponse'] = self.expected_response
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActualResponse') is not None:
+            self.actual_response = m.get('ActualResponse')
+        if m.get('ExpectedResponse') is not None:
+            self.expected_response = m.get('ExpectedResponse')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyListenerServerGroupNonNormalServersNonNormalServer(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        reason: DescribeHealthStatusExResponseBodyListenerServerGroupNonNormalServersNonNormalServerReason = None,
+        server_id: str = None,
+        server_ip: str = None,
+        server_type: str = None,
+        status: str = None,
+    ):
+        self.port = port
+        self.reason = reason
+        self.server_id = server_id
+        self.server_ip = server_ip
+        self.server_type = server_type
+        self.status = status
+
+    def validate(self):
+        if self.reason:
+            self.reason.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.reason is not None:
+            result['Reason'] = self.reason.to_map()
+        if self.server_id is not None:
+            result['ServerId'] = self.server_id
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Reason') is not None:
+            temp_model = DescribeHealthStatusExResponseBodyListenerServerGroupNonNormalServersNonNormalServerReason()
+            self.reason = temp_model.from_map(m['Reason'])
+        if m.get('ServerId') is not None:
+            self.server_id = m.get('ServerId')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyListenerServerGroupNonNormalServers(TeaModel):
+    def __init__(
+        self,
+        non_normal_server: List[DescribeHealthStatusExResponseBodyListenerServerGroupNonNormalServersNonNormalServer] = None,
+    ):
+        self.non_normal_server = non_normal_server
+
+    def validate(self):
+        if self.non_normal_server:
+            for k in self.non_normal_server:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NonNormalServer'] = []
+        if self.non_normal_server is not None:
+            for k in self.non_normal_server:
+                result['NonNormalServer'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.non_normal_server = []
+        if m.get('NonNormalServer') is not None:
+            for k in m.get('NonNormalServer'):
+                temp_model = DescribeHealthStatusExResponseBodyListenerServerGroupNonNormalServersNonNormalServer()
+                self.non_normal_server.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatusNonNormalServersNonNormalServerReason(TeaModel):
+    def __init__(
+        self,
+        actual_response: str = None,
+        expected_response: str = None,
+        reason_code: str = None,
+    ):
+        self.actual_response = actual_response
+        self.expected_response = expected_response
+        self.reason_code = reason_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_response is not None:
+            result['ActualResponse'] = self.actual_response
+        if self.expected_response is not None:
+            result['ExpectedResponse'] = self.expected_response
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActualResponse') is not None:
+            self.actual_response = m.get('ActualResponse')
+        if m.get('ExpectedResponse') is not None:
+            self.expected_response = m.get('ExpectedResponse')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatusNonNormalServersNonNormalServer(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        reason: DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatusNonNormalServersNonNormalServerReason = None,
+        server_id: str = None,
+        server_ip: str = None,
+        server_type: str = None,
+        status: str = None,
+    ):
+        self.port = port
+        self.reason = reason
+        self.server_id = server_id
+        self.server_ip = server_ip
+        self.server_type = server_type
+        self.status = status
+
+    def validate(self):
+        if self.reason:
+            self.reason.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.reason is not None:
+            result['Reason'] = self.reason.to_map()
+        if self.server_id is not None:
+            result['ServerId'] = self.server_id
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Reason') is not None:
+            temp_model = DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatusNonNormalServersNonNormalServerReason()
+            self.reason = temp_model.from_map(m['Reason'])
+        if m.get('ServerId') is not None:
+            self.server_id = m.get('ServerId')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatusNonNormalServers(TeaModel):
+    def __init__(
+        self,
+        non_normal_server: List[DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatusNonNormalServersNonNormalServer] = None,
+    ):
+        self.non_normal_server = non_normal_server
+
+    def validate(self):
+        if self.non_normal_server:
+            for k in self.non_normal_server:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NonNormalServer'] = []
+        if self.non_normal_server is not None:
+            for k in self.non_normal_server:
+                result['NonNormalServer'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.non_normal_server = []
+        if m.get('NonNormalServer') is not None:
+            for k in m.get('NonNormalServer'):
+                temp_model = DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatusNonNormalServersNonNormalServer()
+                self.non_normal_server.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatus(TeaModel):
+    def __init__(
+        self,
+        non_normal_servers: DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatusNonNormalServers = None,
+        server_group_id: str = None,
+        server_group_type: str = None,
+    ):
+        self.non_normal_servers = non_normal_servers
+        self.server_group_id = server_group_id
+        self.server_group_type = server_group_type
+
+    def validate(self):
+        if self.non_normal_servers:
+            self.non_normal_servers.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.non_normal_servers is not None:
+            result['NonNormalServers'] = self.non_normal_servers.to_map()
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        if self.server_group_type is not None:
+            result['ServerGroupType'] = self.server_group_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NonNormalServers') is not None:
+            temp_model = DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatusNonNormalServers()
+            self.non_normal_servers = temp_model.from_map(m['NonNormalServers'])
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        if m.get('ServerGroupType') is not None:
+            self.server_group_type = m.get('ServerGroupType')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatus(TeaModel):
+    def __init__(
+        self,
+        server_group_status: List[DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatus] = None,
+    ):
+        self.server_group_status = server_group_status
+
+    def validate(self):
+        if self.server_group_status:
+            for k in self.server_group_status:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ServerGroupStatus'] = []
+        if self.server_group_status is not None:
+            for k in self.server_group_status:
+                result['ServerGroupStatus'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.server_group_status = []
+        if m.get('ServerGroupStatus') is not None:
+            for k in m.get('ServerGroupStatus'):
+                temp_model = DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatusServerGroupStatus()
+                self.server_group_status.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeHealthStatusExResponseBodyListenerServerGroup(TeaModel):
+    def __init__(
+        self,
+        health_check: str = None,
+        non_normal_servers: DescribeHealthStatusExResponseBodyListenerServerGroupNonNormalServers = None,
+        server_group_id: str = None,
+        server_group_status: DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatus = None,
+        server_group_type: str = None,
+    ):
+        self.health_check = health_check
+        self.non_normal_servers = non_normal_servers
+        self.server_group_id = server_group_id
+        self.server_group_status = server_group_status
+        self.server_group_type = server_group_type
+
+    def validate(self):
+        if self.non_normal_servers:
+            self.non_normal_servers.validate()
+        if self.server_group_status:
+            self.server_group_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
+        if self.non_normal_servers is not None:
+            result['NonNormalServers'] = self.non_normal_servers.to_map()
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        if self.server_group_status is not None:
+            result['ServerGroupStatus'] = self.server_group_status.to_map()
+        if self.server_group_type is not None:
+            result['ServerGroupType'] = self.server_group_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
+        if m.get('NonNormalServers') is not None:
+            temp_model = DescribeHealthStatusExResponseBodyListenerServerGroupNonNormalServers()
+            self.non_normal_servers = temp_model.from_map(m['NonNormalServers'])
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        if m.get('ServerGroupStatus') is not None:
+            temp_model = DescribeHealthStatusExResponseBodyListenerServerGroupServerGroupStatus()
+            self.server_group_status = temp_model.from_map(m['ServerGroupStatus'])
+        if m.get('ServerGroupType') is not None:
+            self.server_group_type = m.get('ServerGroupType')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroupNonNormalServersNonNormalServerReason(TeaModel):
+    def __init__(
+        self,
+        actual_response: str = None,
+        expected_response: str = None,
+        reason_code: str = None,
+    ):
+        self.actual_response = actual_response
+        self.expected_response = expected_response
+        self.reason_code = reason_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_response is not None:
+            result['ActualResponse'] = self.actual_response
+        if self.expected_response is not None:
+            result['ExpectedResponse'] = self.expected_response
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActualResponse') is not None:
+            self.actual_response = m.get('ActualResponse')
+        if m.get('ExpectedResponse') is not None:
+            self.expected_response = m.get('ExpectedResponse')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroupNonNormalServersNonNormalServer(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        reason: DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroupNonNormalServersNonNormalServerReason = None,
+        server_id: str = None,
+        server_ip: str = None,
+        server_type: str = None,
+        status: str = None,
+    ):
+        self.port = port
+        self.reason = reason
+        self.server_id = server_id
+        self.server_ip = server_ip
+        self.server_type = server_type
+        self.status = status
+
+    def validate(self):
+        if self.reason:
+            self.reason.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.reason is not None:
+            result['Reason'] = self.reason.to_map()
+        if self.server_id is not None:
+            result['ServerId'] = self.server_id
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Reason') is not None:
+            temp_model = DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroupNonNormalServersNonNormalServerReason()
+            self.reason = temp_model.from_map(m['Reason'])
+        if m.get('ServerId') is not None:
+            self.server_id = m.get('ServerId')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroupNonNormalServers(TeaModel):
+    def __init__(
+        self,
+        non_normal_server: List[DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroupNonNormalServersNonNormalServer] = None,
+    ):
+        self.non_normal_server = non_normal_server
+
+    def validate(self):
+        if self.non_normal_server:
+            for k in self.non_normal_server:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NonNormalServer'] = []
+        if self.non_normal_server is not None:
+            for k in self.non_normal_server:
+                result['NonNormalServer'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.non_normal_server = []
+        if m.get('NonNormalServer') is not None:
+            for k in m.get('NonNormalServer'):
+                temp_model = DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroupNonNormalServersNonNormalServer()
+                self.non_normal_server.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroup(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        health_check: str = None,
+        non_normal_servers: DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroupNonNormalServers = None,
+        rule_id: str = None,
+        server_group_id: str = None,
+        url: str = None,
+    ):
+        self.domain = domain
+        self.health_check = health_check
+        self.non_normal_servers = non_normal_servers
+        self.rule_id = rule_id
+        self.server_group_id = server_group_id
+        self.url = url
+
+    def validate(self):
+        if self.non_normal_servers:
+            self.non_normal_servers.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.health_check is not None:
+            result['HealthCheck'] = self.health_check
+        if self.non_normal_servers is not None:
+            result['NonNormalServers'] = self.non_normal_servers.to_map()
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('HealthCheck') is not None:
+            self.health_check = m.get('HealthCheck')
+        if m.get('NonNormalServers') is not None:
+            temp_model = DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroupNonNormalServers()
+            self.non_normal_servers = temp_model.from_map(m['NonNormalServers'])
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DescribeHealthStatusExResponseBodyRuleServerGroups(TeaModel):
+    def __init__(
+        self,
+        rule_server_group: List[DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroup] = None,
+    ):
+        self.rule_server_group = rule_server_group
+
+    def validate(self):
+        if self.rule_server_group:
+            for k in self.rule_server_group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RuleServerGroup'] = []
+        if self.rule_server_group is not None:
+            for k in self.rule_server_group:
+                result['RuleServerGroup'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.rule_server_group = []
+        if m.get('RuleServerGroup') is not None:
+            for k in m.get('RuleServerGroup'):
+                temp_model = DescribeHealthStatusExResponseBodyRuleServerGroupsRuleServerGroup()
+                self.rule_server_group.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeHealthStatusExResponseBody(TeaModel):
+    def __init__(
+        self,
+        listener_server_group: DescribeHealthStatusExResponseBodyListenerServerGroup = None,
+        next_token: str = None,
+        request_id: str = None,
+        rule_server_groups: DescribeHealthStatusExResponseBodyRuleServerGroups = None,
+    ):
+        self.listener_server_group = listener_server_group
+        # 分页token
+        self.next_token = next_token
+        self.request_id = request_id
+        self.rule_server_groups = rule_server_groups
+
+    def validate(self):
+        if self.listener_server_group:
+            self.listener_server_group.validate()
+        if self.rule_server_groups:
+            self.rule_server_groups.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.listener_server_group is not None:
+            result['ListenerServerGroup'] = self.listener_server_group.to_map()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule_server_groups is not None:
+            result['RuleServerGroups'] = self.rule_server_groups.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListenerServerGroup') is not None:
+            temp_model = DescribeHealthStatusExResponseBodyListenerServerGroup()
+            self.listener_server_group = temp_model.from_map(m['ListenerServerGroup'])
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RuleServerGroups') is not None:
+            temp_model = DescribeHealthStatusExResponseBodyRuleServerGroups()
+            self.rule_server_groups = temp_model.from_map(m['RuleServerGroups'])
+        return self
+
+
+class DescribeHealthStatusExResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeHealthStatusExResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeHealthStatusExResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeListenerAccessControlAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -14885,10 +15681,8 @@ class SetAccessControlListAttributeRequest(TeaModel):
 class SetAccessControlListAttributeResponseBody(TeaModel):
     def __init__(
         self,
-        acl_id: str = None,
         request_id: str = None,
     ):
-        self.acl_id = acl_id
         self.request_id = request_id
 
     def validate(self):
@@ -14900,16 +15694,12 @@ class SetAccessControlListAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.acl_id is not None:
-            result['AclId'] = self.acl_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AclId') is not None:
-            self.acl_id = m.get('AclId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
