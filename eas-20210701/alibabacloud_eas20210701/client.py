@@ -384,64 +384,6 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_role(self) -> eas_20210701_models.CreateRoleResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_role_with_options(headers, runtime)
-
-    async def create_role_async(self) -> eas_20210701_models.CreateRoleResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_role_with_options_async(headers, runtime)
-
-    def create_role_with_options(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> eas_20210701_models.CreateRoleResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateRole',
-            version='2021-07-01',
-            protocol='HTTPS',
-            pathname=f'/api/v2/role',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eas_20210701_models.CreateRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_role_with_options_async(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> eas_20210701_models.CreateRoleResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateRole',
-            version='2021-07-01',
-            protocol='HTTPS',
-            pathname=f'/api/v2/role',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eas_20210701_models.CreateRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
     def create_service(
         self,
         request: eas_20210701_models.CreateServiceRequest,
@@ -1709,64 +1651,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eas_20210701_models.DescribeResourceLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_role(self) -> eas_20210701_models.DescribeRoleResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.describe_role_with_options(headers, runtime)
-
-    async def describe_role_async(self) -> eas_20210701_models.DescribeRoleResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.describe_role_with_options_async(headers, runtime)
-
-    def describe_role_with_options(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> eas_20210701_models.DescribeRoleResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeRole',
-            version='2021-07-01',
-            protocol='HTTPS',
-            pathname=f'/api/v2/role',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eas_20210701_models.DescribeRoleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_role_with_options_async(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> eas_20210701_models.DescribeRoleResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeRole',
-            version='2021-07-01',
-            protocol='HTTPS',
-            pathname=f'/api/v2/role',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            eas_20210701_models.DescribeRoleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

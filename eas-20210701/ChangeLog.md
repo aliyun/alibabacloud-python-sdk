@@ -1,3 +1,6 @@
+2022-02-24 Version: 1.1.1
+- Add cron scaler related api.
+
 2022-02-22 Version: 1.1.0
 - Add cron scaler related api.
 
