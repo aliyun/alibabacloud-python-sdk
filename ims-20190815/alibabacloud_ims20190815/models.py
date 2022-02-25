@@ -42,21 +42,25 @@ class AddClientIdToOIDCProviderResponseBodyOIDCProvider(TeaModel):
         self,
         arn: str = None,
         client_ids: str = None,
+        create_date: str = None,
         description: str = None,
         fingerprints: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         issuer_url: str = None,
         oidcprovider_name: str = None,
+        update_date: str = None,
     ):
         self.arn = arn
         self.client_ids = client_ids
+        self.create_date = create_date
         self.description = description
         self.fingerprints = fingerprints
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.issuer_url = issuer_url
         self.oidcprovider_name = oidcprovider_name
+        self.update_date = update_date
 
     def validate(self):
         pass
@@ -71,6 +75,8 @@ class AddClientIdToOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['Arn'] = self.arn
         if self.client_ids is not None:
             result['ClientIds'] = self.client_ids
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
         if self.description is not None:
             result['Description'] = self.description
         if self.fingerprints is not None:
@@ -83,6 +89,8 @@ class AddClientIdToOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['IssuerUrl'] = self.issuer_url
         if self.oidcprovider_name is not None:
             result['OIDCProviderName'] = self.oidcprovider_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
         return result
 
     def from_map(self, m: dict = None):
@@ -91,6 +99,8 @@ class AddClientIdToOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.arn = m.get('Arn')
         if m.get('ClientIds') is not None:
             self.client_ids = m.get('ClientIds')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Fingerprints') is not None:
@@ -103,6 +113,8 @@ class AddClientIdToOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.issuer_url = m.get('IssuerUrl')
         if m.get('OIDCProviderName') is not None:
             self.oidcprovider_name = m.get('OIDCProviderName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
         return self
 
 
@@ -216,21 +228,25 @@ class AddFingerprintToOIDCProviderResponseBodyOIDCProvider(TeaModel):
         self,
         arn: str = None,
         client_ids: str = None,
+        create_date: str = None,
         description: str = None,
         fingerprints: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         issuer_url: str = None,
         oidcprovider_name: str = None,
+        update_date: str = None,
     ):
         self.arn = arn
         self.client_ids = client_ids
+        self.create_date = create_date
         self.description = description
         self.fingerprints = fingerprints
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.issuer_url = issuer_url
         self.oidcprovider_name = oidcprovider_name
+        self.update_date = update_date
 
     def validate(self):
         pass
@@ -245,6 +261,8 @@ class AddFingerprintToOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['Arn'] = self.arn
         if self.client_ids is not None:
             result['ClientIds'] = self.client_ids
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
         if self.description is not None:
             result['Description'] = self.description
         if self.fingerprints is not None:
@@ -257,6 +275,8 @@ class AddFingerprintToOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['IssuerUrl'] = self.issuer_url
         if self.oidcprovider_name is not None:
             result['OIDCProviderName'] = self.oidcprovider_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
         return result
 
     def from_map(self, m: dict = None):
@@ -265,6 +285,8 @@ class AddFingerprintToOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.arn = m.get('Arn')
         if m.get('ClientIds') is not None:
             self.client_ids = m.get('ClientIds')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Fingerprints') is not None:
@@ -277,6 +299,8 @@ class AddFingerprintToOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.issuer_url = m.get('IssuerUrl')
         if m.get('OIDCProviderName') is not None:
             self.oidcprovider_name = m.get('OIDCProviderName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
         return self
 
 
@@ -1716,21 +1740,25 @@ class CreateOIDCProviderResponseBodyOIDCProvider(TeaModel):
         self,
         arn: str = None,
         client_ids: str = None,
+        create_date: str = None,
         description: str = None,
         fingerprints: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         issuer_url: str = None,
         oidcprovider_name: str = None,
+        update_date: str = None,
     ):
         self.arn = arn
         self.client_ids = client_ids
+        self.create_date = create_date
         self.description = description
         self.fingerprints = fingerprints
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.issuer_url = issuer_url
         self.oidcprovider_name = oidcprovider_name
+        self.update_date = update_date
 
     def validate(self):
         pass
@@ -1745,6 +1773,8 @@ class CreateOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['Arn'] = self.arn
         if self.client_ids is not None:
             result['ClientIds'] = self.client_ids
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
         if self.description is not None:
             result['Description'] = self.description
         if self.fingerprints is not None:
@@ -1757,6 +1787,8 @@ class CreateOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['IssuerUrl'] = self.issuer_url
         if self.oidcprovider_name is not None:
             result['OIDCProviderName'] = self.oidcprovider_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
         return result
 
     def from_map(self, m: dict = None):
@@ -1765,6 +1797,8 @@ class CreateOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.arn = m.get('Arn')
         if m.get('ClientIds') is not None:
             self.client_ids = m.get('ClientIds')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Fingerprints') is not None:
@@ -1777,6 +1811,8 @@ class CreateOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.issuer_url = m.get('IssuerUrl')
         if m.get('OIDCProviderName') is not None:
             self.oidcprovider_name = m.get('OIDCProviderName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
         return self
 
 
@@ -4918,21 +4954,25 @@ class GetOIDCProviderResponseBodyOIDCProvider(TeaModel):
         self,
         arn: str = None,
         client_ids: str = None,
+        create_date: str = None,
         description: str = None,
         fingerprints: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         issuer_url: str = None,
         oidcprovider_name: str = None,
+        update_date: str = None,
     ):
         self.arn = arn
         self.client_ids = client_ids
+        self.create_date = create_date
         self.description = description
         self.fingerprints = fingerprints
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.issuer_url = issuer_url
         self.oidcprovider_name = oidcprovider_name
+        self.update_date = update_date
 
     def validate(self):
         pass
@@ -4947,6 +4987,8 @@ class GetOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['Arn'] = self.arn
         if self.client_ids is not None:
             result['ClientIds'] = self.client_ids
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
         if self.description is not None:
             result['Description'] = self.description
         if self.fingerprints is not None:
@@ -4959,6 +5001,8 @@ class GetOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['IssuerUrl'] = self.issuer_url
         if self.oidcprovider_name is not None:
             result['OIDCProviderName'] = self.oidcprovider_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
         return result
 
     def from_map(self, m: dict = None):
@@ -4967,6 +5011,8 @@ class GetOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.arn = m.get('Arn')
         if m.get('ClientIds') is not None:
             self.client_ids = m.get('ClientIds')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Fingerprints') is not None:
@@ -4979,6 +5025,8 @@ class GetOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.issuer_url = m.get('IssuerUrl')
         if m.get('OIDCProviderName') is not None:
             self.oidcprovider_name = m.get('OIDCProviderName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
         return self
 
 
@@ -5474,12 +5522,12 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(TeaModel)
         return self
 
 
-class GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference(TeaModel):
+class GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference(TeaModel):
     def __init__(
         self,
-        verification_types: List[str] = None,
+        allow_user_to_manage_personal_ding_talk: bool = None,
     ):
-        self.verification_types = verification_types
+        self.allow_user_to_manage_personal_ding_talk = allow_user_to_manage_personal_ding_talk
 
     def validate(self):
         pass
@@ -5490,14 +5538,14 @@ class GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference(
             return _map
 
         result = dict()
-        if self.verification_types is not None:
-            result['VerificationTypes'] = self.verification_types
+        if self.allow_user_to_manage_personal_ding_talk is not None:
+            result['AllowUserToManagePersonalDingTalk'] = self.allow_user_to_manage_personal_ding_talk
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VerificationTypes') is not None:
-            self.verification_types = m.get('VerificationTypes')
+        if m.get('AllowUserToManagePersonalDingTalk') is not None:
+            self.allow_user_to_manage_personal_ding_talk = m.get('AllowUserToManagePersonalDingTalk')
         return self
 
 
@@ -5507,12 +5555,12 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         access_key_preference: GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference = None,
         login_profile_preference: GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference = None,
         mfapreference: GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference = None,
-        verification_preference: GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference = None,
+        personal_info_preference: GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference = None,
     ):
         self.access_key_preference = access_key_preference
         self.login_profile_preference = login_profile_preference
         self.mfapreference = mfapreference
-        self.verification_preference = verification_preference
+        self.personal_info_preference = personal_info_preference
 
     def validate(self):
         if self.access_key_preference:
@@ -5521,8 +5569,8 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
             self.login_profile_preference.validate()
         if self.mfapreference:
             self.mfapreference.validate()
-        if self.verification_preference:
-            self.verification_preference.validate()
+        if self.personal_info_preference:
+            self.personal_info_preference.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5536,8 +5584,8 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
             result['LoginProfilePreference'] = self.login_profile_preference.to_map()
         if self.mfapreference is not None:
             result['MFAPreference'] = self.mfapreference.to_map()
-        if self.verification_preference is not None:
-            result['VerificationPreference'] = self.verification_preference.to_map()
+        if self.personal_info_preference is not None:
+            result['PersonalInfoPreference'] = self.personal_info_preference.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -5551,9 +5599,9 @@ class GetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         if m.get('MFAPreference') is not None:
             temp_model = GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference()
             self.mfapreference = temp_model.from_map(m['MFAPreference'])
-        if m.get('VerificationPreference') is not None:
-            temp_model = GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference()
-            self.verification_preference = temp_model.from_map(m['VerificationPreference'])
+        if m.get('PersonalInfoPreference') is not None:
+            temp_model = GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference()
+            self.personal_info_preference = temp_model.from_map(m['PersonalInfoPreference'])
         return self
 
 
@@ -7183,21 +7231,25 @@ class ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider(TeaModel):
         self,
         arn: str = None,
         client_ids: str = None,
+        create_date: str = None,
         description: str = None,
         fingerprints: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         issuer_url: str = None,
         oidcprovider_name: str = None,
+        update_date: str = None,
     ):
         self.arn = arn
         self.client_ids = client_ids
+        self.create_date = create_date
         self.description = description
         self.fingerprints = fingerprints
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.issuer_url = issuer_url
         self.oidcprovider_name = oidcprovider_name
+        self.update_date = update_date
 
     def validate(self):
         pass
@@ -7212,6 +7264,8 @@ class ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider(TeaModel):
             result['Arn'] = self.arn
         if self.client_ids is not None:
             result['ClientIds'] = self.client_ids
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
         if self.description is not None:
             result['Description'] = self.description
         if self.fingerprints is not None:
@@ -7224,6 +7278,8 @@ class ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider(TeaModel):
             result['IssuerUrl'] = self.issuer_url
         if self.oidcprovider_name is not None:
             result['OIDCProviderName'] = self.oidcprovider_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
         return result
 
     def from_map(self, m: dict = None):
@@ -7232,6 +7288,8 @@ class ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider(TeaModel):
             self.arn = m.get('Arn')
         if m.get('ClientIds') is not None:
             self.client_ids = m.get('ClientIds')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Fingerprints') is not None:
@@ -7244,6 +7302,8 @@ class ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider(TeaModel):
             self.issuer_url = m.get('IssuerUrl')
         if m.get('OIDCProviderName') is not None:
             self.oidcprovider_name = m.get('OIDCProviderName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
         return self
 
 
@@ -8627,21 +8687,25 @@ class RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
         self,
         arn: str = None,
         client_ids: str = None,
+        create_date: str = None,
         description: str = None,
         fingerprints: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         issuer_url: str = None,
         oidcprovider_name: str = None,
+        update_date: str = None,
     ):
         self.arn = arn
         self.client_ids = client_ids
+        self.create_date = create_date
         self.description = description
         self.fingerprints = fingerprints
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.issuer_url = issuer_url
         self.oidcprovider_name = oidcprovider_name
+        self.update_date = update_date
 
     def validate(self):
         pass
@@ -8656,6 +8720,8 @@ class RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['Arn'] = self.arn
         if self.client_ids is not None:
             result['ClientIds'] = self.client_ids
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
         if self.description is not None:
             result['Description'] = self.description
         if self.fingerprints is not None:
@@ -8668,6 +8734,8 @@ class RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['IssuerUrl'] = self.issuer_url
         if self.oidcprovider_name is not None:
             result['OIDCProviderName'] = self.oidcprovider_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
         return result
 
     def from_map(self, m: dict = None):
@@ -8676,6 +8744,8 @@ class RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.arn = m.get('Arn')
         if m.get('ClientIds') is not None:
             self.client_ids = m.get('ClientIds')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Fingerprints') is not None:
@@ -8688,6 +8758,8 @@ class RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.issuer_url = m.get('IssuerUrl')
         if m.get('OIDCProviderName') is not None:
             self.oidcprovider_name = m.get('OIDCProviderName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
         return self
 
 
@@ -8801,21 +8873,25 @@ class RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
         self,
         arn: str = None,
         client_ids: str = None,
+        create_date: str = None,
         description: str = None,
         fingerprints: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         issuer_url: str = None,
         oidcprovider_name: str = None,
+        update_date: str = None,
     ):
         self.arn = arn
         self.client_ids = client_ids
+        self.create_date = create_date
         self.description = description
         self.fingerprints = fingerprints
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.issuer_url = issuer_url
         self.oidcprovider_name = oidcprovider_name
+        self.update_date = update_date
 
     def validate(self):
         pass
@@ -8830,6 +8906,8 @@ class RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['Arn'] = self.arn
         if self.client_ids is not None:
             result['ClientIds'] = self.client_ids
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
         if self.description is not None:
             result['Description'] = self.description
         if self.fingerprints is not None:
@@ -8842,6 +8920,8 @@ class RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['IssuerUrl'] = self.issuer_url
         if self.oidcprovider_name is not None:
             result['OIDCProviderName'] = self.oidcprovider_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
         return result
 
     def from_map(self, m: dict = None):
@@ -8850,6 +8930,8 @@ class RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.arn = m.get('Arn')
         if m.get('ClientIds') is not None:
             self.client_ids = m.get('ClientIds')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Fingerprints') is not None:
@@ -8862,6 +8944,8 @@ class RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.issuer_url = m.get('IssuerUrl')
         if m.get('OIDCProviderName') is not None:
             self.oidcprovider_name = m.get('OIDCProviderName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
         return self
 
 
@@ -9383,20 +9467,20 @@ class SetSecurityPreferenceRequest(TeaModel):
         allow_user_to_change_password: bool = None,
         allow_user_to_manage_access_keys: bool = None,
         allow_user_to_manage_mfadevices: bool = None,
+        allow_user_to_manage_personal_ding_talk: bool = None,
         enable_save_mfaticket: bool = None,
         enforce_mfafor_login: bool = None,
         login_network_masks: str = None,
         login_session_duration: int = None,
-        verification_types: List[str] = None,
     ):
         self.allow_user_to_change_password = allow_user_to_change_password
         self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
         self.allow_user_to_manage_mfadevices = allow_user_to_manage_mfadevices
+        self.allow_user_to_manage_personal_ding_talk = allow_user_to_manage_personal_ding_talk
         self.enable_save_mfaticket = enable_save_mfaticket
         self.enforce_mfafor_login = enforce_mfafor_login
         self.login_network_masks = login_network_masks
         self.login_session_duration = login_session_duration
-        self.verification_types = verification_types
 
     def validate(self):
         pass
@@ -9413,6 +9497,8 @@ class SetSecurityPreferenceRequest(TeaModel):
             result['AllowUserToManageAccessKeys'] = self.allow_user_to_manage_access_keys
         if self.allow_user_to_manage_mfadevices is not None:
             result['AllowUserToManageMFADevices'] = self.allow_user_to_manage_mfadevices
+        if self.allow_user_to_manage_personal_ding_talk is not None:
+            result['AllowUserToManagePersonalDingTalk'] = self.allow_user_to_manage_personal_ding_talk
         if self.enable_save_mfaticket is not None:
             result['EnableSaveMFATicket'] = self.enable_save_mfaticket
         if self.enforce_mfafor_login is not None:
@@ -9421,8 +9507,6 @@ class SetSecurityPreferenceRequest(TeaModel):
             result['LoginNetworkMasks'] = self.login_network_masks
         if self.login_session_duration is not None:
             result['LoginSessionDuration'] = self.login_session_duration
-        if self.verification_types is not None:
-            result['VerificationTypes'] = self.verification_types
         return result
 
     def from_map(self, m: dict = None):
@@ -9433,6 +9517,8 @@ class SetSecurityPreferenceRequest(TeaModel):
             self.allow_user_to_manage_access_keys = m.get('AllowUserToManageAccessKeys')
         if m.get('AllowUserToManageMFADevices') is not None:
             self.allow_user_to_manage_mfadevices = m.get('AllowUserToManageMFADevices')
+        if m.get('AllowUserToManagePersonalDingTalk') is not None:
+            self.allow_user_to_manage_personal_ding_talk = m.get('AllowUserToManagePersonalDingTalk')
         if m.get('EnableSaveMFATicket') is not None:
             self.enable_save_mfaticket = m.get('EnableSaveMFATicket')
         if m.get('EnforceMFAForLogin') is not None:
@@ -9441,77 +9527,6 @@ class SetSecurityPreferenceRequest(TeaModel):
             self.login_network_masks = m.get('LoginNetworkMasks')
         if m.get('LoginSessionDuration') is not None:
             self.login_session_duration = m.get('LoginSessionDuration')
-        if m.get('VerificationTypes') is not None:
-            self.verification_types = m.get('VerificationTypes')
-        return self
-
-
-class SetSecurityPreferenceShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        allow_user_to_change_password: bool = None,
-        allow_user_to_manage_access_keys: bool = None,
-        allow_user_to_manage_mfadevices: bool = None,
-        enable_save_mfaticket: bool = None,
-        enforce_mfafor_login: bool = None,
-        login_network_masks: str = None,
-        login_session_duration: int = None,
-        verification_types_shrink: str = None,
-    ):
-        self.allow_user_to_change_password = allow_user_to_change_password
-        self.allow_user_to_manage_access_keys = allow_user_to_manage_access_keys
-        self.allow_user_to_manage_mfadevices = allow_user_to_manage_mfadevices
-        self.enable_save_mfaticket = enable_save_mfaticket
-        self.enforce_mfafor_login = enforce_mfafor_login
-        self.login_network_masks = login_network_masks
-        self.login_session_duration = login_session_duration
-        self.verification_types_shrink = verification_types_shrink
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.allow_user_to_change_password is not None:
-            result['AllowUserToChangePassword'] = self.allow_user_to_change_password
-        if self.allow_user_to_manage_access_keys is not None:
-            result['AllowUserToManageAccessKeys'] = self.allow_user_to_manage_access_keys
-        if self.allow_user_to_manage_mfadevices is not None:
-            result['AllowUserToManageMFADevices'] = self.allow_user_to_manage_mfadevices
-        if self.enable_save_mfaticket is not None:
-            result['EnableSaveMFATicket'] = self.enable_save_mfaticket
-        if self.enforce_mfafor_login is not None:
-            result['EnforceMFAForLogin'] = self.enforce_mfafor_login
-        if self.login_network_masks is not None:
-            result['LoginNetworkMasks'] = self.login_network_masks
-        if self.login_session_duration is not None:
-            result['LoginSessionDuration'] = self.login_session_duration
-        if self.verification_types_shrink is not None:
-            result['VerificationTypes'] = self.verification_types_shrink
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AllowUserToChangePassword') is not None:
-            self.allow_user_to_change_password = m.get('AllowUserToChangePassword')
-        if m.get('AllowUserToManageAccessKeys') is not None:
-            self.allow_user_to_manage_access_keys = m.get('AllowUserToManageAccessKeys')
-        if m.get('AllowUserToManageMFADevices') is not None:
-            self.allow_user_to_manage_mfadevices = m.get('AllowUserToManageMFADevices')
-        if m.get('EnableSaveMFATicket') is not None:
-            self.enable_save_mfaticket = m.get('EnableSaveMFATicket')
-        if m.get('EnforceMFAForLogin') is not None:
-            self.enforce_mfafor_login = m.get('EnforceMFAForLogin')
-        if m.get('LoginNetworkMasks') is not None:
-            self.login_network_masks = m.get('LoginNetworkMasks')
-        if m.get('LoginSessionDuration') is not None:
-            self.login_session_duration = m.get('LoginSessionDuration')
-        if m.get('VerificationTypes') is not None:
-            self.verification_types_shrink = m.get('VerificationTypes')
         return self
 
 
@@ -9620,12 +9635,12 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference(TeaModel)
         return self
 
 
-class SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference(TeaModel):
+class SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference(TeaModel):
     def __init__(
         self,
-        verification_types: List[str] = None,
+        allow_user_to_manage_personal_ding_talk: bool = None,
     ):
-        self.verification_types = verification_types
+        self.allow_user_to_manage_personal_ding_talk = allow_user_to_manage_personal_ding_talk
 
     def validate(self):
         pass
@@ -9636,14 +9651,14 @@ class SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference(
             return _map
 
         result = dict()
-        if self.verification_types is not None:
-            result['VerificationTypes'] = self.verification_types
+        if self.allow_user_to_manage_personal_ding_talk is not None:
+            result['AllowUserToManagePersonalDingTalk'] = self.allow_user_to_manage_personal_ding_talk
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VerificationTypes') is not None:
-            self.verification_types = m.get('VerificationTypes')
+        if m.get('AllowUserToManagePersonalDingTalk') is not None:
+            self.allow_user_to_manage_personal_ding_talk = m.get('AllowUserToManagePersonalDingTalk')
         return self
 
 
@@ -9653,12 +9668,12 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         access_key_preference: SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference = None,
         login_profile_preference: SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference = None,
         mfapreference: SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference = None,
-        verification_preference: SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference = None,
+        personal_info_preference: SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference = None,
     ):
         self.access_key_preference = access_key_preference
         self.login_profile_preference = login_profile_preference
         self.mfapreference = mfapreference
-        self.verification_preference = verification_preference
+        self.personal_info_preference = personal_info_preference
 
     def validate(self):
         if self.access_key_preference:
@@ -9667,8 +9682,8 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
             self.login_profile_preference.validate()
         if self.mfapreference:
             self.mfapreference.validate()
-        if self.verification_preference:
-            self.verification_preference.validate()
+        if self.personal_info_preference:
+            self.personal_info_preference.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9682,8 +9697,8 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
             result['LoginProfilePreference'] = self.login_profile_preference.to_map()
         if self.mfapreference is not None:
             result['MFAPreference'] = self.mfapreference.to_map()
-        if self.verification_preference is not None:
-            result['VerificationPreference'] = self.verification_preference.to_map()
+        if self.personal_info_preference is not None:
+            result['PersonalInfoPreference'] = self.personal_info_preference.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -9697,9 +9712,9 @@ class SetSecurityPreferenceResponseBodySecurityPreference(TeaModel):
         if m.get('MFAPreference') is not None:
             temp_model = SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference()
             self.mfapreference = temp_model.from_map(m['MFAPreference'])
-        if m.get('VerificationPreference') is not None:
-            temp_model = SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference()
-            self.verification_preference = temp_model.from_map(m['VerificationPreference'])
+        if m.get('PersonalInfoPreference') is not None:
+            temp_model = SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference()
+            self.personal_info_preference = temp_model.from_map(m['PersonalInfoPreference'])
         return self
 
 
@@ -10915,21 +10930,25 @@ class UpdateOIDCProviderResponseBodyOIDCProvider(TeaModel):
         self,
         arn: str = None,
         client_ids: str = None,
+        create_date: str = None,
         description: str = None,
         fingerprints: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         issuer_url: str = None,
         oidcprovider_name: str = None,
+        update_date: str = None,
     ):
         self.arn = arn
         self.client_ids = client_ids
+        self.create_date = create_date
         self.description = description
         self.fingerprints = fingerprints
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.issuer_url = issuer_url
         self.oidcprovider_name = oidcprovider_name
+        self.update_date = update_date
 
     def validate(self):
         pass
@@ -10944,6 +10963,8 @@ class UpdateOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['Arn'] = self.arn
         if self.client_ids is not None:
             result['ClientIds'] = self.client_ids
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
         if self.description is not None:
             result['Description'] = self.description
         if self.fingerprints is not None:
@@ -10956,6 +10977,8 @@ class UpdateOIDCProviderResponseBodyOIDCProvider(TeaModel):
             result['IssuerUrl'] = self.issuer_url
         if self.oidcprovider_name is not None:
             result['OIDCProviderName'] = self.oidcprovider_name
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
         return result
 
     def from_map(self, m: dict = None):
@@ -10964,6 +10987,8 @@ class UpdateOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.arn = m.get('Arn')
         if m.get('ClientIds') is not None:
             self.client_ids = m.get('ClientIds')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Fingerprints') is not None:
@@ -10976,6 +11001,8 @@ class UpdateOIDCProviderResponseBodyOIDCProvider(TeaModel):
             self.issuer_url = m.get('IssuerUrl')
         if m.get('OIDCProviderName') is not None:
             self.oidcprovider_name = m.get('OIDCProviderName')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
         return self
 
 

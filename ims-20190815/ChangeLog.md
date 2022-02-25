@@ -1,3 +1,6 @@
+2022-02-25 Version: 2.0.5
+- Add global switch AllowUserToManagePersonalDingTalk.
+
 2021-11-03 Version: 2.0.4
 - Fix the exception when setting verification types.
 
