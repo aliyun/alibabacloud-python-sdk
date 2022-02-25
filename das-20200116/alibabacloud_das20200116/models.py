@@ -4050,6 +4050,121 @@ class DescribeHotKeysResponse(TeaModel):
         return self
 
 
+class DescribeInstanceDasProRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeInstanceDasProResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeInstanceDasProResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeInstanceDasProResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceDasProResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeTopBigKeysRequest(TeaModel):
     def __init__(
         self,
@@ -4631,6 +4746,133 @@ class DisableAllSqlConcurrencyControlRulesResponse(TeaModel):
         return self
 
 
+class DisableDasProRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DisableDasProResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+        synchro: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.synchro = synchro
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class DisableDasProResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DisableDasProResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DisableDasProResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableSqlConcurrencyControlRequest(TeaModel):
     def __init__(
         self,
@@ -4754,6 +4996,139 @@ class DisableSqlConcurrencyControlResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DisableSqlConcurrencyControlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableDasProRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        sql_retention: int = None,
+        user_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.sql_retention = sql_retention
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.sql_retention is not None:
+            result['SqlRetention'] = self.sql_retention
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SqlRetention') is not None:
+            self.sql_retention = m.get('SqlRetention')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class EnableDasProResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+        synchro: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.synchro = synchro
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class EnableDasProResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: EnableDasProResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = EnableDasProResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4906,14 +5281,12 @@ class EnableSqlConcurrencyControlResponse(TeaModel):
 class GetAsyncErrorRequestListByCodeRequest(TeaModel):
     def __init__(
         self,
-        console_context: str = None,
-        end: str = None,
+        end: int = None,
         error_code: str = None,
         instance_id: str = None,
         node_id: str = None,
-        start: str = None,
+        start: int = None,
     ):
-        self.console_context = console_context
         self.end = end
         self.error_code = error_code
         self.instance_id = instance_id
@@ -4929,8 +5302,6 @@ class GetAsyncErrorRequestListByCodeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.console_context is not None:
-            result['ConsoleContext'] = self.console_context
         if self.end is not None:
             result['End'] = self.end
         if self.error_code is not None:
@@ -4945,8 +5316,6 @@ class GetAsyncErrorRequestListByCodeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConsoleContext') is not None:
-            self.console_context = m.get('ConsoleContext')
         if m.get('End') is not None:
             self.end = m.get('End')
         if m.get('ErrorCode') is not None:
@@ -5202,21 +5571,17 @@ class GetAsyncErrorRequestStatByCodeResponse(TeaModel):
 class GetAsyncErrorRequestStatResultRequest(TeaModel):
     def __init__(
         self,
-        console_context: str = None,
         db_name: str = None,
-        end: str = None,
+        end: int = None,
         instance_id: str = None,
         node_id: str = None,
-        role: str = None,
         sql_id_list: str = None,
-        start: str = None,
+        start: int = None,
     ):
-        self.console_context = console_context
         self.db_name = db_name
         self.end = end
         self.instance_id = instance_id
         self.node_id = node_id
-        self.role = role
         self.sql_id_list = sql_id_list
         self.start = start
 
@@ -5229,8 +5594,6 @@ class GetAsyncErrorRequestStatResultRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.console_context is not None:
-            result['ConsoleContext'] = self.console_context
         if self.db_name is not None:
             result['DbName'] = self.db_name
         if self.end is not None:
@@ -5239,8 +5602,6 @@ class GetAsyncErrorRequestStatResultRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.node_id is not None:
             result['NodeId'] = self.node_id
-        if self.role is not None:
-            result['Role'] = self.role
         if self.sql_id_list is not None:
             result['SqlIdList'] = self.sql_id_list
         if self.start is not None:
@@ -5249,8 +5610,6 @@ class GetAsyncErrorRequestStatResultRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConsoleContext') is not None:
-            self.console_context = m.get('ConsoleContext')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
         if m.get('End') is not None:
@@ -5259,8 +5618,6 @@ class GetAsyncErrorRequestStatResultRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
-        if m.get('Role') is not None:
-            self.role = m.get('Role')
         if m.get('SqlIdList') is not None:
             self.sql_id_list = m.get('SqlIdList')
         if m.get('Start') is not None:
@@ -5885,6 +6242,127 @@ class GetAutonomousNotifyEventsInRangeResponse(TeaModel):
         return self
 
 
+class GetDasProServiceUsageRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        user_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetDasProServiceUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDasProServiceUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetDasProServiceUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetDasProServiceUsageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetEndpointSwitchTaskRequest(TeaModel):
     def __init__(
         self,
@@ -6116,21 +6594,17 @@ class GetEndpointSwitchTaskResponse(TeaModel):
 class GetErrorRequestSampleRequest(TeaModel):
     def __init__(
         self,
-        console_context: str = None,
         db_name: str = None,
-        end: str = None,
+        end: int = None,
         instance_id: str = None,
         node_id: str = None,
-        role: str = None,
         sql_id: str = None,
-        start: str = None,
+        start: int = None,
     ):
-        self.console_context = console_context
         self.db_name = db_name
         self.end = end
         self.instance_id = instance_id
         self.node_id = node_id
-        self.role = role
         self.sql_id = sql_id
         self.start = start
 
@@ -6143,8 +6617,6 @@ class GetErrorRequestSampleRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.console_context is not None:
-            result['ConsoleContext'] = self.console_context
         if self.db_name is not None:
             result['DbName'] = self.db_name
         if self.end is not None:
@@ -6153,8 +6625,6 @@ class GetErrorRequestSampleRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.node_id is not None:
             result['NodeId'] = self.node_id
-        if self.role is not None:
-            result['Role'] = self.role
         if self.sql_id is not None:
             result['SqlId'] = self.sql_id
         if self.start is not None:
@@ -6163,8 +6633,6 @@ class GetErrorRequestSampleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConsoleContext') is not None:
-            self.console_context = m.get('ConsoleContext')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
         if m.get('End') is not None:
@@ -6173,8 +6641,6 @@ class GetErrorRequestSampleRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
-        if m.get('Role') is not None:
-            self.role = m.get('Role')
         if m.get('SqlId') is not None:
             self.sql_id = m.get('SqlId')
         if m.get('Start') is not None:
@@ -6266,6 +6732,951 @@ class GetErrorRequestSampleResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetErrorRequestSampleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFullRequestOriginStatByInstanceIdRequest(TeaModel):
+    def __init__(
+        self,
+        asc: bool = None,
+        end: int = None,
+        instance_id: str = None,
+        node_id: str = None,
+        order_by: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        role: str = None,
+        sql_type: str = None,
+        start: int = None,
+        user_id: str = None,
+    ):
+        self.asc = asc
+        self.end = end
+        self.instance_id = instance_id
+        self.node_id = node_id
+        self.order_by = order_by
+        self.page_no = page_no
+        self.page_size = page_size
+        self.role = role
+        self.sql_type = sql_type
+        self.start = start
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc is not None:
+            result['Asc'] = self.asc
+        if self.end is not None:
+            result['End'] = self.end
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Asc') is not None:
+            self.asc = m.get('Asc')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetFullRequestOriginStatByInstanceIdResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        avg_examined_rows: float = None,
+        avg_fetch_rows: int = None,
+        avg_lock_wait_time: float = None,
+        avg_logical_read: float = None,
+        avg_physical_async_read: int = None,
+        avg_physical_sync_read: float = None,
+        avg_returned_rows: float = None,
+        avg_rows: int = None,
+        avg_rt: float = None,
+        avg_sql_count: int = None,
+        avg_updated_rows: float = None,
+        count: int = None,
+        count_rate: float = None,
+        database: str = None,
+        error_count: int = None,
+        examined_rows: int = None,
+        fetch_rows: int = None,
+        ip: str = None,
+        key: str = None,
+        lock_wait_time: float = None,
+        logical_read: int = None,
+        origin_host: str = None,
+        physical_async_read: int = None,
+        physical_sync_read: int = None,
+        port: int = None,
+        rows: int = None,
+        rt_greater_than_one_second_count: int = None,
+        rt_rate: float = None,
+        sql_count: int = None,
+        sum_updated_rows: int = None,
+        version: int = None,
+        vpc_id: str = None,
+    ):
+        self.avg_examined_rows = avg_examined_rows
+        self.avg_fetch_rows = avg_fetch_rows
+        self.avg_lock_wait_time = avg_lock_wait_time
+        self.avg_logical_read = avg_logical_read
+        self.avg_physical_async_read = avg_physical_async_read
+        self.avg_physical_sync_read = avg_physical_sync_read
+        self.avg_returned_rows = avg_returned_rows
+        self.avg_rows = avg_rows
+        self.avg_rt = avg_rt
+        self.avg_sql_count = avg_sql_count
+        self.avg_updated_rows = avg_updated_rows
+        self.count = count
+        self.count_rate = count_rate
+        self.database = database
+        self.error_count = error_count
+        self.examined_rows = examined_rows
+        self.fetch_rows = fetch_rows
+        self.ip = ip
+        self.key = key
+        self.lock_wait_time = lock_wait_time
+        self.logical_read = logical_read
+        self.origin_host = origin_host
+        self.physical_async_read = physical_async_read
+        self.physical_sync_read = physical_sync_read
+        self.port = port
+        self.rows = rows
+        self.rt_greater_than_one_second_count = rt_greater_than_one_second_count
+        self.rt_rate = rt_rate
+        self.sql_count = sql_count
+        self.sum_updated_rows = sum_updated_rows
+        self.version = version
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_examined_rows is not None:
+            result['AvgExaminedRows'] = self.avg_examined_rows
+        if self.avg_fetch_rows is not None:
+            result['AvgFetchRows'] = self.avg_fetch_rows
+        if self.avg_lock_wait_time is not None:
+            result['AvgLockWaitTime'] = self.avg_lock_wait_time
+        if self.avg_logical_read is not None:
+            result['AvgLogicalRead'] = self.avg_logical_read
+        if self.avg_physical_async_read is not None:
+            result['AvgPhysicalAsyncRead'] = self.avg_physical_async_read
+        if self.avg_physical_sync_read is not None:
+            result['AvgPhysicalSyncRead'] = self.avg_physical_sync_read
+        if self.avg_returned_rows is not None:
+            result['AvgReturnedRows'] = self.avg_returned_rows
+        if self.avg_rows is not None:
+            result['AvgRows'] = self.avg_rows
+        if self.avg_rt is not None:
+            result['AvgRt'] = self.avg_rt
+        if self.avg_sql_count is not None:
+            result['AvgSqlCount'] = self.avg_sql_count
+        if self.avg_updated_rows is not None:
+            result['AvgUpdatedRows'] = self.avg_updated_rows
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.count_rate is not None:
+            result['CountRate'] = self.count_rate
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.error_count is not None:
+            result['ErrorCount'] = self.error_count
+        if self.examined_rows is not None:
+            result['ExaminedRows'] = self.examined_rows
+        if self.fetch_rows is not None:
+            result['FetchRows'] = self.fetch_rows
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.lock_wait_time is not None:
+            result['LockWaitTime'] = self.lock_wait_time
+        if self.logical_read is not None:
+            result['LogicalRead'] = self.logical_read
+        if self.origin_host is not None:
+            result['OriginHost'] = self.origin_host
+        if self.physical_async_read is not None:
+            result['PhysicalAsyncRead'] = self.physical_async_read
+        if self.physical_sync_read is not None:
+            result['PhysicalSyncRead'] = self.physical_sync_read
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.rows is not None:
+            result['Rows'] = self.rows
+        if self.rt_greater_than_one_second_count is not None:
+            result['RtGreaterThanOneSecondCount'] = self.rt_greater_than_one_second_count
+        if self.rt_rate is not None:
+            result['RtRate'] = self.rt_rate
+        if self.sql_count is not None:
+            result['SqlCount'] = self.sql_count
+        if self.sum_updated_rows is not None:
+            result['SumUpdatedRows'] = self.sum_updated_rows
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgExaminedRows') is not None:
+            self.avg_examined_rows = m.get('AvgExaminedRows')
+        if m.get('AvgFetchRows') is not None:
+            self.avg_fetch_rows = m.get('AvgFetchRows')
+        if m.get('AvgLockWaitTime') is not None:
+            self.avg_lock_wait_time = m.get('AvgLockWaitTime')
+        if m.get('AvgLogicalRead') is not None:
+            self.avg_logical_read = m.get('AvgLogicalRead')
+        if m.get('AvgPhysicalAsyncRead') is not None:
+            self.avg_physical_async_read = m.get('AvgPhysicalAsyncRead')
+        if m.get('AvgPhysicalSyncRead') is not None:
+            self.avg_physical_sync_read = m.get('AvgPhysicalSyncRead')
+        if m.get('AvgReturnedRows') is not None:
+            self.avg_returned_rows = m.get('AvgReturnedRows')
+        if m.get('AvgRows') is not None:
+            self.avg_rows = m.get('AvgRows')
+        if m.get('AvgRt') is not None:
+            self.avg_rt = m.get('AvgRt')
+        if m.get('AvgSqlCount') is not None:
+            self.avg_sql_count = m.get('AvgSqlCount')
+        if m.get('AvgUpdatedRows') is not None:
+            self.avg_updated_rows = m.get('AvgUpdatedRows')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CountRate') is not None:
+            self.count_rate = m.get('CountRate')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('ErrorCount') is not None:
+            self.error_count = m.get('ErrorCount')
+        if m.get('ExaminedRows') is not None:
+            self.examined_rows = m.get('ExaminedRows')
+        if m.get('FetchRows') is not None:
+            self.fetch_rows = m.get('FetchRows')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('LockWaitTime') is not None:
+            self.lock_wait_time = m.get('LockWaitTime')
+        if m.get('LogicalRead') is not None:
+            self.logical_read = m.get('LogicalRead')
+        if m.get('OriginHost') is not None:
+            self.origin_host = m.get('OriginHost')
+        if m.get('PhysicalAsyncRead') is not None:
+            self.physical_async_read = m.get('PhysicalAsyncRead')
+        if m.get('PhysicalSyncRead') is not None:
+            self.physical_sync_read = m.get('PhysicalSyncRead')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Rows') is not None:
+            self.rows = m.get('Rows')
+        if m.get('RtGreaterThanOneSecondCount') is not None:
+            self.rt_greater_than_one_second_count = m.get('RtGreaterThanOneSecondCount')
+        if m.get('RtRate') is not None:
+            self.rt_rate = m.get('RtRate')
+        if m.get('SqlCount') is not None:
+            self.sql_count = m.get('SqlCount')
+        if m.get('SumUpdatedRows') is not None:
+            self.sum_updated_rows = m.get('SumUpdatedRows')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetFullRequestOriginStatByInstanceIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[GetFullRequestOriginStatByInstanceIdResponseBodyDataList] = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetFullRequestOriginStatByInstanceIdResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetFullRequestOriginStatByInstanceIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetFullRequestOriginStatByInstanceIdResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetFullRequestOriginStatByInstanceIdResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetFullRequestOriginStatByInstanceIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetFullRequestOriginStatByInstanceIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetFullRequestOriginStatByInstanceIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFullRequestStatResultByInstanceIdRequest(TeaModel):
+    def __init__(
+        self,
+        asc: bool = None,
+        db_name: str = None,
+        end: int = None,
+        instance_id: str = None,
+        keyword: str = None,
+        node_id: str = None,
+        order_by: str = None,
+        origin_host: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        role: str = None,
+        sql_id: str = None,
+        sql_type: str = None,
+        start: int = None,
+        user_id: str = None,
+    ):
+        self.asc = asc
+        self.db_name = db_name
+        self.end = end
+        self.instance_id = instance_id
+        self.keyword = keyword
+        self.node_id = node_id
+        self.order_by = order_by
+        self.origin_host = origin_host
+        self.page_no = page_no
+        self.page_size = page_size
+        self.role = role
+        self.sql_id = sql_id
+        self.sql_type = sql_type
+        self.start = start
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc is not None:
+            result['Asc'] = self.asc
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.end is not None:
+            result['End'] = self.end
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.origin_host is not None:
+            result['OriginHost'] = self.origin_host
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.start is not None:
+            result['Start'] = self.start
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Asc') is not None:
+            self.asc = m.get('Asc')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('OriginHost') is not None:
+            self.origin_host = m.get('OriginHost')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('Start') is not None:
+            self.start = m.get('Start')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetFullRequestStatResultByInstanceIdResponseBodyDataResultList(TeaModel):
+    def __init__(
+        self,
+        avg_examined_rows: float = None,
+        avg_fetch_rows: int = None,
+        avg_lock_wait_time: float = None,
+        avg_logical_read: float = None,
+        avg_physical_async_read: int = None,
+        avg_physical_sync_read: int = None,
+        avg_returned_rows: float = None,
+        avg_rt: float = None,
+        avg_sql_count: int = None,
+        avg_updated_rows: int = None,
+        count: int = None,
+        count_rate: float = None,
+        database: str = None,
+        error_count: int = None,
+        examined_rows: int = None,
+        fetch_rows: int = None,
+        ip: str = None,
+        lock_wait_time: float = None,
+        logical_read: int = None,
+        physical_async_read: int = None,
+        physical_sync_read: int = None,
+        port: int = None,
+        psql: str = None,
+        rows: int = None,
+        rt_greater_than_one_second_count: int = None,
+        rt_rate: float = None,
+        sql_count: int = None,
+        sql_id: str = None,
+        sum_updated_rows: int = None,
+        tables: List[str] = None,
+        version: int = None,
+        vpc_id: str = None,
+    ):
+        self.avg_examined_rows = avg_examined_rows
+        self.avg_fetch_rows = avg_fetch_rows
+        self.avg_lock_wait_time = avg_lock_wait_time
+        self.avg_logical_read = avg_logical_read
+        self.avg_physical_async_read = avg_physical_async_read
+        self.avg_physical_sync_read = avg_physical_sync_read
+        self.avg_returned_rows = avg_returned_rows
+        self.avg_rt = avg_rt
+        self.avg_sql_count = avg_sql_count
+        self.avg_updated_rows = avg_updated_rows
+        self.count = count
+        self.count_rate = count_rate
+        self.database = database
+        self.error_count = error_count
+        self.examined_rows = examined_rows
+        self.fetch_rows = fetch_rows
+        self.ip = ip
+        self.lock_wait_time = lock_wait_time
+        self.logical_read = logical_read
+        self.physical_async_read = physical_async_read
+        self.physical_sync_read = physical_sync_read
+        self.port = port
+        self.psql = psql
+        self.rows = rows
+        self.rt_greater_than_one_second_count = rt_greater_than_one_second_count
+        self.rt_rate = rt_rate
+        self.sql_count = sql_count
+        self.sql_id = sql_id
+        self.sum_updated_rows = sum_updated_rows
+        self.tables = tables
+        self.version = version
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_examined_rows is not None:
+            result['AvgExaminedRows'] = self.avg_examined_rows
+        if self.avg_fetch_rows is not None:
+            result['AvgFetchRows'] = self.avg_fetch_rows
+        if self.avg_lock_wait_time is not None:
+            result['AvgLockWaitTime'] = self.avg_lock_wait_time
+        if self.avg_logical_read is not None:
+            result['AvgLogicalRead'] = self.avg_logical_read
+        if self.avg_physical_async_read is not None:
+            result['AvgPhysicalAsyncRead'] = self.avg_physical_async_read
+        if self.avg_physical_sync_read is not None:
+            result['AvgPhysicalSyncRead'] = self.avg_physical_sync_read
+        if self.avg_returned_rows is not None:
+            result['AvgReturnedRows'] = self.avg_returned_rows
+        if self.avg_rt is not None:
+            result['AvgRt'] = self.avg_rt
+        if self.avg_sql_count is not None:
+            result['AvgSqlCount'] = self.avg_sql_count
+        if self.avg_updated_rows is not None:
+            result['AvgUpdatedRows'] = self.avg_updated_rows
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.count_rate is not None:
+            result['CountRate'] = self.count_rate
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.error_count is not None:
+            result['ErrorCount'] = self.error_count
+        if self.examined_rows is not None:
+            result['ExaminedRows'] = self.examined_rows
+        if self.fetch_rows is not None:
+            result['FetchRows'] = self.fetch_rows
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.lock_wait_time is not None:
+            result['LockWaitTime'] = self.lock_wait_time
+        if self.logical_read is not None:
+            result['LogicalRead'] = self.logical_read
+        if self.physical_async_read is not None:
+            result['PhysicalAsyncRead'] = self.physical_async_read
+        if self.physical_sync_read is not None:
+            result['PhysicalSyncRead'] = self.physical_sync_read
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.psql is not None:
+            result['Psql'] = self.psql
+        if self.rows is not None:
+            result['Rows'] = self.rows
+        if self.rt_greater_than_one_second_count is not None:
+            result['RtGreaterThanOneSecondCount'] = self.rt_greater_than_one_second_count
+        if self.rt_rate is not None:
+            result['RtRate'] = self.rt_rate
+        if self.sql_count is not None:
+            result['SqlCount'] = self.sql_count
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.sum_updated_rows is not None:
+            result['SumUpdatedRows'] = self.sum_updated_rows
+        if self.tables is not None:
+            result['Tables'] = self.tables
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgExaminedRows') is not None:
+            self.avg_examined_rows = m.get('AvgExaminedRows')
+        if m.get('AvgFetchRows') is not None:
+            self.avg_fetch_rows = m.get('AvgFetchRows')
+        if m.get('AvgLockWaitTime') is not None:
+            self.avg_lock_wait_time = m.get('AvgLockWaitTime')
+        if m.get('AvgLogicalRead') is not None:
+            self.avg_logical_read = m.get('AvgLogicalRead')
+        if m.get('AvgPhysicalAsyncRead') is not None:
+            self.avg_physical_async_read = m.get('AvgPhysicalAsyncRead')
+        if m.get('AvgPhysicalSyncRead') is not None:
+            self.avg_physical_sync_read = m.get('AvgPhysicalSyncRead')
+        if m.get('AvgReturnedRows') is not None:
+            self.avg_returned_rows = m.get('AvgReturnedRows')
+        if m.get('AvgRt') is not None:
+            self.avg_rt = m.get('AvgRt')
+        if m.get('AvgSqlCount') is not None:
+            self.avg_sql_count = m.get('AvgSqlCount')
+        if m.get('AvgUpdatedRows') is not None:
+            self.avg_updated_rows = m.get('AvgUpdatedRows')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CountRate') is not None:
+            self.count_rate = m.get('CountRate')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('ErrorCount') is not None:
+            self.error_count = m.get('ErrorCount')
+        if m.get('ExaminedRows') is not None:
+            self.examined_rows = m.get('ExaminedRows')
+        if m.get('FetchRows') is not None:
+            self.fetch_rows = m.get('FetchRows')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('LockWaitTime') is not None:
+            self.lock_wait_time = m.get('LockWaitTime')
+        if m.get('LogicalRead') is not None:
+            self.logical_read = m.get('LogicalRead')
+        if m.get('PhysicalAsyncRead') is not None:
+            self.physical_async_read = m.get('PhysicalAsyncRead')
+        if m.get('PhysicalSyncRead') is not None:
+            self.physical_sync_read = m.get('PhysicalSyncRead')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Psql') is not None:
+            self.psql = m.get('Psql')
+        if m.get('Rows') is not None:
+            self.rows = m.get('Rows')
+        if m.get('RtGreaterThanOneSecondCount') is not None:
+            self.rt_greater_than_one_second_count = m.get('RtGreaterThanOneSecondCount')
+        if m.get('RtRate') is not None:
+            self.rt_rate = m.get('RtRate')
+        if m.get('SqlCount') is not None:
+            self.sql_count = m.get('SqlCount')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('SumUpdatedRows') is not None:
+            self.sum_updated_rows = m.get('SumUpdatedRows')
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetFullRequestStatResultByInstanceIdResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        list: List[GetFullRequestStatResultByInstanceIdResponseBodyDataResultList] = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetFullRequestStatResultByInstanceIdResponseBodyDataResultList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetFullRequestStatResultByInstanceIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        fail: bool = None,
+        is_finish: bool = None,
+        result: GetFullRequestStatResultByInstanceIdResponseBodyDataResult = None,
+        result_id: str = None,
+        state: str = None,
+        timestamp: int = None,
+    ):
+        self.fail = fail
+        self.is_finish = is_finish
+        self.result = result
+        self.result_id = result_id
+        self.state = state
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail is not None:
+            result['Fail'] = self.fail
+        if self.is_finish is not None:
+            result['IsFinish'] = self.is_finish
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.result_id is not None:
+            result['ResultId'] = self.result_id
+        if self.state is not None:
+            result['State'] = self.state
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Fail') is not None:
+            self.fail = m.get('Fail')
+        if m.get('IsFinish') is not None:
+            self.is_finish = m.get('IsFinish')
+        if m.get('Result') is not None:
+            temp_model = GetFullRequestStatResultByInstanceIdResponseBodyDataResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('ResultId') is not None:
+            self.result_id = m.get('ResultId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class GetFullRequestStatResultByInstanceIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetFullRequestStatResultByInstanceIdResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetFullRequestStatResultByInstanceIdResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetFullRequestStatResultByInstanceIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetFullRequestStatResultByInstanceIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetFullRequestStatResultByInstanceIdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6911,7 +8322,7 @@ class GetInstanceInspectionsRequest(TeaModel):
         return self
 
 
-class GetInstanceInspectionsResponseBodyDataListBaseInspectionInstance(TeaModel):
+class GetInstanceInspectionsResponseBodyDataListInstance(TeaModel):
     def __init__(
         self,
         account_id: str = None,
@@ -6998,13 +8409,13 @@ class GetInstanceInspectionsResponseBodyDataListBaseInspectionInstance(TeaModel)
         return self
 
 
-class GetInstanceInspectionsResponseBodyDataListBaseInspection(TeaModel):
+class GetInstanceInspectionsResponseBodyDataList(TeaModel):
     def __init__(
         self,
         data: Dict[str, Any] = None,
         end_time: int = None,
         gmt_create: int = None,
-        instance: GetInstanceInspectionsResponseBodyDataListBaseInspectionInstance = None,
+        instance: GetInstanceInspectionsResponseBodyDataListInstance = None,
         score: int = None,
         score_map: Dict[str, Any] = None,
         start_time: int = None,
@@ -7052,7 +8463,7 @@ class GetInstanceInspectionsResponseBodyDataListBaseInspection(TeaModel):
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('Instance') is not None:
-            temp_model = GetInstanceInspectionsResponseBodyDataListBaseInspectionInstance()
+            temp_model = GetInstanceInspectionsResponseBodyDataListInstance()
             self.instance = temp_model.from_map(m['Instance'])
         if m.get('Score') is not None:
             self.score = m.get('Score')
@@ -7063,45 +8474,10 @@ class GetInstanceInspectionsResponseBodyDataListBaseInspection(TeaModel):
         return self
 
 
-class GetInstanceInspectionsResponseBodyDataList(TeaModel):
-    def __init__(
-        self,
-        base_inspection: List[GetInstanceInspectionsResponseBodyDataListBaseInspection] = None,
-    ):
-        self.base_inspection = base_inspection
-
-    def validate(self):
-        if self.base_inspection:
-            for k in self.base_inspection:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['BaseInspection'] = []
-        if self.base_inspection is not None:
-            for k in self.base_inspection:
-                result['BaseInspection'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.base_inspection = []
-        if m.get('BaseInspection') is not None:
-            for k in m.get('BaseInspection'):
-                temp_model = GetInstanceInspectionsResponseBodyDataListBaseInspection()
-                self.base_inspection.append(temp_model.from_map(k))
-        return self
-
-
 class GetInstanceInspectionsResponseBodyData(TeaModel):
     def __init__(
         self,
-        list: GetInstanceInspectionsResponseBodyDataList = None,
+        list: List[GetInstanceInspectionsResponseBodyDataList] = None,
         page_no: int = None,
         page_size: int = None,
         total: int = None,
@@ -7113,7 +8489,9 @@ class GetInstanceInspectionsResponseBodyData(TeaModel):
 
     def validate(self):
         if self.list:
-            self.list.validate()
+            for k in self.list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7121,8 +8499,10 @@ class GetInstanceInspectionsResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        result['List'] = []
         if self.list is not None:
-            result['List'] = self.list.to_map()
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
         if self.page_no is not None:
             result['PageNo'] = self.page_no
         if self.page_size is not None:
@@ -7133,9 +8513,11 @@ class GetInstanceInspectionsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.list = []
         if m.get('List') is not None:
-            temp_model = GetInstanceInspectionsResponseBodyDataList()
-            self.list = temp_model.from_map(m['List'])
+            for k in m.get('List'):
+                temp_model = GetInstanceInspectionsResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
@@ -9150,12 +10532,12 @@ class GetQueryOptimizeSolutionResponse(TeaModel):
 class GetRequestDiagnosisPageRequest(TeaModel):
     def __init__(
         self,
-        end_time: str = None,
+        end_time: int = None,
         instance_id: str = None,
         node_id: str = None,
-        page_no: str = None,
-        page_size: str = None,
-        start_time: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        start_time: int = None,
     ):
         self.end_time = end_time
         self.instance_id = instance_id
@@ -10117,6 +11499,192 @@ class GetRunningSqlConcurrencyControlRulesResponse(TeaModel):
         return self
 
 
+class GetSqlAnalysisReportRequest(TeaModel):
+    def __init__(
+        self,
+        console_context: str = None,
+        module_name_list: str = None,
+        task_id: str = None,
+    ):
+        self.console_context = console_context
+        self.module_name_list = module_name_list
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.console_context is not None:
+            result['ConsoleContext'] = self.console_context
+        if self.module_name_list is not None:
+            result['ModuleNameList'] = self.module_name_list
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsoleContext') is not None:
+            self.console_context = m.get('ConsoleContext')
+        if m.get('ModuleNameList') is not None:
+            self.module_name_list = m.get('ModuleNameList')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetSqlAnalysisReportResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        module_name: str = None,
+        result: str = None,
+        task_id: str = None,
+        user_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.module_name = module_name
+        self.result = result
+        self.task_id = task_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetSqlAnalysisReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetSqlAnalysisReportResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetSqlAnalysisReportResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetSqlAnalysisReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetSqlAnalysisReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetSqlAnalysisReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSqlConcurrencyControlKeywordsFromSqlTextRequest(TeaModel):
     def __init__(
         self,
@@ -10724,6 +12292,335 @@ class GetSqlOptimizeAdviceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetSqlOptimizeAdviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QuerySqlAnalysisDataRequest(TeaModel):
+    def __init__(
+        self,
+        console_context: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        sql_id_list: str = None,
+        sql_text_feature: str = None,
+        sql_type: str = None,
+        task_id: str = None,
+        type: str = None,
+    ):
+        self.console_context = console_context
+        self.page_no = page_no
+        self.page_size = page_size
+        self.sql_id_list = sql_id_list
+        self.sql_text_feature = sql_text_feature
+        self.sql_type = sql_type
+        self.task_id = task_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.console_context is not None:
+            result['ConsoleContext'] = self.console_context
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sql_id_list is not None:
+            result['SqlIdList'] = self.sql_id_list
+        if self.sql_text_feature is not None:
+            result['SqlTextFeature'] = self.sql_text_feature
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsoleContext') is not None:
+            self.console_context = m.get('ConsoleContext')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SqlIdList') is not None:
+            self.sql_id_list = m.get('SqlIdList')
+        if m.get('SqlTextFeature') is not None:
+            self.sql_text_feature = m.get('SqlTextFeature')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class QuerySqlAnalysisDataResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        avg_rows_examined: int = None,
+        avg_rt: float = None,
+        cnt: int = None,
+        current_end_time: int = None,
+        db_name: str = None,
+        error_cnt: int = None,
+        first_time: int = None,
+        instance_id: str = None,
+        max_rows_examined: int = None,
+        sql: str = None,
+        sql_id: str = None,
+        sql_text_feature: str = None,
+        sql_type: str = None,
+        sum_rt: float = None,
+        table_list: str = None,
+        task_id: str = None,
+        type: str = None,
+        user_id: str = None,
+    ):
+        self.avg_rows_examined = avg_rows_examined
+        self.avg_rt = avg_rt
+        self.cnt = cnt
+        self.current_end_time = current_end_time
+        self.db_name = db_name
+        self.error_cnt = error_cnt
+        self.first_time = first_time
+        self.instance_id = instance_id
+        self.max_rows_examined = max_rows_examined
+        self.sql = sql
+        self.sql_id = sql_id
+        self.sql_text_feature = sql_text_feature
+        self.sql_type = sql_type
+        self.sum_rt = sum_rt
+        self.table_list = table_list
+        self.task_id = task_id
+        self.type = type
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_rows_examined is not None:
+            result['AvgRowsExamined'] = self.avg_rows_examined
+        if self.avg_rt is not None:
+            result['AvgRt'] = self.avg_rt
+        if self.cnt is not None:
+            result['Cnt'] = self.cnt
+        if self.current_end_time is not None:
+            result['CurrentEndTime'] = self.current_end_time
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.error_cnt is not None:
+            result['ErrorCnt'] = self.error_cnt
+        if self.first_time is not None:
+            result['FirstTime'] = self.first_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_rows_examined is not None:
+            result['MaxRowsExamined'] = self.max_rows_examined
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.sql_text_feature is not None:
+            result['SqlTextFeature'] = self.sql_text_feature
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.sum_rt is not None:
+            result['SumRt'] = self.sum_rt
+        if self.table_list is not None:
+            result['TableList'] = self.table_list
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgRowsExamined') is not None:
+            self.avg_rows_examined = m.get('AvgRowsExamined')
+        if m.get('AvgRt') is not None:
+            self.avg_rt = m.get('AvgRt')
+        if m.get('Cnt') is not None:
+            self.cnt = m.get('Cnt')
+        if m.get('CurrentEndTime') is not None:
+            self.current_end_time = m.get('CurrentEndTime')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('ErrorCnt') is not None:
+            self.error_cnt = m.get('ErrorCnt')
+        if m.get('FirstTime') is not None:
+            self.first_time = m.get('FirstTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxRowsExamined') is not None:
+            self.max_rows_examined = m.get('MaxRowsExamined')
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('SqlTextFeature') is not None:
+            self.sql_text_feature = m.get('SqlTextFeature')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('SumRt') is not None:
+            self.sum_rt = m.get('SumRt')
+        if m.get('TableList') is not None:
+            self.table_list = m.get('TableList')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QuerySqlAnalysisDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[QuerySqlAnalysisDataResponseBodyDataList] = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = QuerySqlAnalysisDataResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QuerySqlAnalysisDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: QuerySqlAnalysisDataResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QuerySqlAnalysisDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QuerySqlAnalysisDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QuerySqlAnalysisDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QuerySqlAnalysisDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,7 @@
+2022-02-25 Version: 2.0.10
+- FIX GetRequestDiagnosisPage PARAM TYPE.
+
+
 2022-01-27 Version: 2.0.7
 - Supported query optimize open API.
 

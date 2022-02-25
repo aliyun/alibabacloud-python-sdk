@@ -1386,6 +1386,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_hot_keys_with_options_async(request, runtime)
 
+    def describe_instance_das_pro_with_options(
+        self,
+        request: das20200116_models.DescribeInstanceDasProRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeInstanceDasProResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceDasPro',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeInstanceDasProResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_das_pro_with_options_async(
+        self,
+        request: das20200116_models.DescribeInstanceDasProRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DescribeInstanceDasProResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceDasPro',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DescribeInstanceDasProResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_das_pro(
+        self,
+        request: das20200116_models.DescribeInstanceDasProRequest,
+    ) -> das20200116_models.DescribeInstanceDasProResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_das_pro_with_options(request, runtime)
+
+    async def describe_instance_das_pro_async(
+        self,
+        request: das20200116_models.DescribeInstanceDasProRequest,
+    ) -> das20200116_models.DescribeInstanceDasProResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_das_pro_with_options_async(request, runtime)
+
     def describe_top_big_keys_with_options(
         self,
         request: das20200116_models.DescribeTopBigKeysRequest,
@@ -1632,6 +1702,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_all_sql_concurrency_control_rules_with_options_async(request, runtime)
 
+    def disable_das_pro_with_options(
+        self,
+        request: das20200116_models.DisableDasProRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DisableDasProResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDasPro',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DisableDasProResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_das_pro_with_options_async(
+        self,
+        request: das20200116_models.DisableDasProRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.DisableDasProResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDasPro',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.DisableDasProResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_das_pro(
+        self,
+        request: das20200116_models.DisableDasProRequest,
+    ) -> das20200116_models.DisableDasProResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_das_pro_with_options(request, runtime)
+
+    async def disable_das_pro_async(
+        self,
+        request: das20200116_models.DisableDasProRequest,
+    ) -> das20200116_models.DisableDasProResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_das_pro_with_options_async(request, runtime)
+
     def disable_sql_concurrency_control_with_options(
         self,
         request: das20200116_models.DisableSqlConcurrencyControlRequest,
@@ -1709,6 +1853,84 @@ class Client(OpenApiClient):
     ) -> das20200116_models.DisableSqlConcurrencyControlResponse:
         runtime = util_models.RuntimeOptions()
         return await self.disable_sql_concurrency_control_with_options_async(request, runtime)
+
+    def enable_das_pro_with_options(
+        self,
+        request: das20200116_models.EnableDasProRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.EnableDasProResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_retention):
+            query['SqlRetention'] = request.sql_retention
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDasPro',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.EnableDasProResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_das_pro_with_options_async(
+        self,
+        request: das20200116_models.EnableDasProRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.EnableDasProResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_retention):
+            query['SqlRetention'] = request.sql_retention
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDasPro',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.EnableDasProResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_das_pro(
+        self,
+        request: das20200116_models.EnableDasProRequest,
+    ) -> das20200116_models.EnableDasProResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_das_pro_with_options(request, runtime)
+
+    async def enable_das_pro_async(
+        self,
+        request: das20200116_models.EnableDasProRequest,
+    ) -> das20200116_models.EnableDasProResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_das_pro_with_options_async(request, runtime)
 
     def enable_sql_concurrency_control_with_options(
         self,
@@ -1807,8 +2029,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetAsyncErrorRequestListByCodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.end):
             query['End'] = request.end
         if not UtilClient.is_unset(request.error_code):
@@ -1845,8 +2065,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetAsyncErrorRequestListByCodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.end):
             query['End'] = request.end
         if not UtilClient.is_unset(request.error_code):
@@ -1991,8 +2209,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetAsyncErrorRequestStatResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.end):
@@ -2001,8 +2217,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.role):
-            query['Role'] = request.role
         if not UtilClient.is_unset(request.sql_id_list):
             query['SqlIdList'] = request.sql_id_list
         if not UtilClient.is_unset(request.start):
@@ -2033,8 +2247,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetAsyncErrorRequestStatResultResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.end):
@@ -2043,8 +2255,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.role):
-            query['Role'] = request.role
         if not UtilClient.is_unset(request.sql_id_list):
             query['SqlIdList'] = request.sql_id_list
         if not UtilClient.is_unset(request.start):
@@ -2356,6 +2566,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_autonomous_notify_events_in_range_with_options_async(request, runtime)
 
+    def get_das_pro_service_usage_with_options(
+        self,
+        request: das20200116_models.GetDasProServiceUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetDasProServiceUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDasProServiceUsage',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetDasProServiceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_das_pro_service_usage_with_options_async(
+        self,
+        request: das20200116_models.GetDasProServiceUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetDasProServiceUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDasProServiceUsage',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetDasProServiceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_das_pro_service_usage(
+        self,
+        request: das20200116_models.GetDasProServiceUsageRequest,
+    ) -> das20200116_models.GetDasProServiceUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_das_pro_service_usage_with_options(request, runtime)
+
+    async def get_das_pro_service_usage_async(
+        self,
+        request: das20200116_models.GetDasProServiceUsageRequest,
+    ) -> das20200116_models.GetDasProServiceUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_das_pro_service_usage_with_options_async(request, runtime)
+
     def get_endpoint_switch_task_with_options(
         self,
         request: das20200116_models.GetEndpointSwitchTaskRequest,
@@ -2461,8 +2745,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetErrorRequestSampleResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.end):
@@ -2471,8 +2753,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.role):
-            query['Role'] = request.role
         if not UtilClient.is_unset(request.sql_id):
             query['SqlId'] = request.sql_id
         if not UtilClient.is_unset(request.start):
@@ -2503,8 +2783,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetErrorRequestSampleResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.end):
@@ -2513,8 +2791,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.role):
-            query['Role'] = request.role
         if not UtilClient.is_unset(request.sql_id):
             query['SqlId'] = request.sql_id
         if not UtilClient.is_unset(request.start):
@@ -2551,6 +2827,242 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetErrorRequestSampleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_error_request_sample_with_options_async(request, runtime)
+
+    def get_full_request_origin_stat_by_instance_id_with_options(
+        self,
+        request: das20200116_models.GetFullRequestOriginStatByInstanceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetFullRequestOriginStatByInstanceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFullRequestOriginStatByInstanceId',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetFullRequestOriginStatByInstanceIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_full_request_origin_stat_by_instance_id_with_options_async(
+        self,
+        request: das20200116_models.GetFullRequestOriginStatByInstanceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetFullRequestOriginStatByInstanceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFullRequestOriginStatByInstanceId',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetFullRequestOriginStatByInstanceIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_full_request_origin_stat_by_instance_id(
+        self,
+        request: das20200116_models.GetFullRequestOriginStatByInstanceIdRequest,
+    ) -> das20200116_models.GetFullRequestOriginStatByInstanceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_full_request_origin_stat_by_instance_id_with_options(request, runtime)
+
+    async def get_full_request_origin_stat_by_instance_id_async(
+        self,
+        request: das20200116_models.GetFullRequestOriginStatByInstanceIdRequest,
+    ) -> das20200116_models.GetFullRequestOriginStatByInstanceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_full_request_origin_stat_by_instance_id_with_options_async(request, runtime)
+
+    def get_full_request_stat_result_by_instance_id_with_options(
+        self,
+        request: das20200116_models.GetFullRequestStatResultByInstanceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetFullRequestStatResultByInstanceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.origin_host):
+            query['OriginHost'] = request.origin_host
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFullRequestStatResultByInstanceId',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetFullRequestStatResultByInstanceIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_full_request_stat_result_by_instance_id_with_options_async(
+        self,
+        request: das20200116_models.GetFullRequestStatResultByInstanceIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetFullRequestStatResultByInstanceIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.end):
+            query['End'] = request.end
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.origin_host):
+            query['OriginHost'] = request.origin_host
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.sql_id):
+            query['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFullRequestStatResultByInstanceId',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetFullRequestStatResultByInstanceIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_full_request_stat_result_by_instance_id(
+        self,
+        request: das20200116_models.GetFullRequestStatResultByInstanceIdRequest,
+    ) -> das20200116_models.GetFullRequestStatResultByInstanceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_full_request_stat_result_by_instance_id_with_options(request, runtime)
+
+    async def get_full_request_stat_result_by_instance_id_async(
+        self,
+        request: das20200116_models.GetFullRequestStatResultByInstanceIdRequest,
+    ) -> das20200116_models.GetFullRequestStatResultByInstanceIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_full_request_stat_result_by_instance_id_with_options_async(request, runtime)
 
     def get_hdmaliyun_resource_sync_result_with_options(
         self,
@@ -3656,6 +4168,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_running_sql_concurrency_control_rules_with_options_async(request, runtime)
 
+    def get_sql_analysis_report_with_options(
+        self,
+        request: das20200116_models.GetSqlAnalysisReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetSqlAnalysisReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.module_name_list):
+            query['ModuleNameList'] = request.module_name_list
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSqlAnalysisReport',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetSqlAnalysisReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sql_analysis_report_with_options_async(
+        self,
+        request: das20200116_models.GetSqlAnalysisReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetSqlAnalysisReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not UtilClient.is_unset(request.module_name_list):
+            query['ModuleNameList'] = request.module_name_list
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSqlAnalysisReport',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetSqlAnalysisReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sql_analysis_report(
+        self,
+        request: das20200116_models.GetSqlAnalysisReportRequest,
+    ) -> das20200116_models.GetSqlAnalysisReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sql_analysis_report_with_options(request, runtime)
+
+    async def get_sql_analysis_report_async(
+        self,
+        request: das20200116_models.GetSqlAnalysisReportRequest,
+    ) -> das20200116_models.GetSqlAnalysisReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sql_analysis_report_with_options_async(request, runtime)
+
     def get_sql_concurrency_control_keywords_from_sql_text_with_options(
         self,
         request: das20200116_models.GetSqlConcurrencyControlKeywordsFromSqlTextRequest,
@@ -3901,6 +4495,108 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetSqlOptimizeAdviceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_sql_optimize_advice_with_options_async(request, runtime)
+
+    def query_sql_analysis_data_with_options(
+        self,
+        request: das20200116_models.QuerySqlAnalysisDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.QuerySqlAnalysisDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        body = {}
+        if not UtilClient.is_unset(request.page_no):
+            body['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sql_id_list):
+            body['SqlIdList'] = request.sql_id_list
+        if not UtilClient.is_unset(request.sql_text_feature):
+            body['SqlTextFeature'] = request.sql_text_feature
+        if not UtilClient.is_unset(request.sql_type):
+            body['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySqlAnalysisData',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.QuerySqlAnalysisDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_sql_analysis_data_with_options_async(
+        self,
+        request: das20200116_models.QuerySqlAnalysisDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.QuerySqlAnalysisDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        body = {}
+        if not UtilClient.is_unset(request.page_no):
+            body['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sql_id_list):
+            body['SqlIdList'] = request.sql_id_list
+        if not UtilClient.is_unset(request.sql_text_feature):
+            body['SqlTextFeature'] = request.sql_text_feature
+        if not UtilClient.is_unset(request.sql_type):
+            body['SqlType'] = request.sql_type
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySqlAnalysisData',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.QuerySqlAnalysisDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_sql_analysis_data(
+        self,
+        request: das20200116_models.QuerySqlAnalysisDataRequest,
+    ) -> das20200116_models.QuerySqlAnalysisDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_sql_analysis_data_with_options(request, runtime)
+
+    async def query_sql_analysis_data_async(
+        self,
+        request: das20200116_models.QuerySqlAnalysisDataRequest,
+    ) -> das20200116_models.QuerySqlAnalysisDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_sql_analysis_data_with_options_async(request, runtime)
 
     def run_cloud_bench_task_with_options(
         self,
