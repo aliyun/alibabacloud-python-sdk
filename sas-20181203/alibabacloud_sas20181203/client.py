@@ -440,6 +440,258 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_policy_with_options_async(request, runtime)
 
+    def create_jenkins_image_registry_with_options(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageRegistryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateJenkinsImageRegistryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.extra_param):
+            body['ExtraParam'] = request.extra_param
+        if not UtilClient.is_unset(request.net_type):
+            body['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.persistence_day):
+            body['PersistenceDay'] = request.persistence_day
+        if not UtilClient.is_unset(request.protocol_type):
+            body['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.registry_host_ip):
+            body['RegistryHostIp'] = request.registry_host_ip
+        if not UtilClient.is_unset(request.registry_name):
+            body['RegistryName'] = request.registry_name
+        if not UtilClient.is_unset(request.registry_type):
+            body['RegistryType'] = request.registry_type
+        if not UtilClient.is_unset(request.registry_version):
+            body['RegistryVersion'] = request.registry_version
+        if not UtilClient.is_unset(request.trans_per_hour):
+            body['TransPerHour'] = request.trans_per_hour
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.white_list):
+            body['WhiteList'] = request.white_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateJenkinsImageRegistry',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateJenkinsImageRegistryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_jenkins_image_registry_with_options_async(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageRegistryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateJenkinsImageRegistryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.extra_param):
+            body['ExtraParam'] = request.extra_param
+        if not UtilClient.is_unset(request.net_type):
+            body['NetType'] = request.net_type
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.persistence_day):
+            body['PersistenceDay'] = request.persistence_day
+        if not UtilClient.is_unset(request.protocol_type):
+            body['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.registry_host_ip):
+            body['RegistryHostIp'] = request.registry_host_ip
+        if not UtilClient.is_unset(request.registry_name):
+            body['RegistryName'] = request.registry_name
+        if not UtilClient.is_unset(request.registry_type):
+            body['RegistryType'] = request.registry_type
+        if not UtilClient.is_unset(request.registry_version):
+            body['RegistryVersion'] = request.registry_version
+        if not UtilClient.is_unset(request.trans_per_hour):
+            body['TransPerHour'] = request.trans_per_hour
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.white_list):
+            body['WhiteList'] = request.white_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateJenkinsImageRegistry',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateJenkinsImageRegistryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_jenkins_image_registry(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageRegistryRequest,
+    ) -> sas_20181203_models.CreateJenkinsImageRegistryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_jenkins_image_registry_with_options(request, runtime)
+
+    async def create_jenkins_image_registry_async(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageRegistryRequest,
+    ) -> sas_20181203_models.CreateJenkinsImageRegistryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_jenkins_image_registry_with_options_async(request, runtime)
+
+    def create_jenkins_image_scan_task_with_options(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageScanTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateJenkinsImageScanTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jenkins_env):
+            query['JenkinsEnv'] = request.jenkins_env
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.digest):
+            body['Digest'] = request.digest
+        if not UtilClient.is_unset(request.image_create):
+            body['ImageCreate'] = request.image_create
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_size):
+            body['ImageSize'] = request.image_size
+        if not UtilClient.is_unset(request.image_update):
+            body['ImageUpdate'] = request.image_update
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.repo_name):
+            body['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateJenkinsImageScanTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateJenkinsImageScanTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_jenkins_image_scan_task_with_options_async(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageScanTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateJenkinsImageScanTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jenkins_env):
+            query['JenkinsEnv'] = request.jenkins_env
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.digest):
+            body['Digest'] = request.digest
+        if not UtilClient.is_unset(request.image_create):
+            body['ImageCreate'] = request.image_create
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_size):
+            body['ImageSize'] = request.image_size
+        if not UtilClient.is_unset(request.image_update):
+            body['ImageUpdate'] = request.image_update
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.repo_name):
+            body['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateJenkinsImageScanTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateJenkinsImageScanTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_jenkins_image_scan_task(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageScanTaskRequest,
+    ) -> sas_20181203_models.CreateJenkinsImageScanTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_jenkins_image_scan_task_with_options(request, runtime)
+
+    async def create_jenkins_image_scan_task_async(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageScanTaskRequest,
+    ) -> sas_20181203_models.CreateJenkinsImageScanTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_jenkins_image_scan_task_with_options_async(request, runtime)
+
     def create_or_update_asset_group_with_options(
         self,
         request: sas_20181203_models.CreateOrUpdateAssetGroupRequest,
@@ -11174,6 +11426,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.install_backup_client_with_options_async(request, runtime)
 
+    def list_image_analysis_rule_project_with_options(
+        self,
+        request: sas_20181203_models.ListImageAnalysisRuleProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListImageAnalysisRuleProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListImageAnalysisRuleProject',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListImageAnalysisRuleProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_image_analysis_rule_project_with_options_async(
+        self,
+        request: sas_20181203_models.ListImageAnalysisRuleProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListImageAnalysisRuleProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListImageAnalysisRuleProject',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListImageAnalysisRuleProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_image_analysis_rule_project(
+        self,
+        request: sas_20181203_models.ListImageAnalysisRuleProjectRequest,
+    ) -> sas_20181203_models.ListImageAnalysisRuleProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_image_analysis_rule_project_with_options(request, runtime)
+
+    async def list_image_analysis_rule_project_async(
+        self,
+        request: sas_20181203_models.ListImageAnalysisRuleProjectRequest,
+    ) -> sas_20181203_models.ListImageAnalysisRuleProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_image_analysis_rule_project_with_options_async(request, runtime)
+
     def modify_anti_brute_force_rule_with_options(
         self,
         request: sas_20181203_models.ModifyAntiBruteForceRuleRequest,
@@ -13632,6 +13966,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.operation_susp_events_with_options_async(request, runtime)
 
+    def page_image_registry_with_options(
+        self,
+        request: sas_20181203_models.PageImageRegistryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.PageImageRegistryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.registry_name_like):
+            body['RegistryNameLike'] = request.registry_name_like
+        if not UtilClient.is_unset(request.registry_type_in_list):
+            body['RegistryTypeInList'] = request.registry_type_in_list
+        if not UtilClient.is_unset(request.registry_type_not_in_list):
+            body['RegistryTypeNotInList'] = request.registry_type_not_in_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PageImageRegistry',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.PageImageRegistryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def page_image_registry_with_options_async(
+        self,
+        request: sas_20181203_models.PageImageRegistryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.PageImageRegistryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.registry_name_like):
+            body['RegistryNameLike'] = request.registry_name_like
+        if not UtilClient.is_unset(request.registry_type_in_list):
+            body['RegistryTypeInList'] = request.registry_type_in_list
+        if not UtilClient.is_unset(request.registry_type_not_in_list):
+            body['RegistryTypeNotInList'] = request.registry_type_not_in_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PageImageRegistry',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.PageImageRegistryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def page_image_registry(
+        self,
+        request: sas_20181203_models.PageImageRegistryRequest,
+    ) -> sas_20181203_models.PageImageRegistryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.page_image_registry_with_options(request, runtime)
+
+    async def page_image_registry_async(
+        self,
+        request: sas_20181203_models.PageImageRegistryRequest,
+    ) -> sas_20181203_models.PageImageRegistryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.page_image_registry_with_options_async(request, runtime)
+
     def pause_client_with_options(
         self,
         request: sas_20181203_models.PauseClientRequest,
@@ -13779,6 +14207,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.QueryGroupIdByGroupNameResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_group_id_by_group_name_with_options_async(request, runtime)
+
+    def query_jenkins_image_registry_persistence_day_with_options(
+        self,
+        request: sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryJenkinsImageRegistryPersistenceDay',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_jenkins_image_registry_persistence_day_with_options_async(
+        self,
+        request: sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryJenkinsImageRegistryPersistenceDay',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_jenkins_image_registry_persistence_day(
+        self,
+        request: sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayRequest,
+    ) -> sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_jenkins_image_registry_persistence_day_with_options(request, runtime)
+
+    async def query_jenkins_image_registry_persistence_day_async(
+        self,
+        request: sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayRequest,
+    ) -> sas_20181203_models.QueryJenkinsImageRegistryPersistenceDayResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_jenkins_image_registry_persistence_day_with_options_async(request, runtime)
 
     def refresh_assets_with_options(
         self,
@@ -14330,6 +14828,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_virus_scan_task_with_options_async(request, runtime)
 
+    def submit_image_analysis_output_with_options(
+        self,
+        request: sas_20181203_models.SubmitImageAnalysisOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SubmitImageAnalysisOutputResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.is_compress):
+            body['IsCompress'] = request.is_compress
+        if not UtilClient.is_unset(request.is_encrypt):
+            body['IsEncrypt'] = request.is_encrypt
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitImageAnalysisOutput',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SubmitImageAnalysisOutputResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_image_analysis_output_with_options_async(
+        self,
+        request: sas_20181203_models.SubmitImageAnalysisOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SubmitImageAnalysisOutputResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.is_compress):
+            body['IsCompress'] = request.is_compress
+        if not UtilClient.is_unset(request.is_encrypt):
+            body['IsEncrypt'] = request.is_encrypt
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitImageAnalysisOutput',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SubmitImageAnalysisOutputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_image_analysis_output(
+        self,
+        request: sas_20181203_models.SubmitImageAnalysisOutputRequest,
+    ) -> sas_20181203_models.SubmitImageAnalysisOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_image_analysis_output_with_options(request, runtime)
+
+    async def submit_image_analysis_output_async(
+        self,
+        request: sas_20181203_models.SubmitImageAnalysisOutputRequest,
+    ) -> sas_20181203_models.SubmitImageAnalysisOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_image_analysis_output_with_options_async(request, runtime)
+
     def unbind_aegis_with_options(
         self,
         request: sas_20181203_models.UnbindAegisRequest,
@@ -14477,6 +15073,360 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.UninstallBackupClientResponse:
         runtime = util_models.RuntimeOptions()
         return await self.uninstall_backup_client_with_options_async(request, runtime)
+
+    def update_jenkins_image_registry_name_with_options(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageRegistryNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateJenkinsImageRegistryNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.registry_id):
+            body['RegistryId'] = request.registry_id
+        if not UtilClient.is_unset(request.registry_name):
+            body['RegistryName'] = request.registry_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJenkinsImageRegistryName',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateJenkinsImageRegistryNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_jenkins_image_registry_name_with_options_async(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageRegistryNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateJenkinsImageRegistryNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.registry_id):
+            body['RegistryId'] = request.registry_id
+        if not UtilClient.is_unset(request.registry_name):
+            body['RegistryName'] = request.registry_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJenkinsImageRegistryName',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateJenkinsImageRegistryNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_jenkins_image_registry_name(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageRegistryNameRequest,
+    ) -> sas_20181203_models.UpdateJenkinsImageRegistryNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_jenkins_image_registry_name_with_options(request, runtime)
+
+    async def update_jenkins_image_registry_name_async(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageRegistryNameRequest,
+    ) -> sas_20181203_models.UpdateJenkinsImageRegistryNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_jenkins_image_registry_name_with_options_async(request, runtime)
+
+    def update_jenkins_image_registry_persistence_day_with_options(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.persistence_day):
+            body['PersistenceDay'] = request.persistence_day
+        if not UtilClient.is_unset(request.registry_id):
+            body['RegistryId'] = request.registry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJenkinsImageRegistryPersistenceDay',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_jenkins_image_registry_persistence_day_with_options_async(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.persistence_day):
+            body['PersistenceDay'] = request.persistence_day
+        if not UtilClient.is_unset(request.registry_id):
+            body['RegistryId'] = request.registry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJenkinsImageRegistryPersistenceDay',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_jenkins_image_registry_persistence_day(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayRequest,
+    ) -> sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_jenkins_image_registry_persistence_day_with_options(request, runtime)
+
+    async def update_jenkins_image_registry_persistence_day_async(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayRequest,
+    ) -> sas_20181203_models.UpdateJenkinsImageRegistryPersistenceDayResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_jenkins_image_registry_persistence_day_with_options_async(request, runtime)
+
+    def update_jenkins_image_scan_task_status_with_options(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageScanTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateJenkinsImageScanTaskStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.result):
+            body['Result'] = request.result
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJenkinsImageScanTaskStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateJenkinsImageScanTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_jenkins_image_scan_task_status_with_options_async(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageScanTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateJenkinsImageScanTaskStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.result):
+            body['Result'] = request.result
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateJenkinsImageScanTaskStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateJenkinsImageScanTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_jenkins_image_scan_task_status(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageScanTaskStatusRequest,
+    ) -> sas_20181203_models.UpdateJenkinsImageScanTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_jenkins_image_scan_task_status_with_options(request, runtime)
+
+    async def update_jenkins_image_scan_task_status_async(
+        self,
+        request: sas_20181203_models.UpdateJenkinsImageScanTaskStatusRequest,
+    ) -> sas_20181203_models.UpdateJenkinsImageScanTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_jenkins_image_scan_task_status_with_options_async(request, runtime)
+
+    def upload_analyzer_runtime_log_with_options(
+        self,
+        request: sas_20181203_models.UploadAnalyzerRuntimeLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UploadAnalyzerRuntimeLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        body_flat = {}
+        if not UtilClient.is_unset(request.extended_content):
+            body_flat['ExtendedContent'] = request.extended_content
+        if not UtilClient.is_unset(request.level):
+            body['Level'] = request.level
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadAnalyzerRuntimeLog',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UploadAnalyzerRuntimeLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_analyzer_runtime_log_with_options_async(
+        self,
+        request: sas_20181203_models.UploadAnalyzerRuntimeLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UploadAnalyzerRuntimeLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        body_flat = {}
+        if not UtilClient.is_unset(request.extended_content):
+            body_flat['ExtendedContent'] = request.extended_content
+        if not UtilClient.is_unset(request.level):
+            body['Level'] = request.level
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadAnalyzerRuntimeLog',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UploadAnalyzerRuntimeLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_analyzer_runtime_log(
+        self,
+        request: sas_20181203_models.UploadAnalyzerRuntimeLogRequest,
+    ) -> sas_20181203_models.UploadAnalyzerRuntimeLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_analyzer_runtime_log_with_options(request, runtime)
+
+    async def upload_analyzer_runtime_log_async(
+        self,
+        request: sas_20181203_models.UploadAnalyzerRuntimeLogRequest,
+    ) -> sas_20181203_models.UploadAnalyzerRuntimeLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_analyzer_runtime_log_with_options_async(request, runtime)
 
     def validate_hc_warnings_with_options(
         self,

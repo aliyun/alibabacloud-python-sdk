@@ -538,6 +538,662 @@ class CreateBackupPolicyResponse(TeaModel):
         return self
 
 
+class CreateJenkinsImageRegistryRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        extra_param: str = None,
+        net_type: int = None,
+        password: str = None,
+        persistence_day: int = None,
+        protocol_type: int = None,
+        region_id: str = None,
+        registry_host_ip: str = None,
+        registry_name: str = None,
+        registry_type: str = None,
+        registry_version: str = None,
+        source_ip: str = None,
+        trans_per_hour: int = None,
+        user_name: str = None,
+        vpc_id: str = None,
+        white_list: str = None,
+    ):
+        # 主机域名
+        self.domain_name = domain_name
+        # 镜像仓库附加参数
+        self.extra_param = extra_param
+        # 网络类型 1：公网 2：vpc
+        self.net_type = net_type
+        # 密码
+        self.password = password
+        # 资产有效天数
+        self.persistence_day = persistence_day
+        # 协议类型 1：http 2:https
+        self.protocol_type = protocol_type
+        # 镜像仓库所在的regionId
+        self.region_id = region_id
+        # 主机Ip地址
+        self.registry_host_ip = registry_host_ip
+        # 镜像仓别名
+        self.registry_name = registry_name
+        # 容器镜像服务类型 harbor，quory
+        self.registry_type = registry_type
+        # 私有库版本
+        self.registry_version = registry_version
+        self.source_ip = source_ip
+        # 每小时扫描的镜像数
+        self.trans_per_hour = trans_per_hour
+        # 用户名
+        self.user_name = user_name
+        # vpcId 类型
+        self.vpc_id = vpc_id
+        # 白名单
+        self.white_list = white_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.extra_param is not None:
+            result['ExtraParam'] = self.extra_param
+        if self.net_type is not None:
+            result['NetType'] = self.net_type
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.persistence_day is not None:
+            result['PersistenceDay'] = self.persistence_day
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.registry_host_ip is not None:
+            result['RegistryHostIp'] = self.registry_host_ip
+        if self.registry_name is not None:
+            result['RegistryName'] = self.registry_name
+        if self.registry_type is not None:
+            result['RegistryType'] = self.registry_type
+        if self.registry_version is not None:
+            result['RegistryVersion'] = self.registry_version
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.trans_per_hour is not None:
+            result['TransPerHour'] = self.trans_per_hour
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.white_list is not None:
+            result['WhiteList'] = self.white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('ExtraParam') is not None:
+            self.extra_param = m.get('ExtraParam')
+        if m.get('NetType') is not None:
+            self.net_type = m.get('NetType')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('PersistenceDay') is not None:
+            self.persistence_day = m.get('PersistenceDay')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RegistryHostIp') is not None:
+            self.registry_host_ip = m.get('RegistryHostIp')
+        if m.get('RegistryName') is not None:
+            self.registry_name = m.get('RegistryName')
+        if m.get('RegistryType') is not None:
+            self.registry_type = m.get('RegistryType')
+        if m.get('RegistryVersion') is not None:
+            self.registry_version = m.get('RegistryVersion')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('TransPerHour') is not None:
+            self.trans_per_hour = m.get('TransPerHour')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WhiteList') is not None:
+            self.white_list = m.get('WhiteList')
+        return self
+
+
+class CreateJenkinsImageRegistryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        black_list: str = None,
+        domain_name: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        net_type: int = None,
+        password: str = None,
+        persistence_day: int = None,
+        protocol_type: int = None,
+        region_id: str = None,
+        registry_host_ip: str = None,
+        registry_name: str = None,
+        registry_type: str = None,
+        token: str = None,
+        trans_per_hour: int = None,
+        user_name: str = None,
+        vpc_id: str = None,
+        white_list: str = None,
+    ):
+        # 阿里用户Id
+        self.ali_uid = ali_uid
+        # 黑名单
+        self.black_list = black_list
+        # 域名
+        self.domain_name = domain_name
+        # 创建日期
+        self.gmt_create = gmt_create
+        # 更改日期
+        self.gmt_modified = gmt_modified
+        # 唯一ID
+        self.id = id
+        # 网络类型 1：公网 2：vpc
+        self.net_type = net_type
+        # 密码
+        self.password = password
+        # 资产保存天数
+        self.persistence_day = persistence_day
+        # 协议类型 1：http 2:https
+        self.protocol_type = protocol_type
+        # 镜像仓库所在的regionId
+        self.region_id = region_id
+        # 主机Ip地址
+        self.registry_host_ip = registry_host_ip
+        # 镜像仓库别名
+        self.registry_name = registry_name
+        # 容器镜像服务类型 harbor，quory
+        self.registry_type = registry_type
+        # token 用户的唯一标识
+        self.token = token
+        # 每小时扫描任务数
+        self.trans_per_hour = trans_per_hour
+        # 用户名
+        self.user_name = user_name
+        # vpcId
+        self.vpc_id = vpc_id
+        # 白名单
+        self.white_list = white_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.black_list is not None:
+            result['BlackList'] = self.black_list
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.net_type is not None:
+            result['NetType'] = self.net_type
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.persistence_day is not None:
+            result['PersistenceDay'] = self.persistence_day
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.registry_host_ip is not None:
+            result['RegistryHostIp'] = self.registry_host_ip
+        if self.registry_name is not None:
+            result['RegistryName'] = self.registry_name
+        if self.registry_type is not None:
+            result['RegistryType'] = self.registry_type
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.trans_per_hour is not None:
+            result['TransPerHour'] = self.trans_per_hour
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.white_list is not None:
+            result['WhiteList'] = self.white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('BlackList') is not None:
+            self.black_list = m.get('BlackList')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NetType') is not None:
+            self.net_type = m.get('NetType')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('PersistenceDay') is not None:
+            self.persistence_day = m.get('PersistenceDay')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RegistryHostIp') is not None:
+            self.registry_host_ip = m.get('RegistryHostIp')
+        if m.get('RegistryName') is not None:
+            self.registry_name = m.get('RegistryName')
+        if m.get('RegistryType') is not None:
+            self.registry_type = m.get('RegistryType')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('TransPerHour') is not None:
+            self.trans_per_hour = m.get('TransPerHour')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WhiteList') is not None:
+            self.white_list = m.get('WhiteList')
+        return self
+
+
+class CreateJenkinsImageRegistryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateJenkinsImageRegistryResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time_cost: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_cost = time_cost
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateJenkinsImageRegistryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class CreateJenkinsImageRegistryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateJenkinsImageRegistryResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateJenkinsImageRegistryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateJenkinsImageScanTaskRequest(TeaModel):
+    def __init__(
+        self,
+        digest: str = None,
+        image_create: int = None,
+        image_id: str = None,
+        image_size: int = None,
+        image_update: int = None,
+        jenkins_env: str = None,
+        namespace: str = None,
+        repo_name: str = None,
+        source_ip: str = None,
+        tag: str = None,
+        token: str = None,
+        uuid: str = None,
+    ):
+        # 镜像 digest
+        self.digest = digest
+        # 创建时间，timestamp
+        self.image_create = image_create
+        # imageId
+        self.image_id = image_id
+        # 镜像大小，字节
+        self.image_size = image_size
+        # 修改时间，timestamp
+        self.image_update = image_update
+        self.jenkins_env = jenkins_env
+        # 镜像命名空间，可选
+        self.namespace = namespace
+        # repo名称
+        self.repo_name = repo_name
+        self.source_ip = source_ip
+        # 镜像标签
+        self.tag = tag
+        # jenkins 镜像仓库 token，必填
+        self.token = token
+        # 资产 uuid
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.digest is not None:
+            result['Digest'] = self.digest
+        if self.image_create is not None:
+            result['ImageCreate'] = self.image_create
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_size is not None:
+            result['ImageSize'] = self.image_size
+        if self.image_update is not None:
+            result['ImageUpdate'] = self.image_update
+        if self.jenkins_env is not None:
+            result['JenkinsEnv'] = self.jenkins_env
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Digest') is not None:
+            self.digest = m.get('Digest')
+        if m.get('ImageCreate') is not None:
+            self.image_create = m.get('ImageCreate')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageSize') is not None:
+            self.image_size = m.get('ImageSize')
+        if m.get('ImageUpdate') is not None:
+            self.image_update = m.get('ImageUpdate')
+        if m.get('JenkinsEnv') is not None:
+            self.jenkins_env = m.get('JenkinsEnv')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class CreateJenkinsImageScanTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        image_scan_capacity: int = None,
+        repo_id: str = None,
+        repo_instance_id: str = None,
+        repo_region_id: str = None,
+        task_id: str = None,
+        uuid: str = None,
+    ):
+        # 镜像扫描授权数目
+        self.image_scan_capacity = image_scan_capacity
+        # repoId
+        self.repo_id = repo_id
+        # 镜像仓实例id
+        self.repo_instance_id = repo_instance_id
+        # 镜像仓regionId
+        self.repo_region_id = repo_region_id
+        # 扫描任务 id
+        self.task_id = task_id
+        # 资产 uuid
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_scan_capacity is not None:
+            result['ImageScanCapacity'] = self.image_scan_capacity
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        if self.repo_instance_id is not None:
+            result['RepoInstanceId'] = self.repo_instance_id
+        if self.repo_region_id is not None:
+            result['RepoRegionId'] = self.repo_region_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageScanCapacity') is not None:
+            self.image_scan_capacity = m.get('ImageScanCapacity')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        if m.get('RepoInstanceId') is not None:
+            self.repo_instance_id = m.get('RepoInstanceId')
+        if m.get('RepoRegionId') is not None:
+            self.repo_region_id = m.get('RepoRegionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
+class CreateJenkinsImageScanTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateJenkinsImageScanTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time_cost: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_cost = time_cost
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateJenkinsImageScanTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class CreateJenkinsImageScanTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateJenkinsImageScanTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateJenkinsImageScanTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOrUpdateAssetGroupRequest(TeaModel):
     def __init__(
         self,
@@ -14823,23 +15479,31 @@ class DescribePropertyCountRequest(TeaModel):
 class DescribePropertyCountResponseBody(TeaModel):
     def __init__(
         self,
-        auto_run: int = None,
+        autorun: int = None,
         cron: int = None,
+        database: int = None,
+        lkm: int = None,
         port: int = None,
         process: int = None,
         request_id: str = None,
         sca: int = None,
         software: int = None,
         user: int = None,
+        web: int = None,
+        webserver: int = None,
     ):
-        self.auto_run = auto_run
+        self.autorun = autorun
         self.cron = cron
+        self.database = database
+        self.lkm = lkm
         self.port = port
         self.process = process
         self.request_id = request_id
         self.sca = sca
         self.software = software
         self.user = user
+        self.web = web
+        self.webserver = webserver
 
     def validate(self):
         pass
@@ -14850,10 +15514,14 @@ class DescribePropertyCountResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.auto_run is not None:
-            result['AutoRun'] = self.auto_run
+        if self.autorun is not None:
+            result['Autorun'] = self.autorun
         if self.cron is not None:
             result['Cron'] = self.cron
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.lkm is not None:
+            result['Lkm'] = self.lkm
         if self.port is not None:
             result['Port'] = self.port
         if self.process is not None:
@@ -14866,14 +15534,22 @@ class DescribePropertyCountResponseBody(TeaModel):
             result['Software'] = self.software
         if self.user is not None:
             result['User'] = self.user
+        if self.web is not None:
+            result['Web'] = self.web
+        if self.webserver is not None:
+            result['Webserver'] = self.webserver
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AutoRun') is not None:
-            self.auto_run = m.get('AutoRun')
+        if m.get('Autorun') is not None:
+            self.autorun = m.get('Autorun')
         if m.get('Cron') is not None:
             self.cron = m.get('Cron')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('Lkm') is not None:
+            self.lkm = m.get('Lkm')
         if m.get('Port') is not None:
             self.port = m.get('Port')
         if m.get('Process') is not None:
@@ -14886,6 +15562,10 @@ class DescribePropertyCountResponseBody(TeaModel):
             self.software = m.get('Software')
         if m.get('User') is not None:
             self.user = m.get('User')
+        if m.get('Web') is not None:
+            self.web = m.get('Web')
+        if m.get('Webserver') is not None:
+            self.webserver = m.get('Webserver')
         return self
 
 
@@ -28268,6 +28948,245 @@ class InstallBackupClientResponse(TeaModel):
         return self
 
 
+class ListImageAnalysisRuleProjectRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+        task_id: str = None,
+        token: str = None,
+    ):
+        self.source_ip = source_ip
+        # 任务 id
+        self.task_id = task_id
+        # token
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class ListImageAnalysisRuleProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        is_compress: bool = None,
+        is_encrypt: bool = None,
+        name: str = None,
+        output_config: str = None,
+        output_handler: str = None,
+        project: str = None,
+        status: int = None,
+        version: str = None,
+    ):
+        # 规则内容
+        self.content = content
+        # 是否gzip压缩
+        self.is_compress = is_compress
+        # 是否加密
+        self.is_encrypt = is_encrypt
+        # 规则名称
+        self.name = name
+        # 输出配置
+        self.output_config = output_config
+        # 处理handler
+        self.output_handler = output_handler
+        # 项目名称
+        self.project = project
+        # 规则状态
+        self.status = status
+        # 规则版本
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.is_compress is not None:
+            result['IsCompress'] = self.is_compress
+        if self.is_encrypt is not None:
+            result['IsEncrypt'] = self.is_encrypt
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
+        if self.output_handler is not None:
+            result['OutputHandler'] = self.output_handler
+        if self.project is not None:
+            result['Project'] = self.project
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('IsCompress') is not None:
+            self.is_compress = m.get('IsCompress')
+        if m.get('IsEncrypt') is not None:
+            self.is_encrypt = m.get('IsEncrypt')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
+        if m.get('OutputHandler') is not None:
+            self.output_handler = m.get('OutputHandler')
+        if m.get('Project') is not None:
+            self.project = m.get('Project')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListImageAnalysisRuleProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        count: int = None,
+        data: List[ListImageAnalysisRuleProjectResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time_cost: int = None,
+    ):
+        self.code = code
+        self.count = count
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_cost = time_cost
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count is not None:
+            result['Count'] = self.count
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListImageAnalysisRuleProjectResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class ListImageAnalysisRuleProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListImageAnalysisRuleProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListImageAnalysisRuleProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAntiBruteForceRuleRequest(TeaModel):
     def __init__(
         self,
@@ -31783,6 +32702,383 @@ class OperationSuspEventsResponse(TeaModel):
         return self
 
 
+class PageImageRegistryRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        registry_name_like: str = None,
+        registry_type_in_list: List[str] = None,
+        registry_type_not_in_list: List[str] = None,
+        source_ip: str = None,
+    ):
+        self.current_page = current_page
+        self.page_size = page_size
+        # 镜像仓名称
+        self.registry_name_like = registry_name_like
+        # 镜像仓类型in
+        self.registry_type_in_list = registry_type_in_list
+        # 镜像仓类型not in
+        self.registry_type_not_in_list = registry_type_not_in_list
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.registry_name_like is not None:
+            result['RegistryNameLike'] = self.registry_name_like
+        if self.registry_type_in_list is not None:
+            result['RegistryTypeInList'] = self.registry_type_in_list
+        if self.registry_type_not_in_list is not None:
+            result['RegistryTypeNotInList'] = self.registry_type_not_in_list
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegistryNameLike') is not None:
+            self.registry_name_like = m.get('RegistryNameLike')
+        if m.get('RegistryTypeInList') is not None:
+            self.registry_type_in_list = m.get('RegistryTypeInList')
+        if m.get('RegistryTypeNotInList') is not None:
+            self.registry_type_not_in_list = m.get('RegistryTypeNotInList')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class PageImageRegistryResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        black_list: str = None,
+        domain_name: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        image_count: int = None,
+        jenkins_env: str = None,
+        net_type: int = None,
+        password: str = None,
+        persistence_day: int = None,
+        protocol_type: int = None,
+        region_id: str = None,
+        registry_host_ip: str = None,
+        registry_name: str = None,
+        registry_type: str = None,
+        token: str = None,
+        trans_per_hour: int = None,
+        user_name: str = None,
+        vpc_id: str = None,
+        white_list: str = None,
+    ):
+        # 阿里用户Id
+        self.ali_uid = ali_uid
+        # 黑名单
+        self.black_list = black_list
+        # 域名
+        self.domain_name = domain_name
+        # 创建日期
+        self.gmt_create = gmt_create
+        # 更改日期
+        self.gmt_modified = gmt_modified
+        # 唯一ID
+        self.id = id
+        # 包含的镜像数量
+        self.image_count = image_count
+        self.jenkins_env = jenkins_env
+        # 网络类型 1：公网 2：vpc
+        self.net_type = net_type
+        # 密码
+        self.password = password
+        # 资产保存天数
+        self.persistence_day = persistence_day
+        # 协议类型 1：http 2:https
+        self.protocol_type = protocol_type
+        # 镜像仓库所在的regionId
+        self.region_id = region_id
+        # 主机Ip地址
+        self.registry_host_ip = registry_host_ip
+        # 镜像仓库别名
+        self.registry_name = registry_name
+        # 容器镜像服务类型 harbor，quory
+        self.registry_type = registry_type
+        # token 用户的唯一标识
+        self.token = token
+        # 每小时扫描任务数
+        self.trans_per_hour = trans_per_hour
+        # 用户名
+        self.user_name = user_name
+        # vpcId
+        self.vpc_id = vpc_id
+        # 白名单
+        self.white_list = white_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.black_list is not None:
+            result['BlackList'] = self.black_list
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.image_count is not None:
+            result['ImageCount'] = self.image_count
+        if self.jenkins_env is not None:
+            result['JenkinsEnv'] = self.jenkins_env
+        if self.net_type is not None:
+            result['NetType'] = self.net_type
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.persistence_day is not None:
+            result['PersistenceDay'] = self.persistence_day
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.registry_host_ip is not None:
+            result['RegistryHostIp'] = self.registry_host_ip
+        if self.registry_name is not None:
+            result['RegistryName'] = self.registry_name
+        if self.registry_type is not None:
+            result['RegistryType'] = self.registry_type
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.trans_per_hour is not None:
+            result['TransPerHour'] = self.trans_per_hour
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.white_list is not None:
+            result['WhiteList'] = self.white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('BlackList') is not None:
+            self.black_list = m.get('BlackList')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ImageCount') is not None:
+            self.image_count = m.get('ImageCount')
+        if m.get('JenkinsEnv') is not None:
+            self.jenkins_env = m.get('JenkinsEnv')
+        if m.get('NetType') is not None:
+            self.net_type = m.get('NetType')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('PersistenceDay') is not None:
+            self.persistence_day = m.get('PersistenceDay')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RegistryHostIp') is not None:
+            self.registry_host_ip = m.get('RegistryHostIp')
+        if m.get('RegistryName') is not None:
+            self.registry_name = m.get('RegistryName')
+        if m.get('RegistryType') is not None:
+            self.registry_type = m.get('RegistryType')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('TransPerHour') is not None:
+            self.trans_per_hour = m.get('TransPerHour')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WhiteList') is not None:
+            self.white_list = m.get('WhiteList')
+        return self
+
+
+class PageImageRegistryResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.count = count
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class PageImageRegistryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        list: List[PageImageRegistryResponseBodyList] = None,
+        message: str = None,
+        page_info: PageImageRegistryResponseBodyPageInfo = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.list = list
+        self.message = message
+        self.page_info = page_info
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = PageImageRegistryResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageInfo') is not None:
+            temp_model = PageImageRegistryResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PageImageRegistryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: PageImageRegistryResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = PageImageRegistryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PauseClientRequest(TeaModel):
     def __init__(
         self,
@@ -31979,6 +33275,133 @@ class QueryGroupIdByGroupNameResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = QueryGroupIdByGroupNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryJenkinsImageRegistryPersistenceDayRequest(TeaModel):
+    def __init__(
+        self,
+        source_ip: str = None,
+    ):
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class QueryJenkinsImageRegistryPersistenceDayResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time_cost: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class QueryJenkinsImageRegistryPersistenceDayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: QueryJenkinsImageRegistryPersistenceDayResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = QueryJenkinsImageRegistryPersistenceDayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32722,6 +34145,169 @@ class StartVirusScanTaskResponse(TeaModel):
         return self
 
 
+class SubmitImageAnalysisOutputRequest(TeaModel):
+    def __init__(
+        self,
+        body: str = None,
+        is_compress: bool = None,
+        is_encrypt: bool = None,
+        source_ip: str = None,
+        task_id: str = None,
+        token: str = None,
+        type: str = None,
+    ):
+        # 等同 msgBody
+        self.body = body
+        # 是否gzip压缩
+        self.is_compress = is_compress
+        # 是否加密
+        self.is_encrypt = is_encrypt
+        self.source_ip = source_ip
+        # 任务 id
+        self.task_id = task_id
+        # token
+        self.token = token
+        # 等同 handler code
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.is_compress is not None:
+            result['IsCompress'] = self.is_compress
+        if self.is_encrypt is not None:
+            result['IsEncrypt'] = self.is_encrypt
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('IsCompress') is not None:
+            self.is_compress = m.get('IsCompress')
+        if m.get('IsEncrypt') is not None:
+            self.is_encrypt = m.get('IsEncrypt')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SubmitImageAnalysisOutputResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time_cost: int = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class SubmitImageAnalysisOutputResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SubmitImageAnalysisOutputResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SubmitImageAnalysisOutputResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UnbindAegisRequest(TeaModel):
     def __init__(
         self,
@@ -32912,6 +34498,593 @@ class UninstallBackupClientResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UninstallBackupClientResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateJenkinsImageRegistryNameRequest(TeaModel):
+    def __init__(
+        self,
+        registry_id: int = None,
+        registry_name: str = None,
+        source_ip: str = None,
+    ):
+        # 镜像仓id
+        self.registry_id = registry_id
+        # 保留周期
+        self.registry_name = registry_name
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.registry_id is not None:
+            result['RegistryId'] = self.registry_id
+        if self.registry_name is not None:
+            result['RegistryName'] = self.registry_name
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegistryId') is not None:
+            self.registry_id = m.get('RegistryId')
+        if m.get('RegistryName') is not None:
+            self.registry_name = m.get('RegistryName')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class UpdateJenkinsImageRegistryNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time_cost: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class UpdateJenkinsImageRegistryNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateJenkinsImageRegistryNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateJenkinsImageRegistryNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateJenkinsImageRegistryPersistenceDayRequest(TeaModel):
+    def __init__(
+        self,
+        persistence_day: int = None,
+        registry_id: int = None,
+        source_ip: str = None,
+    ):
+        # 保留周期
+        self.persistence_day = persistence_day
+        # 镜像仓id
+        self.registry_id = registry_id
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.persistence_day is not None:
+            result['PersistenceDay'] = self.persistence_day
+        if self.registry_id is not None:
+            result['RegistryId'] = self.registry_id
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PersistenceDay') is not None:
+            self.persistence_day = m.get('PersistenceDay')
+        if m.get('RegistryId') is not None:
+            self.registry_id = m.get('RegistryId')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class UpdateJenkinsImageRegistryPersistenceDayResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time_cost: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class UpdateJenkinsImageRegistryPersistenceDayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateJenkinsImageRegistryPersistenceDayResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateJenkinsImageRegistryPersistenceDayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateJenkinsImageScanTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        result: str = None,
+        source_ip: str = None,
+        status: str = None,
+        task_id: str = None,
+        token: str = None,
+    ):
+        # 任务执行结果，一般用于存储扫描失败的报错信息
+        self.result = result
+        self.source_ip = source_ip
+        # 处理阶段
+        self.status = status
+        # 任务 id
+        self.task_id = task_id
+        # jenkins 镜像仓库 token，必填
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class UpdateJenkinsImageScanTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time_cost: int = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class UpdateJenkinsImageScanTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateJenkinsImageScanTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateJenkinsImageScanTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UploadAnalyzerRuntimeLogRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        extended_content: Dict[str, Any] = None,
+        level: str = None,
+        source_ip: str = None,
+        task_id: str = None,
+        token: str = None,
+    ):
+        # 日志内容
+        self.content = content
+        # 扩展内容
+        self.extended_content = extended_content
+        # 日志级别
+        self.level = level
+        self.source_ip = source_ip
+        # 任务 id
+        self.task_id = task_id
+        # token
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.extended_content is not None:
+            result['ExtendedContent'] = self.extended_content
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ExtendedContent') is not None:
+            self.extended_content = m.get('ExtendedContent')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class UploadAnalyzerRuntimeLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time_cost: int = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time_cost = time_cost
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.time_cost is not None:
+            result['TimeCost'] = self.time_cost
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TimeCost') is not None:
+            self.time_cost = m.get('TimeCost')
+        return self
+
+
+class UploadAnalyzerRuntimeLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UploadAnalyzerRuntimeLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UploadAnalyzerRuntimeLogResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
