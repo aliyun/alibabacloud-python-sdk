@@ -1,3 +1,6 @@
+2022-02-28 Version: 3.2.1
+- The response of GetServiceProvisions adds DependentServiceNames.
+
 2022-02-22 Version: 3.2.0
 - The parameter of GetStack, GetTemplate, ListTemplates, ListTemplateVersions adds AcceptLanguage.
 - The response of GetStack, GetTemplate adds Interface.
