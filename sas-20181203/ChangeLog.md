@@ -1,3 +1,6 @@
+2022-02-28 Version: 1.0.15
+- Support DescribeSuspEvents, DescribeAlarmEventList API.
+
 2022-02-25 Version: 1.0.14
 - Generated python 2018-12-03 for Sas.
 
