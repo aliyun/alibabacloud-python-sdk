@@ -1,3 +1,6 @@
+2022-02-28 Version: 3.1.0
+- Fixed the default performance level of CreateDbfs to be PL1.
+
 2022-02-10 Version: 3.0.8
 - DBFS OpenAPI.
 
