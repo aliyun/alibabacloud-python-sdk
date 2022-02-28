@@ -482,218 +482,6 @@ class ApprovePermissionApplyOrderResponse(TeaModel):
         return self
 
 
-class CheckEngineMetaPartitionRequest(TeaModel):
-    def __init__(
-        self,
-        data_source_type: str = None,
-        partition: str = None,
-        table_guid: str = None,
-    ):
-        self.data_source_type = data_source_type
-        self.partition = partition
-        self.table_guid = table_guid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data_source_type is not None:
-            result['DataSourceType'] = self.data_source_type
-        if self.partition is not None:
-            result['Partition'] = self.partition
-        if self.table_guid is not None:
-            result['TableGuid'] = self.table_guid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DataSourceType') is not None:
-            self.data_source_type = m.get('DataSourceType')
-        if m.get('Partition') is not None:
-            self.partition = m.get('Partition')
-        if m.get('TableGuid') is not None:
-            self.table_guid = m.get('TableGuid')
-        return self
-
-
-class CheckEngineMetaPartitionResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: bool = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CheckEngineMetaPartitionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CheckEngineMetaPartitionResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CheckEngineMetaPartitionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CheckEngineMetaTableRequest(TeaModel):
-    def __init__(
-        self,
-        data_source_type: str = None,
-        table_guid: str = None,
-    ):
-        self.data_source_type = data_source_type
-        self.table_guid = table_guid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data_source_type is not None:
-            result['DataSourceType'] = self.data_source_type
-        if self.table_guid is not None:
-            result['TableGuid'] = self.table_guid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DataSourceType') is not None:
-            self.data_source_type = m.get('DataSourceType')
-        if m.get('TableGuid') is not None:
-            self.table_guid = m.get('TableGuid')
-        return self
-
-
-class CheckEngineMetaTableResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: bool = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CheckEngineMetaTableResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CheckEngineMetaTableResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CheckEngineMetaTableResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CheckFileDeploymentRequest(TeaModel):
     def __init__(
         self,
@@ -1065,76 +853,6 @@ class CheckMetaTableResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CheckMetaTableResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CheckMetaTableTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: bool = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CheckMetaTableTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CheckMetaTableTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CheckMetaTableTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2790,6 +2508,7 @@ class CreateExportMigrationResponse(TeaModel):
 class CreateFileRequest(TeaModel):
     def __init__(
         self,
+        advanced_settings: str = None,
         auto_parsing: bool = None,
         auto_rerun_interval_millis: int = None,
         auto_rerun_times: int = None,
@@ -2814,8 +2533,10 @@ class CreateFileRequest(TeaModel):
         resource_group_identifier: str = None,
         scheduler_type: str = None,
         start_effect_date: int = None,
+        start_immediately: bool = None,
         stop: bool = None,
     ):
+        self.advanced_settings = advanced_settings
         self.auto_parsing = auto_parsing
         self.auto_rerun_interval_millis = auto_rerun_interval_millis
         self.auto_rerun_times = auto_rerun_times
@@ -2840,6 +2561,7 @@ class CreateFileRequest(TeaModel):
         self.resource_group_identifier = resource_group_identifier
         self.scheduler_type = scheduler_type
         self.start_effect_date = start_effect_date
+        self.start_immediately = start_immediately
         self.stop = stop
 
     def validate(self):
@@ -2851,6 +2573,8 @@ class CreateFileRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_settings is not None:
+            result['AdvancedSettings'] = self.advanced_settings
         if self.auto_parsing is not None:
             result['AutoParsing'] = self.auto_parsing
         if self.auto_rerun_interval_millis is not None:
@@ -2899,12 +2623,16 @@ class CreateFileRequest(TeaModel):
             result['SchedulerType'] = self.scheduler_type
         if self.start_effect_date is not None:
             result['StartEffectDate'] = self.start_effect_date
+        if self.start_immediately is not None:
+            result['StartImmediately'] = self.start_immediately
         if self.stop is not None:
             result['Stop'] = self.stop
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedSettings') is not None:
+            self.advanced_settings = m.get('AdvancedSettings')
         if m.get('AutoParsing') is not None:
             self.auto_parsing = m.get('AutoParsing')
         if m.get('AutoRerunIntervalMillis') is not None:
@@ -2953,6 +2681,8 @@ class CreateFileRequest(TeaModel):
             self.scheduler_type = m.get('SchedulerType')
         if m.get('StartEffectDate') is not None:
             self.start_effect_date = m.get('StartEffectDate')
+        if m.get('StartImmediately') is not None:
+            self.start_immediately = m.get('StartImmediately')
         if m.get('Stop') is not None:
             self.stop = m.get('Stop')
         return self
@@ -5765,239 +5495,6 @@ class CreateUdfFileResponse(TeaModel):
         return self
 
 
-class CreateViewRequestViewColumn(TeaModel):
-    def __init__(
-        self,
-        column_name: str = None,
-        comment: str = None,
-    ):
-        self.column_name = column_name
-        self.comment = comment
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.column_name is not None:
-            result['ColumnName'] = self.column_name
-        if self.comment is not None:
-            result['Comment'] = self.comment
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ColumnName') is not None:
-            self.column_name = m.get('ColumnName')
-        if m.get('Comment') is not None:
-            self.comment = m.get('Comment')
-        return self
-
-
-class CreateViewRequest(TeaModel):
-    def __init__(
-        self,
-        app_guid: str = None,
-        client_token: str = None,
-        comment: str = None,
-        select_column: str = None,
-        select_sql: str = None,
-        select_table_name: str = None,
-        select_where: str = None,
-        view_column: List[CreateViewRequestViewColumn] = None,
-        view_name: str = None,
-    ):
-        self.app_guid = app_guid
-        self.client_token = client_token
-        self.comment = comment
-        self.select_column = select_column
-        self.select_sql = select_sql
-        self.select_table_name = select_table_name
-        self.select_where = select_where
-        self.view_column = view_column
-        self.view_name = view_name
-
-    def validate(self):
-        if self.view_column:
-            for k in self.view_column:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_guid is not None:
-            result['AppGuid'] = self.app_guid
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.comment is not None:
-            result['Comment'] = self.comment
-        if self.select_column is not None:
-            result['SelectColumn'] = self.select_column
-        if self.select_sql is not None:
-            result['SelectSQL'] = self.select_sql
-        if self.select_table_name is not None:
-            result['SelectTableName'] = self.select_table_name
-        if self.select_where is not None:
-            result['SelectWhere'] = self.select_where
-        result['ViewColumn'] = []
-        if self.view_column is not None:
-            for k in self.view_column:
-                result['ViewColumn'].append(k.to_map() if k else None)
-        if self.view_name is not None:
-            result['ViewName'] = self.view_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppGuid') is not None:
-            self.app_guid = m.get('AppGuid')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('Comment') is not None:
-            self.comment = m.get('Comment')
-        if m.get('SelectColumn') is not None:
-            self.select_column = m.get('SelectColumn')
-        if m.get('SelectSQL') is not None:
-            self.select_sql = m.get('SelectSQL')
-        if m.get('SelectTableName') is not None:
-            self.select_table_name = m.get('SelectTableName')
-        if m.get('SelectWhere') is not None:
-            self.select_where = m.get('SelectWhere')
-        self.view_column = []
-        if m.get('ViewColumn') is not None:
-            for k in m.get('ViewColumn'):
-                temp_model = CreateViewRequestViewColumn()
-                self.view_column.append(temp_model.from_map(k))
-        if m.get('ViewName') is not None:
-            self.view_name = m.get('ViewName')
-        return self
-
-
-class CreateViewResponseBodyTaskInfo(TeaModel):
-    def __init__(
-        self,
-        content: str = None,
-        next_task_id: str = None,
-        status: str = None,
-        task_id: str = None,
-    ):
-        self.content = content
-        self.next_task_id = next_task_id
-        self.status = status
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.next_task_id is not None:
-            result['NextTaskId'] = self.next_task_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('NextTaskId') is not None:
-            self.next_task_id = m.get('NextTaskId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        return self
-
-
-class CreateViewResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        task_info: CreateViewResponseBodyTaskInfo = None,
-    ):
-        self.request_id = request_id
-        self.task_info = task_info
-
-    def validate(self):
-        if self.task_info:
-            self.task_info.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.task_info is not None:
-            result['TaskInfo'] = self.task_info.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TaskInfo') is not None:
-            temp_model = CreateViewResponseBodyTaskInfo()
-            self.task_info = temp_model.from_map(m['TaskInfo'])
-        return self
-
-
-class CreateViewResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CreateViewResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CreateViewResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteBusinessRequest(TeaModel):
     def __init__(
         self,
@@ -8409,156 +7906,6 @@ class DeleteTableThemeResponse(TeaModel):
         return self
 
 
-class DeleteViewRequest(TeaModel):
-    def __init__(
-        self,
-        app_guid: str = None,
-        view_name: str = None,
-    ):
-        self.app_guid = app_guid
-        self.view_name = view_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_guid is not None:
-            result['AppGuid'] = self.app_guid
-        if self.view_name is not None:
-            result['ViewName'] = self.view_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppGuid') is not None:
-            self.app_guid = m.get('AppGuid')
-        if m.get('ViewName') is not None:
-            self.view_name = m.get('ViewName')
-        return self
-
-
-class DeleteViewResponseBodyTaskInfo(TeaModel):
-    def __init__(
-        self,
-        content: str = None,
-        next_task_id: str = None,
-        status: str = None,
-        task_id: str = None,
-    ):
-        self.content = content
-        self.next_task_id = next_task_id
-        self.status = status
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.next_task_id is not None:
-            result['NextTaskId'] = self.next_task_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('NextTaskId') is not None:
-            self.next_task_id = m.get('NextTaskId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        return self
-
-
-class DeleteViewResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        task_info: DeleteViewResponseBodyTaskInfo = None,
-    ):
-        self.request_id = request_id
-        self.task_info = task_info
-
-    def validate(self):
-        if self.task_info:
-            self.task_info.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.task_info is not None:
-            result['TaskInfo'] = self.task_info.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TaskInfo') is not None:
-            temp_model = DeleteViewResponseBodyTaskInfo()
-            self.task_info = temp_model.from_map(m['TaskInfo'])
-        return self
-
-
-class DeleteViewResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DeleteViewResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DeleteViewResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeployDISyncTaskRequest(TeaModel):
     def __init__(
         self,
@@ -9092,479 +8439,6 @@ class EstablishRelationTableToBusinessResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = EstablishRelationTableToBusinessResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ExportConnectionsRequest(TeaModel):
-    def __init__(
-        self,
-        data_source_type: str = None,
-        env_type: int = None,
-        name: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        project_id: int = None,
-        sub_type: str = None,
-    ):
-        self.data_source_type = data_source_type
-        self.env_type = env_type
-        self.name = name
-        self.page_number = page_number
-        self.page_size = page_size
-        self.project_id = project_id
-        self.sub_type = sub_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data_source_type is not None:
-            result['DataSourceType'] = self.data_source_type
-        if self.env_type is not None:
-            result['EnvType'] = self.env_type
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.sub_type is not None:
-            result['SubType'] = self.sub_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DataSourceType') is not None:
-            self.data_source_type = m.get('DataSourceType')
-        if m.get('EnvType') is not None:
-            self.env_type = m.get('EnvType')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('SubType') is not None:
-            self.sub_type = m.get('SubType')
-        return self
-
-
-class ExportConnectionsResponseBodyDataDataSources(TeaModel):
-    def __init__(
-        self,
-        binding_calc_engine_id: int = None,
-        connect_status: int = None,
-        content: str = None,
-        data_source_type: str = None,
-        default_engine: bool = None,
-        description: str = None,
-        env_type: int = None,
-        gmt_create: str = None,
-        gmt_modified: str = None,
-        id: int = None,
-        name: str = None,
-        operator: str = None,
-        project_id: int = None,
-        sequence: int = None,
-        shared: bool = None,
-        status: int = None,
-        sub_type: str = None,
-        tenant_id: int = None,
-    ):
-        self.binding_calc_engine_id = binding_calc_engine_id
-        self.connect_status = connect_status
-        self.content = content
-        self.data_source_type = data_source_type
-        self.default_engine = default_engine
-        self.description = description
-        self.env_type = env_type
-        self.gmt_create = gmt_create
-        self.gmt_modified = gmt_modified
-        self.id = id
-        self.name = name
-        self.operator = operator
-        self.project_id = project_id
-        self.sequence = sequence
-        self.shared = shared
-        self.status = status
-        self.sub_type = sub_type
-        self.tenant_id = tenant_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.binding_calc_engine_id is not None:
-            result['BindingCalcEngineId'] = self.binding_calc_engine_id
-        if self.connect_status is not None:
-            result['ConnectStatus'] = self.connect_status
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.data_source_type is not None:
-            result['DataSourceType'] = self.data_source_type
-        if self.default_engine is not None:
-            result['DefaultEngine'] = self.default_engine
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.env_type is not None:
-            result['EnvType'] = self.env_type
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.operator is not None:
-            result['Operator'] = self.operator
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.sequence is not None:
-            result['Sequence'] = self.sequence
-        if self.shared is not None:
-            result['Shared'] = self.shared
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.sub_type is not None:
-            result['SubType'] = self.sub_type
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BindingCalcEngineId') is not None:
-            self.binding_calc_engine_id = m.get('BindingCalcEngineId')
-        if m.get('ConnectStatus') is not None:
-            self.connect_status = m.get('ConnectStatus')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('DataSourceType') is not None:
-            self.data_source_type = m.get('DataSourceType')
-        if m.get('DefaultEngine') is not None:
-            self.default_engine = m.get('DefaultEngine')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('EnvType') is not None:
-            self.env_type = m.get('EnvType')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Operator') is not None:
-            self.operator = m.get('Operator')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('Sequence') is not None:
-            self.sequence = m.get('Sequence')
-        if m.get('Shared') is not None:
-            self.shared = m.get('Shared')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('SubType') is not None:
-            self.sub_type = m.get('SubType')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        return self
-
-
-class ExportConnectionsResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        data_sources: List[ExportConnectionsResponseBodyDataDataSources] = None,
-        page_number: int = None,
-        page_size: int = None,
-        total_count: int = None,
-    ):
-        self.data_sources = data_sources
-        self.page_number = page_number
-        self.page_size = page_size
-        self.total_count = total_count
-
-    def validate(self):
-        if self.data_sources:
-            for k in self.data_sources:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['DataSources'] = []
-        if self.data_sources is not None:
-            for k in self.data_sources:
-                result['DataSources'].append(k.to_map() if k else None)
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.data_sources = []
-        if m.get('DataSources') is not None:
-            for k in m.get('DataSources'):
-                temp_model = ExportConnectionsResponseBodyDataDataSources()
-                self.data_sources.append(temp_model.from_map(k))
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ExportConnectionsResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: ExportConnectionsResponseBodyData = None,
-        http_status_code: int = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.data = data
-        self.http_status_code = http_status_code
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = ExportConnectionsResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ExportConnectionsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ExportConnectionsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ExportConnectionsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ExportDISyncTasksRequest(TeaModel):
-    def __init__(
-        self,
-        project_id: int = None,
-        task_param: str = None,
-        task_type: str = None,
-    ):
-        self.project_id = project_id
-        self.task_param = task_param
-        self.task_type = task_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.task_param is not None:
-            result['TaskParam'] = self.task_param
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('TaskParam') is not None:
-            self.task_param = m.get('TaskParam')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
-        return self
-
-
-class ExportDISyncTasksResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        real_time_solution: str = None,
-    ):
-        self.real_time_solution = real_time_solution
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.real_time_solution is not None:
-            result['realTimeSolution'] = self.real_time_solution
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('realTimeSolution') is not None:
-            self.real_time_solution = m.get('realTimeSolution')
-        return self
-
-
-class ExportDISyncTasksResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: ExportDISyncTasksResponseBodyData = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('data') is not None:
-            temp_model = ExportDISyncTasksResponseBodyData()
-            self.data = temp_model.from_map(m['data'])
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
-        return self
-
-
-class ExportDISyncTasksResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ExportDISyncTasksResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ExportDISyncTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11440,162 +10314,6 @@ class GetBusinessResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetBusinessResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetConnectionMetaRequest(TeaModel):
-    def __init__(
-        self,
-        datasource_name: str = None,
-        env_type: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        project_id: int = None,
-    ):
-        self.datasource_name = datasource_name
-        self.env_type = env_type
-        self.page_number = page_number
-        self.page_size = page_size
-        self.project_id = project_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.datasource_name is not None:
-            result['DatasourceName'] = self.datasource_name
-        if self.env_type is not None:
-            result['EnvType'] = self.env_type
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DatasourceName') is not None:
-            self.datasource_name = m.get('DatasourceName')
-        if m.get('EnvType') is not None:
-            self.env_type = m.get('EnvType')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        return self
-
-
-class GetConnectionMetaResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        meta: str = None,
-    ):
-        self.meta = meta
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.meta is not None:
-            result['Meta'] = self.meta
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Meta') is not None:
-            self.meta = m.get('Meta')
-        return self
-
-
-class GetConnectionMetaResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: GetConnectionMetaResponseBodyData = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = GetConnectionMetaResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetConnectionMetaResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetConnectionMetaResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetConnectionMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15700,6 +14418,7 @@ class GetFileRequest(TeaModel):
 class GetFileResponseBodyDataFile(TeaModel):
     def __init__(
         self,
+        advanced_settings: str = None,
         auto_parsing: bool = None,
         biz_id: int = None,
         business_id: int = None,
@@ -15722,6 +14441,7 @@ class GetFileResponseBodyDataFile(TeaModel):
         parent_id: int = None,
         use_type: str = None,
     ):
+        self.advanced_settings = advanced_settings
         self.auto_parsing = auto_parsing
         self.biz_id = biz_id
         self.business_id = business_id
@@ -15753,6 +14473,8 @@ class GetFileResponseBodyDataFile(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_settings is not None:
+            result['AdvancedSettings'] = self.advanced_settings
         if self.auto_parsing is not None:
             result['AutoParsing'] = self.auto_parsing
         if self.biz_id is not None:
@@ -15799,6 +14521,8 @@ class GetFileResponseBodyDataFile(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedSettings') is not None:
+            self.advanced_settings = m.get('AdvancedSettings')
         if m.get('AutoParsing') is not None:
             self.auto_parsing = m.get('AutoParsing')
         if m.get('BizId') is not None:
@@ -15927,6 +14651,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         resource_group_id: int = None,
         scheduler_type: str = None,
         start_effect_date: int = None,
+        start_immediately: bool = None,
         stop: bool = None,
     ):
         self.auto_rerun_interval_millis = auto_rerun_interval_millis
@@ -15943,6 +14668,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         self.resource_group_id = resource_group_id
         self.scheduler_type = scheduler_type
         self.start_effect_date = start_effect_date
+        self.start_immediately = start_immediately
         self.stop = stop
 
     def validate(self):
@@ -15993,6 +14719,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             result['SchedulerType'] = self.scheduler_type
         if self.start_effect_date is not None:
             result['StartEffectDate'] = self.start_effect_date
+        if self.start_immediately is not None:
+            result['StartImmediately'] = self.start_immediately
         if self.stop is not None:
             result['Stop'] = self.stop
         return result
@@ -16033,6 +14761,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             self.scheduler_type = m.get('SchedulerType')
         if m.get('StartEffectDate') is not None:
             self.start_effect_date = m.get('StartEffectDate')
+        if m.get('StartImmediately') is not None:
+            self.start_immediately = m.get('StartImmediately')
         if m.get('Stop') is not None:
             self.stop = m.get('Stop')
         return self
@@ -27732,300 +26462,6 @@ class GetTopicInfluenceResponse(TeaModel):
         return self
 
 
-class ImportConnectionsRequest(TeaModel):
-    def __init__(
-        self,
-        connections: str = None,
-        project_id: int = None,
-    ):
-        self.connections = connections
-        self.project_id = project_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.connections is not None:
-            result['Connections'] = self.connections
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Connections') is not None:
-            self.connections = m.get('Connections')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        return self
-
-
-class ImportConnectionsResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        message: str = None,
-        status: bool = None,
-    ):
-        self.message = message
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class ImportConnectionsResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: ImportConnectionsResponseBodyData = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = ImportConnectionsResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ImportConnectionsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ImportConnectionsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ImportConnectionsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ImportDISyncTasksRequest(TeaModel):
-    def __init__(
-        self,
-        project_id: int = None,
-        task_param: str = None,
-        task_type: str = None,
-        body: str = None,
-    ):
-        self.project_id = project_id
-        self.task_param = task_param
-        self.task_type = task_type
-        self.body = body
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.task_param is not None:
-            result['TaskParam'] = self.task_param
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
-        if self.body is not None:
-            result['body'] = self.body
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('TaskParam') is not None:
-            self.task_param = m.get('TaskParam')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
-        if m.get('body') is not None:
-            self.body = m.get('body')
-        return self
-
-
-class ImportDISyncTasksResponseBodyTaskInfo(TeaModel):
-    def __init__(
-        self,
-        task_id: int = None,
-    ):
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        return self
-
-
-class ImportDISyncTasksResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        success: bool = None,
-        task_info: ImportDISyncTasksResponseBodyTaskInfo = None,
-    ):
-        self.request_id = request_id
-        self.success = success
-        self.task_info = task_info
-
-    def validate(self):
-        if self.task_info:
-            self.task_info.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.task_info is not None:
-            result['TaskInfo'] = self.task_info.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('TaskInfo') is not None:
-            temp_model = ImportDISyncTasksResponseBodyTaskInfo()
-            self.task_info = temp_model.from_map(m['TaskInfo'])
-        return self
-
-
-class ImportDISyncTasksResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ImportDISyncTasksResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ImportDISyncTasksResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ImportDataSourcesRequest(TeaModel):
     def __init__(
         self,
@@ -30415,233 +28851,6 @@ class ListDIProjectConfigResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListDIProjectConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListDISyncTasksRequest(TeaModel):
-    def __init__(
-        self,
-        page_number: int = None,
-        page_size: int = None,
-        project_id: int = None,
-        task_type: str = None,
-    ):
-        self.page_number = page_number
-        self.page_size = page_size
-        self.project_id = project_id
-        self.task_type = task_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
-        return self
-
-
-class ListDISyncTasksResponseBodyTaskListRealTimeSolutionList(TeaModel):
-    def __init__(
-        self,
-        create_time: int = None,
-        process_id: int = None,
-        process_name: str = None,
-        task_status: str = None,
-        task_type: str = None,
-    ):
-        self.create_time = create_time
-        self.process_id = process_id
-        self.process_name = process_name
-        self.task_status = task_status
-        self.task_type = task_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.process_id is not None:
-            result['ProcessId'] = self.process_id
-        if self.process_name is not None:
-            result['ProcessName'] = self.process_name
-        if self.task_status is not None:
-            result['TaskStatus'] = self.task_status
-        if self.task_type is not None:
-            result['TaskType'] = self.task_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('ProcessId') is not None:
-            self.process_id = m.get('ProcessId')
-        if m.get('ProcessName') is not None:
-            self.process_name = m.get('ProcessName')
-        if m.get('TaskStatus') is not None:
-            self.task_status = m.get('TaskStatus')
-        if m.get('TaskType') is not None:
-            self.task_type = m.get('TaskType')
-        return self
-
-
-class ListDISyncTasksResponseBodyTaskList(TeaModel):
-    def __init__(
-        self,
-        page_number: int = None,
-        page_size: int = None,
-        real_time_solution_list: List[ListDISyncTasksResponseBodyTaskListRealTimeSolutionList] = None,
-        total_count: int = None,
-    ):
-        self.page_number = page_number
-        self.page_size = page_size
-        self.real_time_solution_list = real_time_solution_list
-        self.total_count = total_count
-
-    def validate(self):
-        if self.real_time_solution_list:
-            for k in self.real_time_solution_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        result['RealTimeSolutionList'] = []
-        if self.real_time_solution_list is not None:
-            for k in self.real_time_solution_list:
-                result['RealTimeSolutionList'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        self.real_time_solution_list = []
-        if m.get('RealTimeSolutionList') is not None:
-            for k in m.get('RealTimeSolutionList'):
-                temp_model = ListDISyncTasksResponseBodyTaskListRealTimeSolutionList()
-                self.real_time_solution_list.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListDISyncTasksResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        success: bool = None,
-        task_list: ListDISyncTasksResponseBodyTaskList = None,
-    ):
-        self.request_id = request_id
-        self.success = success
-        self.task_list = task_list
-
-    def validate(self):
-        if self.task_list:
-            self.task_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.task_list is not None:
-            result['TaskList'] = self.task_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('TaskList') is not None:
-            temp_model = ListDISyncTasksResponseBodyTaskList()
-            self.task_list = temp_model.from_map(m['TaskList'])
-        return self
-
-
-class ListDISyncTasksResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListDISyncTasksResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListDISyncTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -45160,162 +43369,6 @@ class SearchNodesByOutputResponse(TeaModel):
         return self
 
 
-class SetConnectionShareRequest(TeaModel):
-    def __init__(
-        self,
-        datasource_name: str = None,
-        env_type: str = None,
-        project_id: int = None,
-        project_permissions: str = None,
-        user_permissions: str = None,
-    ):
-        self.datasource_name = datasource_name
-        self.env_type = env_type
-        self.project_id = project_id
-        self.project_permissions = project_permissions
-        self.user_permissions = user_permissions
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.datasource_name is not None:
-            result['DatasourceName'] = self.datasource_name
-        if self.env_type is not None:
-            result['EnvType'] = self.env_type
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.project_permissions is not None:
-            result['ProjectPermissions'] = self.project_permissions
-        if self.user_permissions is not None:
-            result['UserPermissions'] = self.user_permissions
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DatasourceName') is not None:
-            self.datasource_name = m.get('DatasourceName')
-        if m.get('EnvType') is not None:
-            self.env_type = m.get('EnvType')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('ProjectPermissions') is not None:
-            self.project_permissions = m.get('ProjectPermissions')
-        if m.get('UserPermissions') is not None:
-            self.user_permissions = m.get('UserPermissions')
-        return self
-
-
-class SetConnectionShareResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        status: str = None,
-    ):
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class SetConnectionShareResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: SetConnectionShareResponseBodyData = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = SetConnectionShareResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class SetConnectionShareResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: SetConnectionShareResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = SetConnectionShareResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class SetDataSourceShareRequest(TeaModel):
     def __init__(
         self,
@@ -48056,6 +46109,7 @@ class UpdateDataSourceResponse(TeaModel):
 class UpdateFileRequest(TeaModel):
     def __init__(
         self,
+        advanced_settings: str = None,
         auto_parsing: bool = None,
         auto_rerun_interval_millis: int = None,
         auto_rerun_times: int = None,
@@ -48080,8 +46134,10 @@ class UpdateFileRequest(TeaModel):
         resource_group_identifier: str = None,
         scheduler_type: str = None,
         start_effect_date: int = None,
+        start_immediately: bool = None,
         stop: bool = None,
     ):
+        self.advanced_settings = advanced_settings
         self.auto_parsing = auto_parsing
         self.auto_rerun_interval_millis = auto_rerun_interval_millis
         self.auto_rerun_times = auto_rerun_times
@@ -48106,6 +46162,7 @@ class UpdateFileRequest(TeaModel):
         self.resource_group_identifier = resource_group_identifier
         self.scheduler_type = scheduler_type
         self.start_effect_date = start_effect_date
+        self.start_immediately = start_immediately
         self.stop = stop
 
     def validate(self):
@@ -48117,6 +46174,8 @@ class UpdateFileRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_settings is not None:
+            result['AdvancedSettings'] = self.advanced_settings
         if self.auto_parsing is not None:
             result['AutoParsing'] = self.auto_parsing
         if self.auto_rerun_interval_millis is not None:
@@ -48165,12 +46224,16 @@ class UpdateFileRequest(TeaModel):
             result['SchedulerType'] = self.scheduler_type
         if self.start_effect_date is not None:
             result['StartEffectDate'] = self.start_effect_date
+        if self.start_immediately is not None:
+            result['StartImmediately'] = self.start_immediately
         if self.stop is not None:
             result['Stop'] = self.stop
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedSettings') is not None:
+            self.advanced_settings = m.get('AdvancedSettings')
         if m.get('AutoParsing') is not None:
             self.auto_parsing = m.get('AutoParsing')
         if m.get('AutoRerunIntervalMillis') is not None:
@@ -48219,6 +46282,8 @@ class UpdateFileRequest(TeaModel):
             self.scheduler_type = m.get('SchedulerType')
         if m.get('StartEffectDate') is not None:
             self.start_effect_date = m.get('StartEffectDate')
+        if m.get('StartImmediately') is not None:
+            self.start_immediately = m.get('StartImmediately')
         if m.get('Stop') is not None:
             self.stop = m.get('Stop')
         return self
