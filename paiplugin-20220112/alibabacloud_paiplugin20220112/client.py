@@ -45,6 +45,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateGroupRequest,
     ) -> pai_plugin_20220112_models.CreateGroupResponse:
+        """
+        注册人群
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_group_with_options(request, headers, runtime)
@@ -53,6 +56,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateGroupRequest,
     ) -> pai_plugin_20220112_models.CreateGroupResponse:
+        """
+        注册人群
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_group_with_options_async(request, headers, runtime)
@@ -71,8 +77,8 @@ class Client(OpenApiClient):
             body['Column'] = request.column
         if not UtilClient.is_unset(request.filter):
             body['Filter'] = request.filter
-        if not UtilClient.is_unset(request.inference_job):
-            body['InferenceJob'] = request.inference_job
+        if not UtilClient.is_unset(request.inference_job_id):
+            body['InferenceJobId'] = request.inference_job_id
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.project):
@@ -121,8 +127,8 @@ class Client(OpenApiClient):
             body['Column'] = request.column
         if not UtilClient.is_unset(request.filter):
             body['Filter'] = request.filter
-        if not UtilClient.is_unset(request.inference_job):
-            body['InferenceJob'] = request.inference_job
+        if not UtilClient.is_unset(request.inference_job_id):
+            body['InferenceJobId'] = request.inference_job_id
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.project):
@@ -161,6 +167,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateInferenceJobRequest,
     ) -> pai_plugin_20220112_models.CreateInferenceJobResponse:
+        """
+        注册推理任务
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_inference_job_with_options(request, headers, runtime)
@@ -169,6 +178,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateInferenceJobRequest,
     ) -> pai_plugin_20220112_models.CreateInferenceJobResponse:
+        """
+        注册推理任务
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_inference_job_with_options_async(request, headers, runtime)
@@ -253,6 +265,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateScheduleRequest,
     ) -> pai_plugin_20220112_models.CreateScheduleResponse:
+        """
+        注册触达计划
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_schedule_with_options(request, headers, runtime)
@@ -261,6 +276,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateScheduleRequest,
     ) -> pai_plugin_20220112_models.CreateScheduleResponse:
+        """
+        注册触达计划
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_schedule_with_options_async(request, headers, runtime)
@@ -287,8 +305,12 @@ class Client(OpenApiClient):
             body['RepeatCycleUnit'] = request.repeat_cycle_unit
         if not UtilClient.is_unset(request.repeat_times):
             body['RepeatTimes'] = request.repeat_times
+        if not UtilClient.is_unset(request.sign_name):
+            body['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.signature_id):
             body['SignatureId'] = request.signature_id
+        if not UtilClient.is_unset(request.template_code):
+            body['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -333,8 +355,12 @@ class Client(OpenApiClient):
             body['RepeatCycleUnit'] = request.repeat_cycle_unit
         if not UtilClient.is_unset(request.repeat_times):
             body['RepeatTimes'] = request.repeat_times
+        if not UtilClient.is_unset(request.sign_name):
+            body['SignName'] = request.sign_name
         if not UtilClient.is_unset(request.signature_id):
             body['SignatureId'] = request.signature_id
+        if not UtilClient.is_unset(request.template_code):
+            body['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -361,6 +387,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateSignatureRequest,
     ) -> pai_plugin_20220112_models.CreateSignatureResponse:
+        """
+        注册签名。
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_signature_with_options(request, headers, runtime)
@@ -369,6 +398,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateSignatureRequest,
     ) -> pai_plugin_20220112_models.CreateSignatureResponse:
+        """
+        注册签名。
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_signature_with_options_async(request, headers, runtime)
@@ -441,6 +473,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateTemplateRequest,
     ) -> pai_plugin_20220112_models.CreateTemplateResponse:
+        """
+        注册模板
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_template_with_options(request, headers, runtime)
@@ -449,6 +484,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateTemplateRequest,
     ) -> pai_plugin_20220112_models.CreateTemplateResponse:
+        """
+        注册模板
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_template_with_options_async(request, headers, runtime)
@@ -533,6 +571,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateTrainingJobRequest,
     ) -> pai_plugin_20220112_models.CreateTrainingJobResponse:
+        """
+        注册训练任务
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_training_job_with_options(request, headers, runtime)
@@ -541,6 +582,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.CreateTrainingJobRequest,
     ) -> pai_plugin_20220112_models.CreateTrainingJobResponse:
+        """
+        注册训练任务
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_training_job_with_options_async(request, headers, runtime)
@@ -621,6 +665,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteGroupResponse:
+        """
+        删除人群
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_group_with_options(id, headers, runtime)
@@ -629,6 +676,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteGroupResponse:
+        """
+        删除人群
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_group_with_options_async(id, headers, runtime)
@@ -689,6 +739,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteInferenceJobResponse:
+        """
+        删除推理任务
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_inference_job_with_options(id, headers, runtime)
@@ -697,6 +750,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteInferenceJobResponse:
+        """
+        删除推理任务
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_inference_job_with_options_async(id, headers, runtime)
@@ -757,6 +813,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteScheduleResponse:
+        """
+        删除触达计划
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_schedule_with_options(id, headers, runtime)
@@ -765,6 +824,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteScheduleResponse:
+        """
+        删除触达计划
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_schedule_with_options_async(id, headers, runtime)
@@ -825,6 +887,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteSignatureResponse:
+        """
+        删除签名。
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_signature_with_options(id, headers, runtime)
@@ -833,6 +898,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteSignatureResponse:
+        """
+        删除签名。
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_signature_with_options_async(id, headers, runtime)
@@ -893,6 +961,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteTemplateResponse:
+        """
+        删除模板
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_template_with_options(id, headers, runtime)
@@ -901,6 +972,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteTemplateResponse:
+        """
+        删除模板
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_template_with_options_async(id, headers, runtime)
@@ -961,6 +1035,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteTrainingJobResponse:
+        """
+        删除训练任务
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_training_job_with_options(id, headers, runtime)
@@ -969,6 +1046,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.DeleteTrainingJobResponse:
+        """
+        删除训练任务
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_training_job_with_options_async(id, headers, runtime)
@@ -1025,10 +1105,88 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_algorithm(
+        self,
+        id: str,
+    ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
+        """
+        获取算法详情
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_algorithm_with_options(id, headers, runtime)
+
+    async def get_algorithm_async(
+        self,
+        id: str,
+    ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
+        """
+        获取算法详情
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_algorithm_with_options_async(id, headers, runtime)
+
+    def get_algorithm_with_options(
+        self,
+        id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAlgorithm',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/algorithms/{id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.GetAlgorithmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_algorithm_with_options_async(
+        self,
+        id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
+        id = OpenApiUtilClient.get_encode_param(id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAlgorithm',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/algorithms/{id}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.GetAlgorithmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_group(
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetGroupResponse:
+        """
+        获取人群
+        默认返回所有人群信息
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_group_with_options(id, headers, runtime)
@@ -1037,6 +1195,10 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetGroupResponse:
+        """
+        获取人群
+        默认返回所有人群信息
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_group_with_options_async(id, headers, runtime)
@@ -1097,6 +1259,10 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetInferenceJobResponse:
+        """
+        获取推理任务
+        默认返回所有推理任务信息
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_inference_job_with_options(id, headers, runtime)
@@ -1105,6 +1271,10 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetInferenceJobResponse:
+        """
+        获取推理任务
+        默认返回所有推理任务信息
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_inference_job_with_options_async(id, headers, runtime)
@@ -1165,6 +1335,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetScheduleResponse:
+        """
+        获取触达计划详情。
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_schedule_with_options(id, headers, runtime)
@@ -1173,6 +1346,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetScheduleResponse:
+        """
+        获取触达计划详情。
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_schedule_with_options_async(id, headers, runtime)
@@ -1233,6 +1409,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetSignatureResponse:
+        """
+        获取签名详情
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_signature_with_options(id, headers, runtime)
@@ -1241,6 +1420,9 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetSignatureResponse:
+        """
+        获取签名详情
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_signature_with_options_async(id, headers, runtime)
@@ -1301,6 +1483,11 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetTemplateResponse:
+        """
+        获取模板
+        默认返回所有模板信息
+        ![模板列表](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/302991/1615264998427-d2943cfb-106a-421d-b4a4-f06307b4d9be.png)
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_template_with_options(id, headers, runtime)
@@ -1309,6 +1496,11 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetTemplateResponse:
+        """
+        获取模板
+        默认返回所有模板信息
+        ![模板列表](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/302991/1615264998427-d2943cfb-106a-421d-b4a4-f06307b4d9be.png)
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_template_with_options_async(id, headers, runtime)
@@ -1369,6 +1561,10 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetTrainingJobResponse:
+        """
+        获取训练任务
+        默认返回所有训练任务信息
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_training_job_with_options(id, headers, runtime)
@@ -1377,6 +1573,10 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetTrainingJobResponse:
+        """
+        获取训练任务
+        默认返回所有训练任务信息
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_training_job_with_options_async(id, headers, runtime)
@@ -1433,10 +1633,107 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def list_algorithms(
+        self,
+        request: pai_plugin_20220112_models.ListAlgorithmsRequest,
+    ) -> pai_plugin_20220112_models.ListAlgorithmsResponse:
+        """
+        获取算法列表
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_algorithms_with_options(request, headers, runtime)
+
+    async def list_algorithms_async(
+        self,
+        request: pai_plugin_20220112_models.ListAlgorithmsRequest,
+    ) -> pai_plugin_20220112_models.ListAlgorithmsResponse:
+        """
+        获取算法列表
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_algorithms_with_options_async(request, headers, runtime)
+
+    def list_algorithms_with_options(
+        self,
+        request: pai_plugin_20220112_models.ListAlgorithmsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.ListAlgorithmsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlgorithms',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/algorithms',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.ListAlgorithmsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_algorithms_with_options_async(
+        self,
+        request: pai_plugin_20220112_models.ListAlgorithmsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.ListAlgorithmsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlgorithms',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/algorithms',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.ListAlgorithmsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_groups(
         self,
         request: pai_plugin_20220112_models.ListGroupsRequest,
     ) -> pai_plugin_20220112_models.ListGroupsResponse:
+        """
+        获取人群列表
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_groups_with_options(request, headers, runtime)
@@ -1445,6 +1742,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListGroupsRequest,
     ) -> pai_plugin_20220112_models.ListGroupsResponse:
+        """
+        获取人群列表
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_groups_with_options_async(request, headers, runtime)
@@ -1533,6 +1833,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListInferenceJobsRequest,
     ) -> pai_plugin_20220112_models.ListInferenceJobsResponse:
+        """
+        获取推理任务列表
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_inference_jobs_with_options(request, headers, runtime)
@@ -1541,6 +1844,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListInferenceJobsRequest,
     ) -> pai_plugin_20220112_models.ListInferenceJobsResponse:
+        """
+        获取推理任务列表
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_inference_jobs_with_options_async(request, headers, runtime)
@@ -1625,6 +1931,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListMessageMetricsRequest,
     ) -> pai_plugin_20220112_models.ListMessageMetricsResponse:
+        """
+        获取用户短信发送统计
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_message_metrics_with_options(request, headers, runtime)
@@ -1633,6 +1942,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListMessageMetricsRequest,
     ) -> pai_plugin_20220112_models.ListMessageMetricsResponse:
+        """
+        获取用户短信发送统计
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_message_metrics_with_options_async(request, headers, runtime)
@@ -1713,6 +2025,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListMessagesRequest,
     ) -> pai_plugin_20220112_models.ListMessagesResponse:
+        """
+        查询短信发送详情
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_messages_with_options(request, headers, runtime)
@@ -1721,6 +2036,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListMessagesRequest,
     ) -> pai_plugin_20220112_models.ListMessagesResponse:
+        """
+        查询短信发送详情
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_messages_with_options_async(request, headers, runtime)
@@ -1825,6 +2143,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListSchedulesRequest,
     ) -> pai_plugin_20220112_models.ListSchedulesResponse:
+        """
+        获取触达计划列表。
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_schedules_with_options(request, headers, runtime)
@@ -1833,6 +2154,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListSchedulesRequest,
     ) -> pai_plugin_20220112_models.ListSchedulesResponse:
+        """
+        获取触达计划列表。
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_schedules_with_options_async(request, headers, runtime)
@@ -2001,6 +2325,10 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListTemplatesRequest,
     ) -> pai_plugin_20220112_models.ListTemplatesResponse:
+        """
+        获取模板列表
+        默认返回所有模板信息
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_templates_with_options(request, headers, runtime)
@@ -2009,6 +2337,10 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListTemplatesRequest,
     ) -> pai_plugin_20220112_models.ListTemplatesResponse:
+        """
+        获取模板列表
+        默认返回所有模板信息
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_templates_with_options_async(request, headers, runtime)
@@ -2097,6 +2429,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListTrainingJobsRequest,
     ) -> pai_plugin_20220112_models.ListTrainingJobsResponse:
+        """
+        获取训练任务列表
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_training_jobs_with_options(request, headers, runtime)
@@ -2105,6 +2440,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListTrainingJobsRequest,
     ) -> pai_plugin_20220112_models.ListTrainingJobsResponse:
+        """
+        获取训练任务列表
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_training_jobs_with_options_async(request, headers, runtime)
@@ -2189,6 +2527,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.SendMessageRequest,
     ) -> pai_plugin_20220112_models.SendMessageResponse:
+        """
+        发送短信
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.send_message_with_options(request, headers, runtime)
@@ -2197,6 +2538,9 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.SendMessageRequest,
     ) -> pai_plugin_20220112_models.SendMessageResponse:
+        """
+        发送短信
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_message_with_options_async(request, headers, runtime)
