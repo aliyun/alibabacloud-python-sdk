@@ -47,6 +47,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateGroupResponse:
         """
         注册人群
+        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -58,6 +59,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateGroupResponse:
         """
         注册人群
+        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -169,6 +171,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateInferenceJobResponse:
         """
         注册推理任务
+        @tags 推理任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -180,6 +183,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateInferenceJobResponse:
         """
         注册推理任务
+        @tags 推理任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -267,6 +271,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateScheduleResponse:
         """
         注册触达计划
+        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -278,6 +283,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateScheduleResponse:
         """
         注册触达计划
+        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -389,6 +395,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateSignatureResponse:
         """
         注册签名。
+        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -400,6 +407,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateSignatureResponse:
         """
         注册签名。
+        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -475,6 +483,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateTemplateResponse:
         """
         注册模板
+        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -486,6 +495,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateTemplateResponse:
         """
         注册模板
+        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -573,6 +583,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateTrainingJobResponse:
         """
         注册训练任务
+        @tags 训练任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -584,6 +595,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateTrainingJobResponse:
         """
         注册训练任务
+        @tags 训练任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -667,6 +679,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteGroupResponse:
         """
         删除人群
+        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -678,6 +691,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteGroupResponse:
         """
         删除人群
+        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -741,6 +755,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteInferenceJobResponse:
         """
         删除推理任务
+        @tags 推理任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -752,6 +767,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteInferenceJobResponse:
         """
         删除推理任务
+        @tags 推理任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -815,6 +831,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteScheduleResponse:
         """
         删除触达计划
+        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -826,6 +843,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteScheduleResponse:
         """
         删除触达计划
+        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -889,6 +907,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteSignatureResponse:
         """
         删除签名。
+        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -900,6 +919,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteSignatureResponse:
         """
         删除签名。
+        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -963,6 +983,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteTemplateResponse:
         """
         删除模板
+        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -974,6 +995,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteTemplateResponse:
         """
         删除模板
+        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1037,6 +1059,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteTrainingJobResponse:
         """
         删除训练任务
+        @tags 训练任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1048,6 +1071,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteTrainingJobResponse:
         """
         删除训练任务
+        @tags 训练任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1111,6 +1135,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
         """
         获取算法详情
+        @tags 算法
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1122,6 +1147,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
         """
         获取算法详情
+        @tags 算法
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1186,6 +1212,7 @@ class Client(OpenApiClient):
         """
         获取人群
         默认返回所有人群信息
+        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1198,6 +1225,7 @@ class Client(OpenApiClient):
         """
         获取人群
         默认返回所有人群信息
+        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1262,6 +1290,7 @@ class Client(OpenApiClient):
         """
         获取推理任务
         默认返回所有推理任务信息
+        @tags 推理任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1274,6 +1303,7 @@ class Client(OpenApiClient):
         """
         获取推理任务
         默认返回所有推理任务信息
+        @tags 推理任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1337,6 +1367,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.GetScheduleResponse:
         """
         获取触达计划详情。
+        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1348,6 +1379,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.GetScheduleResponse:
         """
         获取触达计划详情。
+        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1411,6 +1443,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.GetSignatureResponse:
         """
         获取签名详情
+        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1422,6 +1455,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.GetSignatureResponse:
         """
         获取签名详情
+        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1487,6 +1521,7 @@ class Client(OpenApiClient):
         获取模板
         默认返回所有模板信息
         ![模板列表](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/302991/1615264998427-d2943cfb-106a-421d-b4a4-f06307b4d9be.png)
+        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1500,6 +1535,7 @@ class Client(OpenApiClient):
         获取模板
         默认返回所有模板信息
         ![模板列表](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/302991/1615264998427-d2943cfb-106a-421d-b4a4-f06307b4d9be.png)
+        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1564,6 +1600,7 @@ class Client(OpenApiClient):
         """
         获取训练任务
         默认返回所有训练任务信息
+        @tags 训练任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1576,6 +1613,7 @@ class Client(OpenApiClient):
         """
         获取训练任务
         默认返回所有训练任务信息
+        @tags 训练任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1639,6 +1677,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListAlgorithmsResponse:
         """
         获取算法列表
+        @tags 算法
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1650,6 +1689,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListAlgorithmsResponse:
         """
         获取算法列表
+        @tags 算法
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1733,6 +1773,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListGroupsResponse:
         """
         获取人群列表
+        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1744,6 +1785,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListGroupsResponse:
         """
         获取人群列表
+        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1835,6 +1877,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListInferenceJobsResponse:
         """
         获取推理任务列表
+        @tags 推理任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1846,6 +1889,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListInferenceJobsResponse:
         """
         获取推理任务列表
+        @tags 推理任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1933,6 +1977,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListMessageMetricsResponse:
         """
         获取用户短信发送统计
+        @tags 短信
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1944,6 +1989,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListMessageMetricsResponse:
         """
         获取用户短信发送统计
+        @tags 短信
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1959,12 +2005,24 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_date):
             query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not UtilClient.is_unset(request.signature):
+            query['Signature'] = request.signature
+        if not UtilClient.is_unset(request.signature_id):
+            query['SignatureId'] = request.signature_id
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1995,12 +2053,24 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_date):
             query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not UtilClient.is_unset(request.signature):
+            query['Signature'] = request.signature
+        if not UtilClient.is_unset(request.signature_id):
+            query['SignatureId'] = request.signature_id
         if not UtilClient.is_unset(request.start_date):
             query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2027,6 +2097,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListMessagesResponse:
         """
         查询短信发送详情
+        @tags 短信
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2038,6 +2109,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListMessagesResponse:
         """
         查询短信发送详情
+        @tags 短信
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2069,8 +2141,14 @@ class Client(OpenApiClient):
             query['ScheduleId'] = request.schedule_id
         if not UtilClient.is_unset(request.signature):
             query['Signature'] = request.signature
+        if not UtilClient.is_unset(request.signature_id):
+            query['SignatureId'] = request.signature_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2117,8 +2195,14 @@ class Client(OpenApiClient):
             query['ScheduleId'] = request.schedule_id
         if not UtilClient.is_unset(request.signature):
             query['Signature'] = request.signature
+        if not UtilClient.is_unset(request.signature_id):
+            query['SignatureId'] = request.signature_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2145,6 +2229,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListSchedulesResponse:
         """
         获取触达计划列表。
+        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2156,6 +2241,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListSchedulesResponse:
         """
         获取触达计划列表。
+        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2237,6 +2323,10 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListSignaturesRequest,
     ) -> pai_plugin_20220112_models.ListSignaturesResponse:
+        """
+        获取签名列表
+        @tags 签名
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_signatures_with_options(request, headers, runtime)
@@ -2245,6 +2335,10 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListSignaturesRequest,
     ) -> pai_plugin_20220112_models.ListSignaturesResponse:
+        """
+        获取签名列表
+        @tags 签名
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_signatures_with_options_async(request, headers, runtime)
@@ -2328,6 +2422,7 @@ class Client(OpenApiClient):
         """
         获取模板列表
         默认返回所有模板信息
+        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2340,6 +2435,7 @@ class Client(OpenApiClient):
         """
         获取模板列表
         默认返回所有模板信息
+        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2431,6 +2527,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListTrainingJobsResponse:
         """
         获取训练任务列表
+        @tags 训练任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2442,6 +2539,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListTrainingJobsResponse:
         """
         获取训练任务列表
+        @tags 训练任务
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2529,6 +2627,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.SendMessageResponse:
         """
         发送短信
+        @tags 短信
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2540,6 +2639,7 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.SendMessageResponse:
         """
         发送短信
+        @tags 短信
         """
         runtime = util_models.RuntimeOptions()
         headers = {}

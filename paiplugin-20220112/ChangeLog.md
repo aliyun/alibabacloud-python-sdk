@@ -1,3 +1,7 @@
+2022-03-02 Version: 1.0.6
+- ListMessages add filters.
+- ListMessageMetrics add filters.
+
 2022-03-01 Version: 1.0.5
 - Add ListMessageMetrics API.
 
