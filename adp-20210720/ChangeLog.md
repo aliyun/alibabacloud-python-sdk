@@ -1,3 +1,6 @@
+2022-03-02 Version: 1.0.7
+- Public new version.
+
 2022-01-17 Version: v1.0.6
 - Public new version.
 
