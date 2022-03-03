@@ -139,6 +139,7 @@ class CheckClickhouseToRDSRequest(TeaModel):
         rds_port: int = None,
         rds_user_name: str = None,
         rds_vpc_id: str = None,
+        rds_vpc_url: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -153,6 +154,7 @@ class CheckClickhouseToRDSRequest(TeaModel):
         self.rds_port = rds_port
         self.rds_user_name = rds_user_name
         self.rds_vpc_id = rds_vpc_id
+        self.rds_vpc_url = rds_vpc_url
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -187,6 +189,8 @@ class CheckClickhouseToRDSRequest(TeaModel):
             result['RdsUserName'] = self.rds_user_name
         if self.rds_vpc_id is not None:
             result['RdsVpcId'] = self.rds_vpc_id
+        if self.rds_vpc_url is not None:
+            result['RdsVpcUrl'] = self.rds_vpc_url
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -217,6 +221,8 @@ class CheckClickhouseToRDSRequest(TeaModel):
             self.rds_user_name = m.get('RdsUserName')
         if m.get('RdsVpcId') is not None:
             self.rds_vpc_id = m.get('RdsVpcId')
+        if m.get('RdsVpcUrl') is not None:
+            self.rds_vpc_url = m.get('RdsVpcUrl')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -296,6 +302,133 @@ class CheckClickhouseToRDSResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CheckClickhouseToRDSResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CheckHealthRequest(TeaModel):
+    def __init__(
+        self,
+        db_cluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.db_cluster_id = db_cluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_cluster_id is not None:
+            result['DbClusterId'] = self.db_cluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbClusterId') is not None:
+            self.db_cluster_id = m.get('DbClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CheckHealthResponseBody(TeaModel):
+    def __init__(
+        self,
+        info: str = None,
+        is_healthy: bool = None,
+        request_id: str = None,
+    ):
+        self.info = info
+        self.is_healthy = is_healthy
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.info is not None:
+            result['Info'] = self.info
+        if self.is_healthy is not None:
+            result['IsHealthy'] = self.is_healthy
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Info') is not None:
+            self.info = m.get('Info')
+        if m.get('IsHealthy') is not None:
+            self.is_healthy = m.get('IsHealthy')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckHealthResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CheckHealthResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CheckHealthResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1578,6 +1711,7 @@ class CreateDBInstanceRequest(TeaModel):
         db_node_storage_type: str = None,
         encryption_key: str = None,
         encryption_type: str = None,
+        open_monitor: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         pay_type: str = None,
@@ -1601,6 +1735,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.db_node_storage_type = db_node_storage_type
         self.encryption_key = encryption_key
         self.encryption_type = encryption_type
+        self.open_monitor = open_monitor
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.pay_type = pay_type
@@ -1644,6 +1779,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['EncryptionKey'] = self.encryption_key
         if self.encryption_type is not None:
             result['EncryptionType'] = self.encryption_type
+        if self.open_monitor is not None:
+            result['OpenMonitor'] = self.open_monitor
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -1692,6 +1829,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.encryption_key = m.get('EncryptionKey')
         if m.get('EncryptionType') is not None:
             self.encryption_type = m.get('EncryptionType')
+        if m.get('OpenMonitor') is not None:
+            self.open_monitor = m.get('OpenMonitor')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -2178,6 +2317,7 @@ class CreateRDSToClickhouseDbRequest(TeaModel):
         rds_port: int = None,
         rds_user_name: str = None,
         rds_vpc_id: str = None,
+        rds_vpc_url: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         skip_unsupported: bool = None,
@@ -2195,6 +2335,7 @@ class CreateRDSToClickhouseDbRequest(TeaModel):
         self.rds_port = rds_port
         self.rds_user_name = rds_user_name
         self.rds_vpc_id = rds_vpc_id
+        self.rds_vpc_url = rds_vpc_url
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.skip_unsupported = skip_unsupported
@@ -2233,6 +2374,8 @@ class CreateRDSToClickhouseDbRequest(TeaModel):
             result['RdsUserName'] = self.rds_user_name
         if self.rds_vpc_id is not None:
             result['RdsVpcId'] = self.rds_vpc_id
+        if self.rds_vpc_url is not None:
+            result['RdsVpcUrl'] = self.rds_vpc_url
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -2269,6 +2412,8 @@ class CreateRDSToClickhouseDbRequest(TeaModel):
             self.rds_user_name = m.get('RdsUserName')
         if m.get('RdsVpcId') is not None:
             self.rds_vpc_id = m.get('RdsVpcId')
+        if m.get('RdsVpcUrl') is not None:
+            self.rds_vpc_url = m.get('RdsVpcUrl')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -5784,6 +5929,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         pay_type: str = None,
         port: int = None,
         public_connection_string: str = None,
+        public_ip_addr: str = None,
         public_port: str = None,
         region_id: str = None,
         scale_out_status: DescribeDBClusterAttributeResponseBodyDBClusterScaleOutStatus = None,
@@ -5795,6 +5941,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         v_switch_id: str = None,
         vpc_cloud_instance_id: str = None,
         vpc_id: str = None,
+        vpc_ip_addr: str = None,
         zone_id: str = None,
     ):
         self.ali_uid = ali_uid
@@ -5824,6 +5971,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         self.pay_type = pay_type
         self.port = port
         self.public_connection_string = public_connection_string
+        self.public_ip_addr = public_ip_addr
         self.public_port = public_port
         self.region_id = region_id
         self.scale_out_status = scale_out_status
@@ -5835,6 +5983,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         self.v_switch_id = v_switch_id
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
         self.vpc_id = vpc_id
+        self.vpc_ip_addr = vpc_ip_addr
         self.zone_id = zone_id
 
     def validate(self):
@@ -5903,6 +6052,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             result['Port'] = self.port
         if self.public_connection_string is not None:
             result['PublicConnectionString'] = self.public_connection_string
+        if self.public_ip_addr is not None:
+            result['PublicIpAddr'] = self.public_ip_addr
         if self.public_port is not None:
             result['PublicPort'] = self.public_port
         if self.region_id is not None:
@@ -5925,6 +6076,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             result['VpcCloudInstanceId'] = self.vpc_cloud_instance_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.vpc_ip_addr is not None:
+            result['VpcIpAddr'] = self.vpc_ip_addr
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -5985,6 +6138,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             self.port = m.get('Port')
         if m.get('PublicConnectionString') is not None:
             self.public_connection_string = m.get('PublicConnectionString')
+        if m.get('PublicIpAddr') is not None:
+            self.public_ip_addr = m.get('PublicIpAddr')
         if m.get('PublicPort') is not None:
             self.public_port = m.get('PublicPort')
         if m.get('RegionId') is not None:
@@ -6009,6 +6164,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             self.vpc_cloud_instance_id = m.get('VpcCloudInstanceId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('VpcIpAddr') is not None:
+            self.vpc_ip_addr = m.get('VpcIpAddr')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -9734,6 +9891,7 @@ class DescribeRDSTablesRequest(TeaModel):
         rds_password: str = None,
         rds_port: int = None,
         rds_user_name: str = None,
+        rds_vpc_url: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         schema: str = None,
@@ -9745,6 +9903,7 @@ class DescribeRDSTablesRequest(TeaModel):
         self.rds_password = rds_password
         self.rds_port = rds_port
         self.rds_user_name = rds_user_name
+        self.rds_vpc_url = rds_vpc_url
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.schema = schema
@@ -9772,6 +9931,8 @@ class DescribeRDSTablesRequest(TeaModel):
             result['RdsPort'] = self.rds_port
         if self.rds_user_name is not None:
             result['RdsUserName'] = self.rds_user_name
+        if self.rds_vpc_url is not None:
+            result['RdsVpcUrl'] = self.rds_vpc_url
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -9796,6 +9957,8 @@ class DescribeRDSTablesRequest(TeaModel):
             self.rds_port = m.get('RdsPort')
         if m.get('RdsUserName') is not None:
             self.rds_user_name = m.get('RdsUserName')
+        if m.get('RdsVpcUrl') is not None:
+            self.rds_vpc_url = m.get('RdsVpcUrl')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -10018,6 +10181,7 @@ class DescribeRDSschemasRequest(TeaModel):
         rds_password: str = None,
         rds_port: int = None,
         rds_user_name: str = None,
+        rds_vpc_url: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -10028,6 +10192,7 @@ class DescribeRDSschemasRequest(TeaModel):
         self.rds_password = rds_password
         self.rds_port = rds_port
         self.rds_user_name = rds_user_name
+        self.rds_vpc_url = rds_vpc_url
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -10054,6 +10219,8 @@ class DescribeRDSschemasRequest(TeaModel):
             result['RdsPort'] = self.rds_port
         if self.rds_user_name is not None:
             result['RdsUserName'] = self.rds_user_name
+        if self.rds_vpc_url is not None:
+            result['RdsVpcUrl'] = self.rds_vpc_url
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -10076,6 +10243,8 @@ class DescribeRDSschemasRequest(TeaModel):
             self.rds_port = m.get('RdsPort')
         if m.get('RdsUserName') is not None:
             self.rds_user_name = m.get('RdsUserName')
+        if m.get('RdsVpcUrl') is not None:
+            self.rds_vpc_url = m.get('RdsVpcUrl')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -10149,6 +10318,603 @@ class DescribeRDSschemasResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeRDSschemasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRdsVSwitchsRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        bid: str = None,
+        cidr_block: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        is_default: bool = None,
+        iz_no: str = None,
+        region_no: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.bid = bid
+        self.cidr_block = cidr_block
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.is_default = is_default
+        self.iz_no = iz_no
+        self.region_no = region_no
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.iz_no is not None:
+            result['IzNo'] = self.iz_no
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('IzNo') is not None:
+            self.iz_no = m.get('IzNo')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        return self
+
+
+class DescribeRdsVSwitchsResponseBodyVSwitches(TeaModel):
+    def __init__(
+        self,
+        v_switch: List[DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch] = None,
+    ):
+        self.v_switch = v_switch
+
+    def validate(self):
+        if self.v_switch:
+            for k in self.v_switch:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['VSwitch'] = []
+        if self.v_switch is not None:
+            for k in self.v_switch:
+                result['VSwitch'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.v_switch = []
+        if m.get('VSwitch') is not None:
+            for k in m.get('VSwitch'):
+                temp_model = DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch()
+                self.v_switch.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRdsVSwitchsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        v_switches: DescribeRdsVSwitchsResponseBodyVSwitches = None,
+    ):
+        self.request_id = request_id
+        self.v_switches = v_switches
+
+    def validate(self):
+        if self.v_switches:
+            self.v_switches.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.v_switches is not None:
+            result['VSwitches'] = self.v_switches.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VSwitches') is not None:
+            temp_model = DescribeRdsVSwitchsResponseBodyVSwitches()
+            self.v_switches = temp_model.from_map(m['VSwitches'])
+        return self
+
+
+class DescribeRdsVSwitchsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeRdsVSwitchsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeRdsVSwitchsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRdsVpcsRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        zone_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        is_default: bool = None,
+        iz_no: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.is_default = is_default
+        self.iz_no = iz_no
+        self.status = status
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.iz_no is not None:
+            result['IzNo'] = self.iz_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('IzNo') is not None:
+            self.iz_no = m.get('IzNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        return self
+
+
+class DescribeRdsVpcsResponseBodyVpcsVpc(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        bid: str = None,
+        cidr_block: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        is_default: bool = None,
+        region_no: str = None,
+        status: str = None,
+        v_switchs: List[DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs] = None,
+        vpc_id: str = None,
+        vpc_name: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.bid = bid
+        self.cidr_block = cidr_block
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.is_default = is_default
+        self.region_no = region_no
+        self.status = status
+        self.v_switchs = v_switchs
+        self.vpc_id = vpc_id
+        self.vpc_name = vpc_name
+
+    def validate(self):
+        if self.v_switchs:
+            for k in self.v_switchs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.status is not None:
+            result['Status'] = self.status
+        result['VSwitchs'] = []
+        if self.v_switchs is not None:
+            for k in self.v_switchs:
+                result['VSwitchs'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_name is not None:
+            result['VpcName'] = self.vpc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.v_switchs = []
+        if m.get('VSwitchs') is not None:
+            for k in m.get('VSwitchs'):
+                temp_model = DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs()
+                self.v_switchs.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcName') is not None:
+            self.vpc_name = m.get('VpcName')
+        return self
+
+
+class DescribeRdsVpcsResponseBodyVpcs(TeaModel):
+    def __init__(
+        self,
+        vpc: List[DescribeRdsVpcsResponseBodyVpcsVpc] = None,
+    ):
+        self.vpc = vpc
+
+    def validate(self):
+        if self.vpc:
+            for k in self.vpc:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Vpc'] = []
+        if self.vpc is not None:
+            for k in self.vpc:
+                result['Vpc'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.vpc = []
+        if m.get('Vpc') is not None:
+            for k in m.get('Vpc'):
+                temp_model = DescribeRdsVpcsResponseBodyVpcsVpc()
+                self.vpc.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRdsVpcsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vpcs: DescribeRdsVpcsResponseBodyVpcs = None,
+    ):
+        self.request_id = request_id
+        self.vpcs = vpcs
+
+    def validate(self):
+        if self.vpcs:
+            self.vpcs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.vpcs is not None:
+            result['Vpcs'] = self.vpcs.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Vpcs') is not None:
+            temp_model = DescribeRdsVpcsResponseBodyVpcs()
+            self.vpcs = temp_model.from_map(m['Vpcs'])
+        return self
+
+
+class DescribeRdsVpcsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeRdsVpcsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeRdsVpcsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11642,6 +12408,7 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
         rds_id: str = None,
         rds_password: str = None,
         rds_user_name: str = None,
+        rds_vpc_url: str = None,
         syn_db: str = None,
         syn_status: bool = None,
     ):
@@ -11649,6 +12416,7 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
         self.rds_id = rds_id
         self.rds_password = rds_password
         self.rds_user_name = rds_user_name
+        self.rds_vpc_url = rds_vpc_url
         self.syn_db = syn_db
         self.syn_status = syn_status
 
@@ -11669,6 +12437,8 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
             result['RdsPassword'] = self.rds_password
         if self.rds_user_name is not None:
             result['RdsUserName'] = self.rds_user_name
+        if self.rds_vpc_url is not None:
+            result['RdsVpcUrl'] = self.rds_vpc_url
         if self.syn_db is not None:
             result['SynDb'] = self.syn_db
         if self.syn_status is not None:
@@ -11685,6 +12455,8 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
             self.rds_password = m.get('RdsPassword')
         if m.get('RdsUserName') is not None:
             self.rds_user_name = m.get('RdsUserName')
+        if m.get('RdsVpcUrl') is not None:
+            self.rds_vpc_url = m.get('RdsVpcUrl')
         if m.get('SynDb') is not None:
             self.syn_db = m.get('SynDb')
         if m.get('SynStatus') is not None:
@@ -12728,6 +13500,146 @@ class ModifyBackupPolicyResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ModifyBackupPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyClickHouseClusterServerGRPCRequest(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        db_cluster_id: str = None,
+        namespace: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.config = config
+        self.db_cluster_id = db_cluster_id
+        self.namespace = namespace
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.db_cluster_id is not None:
+            result['DbClusterId'] = self.db_cluster_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('DbClusterId') is not None:
+            self.db_cluster_id = m.get('DbClusterId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyClickHouseClusterServerGRPCResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyClickHouseClusterServerGRPCResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyClickHouseClusterServerGRPCResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyClickHouseClusterServerGRPCResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14528,6 +15440,7 @@ class SearchRDSTablesRequest(TeaModel):
         rds_password: str = None,
         rds_port: int = None,
         rds_user_name: str = None,
+        rds_vpc_url: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         table_name: str = None,
@@ -14539,6 +15452,7 @@ class SearchRDSTablesRequest(TeaModel):
         self.rds_password = rds_password
         self.rds_port = rds_port
         self.rds_user_name = rds_user_name
+        self.rds_vpc_url = rds_vpc_url
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.table_name = table_name
@@ -14566,6 +15480,8 @@ class SearchRDSTablesRequest(TeaModel):
             result['RdsPort'] = self.rds_port
         if self.rds_user_name is not None:
             result['RdsUserName'] = self.rds_user_name
+        if self.rds_vpc_url is not None:
+            result['RdsVpcUrl'] = self.rds_vpc_url
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -14590,6 +15506,8 @@ class SearchRDSTablesRequest(TeaModel):
             self.rds_port = m.get('RdsPort')
         if m.get('RdsUserName') is not None:
             self.rds_user_name = m.get('RdsUserName')
+        if m.get('RdsVpcUrl') is not None:
+            self.rds_vpc_url = m.get('RdsVpcUrl')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
