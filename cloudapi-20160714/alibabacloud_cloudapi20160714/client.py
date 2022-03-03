@@ -2955,6 +2955,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_model_with_options_async(request, runtime)
 
+    def delete_monitor_group_with_options(
+        self,
+        request: cloud_api20160714_models.DeleteMonitorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteMonitorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.raw_monitor_group_id):
+            query['RawMonitorGroupId'] = request.raw_monitor_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMonitorGroup',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteMonitorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_monitor_group_with_options_async(
+        self,
+        request: cloud_api20160714_models.DeleteMonitorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteMonitorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.raw_monitor_group_id):
+            query['RawMonitorGroupId'] = request.raw_monitor_group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMonitorGroup',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteMonitorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_monitor_group(
+        self,
+        request: cloud_api20160714_models.DeleteMonitorGroupRequest,
+    ) -> cloud_api20160714_models.DeleteMonitorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_monitor_group_with_options(request, runtime)
+
+    async def delete_monitor_group_async(
+        self,
+        request: cloud_api20160714_models.DeleteMonitorGroupRequest,
+    ) -> cloud_api20160714_models.DeleteMonitorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_monitor_group_with_options_async(request, runtime)
+
     def delete_plugin_with_options(
         self,
         request: cloud_api20160714_models.DeletePluginRequest,
