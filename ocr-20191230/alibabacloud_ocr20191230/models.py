@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import BinaryIO, Dict, List
+from typing import BinaryIO, Dict, List, Any
 
 
 class DetectCardScreenshotRequest(TeaModel):
@@ -907,33 +907,6 @@ class RecognizeBankCardRequest(TeaModel):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
-        return self
-
-
-class RecognizeBankCardAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
         return self
 
 
@@ -5376,6 +5349,201 @@ class RecognizeStampResponse(TeaModel):
         return self
 
 
+class RecognizeStructuredTaxiInvoicesRequest(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+    ):
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class RecognizeStructuredTaxiInvoicesAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        self.validate_required(self.image_urlobject, 'image_urlobject')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURLObject'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURLObject') is not None:
+            self.image_urlobject = m.get('ImageURLObject')
+        return self
+
+
+class RecognizeStructuredTaxiInvoicesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        addresses: List[str] = None,
+        cell_phone_numbers: List[str] = None,
+        companies: List[str] = None,
+        departments: List[str] = None,
+        emails: List[str] = None,
+        name: str = None,
+        office_phone_numbers: List[str] = None,
+        titles: List[str] = None,
+    ):
+        self.addresses = addresses
+        self.cell_phone_numbers = cell_phone_numbers
+        self.companies = companies
+        self.departments = departments
+        self.emails = emails
+        self.name = name
+        self.office_phone_numbers = office_phone_numbers
+        self.titles = titles
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addresses is not None:
+            result['Addresses'] = self.addresses
+        if self.cell_phone_numbers is not None:
+            result['CellPhoneNumbers'] = self.cell_phone_numbers
+        if self.companies is not None:
+            result['Companies'] = self.companies
+        if self.departments is not None:
+            result['Departments'] = self.departments
+        if self.emails is not None:
+            result['Emails'] = self.emails
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.office_phone_numbers is not None:
+            result['OfficePhoneNumbers'] = self.office_phone_numbers
+        if self.titles is not None:
+            result['Titles'] = self.titles
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Addresses') is not None:
+            self.addresses = m.get('Addresses')
+        if m.get('CellPhoneNumbers') is not None:
+            self.cell_phone_numbers = m.get('CellPhoneNumbers')
+        if m.get('Companies') is not None:
+            self.companies = m.get('Companies')
+        if m.get('Departments') is not None:
+            self.departments = m.get('Departments')
+        if m.get('Emails') is not None:
+            self.emails = m.get('Emails')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OfficePhoneNumbers') is not None:
+            self.office_phone_numbers = m.get('OfficePhoneNumbers')
+        if m.get('Titles') is not None:
+            self.titles = m.get('Titles')
+        return self
+
+
+class RecognizeStructuredTaxiInvoicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: RecognizeStructuredTaxiInvoicesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = RecognizeStructuredTaxiInvoicesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizeStructuredTaxiInvoicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeStructuredTaxiInvoicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeStructuredTaxiInvoicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RecognizeTableRequest(TeaModel):
     def __init__(
         self,
@@ -7756,6 +7924,745 @@ class RecognizeVerificationcodeResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RecognizeVerificationcodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeVideoCastCrewListRequestParams(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RecognizeVideoCastCrewListRequest(TeaModel):
+    def __init__(
+        self,
+        params: List[RecognizeVideoCastCrewListRequestParams] = None,
+        register_url: str = None,
+        video_url: str = None,
+    ):
+        self.params = params
+        self.register_url = register_url
+        self.video_url = video_url
+
+    def validate(self):
+        if self.params:
+            for k in self.params:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Params'] = []
+        if self.params is not None:
+            for k in self.params:
+                result['Params'].append(k.to_map() if k else None)
+        if self.register_url is not None:
+            result['RegisterUrl'] = self.register_url
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.params = []
+        if m.get('Params') is not None:
+            for k in m.get('Params'):
+                temp_model = RecognizeVideoCastCrewListRequestParams()
+                self.params.append(temp_model.from_map(k))
+        if m.get('RegisterUrl') is not None:
+            self.register_url = m.get('RegisterUrl')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class RecognizeVideoCastCrewListAdvanceRequestParams(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        video_url_object: BinaryIO = None,
+        params: List[RecognizeVideoCastCrewListAdvanceRequestParams] = None,
+        register_url: str = None,
+    ):
+        self.video_url_object = video_url_object
+        self.params = params
+        self.register_url = register_url
+
+    def validate(self):
+        self.validate_required(self.video_url_object, 'video_url_object')
+        if self.params:
+            for k in self.params:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.video_url_object is not None:
+            result['VideoUrlObject'] = self.video_url_object
+        result['Params'] = []
+        if self.params is not None:
+            for k in self.params:
+                result['Params'].append(k.to_map() if k else None)
+        if self.register_url is not None:
+            result['RegisterUrl'] = self.register_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoUrlObject') is not None:
+            self.video_url_object = m.get('VideoUrlObject')
+        self.params = []
+        if m.get('Params') is not None:
+            for k in m.get('Params'):
+                temp_model = RecognizeVideoCastCrewListAdvanceRequestParams()
+                self.params.append(temp_model.from_map(k))
+        if m.get('RegisterUrl') is not None:
+            self.register_url = m.get('RegisterUrl')
+        return self
+
+
+class RecognizeVideoCastCrewListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        params_shrink: str = None,
+        register_url: str = None,
+        video_url: str = None,
+    ):
+        self.params_shrink = params_shrink
+        self.register_url = register_url
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.params_shrink is not None:
+            result['Params'] = self.params_shrink
+        if self.register_url is not None:
+            result['RegisterUrl'] = self.register_url
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Params') is not None:
+            self.params_shrink = m.get('Params')
+        if m.get('RegisterUrl') is not None:
+            self.register_url = m.get('RegisterUrl')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBodyDataCastResults(TeaModel):
+    def __init__(
+        self,
+        detail_infoes: Dict[str, str] = None,
+        end_time: float = None,
+        start_time: float = None,
+    ):
+        self.detail_infoes = detail_infoes
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail_infoes is not None:
+            result['DetailInfoes'] = self.detail_infoes
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DetailInfoes') is not None:
+            self.detail_infoes = m.get('DetailInfoes')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes(TeaModel):
+    def __init__(
+        self,
+        boxes: List[int] = None,
+        char_probs: List[List[float]] = None,
+        frame_index: int = None,
+        position: List[RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition] = None,
+        score: float = None,
+        text: str = None,
+        text_prob: float = None,
+        time_stamp: float = None,
+        track_id: int = None,
+    ):
+        self.boxes = boxes
+        self.char_probs = char_probs
+        self.frame_index = frame_index
+        self.position = position
+        self.score = score
+        self.text = text
+        self.text_prob = text_prob
+        self.time_stamp = time_stamp
+        self.track_id = track_id
+
+    def validate(self):
+        if self.position:
+            for k in self.position:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boxes is not None:
+            result['Boxes'] = self.boxes
+        if self.char_probs is not None:
+            result['CharProbs'] = self.char_probs
+        if self.frame_index is not None:
+            result['FrameIndex'] = self.frame_index
+        result['Position'] = []
+        if self.position is not None:
+            for k in self.position:
+                result['Position'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.text_prob is not None:
+            result['TextProb'] = self.text_prob
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.track_id is not None:
+            result['TrackId'] = self.track_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Boxes') is not None:
+            self.boxes = m.get('Boxes')
+        if m.get('CharProbs') is not None:
+            self.char_probs = m.get('CharProbs')
+        if m.get('FrameIndex') is not None:
+            self.frame_index = m.get('FrameIndex')
+        self.position = []
+        if m.get('Position') is not None:
+            for k in m.get('Position'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition()
+                self.position.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TextProb') is not None:
+            self.text_prob = m.get('TextProb')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('TrackId') is not None:
+            self.track_id = m.get('TrackId')
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBodyDataOcrResults(TeaModel):
+    def __init__(
+        self,
+        detail_infoes: List[RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes] = None,
+        end_time: float = None,
+        start_time: float = None,
+    ):
+        self.detail_infoes = detail_infoes
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        if self.detail_infoes:
+            for k in self.detail_infoes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DetailInfoes'] = []
+        if self.detail_infoes is not None:
+            for k in self.detail_infoes:
+                result['DetailInfoes'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detail_infoes = []
+        if m.get('DetailInfoes') is not None:
+            for k in m.get('DetailInfoes'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes()
+                self.detail_infoes.append(temp_model.from_map(k))
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults(TeaModel):
+    def __init__(
+        self,
+        subtitles_all_results: Dict[str, str] = None,
+        subtitles_all_results_url: str = None,
+        subtitles_chinese_results: Dict[str, str] = None,
+        subtitles_chinese_results_url: str = None,
+        subtitles_english_results: Dict[str, Any] = None,
+        subtitles_english_results_url: str = None,
+    ):
+        self.subtitles_all_results = subtitles_all_results
+        self.subtitles_all_results_url = subtitles_all_results_url
+        self.subtitles_chinese_results = subtitles_chinese_results
+        self.subtitles_chinese_results_url = subtitles_chinese_results_url
+        self.subtitles_english_results = subtitles_english_results
+        self.subtitles_english_results_url = subtitles_english_results_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.subtitles_all_results is not None:
+            result['SubtitlesAllResults'] = self.subtitles_all_results
+        if self.subtitles_all_results_url is not None:
+            result['SubtitlesAllResultsUrl'] = self.subtitles_all_results_url
+        if self.subtitles_chinese_results is not None:
+            result['SubtitlesChineseResults'] = self.subtitles_chinese_results
+        if self.subtitles_chinese_results_url is not None:
+            result['SubtitlesChineseResultsUrl'] = self.subtitles_chinese_results_url
+        if self.subtitles_english_results is not None:
+            result['SubtitlesEnglishResults'] = self.subtitles_english_results
+        if self.subtitles_english_results_url is not None:
+            result['SubtitlesEnglishResultsUrl'] = self.subtitles_english_results_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SubtitlesAllResults') is not None:
+            self.subtitles_all_results = m.get('SubtitlesAllResults')
+        if m.get('SubtitlesAllResultsUrl') is not None:
+            self.subtitles_all_results_url = m.get('SubtitlesAllResultsUrl')
+        if m.get('SubtitlesChineseResults') is not None:
+            self.subtitles_chinese_results = m.get('SubtitlesChineseResults')
+        if m.get('SubtitlesChineseResultsUrl') is not None:
+            self.subtitles_chinese_results_url = m.get('SubtitlesChineseResultsUrl')
+        if m.get('SubtitlesEnglishResults') is not None:
+            self.subtitles_english_results = m.get('SubtitlesEnglishResults')
+        if m.get('SubtitlesEnglishResultsUrl') is not None:
+            self.subtitles_english_results_url = m.get('SubtitlesEnglishResultsUrl')
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes(TeaModel):
+    def __init__(
+        self,
+        boxes: List[int] = None,
+        position: List[RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition] = None,
+        score: float = None,
+        text: str = None,
+        text_type: int = None,
+    ):
+        self.boxes = boxes
+        self.position = position
+        self.score = score
+        self.text = text
+        self.text_type = text_type
+
+    def validate(self):
+        if self.position:
+            for k in self.position:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boxes is not None:
+            result['Boxes'] = self.boxes
+        result['Position'] = []
+        if self.position is not None:
+            for k in self.position:
+                result['Position'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.text_type is not None:
+            result['TextType'] = self.text_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Boxes') is not None:
+            self.boxes = m.get('Boxes')
+        self.position = []
+        if m.get('Position') is not None:
+            for k in m.get('Position'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition()
+                self.position.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TextType') is not None:
+            self.text_type = m.get('TextType')
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults(TeaModel):
+    def __init__(
+        self,
+        detail_infoes: List[RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes] = None,
+        end_time: float = None,
+        start_time: float = None,
+    ):
+        self.detail_infoes = detail_infoes
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        if self.detail_infoes:
+            for k in self.detail_infoes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DetailInfoes'] = []
+        if self.detail_infoes is not None:
+            for k in self.detail_infoes:
+                result['DetailInfoes'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detail_infoes = []
+        if m.get('DetailInfoes') is not None:
+            for k in m.get('DetailInfoes'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes()
+                self.detail_infoes.append(temp_model.from_map(k))
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cast_results: List[RecognizeVideoCastCrewListResponseBodyDataCastResults] = None,
+        ocr_results: List[RecognizeVideoCastCrewListResponseBodyDataOcrResults] = None,
+        subtitles_results: List[RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults] = None,
+        video_ocr_results: List[RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults] = None,
+    ):
+        self.cast_results = cast_results
+        self.ocr_results = ocr_results
+        self.subtitles_results = subtitles_results
+        self.video_ocr_results = video_ocr_results
+
+    def validate(self):
+        if self.cast_results:
+            for k in self.cast_results:
+                if k:
+                    k.validate()
+        if self.ocr_results:
+            for k in self.ocr_results:
+                if k:
+                    k.validate()
+        if self.subtitles_results:
+            for k in self.subtitles_results:
+                if k:
+                    k.validate()
+        if self.video_ocr_results:
+            for k in self.video_ocr_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CastResults'] = []
+        if self.cast_results is not None:
+            for k in self.cast_results:
+                result['CastResults'].append(k.to_map() if k else None)
+        result['OcrResults'] = []
+        if self.ocr_results is not None:
+            for k in self.ocr_results:
+                result['OcrResults'].append(k.to_map() if k else None)
+        result['SubtitlesResults'] = []
+        if self.subtitles_results is not None:
+            for k in self.subtitles_results:
+                result['SubtitlesResults'].append(k.to_map() if k else None)
+        result['VideoOcrResults'] = []
+        if self.video_ocr_results is not None:
+            for k in self.video_ocr_results:
+                result['VideoOcrResults'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cast_results = []
+        if m.get('CastResults') is not None:
+            for k in m.get('CastResults'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataCastResults()
+                self.cast_results.append(temp_model.from_map(k))
+        self.ocr_results = []
+        if m.get('OcrResults') is not None:
+            for k in m.get('OcrResults'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataOcrResults()
+                self.ocr_results.append(temp_model.from_map(k))
+        self.subtitles_results = []
+        if m.get('SubtitlesResults') is not None:
+            for k in m.get('SubtitlesResults'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults()
+                self.subtitles_results.append(temp_model.from_map(k))
+        self.video_ocr_results = []
+        if m.get('VideoOcrResults') is not None:
+            for k in m.get('VideoOcrResults'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults()
+                self.video_ocr_results.append(temp_model.from_map(k))
+        return self
+
+
+class RecognizeVideoCastCrewListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: RecognizeVideoCastCrewListResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = RecognizeVideoCastCrewListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizeVideoCastCrewListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeVideoCastCrewListResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeVideoCastCrewListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

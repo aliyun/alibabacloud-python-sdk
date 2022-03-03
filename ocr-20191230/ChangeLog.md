@@ -1,3 +1,6 @@
+2022-03-03 Version: 2.0.6
+- RecognizeVideoCharacter add output field inputFile.
+
 2021-12-15 Version: 2.0.5
 - RecognizeVideoCharacter add output field inputFile.
 
