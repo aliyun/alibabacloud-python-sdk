@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -62,11 +63,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.AcceptFabricInvitationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
+        if not UtilClient.is_unset(request.is_accepted):
+            body['IsAccepted'] = request.is_accepted
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.AcceptFabricInvitationResponse().from_map(
-            self.do_rpcrequest('AcceptFabricInvitation', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AcceptFabricInvitation',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.AcceptFabricInvitationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def accept_fabric_invitation_with_options_async(
@@ -75,11 +93,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.AcceptFabricInvitationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
+        if not UtilClient.is_unset(request.is_accepted):
+            body['IsAccepted'] = request.is_accepted
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.AcceptFabricInvitationResponse().from_map(
-            await self.do_rpcrequest_async('AcceptFabricInvitation', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AcceptFabricInvitation',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.AcceptFabricInvitationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def accept_fabric_invitation(
@@ -102,11 +137,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApplyAntChainCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.upload_req):
+            body['UploadReq'] = request.upload_req
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ApplyAntChainCertificateResponse().from_map(
-            self.do_rpcrequest('ApplyAntChainCertificate', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApplyAntChainCertificate',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ApplyAntChainCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def apply_ant_chain_certificate_with_options_async(
@@ -115,11 +167,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApplyAntChainCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.upload_req):
+            body['UploadReq'] = request.upload_req
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ApplyAntChainCertificateResponse().from_map(
-            await self.do_rpcrequest_async('ApplyAntChainCertificate', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApplyAntChainCertificate',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ApplyAntChainCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def apply_ant_chain_certificate(
@@ -142,11 +211,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.common_name):
+            body['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.country_name):
+            body['CountryName'] = request.country_name
+        if not UtilClient.is_unset(request.locality_name):
+            body['LocalityName'] = request.locality_name
+        if not UtilClient.is_unset(request.organization_name):
+            body['OrganizationName'] = request.organization_name
+        if not UtilClient.is_unset(request.organization_unit_name):
+            body['OrganizationUnitName'] = request.organization_unit_name
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.state_or_province_name):
+            body['StateOrProvinceName'] = request.state_or_province_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse().from_map(
-            self.do_rpcrequest('ApplyAntChainCertificateWithKeyAutoCreation', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApplyAntChainCertificateWithKeyAutoCreation',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def apply_ant_chain_certificate_with_key_auto_creation_with_options_async(
@@ -155,11 +255,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.common_name):
+            body['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.country_name):
+            body['CountryName'] = request.country_name
+        if not UtilClient.is_unset(request.locality_name):
+            body['LocalityName'] = request.locality_name
+        if not UtilClient.is_unset(request.organization_name):
+            body['OrganizationName'] = request.organization_name
+        if not UtilClient.is_unset(request.organization_unit_name):
+            body['OrganizationUnitName'] = request.organization_unit_name
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.state_or_province_name):
+            body['StateOrProvinceName'] = request.state_or_province_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse().from_map(
-            await self.do_rpcrequest_async('ApplyAntChainCertificateWithKeyAutoCreation', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApplyAntChainCertificateWithKeyAutoCreation',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ApplyAntChainCertificateWithKeyAutoCreationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def apply_ant_chain_certificate_with_key_auto_creation(
@@ -176,6 +307,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.apply_ant_chain_certificate_with_key_auto_creation_with_options_async(request, runtime)
 
+    def approve_fabric_chaincode_definition_with_options(
+        self,
+        request: baas_20181221_models.ApproveFabricChaincodeDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.ApproveFabricChaincodeDefinitionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.chaincode_package_id):
+            body['ChaincodePackageId'] = request.chaincode_package_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApproveFabricChaincodeDefinition',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ApproveFabricChaincodeDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def approve_fabric_chaincode_definition_with_options_async(
+        self,
+        request: baas_20181221_models.ApproveFabricChaincodeDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.ApproveFabricChaincodeDefinitionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.chaincode_package_id):
+            body['ChaincodePackageId'] = request.chaincode_package_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApproveFabricChaincodeDefinition',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ApproveFabricChaincodeDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def approve_fabric_chaincode_definition(
+        self,
+        request: baas_20181221_models.ApproveFabricChaincodeDefinitionRequest,
+    ) -> baas_20181221_models.ApproveFabricChaincodeDefinitionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.approve_fabric_chaincode_definition_with_options(request, runtime)
+
+    async def approve_fabric_chaincode_definition_async(
+        self,
+        request: baas_20181221_models.ApproveFabricChaincodeDefinitionRequest,
+    ) -> baas_20181221_models.ApproveFabricChaincodeDefinitionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.approve_fabric_chaincode_definition_with_options_async(request, runtime)
+
     def batch_add_ant_chain_mini_app_qrcode_authorized_users_with_options(
         self,
         tmp_req: baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest,
@@ -186,11 +399,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.phone_list):
             request.phone_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_list, 'PhoneList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.phone_list_shrink):
+            body['PhoneList'] = request.phone_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse().from_map(
-            self.do_rpcrequest('BatchAddAntChainMiniAppQRCodeAuthorizedUsers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BatchAddAntChainMiniAppQRCodeAuthorizedUsers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def batch_add_ant_chain_mini_app_qrcode_authorized_users_with_options_async(
@@ -203,11 +433,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.phone_list):
             request.phone_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.phone_list, 'PhoneList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.phone_list_shrink):
+            body['PhoneList'] = request.phone_list_shrink
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse().from_map(
-            await self.do_rpcrequest_async('BatchAddAntChainMiniAppQRCodeAuthorizedUsers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BatchAddAntChainMiniAppQRCodeAuthorizedUsers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_add_ant_chain_mini_app_qrcode_authorized_users(
@@ -230,11 +477,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CheckFabricConsortiumDomainResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain_code):
+            body['DomainCode'] = request.domain_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CheckFabricConsortiumDomainResponse().from_map(
-            self.do_rpcrequest('CheckFabricConsortiumDomain', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckFabricConsortiumDomain',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CheckFabricConsortiumDomainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_fabric_consortium_domain_with_options_async(
@@ -243,11 +505,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CheckFabricConsortiumDomainResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain_code):
+            body['DomainCode'] = request.domain_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CheckFabricConsortiumDomainResponse().from_map(
-            await self.do_rpcrequest_async('CheckFabricConsortiumDomain', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckFabricConsortiumDomain',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CheckFabricConsortiumDomainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_fabric_consortium_domain(
@@ -270,11 +547,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CheckFabricOrganizationDomainResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain_code):
+            body['DomainCode'] = request.domain_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CheckFabricOrganizationDomainResponse().from_map(
-            self.do_rpcrequest('CheckFabricOrganizationDomain', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckFabricOrganizationDomain',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CheckFabricOrganizationDomainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_fabric_organization_domain_with_options_async(
@@ -283,11 +577,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CheckFabricOrganizationDomainResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
+        if not UtilClient.is_unset(request.domain_code):
+            body['DomainCode'] = request.domain_code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CheckFabricOrganizationDomainResponse().from_map(
-            await self.do_rpcrequest_async('CheckFabricOrganizationDomain', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckFabricOrganizationDomain',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CheckFabricOrganizationDomainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_fabric_organization_domain(
@@ -310,11 +621,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ConfirmFabricConsortiumMemberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.ConfirmFabricConsortiumMemberResponse().from_map(
-            self.do_rpcrequest('ConfirmFabricConsortiumMember', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ConfirmFabricConsortiumMember',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ConfirmFabricConsortiumMemberResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def confirm_fabric_consortium_member_with_options_async(
@@ -323,11 +651,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ConfirmFabricConsortiumMemberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.ConfirmFabricConsortiumMemberResponse().from_map(
-            await self.do_rpcrequest_async('ConfirmFabricConsortiumMember', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ConfirmFabricConsortiumMember',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ConfirmFabricConsortiumMemberResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def confirm_fabric_consortium_member(
@@ -350,11 +695,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CopyAntChainContractProjectResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_description):
+            body['ProjectDescription'] = request.project_description
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_version):
+            body['ProjectVersion'] = request.project_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CopyAntChainContractProjectResponse().from_map(
-            self.do_rpcrequest('CopyAntChainContractProject', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CopyAntChainContractProject',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CopyAntChainContractProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def copy_ant_chain_contract_project_with_options_async(
@@ -363,11 +729,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CopyAntChainContractProjectResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_description):
+            body['ProjectDescription'] = request.project_description
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_version):
+            body['ProjectVersion'] = request.project_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CopyAntChainContractProjectResponse().from_map(
-            await self.do_rpcrequest_async('CopyAntChainContractProject', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CopyAntChainContractProject',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CopyAntChainContractProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def copy_ant_chain_contract_project(
@@ -390,11 +777,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.account_pub_key):
+            body['AccountPubKey'] = request.account_pub_key
+        if not UtilClient.is_unset(request.account_recover_pub_key):
+            body['AccountRecoverPubKey'] = request.account_recover_pub_key
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainAccountResponse().from_map(
-            self.do_rpcrequest('CreateAntChainAccount', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainAccount',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainAccountResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_ant_chain_account_with_options_async(
@@ -403,11 +811,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.account_pub_key):
+            body['AccountPubKey'] = request.account_pub_key
+        if not UtilClient.is_unset(request.account_recover_pub_key):
+            body['AccountRecoverPubKey'] = request.account_recover_pub_key
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainAccountResponse().from_map(
-            await self.do_rpcrequest_async('CreateAntChainAccount', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainAccount',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainAccountResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_ant_chain_account(
@@ -430,11 +859,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.recover_password):
+            body['RecoverPassword'] = request.recover_password
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse().from_map(
-            self.do_rpcrequest('CreateAntChainAccountWithKeyPairAutoCreation', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainAccountWithKeyPairAutoCreation',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_ant_chain_account_with_key_pair_auto_creation_with_options_async(
@@ -443,11 +893,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.recover_password):
+            body['RecoverPassword'] = request.recover_password
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse().from_map(
-            await self.do_rpcrequest_async('CreateAntChainAccountWithKeyPairAutoCreation', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainAccountWithKeyPairAutoCreation',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainAccountWithKeyPairAutoCreationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_ant_chain_account_with_key_pair_auto_creation(
@@ -470,11 +941,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainConsortiumResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_description):
+            body['ConsortiumDescription'] = request.consortium_description
+        if not UtilClient.is_unset(request.consortium_name):
+            body['ConsortiumName'] = request.consortium_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainConsortiumResponse().from_map(
-            self.do_rpcrequest('CreateAntChainConsortium', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainConsortium',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainConsortiumResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_ant_chain_consortium_with_options_async(
@@ -483,11 +971,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainConsortiumResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_description):
+            body['ConsortiumDescription'] = request.consortium_description
+        if not UtilClient.is_unset(request.consortium_name):
+            body['ConsortiumName'] = request.consortium_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainConsortiumResponse().from_map(
-            await self.do_rpcrequest_async('CreateAntChainConsortium', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainConsortium',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainConsortiumResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_ant_chain_consortium(
@@ -510,11 +1015,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainContractContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_name):
+            body['ContentName'] = request.content_name
+        if not UtilClient.is_unset(request.is_directory):
+            body['IsDirectory'] = request.is_directory
+        if not UtilClient.is_unset(request.parent_content_id):
+            body['ParentContentId'] = request.parent_content_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainContractContentResponse().from_map(
-            self.do_rpcrequest('CreateAntChainContractContent', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainContractContent',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainContractContentResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_ant_chain_contract_content_with_options_async(
@@ -523,11 +1051,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainContractContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_name):
+            body['ContentName'] = request.content_name
+        if not UtilClient.is_unset(request.is_directory):
+            body['IsDirectory'] = request.is_directory
+        if not UtilClient.is_unset(request.parent_content_id):
+            body['ParentContentId'] = request.parent_content_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainContractContentResponse().from_map(
-            await self.do_rpcrequest_async('CreateAntChainContractContent', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainContractContent',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainContractContentResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_ant_chain_contract_content(
@@ -550,11 +1101,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainContractProjectResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.project_description):
+            body['ProjectDescription'] = request.project_description
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_version):
+            body['ProjectVersion'] = request.project_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainContractProjectResponse().from_map(
-            self.do_rpcrequest('CreateAntChainContractProject', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainContractProject',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainContractProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_ant_chain_contract_project_with_options_async(
@@ -563,11 +1135,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateAntChainContractProjectResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.project_description):
+            body['ProjectDescription'] = request.project_description
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_version):
+            body['ProjectVersion'] = request.project_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateAntChainContractProjectResponse().from_map(
-            await self.do_rpcrequest_async('CreateAntChainContractProject', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateAntChainContractProject',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateAntChainContractProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_ant_chain_contract_project(
@@ -590,11 +1183,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.oss_bucket):
+            body['OssBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.oss_url):
+            body['OssUrl'] = request.oss_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricChaincodeResponse().from_map(
-            self.do_rpcrequest('CreateFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricChaincodeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_fabric_chaincode_with_options_async(
@@ -603,11 +1223,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.oss_bucket):
+            body['OssBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.oss_url):
+            body['OssUrl'] = request.oss_url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricChaincodeResponse().from_map(
-            await self.do_rpcrequest_async('CreateFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricChaincodeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_fabric_chaincode(
@@ -624,17 +1271,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_fabric_chaincode_with_options_async(request, runtime)
 
+    def create_fabric_chaincode_package_with_options(
+        self,
+        request: baas_20181221_models.CreateFabricChaincodePackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.CreateFabricChaincodePackageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.oss_url):
+            body['OssUrl'] = request.oss_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFabricChaincodePackage',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricChaincodePackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_fabric_chaincode_package_with_options_async(
+        self,
+        request: baas_20181221_models.CreateFabricChaincodePackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.CreateFabricChaincodePackageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.oss_url):
+            body['OssUrl'] = request.oss_url
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFabricChaincodePackage',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricChaincodePackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_fabric_chaincode_package(
+        self,
+        request: baas_20181221_models.CreateFabricChaincodePackageRequest,
+    ) -> baas_20181221_models.CreateFabricChaincodePackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_fabric_chaincode_package_with_options(request, runtime)
+
+    async def create_fabric_chaincode_package_async(
+        self,
+        request: baas_20181221_models.CreateFabricChaincodePackageRequest,
+    ) -> baas_20181221_models.CreateFabricChaincodePackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_fabric_chaincode_package_with_options_async(request, runtime)
+
     def create_fabric_channel_with_options(
         self,
         request: baas_20181221_models.CreateFabricChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        body = {}
+        if not UtilClient.is_unset(request.batch_timeout):
+            body['BatchTimeout'] = request.batch_timeout
+        if not UtilClient.is_unset(request.max_message_count):
+            body['MaxMessageCount'] = request.max_message_count
+        if not UtilClient.is_unset(request.preferred_max_bytes):
+            body['PreferredMaxBytes'] = request.preferred_max_bytes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricChannelResponse().from_map(
-            self.do_rpcrequest('CreateFabricChannel', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricChannel',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricChannelResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_fabric_channel_with_options_async(
@@ -643,11 +1395,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        body = {}
+        if not UtilClient.is_unset(request.batch_timeout):
+            body['BatchTimeout'] = request.batch_timeout
+        if not UtilClient.is_unset(request.max_message_count):
+            body['MaxMessageCount'] = request.max_message_count
+        if not UtilClient.is_unset(request.preferred_max_bytes):
+            body['PreferredMaxBytes'] = request.preferred_max_bytes
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricChannelResponse().from_map(
-            await self.do_rpcrequest_async('CreateFabricChannel', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricChannel',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricChannelResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_fabric_channel(
@@ -670,11 +1449,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChannelMemberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.CreateFabricChannelMemberResponse().from_map(
-            self.do_rpcrequest('CreateFabricChannelMember', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricChannelMember',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricChannelMemberResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_fabric_channel_member_with_options_async(
@@ -683,11 +1479,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricChannelMemberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.CreateFabricChannelMemberResponse().from_map(
-            await self.do_rpcrequest_async('CreateFabricChannelMember', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricChannelMember',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricChannelMemberResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_fabric_channel_member(
@@ -710,11 +1523,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricConsortiumResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_policy):
+            body['ChannelPolicy'] = request.channel_policy
+        if not UtilClient.is_unset(request.consortium_description):
+            body['ConsortiumDescription'] = request.consortium_description
+        if not UtilClient.is_unset(request.consortium_name):
+            body['ConsortiumName'] = request.consortium_name
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.orderer_type):
+            body['OrdererType'] = request.orderer_type
+        if not UtilClient.is_unset(request.orderers_count):
+            body['OrderersCount'] = request.orderers_count
+        if not UtilClient.is_unset(request.organization):
+            body['Organization'] = request.organization
+        if not UtilClient.is_unset(request.payment_duration):
+            body['PaymentDuration'] = request.payment_duration
+        if not UtilClient.is_unset(request.payment_duration_unit):
+            body['PaymentDurationUnit'] = request.payment_duration_unit
+        if not UtilClient.is_unset(request.peers_count):
+            body['PeersCount'] = request.peers_count
+        if not UtilClient.is_unset(request.spec_name):
+            body['SpecName'] = request.spec_name
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricConsortiumResponse().from_map(
-            self.do_rpcrequest('CreateFabricConsortium', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricConsortium',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricConsortiumResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_fabric_consortium_with_options_async(
@@ -723,11 +1575,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricConsortiumResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.channel_policy):
+            body['ChannelPolicy'] = request.channel_policy
+        if not UtilClient.is_unset(request.consortium_description):
+            body['ConsortiumDescription'] = request.consortium_description
+        if not UtilClient.is_unset(request.consortium_name):
+            body['ConsortiumName'] = request.consortium_name
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.orderer_type):
+            body['OrdererType'] = request.orderer_type
+        if not UtilClient.is_unset(request.orderers_count):
+            body['OrderersCount'] = request.orderers_count
+        if not UtilClient.is_unset(request.organization):
+            body['Organization'] = request.organization
+        if not UtilClient.is_unset(request.payment_duration):
+            body['PaymentDuration'] = request.payment_duration
+        if not UtilClient.is_unset(request.payment_duration_unit):
+            body['PaymentDurationUnit'] = request.payment_duration_unit
+        if not UtilClient.is_unset(request.peers_count):
+            body['PeersCount'] = request.peers_count
+        if not UtilClient.is_unset(request.spec_name):
+            body['SpecName'] = request.spec_name
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricConsortiumResponse().from_map(
-            await self.do_rpcrequest_async('CreateFabricConsortium', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricConsortium',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricConsortiumResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_fabric_consortium(
@@ -750,11 +1641,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricConsortiumMemberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.CreateFabricConsortiumMemberResponse().from_map(
-            self.do_rpcrequest('CreateFabricConsortiumMember', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricConsortiumMember',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricConsortiumMemberResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_fabric_consortium_member_with_options_async(
@@ -763,11 +1673,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricConsortiumMemberResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.CreateFabricConsortiumMemberResponse().from_map(
-            await self.do_rpcrequest_async('CreateFabricConsortiumMember', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricConsortiumMember',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricConsortiumMemberResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_fabric_consortium_member(
@@ -790,11 +1719,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricOrganizationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.location):
+            query['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_name):
+            query['OrganizationName'] = request.organization_name
+        if not UtilClient.is_unset(request.spec_name):
+            query['SpecName'] = request.spec_name
+        body = {}
+        if not UtilClient.is_unset(request.payment_duration):
+            body['PaymentDuration'] = request.payment_duration
+        if not UtilClient.is_unset(request.payment_duration_unit):
+            body['PaymentDurationUnit'] = request.payment_duration_unit
+        if not UtilClient.is_unset(request.peers_count):
+            body['PeersCount'] = request.peers_count
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricOrganizationResponse().from_map(
-            self.do_rpcrequest('CreateFabricOrganization', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricOrganization',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricOrganizationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_fabric_organization_with_options_async(
@@ -803,11 +1763,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricOrganizationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.location):
+            query['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_name):
+            query['OrganizationName'] = request.organization_name
+        if not UtilClient.is_unset(request.spec_name):
+            query['SpecName'] = request.spec_name
+        body = {}
+        if not UtilClient.is_unset(request.payment_duration):
+            body['PaymentDuration'] = request.payment_duration
+        if not UtilClient.is_unset(request.payment_duration_unit):
+            body['PaymentDurationUnit'] = request.payment_duration_unit
+        if not UtilClient.is_unset(request.peers_count):
+            body['PeersCount'] = request.peers_count
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricOrganizationResponse().from_map(
-            await self.do_rpcrequest_async('CreateFabricOrganization', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricOrganization',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricOrganizationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_fabric_organization(
@@ -830,11 +1821,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricOrganizationUserResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attrs):
+            body['Attrs'] = request.attrs
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricOrganizationUserResponse().from_map(
-            self.do_rpcrequest('CreateFabricOrganizationUser', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricOrganizationUser',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricOrganizationUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_fabric_organization_user_with_options_async(
@@ -843,11 +1855,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.CreateFabricOrganizationUserResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attrs):
+            body['Attrs'] = request.attrs
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.CreateFabricOrganizationUserResponse().from_map(
-            await self.do_rpcrequest_async('CreateFabricOrganizationUser', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateFabricOrganizationUser',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.CreateFabricOrganizationUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_fabric_organization_user(
@@ -870,11 +1903,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainConsortiumResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteAntChainConsortiumResponse().from_map(
-            self.do_rpcrequest('DeleteAntChainConsortium', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAntChainConsortium',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteAntChainConsortiumResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_ant_chain_consortium_with_options_async(
@@ -883,11 +1931,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainConsortiumResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteAntChainConsortiumResponse().from_map(
-            await self.do_rpcrequest_async('DeleteAntChainConsortium', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAntChainConsortium',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteAntChainConsortiumResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_ant_chain_consortium(
@@ -910,11 +1973,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainContractContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content_id):
+            body['ContentId'] = request.content_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteAntChainContractContentResponse().from_map(
-            self.do_rpcrequest('DeleteAntChainContractContent', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAntChainContractContent',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteAntChainContractContentResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_ant_chain_contract_content_with_options_async(
@@ -923,11 +2001,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainContractContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content_id):
+            body['ContentId'] = request.content_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteAntChainContractContentResponse().from_map(
-            await self.do_rpcrequest_async('DeleteAntChainContractContent', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAntChainContractContent',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteAntChainContractContentResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_ant_chain_contract_content(
@@ -950,11 +2043,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainContractProjectResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteAntChainContractProjectResponse().from_map(
-            self.do_rpcrequest('DeleteAntChainContractProject', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAntChainContractProject',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteAntChainContractProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_ant_chain_contract_project_with_options_async(
@@ -963,11 +2071,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainContractProjectResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteAntChainContractProjectResponse().from_map(
-            await self.do_rpcrequest_async('DeleteAntChainContractProject', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAntChainContractProject',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteAntChainContractProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_ant_chain_contract_project(
@@ -990,11 +2113,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.phone):
+            body['Phone'] = request.phone
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse().from_map(
-            self.do_rpcrequest('DeleteAntChainMiniAppQRCodeAuthorizedUser', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAntChainMiniAppQRCodeAuthorizedUser',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_ant_chain_mini_app_qrcode_authorized_user_with_options_async(
@@ -1003,11 +2143,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.phone):
+            body['Phone'] = request.phone
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse().from_map(
-            await self.do_rpcrequest_async('DeleteAntChainMiniAppQRCodeAuthorizedUser', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteAntChainMiniAppQRCodeAuthorizedUser',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteAntChainMiniAppQRCodeAuthorizedUserResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_ant_chain_mini_app_qrcode_authorized_user(
@@ -1030,11 +2187,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteFabricChaincodeResponse().from_map(
-            self.do_rpcrequest('DeleteFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteFabricChaincodeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_fabric_chaincode_with_options_async(
@@ -1043,11 +2215,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DeleteFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DeleteFabricChaincodeResponse().from_map(
-            await self.do_rpcrequest_async('DeleteFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DeleteFabricChaincodeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_fabric_chaincode(
@@ -1070,11 +2257,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainAccountsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainAccountsResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainAccounts', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainAccounts',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainAccountsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_accounts_with_options_async(
@@ -1083,11 +2289,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainAccountsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainAccountsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainAccounts', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainAccounts',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_accounts(
@@ -1104,17 +2329,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_accounts_with_options_async(request, runtime)
 
+    def describe_ant_chain_accounts_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainAccountsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainAccountsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainAccountsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainAccountsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_accounts_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainAccountsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainAccountsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainAccountsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainAccountsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_accounts_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainAccountsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainAccountsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_accounts_v2with_options(request, runtime)
+
+    async def describe_ant_chain_accounts_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainAccountsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainAccountsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_accounts_v2with_options_async(request, runtime)
+
     def describe_ant_chain_block_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainBlockRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainBlockResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainBlockResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainBlock', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainBlock',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainBlockResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_block_with_options_async(
@@ -1123,11 +2447,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainBlockResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainBlockResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainBlock', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainBlock',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainBlockResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_block(
@@ -1144,17 +2485,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_block_with_options_async(request, runtime)
 
+    def describe_ant_chain_block_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainBlockV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainBlockV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainBlockV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainBlockV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_block_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainBlockV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainBlockV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.height):
+            body['Height'] = request.height
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainBlockV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainBlockV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_block_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainBlockV2Request,
+    ) -> baas_20181221_models.DescribeAntChainBlockV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_block_v2with_options(request, runtime)
+
+    async def describe_ant_chain_block_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainBlockV2Request,
+    ) -> baas_20181221_models.DescribeAntChainBlockV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_block_v2with_options_async(request, runtime)
+
     def describe_ant_chain_certificate_applications_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainCertificateApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainCertificateApplicationsResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainCertificateApplications', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainCertificateApplications',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainCertificateApplicationsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_certificate_applications_with_options_async(
@@ -1163,11 +2603,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainCertificateApplicationsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainCertificateApplications', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainCertificateApplications',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainCertificateApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_certificate_applications(
@@ -1184,17 +2645,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_certificate_applications_with_options_async(request, runtime)
 
+    def describe_ant_chain_certificate_applications_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainCertificateApplicationsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainCertificateApplicationsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_certificate_applications_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainCertificateApplicationsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainCertificateApplicationsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_certificate_applications_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainCertificateApplicationsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_certificate_applications_v2with_options(request, runtime)
+
+    async def describe_ant_chain_certificate_applications_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainCertificateApplicationsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainCertificateApplicationsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_certificate_applications_v2with_options_async(request, runtime)
+
     def describe_ant_chain_consortiums_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainConsortiumsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainConsortiumsResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainConsortiums', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainConsortiums',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainConsortiumsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_consortiums_with_options_async(
@@ -1203,11 +2767,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainConsortiumsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainConsortiumsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainConsortiums', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainConsortiums',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainConsortiumsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_consortiums(
@@ -1224,17 +2805,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_consortiums_with_options_async(request, runtime)
 
+    def describe_ant_chain_consortiums_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainConsortiumsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainConsortiumsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainConsortiumsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainConsortiumsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_consortiums_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainConsortiumsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainConsortiumsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainConsortiumsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainConsortiumsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_consortiums_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainConsortiumsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainConsortiumsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_consortiums_v2with_options(request, runtime)
+
+    async def describe_ant_chain_consortiums_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainConsortiumsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainConsortiumsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_consortiums_v2with_options_async(request, runtime)
+
     def describe_ant_chain_contract_project_content_tree_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectContentTreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainContractProjectContentTree', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainContractProjectContentTree',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_contract_project_content_tree_with_options_async(
@@ -1243,11 +2913,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainContractProjectContentTree', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainContractProjectContentTree',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainContractProjectContentTreeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_contract_project_content_tree(
@@ -1264,17 +2949,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_contract_project_content_tree_with_options_async(request, runtime)
 
+    def describe_ant_chain_contract_project_content_tree_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainContractProjectContentTreeV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_contract_project_content_tree_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainContractProjectContentTreeV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_contract_project_content_tree_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Request,
+    ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_contract_project_content_tree_v2with_options(request, runtime)
+
+    async def describe_ant_chain_contract_project_content_tree_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Request,
+    ) -> baas_20181221_models.DescribeAntChainContractProjectContentTreeV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_contract_project_content_tree_v2with_options_async(request, runtime)
+
     def describe_ant_chain_contract_projects_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainContractProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainContractProjectsResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainContractProjects', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainContractProjects',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainContractProjectsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_contract_projects_with_options_async(
@@ -1283,11 +3061,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainContractProjectsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainContractProjectsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainContractProjects', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainContractProjects',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainContractProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_contract_projects(
@@ -1304,17 +3101,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_contract_projects_with_options_async(request, runtime)
 
+    def describe_ant_chain_contract_projects_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainContractProjectsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainContractProjectsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainContractProjectsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainContractProjectsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_contract_projects_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainContractProjectsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainContractProjectsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainContractProjectsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainContractProjectsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_contract_projects_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainContractProjectsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainContractProjectsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_contract_projects_v2with_options(request, runtime)
+
+    async def describe_ant_chain_contract_projects_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainContractProjectsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainContractProjectsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_contract_projects_v2with_options_async(request, runtime)
+
     def describe_ant_chain_download_paths_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainDownloadPathsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainDownloadPathsResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainDownloadPaths', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainDownloadPaths',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainDownloadPathsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_download_paths_with_options_async(
@@ -1323,11 +3213,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainDownloadPathsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainDownloadPathsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainDownloadPaths', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainDownloadPaths',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainDownloadPathsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_download_paths(
@@ -1344,17 +3249,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_download_paths_with_options_async(request, runtime)
 
+    def describe_ant_chain_download_paths_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainDownloadPathsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainDownloadPathsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainDownloadPathsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainDownloadPathsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_download_paths_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainDownloadPathsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainDownloadPathsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainDownloadPathsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainDownloadPathsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_download_paths_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainDownloadPathsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainDownloadPathsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_download_paths_v2with_options(request, runtime)
+
+    async def describe_ant_chain_download_paths_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainDownloadPathsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainDownloadPathsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_download_paths_v2with_options_async(request, runtime)
+
     def describe_ant_chain_information_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainInformationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainInformationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainInformationResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainInformation', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainInformation',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainInformationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_information_with_options_async(
@@ -1363,11 +3357,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainInformationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainInformationResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainInformation', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainInformation',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainInformationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_information(
@@ -1384,17 +3393,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_information_with_options_async(request, runtime)
 
+    def describe_ant_chain_information_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainInformationV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainInformationV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainInformationV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainInformationV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_information_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainInformationV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainInformationV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainInformationV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainInformationV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_information_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainInformationV2Request,
+    ) -> baas_20181221_models.DescribeAntChainInformationV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_information_v2with_options(request, runtime)
+
+    async def describe_ant_chain_information_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainInformationV2Request,
+    ) -> baas_20181221_models.DescribeAntChainInformationV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_information_v2with_options_async(request, runtime)
+
     def describe_ant_chain_latest_blocks_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainLatestBlocksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainLatestBlocksResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainLatestBlocks', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainLatestBlocks',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainLatestBlocksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_latest_blocks_with_options_async(
@@ -1403,11 +3501,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestBlocksResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainLatestBlocksResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainLatestBlocks', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainLatestBlocks',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainLatestBlocksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_latest_blocks(
@@ -1424,17 +3537,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_latest_blocks_with_options_async(request, runtime)
 
+    def describe_ant_chain_latest_blocks_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainLatestBlocksV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainLatestBlocksV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainLatestBlocksV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainLatestBlocksV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_latest_blocks_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainLatestBlocksV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainLatestBlocksV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainLatestBlocksV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainLatestBlocksV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_latest_blocks_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainLatestBlocksV2Request,
+    ) -> baas_20181221_models.DescribeAntChainLatestBlocksV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_latest_blocks_v2with_options(request, runtime)
+
+    async def describe_ant_chain_latest_blocks_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainLatestBlocksV2Request,
+    ) -> baas_20181221_models.DescribeAntChainLatestBlocksV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_latest_blocks_v2with_options_async(request, runtime)
+
     def describe_ant_chain_latest_transaction_digests_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainLatestTransactionDigests', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainLatestTransactionDigests',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_latest_transaction_digests_with_options_async(
@@ -1443,11 +3645,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainLatestTransactionDigests', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainLatestTransactionDigests',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainLatestTransactionDigestsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_latest_transaction_digests(
@@ -1464,17 +3681,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_latest_transaction_digests_with_options_async(request, runtime)
 
+    def describe_ant_chain_latest_transaction_digests_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainLatestTransactionDigestsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_latest_transaction_digests_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainLatestTransactionDigestsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_latest_transaction_digests_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_latest_transaction_digests_v2with_options(request, runtime)
+
+    async def describe_ant_chain_latest_transaction_digests_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainLatestTransactionDigestsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_latest_transaction_digests_v2with_options_async(request, runtime)
+
     def describe_ant_chain_members_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMembersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainMembersResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainMembers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainMembers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMembersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_members_with_options_async(
@@ -1483,11 +3793,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMembersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainMembersResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainMembers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainMembers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMembersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_members(
@@ -1504,17 +3833,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_members_with_options_async(request, runtime)
 
+    def describe_ant_chain_members_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainMembersV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainMembersV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainMembersV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMembersV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_members_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainMembersV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainMembersV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainMembersV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMembersV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_members_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainMembersV2Request,
+    ) -> baas_20181221_models.DescribeAntChainMembersV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_members_v2with_options(request, runtime)
+
+    async def describe_ant_chain_members_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainMembersV2Request,
+    ) -> baas_20181221_models.DescribeAntChainMembersV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_members_v2with_options_async(request, runtime)
+
     def describe_ant_chain_mini_app_browser_qrcode_access_log_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainMiniAppBrowserQRCodeAccessLog', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserQRCodeAccessLog',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_mini_app_browser_qrcode_access_log_with_options_async(
@@ -1523,11 +3947,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainMiniAppBrowserQRCodeAccessLog', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserQRCodeAccessLog',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_mini_app_browser_qrcode_access_log(
@@ -1544,17 +3985,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_mini_app_browser_qrcode_access_log_with_options_async(request, runtime)
 
+    def describe_ant_chain_mini_app_browser_qrcode_access_log_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserQRCodeAccessLogV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_mini_app_browser_qrcode_access_log_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserQRCodeAccessLogV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_mini_app_browser_qrcode_access_log_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_mini_app_browser_qrcode_access_log_v2with_options(request, runtime)
+
+    async def describe_ant_chain_mini_app_browser_qrcode_access_log_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_mini_app_browser_qrcode_access_log_v2with_options_async(request, runtime)
+
     def describe_ant_chain_mini_app_browser_qrcode_authorized_users_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_mini_app_browser_qrcode_authorized_users_with_options_async(
@@ -1563,11 +4099,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_mini_app_browser_qrcode_authorized_users(
@@ -1584,17 +4141,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_mini_app_browser_qrcode_authorized_users_with_options_async(request, runtime)
 
+    def describe_ant_chain_mini_app_browser_qrcode_authorized_users_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_mini_app_browser_qrcode_authorized_users_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_mini_app_browser_qrcode_authorized_users_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_mini_app_browser_qrcode_authorized_users_v2with_options(request, runtime)
+
+    async def describe_ant_chain_mini_app_browser_qrcode_authorized_users_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_mini_app_browser_qrcode_authorized_users_v2with_options_async(request, runtime)
+
     def describe_ant_chain_mini_app_browser_transaction_qrcode_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.transaction_hash):
+            body['TransactionHash'] = request.transaction_hash
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainMiniAppBrowserTransactionQRCode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserTransactionQRCode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_mini_app_browser_transaction_qrcode_with_options_async(
@@ -1603,11 +4259,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.transaction_hash):
+            body['TransactionHash'] = request.transaction_hash
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainMiniAppBrowserTransactionQRCode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserTransactionQRCode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_mini_app_browser_transaction_qrcode(
@@ -1624,17 +4297,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_mini_app_browser_transaction_qrcode_with_options_async(request, runtime)
 
+    def describe_ant_chain_mini_app_browser_transaction_qrcode_new_with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.contract_id):
+            body['ContractId'] = request.contract_id
+        if not UtilClient.is_unset(request.transaction_hash):
+            body['TransactionHash'] = request.transaction_hash
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserTransactionQRCodeNew',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_mini_app_browser_transaction_qrcode_new_with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.contract_id):
+            body['ContractId'] = request.contract_id
+        if not UtilClient.is_unset(request.transaction_hash):
+            body['TransactionHash'] = request.transaction_hash
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainMiniAppBrowserTransactionQRCodeNew',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_mini_app_browser_transaction_qrcode_new(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_mini_app_browser_transaction_qrcode_new_with_options(request, runtime)
+
+    async def describe_ant_chain_mini_app_browser_transaction_qrcode_new_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest,
+    ) -> baas_20181221_models.DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_mini_app_browser_transaction_qrcode_new_with_options_async(request, runtime)
+
     def describe_ant_chain_nodes_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainNodesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainNodesResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainNodes', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainNodes',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainNodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_nodes_with_options_async(
@@ -1643,11 +4409,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainNodesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainNodesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainNodes', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainNodes',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainNodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_nodes(
@@ -1664,17 +4445,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_nodes_with_options_async(request, runtime)
 
+    def describe_ant_chain_nodes_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainNodesV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainNodesV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainNodesV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainNodesV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_nodes_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainNodesV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainNodesV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainNodesV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainNodesV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_nodes_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainNodesV2Request,
+    ) -> baas_20181221_models.DescribeAntChainNodesV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_nodes_v2with_options(request, runtime)
+
+    async def describe_ant_chain_nodes_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainNodesV2Request,
+    ) -> baas_20181221_models.DescribeAntChainNodesV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_nodes_v2with_options_async(request, runtime)
+
     def describe_ant_chain_qrcode_authorization_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainQRCodeAuthorization', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainQRCodeAuthorization',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_qrcode_authorization_with_options_async(
@@ -1683,11 +4555,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainQRCodeAuthorization', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainQRCodeAuthorization',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainQRCodeAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_qrcode_authorization(
@@ -1704,45 +4593,79 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_qrcode_authorization_with_options_async(request, runtime)
 
-    def describe_ant_chains_with_options(
+    def describe_ant_chain_qrcode_authorization_v2with_options(
         self,
-        request: baas_20181221_models.DescribeAntChainsRequest,
+        request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Request,
         runtime: util_models.RuntimeOptions,
-    ) -> baas_20181221_models.DescribeAntChainsResponse:
+    ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainsResponse().from_map(
-            self.do_rpcrequest('DescribeAntChains', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainQRCodeAuthorizationV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response(),
+            self.call_api(params, req, runtime)
         )
 
-    async def describe_ant_chains_with_options_async(
+    async def describe_ant_chain_qrcode_authorization_v2with_options_async(
         self,
-        request: baas_20181221_models.DescribeAntChainsRequest,
+        request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Request,
         runtime: util_models.RuntimeOptions,
-    ) -> baas_20181221_models.DescribeAntChainsResponse:
+    ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChains', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainQRCodeAuthorizationV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def describe_ant_chains(
+    def describe_ant_chain_qrcode_authorization_v2(
         self,
-        request: baas_20181221_models.DescribeAntChainsRequest,
-    ) -> baas_20181221_models.DescribeAntChainsResponse:
+        request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Request,
+    ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response:
         runtime = util_models.RuntimeOptions()
-        return self.describe_ant_chains_with_options(request, runtime)
+        return self.describe_ant_chain_qrcode_authorization_v2with_options(request, runtime)
 
-    async def describe_ant_chains_async(
+    async def describe_ant_chain_qrcode_authorization_v2_async(
         self,
-        request: baas_20181221_models.DescribeAntChainsRequest,
-    ) -> baas_20181221_models.DescribeAntChainsResponse:
+        request: baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Request,
+    ) -> baas_20181221_models.DescribeAntChainQRCodeAuthorizationV2Response:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_ant_chains_with_options_async(request, runtime)
+        return await self.describe_ant_chain_qrcode_authorization_v2with_options_async(request, runtime)
 
     def describe_ant_chain_transaction_with_options(
         self,
@@ -1750,11 +4673,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.hash):
+            body['Hash'] = request.hash
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainTransactionResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainTransaction', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainTransaction',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_transaction_with_options_async(
@@ -1763,11 +4703,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.hash):
+            body['Hash'] = request.hash
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainTransactionResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainTransaction', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainTransaction',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_transaction(
@@ -1790,11 +4747,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.hash):
+            body['Hash'] = request.hash
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainTransactionReceiptResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainTransactionReceipt', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionReceipt',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionReceiptResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_transaction_receipt_with_options_async(
@@ -1803,11 +4777,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionReceiptResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.hash):
+            body['Hash'] = request.hash
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainTransactionReceiptResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainTransactionReceipt', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionReceipt',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionReceiptResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_transaction_receipt(
@@ -1824,17 +4815,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_transaction_receipt_with_options_async(request, runtime)
 
+    def describe_ant_chain_transaction_receipt_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionReceiptV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainTransactionReceiptV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.hash):
+            body['Hash'] = request.hash
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionReceiptV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionReceiptV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_transaction_receipt_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionReceiptV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainTransactionReceiptV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.hash):
+            body['Hash'] = request.hash
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionReceiptV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionReceiptV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_transaction_receipt_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionReceiptV2Request,
+    ) -> baas_20181221_models.DescribeAntChainTransactionReceiptV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_transaction_receipt_v2with_options(request, runtime)
+
+    async def describe_ant_chain_transaction_receipt_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionReceiptV2Request,
+    ) -> baas_20181221_models.DescribeAntChainTransactionReceiptV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_transaction_receipt_v2with_options_async(request, runtime)
+
     def describe_ant_chain_transaction_statistics_with_options(
         self,
         request: baas_20181221_models.DescribeAntChainTransactionStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.end):
+            body['End'] = request.end
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainTransactionStatisticsResponse().from_map(
-            self.do_rpcrequest('DescribeAntChainTransactionStatistics', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionStatistics',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionStatisticsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ant_chain_transaction_statistics_with_options_async(
@@ -1843,11 +4931,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.end):
+            body['End'] = request.end
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeAntChainTransactionStatisticsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAntChainTransactionStatistics', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionStatistics',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ant_chain_transaction_statistics(
@@ -1864,17 +4971,348 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ant_chain_transaction_statistics_with_options_async(request, runtime)
 
+    def describe_ant_chain_transaction_statistics_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionStatisticsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.end):
+            body['End'] = request.end
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionStatisticsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_transaction_statistics_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionStatisticsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.end):
+            body['End'] = request.end
+        if not UtilClient.is_unset(request.start):
+            body['Start'] = request.start
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionStatisticsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_transaction_statistics_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionStatisticsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_transaction_statistics_v2with_options(request, runtime)
+
+    async def describe_ant_chain_transaction_statistics_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionStatisticsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainTransactionStatisticsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_transaction_statistics_v2with_options_async(request, runtime)
+
+    def describe_ant_chain_transaction_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainTransactionV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.hash):
+            body['Hash'] = request.hash
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chain_transaction_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainTransactionV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.hash):
+            body['Hash'] = request.hash
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainTransactionV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainTransactionV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chain_transaction_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionV2Request,
+    ) -> baas_20181221_models.DescribeAntChainTransactionV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chain_transaction_v2with_options(request, runtime)
+
+    async def describe_ant_chain_transaction_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainTransactionV2Request,
+    ) -> baas_20181221_models.DescribeAntChainTransactionV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chain_transaction_v2with_options_async(request, runtime)
+
+    def describe_ant_chains_with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChains',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chains_with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChains',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chains(
+        self,
+        request: baas_20181221_models.DescribeAntChainsRequest,
+    ) -> baas_20181221_models.DescribeAntChainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chains_with_options(request, runtime)
+
+    async def describe_ant_chains_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainsRequest,
+    ) -> baas_20181221_models.DescribeAntChainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chains_with_options_async(request, runtime)
+
+    def describe_ant_chains_v2with_options(
+        self,
+        request: baas_20181221_models.DescribeAntChainsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ant_chains_v2with_options_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeAntChainsV2Response:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAntChainsV2',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeAntChainsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ant_chains_v2(
+        self,
+        request: baas_20181221_models.DescribeAntChainsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ant_chains_v2with_options(request, runtime)
+
+    async def describe_ant_chains_v2_async(
+        self,
+        request: baas_20181221_models.DescribeAntChainsV2Request,
+    ) -> baas_20181221_models.DescribeAntChainsV2Response:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ant_chains_v2with_options_async(request, runtime)
+
     def describe_ethereum_deletable_with_options(
         self,
         request: baas_20181221_models.DescribeEthereumDeletableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeEthereumDeletableResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ethereum_id):
+            body['EthereumId'] = request.ethereum_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeEthereumDeletableResponse().from_map(
-            self.do_rpcrequest('DescribeEthereumDeletable', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeEthereumDeletable',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeEthereumDeletableResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ethereum_deletable_with_options_async(
@@ -1883,11 +5321,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeEthereumDeletableResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ethereum_id):
+            body['EthereumId'] = request.ethereum_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeEthereumDeletableResponse().from_map(
-            await self.do_rpcrequest_async('DescribeEthereumDeletable', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeEthereumDeletable',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeEthereumDeletableResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ethereum_deletable(
@@ -1910,11 +5363,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricCandidateOrganizationsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricCandidateOrganizationsResponse().from_map(
-            self.do_rpcrequest('DescribeFabricCandidateOrganizations', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricCandidateOrganizations',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricCandidateOrganizationsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_candidate_organizations_with_options_async(
@@ -1923,11 +5391,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricCandidateOrganizationsResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricCandidateOrganizationsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricCandidateOrganizations', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricCandidateOrganizations',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricCandidateOrganizationsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_candidate_organizations(
@@ -1944,17 +5427,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_candidate_organizations_with_options_async(request, runtime)
 
+    def describe_fabric_chaincode_definition_task_with_options(
+        self,
+        request: baas_20181221_models.DescribeFabricChaincodeDefinitionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFabricChaincodeDefinitionTask',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fabric_chaincode_definition_task_with_options_async(
+        self,
+        request: baas_20181221_models.DescribeFabricChaincodeDefinitionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFabricChaincodeDefinitionTask',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fabric_chaincode_definition_task(
+        self,
+        request: baas_20181221_models.DescribeFabricChaincodeDefinitionTaskRequest,
+    ) -> baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fabric_chaincode_definition_task_with_options(request, runtime)
+
+    async def describe_fabric_chaincode_definition_task_async(
+        self,
+        request: baas_20181221_models.DescribeFabricChaincodeDefinitionTaskRequest,
+    ) -> baas_20181221_models.DescribeFabricChaincodeDefinitionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fabric_chaincode_definition_task_with_options_async(request, runtime)
+
     def describe_fabric_chaincode_upload_policy_with_options(
         self,
         request: baas_20181221_models.DescribeFabricChaincodeUploadPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse().from_map(
-            self.do_rpcrequest('DescribeFabricChaincodeUploadPolicy', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricChaincodeUploadPolicy',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_chaincode_upload_policy_with_options_async(
@@ -1963,11 +5535,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricChaincodeUploadPolicy', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricChaincodeUploadPolicy',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricChaincodeUploadPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_chaincode_upload_policy(
@@ -1990,11 +5577,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChannelMembersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.DescribeFabricChannelMembersResponse().from_map(
-            self.do_rpcrequest('DescribeFabricChannelMembers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricChannelMembers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricChannelMembersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_channel_members_with_options_async(
@@ -2003,11 +5605,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricChannelMembersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.DescribeFabricChannelMembersResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricChannelMembers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricChannelMembers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricChannelMembersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_channel_members(
@@ -2030,11 +5647,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiumAdminStatus', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumAdminStatus',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_consortium_admin_status_with_options_async(
@@ -2043,11 +5675,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiumAdminStatus', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumAdminStatus',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumAdminStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_consortium_admin_status(
@@ -2070,11 +5717,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumChaincodesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumChaincodesResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiumChaincodes', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumChaincodes',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumChaincodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_consortium_chaincodes_with_options_async(
@@ -2083,11 +5747,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumChaincodesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumChaincodesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiumChaincodes', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumChaincodes',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumChaincodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_consortium_chaincodes(
@@ -2110,11 +5791,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumChannelsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumChannelsResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiumChannels', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumChannels',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumChannelsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_consortium_channels_with_options_async(
@@ -2123,11 +5823,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumChannelsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumChannelsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiumChannels', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumChannels',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumChannelsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_consortium_channels(
@@ -2149,8 +5868,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumConfigResponse:
         req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeFabricConsortiumConfigResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiumConfig', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumConfig',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_consortium_config_with_options_async(
@@ -2158,8 +5889,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumConfigResponse:
         req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeFabricConsortiumConfigResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiumConfig', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumConfig',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_consortium_config(self) -> baas_20181221_models.DescribeFabricConsortiumConfigResponse:
@@ -2176,11 +5919,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumDeletableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumDeletableResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiumDeletable', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumDeletable',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumDeletableResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_consortium_deletable_with_options_async(
@@ -2189,11 +5951,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumDeletableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumDeletableResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiumDeletable', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumDeletable',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumDeletableResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_consortium_deletable(
@@ -2216,11 +5997,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiumMemberApproval', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumMemberApproval',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_consortium_member_approval_with_options_async(
@@ -2229,11 +6029,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiumMemberApproval', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumMemberApproval',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumMemberApprovalResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_consortium_member_approval(
@@ -2256,11 +6075,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumMembersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumMembersResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiumMembers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumMembers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumMembersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_consortium_members_with_options_async(
@@ -2269,11 +6105,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumMembersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumMembersResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiumMembers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumMembers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumMembersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_consortium_members(
@@ -2296,11 +6149,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumOrderersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumOrderersResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiumOrderers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumOrderers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumOrderersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_consortium_orderers_with_options_async(
@@ -2309,11 +6179,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumOrderersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumOrderersResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiumOrderers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumOrderers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumOrderersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_consortium_orderers(
@@ -2330,17 +6217,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortium_orderers_with_options_async(request, runtime)
 
+    def describe_fabric_consortium_specs_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumSpecs',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumSpecsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fabric_consortium_specs_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiumSpecs',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumSpecsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fabric_consortium_specs(self) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fabric_consortium_specs_with_options(runtime)
+
+    async def describe_fabric_consortium_specs_async(self) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fabric_consortium_specs_with_options_async(runtime)
+
     def describe_fabric_consortiums_with_options(
         self,
         request: baas_20181221_models.DescribeFabricConsortiumsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumsResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiums', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiums',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_consortiums_with_options_async(
@@ -2349,11 +6307,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricConsortiumsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricConsortiumsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiums', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricConsortiums',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricConsortiumsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_consortiums(
@@ -2370,43 +6349,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_consortiums_with_options_async(request, runtime)
 
-    def describe_fabric_consortium_specs_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
-        req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeFabricConsortiumSpecsResponse().from_map(
-            self.do_rpcrequest('DescribeFabricConsortiumSpecs', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_fabric_consortium_specs_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
-        req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeFabricConsortiumSpecsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricConsortiumSpecs', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_fabric_consortium_specs(self) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_fabric_consortium_specs_with_options(runtime)
-
-    async def describe_fabric_consortium_specs_async(self) -> baas_20181221_models.DescribeFabricConsortiumSpecsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_fabric_consortium_specs_with_options_async(runtime)
-
     def describe_fabric_explorer_with_options(
         self,
         request: baas_20181221_models.DescribeFabricExplorerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricExplorerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ex_body):
+            query['ExBody'] = request.ex_body
+        if not UtilClient.is_unset(request.ex_method):
+            query['ExMethod'] = request.ex_method
+        if not UtilClient.is_unset(request.ex_url):
+            query['ExUrl'] = request.ex_url
+        body = {}
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricExplorerResponse().from_map(
-            self.do_rpcrequest('DescribeFabricExplorer', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricExplorer',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricExplorerResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_explorer_with_options_async(
@@ -2415,11 +6391,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricExplorerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ex_body):
+            query['ExBody'] = request.ex_body
+        if not UtilClient.is_unset(request.ex_method):
+            query['ExMethod'] = request.ex_method
+        if not UtilClient.is_unset(request.ex_url):
+            query['ExUrl'] = request.ex_url
+        body = {}
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricExplorerResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricExplorer', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricExplorer',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricExplorerResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_explorer(
@@ -2442,11 +6441,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricInvitationCodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricInvitationCodeResponse().from_map(
-            self.do_rpcrequest('DescribeFabricInvitationCode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricInvitationCode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricInvitationCodeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_invitation_code_with_options_async(
@@ -2455,11 +6469,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricInvitationCodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricInvitationCodeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricInvitationCode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricInvitationCode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricInvitationCodeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_invitation_code(
@@ -2482,11 +6511,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricInviterResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricInviterResponse().from_map(
-            self.do_rpcrequest('DescribeFabricInviter', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricInviter',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricInviterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_inviter_with_options_async(
@@ -2495,11 +6539,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricInviterResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricInviterResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricInviter', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricInviter',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricInviterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_inviter(
@@ -2522,11 +6581,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrdererLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.orderer_name):
+            query['OrdererName'] = request.orderer_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.DescribeFabricOrdererLogsResponse().from_map(
-            self.do_rpcrequest('DescribeFabricOrdererLogs', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrdererLogs',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrdererLogsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_orderer_logs_with_options_async(
@@ -2535,11 +6613,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrdererLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            query['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.orderer_name):
+            query['OrdererName'] = request.orderer_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.DescribeFabricOrdererLogsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricOrdererLogs', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrdererLogs',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrdererLogsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_orderer_logs(
@@ -2562,11 +6659,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationResponse().from_map(
-            self.do_rpcrequest('DescribeFabricOrganization', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganization',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_organization_with_options_async(
@@ -2575,11 +6693,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricOrganization', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganization',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_organization(
@@ -2596,17 +6735,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_with_options_async(request, runtime)
 
+    def describe_fabric_organization_chaincode_package_with_options(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationChaincodePackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationChaincodePackage',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fabric_organization_chaincode_package_with_options_async(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationChaincodePackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationChaincodePackage',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fabric_organization_chaincode_package(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationChaincodePackageRequest,
+    ) -> baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fabric_organization_chaincode_package_with_options(request, runtime)
+
+    async def describe_fabric_organization_chaincode_package_async(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationChaincodePackageRequest,
+    ) -> baas_20181221_models.DescribeFabricOrganizationChaincodePackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fabric_organization_chaincode_package_with_options_async(request, runtime)
+
     def describe_fabric_organization_chaincodes_with_options(
         self,
         request: baas_20181221_models.DescribeFabricOrganizationChaincodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationChaincodesResponse().from_map(
-            self.do_rpcrequest('DescribeFabricOrganizationChaincodes', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationChaincodes',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationChaincodesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_organization_chaincodes_with_options_async(
@@ -2615,11 +6841,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationChaincodesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationChaincodesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricOrganizationChaincodes', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationChaincodes',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationChaincodesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_organization_chaincodes(
@@ -2636,17 +6879,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_chaincodes_with_options_async(request, runtime)
 
+    def describe_fabric_organization_channels_with_options(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricOrganizationChannelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationChannels',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationChannelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fabric_organization_channels_with_options_async(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricOrganizationChannelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationChannels',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationChannelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fabric_organization_channels(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationChannelsRequest,
+    ) -> baas_20181221_models.DescribeFabricOrganizationChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fabric_organization_channels_with_options(request, runtime)
+
+    async def describe_fabric_organization_channels_async(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationChannelsRequest,
+    ) -> baas_20181221_models.DescribeFabricOrganizationChannelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fabric_organization_channels_with_options_async(request, runtime)
+
     def describe_fabric_organization_deletable_with_options(
         self,
         request: baas_20181221_models.DescribeFabricOrganizationDeletableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationDeletableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationDeletableResponse().from_map(
-            self.do_rpcrequest('DescribeFabricOrganizationDeletable', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationDeletable',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationDeletableResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_organization_deletable_with_options_async(
@@ -2655,11 +6995,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationDeletableResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationDeletableResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricOrganizationDeletable', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationDeletable',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationDeletableResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_organization_deletable(
@@ -2682,11 +7041,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationMembersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationMembersResponse().from_map(
-            self.do_rpcrequest('DescribeFabricOrganizationMembers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationMembers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationMembersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_organization_members_with_options_async(
@@ -2695,11 +7071,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationMembersResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationMembersResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricOrganizationMembers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationMembers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationMembersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_organization_members(
@@ -2722,11 +7115,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationPeersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationPeersResponse().from_map(
-            self.do_rpcrequest('DescribeFabricOrganizationPeers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationPeers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationPeersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_organization_peers_with_options_async(
@@ -2735,11 +7147,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationPeersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationPeersResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricOrganizationPeers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationPeers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationPeersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_organization_peers(
@@ -2756,53 +7187,25 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_peers_with_options_async(request, runtime)
 
-    def describe_fabric_organizations_with_options(
-        self,
-        request: baas_20181221_models.DescribeFabricOrganizationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return baas_20181221_models.DescribeFabricOrganizationsResponse().from_map(
-            self.do_rpcrequest('DescribeFabricOrganizations', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_fabric_organizations_with_options_async(
-        self,
-        request: baas_20181221_models.DescribeFabricOrganizationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return baas_20181221_models.DescribeFabricOrganizationsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricOrganizations', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_fabric_organizations(
-        self,
-        request: baas_20181221_models.DescribeFabricOrganizationsRequest,
-    ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_fabric_organizations_with_options(request, runtime)
-
-    async def describe_fabric_organizations_async(
-        self,
-        request: baas_20181221_models.DescribeFabricOrganizationsRequest,
-    ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_fabric_organizations_with_options_async(request, runtime)
-
     def describe_fabric_organization_specs_with_options(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationSpecsResponse:
         req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeFabricOrganizationSpecsResponse().from_map(
-            self.do_rpcrequest('DescribeFabricOrganizationSpecs', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationSpecs',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationSpecsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_organization_specs_with_options_async(
@@ -2810,8 +7213,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationSpecsResponse:
         req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeFabricOrganizationSpecsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricOrganizationSpecs', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationSpecs',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationSpecsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_organization_specs(self) -> baas_20181221_models.DescribeFabricOrganizationSpecsResponse:
@@ -2828,11 +7243,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationUsersResponse().from_map(
-            self.do_rpcrequest('DescribeFabricOrganizationUsers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationUsers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationUsersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_organization_users_with_options_async(
@@ -2841,11 +7275,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricOrganizationUsersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DescribeFabricOrganizationUsersResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricOrganizationUsers', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizationUsers',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationUsersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_organization_users(
@@ -2862,17 +7315,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_fabric_organization_users_with_options_async(request, runtime)
 
+    def describe_fabric_organizations_with_options(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizations',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fabric_organizations_with_options_async(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeFabricOrganizations',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricOrganizationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fabric_organizations(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationsRequest,
+    ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fabric_organizations_with_options(request, runtime)
+
+    async def describe_fabric_organizations_async(
+        self,
+        request: baas_20181221_models.DescribeFabricOrganizationsRequest,
+    ) -> baas_20181221_models.DescribeFabricOrganizationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fabric_organizations_with_options_async(request, runtime)
+
     def describe_fabric_peer_logs_with_options(
         self,
         request: baas_20181221_models.DescribeFabricPeerLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricPeerLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.peer_name):
+            query['PeerName'] = request.peer_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.DescribeFabricPeerLogsResponse().from_map(
-            self.do_rpcrequest('DescribeFabricPeerLogs', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricPeerLogs',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricPeerLogsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_fabric_peer_logs_with_options_async(
@@ -2881,11 +7431,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeFabricPeerLogsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lines):
+            query['Lines'] = request.lines
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.peer_name):
+            query['PeerName'] = request.peer_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.DescribeFabricPeerLogsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeFabricPeerLogs', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeFabricPeerLogs',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeFabricPeerLogsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_fabric_peer_logs(
@@ -2908,11 +7477,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.DescribeRegionsResponse().from_map(
-            self.do_rpcrequest('DescribeRegions', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -2921,11 +7507,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.DescribeRegionsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRegions', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
@@ -2947,8 +7550,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeRootDomainResponse:
         req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeRootDomainResponse().from_map(
-            self.do_rpcrequest('DescribeRootDomain', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRootDomain',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeRootDomainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_root_domain_with_options_async(
@@ -2956,8 +7571,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeRootDomainResponse:
         req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeRootDomainResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRootDomain', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRootDomain',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeRootDomainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_root_domain(self) -> baas_20181221_models.DescribeRootDomainResponse:
@@ -2973,8 +7600,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeTasksResponse:
         req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeTasksResponse().from_map(
-            self.do_rpcrequest('DescribeTasks', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTasks',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeTasksResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_tasks_with_options_async(
@@ -2982,8 +7621,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DescribeTasksResponse:
         req = open_api_models.OpenApiRequest()
-        return baas_20181221_models.DescribeTasksResponse().from_map(
-            await self.do_rpcrequest_async('DescribeTasks', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeTasks',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DescribeTasksResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_tasks(self) -> baas_20181221_models.DescribeTasksResponse:
@@ -3000,11 +7651,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DownloadFabricOrganizationSDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DownloadFabricOrganizationSDKResponse().from_map(
-            self.do_rpcrequest('DownloadFabricOrganizationSDK', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DownloadFabricOrganizationSDK',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DownloadFabricOrganizationSDKResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def download_fabric_organization_sdkwith_options_async(
@@ -3013,11 +7685,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.DownloadFabricOrganizationSDKResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.DownloadFabricOrganizationSDKResponse().from_map(
-            await self.do_rpcrequest_async('DownloadFabricOrganizationSDK', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DownloadFabricOrganizationSDK',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.DownloadFabricOrganizationSDKResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def download_fabric_organization_sdk(
@@ -3040,11 +7733,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.FreezeAntChainAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.FreezeAntChainAccountResponse().from_map(
-            self.do_rpcrequest('FreezeAntChainAccount', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='FreezeAntChainAccount',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.FreezeAntChainAccountResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def freeze_ant_chain_account_with_options_async(
@@ -3053,11 +7763,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.FreezeAntChainAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.FreezeAntChainAccountResponse().from_map(
-            await self.do_rpcrequest_async('FreezeAntChainAccount', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='FreezeAntChainAccount',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.FreezeAntChainAccountResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def freeze_ant_chain_account(
@@ -3080,11 +7807,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstallFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.InstallFabricChaincodeResponse().from_map(
-            self.do_rpcrequest('InstallFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InstallFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.InstallFabricChaincodeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def install_fabric_chaincode_with_options_async(
@@ -3093,11 +7839,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstallFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.InstallFabricChaincodeResponse().from_map(
-            await self.do_rpcrequest_async('InstallFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InstallFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.InstallFabricChaincodeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def install_fabric_chaincode(
@@ -3114,17 +7879,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.install_fabric_chaincode_with_options_async(request, runtime)
 
+    def install_fabric_chaincode_package_with_options(
+        self,
+        request: baas_20181221_models.InstallFabricChaincodePackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.InstallFabricChaincodePackageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_package_id):
+            body['ChaincodePackageId'] = request.chaincode_package_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InstallFabricChaincodePackage',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.InstallFabricChaincodePackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_fabric_chaincode_package_with_options_async(
+        self,
+        request: baas_20181221_models.InstallFabricChaincodePackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.InstallFabricChaincodePackageResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_package_id):
+            body['ChaincodePackageId'] = request.chaincode_package_id
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InstallFabricChaincodePackage',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.InstallFabricChaincodePackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_fabric_chaincode_package(
+        self,
+        request: baas_20181221_models.InstallFabricChaincodePackageRequest,
+    ) -> baas_20181221_models.InstallFabricChaincodePackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.install_fabric_chaincode_package_with_options(request, runtime)
+
+    async def install_fabric_chaincode_package_async(
+        self,
+        request: baas_20181221_models.InstallFabricChaincodePackageRequest,
+    ) -> baas_20181221_models.InstallFabricChaincodePackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.install_fabric_chaincode_package_with_options_async(request, runtime)
+
     def instantiate_fabric_chaincode_with_options(
         self,
         request: baas_20181221_models.InstantiateFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstantiateFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.collection_config):
+            body['CollectionConfig'] = request.collection_config
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.InstantiateFabricChaincodeResponse().from_map(
-            self.do_rpcrequest('InstantiateFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InstantiateFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.InstantiateFabricChaincodeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def instantiate_fabric_chaincode_with_options_async(
@@ -3133,11 +7999,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.InstantiateFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.collection_config):
+            body['CollectionConfig'] = request.collection_config
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.InstantiateFabricChaincodeResponse().from_map(
-            await self.do_rpcrequest_async('InstantiateFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='InstantiateFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.InstantiateFabricChaincodeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def instantiate_fabric_chaincode(
@@ -3160,11 +8049,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.JoinFabricChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.do):
+            query['Do'] = request.do
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.JoinFabricChannelResponse().from_map(
-            self.do_rpcrequest('JoinFabricChannel', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='JoinFabricChannel',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.JoinFabricChannelResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def join_fabric_channel_with_options_async(
@@ -3173,11 +8083,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.JoinFabricChannelResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.do):
+            query['Do'] = request.do
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.JoinFabricChannelResponse().from_map(
-            await self.do_rpcrequest_async('JoinFabricChannel', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='JoinFabricChannel',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.JoinFabricChannelResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def join_fabric_channel(
@@ -3200,11 +8131,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.ListTagResourcesResponse().from_map(
-            self.do_rpcrequest('ListTagResources', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -3213,11 +8165,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.ListTagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('ListTagResources', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -3240,11 +8213,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetAntChainCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ResetAntChainCertificateResponse().from_map(
-            self.do_rpcrequest('ResetAntChainCertificate', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResetAntChainCertificate',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ResetAntChainCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def reset_ant_chain_certificate_with_options_async(
@@ -3253,11 +8241,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetAntChainCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ResetAntChainCertificateResponse().from_map(
-            await self.do_rpcrequest_async('ResetAntChainCertificate', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResetAntChainCertificate',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ResetAntChainCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_ant_chain_certificate(
@@ -3280,11 +8283,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetAntChainUserCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ResetAntChainUserCertificateResponse().from_map(
-            self.do_rpcrequest('ResetAntChainUserCertificate', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResetAntChainUserCertificate',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ResetAntChainUserCertificateResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def reset_ant_chain_user_certificate_with_options_async(
@@ -3293,11 +8313,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetAntChainUserCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ResetAntChainUserCertificateResponse().from_map(
-            await self.do_rpcrequest_async('ResetAntChainUserCertificate', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResetAntChainUserCertificate',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ResetAntChainUserCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_ant_chain_user_certificate(
@@ -3320,11 +8357,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetFabricOrganizationUserPasswordResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ResetFabricOrganizationUserPasswordResponse().from_map(
-            self.do_rpcrequest('ResetFabricOrganizationUserPassword', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResetFabricOrganizationUserPassword',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ResetFabricOrganizationUserPasswordResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def reset_fabric_organization_user_password_with_options_async(
@@ -3333,11 +8391,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.ResetFabricOrganizationUserPasswordResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.username):
+            body['Username'] = request.username
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.ResetFabricOrganizationUserPasswordResponse().from_map(
-            await self.do_rpcrequest_async('ResetFabricOrganizationUserPassword', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResetFabricOrganizationUserPassword',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.ResetFabricOrganizationUserPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def reset_fabric_organization_user_password(
@@ -3354,17 +8433,136 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_fabric_organization_user_password_with_options_async(request, runtime)
 
+    def submit_fabric_chaincode_definition_with_options(
+        self,
+        request: baas_20181221_models.SubmitFabricChaincodeDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.SubmitFabricChaincodeDefinitionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_package_id):
+            body['ChaincodePackageId'] = request.chaincode_package_id
+        if not UtilClient.is_unset(request.chaincode_version):
+            body['ChaincodeVersion'] = request.chaincode_version
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.collection_config):
+            body['CollectionConfig'] = request.collection_config
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.init_required):
+            body['InitRequired'] = request.init_required
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitFabricChaincodeDefinition',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.SubmitFabricChaincodeDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_fabric_chaincode_definition_with_options_async(
+        self,
+        request: baas_20181221_models.SubmitFabricChaincodeDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.SubmitFabricChaincodeDefinitionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_package_id):
+            body['ChaincodePackageId'] = request.chaincode_package_id
+        if not UtilClient.is_unset(request.chaincode_version):
+            body['ChaincodeVersion'] = request.chaincode_version
+        if not UtilClient.is_unset(request.channel_id):
+            body['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.collection_config):
+            body['CollectionConfig'] = request.collection_config
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.init_required):
+            body['InitRequired'] = request.init_required
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitFabricChaincodeDefinition',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.SubmitFabricChaincodeDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_fabric_chaincode_definition(
+        self,
+        request: baas_20181221_models.SubmitFabricChaincodeDefinitionRequest,
+    ) -> baas_20181221_models.SubmitFabricChaincodeDefinitionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_fabric_chaincode_definition_with_options(request, runtime)
+
+    async def submit_fabric_chaincode_definition_async(
+        self,
+        request: baas_20181221_models.SubmitFabricChaincodeDefinitionRequest,
+    ) -> baas_20181221_models.SubmitFabricChaincodeDefinitionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_fabric_chaincode_definition_with_options_async(request, runtime)
+
     def synchronize_fabric_chaincode_with_options(
         self,
         request: baas_20181221_models.SynchronizeFabricChaincodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.SynchronizeFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.SynchronizeFabricChaincodeResponse().from_map(
-            self.do_rpcrequest('SynchronizeFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SynchronizeFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.SynchronizeFabricChaincodeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def synchronize_fabric_chaincode_with_options_async(
@@ -3373,11 +8571,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.SynchronizeFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.SynchronizeFabricChaincodeResponse().from_map(
-            await self.do_rpcrequest_async('SynchronizeFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SynchronizeFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.SynchronizeFabricChaincodeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def synchronize_fabric_chaincode(
@@ -3400,11 +8615,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.TagResourcesResponse().from_map(
-            self.do_rpcrequest('TagResources', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -3413,11 +8647,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.TagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('TagResources', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -3440,11 +8693,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UnfreezeAntChainAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UnfreezeAntChainAccountResponse().from_map(
-            self.do_rpcrequest('UnfreezeAntChainAccount', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnfreezeAntChainAccount',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UnfreezeAntChainAccountResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def unfreeze_ant_chain_account_with_options_async(
@@ -3453,11 +8723,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UnfreezeAntChainAccountResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account):
+            body['Account'] = request.account
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UnfreezeAntChainAccountResponse().from_map(
-            await self.do_rpcrequest_async('UnfreezeAntChainAccount', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnfreezeAntChainAccount',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UnfreezeAntChainAccountResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def unfreeze_ant_chain_account(
@@ -3480,11 +8767,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.UntagResourcesResponse().from_map(
-            self.do_rpcrequest('UntagResources', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
@@ -3493,11 +8801,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return baas_20181221_models.UntagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('UntagResources', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
@@ -3520,11 +8849,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.ant_chain_name):
+            body['AntChainName'] = request.ant_chain_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainResponse().from_map(
-            self.do_rpcrequest('UpdateAntChain', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChain',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_ant_chain_with_options_async(
@@ -3533,11 +8879,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.ant_chain_name):
+            body['AntChainName'] = request.ant_chain_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAntChain', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChain',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_ant_chain(
@@ -3560,11 +8923,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainConsortiumResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_description):
+            body['ConsortiumDescription'] = request.consortium_description
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.consortium_name):
+            body['ConsortiumName'] = request.consortium_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainConsortiumResponse().from_map(
-            self.do_rpcrequest('UpdateAntChainConsortium', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainConsortium',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainConsortiumResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_ant_chain_consortium_with_options_async(
@@ -3573,11 +8955,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainConsortiumResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_description):
+            body['ConsortiumDescription'] = request.consortium_description
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.consortium_name):
+            body['ConsortiumName'] = request.consortium_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainConsortiumResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAntChainConsortium', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainConsortium',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainConsortiumResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_ant_chain_consortium(
@@ -3600,11 +9001,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainContractContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_id):
+            body['ContentId'] = request.content_id
+        if not UtilClient.is_unset(request.content_name):
+            body['ContentName'] = request.content_name
+        if not UtilClient.is_unset(request.parent_content_id):
+            body['ParentContentId'] = request.parent_content_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainContractContentResponse().from_map(
-            self.do_rpcrequest('UpdateAntChainContractContent', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainContractContent',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainContractContentResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_ant_chain_contract_content_with_options_async(
@@ -3613,11 +9035,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainContractContentResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.content_id):
+            body['ContentId'] = request.content_id
+        if not UtilClient.is_unset(request.content_name):
+            body['ContentName'] = request.content_name
+        if not UtilClient.is_unset(request.parent_content_id):
+            body['ParentContentId'] = request.parent_content_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainContractContentResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAntChainContractContent', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainContractContent',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainContractContentResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_ant_chain_contract_content(
@@ -3640,11 +9083,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainContractProjectResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_description):
+            body['ProjectDescription'] = request.project_description
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_version):
+            body['ProjectVersion'] = request.project_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainContractProjectResponse().from_map(
-            self.do_rpcrequest('UpdateAntChainContractProject', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainContractProject',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainContractProjectResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_ant_chain_contract_project_with_options_async(
@@ -3653,11 +9117,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainContractProjectResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.project_description):
+            body['ProjectDescription'] = request.project_description
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.project_version):
+            body['ProjectVersion'] = request.project_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainContractProjectResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAntChainContractProject', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainContractProject',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainContractProjectResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_ant_chain_contract_project(
@@ -3680,11 +9165,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainMemberResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.member_id):
+            body['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.member_name):
+            body['MemberName'] = request.member_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainMemberResponse().from_map(
-            self.do_rpcrequest('UpdateAntChainMember', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainMember',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainMemberResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_ant_chain_member_with_options_async(
@@ -3693,11 +9197,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainMemberResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.consortium_id):
+            body['ConsortiumId'] = request.consortium_id
+        if not UtilClient.is_unset(request.member_id):
+            body['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.member_name):
+            body['MemberName'] = request.member_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainMemberResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAntChainMember', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainMember',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainMemberResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_ant_chain_member(
@@ -3720,11 +9243,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.authorization_type):
+            body['AuthorizationType'] = request.authorization_type
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse().from_map(
-            self.do_rpcrequest('UpdateAntChainQRCodeAuthorization', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainQRCodeAuthorization',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_ant_chain_qrcode_authorization_with_options_async(
@@ -3733,11 +9275,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ant_chain_id):
+            body['AntChainId'] = request.ant_chain_id
+        if not UtilClient.is_unset(request.authorization_type):
+            body['AuthorizationType'] = request.authorization_type
+        if not UtilClient.is_unset(request.qrcode_type):
+            body['QRCodeType'] = request.qrcode_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse().from_map(
-            await self.do_rpcrequest_async('UpdateAntChainQRCodeAuthorization', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateAntChainQRCodeAuthorization',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpdateAntChainQRCodeAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_ant_chain_qrcode_authorization(
@@ -3760,11 +9321,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.collection_config):
+            body['CollectionConfig'] = request.collection_config
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpgradeFabricChaincodeResponse().from_map(
-            self.do_rpcrequest('UpgradeFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpgradeFabricChaincodeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_fabric_chaincode_with_options_async(
@@ -3773,11 +9357,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.collection_config):
+            body['CollectionConfig'] = request.collection_config
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return baas_20181221_models.UpgradeFabricChaincodeResponse().from_map(
-            await self.do_rpcrequest_async('UpgradeFabricChaincode', '2018-12-21', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeFabricChaincode',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpgradeFabricChaincodeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_fabric_chaincode(
@@ -3793,3 +9400,101 @@ class Client(OpenApiClient):
     ) -> baas_20181221_models.UpgradeFabricChaincodeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_fabric_chaincode_with_options_async(request, runtime)
+
+    def upgrade_fabric_chaincode_definition_with_options(
+        self,
+        request: baas_20181221_models.UpgradeFabricChaincodeDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.chaincode_package_id):
+            body['ChaincodePackageId'] = request.chaincode_package_id
+        if not UtilClient.is_unset(request.chaincode_version):
+            body['ChaincodeVersion'] = request.chaincode_version
+        if not UtilClient.is_unset(request.collection_config):
+            body['CollectionConfig'] = request.collection_config
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.init_required):
+            body['InitRequired'] = request.init_required
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpgradeFabricChaincodeDefinition',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_fabric_chaincode_definition_with_options_async(
+        self,
+        request: baas_20181221_models.UpgradeFabricChaincodeDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.chaincode_id):
+            body['ChaincodeId'] = request.chaincode_id
+        if not UtilClient.is_unset(request.chaincode_package_id):
+            body['ChaincodePackageId'] = request.chaincode_package_id
+        if not UtilClient.is_unset(request.chaincode_version):
+            body['ChaincodeVersion'] = request.chaincode_version
+        if not UtilClient.is_unset(request.collection_config):
+            body['CollectionConfig'] = request.collection_config
+        if not UtilClient.is_unset(request.endorse_policy):
+            body['EndorsePolicy'] = request.endorse_policy
+        if not UtilClient.is_unset(request.init_required):
+            body['InitRequired'] = request.init_required
+        if not UtilClient.is_unset(request.location):
+            body['Location'] = request.location
+        if not UtilClient.is_unset(request.organization_id):
+            body['OrganizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpgradeFabricChaincodeDefinition',
+            version='2018-12-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_fabric_chaincode_definition(
+        self,
+        request: baas_20181221_models.UpgradeFabricChaincodeDefinitionRequest,
+    ) -> baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_fabric_chaincode_definition_with_options(request, runtime)
+
+    async def upgrade_fabric_chaincode_definition_async(
+        self,
+        request: baas_20181221_models.UpgradeFabricChaincodeDefinitionRequest,
+    ) -> baas_20181221_models.UpgradeFabricChaincodeDefinitionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_fabric_chaincode_definition_with_options_async(request, runtime)
