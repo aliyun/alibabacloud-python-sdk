@@ -46,8 +46,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateGroupRequest,
     ) -> pai_plugin_20220112_models.CreateGroupResponse:
         """
-        注册人群
-        @tags 人群
+        注册人群。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -58,8 +57,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateGroupRequest,
     ) -> pai_plugin_20220112_models.CreateGroupResponse:
         """
-        注册人群
-        @tags 人群
+        注册人群。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -170,8 +168,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateInferenceJobRequest,
     ) -> pai_plugin_20220112_models.CreateInferenceJobResponse:
         """
-        注册推理任务
-        @tags 推理任务
+        注册预测任务。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -182,8 +179,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateInferenceJobRequest,
     ) -> pai_plugin_20220112_models.CreateInferenceJobResponse:
         """
-        注册推理任务
-        @tags 推理任务
+        注册预测任务。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -270,8 +266,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateScheduleRequest,
     ) -> pai_plugin_20220112_models.CreateScheduleResponse:
         """
-        注册触达计划
-        @tags 触达计划
+        注册触达计划。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -282,8 +277,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateScheduleRequest,
     ) -> pai_plugin_20220112_models.CreateScheduleResponse:
         """
-        注册触达计划
-        @tags 触达计划
+        注册触达计划。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -395,7 +389,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateSignatureResponse:
         """
         注册签名。
-        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -407,7 +400,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.CreateSignatureResponse:
         """
         注册签名。
-        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -482,8 +474,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateTemplateRequest,
     ) -> pai_plugin_20220112_models.CreateTemplateResponse:
         """
-        注册模板
-        @tags 模板
+        注册模板。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -494,8 +485,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateTemplateRequest,
     ) -> pai_plugin_20220112_models.CreateTemplateResponse:
         """
-        注册模板
-        @tags 模板
+        注册模板。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -515,6 +505,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.signature):
+            body['Signature'] = request.signature
         if not UtilClient.is_unset(request.signature_id):
             body['SignatureId'] = request.signature_id
         if not UtilClient.is_unset(request.type):
@@ -553,6 +545,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.signature):
+            body['Signature'] = request.signature
         if not UtilClient.is_unset(request.signature_id):
             body['SignatureId'] = request.signature_id
         if not UtilClient.is_unset(request.type):
@@ -582,8 +576,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateTrainingJobRequest,
     ) -> pai_plugin_20220112_models.CreateTrainingJobResponse:
         """
-        注册训练任务
-        @tags 训练任务
+        注册训练任务。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -594,8 +587,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.CreateTrainingJobRequest,
     ) -> pai_plugin_20220112_models.CreateTrainingJobResponse:
         """
-        注册训练任务
-        @tags 训练任务
+        注册训练任务。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -679,7 +671,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteGroupResponse:
         """
         删除人群
-        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -691,7 +682,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteGroupResponse:
         """
         删除人群
-        @tags 人群
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -754,8 +744,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.DeleteInferenceJobResponse:
         """
-        删除推理任务
-        @tags 推理任务
+        删除预测任务。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -766,8 +755,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.DeleteInferenceJobResponse:
         """
-        删除推理任务
-        @tags 推理任务
+        删除预测任务。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -830,8 +818,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.DeleteScheduleResponse:
         """
-        删除触达计划
-        @tags 触达计划
+        删除触达计划。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -842,8 +829,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.DeleteScheduleResponse:
         """
-        删除触达计划
-        @tags 触达计划
+        删除触达计划。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -907,7 +893,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteSignatureResponse:
         """
         删除签名。
-        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -919,7 +904,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteSignatureResponse:
         """
         删除签名。
-        @tags 签名
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -983,7 +967,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteTemplateResponse:
         """
         删除模板
-        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -995,7 +978,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.DeleteTemplateResponse:
         """
         删除模板
-        @tags 模板
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1058,8 +1040,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.DeleteTrainingJobResponse:
         """
-        删除训练任务
-        @tags 训练任务
+        删除训练任务。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1070,8 +1051,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.DeleteTrainingJobResponse:
         """
-        删除训练任务
-        @tags 训练任务
+        删除训练任务。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1134,8 +1114,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
         """
-        获取算法详情
-        @tags 算法
+        获取算法详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1146,8 +1125,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
         """
-        获取算法详情
-        @tags 算法
+        获取算法详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1210,9 +1188,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetGroupResponse:
         """
-        获取人群
-        默认返回所有人群信息
-        @tags 人群
+        获取人群详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1223,9 +1199,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetGroupResponse:
         """
-        获取人群
-        默认返回所有人群信息
-        @tags 人群
+        获取人群详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1288,9 +1262,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetInferenceJobResponse:
         """
-        获取推理任务
-        默认返回所有推理任务信息
-        @tags 推理任务
+        获取预测任务详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1301,9 +1273,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetInferenceJobResponse:
         """
-        获取推理任务
-        默认返回所有推理任务信息
-        @tags 推理任务
+        获取预测任务详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1361,13 +1331,76 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_message_config(self) -> pai_plugin_20220112_models.GetMessageConfigResponse:
+        """
+        获取短信配置。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_message_config_with_options(headers, runtime)
+
+    async def get_message_config_async(self) -> pai_plugin_20220112_models.GetMessageConfigResponse:
+        """
+        获取短信配置。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_message_config_with_options_async(headers, runtime)
+
+    def get_message_config_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.GetMessageConfigResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMessageConfig',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/users/messageConfig',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.GetMessageConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_message_config_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.GetMessageConfigResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMessageConfig',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/users/messageConfig',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.GetMessageConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_schedule(
         self,
         id: str,
     ) -> pai_plugin_20220112_models.GetScheduleResponse:
         """
         获取触达计划详情。
-        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1379,7 +1412,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.GetScheduleResponse:
         """
         获取触达计划详情。
-        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1442,8 +1474,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetSignatureResponse:
         """
-        获取签名详情
-        @tags 签名
+        获取签名详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1454,8 +1485,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetSignatureResponse:
         """
-        获取签名详情
-        @tags 签名
+        获取签名详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1518,10 +1548,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetTemplateResponse:
         """
-        获取模板
-        默认返回所有模板信息
-        ![模板列表](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/302991/1615264998427-d2943cfb-106a-421d-b4a4-f06307b4d9be.png)
-        @tags 模板
+        获取模板详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1532,10 +1559,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetTemplateResponse:
         """
-        获取模板
-        默认返回所有模板信息
-        ![模板列表](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/302991/1615264998427-d2943cfb-106a-421d-b4a4-f06307b4d9be.png)
-        @tags 模板
+        获取模板详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1598,9 +1622,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetTrainingJobResponse:
         """
-        获取训练任务
-        默认返回所有训练任务信息
-        @tags 训练任务
+        获取训练任务详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1611,9 +1633,7 @@ class Client(OpenApiClient):
         id: str,
     ) -> pai_plugin_20220112_models.GetTrainingJobResponse:
         """
-        获取训练任务
-        默认返回所有训练任务信息
-        @tags 训练任务
+        获取训练任务详情。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1671,13 +1691,76 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_user(self) -> pai_plugin_20220112_models.GetUserResponse:
+        """
+        获取账号状态。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_user_with_options(headers, runtime)
+
+    async def get_user_async(self) -> pai_plugin_20220112_models.GetUserResponse:
+        """
+        获取账号状态。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_user_with_options_async(headers, runtime)
+
+    def get_user_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.GetUserResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetUser',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/users',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.GetUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.GetUserResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetUser',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/users',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.GetUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_algorithms(
         self,
         request: pai_plugin_20220112_models.ListAlgorithmsRequest,
     ) -> pai_plugin_20220112_models.ListAlgorithmsResponse:
         """
-        获取算法列表
-        @tags 算法
+        获取算法列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1688,8 +1771,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListAlgorithmsRequest,
     ) -> pai_plugin_20220112_models.ListAlgorithmsResponse:
         """
-        获取算法列表
-        @tags 算法
+        获取算法列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1772,8 +1854,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListGroupsRequest,
     ) -> pai_plugin_20220112_models.ListGroupsResponse:
         """
-        获取人群列表
-        @tags 人群
+        获取人群列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1784,8 +1865,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListGroupsRequest,
     ) -> pai_plugin_20220112_models.ListGroupsResponse:
         """
-        获取人群列表
-        @tags 人群
+        获取人群列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1876,8 +1956,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListInferenceJobsRequest,
     ) -> pai_plugin_20220112_models.ListInferenceJobsResponse:
         """
-        获取推理任务列表
-        @tags 推理任务
+        获取预测任务列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1888,8 +1967,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListInferenceJobsRequest,
     ) -> pai_plugin_20220112_models.ListInferenceJobsResponse:
         """
-        获取推理任务列表
-        @tags 推理任务
+        获取预测任务列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1976,8 +2054,9 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListMessageMetricsRequest,
     ) -> pai_plugin_20220112_models.ListMessageMetricsResponse:
         """
-        获取用户短信发送统计
-        @tags 短信
+        获取短信发送统计列表。
+        获取短信发送统计数据，可按指定条件获取分类别详细数据，返回数据按日期顺序排列，发送统计为空的日期默认不返回。
+        发送数据在48小时内会随实际短信发送状态不断更新，最终数据以48小时后数据为准。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -1988,8 +2067,9 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListMessageMetricsRequest,
     ) -> pai_plugin_20220112_models.ListMessageMetricsResponse:
         """
-        获取用户短信发送统计
-        @tags 短信
+        获取短信发送统计列表。
+        获取短信发送统计数据，可按指定条件获取分类别详细数据，返回数据按日期顺序排列，发送统计为空的日期默认不返回。
+        发送数据在48小时内会随实际短信发送状态不断更新，最终数据以48小时后数据为准。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2023,6 +2103,8 @@ class Client(OpenApiClient):
             query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2071,6 +2153,8 @@ class Client(OpenApiClient):
             query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2096,8 +2180,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListMessagesRequest,
     ) -> pai_plugin_20220112_models.ListMessagesResponse:
         """
-        查询短信发送详情
-        @tags 短信
+        查询短信发送详情列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2108,8 +2191,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListMessagesRequest,
     ) -> pai_plugin_20220112_models.ListMessagesResponse:
         """
-        查询短信发送详情
-        @tags 短信
+        查询短信发送详情列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2149,6 +2231,8 @@ class Client(OpenApiClient):
             query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2203,6 +2287,8 @@ class Client(OpenApiClient):
             query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2229,7 +2315,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListSchedulesResponse:
         """
         获取触达计划列表。
-        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2241,7 +2326,6 @@ class Client(OpenApiClient):
     ) -> pai_plugin_20220112_models.ListSchedulesResponse:
         """
         获取触达计划列表。
-        @tags 触达计划
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2324,8 +2408,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListSignaturesRequest,
     ) -> pai_plugin_20220112_models.ListSignaturesResponse:
         """
-        获取签名列表
-        @tags 签名
+        获取签名列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2336,8 +2419,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListSignaturesRequest,
     ) -> pai_plugin_20220112_models.ListSignaturesResponse:
         """
-        获取签名列表
-        @tags 签名
+        获取签名列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2420,9 +2502,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListTemplatesRequest,
     ) -> pai_plugin_20220112_models.ListTemplatesResponse:
         """
-        获取模板列表
-        默认返回所有模板信息
-        @tags 模板
+        获取模板列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2433,9 +2513,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListTemplatesRequest,
     ) -> pai_plugin_20220112_models.ListTemplatesResponse:
         """
-        获取模板列表
-        默认返回所有模板信息
-        @tags 模板
+        获取模板列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2526,8 +2604,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListTrainingJobsRequest,
     ) -> pai_plugin_20220112_models.ListTrainingJobsResponse:
         """
-        获取训练任务列表
-        @tags 训练任务
+        获取训练任务列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2538,8 +2615,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.ListTrainingJobsRequest,
     ) -> pai_plugin_20220112_models.ListTrainingJobsResponse:
         """
-        获取训练任务列表
-        @tags 训练任务
+        获取训练任务列表。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2626,8 +2702,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.SendMessageRequest,
     ) -> pai_plugin_20220112_models.SendMessageResponse:
         """
-        发送短信
-        @tags 短信
+        发送短信。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2638,8 +2713,7 @@ class Client(OpenApiClient):
         request: pai_plugin_20220112_models.SendMessageRequest,
     ) -> pai_plugin_20220112_models.SendMessageResponse:
         """
-        发送短信
-        @tags 短信
+        发送短信。
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -2738,5 +2812,321 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pai_plugin_20220112_models.SendMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sms_report(
+        self,
+        request: pai_plugin_20220112_models.SmsReportRequest,
+    ) -> pai_plugin_20220112_models.SmsReportResponse:
+        """
+        短信回执。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.sms_report_with_options(request, headers, runtime)
+
+    async def sms_report_async(
+        self,
+        request: pai_plugin_20220112_models.SmsReportRequest,
+    ) -> pai_plugin_20220112_models.SmsReportResponse:
+        """
+        短信回执。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.sms_report_with_options_async(request, headers, runtime)
+
+    def sms_report_with_options(
+        self,
+        request: pai_plugin_20220112_models.SmsReportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.SmsReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='SmsReport',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/recall/report',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.SmsReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sms_report_with_options_async(
+        self,
+        request: pai_plugin_20220112_models.SmsReportRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.SmsReportResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='SmsReport',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/recall/report',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.SmsReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sms_up(
+        self,
+        request: pai_plugin_20220112_models.SmsUpRequest,
+    ) -> pai_plugin_20220112_models.SmsUpResponse:
+        """
+        短信上行。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.sms_up_with_options(request, headers, runtime)
+
+    async def sms_up_async(
+        self,
+        request: pai_plugin_20220112_models.SmsUpRequest,
+    ) -> pai_plugin_20220112_models.SmsUpResponse:
+        """
+        短信上行。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.sms_up_with_options_async(request, headers, runtime)
+
+    def sms_up_with_options(
+        self,
+        request: pai_plugin_20220112_models.SmsUpRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.SmsUpResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='SmsUp',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/recall/up',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.SmsUpResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sms_up_with_options_async(
+        self,
+        request: pai_plugin_20220112_models.SmsUpRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.SmsUpResponse:
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='SmsUp',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/recall/up',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.SmsUpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_report_url(
+        self,
+        request: pai_plugin_20220112_models.UpdateReportUrlRequest,
+    ) -> pai_plugin_20220112_models.UpdateReportUrlResponse:
+        """
+        更新回执Url。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_report_url_with_options(request, headers, runtime)
+
+    async def update_report_url_async(
+        self,
+        request: pai_plugin_20220112_models.UpdateReportUrlRequest,
+    ) -> pai_plugin_20220112_models.UpdateReportUrlResponse:
+        """
+        更新回执Url。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_report_url_with_options_async(request, headers, runtime)
+
+    def update_report_url_with_options(
+        self,
+        request: pai_plugin_20220112_models.UpdateReportUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.UpdateReportUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateReportUrl',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/users/reportUrl',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.UpdateReportUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_report_url_with_options_async(
+        self,
+        request: pai_plugin_20220112_models.UpdateReportUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.UpdateReportUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateReportUrl',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/users/reportUrl',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.UpdateReportUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_upload_url(
+        self,
+        request: pai_plugin_20220112_models.UpdateUploadUrlRequest,
+    ) -> pai_plugin_20220112_models.UpdateUploadUrlResponse:
+        """
+        更新上行Url。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_upload_url_with_options(request, headers, runtime)
+
+    async def update_upload_url_async(
+        self,
+        request: pai_plugin_20220112_models.UpdateUploadUrlRequest,
+    ) -> pai_plugin_20220112_models.UpdateUploadUrlResponse:
+        """
+        更新上行Url。
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_upload_url_with_options_async(request, headers, runtime)
+
+    def update_upload_url_with_options(
+        self,
+        request: pai_plugin_20220112_models.UpdateUploadUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.UpdateUploadUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUploadUrl',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/users/uploadUrl',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.UpdateUploadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_upload_url_with_options_async(
+        self,
+        request: pai_plugin_20220112_models.UpdateUploadUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_plugin_20220112_models.UpdateUploadUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUploadUrl',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v2/users/uploadUrl',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_plugin_20220112_models.UpdateUploadUrlResponse(),
             await self.call_api_async(params, req, runtime)
         )

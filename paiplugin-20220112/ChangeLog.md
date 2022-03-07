@@ -1,3 +1,6 @@
+2022-03-07 Version: 1.0.7
+- Add Report, Up, User APIs.
+
 2022-03-02 Version: 1.0.6
 - ListMessages add filters.
 - ListMessageMetrics add filters.
