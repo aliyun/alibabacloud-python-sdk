@@ -2033,14 +2033,19 @@ class ListInstanceStatisticsResponse(TeaModel):
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
+        accelerator_type: str = None,
+        accessibility: str = None,
         instance_name: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        payment_type: str = None,
         sort_by: str = None,
         status: str = None,
         workspace_id: str = None,
     ):
+        self.accelerator_type = accelerator_type
+        self.accessibility = accessibility
         # 实例名称
         self.instance_name = instance_name
         # 排列顺序
@@ -2049,6 +2054,7 @@ class ListInstancesRequest(TeaModel):
         self.page_number = page_number
         # 分页数量大小
         self.page_size = page_size
+        self.payment_type = payment_type
         # 排序字段
         self.sort_by = sort_by
         # 实例状态
@@ -2065,6 +2071,10 @@ class ListInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accelerator_type is not None:
+            result['AcceleratorType'] = self.accelerator_type
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.order is not None:
@@ -2073,6 +2083,8 @@ class ListInstancesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.status is not None:
@@ -2083,6 +2095,10 @@ class ListInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcceleratorType') is not None:
+            self.accelerator_type = m.get('AcceleratorType')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('Order') is not None:
@@ -2091,6 +2107,8 @@ class ListInstancesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('Status') is not None:

@@ -1089,6 +1089,10 @@ class Client(OpenApiClient):
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accelerator_type):
+            query['AcceleratorType'] = request.accelerator_type
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.order):
@@ -1097,6 +1101,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
@@ -1131,6 +1137,10 @@ class Client(OpenApiClient):
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accelerator_type):
+            query['AcceleratorType'] = request.accelerator_type
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.order):
@@ -1139,6 +1149,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.status):
