@@ -163,6 +163,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.signature):
+            body['Signature'] = request.signature
         if not UtilClient.is_unset(request.signature_id):
             body['SignatureId'] = request.signature_id
         if not UtilClient.is_unset(request.type):
@@ -201,6 +203,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.signature):
+            body['Signature'] = request.signature
         if not UtilClient.is_unset(request.signature_id):
             body['SignatureId'] = request.signature_id
         if not UtilClient.is_unset(request.type):

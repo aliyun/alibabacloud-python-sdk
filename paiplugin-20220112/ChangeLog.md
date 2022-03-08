@@ -1,3 +1,6 @@
+2022-03-08 Version: 1.0.9
+- CreateTemplate adds input parameter Signature.
+
 2022-03-08 Version: 1.0.8
 - ListMessages add ErrorCode filter.
 

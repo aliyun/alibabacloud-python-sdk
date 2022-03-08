@@ -192,15 +192,18 @@ class CreateTemplateRequest(TeaModel):
         content: str = None,
         description: str = None,
         name: str = None,
+        signature: str = None,
         signature_id: str = None,
         type: int = None,
     ):
-        # 模板内容，请注意控制总字数在70个字以内，超出部分按长短信收费，按67个字为单位记一条短信，必须在结尾添加”回T退订“。
+        # 模板内容，请注意控制总字数在70个字以内，超出部分按长短信收费，按67个字为单位记一条短信，营销短信必须在结尾添加“回T退订”。
         self.content = content
         # 申请说明。
         self.description = description
         # 模板名称。
         self.name = name
+        # 签名名称，同时只能指定签名名称或签名Id其中之一。
+        self.signature = signature
         # 签名Id，可通过ListSignatures获取审核状态为已通过的签名列表，获取签名Id。
         self.signature_id = signature_id
         # 模板类型。
@@ -224,6 +227,8 @@ class CreateTemplateRequest(TeaModel):
             result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
+        if self.signature is not None:
+            result['Signature'] = self.signature
         if self.signature_id is not None:
             result['SignatureId'] = self.signature_id
         if self.type is not None:
@@ -238,6 +243,8 @@ class CreateTemplateRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
         if m.get('SignatureId') is not None:
             self.signature_id = m.get('SignatureId')
         if m.get('Type') is not None:
