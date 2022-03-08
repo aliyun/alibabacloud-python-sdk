@@ -1,3 +1,6 @@
+2022-03-08 Version: 1.0.8
+- ListMessages add ErrorCode filter.
+
 2022-03-07 Version: 1.0.7
 - Add Report, Up, User APIs.
 
