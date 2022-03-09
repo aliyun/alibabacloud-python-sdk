@@ -1,3 +1,6 @@
+2022-03-09 Version: 2.0.7
+- Release RecognizeVideoCastCrewList.
+
 2022-03-03 Version: 2.0.6
 - RecognizeVideoCharacter add output field inputFile.
 

@@ -8119,11 +8119,11 @@ class RecognizeVideoCastCrewListShrinkRequest(TeaModel):
 class RecognizeVideoCastCrewListResponseBodyDataCastResults(TeaModel):
     def __init__(
         self,
-        detail_infoes: Dict[str, str] = None,
+        detail_info: Dict[str, str] = None,
         end_time: float = None,
         start_time: float = None,
     ):
-        self.detail_infoes = detail_infoes
+        self.detail_info = detail_info
         self.end_time = end_time
         self.start_time = start_time
 
@@ -8136,8 +8136,8 @@ class RecognizeVideoCastCrewListResponseBodyDataCastResults(TeaModel):
             return _map
 
         result = dict()
-        if self.detail_infoes is not None:
-            result['DetailInfoes'] = self.detail_infoes
+        if self.detail_info is not None:
+            result['DetailInfo'] = self.detail_info
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.start_time is not None:
@@ -8146,8 +8146,8 @@ class RecognizeVideoCastCrewListResponseBodyDataCastResults(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DetailInfoes') is not None:
-            self.detail_infoes = m.get('DetailInfoes')
+        if m.get('DetailInfo') is not None:
+            self.detail_info = m.get('DetailInfo')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
@@ -8155,7 +8155,7 @@ class RecognizeVideoCastCrewListResponseBodyDataCastResults(TeaModel):
         return self
 
 
-class RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition(TeaModel):
+class RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition(TeaModel):
     def __init__(
         self,
         x: int = None,
@@ -8188,13 +8188,13 @@ class RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition(T
         return self
 
 
-class RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes(TeaModel):
+class RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo(TeaModel):
     def __init__(
         self,
         boxes: List[int] = None,
         char_probs: List[List[float]] = None,
         frame_index: int = None,
-        position: List[RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition] = None,
+        position: List[RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition] = None,
         score: float = None,
         text: str = None,
         text_prob: float = None,
@@ -8256,7 +8256,7 @@ class RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes(TeaModel)
         self.position = []
         if m.get('Position') is not None:
             for k in m.get('Position'):
-                temp_model = RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition()
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition()
                 self.position.append(temp_model.from_map(k))
         if m.get('Score') is not None:
             self.score = m.get('Score')
@@ -8274,17 +8274,17 @@ class RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes(TeaModel)
 class RecognizeVideoCastCrewListResponseBodyDataOcrResults(TeaModel):
     def __init__(
         self,
-        detail_infoes: List[RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes] = None,
+        detail_info: List[RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo] = None,
         end_time: float = None,
         start_time: float = None,
     ):
-        self.detail_infoes = detail_infoes
+        self.detail_info = detail_info
         self.end_time = end_time
         self.start_time = start_time
 
     def validate(self):
-        if self.detail_infoes:
-            for k in self.detail_infoes:
+        if self.detail_info:
+            for k in self.detail_info:
                 if k:
                     k.validate()
 
@@ -8294,10 +8294,10 @@ class RecognizeVideoCastCrewListResponseBodyDataOcrResults(TeaModel):
             return _map
 
         result = dict()
-        result['DetailInfoes'] = []
-        if self.detail_infoes is not None:
-            for k in self.detail_infoes:
-                result['DetailInfoes'].append(k.to_map() if k else None)
+        result['DetailInfo'] = []
+        if self.detail_info is not None:
+            for k in self.detail_info:
+                result['DetailInfo'].append(k.to_map() if k else None)
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.start_time is not None:
@@ -8306,11 +8306,11 @@ class RecognizeVideoCastCrewListResponseBodyDataOcrResults(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.detail_infoes = []
-        if m.get('DetailInfoes') is not None:
-            for k in m.get('DetailInfoes'):
-                temp_model = RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes()
-                self.detail_infoes.append(temp_model.from_map(k))
+        self.detail_info = []
+        if m.get('DetailInfo') is not None:
+            for k in m.get('DetailInfo'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo()
+                self.detail_info.append(temp_model.from_map(k))
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
@@ -8375,7 +8375,7 @@ class RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults(TeaModel):
         return self
 
 
-class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition(TeaModel):
+class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition(TeaModel):
     def __init__(
         self,
         x: int = None,
@@ -8408,11 +8408,11 @@ class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosit
         return self
 
 
-class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes(TeaModel):
+class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo(TeaModel):
     def __init__(
         self,
         boxes: List[int] = None,
-        position: List[RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition] = None,
+        position: List[RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition] = None,
         score: float = None,
         text: str = None,
         text_type: int = None,
@@ -8456,7 +8456,7 @@ class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes(TeaM
         self.position = []
         if m.get('Position') is not None:
             for k in m.get('Position'):
-                temp_model = RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition()
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition()
                 self.position.append(temp_model.from_map(k))
         if m.get('Score') is not None:
             self.score = m.get('Score')
@@ -8470,17 +8470,17 @@ class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes(TeaM
 class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults(TeaModel):
     def __init__(
         self,
-        detail_infoes: List[RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes] = None,
+        detail_info: List[RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo] = None,
         end_time: float = None,
         start_time: float = None,
     ):
-        self.detail_infoes = detail_infoes
+        self.detail_info = detail_info
         self.end_time = end_time
         self.start_time = start_time
 
     def validate(self):
-        if self.detail_infoes:
-            for k in self.detail_infoes:
+        if self.detail_info:
+            for k in self.detail_info:
                 if k:
                     k.validate()
 
@@ -8490,10 +8490,10 @@ class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults(TeaModel):
             return _map
 
         result = dict()
-        result['DetailInfoes'] = []
-        if self.detail_infoes is not None:
-            for k in self.detail_infoes:
-                result['DetailInfoes'].append(k.to_map() if k else None)
+        result['DetailInfo'] = []
+        if self.detail_info is not None:
+            for k in self.detail_info:
+                result['DetailInfo'].append(k.to_map() if k else None)
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.start_time is not None:
@@ -8502,11 +8502,11 @@ class RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.detail_infoes = []
-        if m.get('DetailInfoes') is not None:
-            for k in m.get('DetailInfoes'):
-                temp_model = RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes()
-                self.detail_infoes.append(temp_model.from_map(k))
+        self.detail_info = []
+        if m.get('DetailInfo') is not None:
+            for k in m.get('DetailInfo'):
+                temp_model = RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo()
+                self.detail_info.append(temp_model.from_map(k))
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
