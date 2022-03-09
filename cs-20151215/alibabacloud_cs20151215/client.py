@@ -1414,6 +1414,122 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def delete_alert_contact(self) -> cs20151215_models.DeleteAlertContactResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_alert_contact_with_options(headers, runtime)
+
+    async def delete_alert_contact_async(self) -> cs20151215_models.DeleteAlertContactResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_contact_with_options_async(headers, runtime)
+
+    def delete_alert_contact_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DeleteAlertContactResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlertContact',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/contacts',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DeleteAlertContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alert_contact_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DeleteAlertContactResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlertContact',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/contacts',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DeleteAlertContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_alert_contact_group(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_alert_contact_group_with_options(headers, runtime)
+
+    async def delete_alert_contact_group_async(self) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_contact_group_with_options_async(headers, runtime)
+
+    def delete_alert_contact_group_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlertContactGroup',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/contact_groups',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DeleteAlertContactGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alert_contact_group_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlertContactGroup',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/contact_groups',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.DeleteAlertContactGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def delete_cluster(
         self,
         cluster_id: str,
@@ -7550,31 +7666,109 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_k8s_cluster_user_config_expire(
+    def update_contact_group_for_alert(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_k8s_cluster_user_config_expire_with_options(cluster_id, headers, runtime)
+        return self.update_contact_group_for_alert_with_options(cluster_id, headers, runtime)
 
-    async def update_k8s_cluster_user_config_expire_async(
+    async def update_contact_group_for_alert_async(
         self,
         cluster_id: str,
-    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_k8s_cluster_user_config_expire_with_options_async(cluster_id, headers, runtime)
+        return await self.update_contact_group_for_alert_with_options_async(cluster_id, headers, runtime)
 
-    def update_k8s_cluster_user_config_expire_with_options(
+    def update_contact_group_for_alert_with_options(
         self,
         cluster_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
+        )
+        params = open_api_models.Params(
+            action='UpdateContactGroupForAlert',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/{cluster_id}/alert_rule/contact_groups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateContactGroupForAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_contact_group_for_alert_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='UpdateContactGroupForAlert',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/alert/{cluster_id}/alert_rule/contact_groups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateContactGroupForAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_k8s_cluster_user_config_expire(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
+    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_k8s_cluster_user_config_expire_with_options(cluster_id, request, headers, runtime)
+
+    async def update_k8s_cluster_user_config_expire_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
+    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_k8s_cluster_user_config_expire_with_options_async(cluster_id, request, headers, runtime)
+
+    def update_k8s_cluster_user_config_expire_with_options(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+        UtilClient.validate_model(request)
+        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        body = {}
+        if not UtilClient.is_unset(request.expire_hour):
+            body['expire_hour'] = request.expire_hour
+        if not UtilClient.is_unset(request.user):
+            body['user'] = request.user
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateK8sClusterUserConfigExpire',
@@ -7595,12 +7789,20 @@ class Client(OpenApiClient):
     async def update_k8s_cluster_user_config_expire_with_options_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
+        UtilClient.validate_model(request)
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
+        body = {}
+        if not UtilClient.is_unset(request.expire_hour):
+            body['expire_hour'] = request.expire_hour
+        if not UtilClient.is_unset(request.user):
+            body['user'] = request.user
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateK8sClusterUserConfigExpire',
