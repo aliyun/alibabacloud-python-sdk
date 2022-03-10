@@ -1,3 +1,6 @@
+2022-03-10 Version: 3.0.7
+- Add CheckUserProperty Interface.
+
 2022-02-17 Version: 3.0.6
 - Add GetScenePreviewData Interface.
 
