@@ -573,6 +573,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_data_cron_clear_order_with_options_async(request, runtime)
 
+    def create_data_export_order_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataExportOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataExportOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataExportOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_export_order_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.CreateDataExportOrderShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.param):
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+        if not UtilClient.is_unset(tmp_req.related_user_list):
+            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attachment_key):
+            query['AttachmentKey'] = request.attachment_key
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.param_shrink):
+            query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.related_user_list_shrink):
+            query['RelatedUserList'] = request.related_user_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataExportOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateDataExportOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_export_order(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_export_order_with_options(request, runtime)
+
+    async def create_data_export_order_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
+    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_export_order_with_options_async(request, runtime)
+
     def create_data_import_order_with_options(
         self,
         tmp_req: dms_enterprise_20181101_models.CreateDataImportOrderRequest,
@@ -4367,302 +4465,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_sqlreview_optimize_detail_with_options_async(request, runtime)
 
-    def get_spark_job_detail_with_options(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.GetSparkJobDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSparkJobDetail',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.GetSparkJobDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_spark_job_detail_with_options_async(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.GetSparkJobDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSparkJobDetail',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.GetSparkJobDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_spark_job_detail(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobDetailRequest,
-    ) -> dms_enterprise_20181101_models.GetSparkJobDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_spark_job_detail_with_options(request, runtime)
-
-    async def get_spark_job_detail_async(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobDetailRequest,
-    ) -> dms_enterprise_20181101_models.GetSparkJobDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_spark_job_detail_with_options_async(request, runtime)
-
-    def get_spark_job_driver_log_with_options(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobDriverLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.GetSparkJobDriverLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSparkJobDriverLog',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.GetSparkJobDriverLogResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_spark_job_driver_log_with_options_async(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobDriverLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.GetSparkJobDriverLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSparkJobDriverLog',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.GetSparkJobDriverLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_spark_job_driver_log(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobDriverLogRequest,
-    ) -> dms_enterprise_20181101_models.GetSparkJobDriverLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_spark_job_driver_log_with_options(request, runtime)
-
-    async def get_spark_job_driver_log_async(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobDriverLogRequest,
-    ) -> dms_enterprise_20181101_models.GetSparkJobDriverLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_spark_job_driver_log_with_options_async(request, runtime)
-
-    def get_spark_job_executor_logs_with_options(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobExecutorLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSparkJobExecutorLogs',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_spark_job_executor_logs_with_options_async(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobExecutorLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSparkJobExecutorLogs',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_spark_job_executor_logs(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobExecutorLogsRequest,
-    ) -> dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_spark_job_executor_logs_with_options(request, runtime)
-
-    async def get_spark_job_executor_logs_async(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobExecutorLogsRequest,
-    ) -> dms_enterprise_20181101_models.GetSparkJobExecutorLogsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_spark_job_executor_logs_with_options_async(request, runtime)
-
-    def get_spark_job_log_with_options(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.GetSparkJobLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSparkJobLog',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.GetSparkJobLogResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_spark_job_log_with_options_async(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.GetSparkJobLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetSparkJobLog',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.GetSparkJobLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_spark_job_log(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobLogRequest,
-    ) -> dms_enterprise_20181101_models.GetSparkJobLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_spark_job_log_with_options(request, runtime)
-
-    async def get_spark_job_log_async(
-        self,
-        request: dms_enterprise_20181101_models.GetSparkJobLogRequest,
-    ) -> dms_enterprise_20181101_models.GetSparkJobLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_spark_job_log_with_options_async(request, runtime)
-
     def get_struct_sync_exec_sql_detail_with_options(
         self,
         request: dms_enterprise_20181101_models.GetStructSyncExecSqlDetailRequest,
@@ -5528,80 +5330,6 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
         runtime = util_models.RuntimeOptions()
         return await self.inspect_proxy_access_secret_with_options_async(request, runtime)
-
-    def kill_spark_job_with_options(
-        self,
-        request: dms_enterprise_20181101_models.KillSparkJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.KillSparkJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='KillSparkJob',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.KillSparkJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def kill_spark_job_with_options_async(
-        self,
-        request: dms_enterprise_20181101_models.KillSparkJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.KillSparkJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='KillSparkJob',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.KillSparkJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def kill_spark_job(
-        self,
-        request: dms_enterprise_20181101_models.KillSparkJobRequest,
-    ) -> dms_enterprise_20181101_models.KillSparkJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.kill_spark_job_with_options(request, runtime)
-
-    async def kill_spark_job_async(
-        self,
-        request: dms_enterprise_20181101_models.KillSparkJobRequest,
-    ) -> dms_enterprise_20181101_models.KillSparkJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.kill_spark_job_with_options_async(request, runtime)
 
     def list_columns_with_options(
         self,
@@ -7597,6 +7325,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_sensitive_columns_detail_with_options_async(request, runtime)
 
+    def list_standard_groups_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListStandardGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListStandardGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStandardGroups',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListStandardGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_standard_groups_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListStandardGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListStandardGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStandardGroups',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListStandardGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_standard_groups(
+        self,
+        request: dms_enterprise_20181101_models.ListStandardGroupsRequest,
+    ) -> dms_enterprise_20181101_models.ListStandardGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_standard_groups_with_options(request, runtime)
+
+    async def list_standard_groups_async(
+        self,
+        request: dms_enterprise_20181101_models.ListStandardGroupsRequest,
+    ) -> dms_enterprise_20181101_models.ListStandardGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_standard_groups_with_options_async(request, runtime)
+
     def list_tables_with_options(
         self,
         request: dms_enterprise_20181101_models.ListTablesRequest,
@@ -9118,132 +8916,6 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SubmitOrderApprovalResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_order_approval_with_options_async(request, runtime)
-
-    def submit_spark_job_with_options(
-        self,
-        tmp_req: dms_enterprise_20181101_models.SubmitSparkJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.SubmitSparkJobResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dms_enterprise_20181101_models.SubmitSparkJobShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.arguments):
-            request.arguments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.arguments, 'Arguments', 'json')
-        if not UtilClient.is_unset(tmp_req.configuration):
-            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
-        if not UtilClient.is_unset(tmp_req.files):
-            request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
-        if not UtilClient.is_unset(tmp_req.oss_info):
-            request.oss_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.oss_info), 'OssInfo', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        body = {}
-        if not UtilClient.is_unset(request.app_code):
-            body['AppCode'] = request.app_code
-        if not UtilClient.is_unset(request.arguments_shrink):
-            body['Arguments'] = request.arguments_shrink
-        if not UtilClient.is_unset(request.configuration_shrink):
-            body['Configuration'] = request.configuration_shrink
-        if not UtilClient.is_unset(request.files_shrink):
-            body['Files'] = request.files_shrink
-        if not UtilClient.is_unset(request.main_class):
-            body['MainClass'] = request.main_class
-        if not UtilClient.is_unset(request.main_file):
-            body['MainFile'] = request.main_file
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
-        if not UtilClient.is_unset(request.oss_info_shrink):
-            body['OssInfo'] = request.oss_info_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SubmitSparkJob',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.SubmitSparkJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_spark_job_with_options_async(
-        self,
-        tmp_req: dms_enterprise_20181101_models.SubmitSparkJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.SubmitSparkJobResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dms_enterprise_20181101_models.SubmitSparkJobShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.arguments):
-            request.arguments_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.arguments, 'Arguments', 'json')
-        if not UtilClient.is_unset(tmp_req.configuration):
-            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
-        if not UtilClient.is_unset(tmp_req.files):
-            request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
-        if not UtilClient.is_unset(tmp_req.oss_info):
-            request.oss_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.oss_info), 'OssInfo', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        body = {}
-        if not UtilClient.is_unset(request.app_code):
-            body['AppCode'] = request.app_code
-        if not UtilClient.is_unset(request.arguments_shrink):
-            body['Arguments'] = request.arguments_shrink
-        if not UtilClient.is_unset(request.configuration_shrink):
-            body['Configuration'] = request.configuration_shrink
-        if not UtilClient.is_unset(request.files_shrink):
-            body['Files'] = request.files_shrink
-        if not UtilClient.is_unset(request.main_class):
-            body['MainClass'] = request.main_class
-        if not UtilClient.is_unset(request.main_file):
-            body['MainFile'] = request.main_file
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
-        if not UtilClient.is_unset(request.oss_info_shrink):
-            body['OssInfo'] = request.oss_info_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SubmitSparkJob',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.SubmitSparkJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_spark_job(
-        self,
-        request: dms_enterprise_20181101_models.SubmitSparkJobRequest,
-    ) -> dms_enterprise_20181101_models.SubmitSparkJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_spark_job_with_options(request, runtime)
-
-    async def submit_spark_job_async(
-        self,
-        request: dms_enterprise_20181101_models.SubmitSparkJobRequest,
-    ) -> dms_enterprise_20181101_models.SubmitSparkJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_spark_job_with_options_async(request, runtime)
 
     def submit_struct_sync_order_approval_with_options(
         self,

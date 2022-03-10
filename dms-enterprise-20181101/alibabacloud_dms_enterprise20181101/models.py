@@ -1185,6 +1185,279 @@ class CreateDataCronClearOrderResponse(TeaModel):
         return self
 
 
+class CreateDataExportOrderRequestParamDbItemList(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        logic: bool = None,
+    ):
+        self.db_id = db_id
+        self.logic = logic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        return self
+
+
+class CreateDataExportOrderRequestParam(TeaModel):
+    def __init__(
+        self,
+        classify: str = None,
+        db_item_list: List[CreateDataExportOrderRequestParamDbItemList] = None,
+        exec_sql: str = None,
+    ):
+        self.classify = classify
+        self.db_item_list = db_item_list
+        self.exec_sql = exec_sql
+
+    def validate(self):
+        if self.db_item_list:
+            for k in self.db_item_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.classify is not None:
+            result['Classify'] = self.classify
+        result['DbItemList'] = []
+        if self.db_item_list is not None:
+            for k in self.db_item_list:
+                result['DbItemList'].append(k.to_map() if k else None)
+        if self.exec_sql is not None:
+            result['ExecSQL'] = self.exec_sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Classify') is not None:
+            self.classify = m.get('Classify')
+        self.db_item_list = []
+        if m.get('DbItemList') is not None:
+            for k in m.get('DbItemList'):
+                temp_model = CreateDataExportOrderRequestParamDbItemList()
+                self.db_item_list.append(temp_model.from_map(k))
+        if m.get('ExecSQL') is not None:
+            self.exec_sql = m.get('ExecSQL')
+        return self
+
+
+class CreateDataExportOrderRequest(TeaModel):
+    def __init__(
+        self,
+        attachment_key: str = None,
+        comment: str = None,
+        param: CreateDataExportOrderRequestParam = None,
+        related_user_list: List[int] = None,
+        tid: int = None,
+    ):
+        self.attachment_key = attachment_key
+        self.comment = comment
+        self.param = param
+        self.related_user_list = related_user_list
+        self.tid = tid
+
+    def validate(self):
+        if self.param:
+            self.param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.param is not None:
+            result['Param'] = self.param.to_map()
+        if self.related_user_list is not None:
+            result['RelatedUserList'] = self.related_user_list
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Param') is not None:
+            temp_model = CreateDataExportOrderRequestParam()
+            self.param = temp_model.from_map(m['Param'])
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list = m.get('RelatedUserList')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataExportOrderShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        attachment_key: str = None,
+        comment: str = None,
+        param_shrink: str = None,
+        related_user_list_shrink: str = None,
+        tid: int = None,
+    ):
+        self.attachment_key = attachment_key
+        self.comment = comment
+        self.param_shrink = param_shrink
+        self.related_user_list_shrink = related_user_list_shrink
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.param_shrink is not None:
+            result['Param'] = self.param_shrink
+        if self.related_user_list_shrink is not None:
+            result['RelatedUserList'] = self.related_user_list_shrink
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Param') is not None:
+            self.param_shrink = m.get('Param')
+        if m.get('RelatedUserList') is not None:
+            self.related_user_list_shrink = m.get('RelatedUserList')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateDataExportOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_order_result: List[int] = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.create_order_result = create_order_result
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_order_result is not None:
+            result['CreateOrderResult'] = self.create_order_result
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateOrderResult') is not None:
+            self.create_order_result = m.get('CreateOrderResult')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDataExportOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateDataExportOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateDataExportOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDataImportOrderRequestParamDbItemList(TeaModel):
     def __init__(
         self,
@@ -11523,610 +11796,6 @@ class GetSQLReviewOptimizeDetailResponse(TeaModel):
         return self
 
 
-class GetSparkJobDetailRequest(TeaModel):
-    def __init__(
-        self,
-        job_id: int = None,
-        tid: int = None,
-    ):
-        self.job_id = job_id
-        self.tid = tid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.tid is not None:
-            result['Tid'] = self.tid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Tid') is not None:
-            self.tid = m.get('Tid')
-        return self
-
-
-class GetSparkJobDetailResponseBodyJobDetail(TeaModel):
-    def __init__(
-        self,
-        arguments: str = None,
-        begin_time: str = None,
-        configuration: str = None,
-        end_time: str = None,
-        job_id: str = None,
-        main_class: str = None,
-        main_file: str = None,
-        name: str = None,
-        status: str = None,
-        submit_time: str = None,
-    ):
-        self.arguments = arguments
-        self.begin_time = begin_time
-        self.configuration = configuration
-        self.end_time = end_time
-        self.job_id = job_id
-        self.main_class = main_class
-        self.main_file = main_file
-        self.name = name
-        self.status = status
-        self.submit_time = submit_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.arguments is not None:
-            result['Arguments'] = self.arguments
-        if self.begin_time is not None:
-            result['BeginTime'] = self.begin_time
-        if self.configuration is not None:
-            result['Configuration'] = self.configuration
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.main_class is not None:
-            result['MainClass'] = self.main_class
-        if self.main_file is not None:
-            result['MainFile'] = self.main_file
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.submit_time is not None:
-            result['SubmitTime'] = self.submit_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Arguments') is not None:
-            self.arguments = m.get('Arguments')
-        if m.get('BeginTime') is not None:
-            self.begin_time = m.get('BeginTime')
-        if m.get('Configuration') is not None:
-            self.configuration = m.get('Configuration')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('MainClass') is not None:
-            self.main_class = m.get('MainClass')
-        if m.get('MainFile') is not None:
-            self.main_file = m.get('MainFile')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('SubmitTime') is not None:
-            self.submit_time = m.get('SubmitTime')
-        return self
-
-
-class GetSparkJobDetailResponseBody(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        job_detail: GetSparkJobDetailResponseBodyJobDetail = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        # Details of the spark job
-        self.job_detail = job_detail
-        # Id of the request
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.job_detail:
-            self.job_detail.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.job_detail is not None:
-            result['JobDetail'] = self.job_detail.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('JobDetail') is not None:
-            temp_model = GetSparkJobDetailResponseBodyJobDetail()
-            self.job_detail = temp_model.from_map(m['JobDetail'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetSparkJobDetailResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetSparkJobDetailResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetSparkJobDetailResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetSparkJobDriverLogRequest(TeaModel):
-    def __init__(
-        self,
-        job_id: int = None,
-        tid: int = None,
-    ):
-        self.job_id = job_id
-        self.tid = tid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.tid is not None:
-            result['Tid'] = self.tid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Tid') is not None:
-            self.tid = m.get('Tid')
-        return self
-
-
-class GetSparkJobDriverLogResponseBody(TeaModel):
-    def __init__(
-        self,
-        driver_log: str = None,
-        error_code: str = None,
-        error_message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # driver log of the spark job
-        self.driver_log = driver_log
-        self.error_code = error_code
-        self.error_message = error_message
-        # Id of the request
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.driver_log is not None:
-            result['DriverLog'] = self.driver_log
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DriverLog') is not None:
-            self.driver_log = m.get('DriverLog')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetSparkJobDriverLogResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetSparkJobDriverLogResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetSparkJobDriverLogResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetSparkJobExecutorLogsRequest(TeaModel):
-    def __init__(
-        self,
-        job_id: int = None,
-        tid: int = None,
-    ):
-        self.job_id = job_id
-        self.tid = tid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.tid is not None:
-            result['Tid'] = self.tid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Tid') is not None:
-            self.tid = m.get('Tid')
-        return self
-
-
-class GetSparkJobExecutorLogsResponseBodyExecutorLogs(TeaModel):
-    def __init__(
-        self,
-        executor_logs: List[str] = None,
-    ):
-        self.executor_logs = executor_logs
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.executor_logs is not None:
-            result['executorLogs'] = self.executor_logs
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('executorLogs') is not None:
-            self.executor_logs = m.get('executorLogs')
-        return self
-
-
-class GetSparkJobExecutorLogsResponseBody(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        executor_logs: GetSparkJobExecutorLogsResponseBodyExecutorLogs = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        # log of the spark job
-        self.executor_logs = executor_logs
-        # Id of the request
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.executor_logs:
-            self.executor_logs.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.executor_logs is not None:
-            result['ExecutorLogs'] = self.executor_logs.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('ExecutorLogs') is not None:
-            temp_model = GetSparkJobExecutorLogsResponseBodyExecutorLogs()
-            self.executor_logs = temp_model.from_map(m['ExecutorLogs'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetSparkJobExecutorLogsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetSparkJobExecutorLogsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetSparkJobExecutorLogsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetSparkJobLogRequest(TeaModel):
-    def __init__(
-        self,
-        job_id: int = None,
-        tid: int = None,
-    ):
-        self.job_id = job_id
-        self.tid = tid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.tid is not None:
-            result['Tid'] = self.tid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Tid') is not None:
-            self.tid = m.get('Tid')
-        return self
-
-
-class GetSparkJobLogResponseBody(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        log: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        # log of the spark job
-        self.log = log
-        # Id of the request
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.log is not None:
-            result['Log'] = self.log
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Log') is not None:
-            self.log = m.get('Log')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetSparkJobLogResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetSparkJobLogResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetSparkJobLogResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetStructSyncExecSqlDetailRequest(TeaModel):
     def __init__(
         self,
@@ -14752,123 +14421,6 @@ class InspectProxyAccessSecretResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = InspectProxyAccessSecretResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class KillSparkJobRequest(TeaModel):
-    def __init__(
-        self,
-        job_id: int = None,
-        tid: int = None,
-    ):
-        self.job_id = job_id
-        self.tid = tid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.tid is not None:
-            result['Tid'] = self.tid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Tid') is not None:
-            self.tid = m.get('Tid')
-        return self
-
-
-class KillSparkJobResponseBody(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        # Id of the request
-        self.request_id = request_id
-        # Killing status
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class KillSparkJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: KillSparkJobResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = KillSparkJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21390,6 +20942,181 @@ class ListSensitiveColumnsDetailResponse(TeaModel):
         return self
 
 
+class ListStandardGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        tid: int = None,
+    ):
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListStandardGroupsResponseBodyStandardGroupList(TeaModel):
+    def __init__(
+        self,
+        db_type: str = None,
+        description: str = None,
+        group_mode: str = None,
+        group_name: str = None,
+        last_mender_id: int = None,
+    ):
+        self.db_type = db_type
+        self.description = description
+        self.group_mode = group_mode
+        self.group_name = group_name
+        self.last_mender_id = last_mender_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_mode is not None:
+            result['GroupMode'] = self.group_mode
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.last_mender_id is not None:
+            result['LastMenderId'] = self.last_mender_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupMode') is not None:
+            self.group_mode = m.get('GroupMode')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('LastMenderId') is not None:
+            self.last_mender_id = m.get('LastMenderId')
+        return self
+
+
+class ListStandardGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        standard_group_list: List[ListStandardGroupsResponseBodyStandardGroupList] = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.standard_group_list = standard_group_list
+        self.success = success
+
+    def validate(self):
+        if self.standard_group_list:
+            for k in self.standard_group_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['StandardGroupList'] = []
+        if self.standard_group_list is not None:
+            for k in self.standard_group_list:
+                result['StandardGroupList'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.standard_group_list = []
+        if m.get('StandardGroupList') is not None:
+            for k in m.get('StandardGroupList'):
+                temp_model = ListStandardGroupsResponseBodyStandardGroupList()
+                self.standard_group_list.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListStandardGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListStandardGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListStandardGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTablesRequest(TeaModel):
     def __init__(
         self,
@@ -25330,287 +25057,6 @@ class SubmitOrderApprovalResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = SubmitOrderApprovalResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SubmitSparkJobRequestOssInfo(TeaModel):
-    def __init__(
-        self,
-        access_key_id: str = None,
-        access_key_secret: str = None,
-        endpoint: str = None,
-    ):
-        self.access_key_id = access_key_id
-        self.access_key_secret = access_key_secret
-        self.endpoint = endpoint
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.access_key_id is not None:
-            result['AccessKeyId'] = self.access_key_id
-        if self.access_key_secret is not None:
-            result['AccessKeySecret'] = self.access_key_secret
-        if self.endpoint is not None:
-            result['Endpoint'] = self.endpoint
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AccessKeyId') is not None:
-            self.access_key_id = m.get('AccessKeyId')
-        if m.get('AccessKeySecret') is not None:
-            self.access_key_secret = m.get('AccessKeySecret')
-        if m.get('Endpoint') is not None:
-            self.endpoint = m.get('Endpoint')
-        return self
-
-
-class SubmitSparkJobRequest(TeaModel):
-    def __init__(
-        self,
-        app_code: str = None,
-        arguments: List[str] = None,
-        configuration: Dict[str, Any] = None,
-        files: List[str] = None,
-        main_class: str = None,
-        main_file: str = None,
-        name: str = None,
-        oss_info: SubmitSparkJobRequestOssInfo = None,
-        tid: int = None,
-    ):
-        self.app_code = app_code
-        self.arguments = arguments
-        self.configuration = configuration
-        self.files = files
-        self.main_class = main_class
-        self.main_file = main_file
-        self.name = name
-        self.oss_info = oss_info
-        self.tid = tid
-
-    def validate(self):
-        if self.oss_info:
-            self.oss_info.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_code is not None:
-            result['AppCode'] = self.app_code
-        if self.arguments is not None:
-            result['Arguments'] = self.arguments
-        if self.configuration is not None:
-            result['Configuration'] = self.configuration
-        if self.files is not None:
-            result['Files'] = self.files
-        if self.main_class is not None:
-            result['MainClass'] = self.main_class
-        if self.main_file is not None:
-            result['MainFile'] = self.main_file
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.oss_info is not None:
-            result['OssInfo'] = self.oss_info.to_map()
-        if self.tid is not None:
-            result['Tid'] = self.tid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppCode') is not None:
-            self.app_code = m.get('AppCode')
-        if m.get('Arguments') is not None:
-            self.arguments = m.get('Arguments')
-        if m.get('Configuration') is not None:
-            self.configuration = m.get('Configuration')
-        if m.get('Files') is not None:
-            self.files = m.get('Files')
-        if m.get('MainClass') is not None:
-            self.main_class = m.get('MainClass')
-        if m.get('MainFile') is not None:
-            self.main_file = m.get('MainFile')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('OssInfo') is not None:
-            temp_model = SubmitSparkJobRequestOssInfo()
-            self.oss_info = temp_model.from_map(m['OssInfo'])
-        if m.get('Tid') is not None:
-            self.tid = m.get('Tid')
-        return self
-
-
-class SubmitSparkJobShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        app_code: str = None,
-        arguments_shrink: str = None,
-        configuration_shrink: str = None,
-        files_shrink: str = None,
-        main_class: str = None,
-        main_file: str = None,
-        name: str = None,
-        oss_info_shrink: str = None,
-        tid: int = None,
-    ):
-        self.app_code = app_code
-        self.arguments_shrink = arguments_shrink
-        self.configuration_shrink = configuration_shrink
-        self.files_shrink = files_shrink
-        self.main_class = main_class
-        self.main_file = main_file
-        self.name = name
-        self.oss_info_shrink = oss_info_shrink
-        self.tid = tid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_code is not None:
-            result['AppCode'] = self.app_code
-        if self.arguments_shrink is not None:
-            result['Arguments'] = self.arguments_shrink
-        if self.configuration_shrink is not None:
-            result['Configuration'] = self.configuration_shrink
-        if self.files_shrink is not None:
-            result['Files'] = self.files_shrink
-        if self.main_class is not None:
-            result['MainClass'] = self.main_class
-        if self.main_file is not None:
-            result['MainFile'] = self.main_file
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.oss_info_shrink is not None:
-            result['OssInfo'] = self.oss_info_shrink
-        if self.tid is not None:
-            result['Tid'] = self.tid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppCode') is not None:
-            self.app_code = m.get('AppCode')
-        if m.get('Arguments') is not None:
-            self.arguments_shrink = m.get('Arguments')
-        if m.get('Configuration') is not None:
-            self.configuration_shrink = m.get('Configuration')
-        if m.get('Files') is not None:
-            self.files_shrink = m.get('Files')
-        if m.get('MainClass') is not None:
-            self.main_class = m.get('MainClass')
-        if m.get('MainFile') is not None:
-            self.main_file = m.get('MainFile')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('OssInfo') is not None:
-            self.oss_info_shrink = m.get('OssInfo')
-        if m.get('Tid') is not None:
-            self.tid = m.get('Tid')
-        return self
-
-
-class SubmitSparkJobResponseBody(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        job_id: int = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        # Id of the spark job
-        self.job_id = job_id
-        # Id of the request
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class SubmitSparkJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: SubmitSparkJobResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = SubmitSparkJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
