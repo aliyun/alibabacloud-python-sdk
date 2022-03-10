@@ -376,6 +376,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -410,6 +412,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -716,6 +720,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -750,6 +756,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1564,6 +1572,8 @@ class Client(OpenApiClient):
             query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_type):
             query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.summary):
             query['Summary'] = request.summary
         if not UtilClient.is_unset(request.tag_immutability):
@@ -1604,6 +1614,8 @@ class Client(OpenApiClient):
             query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_type):
             query['RepoType'] = request.repo_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.summary):
             query['Summary'] = request.summary
         if not UtilClient.is_unset(request.tag_immutability):
@@ -4451,6 +4463,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_chain_instance_with_options_async(request, runtime)
 
+    def list_chart_with_options(
+        self,
+        request: cr_20181201_models.ListChartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListChartResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChart',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListChartResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chart_with_options_async(
+        self,
+        request: cr_20181201_models.ListChartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ListChartResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChart',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ListChartResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chart(
+        self,
+        request: cr_20181201_models.ListChartRequest,
+    ) -> cr_20181201_models.ListChartResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_chart_with_options(request, runtime)
+
+    async def list_chart_async(
+        self,
+        request: cr_20181201_models.ListChartRequest,
+    ) -> cr_20181201_models.ListChartResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_chart_with_options_async(request, runtime)
+
     def list_chart_namespace_with_options(
         self,
         request: cr_20181201_models.ListChartNamespaceRequest,
@@ -4864,6 +4962,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4898,6 +4998,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5092,6 +5194,10 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5128,6 +5234,10 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5880,6 +5990,8 @@ class Client(OpenApiClient):
             query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_status):
             query['RepoStatus'] = request.repo_status
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5918,6 +6030,8 @@ class Client(OpenApiClient):
             query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_status):
             query['RepoStatus'] = request.repo_status
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6568,6 +6682,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.build_args):
+            query['BuildArgs'] = request.build_args
         if not UtilClient.is_unset(request.build_rule_id):
             query['BuildRuleId'] = request.build_rule_id
         if not UtilClient.is_unset(request.dockerfile_location):
@@ -6612,6 +6728,8 @@ class Client(OpenApiClient):
     ) -> cr_20181201_models.UpdateRepoBuildRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.build_args):
+            query['BuildArgs'] = request.build_args
         if not UtilClient.is_unset(request.build_rule_id):
             query['BuildRuleId'] = request.build_rule_id
         if not UtilClient.is_unset(request.dockerfile_location):

@@ -495,11 +495,13 @@ class CreateChartNamespaceRequest(TeaModel):
         default_repo_type: str = None,
         instance_id: str = None,
         namespace_name: str = None,
+        resource_group_id: str = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.default_repo_type = default_repo_type
         self.instance_id = instance_id
         self.namespace_name = namespace_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -518,6 +520,8 @@ class CreateChartNamespaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -530,6 +534,8 @@ class CreateChartNamespaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -1003,11 +1009,13 @@ class CreateNamespaceRequest(TeaModel):
         default_repo_type: str = None,
         instance_id: str = None,
         namespace_name: str = None,
+        resource_group_id: str = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.default_repo_type = default_repo_type
         self.instance_id = instance_id
         self.namespace_name = namespace_name
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -1026,6 +1034,8 @@ class CreateNamespaceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1038,6 +1048,8 @@ class CreateNamespaceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -2285,6 +2297,7 @@ class CreateRepositoryRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
         repo_type: str = None,
+        resource_group_id: str = None,
         summary: str = None,
         tag_immutability: bool = None,
     ):
@@ -2293,6 +2306,7 @@ class CreateRepositoryRequest(TeaModel):
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
         self.repo_type = repo_type
+        self.resource_group_id = resource_group_id
         self.summary = summary
         self.tag_immutability = tag_immutability
 
@@ -2315,6 +2329,8 @@ class CreateRepositoryRequest(TeaModel):
             result['RepoNamespaceName'] = self.repo_namespace_name
         if self.repo_type is not None:
             result['RepoType'] = self.repo_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.summary is not None:
             result['Summary'] = self.summary
         if self.tag_immutability is not None:
@@ -2333,6 +2349,8 @@ class CreateRepositoryRequest(TeaModel):
             self.repo_namespace_name = m.get('RepoNamespaceName')
         if m.get('RepoType') is not None:
             self.repo_type = m.get('RepoType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
         if m.get('TagImmutability') is not None:
@@ -4764,6 +4782,7 @@ class GetChartNamespaceResponseBody(TeaModel):
         namespace_name: str = None,
         namespace_status: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.code = code
@@ -4774,6 +4793,7 @@ class GetChartNamespaceResponseBody(TeaModel):
         self.namespace_name = namespace_name
         self.namespace_status = namespace_status
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -4802,6 +4822,8 @@ class GetChartNamespaceResponseBody(TeaModel):
             result['NamespaceStatus'] = self.namespace_status
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4824,6 +4846,8 @@ class GetChartNamespaceResponseBody(TeaModel):
             self.namespace_status = m.get('NamespaceStatus')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -5072,6 +5096,7 @@ class GetInstanceResponseBody(TeaModel):
         is_success: bool = None,
         modified_time: int = None,
         request_id: str = None,
+        resource_group_id: str = None,
     ):
         self.code = code
         self.create_time = create_time
@@ -5082,6 +5107,7 @@ class GetInstanceResponseBody(TeaModel):
         self.is_success = is_success
         self.modified_time = modified_time
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -5110,6 +5136,8 @@ class GetInstanceResponseBody(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5132,6 +5160,8 @@ class GetInstanceResponseBody(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -5858,6 +5888,39 @@ class GetNamespaceRequest(TeaModel):
         return self
 
 
+class GetNamespaceResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetNamespaceResponseBody(TeaModel):
     def __init__(
         self,
@@ -5870,6 +5933,8 @@ class GetNamespaceResponseBody(TeaModel):
         namespace_name: str = None,
         namespace_status: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
+        tags: List[GetNamespaceResponseBodyTags] = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.code = code
@@ -5880,9 +5945,14 @@ class GetNamespaceResponseBody(TeaModel):
         self.namespace_name = namespace_name
         self.namespace_status = namespace_status
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5908,6 +5978,12 @@ class GetNamespaceResponseBody(TeaModel):
             result['NamespaceStatus'] = self.namespace_status
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5930,6 +6006,13 @@ class GetNamespaceResponseBody(TeaModel):
             self.namespace_status = m.get('NamespaceStatus')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetNamespaceResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -7901,6 +7984,7 @@ class GetRepositoryResponseBody(TeaModel):
         repo_status: str = None,
         repo_type: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         summary: str = None,
         tag_immutability: bool = None,
     ):
@@ -7917,6 +8001,7 @@ class GetRepositoryResponseBody(TeaModel):
         self.repo_status = repo_status
         self.repo_type = repo_type
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.summary = summary
         self.tag_immutability = tag_immutability
 
@@ -7955,6 +8040,8 @@ class GetRepositoryResponseBody(TeaModel):
             result['RepoType'] = self.repo_type
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.summary is not None:
             result['Summary'] = self.summary
         if self.tag_immutability is not None:
@@ -7989,6 +8076,8 @@ class GetRepositoryResponseBody(TeaModel):
             self.repo_type = m.get('RepoType')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
         if m.get('TagImmutability') is not None:
@@ -8710,6 +8799,222 @@ class ListChainInstanceResponse(TeaModel):
         return self
 
 
+class ListChartRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        repo_name: str = None,
+        repo_namespace_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.repo_name = repo_name
+        self.repo_namespace_name = repo_namespace_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+        if self.repo_namespace_name is not None:
+            result['RepoNamespaceName'] = self.repo_namespace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+        if m.get('RepoNamespaceName') is not None:
+            self.repo_namespace_name = m.get('RepoNamespaceName')
+        return self
+
+
+class ListChartResponseBodyCharts(TeaModel):
+    def __init__(
+        self,
+        chart: str = None,
+        create_time: str = None,
+        instance_id: str = None,
+        modified_time: int = None,
+        repo_id: str = None,
+        status: str = None,
+    ):
+        self.chart = chart
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.modified_time = modified_time
+        self.repo_id = repo_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chart is not None:
+            result['Chart'] = self.chart
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Chart') is not None:
+            self.chart = m.get('Chart')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListChartResponseBody(TeaModel):
+    def __init__(
+        self,
+        charts: List[ListChartResponseBodyCharts] = None,
+        code: str = None,
+        is_success: bool = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.charts = charts
+        self.code = code
+        self.is_success = is_success
+        self.page_no = page_no
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.charts:
+            for k in self.charts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Charts'] = []
+        if self.charts is not None:
+            for k in self.charts:
+                result['Charts'].append(k.to_map() if k else None)
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.charts = []
+        if m.get('Charts') is not None:
+            for k in m.get('Charts'):
+                temp_model = ListChartResponseBodyCharts()
+                self.charts.append(temp_model.from_map(k))
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListChartResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListChartResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListChartResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListChartNamespaceRequest(TeaModel):
     def __init__(
         self,
@@ -8770,6 +9075,7 @@ class ListChartNamespaceResponseBodyNamespaces(TeaModel):
         namespace_id: str = None,
         namespace_name: str = None,
         namespace_status: str = None,
+        resource_group_id: str = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.default_repo_type = default_repo_type
@@ -8777,6 +9083,7 @@ class ListChartNamespaceResponseBodyNamespaces(TeaModel):
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
         self.namespace_status = namespace_status
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -8799,6 +9106,8 @@ class ListChartNamespaceResponseBodyNamespaces(TeaModel):
             result['NamespaceName'] = self.namespace_name
         if self.namespace_status is not None:
             result['NamespaceStatus'] = self.namespace_status
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8815,6 +9124,8 @@ class ListChartNamespaceResponseBodyNamespaces(TeaModel):
             self.namespace_name = m.get('NamespaceName')
         if m.get('NamespaceStatus') is not None:
             self.namespace_status = m.get('NamespaceStatus')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -9811,11 +10122,13 @@ class ListInstanceRequest(TeaModel):
         instance_status: str = None,
         page_no: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
     ):
         self.instance_name = instance_name
         self.instance_status = instance_status
         self.page_no = page_no
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -9834,6 +10147,8 @@ class ListInstanceRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9846,6 +10161,8 @@ class ListInstanceRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -9859,6 +10176,7 @@ class ListInstanceResponseBodyInstances(TeaModel):
         instance_status: str = None,
         modified_time: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.create_time = create_time
         self.instance_id = instance_id
@@ -9867,6 +10185,7 @@ class ListInstanceResponseBodyInstances(TeaModel):
         self.instance_status = instance_status
         self.modified_time = modified_time
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -9891,6 +10210,8 @@ class ListInstanceResponseBodyInstances(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9909,6 +10230,8 @@ class ListInstanceResponseBodyInstances(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -10469,6 +10792,39 @@ class ListInstanceRegionResponse(TeaModel):
         return self
 
 
+class ListNamespaceRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListNamespaceRequest(TeaModel):
     def __init__(
         self,
@@ -10477,15 +10833,22 @@ class ListNamespaceRequest(TeaModel):
         namespace_status: str = None,
         page_no: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
+        tag: List[ListNamespaceRequestTag] = None,
     ):
         self.instance_id = instance_id
         self.namespace_name = namespace_name
         self.namespace_status = namespace_status
         self.page_no = page_no
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10503,6 +10866,12 @@ class ListNamespaceRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -10517,6 +10886,46 @@ class ListNamespaceRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListNamespaceRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListNamespaceResponseBodyNamespacesTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -10529,6 +10938,8 @@ class ListNamespaceResponseBodyNamespaces(TeaModel):
         namespace_id: str = None,
         namespace_name: str = None,
         namespace_status: str = None,
+        resource_group_id: str = None,
+        tags: List[ListNamespaceResponseBodyNamespacesTags] = None,
     ):
         self.auto_create_repo = auto_create_repo
         self.default_repo_type = default_repo_type
@@ -10536,9 +10947,14 @@ class ListNamespaceResponseBodyNamespaces(TeaModel):
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
         self.namespace_status = namespace_status
+        self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10558,6 +10974,12 @@ class ListNamespaceResponseBodyNamespaces(TeaModel):
             result['NamespaceName'] = self.namespace_name
         if self.namespace_status is not None:
             result['NamespaceStatus'] = self.namespace_status
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -10574,6 +10996,13 @@ class ListNamespaceResponseBodyNamespaces(TeaModel):
             self.namespace_name = m.get('NamespaceName')
         if m.get('NamespaceStatus') is not None:
             self.namespace_status = m.get('NamespaceStatus')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListNamespaceResponseBodyNamespacesTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -11814,6 +12243,7 @@ class ListRepoSyncTaskResponseBodySyncTasks(TeaModel):
         self,
         create_time: int = None,
         cross_user: bool = None,
+        custom_link: bool = None,
         image_from: ListRepoSyncTaskResponseBodySyncTasksImageFrom = None,
         image_to: ListRepoSyncTaskResponseBodySyncTasksImageTo = None,
         modifed_time: int = None,
@@ -11826,6 +12256,7 @@ class ListRepoSyncTaskResponseBodySyncTasks(TeaModel):
     ):
         self.create_time = create_time
         self.cross_user = cross_user
+        self.custom_link = custom_link
         self.image_from = image_from
         self.image_to = image_to
         self.modifed_time = modifed_time
@@ -11852,6 +12283,8 @@ class ListRepoSyncTaskResponseBodySyncTasks(TeaModel):
             result['CreateTime'] = self.create_time
         if self.cross_user is not None:
             result['CrossUser'] = self.cross_user
+        if self.custom_link is not None:
+            result['CustomLink'] = self.custom_link
         if self.image_from is not None:
             result['ImageFrom'] = self.image_from.to_map()
         if self.image_to is not None:
@@ -11878,6 +12311,8 @@ class ListRepoSyncTaskResponseBodySyncTasks(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('CrossUser') is not None:
             self.cross_user = m.get('CrossUser')
+        if m.get('CustomLink') is not None:
+            self.custom_link = m.get('CustomLink')
         if m.get('ImageFrom') is not None:
             temp_model = ListRepoSyncTaskResponseBodySyncTasksImageFrom()
             self.image_from = temp_model.from_map(m['ImageFrom'])
@@ -12708,6 +13143,7 @@ class ListRepositoryRequest(TeaModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
         repo_status: str = None,
+        resource_group_id: str = None,
     ):
         self.instance_id = instance_id
         self.page_no = page_no
@@ -12715,6 +13151,7 @@ class ListRepositoryRequest(TeaModel):
         self.repo_name = repo_name
         self.repo_namespace_name = repo_namespace_name
         self.repo_status = repo_status
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -12737,6 +13174,8 @@ class ListRepositoryRequest(TeaModel):
             result['RepoNamespaceName'] = self.repo_namespace_name
         if self.repo_status is not None:
             result['RepoStatus'] = self.repo_status
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -12753,6 +13192,8 @@ class ListRepositoryRequest(TeaModel):
             self.repo_namespace_name = m.get('RepoNamespaceName')
         if m.get('RepoStatus') is not None:
             self.repo_status = m.get('RepoStatus')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -12768,6 +13209,7 @@ class ListRepositoryResponseBodyRepositories(TeaModel):
         repo_namespace_name: str = None,
         repo_status: str = None,
         repo_type: str = None,
+        resource_group_id: str = None,
         summary: str = None,
         tag_immutability: bool = None,
     ):
@@ -12780,6 +13222,7 @@ class ListRepositoryResponseBodyRepositories(TeaModel):
         self.repo_namespace_name = repo_namespace_name
         self.repo_status = repo_status
         self.repo_type = repo_type
+        self.resource_group_id = resource_group_id
         self.summary = summary
         self.tag_immutability = tag_immutability
 
@@ -12810,6 +13253,8 @@ class ListRepositoryResponseBodyRepositories(TeaModel):
             result['RepoStatus'] = self.repo_status
         if self.repo_type is not None:
             result['RepoType'] = self.repo_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.summary is not None:
             result['Summary'] = self.summary
         if self.tag_immutability is not None:
@@ -12836,6 +13281,8 @@ class ListRepositoryResponseBodyRepositories(TeaModel):
             self.repo_status = m.get('RepoStatus')
         if m.get('RepoType') is not None:
             self.repo_type = m.get('RepoType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
         if m.get('TagImmutability') is not None:
@@ -13919,6 +14366,7 @@ class UpdateNamespaceResponse(TeaModel):
 class UpdateRepoBuildRuleRequest(TeaModel):
     def __init__(
         self,
+        build_args: List[str] = None,
         build_rule_id: str = None,
         dockerfile_location: str = None,
         dockerfile_name: str = None,
@@ -13929,6 +14377,7 @@ class UpdateRepoBuildRuleRequest(TeaModel):
         push_type: str = None,
         repo_id: str = None,
     ):
+        self.build_args = build_args
         self.build_rule_id = build_rule_id
         self.dockerfile_location = dockerfile_location
         self.dockerfile_name = dockerfile_name
@@ -13948,6 +14397,8 @@ class UpdateRepoBuildRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.build_args is not None:
+            result['BuildArgs'] = self.build_args
         if self.build_rule_id is not None:
             result['BuildRuleId'] = self.build_rule_id
         if self.dockerfile_location is not None:
@@ -13970,6 +14421,8 @@ class UpdateRepoBuildRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BuildArgs') is not None:
+            self.build_args = m.get('BuildArgs')
         if m.get('BuildRuleId') is not None:
             self.build_rule_id = m.get('BuildRuleId')
         if m.get('DockerfileLocation') is not None:
