@@ -111,6 +111,8 @@ class Client(OpenApiClient):
             query['DataInitialization'] = request.data_initialization
         if not UtilClient.is_unset(request.data_synchronization):
             query['DataSynchronization'] = request.data_synchronization
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
         if not UtilClient.is_unset(request.delay_notice):
             query['DelayNotice'] = request.delay_notice
         if not UtilClient.is_unset(request.delay_phone):
@@ -219,6 +221,8 @@ class Client(OpenApiClient):
             query['DataInitialization'] = request.data_initialization
         if not UtilClient.is_unset(request.data_synchronization):
             query['DataSynchronization'] = request.data_synchronization
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
         if not UtilClient.is_unset(request.delay_notice):
             query['DelayNotice'] = request.delay_notice
         if not UtilClient.is_unset(request.delay_phone):
@@ -555,6 +559,8 @@ class Client(OpenApiClient):
             query['Checkpoint'] = request.checkpoint
         if not UtilClient.is_unset(request.db_list):
             query['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
         if not UtilClient.is_unset(request.delay_notice):
             query['DelayNotice'] = request.delay_notice
         if not UtilClient.is_unset(request.delay_phone):
@@ -639,6 +645,8 @@ class Client(OpenApiClient):
             query['Checkpoint'] = request.checkpoint
         if not UtilClient.is_unset(request.db_list):
             query['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
         if not UtilClient.is_unset(request.delay_notice):
             query['DelayNotice'] = request.delay_notice
         if not UtilClient.is_unset(request.delay_phone):
@@ -1569,6 +1577,8 @@ class Client(OpenApiClient):
             query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
         if not UtilClient.is_unset(request.destination_region):
             query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.du):
+            query['Du'] = request.du
         if not UtilClient.is_unset(request.fee_type):
             query['FeeType'] = request.fee_type
         if not UtilClient.is_unset(request.instance_class):
@@ -1631,6 +1641,8 @@ class Client(OpenApiClient):
             query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
         if not UtilClient.is_unset(request.destination_region):
             query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.du):
+            query['Du'] = request.du
         if not UtilClient.is_unset(request.fee_type):
             query['FeeType'] = request.fee_type
         if not UtilClient.is_unset(request.instance_class):
@@ -2346,6 +2358,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dts_job_with_options_async(request, runtime)
 
+    def delete_dts_jobs_with_options(
+        self,
+        request: dts_20200101_models.DeleteDtsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DeleteDtsJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DeleteDtsJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dts_jobs_with_options_async(
+        self,
+        request: dts_20200101_models.DeleteDtsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DeleteDtsJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DeleteDtsJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dts_jobs(
+        self,
+        request: dts_20200101_models.DeleteDtsJobsRequest,
+    ) -> dts_20200101_models.DeleteDtsJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dts_jobs_with_options(request, runtime)
+
+    async def delete_dts_jobs_async(
+        self,
+        request: dts_20200101_models.DeleteDtsJobsRequest,
+    ) -> dts_20200101_models.DeleteDtsJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dts_jobs_with_options_async(request, runtime)
+
     def delete_migration_job_with_options(
         self,
         request: dts_20200101_models.DeleteMigrationJobRequest,
@@ -3008,6 +3094,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dtsipwith_options_async(request, runtime)
 
+    def describe_dts_etl_job_version_info_with_options(
+        self,
+        request: dts_20200101_models.DescribeDtsEtlJobVersionInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDtsEtlJobVersionInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsEtlJobVersionInfo',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDtsEtlJobVersionInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dts_etl_job_version_info_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeDtsEtlJobVersionInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDtsEtlJobVersionInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsEtlJobVersionInfo',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDtsEtlJobVersionInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dts_etl_job_version_info(
+        self,
+        request: dts_20200101_models.DescribeDtsEtlJobVersionInfoRequest,
+    ) -> dts_20200101_models.DescribeDtsEtlJobVersionInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dts_etl_job_version_info_with_options(request, runtime)
+
+    async def describe_dts_etl_job_version_info_async(
+        self,
+        request: dts_20200101_models.DescribeDtsEtlJobVersionInfoRequest,
+    ) -> dts_20200101_models.DescribeDtsEtlJobVersionInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dts_etl_job_version_info_with_options_async(request, runtime)
+
     def describe_dts_job_detail_with_options(
         self,
         request: dts_20200101_models.DescribeDtsJobDetailRequest,
@@ -3021,6 +3193,8 @@ class Client(OpenApiClient):
             query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sync_sub_job_history):
+            query['SyncSubJobHistory'] = request.sync_sub_job_history
         if not UtilClient.is_unset(request.synchronization_direction):
             query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
@@ -3055,6 +3229,8 @@ class Client(OpenApiClient):
             query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sync_sub_job_history):
+            query['SyncSubJobHistory'] = request.sync_sub_job_history
         if not UtilClient.is_unset(request.synchronization_direction):
             query['SynchronizationDirection'] = request.synchronization_direction
         req = open_api_models.OpenApiRequest(
@@ -3097,6 +3273,12 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDtsJobsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dedicated_cluster_node_id):
+            query['DedicatedClusterNodeId'] = request.dedicated_cluster_node_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.job_type):
@@ -3105,6 +3287,8 @@ class Client(OpenApiClient):
             query['OrderColumn'] = request.order_column
         if not UtilClient.is_unset(request.order_direction):
             query['OrderDirection'] = request.order_direction
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3147,6 +3331,12 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDtsJobsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dedicated_cluster_id):
+            query['DedicatedClusterId'] = request.dedicated_cluster_id
+        if not UtilClient.is_unset(request.dedicated_cluster_node_id):
+            query['DedicatedClusterNodeId'] = request.dedicated_cluster_node_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.job_type):
@@ -3155,6 +3345,8 @@ class Client(OpenApiClient):
             query['OrderColumn'] = request.order_column
         if not UtilClient.is_unset(request.order_direction):
             query['OrderDirection'] = request.order_direction
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3203,6 +3395,108 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeDtsJobsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dts_jobs_with_options_async(request, runtime)
+
+    def describe_dts_service_log_with_options(
+        self,
+        request: dts_20200101_models.DescribeDtsServiceLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDtsServiceLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub_job_type):
+            query['SubJobType'] = request.sub_job_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsServiceLog',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDtsServiceLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dts_service_log_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeDtsServiceLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDtsServiceLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub_job_type):
+            query['SubJobType'] = request.sub_job_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsServiceLog',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDtsServiceLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dts_service_log(
+        self,
+        request: dts_20200101_models.DescribeDtsServiceLogRequest,
+    ) -> dts_20200101_models.DescribeDtsServiceLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dts_service_log_with_options(request, runtime)
+
+    async def describe_dts_service_log_async(
+        self,
+        request: dts_20200101_models.DescribeDtsServiceLogRequest,
+    ) -> dts_20200101_models.DescribeDtsServiceLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dts_service_log_with_options_async(request, runtime)
 
     def describe_endpoint_switch_status_with_options(
         self,
@@ -3289,6 +3583,80 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.DescribeEndpointSwitchStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_endpoint_switch_status_with_options_async(request, runtime)
+
+    def describe_etl_job_logs_with_options(
+        self,
+        request: dts_20200101_models.DescribeEtlJobLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeEtlJobLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEtlJobLogs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeEtlJobLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_etl_job_logs_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeEtlJobLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeEtlJobLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEtlJobLogs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeEtlJobLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_etl_job_logs(
+        self,
+        request: dts_20200101_models.DescribeEtlJobLogsRequest,
+    ) -> dts_20200101_models.DescribeEtlJobLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_etl_job_logs_with_options(request, runtime)
+
+    async def describe_etl_job_logs_async(
+        self,
+        request: dts_20200101_models.DescribeEtlJobLogsRequest,
+    ) -> dts_20200101_models.DescribeEtlJobLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_etl_job_logs_with_options_async(request, runtime)
 
     def describe_initialization_status_with_options(
         self,
@@ -4820,6 +5188,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_synchronization_object_modify_status_with_options_async(request, runtime)
 
+    def describe_tag_keys_with_options(
+        self,
+        request: dts_20200101_models.DescribeTagKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeTagKeysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagKeys',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeTagKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tag_keys_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeTagKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeTagKeysResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagKeys',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeTagKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tag_keys(
+        self,
+        request: dts_20200101_models.DescribeTagKeysRequest,
+    ) -> dts_20200101_models.DescribeTagKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tag_keys_with_options(request, runtime)
+
+    async def describe_tag_keys_async(
+        self,
+        request: dts_20200101_models.DescribeTagKeysRequest,
+    ) -> dts_20200101_models.DescribeTagKeysResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tag_keys_with_options_async(request, runtime)
+
+    def describe_tag_values_with_options(
+        self,
+        request: dts_20200101_models.DescribeTagValuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeTagValuesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagValues',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeTagValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tag_values_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeTagValuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeTagValuesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagValues',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeTagValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tag_values(
+        self,
+        request: dts_20200101_models.DescribeTagValuesRequest,
+    ) -> dts_20200101_models.DescribeTagValuesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tag_values_with_options(request, runtime)
+
+    async def describe_tag_values_async(
+        self,
+        request: dts_20200101_models.DescribeTagValuesRequest,
+    ) -> dts_20200101_models.DescribeTagValuesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tag_values_with_options_async(request, runtime)
+
     def init_dts_rds_instance_with_options(
         self,
         request: dts_20200101_models.InitDtsRdsInstanceRequest,
@@ -5745,10 +6297,12 @@ class Client(OpenApiClient):
             query['SynchronizationDirection'] = request.synchronization_direction
         if not UtilClient.is_unset(request.synchronization_job_id):
             query['SynchronizationJobId'] = request.synchronization_job_id
+        body = {}
         if not UtilClient.is_unset(request.synchronization_objects):
-            query['SynchronizationObjects'] = request.synchronization_objects
+            body['SynchronizationObjects'] = request.synchronization_objects
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifySynchronizationObject',
@@ -5783,10 +6337,12 @@ class Client(OpenApiClient):
             query['SynchronizationDirection'] = request.synchronization_direction
         if not UtilClient.is_unset(request.synchronization_job_id):
             query['SynchronizationJobId'] = request.synchronization_job_id
+        body = {}
         if not UtilClient.is_unset(request.synchronization_objects):
-            query['SynchronizationObjects'] = request.synchronization_objects
+            body['SynchronizationObjects'] = request.synchronization_objects
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifySynchronizationObject',
@@ -6322,6 +6878,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_dts_job_with_options_async(request, runtime)
 
+    def start_dts_jobs_with_options(
+        self,
+        request: dts_20200101_models.StartDtsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.StartDtsJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.StartDtsJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_dts_jobs_with_options_async(
+        self,
+        request: dts_20200101_models.StartDtsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.StartDtsJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.StartDtsJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_dts_jobs(
+        self,
+        request: dts_20200101_models.StartDtsJobsRequest,
+    ) -> dts_20200101_models.StartDtsJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_dts_jobs_with_options(request, runtime)
+
+    async def start_dts_jobs_async(
+        self,
+        request: dts_20200101_models.StartDtsJobsRequest,
+    ) -> dts_20200101_models.StartDtsJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_dts_jobs_with_options_async(request, runtime)
+
     def start_migration_job_with_options(
         self,
         request: dts_20200101_models.StartMigrationJobRequest,
@@ -6654,6 +7284,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_dts_job_with_options_async(request, runtime)
 
+    def stop_dts_jobs_with_options(
+        self,
+        request: dts_20200101_models.StopDtsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.StopDtsJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.StopDtsJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_dts_jobs_with_options_async(
+        self,
+        request: dts_20200101_models.StopDtsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.StopDtsJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.StopDtsJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_dts_jobs(
+        self,
+        request: dts_20200101_models.StopDtsJobsRequest,
+    ) -> dts_20200101_models.StopDtsJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_dts_jobs_with_options(request, runtime)
+
+    async def stop_dts_jobs_async(
+        self,
+        request: dts_20200101_models.StopDtsJobsRequest,
+    ) -> dts_20200101_models.StopDtsJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_dts_jobs_with_options_async(request, runtime)
+
     def stop_migration_job_with_options(
         self,
         request: dts_20200101_models.StopMigrationJobRequest,
@@ -6740,6 +7444,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_migration_job_with_options_async(request, runtime)
 
+    def summary_job_detail_with_options(
+        self,
+        request: dts_20200101_models.SummaryJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SummaryJobDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_code):
+            query['JobCode'] = request.job_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SummaryJobDetail',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.SummaryJobDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def summary_job_detail_with_options_async(
+        self,
+        request: dts_20200101_models.SummaryJobDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SummaryJobDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.job_code):
+            query['JobCode'] = request.job_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SummaryJobDetail',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.SummaryJobDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def summary_job_detail(
+        self,
+        request: dts_20200101_models.SummaryJobDetailRequest,
+    ) -> dts_20200101_models.SummaryJobDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.summary_job_detail_with_options(request, runtime)
+
+    async def summary_job_detail_async(
+        self,
+        request: dts_20200101_models.SummaryJobDetailRequest,
+    ) -> dts_20200101_models.SummaryJobDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.summary_job_detail_with_options_async(request, runtime)
+
     def suspend_dts_job_with_options(
         self,
         request: dts_20200101_models.SuspendDtsJobRequest,
@@ -6821,6 +7611,80 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.SuspendDtsJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.suspend_dts_job_with_options_async(request, runtime)
+
+    def suspend_dts_jobs_with_options(
+        self,
+        request: dts_20200101_models.SuspendDtsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SuspendDtsJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.SuspendDtsJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def suspend_dts_jobs_with_options_async(
+        self,
+        request: dts_20200101_models.SuspendDtsJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.SuspendDtsJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_ids):
+            query['DtsJobIds'] = request.dts_job_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendDtsJobs',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.SuspendDtsJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def suspend_dts_jobs(
+        self,
+        request: dts_20200101_models.SuspendDtsJobsRequest,
+    ) -> dts_20200101_models.SuspendDtsJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.suspend_dts_jobs_with_options(request, runtime)
+
+    async def suspend_dts_jobs_async(
+        self,
+        request: dts_20200101_models.SuspendDtsJobsRequest,
+    ) -> dts_20200101_models.SuspendDtsJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.suspend_dts_jobs_with_options_async(request, runtime)
 
     def suspend_migration_job_with_options(
         self,
