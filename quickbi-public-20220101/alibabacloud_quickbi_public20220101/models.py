@@ -11109,6 +11109,121 @@ class QueryWorkspaceUserListResponse(TeaModel):
         return self
 
 
+class ResultCallbackRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        handle_reason: str = None,
+        status: int = None,
+    ):
+        self.application_id = application_id
+        self.handle_reason = handle_reason
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.handle_reason is not None:
+            result['HandleReason'] = self.handle_reason
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('HandleReason') is not None:
+            self.handle_reason = m.get('HandleReason')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ResultCallbackResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ResultCallbackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ResultCallbackResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ResultCallbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveFavoritesRequest(TeaModel):
     def __init__(
         self,
