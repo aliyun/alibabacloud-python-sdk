@@ -1635,6 +1635,7 @@ class SearchCondition(TeaModel):
         suspicion_spam_filter: bool = None,
         title_excluding_words_idx: str = None,
         title_including_words_idx: str = None,
+        topic_idx: str = None,
         used_index_mode_switch: str = None,
     ):
         # 广告取值true or false
@@ -1779,6 +1780,8 @@ class SearchCondition(TeaModel):
         self.title_excluding_words_idx = title_excluding_words_idx
         # 标题包含的关键词
         self.title_including_words_idx = title_including_words_idx
+        # 检索的话题
+        self.topic_idx = topic_idx
         # 指定索引模式,KEYWORD|CREATE_TIME
         self.used_index_mode_switch = used_index_mode_switch
 
@@ -1933,6 +1936,8 @@ class SearchCondition(TeaModel):
             result['titleExcludingWordsIdx'] = self.title_excluding_words_idx
         if self.title_including_words_idx is not None:
             result['titleIncludingWordsIdx'] = self.title_including_words_idx
+        if self.topic_idx is not None:
+            result['topicIdx'] = self.topic_idx
         if self.used_index_mode_switch is not None:
             result['usedIndexModeSwitch'] = self.used_index_mode_switch
         return result
@@ -2081,6 +2086,8 @@ class SearchCondition(TeaModel):
             self.title_excluding_words_idx = m.get('titleExcludingWordsIdx')
         if m.get('titleIncludingWordsIdx') is not None:
             self.title_including_words_idx = m.get('titleIncludingWordsIdx')
+        if m.get('topicIdx') is not None:
+            self.topic_idx = m.get('topicIdx')
         if m.get('usedIndexModeSwitch') is not None:
             self.used_index_mode_switch = m.get('usedIndexModeSwitch')
         return self

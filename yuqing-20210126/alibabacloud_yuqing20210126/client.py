@@ -83,9 +83,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AggregateSearchYuqing',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/aggSearch.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.AggregateSearchYuqingResponse(),
-            self.do_roarequest_with_form('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def aggregate_search_yuqing_with_options_async(
@@ -114,9 +125,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='AggregateSearchYuqing',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/aggSearch.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.AggregateSearchYuqingResponse(),
-            await self.do_roarequest_with_form_async('AggregateSearchYuqing', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/aggSearch.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_project(
@@ -159,9 +181,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/createProject.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.CreateProjectResponse(),
-            self.do_roarequest_with_form('CreateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/createProject.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_project_with_options_async(
@@ -188,9 +221,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/createProject.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.CreateProjectResponse(),
-            await self.do_roarequest_with_form_async('CreateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/createProject.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_project(
@@ -233,9 +277,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/deleteProject.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.DeleteProjectResponse(),
-            self.do_roarequest_with_form('DeleteProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/deleteProject.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_project_with_options_async(
@@ -262,9 +317,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/deleteProject.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.DeleteProjectResponse(),
-            await self.do_roarequest_with_form_async('DeleteProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/deleteProject.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_analysis_component_result(
@@ -301,9 +367,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetAnalysisComponentResult',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/getAnalysisComponentResult.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.GetAnalysisComponentResultResponse(),
-            self.do_roarequest('GetAnalysisComponentResult', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getAnalysisComponentResult.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_analysis_component_result_with_options_async(
@@ -324,9 +401,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetAnalysisComponentResult',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/getAnalysisComponentResult.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.GetAnalysisComponentResultResponse(),
-            await self.do_roarequest_async('GetAnalysisComponentResult', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getAnalysisComponentResult.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_message_detail(
@@ -363,9 +451,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetMessageDetail',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/getMessageFromHbase.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.GetMessageDetailResponse(),
-            self.do_roarequest('GetMessageDetail', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getMessageFromHbase.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_message_detail_with_options_async(
@@ -386,9 +485,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetMessageDetail',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/getMessageFromHbase.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.GetMessageDetailResponse(),
-            await self.do_roarequest_async('GetMessageDetail', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/getMessageFromHbase.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_hotspot_message(
@@ -427,9 +537,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ListHotspotMessage',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/searchHotspotDetail.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.ListHotspotMessageResponse(),
-            self.do_roarequest_with_form('ListHotspotMessage', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchHotspotDetail.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_hotspot_message_with_options_async(
@@ -452,9 +573,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ListHotspotMessage',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/searchHotspotDetail.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.ListHotspotMessageResponse(),
-            await self.do_roarequest_with_form_async('ListHotspotMessage', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchHotspotDetail.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_yuqing_messages(
@@ -493,9 +625,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ListYuqingMessages',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/searchMessages.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.ListYuqingMessagesResponse(),
-            self.do_roarequest_with_form('ListYuqingMessages', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_yuqing_messages_with_options_async(
@@ -518,9 +661,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='ListYuqingMessages',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/searchMessages.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.ListYuqingMessagesResponse(),
-            await self.do_roarequest_with_form_async('ListYuqingMessages', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/searchMessages.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_alarm_data_list(
@@ -559,9 +713,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryAlarmDataList',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryAlarmDataList.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryAlarmDataListResponse(),
-            self.do_roarequest('QueryAlarmDataList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryAlarmDataList.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_alarm_data_list_with_options_async(
@@ -584,9 +749,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryAlarmDataList',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryAlarmDataList.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryAlarmDataListResponse(),
-            await self.do_roarequest_async('QueryAlarmDataList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryAlarmDataList.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_analysis_component(
@@ -627,9 +803,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='QueryAnalysisComponent',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryAnalysisComponent.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryAnalysisComponentResponse(),
-            self.do_roarequest_with_form('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_analysis_component_with_options_async(
@@ -654,9 +841,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='QueryAnalysisComponent',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryAnalysisComponent.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryAnalysisComponentResponse(),
-            await self.do_roarequest_with_form_async('QueryAnalysisComponent', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/queryAnalysisComponent.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_filter_list(
@@ -697,9 +895,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryFilterList',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryFilterList.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryFilterListResponse(),
-            self.do_roarequest('QueryFilterList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryFilterList.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_filter_list_with_options_async(
@@ -724,9 +933,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryFilterList',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryFilterList.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryFilterListResponse(),
-            await self.do_roarequest_async('QueryFilterList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryFilterList.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_project_list(
@@ -769,9 +989,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryProjectList',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryProjectList.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryProjectListResponse(),
-            self.do_roarequest('QueryProjectList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryProjectList.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_project_list_with_options_async(
@@ -798,9 +1029,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryProjectList',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryProjectList.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryProjectListResponse(),
-            await self.do_roarequest_async('QueryProjectList', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryProjectList.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_report_notifies(
@@ -849,9 +1091,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryReportNotifies',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryReportNotifies.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryReportNotifiesResponse(),
-            self.do_roarequest('QueryReportNotifies', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryReportNotifies.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_report_notifies_with_options_async(
@@ -884,9 +1137,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryReportNotifies',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryReportNotifies.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryReportNotifiesResponse(),
-            await self.do_roarequest_async('QueryReportNotifies', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryReportNotifies.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_tag_nodes(
@@ -921,9 +1185,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryTagNodes',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryTagNodes.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryTagNodesResponse(),
-            self.do_roarequest('QueryTagNodes', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryTagNodes.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def query_tag_nodes_with_options_async(
@@ -942,9 +1217,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='QueryTagNodes',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryTagNodes.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.QueryTagNodesResponse(),
-            await self.do_roarequest_async('QueryTagNodes', '2021-01-26', 'HTTPS', 'GET', 'AK', f'/openapi/aliyun/queryTagNodes.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_project(
@@ -991,9 +1277,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/updateProject.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.UpdateProjectResponse(),
-            self.do_roarequest_with_form('UpdateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/updateProject.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_project_with_options_async(
@@ -1024,9 +1321,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdateProject',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/updateProject.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.UpdateProjectResponse(),
-            await self.do_roarequest_with_form_async('UpdateProject', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/updateProject.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_propagation(
@@ -1065,9 +1373,20 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdatePropagation',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/updatePropagation.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.UpdatePropagationResponse(),
-            self.do_roarequest_with_form('UpdatePropagation', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/updatePropagation.json', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def update_propagation_with_options_async(
@@ -1090,7 +1409,18 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
+        params = open_api_models.Params(
+            action='UpdatePropagation',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/updatePropagation.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             yuqing_20210126_models.UpdatePropagationResponse(),
-            await self.do_roarequest_with_form_async('UpdatePropagation', '2021-01-26', 'HTTPS', 'POST', 'AK', f'/openapi/aliyun/updatePropagation.json', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )

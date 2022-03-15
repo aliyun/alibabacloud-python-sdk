@@ -1,3 +1,6 @@
+2022-03-15 Version: 1.2.4
+- ADD topicIdx for SearchCondition.
+
 2021-11-04 Version: 1.2.3
 - Fix http method.
 
