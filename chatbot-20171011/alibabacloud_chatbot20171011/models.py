@@ -2022,7 +2022,6 @@ class ChatRequest(TeaModel):
         intent_name: str = None,
         knowledge_id: str = None,
         perspective: List[str] = None,
-        recommend: bool = None,
         sender_id: str = None,
         sender_nick: str = None,
         session_id: str = None,
@@ -2034,7 +2033,6 @@ class ChatRequest(TeaModel):
         self.intent_name = intent_name
         self.knowledge_id = knowledge_id
         self.perspective = perspective
-        self.recommend = recommend
         self.sender_id = sender_id
         self.sender_nick = sender_nick
         self.session_id = session_id
@@ -2059,8 +2057,6 @@ class ChatRequest(TeaModel):
             result['KnowledgeId'] = self.knowledge_id
         if self.perspective is not None:
             result['Perspective'] = self.perspective
-        if self.recommend is not None:
-            result['Recommend'] = self.recommend
         if self.sender_id is not None:
             result['SenderId'] = self.sender_id
         if self.sender_nick is not None:
@@ -2085,8 +2081,6 @@ class ChatRequest(TeaModel):
             self.knowledge_id = m.get('KnowledgeId')
         if m.get('Perspective') is not None:
             self.perspective = m.get('Perspective')
-        if m.get('Recommend') is not None:
-            self.recommend = m.get('Recommend')
         if m.get('SenderId') is not None:
             self.sender_id = m.get('SenderId')
         if m.get('SenderNick') is not None:
@@ -2228,19 +2222,13 @@ class ChatResponseBodyMessagesRecommends(TeaModel):
     def __init__(
         self,
         answer_source: str = None,
-        category: str = None,
-        content: str = None,
         knowledge_id: str = None,
         score: float = None,
-        summary: str = None,
         title: str = None,
     ):
         self.answer_source = answer_source
-        self.category = category
-        self.content = content
         self.knowledge_id = knowledge_id
         self.score = score
-        self.summary = summary
         self.title = title
 
     def validate(self):
@@ -2254,16 +2242,10 @@ class ChatResponseBodyMessagesRecommends(TeaModel):
         result = dict()
         if self.answer_source is not None:
             result['AnswerSource'] = self.answer_source
-        if self.category is not None:
-            result['Category'] = self.category
-        if self.content is not None:
-            result['Content'] = self.content
         if self.knowledge_id is not None:
             result['KnowledgeId'] = self.knowledge_id
         if self.score is not None:
             result['Score'] = self.score
-        if self.summary is not None:
-            result['Summary'] = self.summary
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -2272,16 +2254,10 @@ class ChatResponseBodyMessagesRecommends(TeaModel):
         m = m or dict()
         if m.get('AnswerSource') is not None:
             self.answer_source = m.get('AnswerSource')
-        if m.get('Category') is not None:
-            self.category = m.get('Category')
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
         if m.get('KnowledgeId') is not None:
             self.knowledge_id = m.get('KnowledgeId')
         if m.get('Score') is not None:
             self.score = m.get('Score')
-        if m.get('Summary') is not None:
-            self.summary = m.get('Summary')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -2337,6 +2313,7 @@ class ChatResponseBodyMessagesText(TeaModel):
         self,
         answer_source: str = None,
         article_title: str = None,
+        commands: Dict[str, Any] = None,
         content: str = None,
         content_type: str = None,
         dialog_name: str = None,
@@ -2353,6 +2330,7 @@ class ChatResponseBodyMessagesText(TeaModel):
     ):
         self.answer_source = answer_source
         self.article_title = article_title
+        self.commands = commands
         self.content = content
         self.content_type = content_type
         self.dialog_name = dialog_name
@@ -2383,6 +2361,8 @@ class ChatResponseBodyMessagesText(TeaModel):
             result['AnswerSource'] = self.answer_source
         if self.article_title is not None:
             result['ArticleTitle'] = self.article_title
+        if self.commands is not None:
+            result['Commands'] = self.commands
         if self.content is not None:
             result['Content'] = self.content
         if self.content_type is not None:
@@ -2419,6 +2399,8 @@ class ChatResponseBodyMessagesText(TeaModel):
             self.answer_source = m.get('AnswerSource')
         if m.get('ArticleTitle') is not None:
             self.article_title = m.get('ArticleTitle')
+        if m.get('Commands') is not None:
+            self.commands = m.get('Commands')
         if m.get('Content') is not None:
             self.content = m.get('Content')
         if m.get('ContentType') is not None:
@@ -2459,14 +2441,20 @@ class ChatResponseBodyMessages(TeaModel):
         knowledge: ChatResponseBodyMessagesKnowledge = None,
         recommends: List[ChatResponseBodyMessagesRecommends] = None,
         text: ChatResponseBodyMessagesText = None,
+        title: str = None,
         type: str = None,
+        voice_title: str = None,
     ):
         self.answer_source = answer_source
         self.answer_type = answer_type
         self.knowledge = knowledge
         self.recommends = recommends
         self.text = text
+        # 在线场景，反问标题
+        self.title = title
         self.type = type
+        # 语音场景，澄清内容
+        self.voice_title = voice_title
 
     def validate(self):
         if self.knowledge:
@@ -2496,8 +2484,12 @@ class ChatResponseBodyMessages(TeaModel):
                 result['Recommends'].append(k.to_map() if k else None)
         if self.text is not None:
             result['Text'] = self.text.to_map()
+        if self.title is not None:
+            result['Title'] = self.title
         if self.type is not None:
             result['Type'] = self.type
+        if self.voice_title is not None:
+            result['VoiceTitle'] = self.voice_title
         return result
 
     def from_map(self, m: dict = None):
@@ -2517,8 +2509,12 @@ class ChatResponseBodyMessages(TeaModel):
         if m.get('Text') is not None:
             temp_model = ChatResponseBodyMessagesText()
             self.text = temp_model.from_map(m['Text'])
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('VoiceTitle') is not None:
+            self.voice_title = m.get('VoiceTitle')
         return self
 
 

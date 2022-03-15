@@ -384,8 +384,6 @@ class Client(OpenApiClient):
             query['KnowledgeId'] = request.knowledge_id
         if not UtilClient.is_unset(request.perspective):
             query['Perspective'] = request.perspective
-        if not UtilClient.is_unset(request.recommend):
-            query['Recommend'] = request.recommend
         if not UtilClient.is_unset(request.sender_id):
             query['SenderId'] = request.sender_id
         if not UtilClient.is_unset(request.sender_nick):
@@ -432,8 +430,6 @@ class Client(OpenApiClient):
             query['KnowledgeId'] = request.knowledge_id
         if not UtilClient.is_unset(request.perspective):
             query['Perspective'] = request.perspective
-        if not UtilClient.is_unset(request.recommend):
-            query['Recommend'] = request.recommend
         if not UtilClient.is_unset(request.sender_id):
             query['SenderId'] = request.sender_id
         if not UtilClient.is_unset(request.sender_nick):
