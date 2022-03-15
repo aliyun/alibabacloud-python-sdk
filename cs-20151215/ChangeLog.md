@@ -1,3 +1,6 @@
+2022-03-15 Version: 3.0.8
+- Update ModifyPolicyInstance.
+
 2022-03-09 Version: 3.0.7
 - Update UpdateK8sClusterUserConfig.
 

@@ -6188,8 +6188,8 @@ class Client(OpenApiClient):
             body['action'] = request.action
         if not UtilClient.is_unset(request.instance_name):
             body['instance_name'] = request.instance_name
-        if not UtilClient.is_unset(request.namespace):
-            body['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespaces):
+            body['namespaces'] = request.namespaces
         if not UtilClient.is_unset(request.parameters):
             body['parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(
@@ -6228,8 +6228,8 @@ class Client(OpenApiClient):
             body['action'] = request.action
         if not UtilClient.is_unset(request.instance_name):
             body['instance_name'] = request.instance_name
-        if not UtilClient.is_unset(request.namespace):
-            body['namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespaces):
+            body['namespaces'] = request.namespaces
         if not UtilClient.is_unset(request.parameters):
             body['parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(

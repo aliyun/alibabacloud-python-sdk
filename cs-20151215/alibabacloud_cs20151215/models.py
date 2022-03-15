@@ -3488,7 +3488,7 @@ class DeployPolicyInstanceRequest(TeaModel):
     ):
         # 规则治理动作
         self.action = action
-        # 策略实例实施范围（限定命名空间）。默认 [] 代表集群所有命名空间。
+        # 限制策略实施的命名空间，为空时表示所有命名空间
         self.namespaces = namespaces
         # 当前规则实例的配置参数
         self.parameters = parameters
@@ -13485,15 +13485,15 @@ class ModifyPolicyInstanceRequest(TeaModel):
         self,
         action: str = None,
         instance_name: str = None,
-        namespace: str = None,
+        namespaces: List[str] = None,
         parameters: Dict[str, Any] = None,
     ):
         # 规则治理动作
         self.action = action
         # 策略规则实例id
         self.instance_name = instance_name
-        # 策略实例实施范围
-        self.namespace = namespace
+        # 限制策略实施的命名空间，为空时表示所有命名空间
+        self.namespaces = namespaces
         # 当前规则实例的配置参数
         self.parameters = parameters
 
@@ -13510,8 +13510,8 @@ class ModifyPolicyInstanceRequest(TeaModel):
             result['action'] = self.action
         if self.instance_name is not None:
             result['instance_name'] = self.instance_name
-        if self.namespace is not None:
-            result['namespace'] = self.namespace
+        if self.namespaces is not None:
+            result['namespaces'] = self.namespaces
         if self.parameters is not None:
             result['parameters'] = self.parameters
         return result
@@ -13522,8 +13522,8 @@ class ModifyPolicyInstanceRequest(TeaModel):
             self.action = m.get('action')
         if m.get('instance_name') is not None:
             self.instance_name = m.get('instance_name')
-        if m.get('namespace') is not None:
-            self.namespace = m.get('namespace')
+        if m.get('namespaces') is not None:
+            self.namespaces = m.get('namespaces')
         if m.get('parameters') is not None:
             self.parameters = m.get('parameters')
         return self
