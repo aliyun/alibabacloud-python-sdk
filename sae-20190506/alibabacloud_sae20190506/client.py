@@ -579,6 +579,12 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
+        if not UtilClient.is_unset(request.kafka_endpoint):
+            query['KafkaEndpoint'] = request.kafka_endpoint
+        if not UtilClient.is_unset(request.kafka_instance_id):
+            query['KafkaInstanceId'] = request.kafka_instance_id
+        if not UtilClient.is_unset(request.kafka_logfile_config):
+            query['KafkaLogfileConfig'] = request.kafka_logfile_config
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
         if not UtilClient.is_unset(request.memory):
@@ -591,6 +597,8 @@ class Client(OpenApiClient):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.open_collect_to_kafka):
+            query['OpenCollectToKafka'] = request.open_collect_to_kafka
         if not UtilClient.is_unset(request.package_type):
             query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.package_url):
@@ -701,6 +709,12 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
+        if not UtilClient.is_unset(request.kafka_endpoint):
+            query['KafkaEndpoint'] = request.kafka_endpoint
+        if not UtilClient.is_unset(request.kafka_instance_id):
+            query['KafkaInstanceId'] = request.kafka_instance_id
+        if not UtilClient.is_unset(request.kafka_logfile_config):
+            query['KafkaLogfileConfig'] = request.kafka_logfile_config
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
         if not UtilClient.is_unset(request.memory):
@@ -713,6 +727,8 @@ class Client(OpenApiClient):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.open_collect_to_kafka):
+            query['OpenCollectToKafka'] = request.open_collect_to_kafka
         if not UtilClient.is_unset(request.package_type):
             query['PackageType'] = request.package_type
         if not UtilClient.is_unset(request.package_url):
@@ -1777,6 +1793,12 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
+        if not UtilClient.is_unset(request.kafka_endpoint):
+            query['KafkaEndpoint'] = request.kafka_endpoint
+        if not UtilClient.is_unset(request.kafka_instance_id):
+            query['KafkaInstanceId'] = request.kafka_instance_id
+        if not UtilClient.is_unset(request.kafka_logfile_config):
+            query['KafkaLogfileConfig'] = request.kafka_logfile_config
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
@@ -1789,6 +1811,8 @@ class Client(OpenApiClient):
             query['MountHost'] = request.mount_host
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.open_collect_to_kafka):
+            query['OpenCollectToKafka'] = request.open_collect_to_kafka
         if not UtilClient.is_unset(request.package_url):
             query['PackageUrl'] = request.package_url
         if not UtilClient.is_unset(request.package_version):
@@ -1893,6 +1917,12 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
+        if not UtilClient.is_unset(request.kafka_endpoint):
+            query['KafkaEndpoint'] = request.kafka_endpoint
+        if not UtilClient.is_unset(request.kafka_instance_id):
+            query['KafkaInstanceId'] = request.kafka_instance_id
+        if not UtilClient.is_unset(request.kafka_logfile_config):
+            query['KafkaLogfileConfig'] = request.kafka_logfile_config
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
@@ -1905,6 +1935,8 @@ class Client(OpenApiClient):
             query['MountHost'] = request.mount_host
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
+        if not UtilClient.is_unset(request.open_collect_to_kafka):
+            query['OpenCollectToKafka'] = request.open_collect_to_kafka
         if not UtilClient.is_unset(request.package_url):
             query['PackageUrl'] = request.package_url
         if not UtilClient.is_unset(request.package_version):

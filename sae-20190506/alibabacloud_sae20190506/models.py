@@ -1003,12 +1003,16 @@ class CreateApplicationRequest(TeaModel):
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
+        kafka_endpoint: str = None,
+        kafka_instance_id: str = None,
+        kafka_logfile_config: str = None,
         liveness: str = None,
         memory: int = None,
         mount_desc: str = None,
         mount_host: str = None,
         namespace_id: str = None,
         nas_id: str = None,
+        open_collect_to_kafka: bool = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
         oss_mount_descs: str = None,
@@ -1052,12 +1056,16 @@ class CreateApplicationRequest(TeaModel):
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
         self.jdk = jdk
+        self.kafka_endpoint = kafka_endpoint
+        self.kafka_instance_id = kafka_instance_id
+        self.kafka_logfile_config = kafka_logfile_config
         self.liveness = liveness
         self.memory = memory
         self.mount_desc = mount_desc
         self.mount_host = mount_host
         self.namespace_id = namespace_id
         self.nas_id = nas_id
+        self.open_collect_to_kafka = open_collect_to_kafka
         # OSS使用的AKID
         self.oss_ak_id = oss_ak_id
         # OSS AKID对应的secret
@@ -1129,6 +1137,12 @@ class CreateApplicationRequest(TeaModel):
             result['JarStartOptions'] = self.jar_start_options
         if self.jdk is not None:
             result['Jdk'] = self.jdk
+        if self.kafka_endpoint is not None:
+            result['KafkaEndpoint'] = self.kafka_endpoint
+        if self.kafka_instance_id is not None:
+            result['KafkaInstanceId'] = self.kafka_instance_id
+        if self.kafka_logfile_config is not None:
+            result['KafkaLogfileConfig'] = self.kafka_logfile_config
         if self.liveness is not None:
             result['Liveness'] = self.liveness
         if self.memory is not None:
@@ -1141,6 +1155,8 @@ class CreateApplicationRequest(TeaModel):
             result['NamespaceId'] = self.namespace_id
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
+        if self.open_collect_to_kafka is not None:
+            result['OpenCollectToKafka'] = self.open_collect_to_kafka
         if self.oss_ak_id is not None:
             result['OssAkId'] = self.oss_ak_id
         if self.oss_ak_secret is not None:
@@ -1225,6 +1241,12 @@ class CreateApplicationRequest(TeaModel):
             self.jar_start_options = m.get('JarStartOptions')
         if m.get('Jdk') is not None:
             self.jdk = m.get('Jdk')
+        if m.get('KafkaEndpoint') is not None:
+            self.kafka_endpoint = m.get('KafkaEndpoint')
+        if m.get('KafkaInstanceId') is not None:
+            self.kafka_instance_id = m.get('KafkaInstanceId')
+        if m.get('KafkaLogfileConfig') is not None:
+            self.kafka_logfile_config = m.get('KafkaLogfileConfig')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
         if m.get('Memory') is not None:
@@ -1237,6 +1259,8 @@ class CreateApplicationRequest(TeaModel):
             self.namespace_id = m.get('NamespaceId')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
+        if m.get('OpenCollectToKafka') is not None:
+            self.open_collect_to_kafka = m.get('OpenCollectToKafka')
         if m.get('OssAkId') is not None:
             self.oss_ak_id = m.get('OssAkId')
         if m.get('OssAkSecret') is not None:
@@ -3420,12 +3444,16 @@ class DeployApplicationRequest(TeaModel):
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
+        kafka_endpoint: str = None,
+        kafka_instance_id: str = None,
+        kafka_logfile_config: str = None,
         liveness: str = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         mount_desc: str = None,
         mount_host: str = None,
         nas_id: str = None,
+        open_collect_to_kafka: bool = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
         oss_mount_descs: str = None,
@@ -3467,12 +3495,16 @@ class DeployApplicationRequest(TeaModel):
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
         self.jdk = jdk
+        self.kafka_endpoint = kafka_endpoint
+        self.kafka_instance_id = kafka_instance_id
+        self.kafka_logfile_config = kafka_logfile_config
         self.liveness = liveness
         self.min_ready_instance_ratio = min_ready_instance_ratio
         self.min_ready_instances = min_ready_instances
         self.mount_desc = mount_desc
         self.mount_host = mount_host
         self.nas_id = nas_id
+        self.open_collect_to_kafka = open_collect_to_kafka
         # OSS使用的AKID
         self.oss_ak_id = oss_ak_id
         # OSS AKID对应的secret
@@ -3542,6 +3574,12 @@ class DeployApplicationRequest(TeaModel):
             result['JarStartOptions'] = self.jar_start_options
         if self.jdk is not None:
             result['Jdk'] = self.jdk
+        if self.kafka_endpoint is not None:
+            result['KafkaEndpoint'] = self.kafka_endpoint
+        if self.kafka_instance_id is not None:
+            result['KafkaInstanceId'] = self.kafka_instance_id
+        if self.kafka_logfile_config is not None:
+            result['KafkaLogfileConfig'] = self.kafka_logfile_config
         if self.liveness is not None:
             result['Liveness'] = self.liveness
         if self.min_ready_instance_ratio is not None:
@@ -3554,6 +3592,8 @@ class DeployApplicationRequest(TeaModel):
             result['MountHost'] = self.mount_host
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
+        if self.open_collect_to_kafka is not None:
+            result['OpenCollectToKafka'] = self.open_collect_to_kafka
         if self.oss_ak_id is not None:
             result['OssAkId'] = self.oss_ak_id
         if self.oss_ak_secret is not None:
@@ -3632,6 +3672,12 @@ class DeployApplicationRequest(TeaModel):
             self.jar_start_options = m.get('JarStartOptions')
         if m.get('Jdk') is not None:
             self.jdk = m.get('Jdk')
+        if m.get('KafkaEndpoint') is not None:
+            self.kafka_endpoint = m.get('KafkaEndpoint')
+        if m.get('KafkaInstanceId') is not None:
+            self.kafka_instance_id = m.get('KafkaInstanceId')
+        if m.get('KafkaLogfileConfig') is not None:
+            self.kafka_logfile_config = m.get('KafkaLogfileConfig')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
         if m.get('MinReadyInstanceRatio') is not None:
@@ -3644,6 +3690,8 @@ class DeployApplicationRequest(TeaModel):
             self.mount_host = m.get('MountHost')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
+        if m.get('OpenCollectToKafka') is not None:
+            self.open_collect_to_kafka = m.get('OpenCollectToKafka')
         if m.get('OssAkId') is not None:
             self.oss_ak_id = m.get('OssAkId')
         if m.get('OssAkSecret') is not None:
@@ -4404,6 +4452,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
+        kafka_configs: str = None,
         liveness: str = None,
         memory: int = None,
         min_ready_instance_ratio: int = None,
@@ -4460,6 +4509,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
         self.jdk = jdk
+        self.kafka_configs = kafka_configs
         self.liveness = liveness
         self.memory = memory
         self.min_ready_instance_ratio = min_ready_instance_ratio
@@ -4563,6 +4613,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['JarStartOptions'] = self.jar_start_options
         if self.jdk is not None:
             result['Jdk'] = self.jdk
+        if self.kafka_configs is not None:
+            result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
         if self.memory is not None:
@@ -4682,6 +4734,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.jar_start_options = m.get('JarStartOptions')
         if m.get('Jdk') is not None:
             self.jdk = m.get('Jdk')
+        if m.get('KafkaConfigs') is not None:
+            self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
         if m.get('Memory') is not None:
@@ -5364,6 +5418,7 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
         self,
         create_time_stamp: int = None,
         eip: str = None,
+        finish_time_stamp: int = None,
         group_id: str = None,
         image_url: str = None,
         instance_container_ip: str = None,
@@ -5376,6 +5431,7 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
     ):
         self.create_time_stamp = create_time_stamp
         self.eip = eip
+        self.finish_time_stamp = finish_time_stamp
         self.group_id = group_id
         self.image_url = image_url
         self.instance_container_ip = instance_container_ip
@@ -5399,6 +5455,8 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
             result['CreateTimeStamp'] = self.create_time_stamp
         if self.eip is not None:
             result['Eip'] = self.eip
+        if self.finish_time_stamp is not None:
+            result['FinishTimeStamp'] = self.finish_time_stamp
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.image_url is not None:
@@ -5425,6 +5483,8 @@ class DescribeApplicationInstancesResponseBodyDataInstances(TeaModel):
             self.create_time_stamp = m.get('CreateTimeStamp')
         if m.get('Eip') is not None:
             self.eip = m.get('Eip')
+        if m.get('FinishTimeStamp') is not None:
+            self.finish_time_stamp = m.get('FinishTimeStamp')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('ImageUrl') is not None:
@@ -7508,6 +7568,7 @@ class DescribeChangeOrderResponseBodyDataPipelines(TeaModel):
 class DescribeChangeOrderResponseBodyData(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         app_name: str = None,
         approval_id: str = None,
         auto: bool = None,
@@ -7526,6 +7587,7 @@ class DescribeChangeOrderResponseBodyData(TeaModel):
         sub_status: int = None,
         support_rollback: bool = None,
     ):
+        self.app_id = app_id
         self.app_name = app_name
         self.approval_id = approval_id
         self.auto = auto
@@ -7556,6 +7618,8 @@ class DescribeChangeOrderResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
         if self.approval_id is not None:
@@ -7596,6 +7660,8 @@ class DescribeChangeOrderResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
         if m.get('ApprovalId') is not None:
@@ -8876,6 +8942,7 @@ class DescribeGreyTagRouteResponseBodyDataScRules(TeaModel):
 class DescribeGreyTagRouteResponseBodyData(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         create_time: int = None,
         description: str = None,
         dubbo_rules: List[DescribeGreyTagRouteResponseBodyDataDubboRules] = None,
@@ -8884,6 +8951,7 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
         sc_rules: List[DescribeGreyTagRouteResponseBodyDataScRules] = None,
         update_time: int = None,
     ):
+        self.app_id = app_id
         self.create_time = create_time
         self.description = description
         self.dubbo_rules = dubbo_rules
@@ -8908,6 +8976,8 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -8930,6 +9000,8 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -11759,19 +11831,15 @@ class ListAppServicesPageRequest(TeaModel):
 class ListAppServicesPageResponseBodyDataResult(TeaModel):
     def __init__(
         self,
-        cluster_name: str = None,
         edas_app_id: str = None,
         edas_app_name: str = None,
-        gmt_modify_time: str = None,
         group: str = None,
         instance_num: int = None,
         service_name: str = None,
         version: str = None,
     ):
-        self.cluster_name = cluster_name
         self.edas_app_id = edas_app_id
         self.edas_app_name = edas_app_name
-        self.gmt_modify_time = gmt_modify_time
         self.group = group
         self.instance_num = instance_num
         self.service_name = service_name
@@ -11786,14 +11854,10 @@ class ListAppServicesPageResponseBodyDataResult(TeaModel):
             return _map
 
         result = dict()
-        if self.cluster_name is not None:
-            result['ClusterName'] = self.cluster_name
         if self.edas_app_id is not None:
             result['EdasAppId'] = self.edas_app_id
         if self.edas_app_name is not None:
             result['EdasAppName'] = self.edas_app_name
-        if self.gmt_modify_time is not None:
-            result['GmtModifyTime'] = self.gmt_modify_time
         if self.group is not None:
             result['Group'] = self.group
         if self.instance_num is not None:
@@ -11806,14 +11870,10 @@ class ListAppServicesPageResponseBodyDataResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClusterName') is not None:
-            self.cluster_name = m.get('ClusterName')
         if m.get('EdasAppId') is not None:
             self.edas_app_id = m.get('EdasAppId')
         if m.get('EdasAppName') is not None:
             self.edas_app_name = m.get('EdasAppName')
-        if m.get('GmtModifyTime') is not None:
-            self.gmt_modify_time = m.get('GmtModifyTime')
         if m.get('Group') is not None:
             self.group = m.get('Group')
         if m.get('InstanceNum') is not None:
