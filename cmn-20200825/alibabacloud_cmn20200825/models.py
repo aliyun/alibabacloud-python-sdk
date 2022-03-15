@@ -10277,6 +10277,127 @@ class CreateSpaceModelResponse(TeaModel):
         return self
 
 
+class CreateTaskRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        params: str = None,
+        template_id: str = None,
+    ):
+        # 幂等参数
+        self.client_token = client_token
+        # 实例ID
+        self.instance_id = instance_id
+        # 任务参数
+        self.params = params
+        # 模板id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class CreateTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 任务id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTimePeriodRequest(TeaModel):
     def __init__(
         self,
@@ -18674,6 +18795,206 @@ class GetSpaceModelSortResponse(TeaModel):
         return self
 
 
+class GetTaskRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        task_id: str = None,
+    ):
+        # 实例ID
+        self.instance_id = instance_id
+        # 任务ID
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetTaskResponseBodyTask(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        create_time: str = None,
+        params: str = None,
+        response_code: str = None,
+        result: str = None,
+        status: str = None,
+        task_id: str = None,
+        template_id: str = None,
+        template_name: str = None,
+        update_time: str = None,
+    ):
+        # 模板类别
+        self.category = category
+        # 创建时间
+        self.create_time = create_time
+        # 任务参数
+        self.params = params
+        # 任务错误码
+        self.response_code = response_code
+        # 任务返回
+        self.result = result
+        # 任务状态
+        self.status = status
+        # 任务id
+        self.task_id = task_id
+        # 模板id
+        self.template_id = template_id
+        # 模板名称
+        self.template_name = template_name
+        # 修改时间
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.response_code is not None:
+            result['ResponseCode'] = self.response_code
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('ResponseCode') is not None:
+            self.response_code = m.get('ResponseCode')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task: GetTaskResponseBodyTask = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 任务信息
+        self.task = task
+
+    def validate(self):
+        if self.task:
+            self.task.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task is not None:
+            result['Task'] = self.task.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Task') is not None:
+            temp_model = GetTaskResponseBodyTask()
+            self.task = temp_model.from_map(m['Task'])
+        return self
+
+
+class GetTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetWorkOrderRequest(TeaModel):
     def __init__(
         self,
@@ -24978,6 +25299,7 @@ class ListIpBlocksRequest(TeaModel):
         next_token: str = None,
         status: str = None,
         sub_net_business: str = None,
+        top_parent: bool = None,
         tree_type: bool = None,
         zone_name: str = None,
     ):
@@ -25000,6 +25322,8 @@ class ListIpBlocksRequest(TeaModel):
         self.status = status
         # 业务类型小类
         self.sub_net_business = sub_net_business
+        # 是否获取顶层父类
+        self.top_parent = top_parent
         # 是否树状展示地址段
         self.tree_type = tree_type
         # 园区名称，NetType为PUBLIC有效
@@ -25034,6 +25358,8 @@ class ListIpBlocksRequest(TeaModel):
             result['Status'] = self.status
         if self.sub_net_business is not None:
             result['SubNetBusiness'] = self.sub_net_business
+        if self.top_parent is not None:
+            result['TopParent'] = self.top_parent
         if self.tree_type is not None:
             result['TreeType'] = self.tree_type
         if self.zone_name is not None:
@@ -25062,6 +25388,8 @@ class ListIpBlocksRequest(TeaModel):
             self.status = m.get('Status')
         if m.get('SubNetBusiness') is not None:
             self.sub_net_business = m.get('SubNetBusiness')
+        if m.get('TopParent') is not None:
+            self.top_parent = m.get('TopParent')
         if m.get('TreeType') is not None:
             self.tree_type = m.get('TreeType')
         if m.get('ZoneName') is not None:

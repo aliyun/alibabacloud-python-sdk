@@ -1993,6 +1993,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_space_model_with_options_async(request, runtime)
 
+    def create_task_with_options(
+        self,
+        request: cmn_20200825_models.CreateTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.CreateTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTask',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.CreateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_task_with_options_async(
+        self,
+        request: cmn_20200825_models.CreateTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.CreateTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTask',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.CreateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_task(
+        self,
+        request: cmn_20200825_models.CreateTaskRequest,
+    ) -> cmn_20200825_models.CreateTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_task_with_options(request, runtime)
+
+    async def create_task_async(
+        self,
+        request: cmn_20200825_models.CreateTaskRequest,
+    ) -> cmn_20200825_models.CreateTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_task_with_options_async(request, runtime)
+
     def create_time_period_with_options(
         self,
         request: cmn_20200825_models.CreateTimePeriodRequest,
@@ -5530,6 +5616,72 @@ class Client(OpenApiClient):
     ) -> cmn_20200825_models.GetSpaceModelSortResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_space_model_sort_with_options_async(request, runtime)
+
+    def get_task_with_options(
+        self,
+        request: cmn_20200825_models.GetTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.GetTaskResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTask',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.GetTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_with_options_async(
+        self,
+        request: cmn_20200825_models.GetTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cmn_20200825_models.GetTaskResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTask',
+            version='2020-08-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cmn_20200825_models.GetTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task(
+        self,
+        request: cmn_20200825_models.GetTaskRequest,
+    ) -> cmn_20200825_models.GetTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_task_with_options(request, runtime)
+
+    async def get_task_async(
+        self,
+        request: cmn_20200825_models.GetTaskRequest,
+    ) -> cmn_20200825_models.GetTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_task_with_options_async(request, runtime)
 
     def get_work_order_with_options(
         self,
