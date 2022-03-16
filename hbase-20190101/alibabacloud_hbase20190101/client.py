@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_hbase20190101 import models as hbase_20190101_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -90,11 +92,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.AddUserHdfsInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.ext_info):
+            query['ExtInfo'] = request.ext_info
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.AddUserHdfsInfoResponse().from_map(
-            self.do_rpcrequest('AddUserHdfsInfo', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddUserHdfsInfo',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.AddUserHdfsInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def add_user_hdfs_info_with_options_async(
@@ -103,11 +124,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.AddUserHdfsInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.ext_info):
+            query['ExtInfo'] = request.ext_info
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.AddUserHdfsInfoResponse().from_map(
-            await self.do_rpcrequest_async('AddUserHdfsInfo', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AddUserHdfsInfo',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.AddUserHdfsInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_user_hdfs_info(
@@ -130,11 +170,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.AllocatePublicNetworkAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.AllocatePublicNetworkAddressResponse().from_map(
-            self.do_rpcrequest('AllocatePublicNetworkAddress', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AllocatePublicNetworkAddress',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.AllocatePublicNetworkAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def allocate_public_network_address_with_options_async(
@@ -143,11 +200,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.AllocatePublicNetworkAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.AllocatePublicNetworkAddressResponse().from_map(
-            await self.do_rpcrequest_async('AllocatePublicNetworkAddress', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='AllocatePublicNetworkAddress',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.AllocatePublicNetworkAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def allocate_public_network_address(
@@ -170,11 +244,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CheckComponentsVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.components):
+            query['Components'] = request.components
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CheckComponentsVersionResponse().from_map(
-            self.do_rpcrequest('CheckComponentsVersion', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckComponentsVersion',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CheckComponentsVersionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_components_version_with_options_async(
@@ -183,11 +274,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CheckComponentsVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.components):
+            query['Components'] = request.components
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CheckComponentsVersionResponse().from_map(
-            await self.do_rpcrequest_async('CheckComponentsVersion', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckComponentsVersion',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CheckComponentsVersionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_components_version(
@@ -210,11 +318,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CloseBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CloseBackupResponse().from_map(
-            self.do_rpcrequest('CloseBackup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CloseBackup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CloseBackupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def close_backup_with_options_async(
@@ -223,11 +346,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CloseBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CloseBackupResponse().from_map(
-            await self.do_rpcrequest_async('CloseBackup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CloseBackup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CloseBackupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def close_backup(
@@ -250,11 +388,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ConvertInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ConvertInstanceResponse().from_map(
-            self.do_rpcrequest('ConvertInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ConvertInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ConvertInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def convert_instance_with_options_async(
@@ -263,11 +422,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ConvertInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ConvertInstanceResponse().from_map(
-            await self.do_rpcrequest_async('ConvertInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ConvertInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ConvertInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def convert_instance(
@@ -290,11 +470,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateBackupPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateBackupPlanResponse().from_map(
-            self.do_rpcrequest('CreateBackupPlan', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateBackupPlan',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateBackupPlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_backup_plan_with_options_async(
@@ -303,11 +498,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateBackupPlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateBackupPlanResponse().from_map(
-            await self.do_rpcrequest_async('CreateBackupPlan', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateBackupPlan',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_backup_plan(
@@ -330,11 +540,66 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.cold_storage_size):
+            query['ColdStorageSize'] = request.cold_storage_size
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateClusterResponse().from_map(
-            self.do_rpcrequest('CreateCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_cluster_with_options_async(
@@ -343,11 +608,66 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.cold_storage_size):
+            query['ColdStorageSize'] = request.cold_storage_size
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateClusterResponse().from_map(
-            await self.do_rpcrequest_async('CreateCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_cluster(
@@ -370,11 +690,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateGlobalResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateGlobalResourceResponse().from_map(
-            self.do_rpcrequest('CreateGlobalResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGlobalResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateGlobalResourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_global_resource_with_options_async(
@@ -383,11 +724,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateGlobalResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateGlobalResourceResponse().from_map(
-            await self.do_rpcrequest_async('CreateGlobalResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateGlobalResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateGlobalResourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_global_resource(
@@ -404,57 +766,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_global_resource_with_options_async(request, runtime)
 
-    def create_hbase_ha_slb_with_options(
-        self,
-        request: hbase_20190101_models.CreateHbaseHaSlbRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return hbase_20190101_models.CreateHbaseHaSlbResponse().from_map(
-            self.do_rpcrequest('CreateHbaseHaSlb', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_hbase_ha_slb_with_options_async(
-        self,
-        request: hbase_20190101_models.CreateHbaseHaSlbRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return hbase_20190101_models.CreateHbaseHaSlbResponse().from_map(
-            await self.do_rpcrequest_async('CreateHbaseHaSlb', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_hbase_ha_slb(
-        self,
-        request: hbase_20190101_models.CreateHbaseHaSlbRequest,
-    ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_hbase_ha_slb_with_options(request, runtime)
-
-    async def create_hbase_ha_slb_async(
-        self,
-        request: hbase_20190101_models.CreateHbaseHaSlbRequest,
-    ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_hbase_ha_slb_with_options_async(request, runtime)
-
     def create_hbase_slb_server_with_options(
         self,
         request: hbase_20190101_models.CreateHBaseSlbServerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateHBaseSlbServerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.slb_server):
+            query['SlbServer'] = request.slb_server
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateHBaseSlbServerResponse().from_map(
-            self.do_rpcrequest('CreateHBaseSlbServer', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateHBaseSlbServer',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateHBaseSlbServerResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_hbase_slb_server_with_options_async(
@@ -463,11 +804,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateHBaseSlbServerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.slb_server):
+            query['SlbServer'] = request.slb_server
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateHBaseSlbServerResponse().from_map(
-            await self.do_rpcrequest_async('CreateHBaseSlbServer', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateHBaseSlbServer',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateHBaseSlbServerResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_hbase_slb_server(
@@ -484,17 +844,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_hbase_slb_server_with_options_async(request, runtime)
 
+    def create_hbase_ha_slb_with_options(
+        self,
+        request: hbase_20190101_models.CreateHbaseHaSlbRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.ha_id):
+            query['HaId'] = request.ha_id
+        if not UtilClient.is_unset(request.ha_types):
+            query['HaTypes'] = request.ha_types
+        if not UtilClient.is_unset(request.hbase_type):
+            query['HbaseType'] = request.hbase_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHbaseHaSlb',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateHbaseHaSlbResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hbase_ha_slb_with_options_async(
+        self,
+        request: hbase_20190101_models.CreateHbaseHaSlbRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.ha_id):
+            query['HaId'] = request.ha_id
+        if not UtilClient.is_unset(request.ha_types):
+            query['HaTypes'] = request.ha_types
+        if not UtilClient.is_unset(request.hbase_type):
+            query['HbaseType'] = request.hbase_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHbaseHaSlb',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateHbaseHaSlbResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hbase_ha_slb(
+        self,
+        request: hbase_20190101_models.CreateHbaseHaSlbRequest,
+    ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_hbase_ha_slb_with_options(request, runtime)
+
+    async def create_hbase_ha_slb_async(
+        self,
+        request: hbase_20190101_models.CreateHbaseHaSlbRequest,
+    ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_hbase_ha_slb_with_options_async(request, runtime)
+
     def create_multi_zone_cluster_with_options(
         self,
         request: hbase_20190101_models.CreateMultiZoneClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateMultiZoneClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arbiter_vswitch_id):
+            query['ArbiterVSwitchId'] = request.arbiter_vswitch_id
+        if not UtilClient.is_unset(request.arbiter_zone_id):
+            query['ArbiterZoneId'] = request.arbiter_zone_id
+        if not UtilClient.is_unset(request.arch_version):
+            query['ArchVersion'] = request.arch_version
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.core_disk_size):
+            query['CoreDiskSize'] = request.core_disk_size
+        if not UtilClient.is_unset(request.core_disk_type):
+            query['CoreDiskType'] = request.core_disk_type
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.core_node_count):
+            query['CoreNodeCount'] = request.core_node_count
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.log_disk_size):
+            query['LogDiskSize'] = request.log_disk_size
+        if not UtilClient.is_unset(request.log_disk_type):
+            query['LogDiskType'] = request.log_disk_type
+        if not UtilClient.is_unset(request.log_instance_type):
+            query['LogInstanceType'] = request.log_instance_type
+        if not UtilClient.is_unset(request.log_node_count):
+            query['LogNodeCount'] = request.log_node_count
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
+        if not UtilClient.is_unset(request.multi_zone_combination):
+            query['MultiZoneCombination'] = request.multi_zone_combination
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.primary_zone_id):
+            query['PrimaryZoneId'] = request.primary_zone_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateMultiZoneClusterResponse().from_map(
-            self.do_rpcrequest('CreateMultiZoneCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMultiZoneCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateMultiZoneClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_multi_zone_cluster_with_options_async(
@@ -503,11 +1020,82 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateMultiZoneClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arbiter_vswitch_id):
+            query['ArbiterVSwitchId'] = request.arbiter_vswitch_id
+        if not UtilClient.is_unset(request.arbiter_zone_id):
+            query['ArbiterZoneId'] = request.arbiter_zone_id
+        if not UtilClient.is_unset(request.arch_version):
+            query['ArchVersion'] = request.arch_version
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.core_disk_size):
+            query['CoreDiskSize'] = request.core_disk_size
+        if not UtilClient.is_unset(request.core_disk_type):
+            query['CoreDiskType'] = request.core_disk_type
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.core_node_count):
+            query['CoreNodeCount'] = request.core_node_count
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.log_disk_size):
+            query['LogDiskSize'] = request.log_disk_size
+        if not UtilClient.is_unset(request.log_disk_type):
+            query['LogDiskType'] = request.log_disk_type
+        if not UtilClient.is_unset(request.log_instance_type):
+            query['LogInstanceType'] = request.log_instance_type
+        if not UtilClient.is_unset(request.log_node_count):
+            query['LogNodeCount'] = request.log_node_count
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
+        if not UtilClient.is_unset(request.multi_zone_combination):
+            query['MultiZoneCombination'] = request.multi_zone_combination
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.primary_zone_id):
+            query['PrimaryZoneId'] = request.primary_zone_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateMultiZoneClusterResponse().from_map(
-            await self.do_rpcrequest_async('CreateMultiZoneCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMultiZoneCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateMultiZoneClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_multi_zone_cluster(
@@ -530,11 +1118,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateRestorePlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.restore_all_table):
+            query['RestoreAllTable'] = request.restore_all_table
+        if not UtilClient.is_unset(request.restore_by_copy):
+            query['RestoreByCopy'] = request.restore_by_copy
+        if not UtilClient.is_unset(request.restore_to_date):
+            query['RestoreToDate'] = request.restore_to_date
+        if not UtilClient.is_unset(request.tables):
+            query['Tables'] = request.tables
+        if not UtilClient.is_unset(request.target_cluster_id):
+            query['TargetClusterId'] = request.target_cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateRestorePlanResponse().from_map(
-            self.do_rpcrequest('CreateRestorePlan', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRestorePlan',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateRestorePlanResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_restore_plan_with_options_async(
@@ -543,11 +1156,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateRestorePlanResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.restore_all_table):
+            query['RestoreAllTable'] = request.restore_all_table
+        if not UtilClient.is_unset(request.restore_by_copy):
+            query['RestoreByCopy'] = request.restore_by_copy
+        if not UtilClient.is_unset(request.restore_to_date):
+            query['RestoreToDate'] = request.restore_to_date
+        if not UtilClient.is_unset(request.tables):
+            query['Tables'] = request.tables
+        if not UtilClient.is_unset(request.target_cluster_id):
+            query['TargetClusterId'] = request.target_cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateRestorePlanResponse().from_map(
-            await self.do_rpcrequest_async('CreateRestorePlan', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateRestorePlan',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateRestorePlanResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_restore_plan(
@@ -570,11 +1208,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateServerlessClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.serverless_capability):
+            query['ServerlessCapability'] = request.serverless_capability
+        if not UtilClient.is_unset(request.serverless_spec):
+            query['ServerlessSpec'] = request.serverless_spec
+        if not UtilClient.is_unset(request.serverless_storage):
+            query['ServerlessStorage'] = request.serverless_storage
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateServerlessClusterResponse().from_map(
-            self.do_rpcrequest('CreateServerlessCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateServerlessCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateServerlessClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_serverless_cluster_with_options_async(
@@ -583,11 +1270,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateServerlessClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.serverless_capability):
+            query['ServerlessCapability'] = request.serverless_capability
+        if not UtilClient.is_unset(request.serverless_spec):
+            query['ServerlessSpec'] = request.serverless_spec
+        if not UtilClient.is_unset(request.serverless_storage):
+            query['ServerlessStorage'] = request.serverless_storage
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.CreateServerlessClusterResponse().from_map(
-            await self.do_rpcrequest_async('CreateServerlessCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateServerlessCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CreateServerlessClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_serverless_cluster(
@@ -610,11 +1346,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteGlobalResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteGlobalResourceResponse().from_map(
-            self.do_rpcrequest('DeleteGlobalResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteGlobalResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteGlobalResourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_global_resource_with_options_async(
@@ -623,11 +1378,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteGlobalResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteGlobalResourceResponse().from_map(
-            await self.do_rpcrequest_async('DeleteGlobalResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteGlobalResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteGlobalResourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_global_resource(
@@ -650,11 +1424,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHBaseHaDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.ha_id):
+            query['HaId'] = request.ha_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteHBaseHaDBResponse().from_map(
-            self.do_rpcrequest('DeleteHBaseHaDB', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteHBaseHaDB',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteHBaseHaDBResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_hbase_ha_dbwith_options_async(
@@ -663,11 +1454,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHBaseHaDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.ha_id):
+            query['HaId'] = request.ha_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteHBaseHaDBResponse().from_map(
-            await self.do_rpcrequest_async('DeleteHBaseHaDB', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteHBaseHaDB',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteHBaseHaDBResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_hbase_ha_db(
@@ -684,57 +1492,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_hbase_ha_dbwith_options_async(request, runtime)
 
-    def delete_hbase_ha_slb_with_options(
-        self,
-        request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return hbase_20190101_models.DeleteHbaseHaSlbResponse().from_map(
-            self.do_rpcrequest('DeleteHbaseHaSlb', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_hbase_ha_slb_with_options_async(
-        self,
-        request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return hbase_20190101_models.DeleteHbaseHaSlbResponse().from_map(
-            await self.do_rpcrequest_async('DeleteHbaseHaSlb', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_hbase_ha_slb(
-        self,
-        request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
-    ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_hbase_ha_slb_with_options(request, runtime)
-
-    async def delete_hbase_ha_slb_async(
-        self,
-        request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
-    ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_hbase_ha_slb_with_options_async(request, runtime)
-
     def delete_hbase_slb_server_with_options(
         self,
         request: hbase_20190101_models.DeleteHBaseSlbServerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHBaseSlbServerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.slb_server):
+            query['SlbServer'] = request.slb_server
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteHBaseSlbServerResponse().from_map(
-            self.do_rpcrequest('DeleteHBaseSlbServer', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteHBaseSlbServer',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteHBaseSlbServerResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_hbase_slb_server_with_options_async(
@@ -743,11 +1528,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHBaseSlbServerResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.slb_server):
+            query['SlbServer'] = request.slb_server
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteHBaseSlbServerResponse().from_map(
-            await self.do_rpcrequest_async('DeleteHBaseSlbServer', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteHBaseSlbServer',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteHBaseSlbServerResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_hbase_slb_server(
@@ -764,17 +1566,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_hbase_slb_server_with_options_async(request, runtime)
 
+    def delete_hbase_ha_slb_with_options(
+        self,
+        request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.ha_id):
+            query['HaId'] = request.ha_id
+        if not UtilClient.is_unset(request.ha_types):
+            query['HaTypes'] = request.ha_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHbaseHaSlb',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteHbaseHaSlbResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hbase_ha_slb_with_options_async(
+        self,
+        request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.ha_id):
+            query['HaId'] = request.ha_id
+        if not UtilClient.is_unset(request.ha_types):
+            query['HaTypes'] = request.ha_types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHbaseHaSlb',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteHbaseHaSlbResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hbase_ha_slb(
+        self,
+        request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
+    ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hbase_ha_slb_with_options(request, runtime)
+
+    async def delete_hbase_ha_slb_async(
+        self,
+        request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
+    ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hbase_ha_slb_with_options_async(request, runtime)
+
     def delete_instance_with_options(
         self,
         request: hbase_20190101_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.immediate_delete_flag):
+            query['ImmediateDeleteFlag'] = request.immediate_delete_flag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteInstanceResponse().from_map(
-            self.do_rpcrequest('DeleteInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_instance_with_options_async(
@@ -783,11 +1680,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.immediate_delete_flag):
+            query['ImmediateDeleteFlag'] = request.immediate_delete_flag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteInstanceResponse().from_map(
-            await self.do_rpcrequest_async('DeleteInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_instance(
@@ -810,11 +1724,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteMultiZoneClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.immediate_delete_flag):
+            query['ImmediateDeleteFlag'] = request.immediate_delete_flag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteMultiZoneClusterResponse().from_map(
-            self.do_rpcrequest('DeleteMultiZoneCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteMultiZoneCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteMultiZoneClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_multi_zone_cluster_with_options_async(
@@ -823,11 +1754,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteMultiZoneClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.immediate_delete_flag):
+            query['ImmediateDeleteFlag'] = request.immediate_delete_flag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteMultiZoneClusterResponse().from_map(
-            await self.do_rpcrequest_async('DeleteMultiZoneCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteMultiZoneCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteMultiZoneClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_multi_zone_cluster(
@@ -850,11 +1798,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteServerlessClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteServerlessClusterResponse().from_map(
-            self.do_rpcrequest('DeleteServerlessCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteServerlessCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteServerlessClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_serverless_cluster_with_options_async(
@@ -863,11 +1830,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteServerlessClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteServerlessClusterResponse().from_map(
-            await self.do_rpcrequest_async('DeleteServerlessCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteServerlessCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteServerlessClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_serverless_cluster(
@@ -890,11 +1876,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteUserHdfsInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.name_service):
+            query['NameService'] = request.name_service
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteUserHdfsInfoResponse().from_map(
-            self.do_rpcrequest('DeleteUserHdfsInfo', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteUserHdfsInfo',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteUserHdfsInfoResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_user_hdfs_info_with_options_async(
@@ -903,11 +1906,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteUserHdfsInfoResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.name_service):
+            query['NameService'] = request.name_service
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DeleteUserHdfsInfoResponse().from_map(
-            await self.do_rpcrequest_async('DeleteUserHdfsInfo', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteUserHdfsInfo',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DeleteUserHdfsInfoResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_user_hdfs_info(
@@ -930,11 +1950,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeAvailableResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeAvailableResourceResponse().from_map(
-            self.do_rpcrequest('DescribeAvailableResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAvailableResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeAvailableResourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_available_resource_with_options_async(
@@ -943,11 +1990,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeAvailableResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeAvailableResourceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeAvailableResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeAvailableResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeAvailableResourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_available_resource(
@@ -970,11 +2044,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupPlanConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupPlanConfigResponse().from_map(
-            self.do_rpcrequest('DescribeBackupPlanConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupPlanConfig',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupPlanConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_plan_config_with_options_async(
@@ -983,11 +2072,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupPlanConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupPlanConfigResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupPlanConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupPlanConfig',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupPlanConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_plan_config(
@@ -1010,11 +2114,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupPolicyResponse().from_map(
-            self.do_rpcrequest('DescribeBackupPolicy', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_policy_with_options_async(
@@ -1023,11 +2142,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupPolicyResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupPolicy', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_policy(
@@ -1044,57 +2178,32 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
 
-    def describe_backups_with_options(
-        self,
-        request: hbase_20190101_models.DescribeBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbase_20190101_models.DescribeBackupsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return hbase_20190101_models.DescribeBackupsResponse().from_map(
-            self.do_rpcrequest('DescribeBackups', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_backups_with_options_async(
-        self,
-        request: hbase_20190101_models.DescribeBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbase_20190101_models.DescribeBackupsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return hbase_20190101_models.DescribeBackupsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackups', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_backups(
-        self,
-        request: hbase_20190101_models.DescribeBackupsRequest,
-    ) -> hbase_20190101_models.DescribeBackupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_backups_with_options(request, runtime)
-
-    async def describe_backups_async(
-        self,
-        request: hbase_20190101_models.DescribeBackupsRequest,
-    ) -> hbase_20190101_models.DescribeBackupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_backups_with_options_async(request, runtime)
-
     def describe_backup_status_with_options(
         self,
         request: hbase_20190101_models.DescribeBackupStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupStatusResponse().from_map(
-            self.do_rpcrequest('DescribeBackupStatus', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupStatus',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupStatusResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_status_with_options_async(
@@ -1103,11 +2212,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupStatusResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupStatusResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupStatus', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupStatus',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupStatusResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_status(
@@ -1130,11 +2254,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupSummaryResponse().from_map(
-            self.do_rpcrequest('DescribeBackupSummary', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupSummary',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupSummaryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_summary_with_options_async(
@@ -1143,11 +2286,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupSummaryResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupSummary', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupSummary',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_summary(
@@ -1170,11 +2332,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_record_id):
+            query['BackupRecordId'] = request.backup_record_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupTablesResponse().from_map(
-            self.do_rpcrequest('DescribeBackupTables', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupTables',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupTablesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_backup_tables_with_options_async(
@@ -1183,11 +2366,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_record_id):
+            query['BackupRecordId'] = request.backup_record_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeBackupTablesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeBackupTables', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeBackupTables',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupTablesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_backup_tables(
@@ -1204,17 +2408,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_tables_with_options_async(request, runtime)
 
+    def describe_backups_with_options(
+        self,
+        request: hbase_20190101_models.DescribeBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time_utc):
+            query['EndTimeUTC'] = request.end_time_utc
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.start_time_utc):
+            query['StartTimeUTC'] = request.start_time_utc
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackups',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backups_with_options_async(
+        self,
+        request: hbase_20190101_models.DescribeBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.end_time_utc):
+            query['EndTimeUTC'] = request.end_time_utc
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.start_time_utc):
+            query['StartTimeUTC'] = request.start_time_utc
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackups',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backups(
+        self,
+        request: hbase_20190101_models.DescribeBackupsRequest,
+    ) -> hbase_20190101_models.DescribeBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backups_with_options(request, runtime)
+
+    async def describe_backups_async(
+        self,
+        request: hbase_20190101_models.DescribeBackupsRequest,
+    ) -> hbase_20190101_models.DescribeBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backups_with_options_async(request, runtime)
+
     def describe_cluster_connection_with_options(
         self,
         request: hbase_20190101_models.DescribeClusterConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeClusterConnectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeClusterConnectionResponse().from_map(
-            self.do_rpcrequest('DescribeClusterConnection', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterConnection',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeClusterConnectionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cluster_connection_with_options_async(
@@ -1223,11 +2542,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeClusterConnectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeClusterConnectionResponse().from_map(
-            await self.do_rpcrequest_async('DescribeClusterConnection', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeClusterConnection',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeClusterConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cluster_connection(
@@ -1250,11 +2586,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeColdStorageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeColdStorageResponse().from_map(
-            self.do_rpcrequest('DescribeColdStorage', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeColdStorage',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeColdStorageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_cold_storage_with_options_async(
@@ -1263,11 +2614,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeColdStorageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeColdStorageResponse().from_map(
-            await self.do_rpcrequest_async('DescribeColdStorage', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeColdStorage',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeColdStorageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_cold_storage(
@@ -1290,11 +2656,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDBInstanceUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeDBInstanceUsageResponse().from_map(
-            self.do_rpcrequest('DescribeDBInstanceUsage', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDBInstanceUsage',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeDBInstanceUsageResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_dbinstance_usage_with_options_async(
@@ -1303,11 +2684,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDBInstanceUsageResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeDBInstanceUsageResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDBInstanceUsage', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDBInstanceUsage',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeDBInstanceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_dbinstance_usage(
@@ -1330,11 +2726,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDeletedInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeDeletedInstancesResponse().from_map(
-            self.do_rpcrequest('DescribeDeletedInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDeletedInstances',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeDeletedInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_deleted_instances_with_options_async(
@@ -1343,11 +2758,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDeletedInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeDeletedInstancesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDeletedInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDeletedInstances',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeDeletedInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_deleted_instances(
@@ -1370,11 +2804,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDiskWarningLineResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeDiskWarningLineResponse().from_map(
-            self.do_rpcrequest('DescribeDiskWarningLine', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDiskWarningLine',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeDiskWarningLineResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_disk_warning_line_with_options_async(
@@ -1383,11 +2832,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDiskWarningLineResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeDiskWarningLineResponse().from_map(
-            await self.do_rpcrequest_async('DescribeDiskWarningLine', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeDiskWarningLine',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeDiskWarningLineResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_disk_warning_line(
@@ -1410,11 +2874,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeEndpointsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeEndpointsResponse().from_map(
-            self.do_rpcrequest('DescribeEndpoints', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeEndpoints',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeEndpointsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_endpoints_with_options_async(
@@ -1423,11 +2902,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeEndpointsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeEndpointsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeEndpoints', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeEndpoints',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_endpoints(
@@ -1450,11 +2944,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeInstanceResponse().from_map(
-            self.do_rpcrequest('DescribeInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_with_options_async(
@@ -1463,11 +2972,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeInstanceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance(
@@ -1484,57 +3008,32 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_with_options_async(request, runtime)
 
-    def describe_instances_with_options(
-        self,
-        request: hbase_20190101_models.DescribeInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbase_20190101_models.DescribeInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return hbase_20190101_models.DescribeInstancesResponse().from_map(
-            self.do_rpcrequest('DescribeInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def describe_instances_with_options_async(
-        self,
-        request: hbase_20190101_models.DescribeInstancesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> hbase_20190101_models.DescribeInstancesResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return hbase_20190101_models.DescribeInstancesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def describe_instances(
-        self,
-        request: hbase_20190101_models.DescribeInstancesRequest,
-    ) -> hbase_20190101_models.DescribeInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_instances_with_options(request, runtime)
-
-    async def describe_instances_async(
-        self,
-        request: hbase_20190101_models.DescribeInstancesRequest,
-    ) -> hbase_20190101_models.DescribeInstancesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_instances_with_options_async(request, runtime)
-
     def describe_instance_type_with_options(
         self,
         request: hbase_20190101_models.DescribeInstanceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstanceTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeInstanceTypeResponse().from_map(
-            self.do_rpcrequest('DescribeInstanceType', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceType',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeInstanceTypeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_instance_type_with_options_async(
@@ -1543,11 +3042,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstanceTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeInstanceTypeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeInstanceType', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeInstanceType',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeInstanceTypeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_instance_type(
@@ -1564,17 +3078,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_type_with_options_async(request, runtime)
 
+    def describe_instances_with_options(
+        self,
+        request: hbase_20190101_models.DescribeInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstances',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instances_with_options_async(
+        self,
+        request: hbase_20190101_models.DescribeInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstances',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instances(
+        self,
+        request: hbase_20190101_models.DescribeInstancesRequest,
+    ) -> hbase_20190101_models.DescribeInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instances_with_options(request, runtime)
+
+    async def describe_instances_async(
+        self,
+        request: hbase_20190101_models.DescribeInstancesRequest,
+    ) -> hbase_20190101_models.DescribeInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instances_with_options_async(request, runtime)
+
     def describe_ip_whitelist_with_options(
         self,
         request: hbase_20190101_models.DescribeIpWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeIpWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeIpWhitelistResponse().from_map(
-            self.do_rpcrequest('DescribeIpWhitelist', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeIpWhitelist',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_ip_whitelist_with_options_async(
@@ -1583,11 +3210,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeIpWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeIpWhitelistResponse().from_map(
-            await self.do_rpcrequest_async('DescribeIpWhitelist', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeIpWhitelist',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_ip_whitelist(
@@ -1610,11 +3252,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse().from_map(
-            self.do_rpcrequest('DescribeMultiZoneAvailableRegions', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMultiZoneAvailableRegions',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_multi_zone_available_regions_with_options_async(
@@ -1623,11 +3280,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeMultiZoneAvailableRegions', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMultiZoneAvailableRegions',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_multi_zone_available_regions(
@@ -1650,11 +3322,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_combination):
+            query['ZoneCombination'] = request.zone_combination
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse().from_map(
-            self.do_rpcrequest('DescribeMultiZoneAvailableResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMultiZoneAvailableResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_multi_zone_available_resource_with_options_async(
@@ -1663,11 +3354,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_combination):
+            query['ZoneCombination'] = request.zone_combination
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse().from_map(
-            await self.do_rpcrequest_async('DescribeMultiZoneAvailableResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMultiZoneAvailableResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_multi_zone_available_resource(
@@ -1690,11 +3400,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeMultiZoneClusterResponse().from_map(
-            self.do_rpcrequest('DescribeMultiZoneCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMultiZoneCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeMultiZoneClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_multi_zone_cluster_with_options_async(
@@ -1703,11 +3428,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeMultiZoneClusterResponse().from_map(
-            await self.do_rpcrequest_async('DescribeMultiZoneCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeMultiZoneCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeMultiZoneClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_multi_zone_cluster(
@@ -1730,11 +3470,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRecoverableTimeRangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRecoverableTimeRangeResponse().from_map(
-            self.do_rpcrequest('DescribeRecoverableTimeRange', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRecoverableTimeRange',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRecoverableTimeRangeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_recoverable_time_range_with_options_async(
@@ -1743,11 +3498,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRecoverableTimeRangeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRecoverableTimeRangeResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRecoverableTimeRange', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRecoverableTimeRange',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRecoverableTimeRangeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_recoverable_time_range(
@@ -1770,11 +3540,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRegionsResponse().from_map(
-            self.do_rpcrequest('DescribeRegions', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -1783,11 +3570,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRegionsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRegions', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
@@ -1810,11 +3614,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreFullDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.restore_record_id):
+            query['RestoreRecordId'] = request.restore_record_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreFullDetailsResponse().from_map(
-            self.do_rpcrequest('DescribeRestoreFullDetails', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreFullDetails',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreFullDetailsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_restore_full_details_with_options_async(
@@ -1823,11 +3648,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreFullDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.restore_record_id):
+            query['RestoreRecordId'] = request.restore_record_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreFullDetailsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRestoreFullDetails', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreFullDetails',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreFullDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_restore_full_details(
@@ -1850,11 +3696,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreIncrDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.restore_record_id):
+            query['RestoreRecordId'] = request.restore_record_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreIncrDetailResponse().from_map(
-            self.do_rpcrequest('DescribeRestoreIncrDetail', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreIncrDetail',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreIncrDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_restore_incr_detail_with_options_async(
@@ -1863,11 +3726,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreIncrDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.restore_record_id):
+            query['RestoreRecordId'] = request.restore_record_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreIncrDetailResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRestoreIncrDetail', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreIncrDetail',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreIncrDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_restore_incr_detail(
@@ -1890,11 +3770,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreSchemaDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.restore_record_id):
+            query['RestoreRecordId'] = request.restore_record_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreSchemaDetailsResponse().from_map(
-            self.do_rpcrequest('DescribeRestoreSchemaDetails', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreSchemaDetails',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreSchemaDetailsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_restore_schema_details_with_options_async(
@@ -1903,11 +3804,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreSchemaDetailsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.restore_record_id):
+            query['RestoreRecordId'] = request.restore_record_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreSchemaDetailsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRestoreSchemaDetails', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreSchemaDetails',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreSchemaDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_restore_schema_details(
@@ -1930,11 +3852,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreSummaryResponse().from_map(
-            self.do_rpcrequest('DescribeRestoreSummary', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreSummary',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreSummaryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_restore_summary_with_options_async(
@@ -1943,11 +3884,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreSummaryResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRestoreSummary', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreSummary',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_restore_summary(
@@ -1970,11 +3930,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.restore_record_id):
+            query['RestoreRecordId'] = request.restore_record_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreTablesResponse().from_map(
-            self.do_rpcrequest('DescribeRestoreTables', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreTables',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreTablesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_restore_tables_with_options_async(
@@ -1983,11 +3960,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreTablesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.restore_record_id):
+            query['RestoreRecordId'] = request.restore_record_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeRestoreTablesResponse().from_map(
-            await self.do_rpcrequest_async('DescribeRestoreTables', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeRestoreTables',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeRestoreTablesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_restore_tables(
@@ -2010,11 +4004,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeSecurityGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeSecurityGroupsResponse().from_map(
-            self.do_rpcrequest('DescribeSecurityGroups', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSecurityGroups',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_security_groups_with_options_async(
@@ -2023,11 +4032,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeSecurityGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeSecurityGroupsResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSecurityGroups', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSecurityGroups',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_security_groups(
@@ -2044,17 +4068,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_groups_with_options_async(request, runtime)
 
+    def describe_serverless_cluster_with_options(
+        self,
+        request: hbase_20190101_models.DescribeServerlessClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeServerlessClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerlessCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeServerlessClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_serverless_cluster_with_options_async(
+        self,
+        request: hbase_20190101_models.DescribeServerlessClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeServerlessClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServerlessCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeServerlessClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_serverless_cluster(
+        self,
+        request: hbase_20190101_models.DescribeServerlessClusterRequest,
+    ) -> hbase_20190101_models.DescribeServerlessClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_serverless_cluster_with_options(request, runtime)
+
+    async def describe_serverless_cluster_async(
+        self,
+        request: hbase_20190101_models.DescribeServerlessClusterRequest,
+    ) -> hbase_20190101_models.DescribeServerlessClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_serverless_cluster_with_options_async(request, runtime)
+
     def describe_sub_domain_with_options(
         self,
         request: hbase_20190101_models.DescribeSubDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeSubDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeSubDomainResponse().from_map(
-            self.do_rpcrequest('DescribeSubDomain', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSubDomain',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeSubDomainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def describe_sub_domain_with_options_async(
@@ -2063,11 +4178,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeSubDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.DescribeSubDomainResponse().from_map(
-            await self.do_rpcrequest_async('DescribeSubDomain', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescribeSubDomain',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeSubDomainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_sub_domain(
@@ -2090,11 +4222,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EnableHBaseueBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cold_storage_size):
+            query['ColdStorageSize'] = request.cold_storage_size
+        if not UtilClient.is_unset(request.hbaseue_cluster_id):
+            query['HbaseueClusterId'] = request.hbaseue_cluster_id
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.EnableHBaseueBackupResponse().from_map(
-            self.do_rpcrequest('EnableHBaseueBackup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableHBaseueBackup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.EnableHBaseueBackupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def enable_hbaseue_backup_with_options_async(
@@ -2103,11 +4256,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EnableHBaseueBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cold_storage_size):
+            query['ColdStorageSize'] = request.cold_storage_size
+        if not UtilClient.is_unset(request.hbaseue_cluster_id):
+            query['HbaseueClusterId'] = request.hbaseue_cluster_id
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.EnableHBaseueBackupResponse().from_map(
-            await self.do_rpcrequest_async('EnableHBaseueBackup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableHBaseueBackup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.EnableHBaseueBackupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_hbaseue_backup(
@@ -2130,11 +4304,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EnableHBaseueModuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.hbaseue_cluster_id):
+            query['HbaseueClusterId'] = request.hbaseue_cluster_id
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
+        if not UtilClient.is_unset(request.module_cluster_name):
+            query['ModuleClusterName'] = request.module_cluster_name
+        if not UtilClient.is_unset(request.module_type_name):
+            query['ModuleTypeName'] = request.module_type_name
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.EnableHBaseueModuleResponse().from_map(
-            self.do_rpcrequest('EnableHBaseueModule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableHBaseueModule',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.EnableHBaseueModuleResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def enable_hbaseue_module_with_options_async(
@@ -2143,11 +4366,60 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EnableHBaseueModuleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.disk_size):
+            query['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.hbaseue_cluster_id):
+            query['HbaseueClusterId'] = request.hbaseue_cluster_id
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
+        if not UtilClient.is_unset(request.module_cluster_name):
+            query['ModuleClusterName'] = request.module_cluster_name
+        if not UtilClient.is_unset(request.module_type_name):
+            query['ModuleTypeName'] = request.module_type_name
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vswitch_id):
+            query['VswitchId'] = request.vswitch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.EnableHBaseueModuleResponse().from_map(
-            await self.do_rpcrequest_async('EnableHBaseueModule', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EnableHBaseueModule',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.EnableHBaseueModuleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def enable_hbaseue_module(
@@ -2170,11 +4442,80 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EvaluateMultiZoneResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arbiter_vswitch_id):
+            query['ArbiterVSwitchId'] = request.arbiter_vswitch_id
+        if not UtilClient.is_unset(request.arbiter_zone_id):
+            query['ArbiterZoneId'] = request.arbiter_zone_id
+        if not UtilClient.is_unset(request.arch_version):
+            query['ArchVersion'] = request.arch_version
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.core_disk_size):
+            query['CoreDiskSize'] = request.core_disk_size
+        if not UtilClient.is_unset(request.core_disk_type):
+            query['CoreDiskType'] = request.core_disk_type
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.core_node_count):
+            query['CoreNodeCount'] = request.core_node_count
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.log_disk_size):
+            query['LogDiskSize'] = request.log_disk_size
+        if not UtilClient.is_unset(request.log_disk_type):
+            query['LogDiskType'] = request.log_disk_type
+        if not UtilClient.is_unset(request.log_instance_type):
+            query['LogInstanceType'] = request.log_instance_type
+        if not UtilClient.is_unset(request.log_node_count):
+            query['LogNodeCount'] = request.log_node_count
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
+        if not UtilClient.is_unset(request.multi_zone_combination):
+            query['MultiZoneCombination'] = request.multi_zone_combination
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.primary_zone_id):
+            query['PrimaryZoneId'] = request.primary_zone_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.EvaluateMultiZoneResourceResponse().from_map(
-            self.do_rpcrequest('EvaluateMultiZoneResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EvaluateMultiZoneResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.EvaluateMultiZoneResourceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def evaluate_multi_zone_resource_with_options_async(
@@ -2183,11 +4524,80 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EvaluateMultiZoneResourceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arbiter_vswitch_id):
+            query['ArbiterVSwitchId'] = request.arbiter_vswitch_id
+        if not UtilClient.is_unset(request.arbiter_zone_id):
+            query['ArbiterZoneId'] = request.arbiter_zone_id
+        if not UtilClient.is_unset(request.arch_version):
+            query['ArchVersion'] = request.arch_version
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.core_disk_size):
+            query['CoreDiskSize'] = request.core_disk_size
+        if not UtilClient.is_unset(request.core_disk_type):
+            query['CoreDiskType'] = request.core_disk_type
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.core_node_count):
+            query['CoreNodeCount'] = request.core_node_count
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.log_disk_size):
+            query['LogDiskSize'] = request.log_disk_size
+        if not UtilClient.is_unset(request.log_disk_type):
+            query['LogDiskType'] = request.log_disk_type
+        if not UtilClient.is_unset(request.log_instance_type):
+            query['LogInstanceType'] = request.log_instance_type
+        if not UtilClient.is_unset(request.log_node_count):
+            query['LogNodeCount'] = request.log_node_count
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
+        if not UtilClient.is_unset(request.multi_zone_combination):
+            query['MultiZoneCombination'] = request.multi_zone_combination
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.primary_zone_id):
+            query['PrimaryZoneId'] = request.primary_zone_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
+        if not UtilClient.is_unset(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.EvaluateMultiZoneResourceResponse().from_map(
-            await self.do_rpcrequest_async('EvaluateMultiZoneResource', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='EvaluateMultiZoneResource',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.EvaluateMultiZoneResourceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def evaluate_multi_zone_resource(
@@ -2210,11 +4620,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.GetMultimodeCmsUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.GetMultimodeCmsUrlResponse().from_map(
-            self.do_rpcrequest('GetMultimodeCmsUrl', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetMultimodeCmsUrl',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.GetMultimodeCmsUrlResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_multimode_cms_url_with_options_async(
@@ -2223,11 +4650,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.GetMultimodeCmsUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.GetMultimodeCmsUrlResponse().from_map(
-            await self.do_rpcrequest_async('GetMultimodeCmsUrl', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetMultimodeCmsUrl',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.GetMultimodeCmsUrlResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_multimode_cms_url(
@@ -2250,11 +4694,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListHBaseInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListHBaseInstancesResponse().from_map(
-            self.do_rpcrequest('ListHBaseInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListHBaseInstances',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListHBaseInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_hbase_instances_with_options_async(
@@ -2263,11 +4722,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListHBaseInstancesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListHBaseInstancesResponse().from_map(
-            await self.do_rpcrequest_async('ListHBaseInstances', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListHBaseInstances',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListHBaseInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_hbase_instances(
@@ -2290,11 +4764,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse().from_map(
-            self.do_rpcrequest('ListInstanceServiceConfigHistories', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstanceServiceConfigHistories',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_instance_service_config_histories_with_options_async(
@@ -2303,11 +4796,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse().from_map(
-            await self.do_rpcrequest_async('ListInstanceServiceConfigHistories', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstanceServiceConfigHistories',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_service_config_histories(
@@ -2330,11 +4842,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListInstanceServiceConfigurationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListInstanceServiceConfigurationsResponse().from_map(
-            self.do_rpcrequest('ListInstanceServiceConfigurations', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstanceServiceConfigurations',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListInstanceServiceConfigurationsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_instance_service_configurations_with_options_async(
@@ -2343,11 +4874,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListInstanceServiceConfigurationsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListInstanceServiceConfigurationsResponse().from_map(
-            await self.do_rpcrequest_async('ListInstanceServiceConfigurations', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstanceServiceConfigurations',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListInstanceServiceConfigurationsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_service_configurations(
@@ -2370,11 +4920,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListTagResourcesResponse().from_map(
-            self.do_rpcrequest('ListTagResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
@@ -2383,11 +4954,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListTagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('ListTagResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
@@ -2410,11 +5002,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListTagsResponse().from_map(
-            self.do_rpcrequest('ListTags', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTags',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListTagsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_tags_with_options_async(
@@ -2423,11 +5030,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListTagsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ListTagsResponse().from_map(
-            await self.do_rpcrequest_async('ListTags', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListTags',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ListTagsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_tags(
@@ -2450,11 +5072,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyBackupPlanConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.full_backup_cycle):
+            query['FullBackupCycle'] = request.full_backup_cycle
+        if not UtilClient.is_unset(request.min_hfile_backup_count):
+            query['MinHFileBackupCount'] = request.min_hfile_backup_count
+        if not UtilClient.is_unset(request.next_full_backup_date):
+            query['NextFullBackupDate'] = request.next_full_backup_date
+        if not UtilClient.is_unset(request.tables):
+            query['Tables'] = request.tables
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyBackupPlanConfigResponse().from_map(
-            self.do_rpcrequest('ModifyBackupPlanConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyBackupPlanConfig',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyBackupPlanConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_backup_plan_config_with_options_async(
@@ -2463,11 +5108,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyBackupPlanConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.full_backup_cycle):
+            query['FullBackupCycle'] = request.full_backup_cycle
+        if not UtilClient.is_unset(request.min_hfile_backup_count):
+            query['MinHFileBackupCount'] = request.min_hfile_backup_count
+        if not UtilClient.is_unset(request.next_full_backup_date):
+            query['NextFullBackupDate'] = request.next_full_backup_date
+        if not UtilClient.is_unset(request.tables):
+            query['Tables'] = request.tables
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyBackupPlanConfigResponse().from_map(
-            await self.do_rpcrequest_async('ModifyBackupPlanConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyBackupPlanConfig',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyBackupPlanConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_backup_plan_config(
@@ -2490,11 +5158,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.preferred_backup_end_time_utc):
+            query['PreferredBackupEndTimeUTC'] = request.preferred_backup_end_time_utc
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_start_time_utc):
+            query['PreferredBackupStartTimeUTC'] = request.preferred_backup_start_time_utc
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyBackupPolicyResponse().from_map(
-            self.do_rpcrequest('ModifyBackupPolicy', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_backup_policy_with_options_async(
@@ -2503,11 +5194,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyBackupPolicyResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.preferred_backup_end_time_utc):
+            query['PreferredBackupEndTimeUTC'] = request.preferred_backup_end_time_utc
+        if not UtilClient.is_unset(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not UtilClient.is_unset(request.preferred_backup_start_time_utc):
+            query['PreferredBackupStartTimeUTC'] = request.preferred_backup_start_time_utc
+        if not UtilClient.is_unset(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyBackupPolicyResponse().from_map(
-            await self.do_rpcrequest_async('ModifyBackupPolicy', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_backup_policy(
@@ -2530,11 +5244,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyClusterDeletionProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.protection):
+            query['Protection'] = request.protection
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyClusterDeletionProtectionResponse().from_map(
-            self.do_rpcrequest('ModifyClusterDeletionProtection', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterDeletionProtection',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyClusterDeletionProtectionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_cluster_deletion_protection_with_options_async(
@@ -2543,11 +5274,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyClusterDeletionProtectionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.protection):
+            query['Protection'] = request.protection
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyClusterDeletionProtectionResponse().from_map(
-            await self.do_rpcrequest_async('ModifyClusterDeletionProtection', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyClusterDeletionProtection',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyClusterDeletionProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_cluster_deletion_protection(
@@ -2570,11 +5318,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyDiskWarningLineResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.warning_line):
+            query['WarningLine'] = request.warning_line
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyDiskWarningLineResponse().from_map(
-            self.do_rpcrequest('ModifyDiskWarningLine', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDiskWarningLine',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyDiskWarningLineResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_disk_warning_line_with_options_async(
@@ -2583,11 +5348,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyDiskWarningLineResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.warning_line):
+            query['WarningLine'] = request.warning_line
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyDiskWarningLineResponse().from_map(
-            await self.do_rpcrequest_async('ModifyDiskWarningLine', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyDiskWarningLine',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyDiskWarningLineResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_disk_warning_line(
@@ -2610,11 +5392,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceMaintainTimeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyInstanceMaintainTimeResponse().from_map(
-            self.do_rpcrequest('ModifyInstanceMaintainTime', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstanceMaintainTime',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyInstanceMaintainTimeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_instance_maintain_time_with_options_async(
@@ -2623,11 +5424,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceMaintainTimeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyInstanceMaintainTimeResponse().from_map(
-            await self.do_rpcrequest_async('ModifyInstanceMaintainTime', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstanceMaintainTime',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyInstanceMaintainTimeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_instance_maintain_time(
@@ -2650,11 +5470,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyInstanceNameResponse().from_map(
-            self.do_rpcrequest('ModifyInstanceName', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstanceName',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyInstanceNameResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_instance_name_with_options_async(
@@ -2663,11 +5506,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyInstanceNameResponse().from_map(
-            await self.do_rpcrequest_async('ModifyInstanceName', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstanceName',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_instance_name(
@@ -2690,11 +5556,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceServiceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.configure_name):
+            query['ConfigureName'] = request.configure_name
+        if not UtilClient.is_unset(request.configure_value):
+            query['ConfigureValue'] = request.configure_value
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.restart):
+            query['Restart'] = request.restart
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyInstanceServiceConfigResponse().from_map(
-            self.do_rpcrequest('ModifyInstanceServiceConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstanceServiceConfig',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyInstanceServiceConfigResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_instance_service_config_with_options_async(
@@ -2703,11 +5592,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceServiceConfigResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.configure_name):
+            query['ConfigureName'] = request.configure_name
+        if not UtilClient.is_unset(request.configure_value):
+            query['ConfigureValue'] = request.configure_value
+        if not UtilClient.is_unset(request.parameters):
+            query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.restart):
+            query['Restart'] = request.restart
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyInstanceServiceConfigResponse().from_map(
-            await self.do_rpcrequest_async('ModifyInstanceServiceConfig', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstanceServiceConfig',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyInstanceServiceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_instance_service_config(
@@ -2730,11 +5642,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyInstanceTypeResponse().from_map(
-            self.do_rpcrequest('ModifyInstanceType', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstanceType',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyInstanceTypeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_instance_type_with_options_async(
@@ -2743,11 +5674,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyInstanceTypeResponse().from_map(
-            await self.do_rpcrequest_async('ModifyInstanceType', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyInstanceType',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyInstanceTypeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_instance_type(
@@ -2770,11 +5720,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyIpWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.ip_list):
+            query['IpList'] = request.ip_list
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyIpWhitelistResponse().from_map(
-            self.do_rpcrequest('ModifyIpWhitelist', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyIpWhitelist',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_ip_whitelist_with_options_async(
@@ -2783,11 +5754,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyIpWhitelistResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.ip_list):
+            query['IpList'] = request.ip_list
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyIpWhitelistResponse().from_map(
-            await self.do_rpcrequest_async('ModifyIpWhitelist', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyIpWhitelist',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_ip_whitelist(
@@ -2810,11 +5802,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.log_instance_type):
+            query['LogInstanceType'] = request.log_instance_type
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse().from_map(
-            self.do_rpcrequest('ModifyMultiZoneClusterNodeType', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyMultiZoneClusterNodeType',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_multi_zone_cluster_node_type_with_options_async(
@@ -2823,11 +5836,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.core_instance_type):
+            query['CoreInstanceType'] = request.core_instance_type
+        if not UtilClient.is_unset(request.log_instance_type):
+            query['LogInstanceType'] = request.log_instance_type
+        if not UtilClient.is_unset(request.master_instance_type):
+            query['MasterInstanceType'] = request.master_instance_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse().from_map(
-            await self.do_rpcrequest_async('ModifyMultiZoneClusterNodeType', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyMultiZoneClusterNodeType',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_multi_zone_cluster_node_type(
@@ -2850,11 +5884,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifySecurityGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifySecurityGroupsResponse().from_map(
-            self.do_rpcrequest('ModifySecurityGroups', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifySecurityGroups',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifySecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_security_groups_with_options_async(
@@ -2863,11 +5914,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifySecurityGroupsResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifySecurityGroupsResponse().from_map(
-            await self.do_rpcrequest_async('ModifySecurityGroups', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifySecurityGroups',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifySecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_security_groups(
@@ -2890,11 +5958,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyUIAccountPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyUIAccountPasswordResponse().from_map(
-            self.do_rpcrequest('ModifyUIAccountPassword', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyUIAccountPassword',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyUIAccountPasswordResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_uiaccount_password_with_options_async(
@@ -2903,11 +5990,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyUIAccountPasswordResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ModifyUIAccountPasswordResponse().from_map(
-            await self.do_rpcrequest_async('ModifyUIAccountPassword', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyUIAccountPassword',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyUIAccountPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_uiaccount_password(
@@ -2930,11 +6036,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.MoveResourceGroupResponse().from_map(
-            self.do_rpcrequest('MoveResourceGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.MoveResourceGroupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def move_resource_group_with_options_async(
@@ -2943,11 +6066,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.MoveResourceGroupResponse().from_map(
-            await self.do_rpcrequest_async('MoveResourceGroup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.MoveResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def move_resource_group(
@@ -2970,11 +6110,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.OpenBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.OpenBackupResponse().from_map(
-            self.do_rpcrequest('OpenBackup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='OpenBackup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.OpenBackupResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def open_backup_with_options_async(
@@ -2983,11 +6138,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.OpenBackupResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.OpenBackupResponse().from_map(
-            await self.do_rpcrequest_async('OpenBackup', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='OpenBackup',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.OpenBackupResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def open_backup(
@@ -3010,11 +6180,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.PurgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.PurgeInstanceResponse().from_map(
-            self.do_rpcrequest('PurgeInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PurgeInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.PurgeInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def purge_instance_with_options_async(
@@ -3023,11 +6208,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.PurgeInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.PurgeInstanceResponse().from_map(
-            await self.do_rpcrequest_async('PurgeInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='PurgeInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.PurgeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def purge_instance(
@@ -3050,11 +6250,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.QueryHBaseHaDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.QueryHBaseHaDBResponse().from_map(
-            self.do_rpcrequest('QueryHBaseHaDB', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryHBaseHaDB',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.QueryHBaseHaDBResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_hbase_ha_dbwith_options_async(
@@ -3063,11 +6278,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.QueryHBaseHaDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.QueryHBaseHaDBResponse().from_map(
-            await self.do_rpcrequest_async('QueryHBaseHaDB', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryHBaseHaDB',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.QueryHBaseHaDBResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_hbase_ha_db(
@@ -3090,11 +6320,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.QueryXpackRelateDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.has_single_node):
+            query['HasSingleNode'] = request.has_single_node
+        if not UtilClient.is_unset(request.relate_db_type):
+            query['RelateDbType'] = request.relate_db_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.QueryXpackRelateDBResponse().from_map(
-            self.do_rpcrequest('QueryXpackRelateDB', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryXpackRelateDB',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.QueryXpackRelateDBResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_xpack_relate_dbwith_options_async(
@@ -3103,11 +6352,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.QueryXpackRelateDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.has_single_node):
+            query['HasSingleNode'] = request.has_single_node
+        if not UtilClient.is_unset(request.relate_db_type):
+            query['RelateDbType'] = request.relate_db_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.QueryXpackRelateDBResponse().from_map(
-            await self.do_rpcrequest_async('QueryXpackRelateDB', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryXpackRelateDB',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.QueryXpackRelateDBResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_xpack_relate_db(
@@ -3130,11 +6398,66 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RelateDbForHBaseHaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.ha_active):
+            query['HaActive'] = request.ha_active
+        if not UtilClient.is_unset(request.ha_active_cluster_key):
+            query['HaActiveClusterKey'] = request.ha_active_cluster_key
+        if not UtilClient.is_unset(request.ha_active_dbtype):
+            query['HaActiveDBType'] = request.ha_active_dbtype
+        if not UtilClient.is_unset(request.ha_active_hbase_fs_dir):
+            query['HaActiveHbaseFsDir'] = request.ha_active_hbase_fs_dir
+        if not UtilClient.is_unset(request.ha_active_hdfs_uri):
+            query['HaActiveHdfsUri'] = request.ha_active_hdfs_uri
+        if not UtilClient.is_unset(request.ha_active_password):
+            query['HaActivePassword'] = request.ha_active_password
+        if not UtilClient.is_unset(request.ha_active_user):
+            query['HaActiveUser'] = request.ha_active_user
+        if not UtilClient.is_unset(request.ha_active_version):
+            query['HaActiveVersion'] = request.ha_active_version
+        if not UtilClient.is_unset(request.ha_migrate_type):
+            query['HaMigrateType'] = request.ha_migrate_type
+        if not UtilClient.is_unset(request.ha_standby):
+            query['HaStandby'] = request.ha_standby
+        if not UtilClient.is_unset(request.ha_standby_cluster_key):
+            query['HaStandbyClusterKey'] = request.ha_standby_cluster_key
+        if not UtilClient.is_unset(request.ha_standby_dbtype):
+            query['HaStandbyDBType'] = request.ha_standby_dbtype
+        if not UtilClient.is_unset(request.ha_standby_hbase_fs_dir):
+            query['HaStandbyHbaseFsDir'] = request.ha_standby_hbase_fs_dir
+        if not UtilClient.is_unset(request.ha_standby_hdfs_uri):
+            query['HaStandbyHdfsUri'] = request.ha_standby_hdfs_uri
+        if not UtilClient.is_unset(request.ha_standby_password):
+            query['HaStandbyPassword'] = request.ha_standby_password
+        if not UtilClient.is_unset(request.ha_standby_user):
+            query['HaStandbyUser'] = request.ha_standby_user
+        if not UtilClient.is_unset(request.ha_standby_version):
+            query['HaStandbyVersion'] = request.ha_standby_version
+        if not UtilClient.is_unset(request.ha_tables):
+            query['HaTables'] = request.ha_tables
+        if not UtilClient.is_unset(request.is_active_standard):
+            query['IsActiveStandard'] = request.is_active_standard
+        if not UtilClient.is_unset(request.is_standby_standard):
+            query['IsStandbyStandard'] = request.is_standby_standard
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.RelateDbForHBaseHaResponse().from_map(
-            self.do_rpcrequest('RelateDbForHBaseHa', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RelateDbForHBaseHa',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.RelateDbForHBaseHaResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def relate_db_for_hbase_ha_with_options_async(
@@ -3143,11 +6466,66 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RelateDbForHBaseHaResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.ha_active):
+            query['HaActive'] = request.ha_active
+        if not UtilClient.is_unset(request.ha_active_cluster_key):
+            query['HaActiveClusterKey'] = request.ha_active_cluster_key
+        if not UtilClient.is_unset(request.ha_active_dbtype):
+            query['HaActiveDBType'] = request.ha_active_dbtype
+        if not UtilClient.is_unset(request.ha_active_hbase_fs_dir):
+            query['HaActiveHbaseFsDir'] = request.ha_active_hbase_fs_dir
+        if not UtilClient.is_unset(request.ha_active_hdfs_uri):
+            query['HaActiveHdfsUri'] = request.ha_active_hdfs_uri
+        if not UtilClient.is_unset(request.ha_active_password):
+            query['HaActivePassword'] = request.ha_active_password
+        if not UtilClient.is_unset(request.ha_active_user):
+            query['HaActiveUser'] = request.ha_active_user
+        if not UtilClient.is_unset(request.ha_active_version):
+            query['HaActiveVersion'] = request.ha_active_version
+        if not UtilClient.is_unset(request.ha_migrate_type):
+            query['HaMigrateType'] = request.ha_migrate_type
+        if not UtilClient.is_unset(request.ha_standby):
+            query['HaStandby'] = request.ha_standby
+        if not UtilClient.is_unset(request.ha_standby_cluster_key):
+            query['HaStandbyClusterKey'] = request.ha_standby_cluster_key
+        if not UtilClient.is_unset(request.ha_standby_dbtype):
+            query['HaStandbyDBType'] = request.ha_standby_dbtype
+        if not UtilClient.is_unset(request.ha_standby_hbase_fs_dir):
+            query['HaStandbyHbaseFsDir'] = request.ha_standby_hbase_fs_dir
+        if not UtilClient.is_unset(request.ha_standby_hdfs_uri):
+            query['HaStandbyHdfsUri'] = request.ha_standby_hdfs_uri
+        if not UtilClient.is_unset(request.ha_standby_password):
+            query['HaStandbyPassword'] = request.ha_standby_password
+        if not UtilClient.is_unset(request.ha_standby_user):
+            query['HaStandbyUser'] = request.ha_standby_user
+        if not UtilClient.is_unset(request.ha_standby_version):
+            query['HaStandbyVersion'] = request.ha_standby_version
+        if not UtilClient.is_unset(request.ha_tables):
+            query['HaTables'] = request.ha_tables
+        if not UtilClient.is_unset(request.is_active_standard):
+            query['IsActiveStandard'] = request.is_active_standard
+        if not UtilClient.is_unset(request.is_standby_standard):
+            query['IsStandbyStandard'] = request.is_standby_standard
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.RelateDbForHBaseHaResponse().from_map(
-            await self.do_rpcrequest_async('RelateDbForHBaseHa', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RelateDbForHBaseHa',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.RelateDbForHBaseHaResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def relate_db_for_hbase_ha(
@@ -3170,11 +6548,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ReleasePublicNetworkAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ReleasePublicNetworkAddressResponse().from_map(
-            self.do_rpcrequest('ReleasePublicNetworkAddress', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReleasePublicNetworkAddress',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ReleasePublicNetworkAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def release_public_network_address_with_options_async(
@@ -3183,11 +6576,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ReleasePublicNetworkAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ReleasePublicNetworkAddressResponse().from_map(
-            await self.do_rpcrequest_async('ReleasePublicNetworkAddress', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ReleasePublicNetworkAddress',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ReleasePublicNetworkAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def release_public_network_address(
@@ -3210,11 +6618,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.RenewInstanceResponse().from_map(
-            self.do_rpcrequest('RenewInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RenewInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.RenewInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def renew_instance_with_options_async(
@@ -3223,11 +6650,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.RenewInstanceResponse().from_map(
-            await self.do_rpcrequest_async('RenewInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RenewInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.RenewInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def renew_instance(
@@ -3250,11 +6696,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeColdStorageSizeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cold_storage_size):
+            query['ColdStorageSize'] = request.cold_storage_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeColdStorageSizeResponse().from_map(
-            self.do_rpcrequest('ResizeColdStorageSize', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeColdStorageSize',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeColdStorageSizeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def resize_cold_storage_size_with_options_async(
@@ -3263,11 +6726,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeColdStorageSizeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cold_storage_size):
+            query['ColdStorageSize'] = request.cold_storage_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeColdStorageSizeResponse().from_map(
-            await self.do_rpcrequest_async('ResizeColdStorageSize', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeColdStorageSize',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeColdStorageSizeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def resize_cold_storage_size(
@@ -3290,11 +6770,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeDiskSizeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.node_disk_size):
+            query['NodeDiskSize'] = request.node_disk_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeDiskSizeResponse().from_map(
-            self.do_rpcrequest('ResizeDiskSize', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeDiskSize',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeDiskSizeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def resize_disk_size_with_options_async(
@@ -3303,11 +6800,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeDiskSizeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.node_disk_size):
+            query['NodeDiskSize'] = request.node_disk_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeDiskSizeResponse().from_map(
-            await self.do_rpcrequest_async('ResizeDiskSize', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeDiskSize',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeDiskSizeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def resize_disk_size(
@@ -3330,11 +6844,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.core_disk_size):
+            query['CoreDiskSize'] = request.core_disk_size
+        if not UtilClient.is_unset(request.log_disk_size):
+            query['LogDiskSize'] = request.log_disk_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse().from_map(
-            self.do_rpcrequest('ResizeMultiZoneClusterDiskSize', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeMultiZoneClusterDiskSize',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def resize_multi_zone_cluster_disk_size_with_options_async(
@@ -3343,11 +6876,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.core_disk_size):
+            query['CoreDiskSize'] = request.core_disk_size
+        if not UtilClient.is_unset(request.log_disk_size):
+            query['LogDiskSize'] = request.log_disk_size
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse().from_map(
-            await self.do_rpcrequest_async('ResizeMultiZoneClusterDiskSize', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeMultiZoneClusterDiskSize',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def resize_multi_zone_cluster_disk_size(
@@ -3370,11 +6922,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arbiter_vswitch_id):
+            query['ArbiterVSwitchId'] = request.arbiter_vswitch_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.core_node_count):
+            query['CoreNodeCount'] = request.core_node_count
+        if not UtilClient.is_unset(request.log_node_count):
+            query['LogNodeCount'] = request.log_node_count
+        if not UtilClient.is_unset(request.primary_core_node_count):
+            query['PrimaryCoreNodeCount'] = request.primary_core_node_count
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.standby_core_node_count):
+            query['StandbyCoreNodeCount'] = request.standby_core_node_count
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse().from_map(
-            self.do_rpcrequest('ResizeMultiZoneClusterNodeCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeMultiZoneClusterNodeCount',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def resize_multi_zone_cluster_node_count_with_options_async(
@@ -3383,11 +6964,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arbiter_vswitch_id):
+            query['ArbiterVSwitchId'] = request.arbiter_vswitch_id
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.core_node_count):
+            query['CoreNodeCount'] = request.core_node_count
+        if not UtilClient.is_unset(request.log_node_count):
+            query['LogNodeCount'] = request.log_node_count
+        if not UtilClient.is_unset(request.primary_core_node_count):
+            query['PrimaryCoreNodeCount'] = request.primary_core_node_count
+        if not UtilClient.is_unset(request.primary_vswitch_id):
+            query['PrimaryVSwitchId'] = request.primary_vswitch_id
+        if not UtilClient.is_unset(request.standby_core_node_count):
+            query['StandbyCoreNodeCount'] = request.standby_core_node_count
+        if not UtilClient.is_unset(request.standby_vswitch_id):
+            query['StandbyVSwitchId'] = request.standby_vswitch_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse().from_map(
-            await self.do_rpcrequest_async('ResizeMultiZoneClusterNodeCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeMultiZoneClusterNodeCount',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def resize_multi_zone_cluster_node_count(
@@ -3410,11 +7020,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeNodeCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeNodeCountResponse().from_map(
-            self.do_rpcrequest('ResizeNodeCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeNodeCount',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeNodeCountResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def resize_node_count_with_options_async(
@@ -3423,11 +7054,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeNodeCountResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.ResizeNodeCountResponse().from_map(
-            await self.do_rpcrequest_async('ResizeNodeCount', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ResizeNodeCount',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ResizeNodeCountResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def resize_node_count(
@@ -3450,11 +7102,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RestartInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.components):
+            query['Components'] = request.components
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.RestartInstanceResponse().from_map(
-            self.do_rpcrequest('RestartInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RestartInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.RestartInstanceResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def restart_instance_with_options_async(
@@ -3463,11 +7132,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RestartInstanceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.components):
+            query['Components'] = request.components
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.RestartInstanceResponse().from_map(
-            await self.do_rpcrequest_async('RestartInstance', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='RestartInstance',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.RestartInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def restart_instance(
@@ -3490,11 +7176,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.SwitchHbaseHaSlbResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.ha_id):
+            query['HaId'] = request.ha_id
+        if not UtilClient.is_unset(request.ha_types):
+            query['HaTypes'] = request.ha_types
+        if not UtilClient.is_unset(request.hbase_type):
+            query['HbaseType'] = request.hbase_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.SwitchHbaseHaSlbResponse().from_map(
-            self.do_rpcrequest('SwitchHbaseHaSlb', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SwitchHbaseHaSlb',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.SwitchHbaseHaSlbResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def switch_hbase_ha_slb_with_options_async(
@@ -3503,11 +7210,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.SwitchHbaseHaSlbResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bds_id):
+            query['BdsId'] = request.bds_id
+        if not UtilClient.is_unset(request.ha_id):
+            query['HaId'] = request.ha_id
+        if not UtilClient.is_unset(request.ha_types):
+            query['HaTypes'] = request.ha_types
+        if not UtilClient.is_unset(request.hbase_type):
+            query['HbaseType'] = request.hbase_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.SwitchHbaseHaSlbResponse().from_map(
-            await self.do_rpcrequest_async('SwitchHbaseHaSlb', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SwitchHbaseHaSlb',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.SwitchHbaseHaSlbResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def switch_hbase_ha_slb(
@@ -3530,11 +7258,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.TagResourcesResponse().from_map(
-            self.do_rpcrequest('TagResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
@@ -3543,11 +7290,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.TagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('TagResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
@@ -3570,11 +7336,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.UnTagResourcesResponse().from_map(
-            self.do_rpcrequest('UnTagResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnTagResources',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.UnTagResourcesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def un_tag_resources_with_options_async(
@@ -3583,11 +7370,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UnTagResourcesResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.UnTagResourcesResponse().from_map(
-            await self.do_rpcrequest_async('UnTagResources', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UnTagResources',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.UnTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def un_tag_resources(
@@ -3610,11 +7418,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UpgradeMinorVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.components):
+            query['Components'] = request.components
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.UpgradeMinorVersionResponse().from_map(
-            self.do_rpcrequest('UpgradeMinorVersion', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeMinorVersion',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.UpgradeMinorVersionResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_minor_version_with_options_async(
@@ -3623,11 +7448,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UpgradeMinorVersionResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.components):
+            query['Components'] = request.components
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.UpgradeMinorVersionResponse().from_map(
-            await self.do_rpcrequest_async('UpgradeMinorVersion', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeMinorVersion',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.UpgradeMinorVersionResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_minor_version(
@@ -3650,11 +7492,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UpgradeMultiZoneClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.components):
+            query['Components'] = request.components
+        if not UtilClient.is_unset(request.restart_components):
+            query['RestartComponents'] = request.restart_components
+        if not UtilClient.is_unset(request.run_mode):
+            query['RunMode'] = request.run_mode
+        if not UtilClient.is_unset(request.upgrade_ins_name):
+            query['UpgradeInsName'] = request.upgrade_ins_name
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.UpgradeMultiZoneClusterResponse().from_map(
-            self.do_rpcrequest('UpgradeMultiZoneCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeMultiZoneCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.UpgradeMultiZoneClusterResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def upgrade_multi_zone_cluster_with_options_async(
@@ -3663,11 +7530,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UpgradeMultiZoneClusterResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.components):
+            query['Components'] = request.components
+        if not UtilClient.is_unset(request.restart_components):
+            query['RestartComponents'] = request.restart_components
+        if not UtilClient.is_unset(request.run_mode):
+            query['RunMode'] = request.run_mode
+        if not UtilClient.is_unset(request.upgrade_ins_name):
+            query['UpgradeInsName'] = request.upgrade_ins_name
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.UpgradeMultiZoneClusterResponse().from_map(
-            await self.do_rpcrequest_async('UpgradeMultiZoneCluster', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpgradeMultiZoneCluster',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.UpgradeMultiZoneClusterResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_multi_zone_cluster(
@@ -3690,11 +7582,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.XpackRelateDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_cluster_ids):
+            query['DbClusterIds'] = request.db_cluster_ids
+        if not UtilClient.is_unset(request.relate_db_type):
+            query['RelateDbType'] = request.relate_db_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.XpackRelateDBResponse().from_map(
-            self.do_rpcrequest('XpackRelateDB', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='XpackRelateDB',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.XpackRelateDBResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def xpack_relate_dbwith_options_async(
@@ -3703,11 +7614,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.XpackRelateDBResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.db_cluster_ids):
+            query['DbClusterIds'] = request.db_cluster_ids
+        if not UtilClient.is_unset(request.relate_db_type):
+            query['RelateDbType'] = request.relate_db_type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return hbase_20190101_models.XpackRelateDBResponse().from_map(
-            await self.do_rpcrequest_async('XpackRelateDB', '2019-01-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='XpackRelateDB',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.XpackRelateDBResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def xpack_relate_db(
