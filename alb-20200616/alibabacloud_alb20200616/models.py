@@ -1540,7 +1540,7 @@ class CreateListenerRequest(TeaModel):
         self.client_token = client_token
         # 监听默认动作
         self.default_actions = default_actions
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 是否开启Gzip压缩
         self.gzip_enabled = gzip_enabled
@@ -1882,7 +1882,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.client_token = client_token
         # 是否开启删除保护
         self.deletion_protection_enabled = deletion_protection_enabled
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 计费相关配置信息
         self.load_balancer_billing_config = load_balancer_billing_config
@@ -2976,7 +2976,7 @@ class CreateRuleRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 监听标识
         self.listener_id = listener_id
@@ -4171,7 +4171,7 @@ class CreateRulesRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 监听标识
         self.listener_id = listener_id
@@ -4354,7 +4354,7 @@ class CreateSecurityPolicyRequest(TeaModel):
         self.ciphers = ciphers
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 资源组id
         self.resource_group_id = resource_group_id
@@ -4646,7 +4646,7 @@ class CreateServerGroupRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 健康检查配置
         self.health_check_config = health_check_config
@@ -5041,7 +5041,7 @@ class DeleteListenerRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 监听id
         self.listener_id = listener_id
@@ -5155,7 +5155,7 @@ class DeleteLoadBalancerRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 实例id
         self.load_balancer_id = load_balancer_id
@@ -5269,7 +5269,7 @@ class DeleteRuleRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 转发规则标识
         self.rule_id = rule_id
@@ -5383,7 +5383,7 @@ class DeleteRulesRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 同一个监听下的转发规则标识列表
         self.rule_ids = rule_ids
@@ -5497,7 +5497,7 @@ class DeleteSecurityPolicyRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 安全策略Id
         self.security_policy_id = security_policy_id
@@ -6111,7 +6111,7 @@ class DisableDeletionProtectionRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 实例id
         self.resource_id = resource_id
@@ -6218,7 +6218,7 @@ class DisableLoadBalancerAccessLogRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 实例id
         self.load_balancer_id = load_balancer_id
@@ -6603,7 +6603,7 @@ class EnableDeletionProtectionRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 实例id
         self.resource_id = resource_id
@@ -6712,7 +6712,7 @@ class EnableLoadBalancerAccessLogRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 实例id
         self.load_balancer_id = load_balancer_id
@@ -9621,7 +9621,7 @@ class ListAsynJobsResponseBody(TeaModel):
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # 总记录数	
+        # 总记录数
         self.total_count = total_count
 
     def validate(self):
@@ -10552,6 +10552,7 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
 class ListListenersResponseBodyListeners(TeaModel):
     def __init__(
         self,
+        ca_enabled: str = None,
         default_actions: List[ListListenersResponseBodyListenersDefaultActions] = None,
         gzip_enabled: bool = None,
         http_2enabled: bool = None,
@@ -10568,6 +10569,8 @@ class ListListenersResponseBodyListeners(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: ListListenersResponseBodyListenersXForwardedForConfig = None,
     ):
+        # 是否开启双向认证
+        self.ca_enabled = ca_enabled
         # 默认动作
         self.default_actions = default_actions
         # 是否开启Gzip压缩
@@ -10617,6 +10620,8 @@ class ListListenersResponseBodyListeners(TeaModel):
             return _map
 
         result = dict()
+        if self.ca_enabled is not None:
+            result['CaEnabled'] = self.ca_enabled
         result['DefaultActions'] = []
         if self.default_actions is not None:
             for k in self.default_actions:
@@ -10653,6 +10658,8 @@ class ListListenersResponseBodyListeners(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CaEnabled') is not None:
+            self.ca_enabled = m.get('CaEnabled')
         self.default_actions = []
         if m.get('DefaultActions') is not None:
             for k in m.get('DefaultActions'):
@@ -11744,6 +11751,132 @@ class ListRulesResponseBodyRulesRuleActionsRewriteConfig(TeaModel):
         return self
 
 
+class ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig(TeaModel):
+    def __init__(
+        self,
+        qps: int = None,
+    ):
+        self.qps = qps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qps is not None:
+            result['QPS'] = self.qps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QPS') is not None:
+            self.qps = m.get('QPS')
+        return self
+
+
+class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples(TeaModel):
+    def __init__(
+        self,
+        server_group_id: str = None,
+    ):
+        self.server_group_id = server_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.server_group_id is not None:
+            result['ServerGroupId'] = self.server_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServerGroupId') is not None:
+            self.server_group_id = m.get('ServerGroupId')
+        return self
+
+
+class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig(TeaModel):
+    def __init__(
+        self,
+        server_group_tuples: List[ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
+    ):
+        self.server_group_tuples = server_group_tuples
+
+    def validate(self):
+        if self.server_group_tuples:
+            for k in self.server_group_tuples:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ServerGroupTuples'] = []
+        if self.server_group_tuples is not None:
+            for k in self.server_group_tuples:
+                result['ServerGroupTuples'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.server_group_tuples = []
+        if m.get('ServerGroupTuples') is not None:
+            for k in m.get('ServerGroupTuples'):
+                temp_model = ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples()
+                self.server_group_tuples.append(temp_model.from_map(k))
+        return self
+
+
+class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
+    def __init__(
+        self,
+        mirror_group_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
+        target_type: str = None,
+    ):
+        # TargetType为服务器组时必选，目标服务器组
+        self.mirror_group_config = mirror_group_config
+        # 流量镜像的目的，可以是服务器组
+        self.target_type = target_type
+
+    def validate(self):
+        if self.mirror_group_config:
+            self.mirror_group_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mirror_group_config is not None:
+            result['MirrorGroupConfig'] = self.mirror_group_config.to_map()
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MirrorGroupConfig') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig()
+            self.mirror_group_config = temp_model.from_map(m['MirrorGroupConfig'])
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
 class ListRulesResponseBodyRulesRuleActions(TeaModel):
     def __init__(
         self,
@@ -11753,6 +11886,8 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         order: int = None,
         redirect_config: ListRulesResponseBodyRulesRuleActionsRedirectConfig = None,
         rewrite_config: ListRulesResponseBodyRulesRuleActionsRewriteConfig = None,
+        traffic_limit_config: ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig = None,
+        traffic_mirror_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
         # 返回固定内容动作配置
@@ -11767,6 +11902,9 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         self.redirect_config = redirect_config
         # 内部重定向动作配置
         self.rewrite_config = rewrite_config
+        self.traffic_limit_config = traffic_limit_config
+        # 流量镜像Action对应的配置，type为TrafficMirror时必填且有效
+        self.traffic_mirror_config = traffic_mirror_config
         # 转发规则动作类型
         self.type = type
 
@@ -11781,6 +11919,10 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
             self.redirect_config.validate()
         if self.rewrite_config:
             self.rewrite_config.validate()
+        if self.traffic_limit_config:
+            self.traffic_limit_config.validate()
+        if self.traffic_mirror_config:
+            self.traffic_mirror_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11800,6 +11942,10 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
             result['RedirectConfig'] = self.redirect_config.to_map()
         if self.rewrite_config is not None:
             result['RewriteConfig'] = self.rewrite_config.to_map()
+        if self.traffic_limit_config is not None:
+            result['TrafficLimitConfig'] = self.traffic_limit_config.to_map()
+        if self.traffic_mirror_config is not None:
+            result['TrafficMirrorConfig'] = self.traffic_mirror_config.to_map()
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -11823,6 +11969,12 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         if m.get('RewriteConfig') is not None:
             temp_model = ListRulesResponseBodyRulesRuleActionsRewriteConfig()
             self.rewrite_config = temp_model.from_map(m['RewriteConfig'])
+        if m.get('TrafficLimitConfig') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig()
+            self.traffic_limit_config = temp_model.from_map(m['TrafficLimitConfig'])
+        if m.get('TrafficMirrorConfig') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig()
+            self.traffic_mirror_config = temp_model.from_map(m['TrafficMirrorConfig'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -14447,7 +14599,7 @@ class RemoveEntriesFromAclRequest(TeaModel):
         self.acl_id = acl_id
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 条目列表
         self.entries = entries
@@ -14615,7 +14767,7 @@ class RemoveServersFromServerGroupRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 后端服务器Id
         self.server_group_id = server_group_id
@@ -15000,7 +15152,7 @@ class StartListenerRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 监听id
         self.listener_id = listener_id
@@ -15114,7 +15266,7 @@ class StopListenerRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 监听id
         self.listener_id = listener_id
@@ -16156,7 +16308,7 @@ class UpdateListenerAttributeRequest(TeaModel):
         self.client_token = client_token
         # 监听默认动作
         self.default_actions = default_actions
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 是否开启Gzip压缩
         self.gzip_enabled = gzip_enabled
@@ -16414,7 +16566,7 @@ class UpdateListenerLogConfigRequest(TeaModel):
         self.access_log_tracing_config = access_log_tracing_config
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 监听标识
         self.listener_id = listener_id
@@ -16753,7 +16905,7 @@ class UpdateLoadBalancerAttributeRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 实例id
         self.load_balancer_id = load_balancer_id
@@ -16882,7 +17034,7 @@ class UpdateLoadBalancerEditionRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 实例版本
         self.load_balancer_edition = load_balancer_edition
@@ -17031,7 +17183,7 @@ class UpdateLoadBalancerZonesRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 实例id
         self.load_balancer_id = load_balancer_id
@@ -18077,7 +18229,7 @@ class UpdateRuleAttributeRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 转发规则优先级
         self.priority = priority
@@ -19480,7 +19632,7 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         self.ciphers = ciphers
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 安全策略id
         self.security_policy_id = security_policy_id
@@ -19769,7 +19921,7 @@ class UpdateServerGroupAttributeRequest(TeaModel):
     ):
         # 幂等标识
         self.client_token = client_token
-        #  是否只预检此次请求
+        # 是否只预检此次请求
         self.dry_run = dry_run
         # 健康检查配置
         self.health_check_config = health_check_config
