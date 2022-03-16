@@ -1101,8 +1101,6 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1133,8 +1131,6 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3745,8 +3741,6 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3781,8 +3775,6 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4945,6 +4937,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4975,6 +4969,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.switch_mode):
+            query['SwitchMode'] = request.switch_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

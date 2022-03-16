@@ -1547,12 +1547,9 @@ class DeleteDBInstanceRequest(TeaModel):
         self,
         dbinstance_name: str = None,
         region_id: str = None,
-        resource_group_id: str = None,
     ):
         self.dbinstance_name = dbinstance_name
         self.region_id = region_id
-        # 资源组ID
-        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -1567,8 +1564,6 @@ class DeleteDBInstanceRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1577,8 +1572,6 @@ class DeleteDBInstanceRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -8973,13 +8966,11 @@ class ModifyDBInstanceConfigRequest(TeaModel):
         config_value: str = None,
         dbinstance_name: str = None,
         region_id: str = None,
-        resource_group_id: str = None,
     ):
         self.config_name = config_name
         self.config_value = config_value
         self.dbinstance_name = dbinstance_name
         self.region_id = region_id
-        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -8998,8 +8989,6 @@ class ModifyDBInstanceConfigRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -9012,8 +9001,6 @@ class ModifyDBInstanceConfigRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -10911,9 +10898,12 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
         self,
         dbinstance_name: str = None,
         region_id: str = None,
+        switch_mode: str = None,
     ):
         self.dbinstance_name = dbinstance_name
         self.region_id = region_id
+        # 切换模式： 0:立刻执行，1：运维时间执行
+        self.switch_mode = switch_mode
 
     def validate(self):
         pass
@@ -10928,6 +10918,8 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -10936,6 +10928,8 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
         return self
 
 
