@@ -1,3 +1,6 @@
+2022-03-16 Version: 1.0.5
+- Fixed ListUserCertificateOrder API response error bug.
+
 2022-03-16 Version: 1.0.4
 - Fixed ListUserCertificateOrder API response error bug.
 
