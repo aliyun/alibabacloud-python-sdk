@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_mpserverless20190615.
 
-Created on 23/12/2021
+Created on 17/03/2022
 
 @author: Alibaba Cloud SDK
 """

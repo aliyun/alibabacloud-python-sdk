@@ -438,7 +438,8 @@ class Client(OpenApiClient):
     ) -> mpserverless_20190615_models.CheckMpServerlessRoleExistsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -465,7 +466,8 @@ class Client(OpenApiClient):
     ) -> mpserverless_20190615_models.CheckMpServerlessRoleExistsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3182,6 +3184,8 @@ class Client(OpenApiClient):
     ) -> mpserverless_20190615_models.ListFileResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_num):
@@ -3216,6 +3220,8 @@ class Client(OpenApiClient):
     ) -> mpserverless_20190615_models.ListFileResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.file_id):
+            body['FileId'] = request.file_id
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_num):

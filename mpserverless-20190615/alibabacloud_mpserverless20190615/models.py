@@ -5533,11 +5533,13 @@ class ListExtensionsResponse(TeaModel):
 class ListFileRequest(TeaModel):
     def __init__(
         self,
+        file_id: str = None,
         keyword: str = None,
         page_num: int = None,
         page_size: int = None,
         space_id: str = None,
     ):
+        self.file_id = file_id
         self.keyword = keyword
         self.page_num = page_num
         self.page_size = page_size
@@ -5552,6 +5554,8 @@ class ListFileRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
         if self.keyword is not None:
             result['Keyword'] = self.keyword
         if self.page_num is not None:
@@ -5564,6 +5568,8 @@ class ListFileRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
         if m.get('PageNum') is not None:
