@@ -2130,9 +2130,12 @@ class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
     def __init__(
         self,
         server_group_id: str = None,
+        weight: int = None,
     ):
         # 服务器组标识
         self.server_group_id = server_group_id
+        # 权重
+        self.weight = weight
 
     def validate(self):
         pass
@@ -2145,12 +2148,16 @@ class CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
         result = dict()
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -3210,9 +3217,12 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples(TeaM
     def __init__(
         self,
         server_group_id: str = None,
+        weight: int = None,
     ):
         # 服务器组标识
         self.server_group_id = server_group_id
+        # 权重
+        self.weight = weight
 
     def validate(self):
         pass
@@ -3225,12 +3235,16 @@ class CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples(TeaM
         result = dict()
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -10552,7 +10566,6 @@ class ListListenersResponseBodyListenersXForwardedForConfig(TeaModel):
 class ListListenersResponseBodyListeners(TeaModel):
     def __init__(
         self,
-        ca_enabled: str = None,
         default_actions: List[ListListenersResponseBodyListenersDefaultActions] = None,
         gzip_enabled: bool = None,
         http_2enabled: bool = None,
@@ -10569,8 +10582,6 @@ class ListListenersResponseBodyListeners(TeaModel):
         security_policy_id: str = None,
         xforwarded_for_config: ListListenersResponseBodyListenersXForwardedForConfig = None,
     ):
-        # 是否开启双向认证
-        self.ca_enabled = ca_enabled
         # 默认动作
         self.default_actions = default_actions
         # 是否开启Gzip压缩
@@ -10620,8 +10631,6 @@ class ListListenersResponseBodyListeners(TeaModel):
             return _map
 
         result = dict()
-        if self.ca_enabled is not None:
-            result['CaEnabled'] = self.ca_enabled
         result['DefaultActions'] = []
         if self.default_actions is not None:
             for k in self.default_actions:
@@ -10658,8 +10667,6 @@ class ListListenersResponseBodyListeners(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CaEnabled') is not None:
-            self.ca_enabled = m.get('CaEnabled')
         self.default_actions = []
         if m.get('DefaultActions') is not None:
             for k in m.get('DefaultActions'):
@@ -11544,9 +11551,12 @@ class ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples(T
     def __init__(
         self,
         server_group_id: str = None,
+        weight: int = None,
     ):
         # 服务器组标识
         self.server_group_id = server_group_id
+        # 当ServerGroupTuple.N数量大于1时，可配置每个服务器组的权重
+        self.weight = weight
 
     def validate(self):
         pass
@@ -11559,12 +11569,16 @@ class ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples(T
         result = dict()
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -11752,11 +11766,8 @@ class ListRulesResponseBodyRulesRuleActionsRewriteConfig(TeaModel):
 
 
 class ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig(TeaModel):
-    def __init__(
-        self,
-        qps: int = None,
-    ):
-        self.qps = qps
+    def __init__(self):
+        pass
 
     def validate(self):
         pass
@@ -11767,93 +11778,19 @@ class ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig(TeaModel):
             return _map
 
         result = dict()
-        if self.qps is not None:
-            result['QPS'] = self.qps
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('QPS') is not None:
-            self.qps = m.get('QPS')
-        return self
-
-
-class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples(TeaModel):
-    def __init__(
-        self,
-        server_group_id: str = None,
-    ):
-        self.server_group_id = server_group_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.server_group_id is not None:
-            result['ServerGroupId'] = self.server_group_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServerGroupId') is not None:
-            self.server_group_id = m.get('ServerGroupId')
-        return self
-
-
-class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig(TeaModel):
-    def __init__(
-        self,
-        server_group_tuples: List[ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
-    ):
-        self.server_group_tuples = server_group_tuples
-
-    def validate(self):
-        if self.server_group_tuples:
-            for k in self.server_group_tuples:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ServerGroupTuples'] = []
-        if self.server_group_tuples is not None:
-            for k in self.server_group_tuples:
-                result['ServerGroupTuples'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.server_group_tuples = []
-        if m.get('ServerGroupTuples') is not None:
-            for k in m.get('ServerGroupTuples'):
-                temp_model = ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples()
-                self.server_group_tuples.append(temp_model.from_map(k))
         return self
 
 
 class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
-    def __init__(
-        self,
-        mirror_group_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
-        target_type: str = None,
-    ):
-        # TargetType为服务器组时必选，目标服务器组
-        self.mirror_group_config = mirror_group_config
-        # 流量镜像的目的，可以是服务器组
-        self.target_type = target_type
+    def __init__(self):
+        pass
 
     def validate(self):
-        if self.mirror_group_config:
-            self.mirror_group_config.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -11861,19 +11798,10 @@ class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
             return _map
 
         result = dict()
-        if self.mirror_group_config is not None:
-            result['MirrorGroupConfig'] = self.mirror_group_config.to_map()
-        if self.target_type is not None:
-            result['TargetType'] = self.target_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MirrorGroupConfig') is not None:
-            temp_model = ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig()
-            self.mirror_group_config = temp_model.from_map(m['MirrorGroupConfig'])
-        if m.get('TargetType') is not None:
-            self.target_type = m.get('TargetType')
         return self
 
 
@@ -17383,9 +17311,12 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples(T
     def __init__(
         self,
         server_group_id: str = None,
+        weight: int = None,
     ):
         # 服务器组标识
         self.server_group_id = server_group_id
+        # 权重
+        self.weight = weight
 
     def validate(self):
         pass
@@ -17398,12 +17329,16 @@ class UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples(T
         result = dict()
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
