@@ -1,3 +1,6 @@
+2022-03-17 Version: 2.1.2
+- Add api DetachPlugin.
+
 2022-03-03 Version: 2.1.1
 - DescribeApisByVpcAccess adds path and method of API in result.
 
