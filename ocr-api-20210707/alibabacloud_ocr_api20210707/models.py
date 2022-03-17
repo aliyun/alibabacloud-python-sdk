@@ -1054,10 +1054,12 @@ class RecognizeBusinessLicenseRequest(TeaModel):
     def __init__(
         self,
         url: str = None,
+        workflow_op: str = None,
         body: BinaryIO = None,
     ):
         # 图片链接（长度不超 2048，不支持 base64）
         self.url = url
+        self.workflow_op = workflow_op
         # 图片二进制字节流，最大10MB
         self.body = body
 
@@ -1072,6 +1074,8 @@ class RecognizeBusinessLicenseRequest(TeaModel):
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
+        if self.workflow_op is not None:
+            result['WorkflowOp'] = self.workflow_op
         if self.body is not None:
             result['body'] = self.body
         return result
@@ -1080,6 +1084,8 @@ class RecognizeBusinessLicenseRequest(TeaModel):
         m = m or dict()
         if m.get('Url') is not None:
             self.url = m.get('Url')
+        if m.get('WorkflowOp') is not None:
+            self.workflow_op = m.get('WorkflowOp')
         if m.get('body') is not None:
             self.body = m.get('body')
         return self
@@ -1288,10 +1294,12 @@ class RecognizeCarNumberRequest(TeaModel):
     def __init__(
         self,
         url: str = None,
+        workflow_op: str = None,
         body: BinaryIO = None,
     ):
         # 图片链接（长度不超 2048，不支持 base64）
         self.url = url
+        self.workflow_op = workflow_op
         # 图片二进制字节流，最大10MB
         self.body = body
 
@@ -1306,6 +1314,8 @@ class RecognizeCarNumberRequest(TeaModel):
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
+        if self.workflow_op is not None:
+            result['WorkflowOp'] = self.workflow_op
         if self.body is not None:
             result['body'] = self.body
         return result
@@ -1314,6 +1324,8 @@ class RecognizeCarNumberRequest(TeaModel):
         m = m or dict()
         if m.get('Url') is not None:
             self.url = m.get('Url')
+        if m.get('WorkflowOp') is not None:
+            self.workflow_op = m.get('WorkflowOp')
         if m.get('body') is not None:
             self.body = m.get('body')
         return self
@@ -1763,6 +1775,123 @@ class RecognizeCommonPrintedInvoiceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RecognizeCommonPrintedInvoiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeCosmeticProduceLicenseRequest(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+        body: BinaryIO = None,
+    ):
+        # 图片链接（长度不超 2048，不支持 base64）
+        self.url = url
+        # 图片二进制字节流，最大10MB
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class RecognizeCosmeticProduceLicenseResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizeCosmeticProduceLicenseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeCosmeticProduceLicenseResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeCosmeticProduceLicenseResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3142,7 +3271,7 @@ class RecognizeExcelExportRequest(TeaModel):
         self.image_op = image_op
         # 识别图片数量
         self.ocr_image_count = ocr_image_count
-        # 图片识别结果集
+        # 存储图片识别结果集的oss地址
         self.ocr_result = ocr_result
         # 票证类型
         self.ocr_type = ocr_type
@@ -4142,6 +4271,123 @@ class RecognizeHandwritingResponse(TeaModel):
         return self
 
 
+class RecognizeHotelConsumeRequest(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+        body: BinaryIO = None,
+    ):
+        # 图片链接（长度不超 2048，不支持 base64）
+        self.url = url
+        # 图片二进制字节流，最大10MB
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class RecognizeHotelConsumeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizeHotelConsumeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeHotelConsumeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeHotelConsumeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RecognizeHouseholdRequest(TeaModel):
     def __init__(
         self,
@@ -4264,12 +4510,14 @@ class RecognizeIdcardRequest(TeaModel):
         self,
         output_figure: bool = None,
         url: str = None,
+        workflow_op: str = None,
         body: BinaryIO = None,
     ):
         # 是否需要图案检测功能，默认不需要
         self.output_figure = output_figure
         # 图片链接（长度不超 2048，不支持 base64）
         self.url = url
+        self.workflow_op = workflow_op
         # 图片二进制字节流，最大10MB
         self.body = body
 
@@ -4286,6 +4534,8 @@ class RecognizeIdcardRequest(TeaModel):
             result['OutputFigure'] = self.output_figure
         if self.url is not None:
             result['Url'] = self.url
+        if self.workflow_op is not None:
+            result['WorkflowOp'] = self.workflow_op
         if self.body is not None:
             result['body'] = self.body
         return result
@@ -4296,6 +4546,8 @@ class RecognizeIdcardRequest(TeaModel):
             self.output_figure = m.get('OutputFigure')
         if m.get('Url') is not None:
             self.url = m.get('Url')
+        if m.get('WorkflowOp') is not None:
+            self.workflow_op = m.get('WorkflowOp')
         if m.get('body') is not None:
             self.body = m.get('body')
         return self
@@ -5487,6 +5739,123 @@ class RecognizeMultiLanguageResponse(TeaModel):
         return self
 
 
+class RecognizeNonTaxInvoiceRequest(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+        body: BinaryIO = None,
+    ):
+        # 图片链接（长度不超 2048，不支持 base64）
+        self.url = url
+        # 图片二进制字节流，最大10MB
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class RecognizeNonTaxInvoiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizeNonTaxInvoiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizeNonTaxInvoiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizeNonTaxInvoiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RecognizePassportRequest(TeaModel):
     def __init__(
         self,
@@ -5600,6 +5969,240 @@ class RecognizePassportResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RecognizePassportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizePaymentRecordRequest(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+        body: BinaryIO = None,
+    ):
+        # 图片链接（长度不超 2048，不支持 base64）
+        self.url = url
+        # 图片二进制字节流，最大10MB
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class RecognizePaymentRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizePaymentRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizePaymentRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizePaymentRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizePurchaseRecordRequest(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+        body: BinaryIO = None,
+    ):
+        # 图片链接（长度不超 2048，不支持 base64）
+        self.url = url
+        # 图片二进制字节流，最大10MB
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class RecognizePurchaseRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizePurchaseRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RecognizePurchaseRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RecognizePurchaseRecordResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7333,10 +7936,12 @@ class RecognizeVehicleLicenseRequest(TeaModel):
     def __init__(
         self,
         url: str = None,
+        workflow_op: str = None,
         body: BinaryIO = None,
     ):
         # 图片链接（长度不超 2048，不支持 base64）
         self.url = url
+        self.workflow_op = workflow_op
         # 图片二进制字节流，最大10MB
         self.body = body
 
@@ -7351,6 +7956,8 @@ class RecognizeVehicleLicenseRequest(TeaModel):
         result = dict()
         if self.url is not None:
             result['Url'] = self.url
+        if self.workflow_op is not None:
+            result['WorkflowOp'] = self.workflow_op
         if self.body is not None:
             result['body'] = self.body
         return result
@@ -7359,6 +7966,8 @@ class RecognizeVehicleLicenseRequest(TeaModel):
         m = m or dict()
         if m.get('Url') is not None:
             self.url = m.get('Url')
+        if m.get('WorkflowOp') is not None:
+            self.workflow_op = m.get('WorkflowOp')
         if m.get('body') is not None:
             self.body = m.get('body')
         return self
