@@ -1,3 +1,7 @@
+2022-03-18 Version: 2.0.15
+- FIX GetRequestDiagnosisPage PARAM TYPE.
+
+
 2022-02-25 Version: 2.0.10
 - FIX GetRequestDiagnosisPage PARAM TYPE.
 

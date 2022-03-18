@@ -2115,8 +2115,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetAsyncErrorRequestStatByCodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.end):
@@ -2125,8 +2123,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.role):
-            query['Role'] = request.role
         if not UtilClient.is_unset(request.start):
             query['Start'] = request.start
         req = open_api_models.OpenApiRequest(
@@ -2155,8 +2151,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetAsyncErrorRequestStatByCodeResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
         if not UtilClient.is_unset(request.end):
@@ -2165,8 +2159,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.role):
-            query['Role'] = request.role
         if not UtilClient.is_unset(request.start):
             query['Start'] = request.start
         req = open_api_models.OpenApiRequest(
@@ -4175,8 +4167,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetSqlAnalysisReportResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.module_name_list):
             query['ModuleNameList'] = request.module_name_list
         body = {}
@@ -4209,8 +4199,6 @@ class Client(OpenApiClient):
     ) -> das20200116_models.GetSqlAnalysisReportResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         if not UtilClient.is_unset(request.module_name_list):
             query['ModuleNameList'] = request.module_name_list
         body = {}
@@ -4502,9 +4490,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.QuerySqlAnalysisDataResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         body = {}
         if not UtilClient.is_unset(request.page_no):
             body['PageNo'] = request.page_no
@@ -4521,7 +4506,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4546,9 +4530,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.QuerySqlAnalysisDataResponse:
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.console_context):
-            query['ConsoleContext'] = request.console_context
         body = {}
         if not UtilClient.is_unset(request.page_no):
             body['PageNo'] = request.page_no
@@ -4565,7 +4546,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(

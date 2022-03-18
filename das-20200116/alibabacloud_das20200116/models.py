@@ -5329,20 +5329,14 @@ class GetAsyncErrorRequestListByCodeRequest(TeaModel):
         return self
 
 
-class GetAsyncErrorRequestListByCodeResponseBody(TeaModel):
+class GetAsyncErrorRequestListByCodeResponseBodyDataResult(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: str = None,
+        instance_id: str = None,
+        sql_id: str = None,
     ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
+        self.instance_id = instance_id
+        self.sql_id = sql_id
 
     def validate(self):
         pass
@@ -5353,10 +5347,121 @@ class GetAsyncErrorRequestListByCodeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.sql_id is not None:
+            result['sqlId'] = self.sql_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('sqlId') is not None:
+            self.sql_id = m.get('sqlId')
+        return self
+
+
+class GetAsyncErrorRequestListByCodeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        complete: bool = None,
+        fail: bool = None,
+        is_finish: bool = None,
+        result: List[GetAsyncErrorRequestListByCodeResponseBodyDataResult] = None,
+        result_id: str = None,
+        state: str = None,
+        timestamp: int = None,
+    ):
+        self.complete = complete
+        self.fail = fail
+        self.is_finish = is_finish
+        self.result = result
+        self.result_id = result_id
+        self.state = state
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.complete is not None:
+            result['complete'] = self.complete
+        if self.fail is not None:
+            result['fail'] = self.fail
+        if self.is_finish is not None:
+            result['isFinish'] = self.is_finish
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.result_id is not None:
+            result['resultId'] = self.result_id
+        if self.state is not None:
+            result['state'] = self.state
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('complete') is not None:
+            self.complete = m.get('complete')
+        if m.get('fail') is not None:
+            self.fail = m.get('fail')
+        if m.get('isFinish') is not None:
+            self.is_finish = m.get('isFinish')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = GetAsyncErrorRequestListByCodeResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('resultId') is not None:
+            self.result_id = m.get('resultId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        return self
+
+
+class GetAsyncErrorRequestListByCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAsyncErrorRequestListByCodeResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -5370,7 +5475,8 @@ class GetAsyncErrorRequestListByCodeResponseBody(TeaModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = GetAsyncErrorRequestListByCodeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -5420,20 +5526,16 @@ class GetAsyncErrorRequestListByCodeResponse(TeaModel):
 class GetAsyncErrorRequestStatByCodeRequest(TeaModel):
     def __init__(
         self,
-        console_context: str = None,
         db_name: str = None,
-        end: str = None,
+        end: int = None,
         instance_id: str = None,
         node_id: str = None,
-        role: str = None,
-        start: str = None,
+        start: int = None,
     ):
-        self.console_context = console_context
         self.db_name = db_name
         self.end = end
         self.instance_id = instance_id
         self.node_id = node_id
-        self.role = role
         self.start = start
 
     def validate(self):
@@ -5445,8 +5547,6 @@ class GetAsyncErrorRequestStatByCodeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.console_context is not None:
-            result['ConsoleContext'] = self.console_context
         if self.db_name is not None:
             result['DbName'] = self.db_name
         if self.end is not None:
@@ -5455,16 +5555,12 @@ class GetAsyncErrorRequestStatByCodeRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.node_id is not None:
             result['NodeId'] = self.node_id
-        if self.role is not None:
-            result['Role'] = self.role
         if self.start is not None:
             result['Start'] = self.start
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConsoleContext') is not None:
-            self.console_context = m.get('ConsoleContext')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
         if m.get('End') is not None:
@@ -5473,27 +5569,21 @@ class GetAsyncErrorRequestStatByCodeRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
-        if m.get('Role') is not None:
-            self.role = m.get('Role')
         if m.get('Start') is not None:
             self.start = m.get('Start')
         return self
 
 
-class GetAsyncErrorRequestStatByCodeResponseBody(TeaModel):
+class GetAsyncErrorRequestStatByCodeResponseBodyDataResult(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: str = None,
+        count: int = None,
+        error_code: str = None,
+        instance_id: str = None,
     ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
+        self.count = count
+        self.error_code = error_code
+        self.instance_id = instance_id
 
     def validate(self):
         pass
@@ -5504,10 +5594,125 @@ class GetAsyncErrorRequestStatByCodeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        return self
+
+
+class GetAsyncErrorRequestStatByCodeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        complete: bool = None,
+        fail: bool = None,
+        is_finish: bool = None,
+        result: List[GetAsyncErrorRequestStatByCodeResponseBodyDataResult] = None,
+        result_id: str = None,
+        state: str = None,
+        timestamp: int = None,
+    ):
+        self.complete = complete
+        self.fail = fail
+        self.is_finish = is_finish
+        self.result = result
+        self.result_id = result_id
+        self.state = state
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.complete is not None:
+            result['complete'] = self.complete
+        if self.fail is not None:
+            result['fail'] = self.fail
+        if self.is_finish is not None:
+            result['isFinish'] = self.is_finish
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.result_id is not None:
+            result['resultId'] = self.result_id
+        if self.state is not None:
+            result['state'] = self.state
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('complete') is not None:
+            self.complete = m.get('complete')
+        if m.get('fail') is not None:
+            self.fail = m.get('fail')
+        if m.get('isFinish') is not None:
+            self.is_finish = m.get('isFinish')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = GetAsyncErrorRequestStatByCodeResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('resultId') is not None:
+            self.result_id = m.get('resultId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        return self
+
+
+class GetAsyncErrorRequestStatByCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAsyncErrorRequestStatByCodeResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -5521,7 +5726,8 @@ class GetAsyncErrorRequestStatByCodeResponseBody(TeaModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = GetAsyncErrorRequestStatByCodeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -5625,20 +5831,24 @@ class GetAsyncErrorRequestStatResultRequest(TeaModel):
         return self
 
 
-class GetAsyncErrorRequestStatResultResponseBody(TeaModel):
+class GetAsyncErrorRequestStatResultResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: str = None,
+        complete: bool = None,
+        fail: bool = None,
+        is_finish: bool = None,
+        result: List[Dict[str, DataResultValue]] = None,
+        result_id: str = None,
+        state: str = None,
+        timestamp: int = None,
     ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
+        self.complete = complete
+        self.fail = fail
+        self.is_finish = is_finish
+        self.result = result
+        self.result_id = result_id
+        self.state = state
+        self.timestamp = timestamp
 
     def validate(self):
         pass
@@ -5649,10 +5859,81 @@ class GetAsyncErrorRequestStatResultResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.complete is not None:
+            result['complete'] = self.complete
+        if self.fail is not None:
+            result['fail'] = self.fail
+        if self.is_finish is not None:
+            result['isFinish'] = self.is_finish
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                d1 = {}
+                for k1 ,v1 in k.items():
+                    d1[k1] = v1.to_map()
+                result['result'].append(d1)
+        if self.result_id is not None:
+            result['resultId'] = self.result_id
+        if self.state is not None:
+            result['state'] = self.state
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('complete') is not None:
+            self.complete = m.get('complete')
+        if m.get('fail') is not None:
+            self.fail = m.get('fail')
+        if m.get('isFinish') is not None:
+            self.is_finish = m.get('isFinish')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                d1 = {}
+                for k1, v1 in k.items():
+                    temp_model = DataResultValue()
+                    d1[k1] = temp_model.from_map(v1)
+                self.result.append(d1)
+        if m.get('resultId') is not None:
+            self.result_id = m.get('resultId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        return self
+
+
+class GetAsyncErrorRequestStatResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAsyncErrorRequestStatResultResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -5666,7 +5947,8 @@ class GetAsyncErrorRequestStatResultResponseBody(TeaModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = GetAsyncErrorRequestStatResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -6275,20 +6557,46 @@ class GetDasProServiceUsageRequest(TeaModel):
         return self
 
 
-class GetDasProServiceUsageResponseBody(TeaModel):
+class GetDasProServiceUsageResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: str = None,
+        commodity_instance_id: str = None,
+        custins_id: int = None,
+        engine: str = None,
+        expire_time: int = None,
+        instance_alias: str = None,
+        instance_id: str = None,
+        ip: str = None,
+        is_spare: bool = None,
+        port: int = None,
+        region: str = None,
+        service_unit_id: str = None,
+        sql_retention: str = None,
+        start_time: int = None,
+        storage_free_quota_in_mb: float = None,
+        storage_used: int = None,
+        user_id: str = None,
+        uuid: str = None,
+        vpc_id: str = None,
     ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
+        self.commodity_instance_id = commodity_instance_id
+        self.custins_id = custins_id
+        self.engine = engine
+        self.expire_time = expire_time
+        self.instance_alias = instance_alias
+        self.instance_id = instance_id
+        self.ip = ip
+        self.is_spare = is_spare
+        self.port = port
+        self.region = region
+        self.service_unit_id = service_unit_id
+        self.sql_retention = sql_retention
+        self.start_time = start_time
+        self.storage_free_quota_in_mb = storage_free_quota_in_mb
+        self.storage_used = storage_used
+        self.user_id = user_id
+        self.uuid = uuid
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -6299,10 +6607,118 @@ class GetDasProServiceUsageResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.commodity_instance_id is not None:
+            result['commodityInstanceId'] = self.commodity_instance_id
+        if self.custins_id is not None:
+            result['custinsId'] = self.custins_id
+        if self.engine is not None:
+            result['engine'] = self.engine
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
+        if self.instance_alias is not None:
+            result['instanceAlias'] = self.instance_alias
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.ip is not None:
+            result['ip'] = self.ip
+        if self.is_spare is not None:
+            result['isSpare'] = self.is_spare
+        if self.port is not None:
+            result['port'] = self.port
+        if self.region is not None:
+            result['region'] = self.region
+        if self.service_unit_id is not None:
+            result['serviceUnitId'] = self.service_unit_id
+        if self.sql_retention is not None:
+            result['sqlRetention'] = self.sql_retention
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.storage_free_quota_in_mb is not None:
+            result['storageFreeQuotaInMB'] = self.storage_free_quota_in_mb
+        if self.storage_used is not None:
+            result['storageUsed'] = self.storage_used
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.uuid is not None:
+            result['uuid'] = self.uuid
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commodityInstanceId') is not None:
+            self.commodity_instance_id = m.get('commodityInstanceId')
+        if m.get('custinsId') is not None:
+            self.custins_id = m.get('custinsId')
+        if m.get('engine') is not None:
+            self.engine = m.get('engine')
+        if m.get('expireTime') is not None:
+            self.expire_time = m.get('expireTime')
+        if m.get('instanceAlias') is not None:
+            self.instance_alias = m.get('instanceAlias')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('ip') is not None:
+            self.ip = m.get('ip')
+        if m.get('isSpare') is not None:
+            self.is_spare = m.get('isSpare')
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('serviceUnitId') is not None:
+            self.service_unit_id = m.get('serviceUnitId')
+        if m.get('sqlRetention') is not None:
+            self.sql_retention = m.get('sqlRetention')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('storageFreeQuotaInMB') is not None:
+            self.storage_free_quota_in_mb = m.get('storageFreeQuotaInMB')
+        if m.get('storageUsed') is not None:
+            self.storage_used = m.get('storageUsed')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('uuid') is not None:
+            self.uuid = m.get('uuid')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class GetDasProServiceUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetDasProServiceUsageResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -6315,8 +6731,11 @@ class GetDasProServiceUsageResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        self.data = []
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            for k in m.get('Data'):
+                temp_model = GetDasProServiceUsageResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -6648,20 +7067,28 @@ class GetErrorRequestSampleRequest(TeaModel):
         return self
 
 
-class GetErrorRequestSampleResponseBody(TeaModel):
+class GetErrorRequestSampleResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: str = None,
+        database: str = None,
+        error_code: str = None,
+        instance_id: str = None,
+        origin_host: str = None,
+        sql: str = None,
+        sql_id: str = None,
+        tables: List[str] = None,
+        timestamp: int = None,
+        user: str = None,
     ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
+        self.database = database
+        self.error_code = error_code
+        self.instance_id = instance_id
+        self.origin_host = origin_host
+        self.sql = sql
+        self.sql_id = sql_id
+        self.tables = tables
+        self.timestamp = timestamp
+        self.user = user
 
     def validate(self):
         pass
@@ -6672,10 +7099,82 @@ class GetErrorRequestSampleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.database is not None:
+            result['database'] = self.database
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.origin_host is not None:
+            result['originHost'] = self.origin_host
+        if self.sql is not None:
+            result['sql'] = self.sql
+        if self.sql_id is not None:
+            result['sqlId'] = self.sql_id
+        if self.tables is not None:
+            result['tables'] = self.tables
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.user is not None:
+            result['user'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('database') is not None:
+            self.database = m.get('database')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('originHost') is not None:
+            self.origin_host = m.get('originHost')
+        if m.get('sql') is not None:
+            self.sql = m.get('sql')
+        if m.get('sqlId') is not None:
+            self.sql_id = m.get('sqlId')
+        if m.get('tables') is not None:
+            self.tables = m.get('tables')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('user') is not None:
+            self.user = m.get('user')
+        return self
+
+
+class GetErrorRequestSampleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetErrorRequestSampleResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        result['Data'] = []
         if self.data is not None:
-            result['Data'] = self.data
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -6688,8 +7187,11 @@ class GetErrorRequestSampleResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        self.data = []
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            for k in m.get('Data'):
+                temp_model = GetErrorRequestSampleResponseBodyData()
+                self.data.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -11502,11 +12004,9 @@ class GetRunningSqlConcurrencyControlRulesResponse(TeaModel):
 class GetSqlAnalysisReportRequest(TeaModel):
     def __init__(
         self,
-        console_context: str = None,
         module_name_list: str = None,
         task_id: str = None,
     ):
-        self.console_context = console_context
         self.module_name_list = module_name_list
         self.task_id = task_id
 
@@ -11519,8 +12019,6 @@ class GetSqlAnalysisReportRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.console_context is not None:
-            result['ConsoleContext'] = self.console_context
         if self.module_name_list is not None:
             result['ModuleNameList'] = self.module_name_list
         if self.task_id is not None:
@@ -11529,8 +12027,6 @@ class GetSqlAnalysisReportRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConsoleContext') is not None:
-            self.console_context = m.get('ConsoleContext')
         if m.get('ModuleNameList') is not None:
             self.module_name_list = m.get('ModuleNameList')
         if m.get('TaskId') is not None:
@@ -12299,7 +12795,6 @@ class GetSqlOptimizeAdviceResponse(TeaModel):
 class QuerySqlAnalysisDataRequest(TeaModel):
     def __init__(
         self,
-        console_context: str = None,
         page_no: int = None,
         page_size: int = None,
         sql_id_list: str = None,
@@ -12308,7 +12803,6 @@ class QuerySqlAnalysisDataRequest(TeaModel):
         task_id: str = None,
         type: str = None,
     ):
-        self.console_context = console_context
         self.page_no = page_no
         self.page_size = page_size
         self.sql_id_list = sql_id_list
@@ -12326,8 +12820,6 @@ class QuerySqlAnalysisDataRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.console_context is not None:
-            result['ConsoleContext'] = self.console_context
         if self.page_no is not None:
             result['PageNo'] = self.page_no
         if self.page_size is not None:
@@ -12346,8 +12838,6 @@ class QuerySqlAnalysisDataRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConsoleContext') is not None:
-            self.console_context = m.get('ConsoleContext')
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
@@ -12371,12 +12861,12 @@ class QuerySqlAnalysisDataResponseBodyDataList(TeaModel):
         avg_rows_examined: int = None,
         avg_rt: float = None,
         cnt: int = None,
-        current_end_time: int = None,
+        cnt_rate: float = None,
         db_name: str = None,
         error_cnt: int = None,
         first_time: int = None,
         instance_id: str = None,
-        max_rows_examined: int = None,
+        rt_rate: float = None,
         sql: str = None,
         sql_id: str = None,
         sql_text_feature: str = None,
@@ -12390,12 +12880,12 @@ class QuerySqlAnalysisDataResponseBodyDataList(TeaModel):
         self.avg_rows_examined = avg_rows_examined
         self.avg_rt = avg_rt
         self.cnt = cnt
-        self.current_end_time = current_end_time
+        self.cnt_rate = cnt_rate
         self.db_name = db_name
         self.error_cnt = error_cnt
         self.first_time = first_time
         self.instance_id = instance_id
-        self.max_rows_examined = max_rows_examined
+        self.rt_rate = rt_rate
         self.sql = sql
         self.sql_id = sql_id
         self.sql_text_feature = sql_text_feature
@@ -12421,8 +12911,8 @@ class QuerySqlAnalysisDataResponseBodyDataList(TeaModel):
             result['AvgRt'] = self.avg_rt
         if self.cnt is not None:
             result['Cnt'] = self.cnt
-        if self.current_end_time is not None:
-            result['CurrentEndTime'] = self.current_end_time
+        if self.cnt_rate is not None:
+            result['CntRate'] = self.cnt_rate
         if self.db_name is not None:
             result['DbName'] = self.db_name
         if self.error_cnt is not None:
@@ -12431,8 +12921,8 @@ class QuerySqlAnalysisDataResponseBodyDataList(TeaModel):
             result['FirstTime'] = self.first_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-        if self.max_rows_examined is not None:
-            result['MaxRowsExamined'] = self.max_rows_examined
+        if self.rt_rate is not None:
+            result['RtRate'] = self.rt_rate
         if self.sql is not None:
             result['Sql'] = self.sql
         if self.sql_id is not None:
@@ -12461,8 +12951,8 @@ class QuerySqlAnalysisDataResponseBodyDataList(TeaModel):
             self.avg_rt = m.get('AvgRt')
         if m.get('Cnt') is not None:
             self.cnt = m.get('Cnt')
-        if m.get('CurrentEndTime') is not None:
-            self.current_end_time = m.get('CurrentEndTime')
+        if m.get('CntRate') is not None:
+            self.cnt_rate = m.get('CntRate')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
         if m.get('ErrorCnt') is not None:
@@ -12471,8 +12961,8 @@ class QuerySqlAnalysisDataResponseBodyDataList(TeaModel):
             self.first_time = m.get('FirstTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-        if m.get('MaxRowsExamined') is not None:
-            self.max_rows_examined = m.get('MaxRowsExamined')
+        if m.get('RtRate') is not None:
+            self.rt_rate = m.get('RtRate')
         if m.get('Sql') is not None:
             self.sql = m.get('Sql')
         if m.get('SqlId') is not None:
@@ -13616,6 +14106,45 @@ class UpdateAutoResourceOptimizeConfigResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = UpdateAutoResourceOptimizeConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DataResultValue(TeaModel):
+    def __init__(
+        self,
+        sql_id: str = None,
+        instance_id: str = None,
+        count: int = None,
+    ):
+        self.sql_id = sql_id
+        self.instance_id = instance_id
+        self.count = count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sql_id is not None:
+            result['sqlId'] = self.sql_id
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.count is not None:
+            result['count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sqlId') is not None:
+            self.sql_id = m.get('sqlId')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('count') is not None:
+            self.count = m.get('count')
         return self
 
 
