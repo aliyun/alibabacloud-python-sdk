@@ -41,6 +41,128 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_webhook(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.AddWebhookRequest,
+    ) -> devops_20210625_models.AddWebhookResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.add_webhook_with_options(repository_id, request, headers, runtime)
+
+    async def add_webhook_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.AddWebhookRequest,
+    ) -> devops_20210625_models.AddWebhookResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_webhook_with_options_async(repository_id, request, headers, runtime)
+
+    def add_webhook_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.AddWebhookRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.AddWebhookResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.enable_ssl_verification):
+            body['enableSslVerification'] = request.enable_ssl_verification
+        if not UtilClient.is_unset(request.merge_requests_events):
+            body['mergeRequestsEvents'] = request.merge_requests_events
+        if not UtilClient.is_unset(request.note_events):
+            body['noteEvents'] = request.note_events
+        if not UtilClient.is_unset(request.push_events):
+            body['pushEvents'] = request.push_events
+        if not UtilClient.is_unset(request.secret_token):
+            body['secretToken'] = request.secret_token
+        if not UtilClient.is_unset(request.tag_push_events):
+            body['tagPushEvents'] = request.tag_push_events
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddWebhook',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/webhooks/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.AddWebhookResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_webhook_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.AddWebhookRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.AddWebhookResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.enable_ssl_verification):
+            body['enableSslVerification'] = request.enable_ssl_verification
+        if not UtilClient.is_unset(request.merge_requests_events):
+            body['mergeRequestsEvents'] = request.merge_requests_events
+        if not UtilClient.is_unset(request.note_events):
+            body['noteEvents'] = request.note_events
+        if not UtilClient.is_unset(request.push_events):
+            body['pushEvents'] = request.push_events
+        if not UtilClient.is_unset(request.secret_token):
+            body['secretToken'] = request.secret_token
+        if not UtilClient.is_unset(request.tag_push_events):
+            body['tagPushEvents'] = request.tag_push_events
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddWebhook',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/webhooks/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.AddWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_flow_tag(
         self,
         organization_id: str,
@@ -422,6 +544,170 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_repository(
+        self,
+        request: devops_20210625_models.CreateRepositoryRequest,
+    ) -> devops_20210625_models.CreateRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_repository_with_options(request, headers, runtime)
+
+    async def create_repository_async(
+        self,
+        request: devops_20210625_models.CreateRepositoryRequest,
+    ) -> devops_20210625_models.CreateRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_repository_with_options_async(request, headers, runtime)
+
+    def create_repository_with_options(
+        self,
+        request: devops_20210625_models.CreateRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.create_parent_path):
+            query['createParentPath'] = request.create_parent_path
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.sync):
+            query['sync'] = request.sync
+        body = {}
+        if not UtilClient.is_unset(request.avatar_url):
+            body['avatarUrl'] = request.avatar_url
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.gitignore_type):
+            body['gitignoreType'] = request.gitignore_type
+        if not UtilClient.is_unset(request.import_account):
+            body['importAccount'] = request.import_account
+        if not UtilClient.is_unset(request.import_demo_project):
+            body['importDemoProject'] = request.import_demo_project
+        if not UtilClient.is_unset(request.import_repo_type):
+            body['importRepoType'] = request.import_repo_type
+        if not UtilClient.is_unset(request.import_svn_repo_config):
+            body['importSvnRepoConfig'] = request.import_svn_repo_config
+        if not UtilClient.is_unset(request.import_token):
+            body['importToken'] = request.import_token
+        if not UtilClient.is_unset(request.import_token_encrypted):
+            body['importTokenEncrypted'] = request.import_token_encrypted
+        if not UtilClient.is_unset(request.import_url):
+            body['importUrl'] = request.import_url
+        if not UtilClient.is_unset(request.init_standard_service):
+            body['initStandardService'] = request.init_standard_service
+        if not UtilClient.is_unset(request.is_crypto_enabled):
+            body['isCryptoEnabled'] = request.is_crypto_enabled
+        if not UtilClient.is_unset(request.local_import_url):
+            body['localImportUrl'] = request.local_import_url
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.namespace_id):
+            body['namespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.path):
+            body['path'] = request.path
+        if not UtilClient.is_unset(request.readme_type):
+            body['readmeType'] = request.readme_type
+        if not UtilClient.is_unset(request.visibility_level):
+            body['visibilityLevel'] = request.visibility_level
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_repository_with_options_async(
+        self,
+        request: devops_20210625_models.CreateRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.create_parent_path):
+            query['createParentPath'] = request.create_parent_path
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.sync):
+            query['sync'] = request.sync
+        body = {}
+        if not UtilClient.is_unset(request.avatar_url):
+            body['avatarUrl'] = request.avatar_url
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.gitignore_type):
+            body['gitignoreType'] = request.gitignore_type
+        if not UtilClient.is_unset(request.import_account):
+            body['importAccount'] = request.import_account
+        if not UtilClient.is_unset(request.import_demo_project):
+            body['importDemoProject'] = request.import_demo_project
+        if not UtilClient.is_unset(request.import_repo_type):
+            body['importRepoType'] = request.import_repo_type
+        if not UtilClient.is_unset(request.import_svn_repo_config):
+            body['importSvnRepoConfig'] = request.import_svn_repo_config
+        if not UtilClient.is_unset(request.import_token):
+            body['importToken'] = request.import_token
+        if not UtilClient.is_unset(request.import_token_encrypted):
+            body['importTokenEncrypted'] = request.import_token_encrypted
+        if not UtilClient.is_unset(request.import_url):
+            body['importUrl'] = request.import_url
+        if not UtilClient.is_unset(request.init_standard_service):
+            body['initStandardService'] = request.init_standard_service
+        if not UtilClient.is_unset(request.is_crypto_enabled):
+            body['isCryptoEnabled'] = request.is_crypto_enabled
+        if not UtilClient.is_unset(request.local_import_url):
+            body['localImportUrl'] = request.local_import_url
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.namespace_id):
+            body['namespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.path):
+            body['path'] = request.path
+        if not UtilClient.is_unset(request.readme_type):
+            body['readmeType'] = request.readme_type
+        if not UtilClient.is_unset(request.visibility_level):
+            body['visibilityLevel'] = request.visibility_level
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateRepositoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1623,6 +1909,88 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_codeup_organization(
+        self,
+        identity: str,
+        request: devops_20210625_models.GetCodeupOrganizationRequest,
+    ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_codeup_organization_with_options(identity, request, headers, runtime)
+
+    async def get_codeup_organization_async(
+        self,
+        identity: str,
+        request: devops_20210625_models.GetCodeupOrganizationRequest,
+    ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_codeup_organization_with_options_async(identity, request, headers, runtime)
+
+    def get_codeup_organization_with_options(
+        self,
+        identity: str,
+        request: devops_20210625_models.GetCodeupOrganizationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        UtilClient.validate_model(request)
+        identity = OpenApiUtilClient.get_encode_param(identity)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCodeupOrganization',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/organization/{identity}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetCodeupOrganizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_codeup_organization_with_options_async(
+        self,
+        identity: str,
+        request: devops_20210625_models.GetCodeupOrganizationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        UtilClient.validate_model(request)
+        identity = OpenApiUtilClient.get_encode_param(identity)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCodeupOrganization',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/api/organization/{identity}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetCodeupOrganizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_custom_field_option(
         self,
         organization_id: str,
@@ -1716,6 +2084,100 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.GetCustomFieldOptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_last_commit(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetFileLastCommitRequest,
+    ) -> devops_20210625_models.GetFileLastCommitResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_file_last_commit_with_options(repository_id, request, headers, runtime)
+
+    async def get_file_last_commit_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetFileLastCommitRequest,
+    ) -> devops_20210625_models.GetFileLastCommitResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_file_last_commit_with_options_async(repository_id, request, headers, runtime)
+
+    def get_file_last_commit_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetFileLastCommitRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetFileLastCommitResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.filepath):
+            query['filepath'] = request.filepath
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.sha):
+            query['sha'] = request.sha
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFileLastCommit',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/files/lastCommit',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetFileLastCommitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_last_commit_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetFileLastCommitRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetFileLastCommitResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.filepath):
+            query['filepath'] = request.filepath
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.sha):
+            query['sha'] = request.sha
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFileLastCommit',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/files/lastCommit',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetFileLastCommitResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -2440,6 +2902,178 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.GetProjectInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project_member(
+        self,
+        request: devops_20210625_models.GetProjectMemberRequest,
+    ) -> devops_20210625_models.GetProjectMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_project_member_with_options(request, headers, runtime)
+
+    async def get_project_member_async(
+        self,
+        request: devops_20210625_models.GetProjectMemberRequest,
+    ) -> devops_20210625_models.GetProjectMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_project_member_with_options_async(request, headers, runtime)
+
+    def get_project_member_with_options(
+        self,
+        request: devops_20210625_models.GetProjectMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetProjectMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_id):
+            query['repositoryId'] = request.repository_id
+        if not UtilClient.is_unset(request.user_aliyun_pk):
+            query['userAliyunPk'] = request.user_aliyun_pk
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/member/get',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetProjectMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_member_with_options_async(
+        self,
+        request: devops_20210625_models.GetProjectMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetProjectMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['AccessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.repository_id):
+            query['repositoryId'] = request.repository_id
+        if not UtilClient.is_unset(request.user_aliyun_pk):
+            query['userAliyunPk'] = request.user_aliyun_pk
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/member/get',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetProjectMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_repository(
+        self,
+        request: devops_20210625_models.GetRepositoryRequest,
+    ) -> devops_20210625_models.GetRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_repository_with_options(request, headers, runtime)
+
+    async def get_repository_async(
+        self,
+        request: devops_20210625_models.GetRepositoryRequest,
+    ) -> devops_20210625_models.GetRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_repository_with_options_async(request, headers, runtime)
+
+    def get_repository_with_options(
+        self,
+        request: devops_20210625_models.GetRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.identity):
+            query['identity'] = request.identity
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/get',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_repository_with_options_async(
+        self,
+        request: devops_20210625_models.GetRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.identity):
+            query['identity'] = request.identity
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/get',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetRepositoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -4042,6 +4676,290 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_repositories(
+        self,
+        request: devops_20210625_models.ListRepositoriesRequest,
+    ) -> devops_20210625_models.ListRepositoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_repositories_with_options(request, headers, runtime)
+
+    async def list_repositories_async(
+        self,
+        request: devops_20210625_models.ListRepositoriesRequest,
+    ) -> devops_20210625_models.ListRepositoriesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_repositories_with_options_async(request, headers, runtime)
+
+    def list_repositories_with_options(
+        self,
+        request: devops_20210625_models.ListRepositoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.archived):
+            query['archived'] = request.archived
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.per_page):
+            query['perPage'] = request.per_page
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositories',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_repositories_with_options_async(
+        self,
+        request: devops_20210625_models.ListRepositoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.archived):
+            query['archived'] = request.archived
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.per_page):
+            query['perPage'] = request.per_page
+        if not UtilClient.is_unset(request.search):
+            query['search'] = request.search
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositories',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_repository_member_with_inherited(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
+    ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_repository_member_with_inherited_with_options(repository_id, request, headers, runtime)
+
+    async def list_repository_member_with_inherited_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
+    ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_repository_member_with_inherited_with_options_async(repository_id, request, headers, runtime)
+
+    def list_repository_member_with_inherited_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryMemberWithInherited',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/members/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryMemberWithInheritedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_repository_member_with_inherited_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryMemberWithInherited',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/members/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryMemberWithInheritedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_repository_webhook(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryWebhookRequest,
+    ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_repository_webhook_with_options(repository_id, request, headers, runtime)
+
+    async def list_repository_webhook_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryWebhookRequest,
+    ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_repository_webhook_with_options_async(repository_id, request, headers, runtime)
+
+    def list_repository_webhook_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryWebhookRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryWebhook',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/webhooks/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryWebhookResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_repository_webhook_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryWebhookRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryWebhook',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/webhooks/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryWebhookResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -6012,6 +6930,100 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.StopVMDeployOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trigger_repository_mirror_sync(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
+    ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.trigger_repository_mirror_sync_with_options(repository_id, request, headers, runtime)
+
+    async def trigger_repository_mirror_sync_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
+    ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.trigger_repository_mirror_sync_with_options_async(repository_id, request, headers, runtime)
+
+    def trigger_repository_mirror_sync_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.account):
+            query['account'] = request.account
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.token):
+            query['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TriggerRepositoryMirrorSync',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/mirror',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.TriggerRepositoryMirrorSyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trigger_repository_mirror_sync_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        UtilClient.validate_model(request)
+        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.account):
+            query['account'] = request.account
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.token):
+            query['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TriggerRepositoryMirrorSync',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{repository_id}/mirror',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.TriggerRepositoryMirrorSyncResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
