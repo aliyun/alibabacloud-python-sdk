@@ -1,7 +1,220 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
+
+
+class AddLhMembersRequestMembers(TeaModel):
+    def __init__(
+        self,
+        roles: List[str] = None,
+        user_id: int = None,
+    ):
+        self.roles = roles
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.roles is not None:
+            result['Roles'] = self.roles
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Roles') is not None:
+            self.roles = m.get('Roles')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class AddLhMembersRequest(TeaModel):
+    def __init__(
+        self,
+        members: List[AddLhMembersRequestMembers] = None,
+        object_id: int = None,
+        object_type: int = None,
+        tid: int = None,
+    ):
+        self.members = members
+        self.object_id = object_id
+        self.object_type = object_type
+        self.tid = tid
+
+    def validate(self):
+        if self.members:
+            for k in self.members:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Members'] = []
+        if self.members is not None:
+            for k in self.members:
+                result['Members'].append(k.to_map() if k else None)
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.members = []
+        if m.get('Members') is not None:
+            for k in m.get('Members'):
+                temp_model = AddLhMembersRequestMembers()
+                self.members.append(temp_model.from_map(k))
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class AddLhMembersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        members_shrink: str = None,
+        object_id: int = None,
+        object_type: int = None,
+        tid: int = None,
+    ):
+        self.members_shrink = members_shrink
+        self.object_id = object_id
+        self.object_type = object_type
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.members_shrink is not None:
+            result['Members'] = self.members_shrink
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Members') is not None:
+            self.members_shrink = m.get('Members')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class AddLhMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddLhMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AddLhMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AddLhMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class AddLogicTableRouteConfigRequest(TeaModel):
@@ -2094,6 +2307,169 @@ class CreateFreeLockCorrectOrderResponse(TeaModel):
         return self
 
 
+class CreateLakeHouseSpaceRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dev_db_id: str = None,
+        dw_db_type: str = None,
+        mode: str = None,
+        prod_db_id: str = None,
+        space_config: str = None,
+        space_name: str = None,
+        tid: int = None,
+        user_id: int = None,
+    ):
+        self.description = description
+        self.dev_db_id = dev_db_id
+        self.dw_db_type = dw_db_type
+        self.mode = mode
+        self.prod_db_id = prod_db_id
+        self.space_config = space_config
+        self.space_name = space_name
+        self.tid = tid
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dev_db_id is not None:
+            result['DevDbId'] = self.dev_db_id
+        if self.dw_db_type is not None:
+            result['DwDbType'] = self.dw_db_type
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.prod_db_id is not None:
+            result['ProdDbId'] = self.prod_db_id
+        if self.space_config is not None:
+            result['SpaceConfig'] = self.space_config
+        if self.space_name is not None:
+            result['SpaceName'] = self.space_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DevDbId') is not None:
+            self.dev_db_id = m.get('DevDbId')
+        if m.get('DwDbType') is not None:
+            self.dw_db_type = m.get('DwDbType')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('ProdDbId') is not None:
+            self.prod_db_id = m.get('ProdDbId')
+        if m.get('SpaceConfig') is not None:
+            self.space_config = m.get('SpaceConfig')
+        if m.get('SpaceName') is not None:
+            self.space_name = m.get('SpaceName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class CreateLakeHouseSpaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        space_id: int = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.space_id = space_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateLakeHouseSpaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateLakeHouseSpaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateLakeHouseSpaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLogicDatabaseRequest(TeaModel):
     def __init__(
         self,
@@ -3131,6 +3507,193 @@ class CreateSQLReviewOrderResponse(TeaModel):
         return self
 
 
+class CreateStandardGroupRequest(TeaModel):
+    def __init__(
+        self,
+        db_type: str = None,
+        description: str = None,
+        group_name: str = None,
+        tid: int = None,
+    ):
+        self.db_type = db_type
+        self.description = description
+        self.group_name = group_name
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class CreateStandardGroupResponseBodyStandardGroup(TeaModel):
+    def __init__(
+        self,
+        db_type: str = None,
+        description: str = None,
+        group_mode: str = None,
+        group_name: str = None,
+        last_mender_id: int = None,
+    ):
+        self.db_type = db_type
+        self.description = description
+        self.group_mode = group_mode
+        self.group_name = group_name
+        self.last_mender_id = last_mender_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.group_mode is not None:
+            result['GroupMode'] = self.group_mode
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.last_mender_id is not None:
+            result['LastMenderId'] = self.last_mender_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GroupMode') is not None:
+            self.group_mode = m.get('GroupMode')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('LastMenderId') is not None:
+            self.last_mender_id = m.get('LastMenderId')
+        return self
+
+
+class CreateStandardGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        standard_group: CreateStandardGroupResponseBodyStandardGroup = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.standard_group = standard_group
+        self.success = success
+
+    def validate(self):
+        if self.standard_group:
+            self.standard_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.standard_group is not None:
+            result['StandardGroup'] = self.standard_group.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StandardGroup') is not None:
+            temp_model = CreateStandardGroupResponseBodyStandardGroup()
+            self.standard_group = temp_model.from_map(m['StandardGroup'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateStandardGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateStandardGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateStandardGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateStructSyncOrderRequestParamSource(TeaModel):
     def __init__(
         self,
@@ -3983,6 +4546,178 @@ class DeleteInstanceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLhMembersRequest(TeaModel):
+    def __init__(
+        self,
+        member_ids: List[int] = None,
+        object_id: int = None,
+        object_type: int = None,
+        tid: int = None,
+    ):
+        self.member_ids = member_ids
+        self.object_id = object_id
+        self.object_type = object_type
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_ids is not None:
+            result['MemberIds'] = self.member_ids
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemberIds') is not None:
+            self.member_ids = m.get('MemberIds')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteLhMembersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        member_ids_shrink: str = None,
+        object_id: int = None,
+        object_type: int = None,
+        tid: int = None,
+    ):
+        self.member_ids_shrink = member_ids_shrink
+        self.object_id = object_id
+        self.object_type = object_type
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.member_ids_shrink is not None:
+            result['MemberIds'] = self.member_ids_shrink
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MemberIds') is not None:
+            self.member_ids_shrink = m.get('MemberIds')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteLhMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteLhMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteLhMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteLhMembersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17927,6 +18662,501 @@ class ListInstancesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListLhTaskFlowAndScenarioRequest(TeaModel):
+    def __init__(
+        self,
+        space_id: int = None,
+        tid: int = None,
+        user_id: int = None,
+    ):
+        self.space_id = space_id
+        self.tid = tid
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag(TeaModel):
+    def __init__(
+        self,
+        can_edit: bool = None,
+        creator_id: str = None,
+        creator_nick_name: str = None,
+        dag_owner_nick_name: str = None,
+        data_flow_id: int = None,
+        demo_id: str = None,
+        deploy_id: int = None,
+        id: int = None,
+        is_deleted: bool = None,
+        latest_instance_status: int = None,
+        latest_instance_time: int = None,
+        scenario_id: int = None,
+        space_id: int = None,
+        status: int = None,
+    ):
+        self.can_edit = can_edit
+        self.creator_id = creator_id
+        self.creator_nick_name = creator_nick_name
+        self.dag_owner_nick_name = dag_owner_nick_name
+        self.data_flow_id = data_flow_id
+        self.demo_id = demo_id
+        self.deploy_id = deploy_id
+        self.id = id
+        self.is_deleted = is_deleted
+        self.latest_instance_status = latest_instance_status
+        self.latest_instance_time = latest_instance_time
+        self.scenario_id = scenario_id
+        self.space_id = space_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_edit is not None:
+            result['CanEdit'] = self.can_edit
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.creator_nick_name is not None:
+            result['CreatorNickName'] = self.creator_nick_name
+        if self.dag_owner_nick_name is not None:
+            result['DagOwnerNickName'] = self.dag_owner_nick_name
+        if self.data_flow_id is not None:
+            result['DataFlowId'] = self.data_flow_id
+        if self.demo_id is not None:
+            result['DemoId'] = self.demo_id
+        if self.deploy_id is not None:
+            result['DeployId'] = self.deploy_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.is_deleted is not None:
+            result['IsDeleted'] = self.is_deleted
+        if self.latest_instance_status is not None:
+            result['LatestInstanceStatus'] = self.latest_instance_status
+        if self.latest_instance_time is not None:
+            result['LatestInstanceTime'] = self.latest_instance_time
+        if self.scenario_id is not None:
+            result['ScenarioId'] = self.scenario_id
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanEdit') is not None:
+            self.can_edit = m.get('CanEdit')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('CreatorNickName') is not None:
+            self.creator_nick_name = m.get('CreatorNickName')
+        if m.get('DagOwnerNickName') is not None:
+            self.dag_owner_nick_name = m.get('DagOwnerNickName')
+        if m.get('DataFlowId') is not None:
+            self.data_flow_id = m.get('DataFlowId')
+        if m.get('DemoId') is not None:
+            self.demo_id = m.get('DemoId')
+        if m.get('DeployId') is not None:
+            self.deploy_id = m.get('DeployId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IsDeleted') is not None:
+            self.is_deleted = m.get('IsDeleted')
+        if m.get('LatestInstanceStatus') is not None:
+            self.latest_instance_status = m.get('LatestInstanceStatus')
+        if m.get('LatestInstanceTime') is not None:
+            self.latest_instance_time = m.get('LatestInstanceTime')
+        if m.get('ScenarioId') is not None:
+            self.scenario_id = m.get('ScenarioId')
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListLhTaskFlowAndScenarioResponseBodyRawDAGList(TeaModel):
+    def __init__(
+        self,
+        dag: List[ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag] = None,
+    ):
+        self.dag = dag
+
+    def validate(self):
+        if self.dag:
+            for k in self.dag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['dag'] = []
+        if self.dag is not None:
+            for k in self.dag:
+                result['dag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dag = []
+        if m.get('dag') is not None:
+            for k in m.get('dag'):
+                temp_model = ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag()
+                self.dag.append(temp_model.from_map(k))
+        return self
+
+
+class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag(TeaModel):
+    def __init__(
+        self,
+        can_edit: bool = None,
+        creator_id: str = None,
+        creator_nick_name: str = None,
+        dag_owner_nick_name: str = None,
+        data_flow_id: int = None,
+        demo_id: str = None,
+        deploy_id: int = None,
+        id: int = None,
+        is_deleted: bool = None,
+        latest_instance_status: int = None,
+        latest_instance_time: int = None,
+        scenario_id: int = None,
+        space_id: int = None,
+        status: int = None,
+    ):
+        self.can_edit = can_edit
+        self.creator_id = creator_id
+        self.creator_nick_name = creator_nick_name
+        self.dag_owner_nick_name = dag_owner_nick_name
+        self.data_flow_id = data_flow_id
+        self.demo_id = demo_id
+        self.deploy_id = deploy_id
+        self.id = id
+        self.is_deleted = is_deleted
+        self.latest_instance_status = latest_instance_status
+        self.latest_instance_time = latest_instance_time
+        self.scenario_id = scenario_id
+        self.space_id = space_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_edit is not None:
+            result['CanEdit'] = self.can_edit
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.creator_nick_name is not None:
+            result['CreatorNickName'] = self.creator_nick_name
+        if self.dag_owner_nick_name is not None:
+            result['DagOwnerNickName'] = self.dag_owner_nick_name
+        if self.data_flow_id is not None:
+            result['DataFlowId'] = self.data_flow_id
+        if self.demo_id is not None:
+            result['DemoId'] = self.demo_id
+        if self.deploy_id is not None:
+            result['DeployId'] = self.deploy_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.is_deleted is not None:
+            result['IsDeleted'] = self.is_deleted
+        if self.latest_instance_status is not None:
+            result['LatestInstanceStatus'] = self.latest_instance_status
+        if self.latest_instance_time is not None:
+            result['LatestInstanceTime'] = self.latest_instance_time
+        if self.scenario_id is not None:
+            result['ScenarioId'] = self.scenario_id
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanEdit') is not None:
+            self.can_edit = m.get('CanEdit')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('CreatorNickName') is not None:
+            self.creator_nick_name = m.get('CreatorNickName')
+        if m.get('DagOwnerNickName') is not None:
+            self.dag_owner_nick_name = m.get('DagOwnerNickName')
+        if m.get('DataFlowId') is not None:
+            self.data_flow_id = m.get('DataFlowId')
+        if m.get('DemoId') is not None:
+            self.demo_id = m.get('DemoId')
+        if m.get('DeployId') is not None:
+            self.deploy_id = m.get('DeployId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IsDeleted') is not None:
+            self.is_deleted = m.get('IsDeleted')
+        if m.get('LatestInstanceStatus') is not None:
+            self.latest_instance_status = m.get('LatestInstanceStatus')
+        if m.get('LatestInstanceTime') is not None:
+            self.latest_instance_time = m.get('LatestInstanceTime')
+        if m.get('ScenarioId') is not None:
+            self.scenario_id = m.get('ScenarioId')
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList(TeaModel):
+    def __init__(
+        self,
+        dag: List[ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag] = None,
+    ):
+        self.dag = dag
+
+    def validate(self):
+        if self.dag:
+            for k in self.dag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['dag'] = []
+        if self.dag is not None:
+            for k in self.dag:
+                result['dag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dag = []
+        if m.get('dag') is not None:
+            for k in m.get('dag'):
+                temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag()
+                self.dag.append(temp_model.from_map(k))
+        return self
+
+
+class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario(TeaModel):
+    def __init__(
+        self,
+        creator_id: str = None,
+        description: str = None,
+        scenario_name: str = None,
+    ):
+        self.creator_id = creator_id
+        self.description = description
+        self.scenario_name = scenario_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.scenario_name is not None:
+            result['ScenarioName'] = self.scenario_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ScenarioName') is not None:
+            self.scenario_name = m.get('ScenarioName')
+        return self
+
+
+class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList(TeaModel):
+    def __init__(
+        self,
+        dag_list: ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList = None,
+        scenario: ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario = None,
+    ):
+        self.dag_list = dag_list
+        self.scenario = scenario
+
+    def validate(self):
+        if self.dag_list:
+            self.dag_list.validate()
+        if self.scenario:
+            self.scenario.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dag_list is not None:
+            result['DagList'] = self.dag_list.to_map()
+        if self.scenario is not None:
+            result['Scenario'] = self.scenario.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DagList') is not None:
+            temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList()
+            self.dag_list = temp_model.from_map(m['DagList'])
+        if m.get('Scenario') is not None:
+            temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario()
+            self.scenario = temp_model.from_map(m['Scenario'])
+        return self
+
+
+class ListLhTaskFlowAndScenarioResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        raw_daglist: ListLhTaskFlowAndScenarioResponseBodyRawDAGList = None,
+        request_id: str = None,
+        scenario_daglist: ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.raw_daglist = raw_daglist
+        self.request_id = request_id
+        self.scenario_daglist = scenario_daglist
+        self.success = success
+
+    def validate(self):
+        if self.raw_daglist:
+            self.raw_daglist.validate()
+        if self.scenario_daglist:
+            self.scenario_daglist.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.raw_daglist is not None:
+            result['RawDAGList'] = self.raw_daglist.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.scenario_daglist is not None:
+            result['ScenarioDAGList'] = self.scenario_daglist.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RawDAGList') is not None:
+            temp_model = ListLhTaskFlowAndScenarioResponseBodyRawDAGList()
+            self.raw_daglist = temp_model.from_map(m['RawDAGList'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScenarioDAGList') is not None:
+            temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList()
+            self.scenario_daglist = temp_model.from_map(m['ScenarioDAGList'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListLhTaskFlowAndScenarioResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListLhTaskFlowAndScenarioResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListLhTaskFlowAndScenarioResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
