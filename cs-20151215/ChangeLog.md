@@ -1,3 +1,6 @@
+2022-03-18 Version: 3.0.9
+- Update DescribeClustersV1.
+
 2022-03-15 Version: 3.0.8
 - Update ModifyPolicyInstance.
 

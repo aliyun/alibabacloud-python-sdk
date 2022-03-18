@@ -3626,6 +3626,8 @@ class Client(OpenApiClient):
             query['page_size'] = request.page_size
         if not UtilClient.is_unset(request.profile):
             query['profile'] = request.profile
+        if not UtilClient.is_unset(request.region_id):
+            query['region_id'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3666,6 +3668,8 @@ class Client(OpenApiClient):
             query['page_size'] = request.page_size
         if not UtilClient.is_unset(request.profile):
             query['profile'] = request.profile
+        if not UtilClient.is_unset(request.region_id):
+            query['region_id'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
