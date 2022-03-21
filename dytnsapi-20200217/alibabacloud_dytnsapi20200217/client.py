@@ -48,11 +48,16 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribeEmptyNumberDetectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EncryptType'] = request.encrypt_type
-        query['OwnerId'] = request.owner_id
-        query['Phone'] = request.phone
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.encrypt_type):
+            query['EncryptType'] = request.encrypt_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone):
+            query['Phone'] = request.phone
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -79,11 +84,16 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribeEmptyNumberDetectResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EncryptType'] = request.encrypt_type
-        query['OwnerId'] = request.owner_id
-        query['Phone'] = request.phone
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.encrypt_type):
+            query['EncryptType'] = request.encrypt_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone):
+            query['Phone'] = request.phone
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -124,14 +134,22 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberAnalysisResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthCode'] = request.auth_code
-        query['InputNumber'] = request.input_number
-        query['Mask'] = request.mask
-        query['NumberType'] = request.number_type
-        query['OwnerId'] = request.owner_id
-        query['Rate'] = request.rate
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.number_type):
+            query['NumberType'] = request.number_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rate):
+            query['Rate'] = request.rate
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -158,14 +176,22 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberAnalysisResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AuthCode'] = request.auth_code
-        query['InputNumber'] = request.input_number
-        query['Mask'] = request.mask
-        query['NumberType'] = request.number_type
-        query['OwnerId'] = request.owner_id
-        query['Rate'] = request.rate
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.number_type):
+            query['NumberType'] = request.number_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rate):
+            query['Rate'] = request.rate
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -206,10 +232,14 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumber'] = request.phone_number
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -236,10 +266,14 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumber'] = request.phone_number
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -273,6 +307,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_phone_number_attribute_with_options_async(request, runtime)
 
+    def describe_phone_number_online_time_with_options(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.carrier):
+            query['Carrier'] = request.carrier
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberOnlineTime',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_phone_number_online_time_with_options_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.carrier):
+            query['Carrier'] = request.carrier
+        if not UtilClient.is_unset(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not UtilClient.is_unset(request.mask):
+            query['Mask'] = request.mask
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePhoneNumberOnlineTime',
+            version='2020-02-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_phone_number_online_time(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_phone_number_online_time_with_options(request, runtime)
+
+    async def describe_phone_number_online_time_async(
+        self,
+        request: dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeRequest,
+    ) -> dytnsapi_20200217_models.DescribePhoneNumberOnlineTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_phone_number_online_time_with_options_async(request, runtime)
+
     def describe_phone_number_resale_with_options(
         self,
         request: dytnsapi_20200217_models.DescribePhoneNumberResaleRequest,
@@ -280,11 +408,16 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberResaleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumber'] = request.phone_number
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Since'] = request.since
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.since):
+            query['Since'] = request.since
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -311,11 +444,16 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberResaleResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumber'] = request.phone_number
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Since'] = request.since
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.since):
+            query['Since'] = request.since
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -356,10 +494,14 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumber'] = request.phone_number
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -386,10 +528,14 @@ class Client(OpenApiClient):
     ) -> dytnsapi_20200217_models.DescribePhoneNumberStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['PhoneNumber'] = request.phone_number
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
