@@ -407,20 +407,26 @@ class CreateAppGroupRequest(TeaModel):
     def __init__(
         self,
         alarm_json: str = None,
+        app_key: str = None,
         app_name: str = None,
         description: str = None,
         group_id: str = None,
         max_jobs: int = None,
+        monitor_config_json: str = None,
+        monitor_contacts_json: str = None,
         namespace: str = None,
         namespace_name: str = None,
         namespace_source: str = None,
         region_id: str = None,
     ):
         self.alarm_json = alarm_json
+        self.app_key = app_key
         self.app_name = app_name
         self.description = description
         self.group_id = group_id
         self.max_jobs = max_jobs
+        self.monitor_config_json = monitor_config_json
+        self.monitor_contacts_json = monitor_contacts_json
         self.namespace = namespace
         self.namespace_name = namespace_name
         self.namespace_source = namespace_source
@@ -437,6 +443,8 @@ class CreateAppGroupRequest(TeaModel):
         result = dict()
         if self.alarm_json is not None:
             result['AlarmJson'] = self.alarm_json
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         if self.app_name is not None:
             result['AppName'] = self.app_name
         if self.description is not None:
@@ -445,6 +453,10 @@ class CreateAppGroupRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.max_jobs is not None:
             result['MaxJobs'] = self.max_jobs
+        if self.monitor_config_json is not None:
+            result['MonitorConfigJson'] = self.monitor_config_json
+        if self.monitor_contacts_json is not None:
+            result['MonitorContactsJson'] = self.monitor_contacts_json
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.namespace_name is not None:
@@ -459,6 +471,8 @@ class CreateAppGroupRequest(TeaModel):
         m = m or dict()
         if m.get('AlarmJson') is not None:
             self.alarm_json = m.get('AlarmJson')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
         if m.get('Description') is not None:
@@ -467,6 +481,10 @@ class CreateAppGroupRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('MaxJobs') is not None:
             self.max_jobs = m.get('MaxJobs')
+        if m.get('MonitorConfigJson') is not None:
+            self.monitor_config_json = m.get('MonitorConfigJson')
+        if m.get('MonitorContactsJson') is not None:
+            self.monitor_contacts_json = m.get('MonitorContactsJson')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('NamespaceName') is not None:
@@ -482,8 +500,10 @@ class CreateAppGroupResponseBodyData(TeaModel):
     def __init__(
         self,
         app_group_id: int = None,
+        app_key: str = None,
     ):
         self.app_group_id = app_group_id
+        self.app_key = app_key
 
     def validate(self):
         pass
@@ -496,12 +516,16 @@ class CreateAppGroupResponseBodyData(TeaModel):
         result = dict()
         if self.app_group_id is not None:
             result['AppGroupId'] = self.app_group_id
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AppGroupId') is not None:
             self.app_group_id = m.get('AppGroupId')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         return self
 
 
@@ -974,6 +998,169 @@ class CreateJobResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        region_id: str = None,
+        uid: str = None,
+    ):
+        self.description = description
+        self.name = name
+        self.region_id = region_id
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class CreateNamespaceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        namespace_uid: str = None,
+    ):
+        self.namespace_uid = namespace_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_uid is not None:
+            result['NamespaceUid'] = self.namespace_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceUid') is not None:
+            self.namespace_uid = m.get('NamespaceUid')
+        return self
+
+
+class CreateNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CreateNamespaceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateNamespaceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateNamespaceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2454,12 +2641,14 @@ class GetJobInfoRequest(TeaModel):
         self,
         group_id: str = None,
         job_id: int = None,
+        job_name: str = None,
         namespace: str = None,
         namespace_source: str = None,
         region_id: str = None,
     ):
         self.group_id = group_id
         self.job_id = job_id
+        self.job_name = job_name
         self.namespace = namespace
         self.namespace_source = namespace_source
         self.region_id = region_id
@@ -2477,6 +2666,8 @@ class GetJobInfoRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.namespace_source is not None:
@@ -2491,6 +2682,8 @@ class GetJobInfoRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('NamespaceSource') is not None:
@@ -2757,6 +2950,7 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         description: str = None,
         execute_mode: str = None,
         jar_url: str = None,
+        job_id: int = None,
         job_monitor_info: GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo = None,
         map_task_xattrs: GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs = None,
         max_attempt: int = None,
@@ -2772,6 +2966,7 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         self.description = description
         self.execute_mode = execute_mode
         self.jar_url = jar_url
+        self.job_id = job_id
         self.job_monitor_info = job_monitor_info
         self.map_task_xattrs = map_task_xattrs
         self.max_attempt = max_attempt
@@ -2807,6 +3002,8 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
             result['ExecuteMode'] = self.execute_mode
         if self.jar_url is not None:
             result['JarUrl'] = self.jar_url
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.job_monitor_info is not None:
             result['JobMonitorInfo'] = self.job_monitor_info.to_map()
         if self.map_task_xattrs is not None:
@@ -2839,6 +3036,8 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
             self.execute_mode = m.get('ExecuteMode')
         if m.get('JarUrl') is not None:
             self.jar_url = m.get('JarUrl')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('JobMonitorInfo') is not None:
             temp_model = GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo()
             self.job_monitor_info = temp_model.from_map(m['JobMonitorInfo'])

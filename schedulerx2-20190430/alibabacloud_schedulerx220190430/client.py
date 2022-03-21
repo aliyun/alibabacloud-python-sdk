@@ -581,6 +581,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_job_with_options_async(request, runtime)
 
+    def create_namespace_with_options(
+        self,
+        request: schedulerx_220190430_models.CreateNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNamespace',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_namespace_with_options_async(
+        self,
+        request: schedulerx_220190430_models.CreateNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> schedulerx_220190430_models.CreateNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.uid):
+            query['Uid'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNamespace',
+            version='2019-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            schedulerx_220190430_models.CreateNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_namespace(
+        self,
+        request: schedulerx_220190430_models.CreateNamespaceRequest,
+    ) -> schedulerx_220190430_models.CreateNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_namespace_with_options(request, runtime)
+
+    async def create_namespace_async(
+        self,
+        request: schedulerx_220190430_models.CreateNamespaceRequest,
+    ) -> schedulerx_220190430_models.CreateNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_namespace_with_options_async(request, runtime)
+
     def delete_job_with_options(
         self,
         request: schedulerx_220190430_models.DeleteJobRequest,
