@@ -17913,6 +17913,8 @@ class Client(OpenApiClient):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.method_name):
             body['MethodName'] = request.method_name
+        if not UtilClient.is_unset(request.open_switch):
+            body['OpenSwitch'] = request.open_switch
         if not UtilClient.is_unset(request.operator):
             body['Operator'] = request.operator
         if not UtilClient.is_unset(request.predict_type):
@@ -17977,6 +17979,8 @@ class Client(OpenApiClient):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.method_name):
             body['MethodName'] = request.method_name
+        if not UtilClient.is_unset(request.open_switch):
+            body['OpenSwitch'] = request.open_switch
         if not UtilClient.is_unset(request.operator):
             body['Operator'] = request.operator
         if not UtilClient.is_unset(request.predict_type):

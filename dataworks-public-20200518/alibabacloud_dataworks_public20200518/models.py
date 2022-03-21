@@ -35207,11 +35207,13 @@ class ListManualDagInstancesResponse(TeaModel):
 class ListMetaDBRequest(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
         data_source_type: str = None,
         page_num: int = None,
         page_size: int = None,
         project_id: int = None,
     ):
+        self.cluster_id = cluster_id
         self.data_source_type = data_source_type
         self.page_num = page_num
         self.page_size = page_size
@@ -35226,6 +35228,8 @@ class ListMetaDBRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.data_source_type is not None:
             result['DataSourceType'] = self.data_source_type
         if self.page_num is not None:
@@ -35238,6 +35242,8 @@ class ListMetaDBRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('DataSourceType') is not None:
             self.data_source_type = m.get('DataSourceType')
         if m.get('PageNum') is not None:
@@ -47376,6 +47382,7 @@ class UpdateQualityRuleRequest(TeaModel):
         expect_value: str = None,
         id: int = None,
         method_name: str = None,
+        open_switch: bool = None,
         operator: str = None,
         predict_type: int = None,
         project_name: str = None,
@@ -47396,6 +47403,7 @@ class UpdateQualityRuleRequest(TeaModel):
         self.expect_value = expect_value
         self.id = id
         self.method_name = method_name
+        self.open_switch = open_switch
         self.operator = operator
         self.predict_type = predict_type
         self.project_name = project_name
@@ -47433,6 +47441,8 @@ class UpdateQualityRuleRequest(TeaModel):
             result['Id'] = self.id
         if self.method_name is not None:
             result['MethodName'] = self.method_name
+        if self.open_switch is not None:
+            result['OpenSwitch'] = self.open_switch
         if self.operator is not None:
             result['Operator'] = self.operator
         if self.predict_type is not None:
@@ -47475,6 +47485,8 @@ class UpdateQualityRuleRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('MethodName') is not None:
             self.method_name = m.get('MethodName')
+        if m.get('OpenSwitch') is not None:
+            self.open_switch = m.get('OpenSwitch')
         if m.get('Operator') is not None:
             self.operator = m.get('Operator')
         if m.get('PredictType') is not None:
