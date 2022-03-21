@@ -1,3 +1,6 @@
+2022-03-21 Version: 1.3.0
+- ADD Product api.
+
 2022-03-15 Version: 1.2.4
 - ADD topicIdx for SearchCondition.
 

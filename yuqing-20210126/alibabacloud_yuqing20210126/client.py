@@ -141,6 +141,98 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def close_product(
+        self,
+        request: yuqing_20210126_models.CloseProductRequest,
+    ) -> yuqing_20210126_models.CloseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.close_product_with_options(request, headers, runtime)
+
+    async def close_product_async(
+        self,
+        request: yuqing_20210126_models.CloseProductRequest,
+    ) -> yuqing_20210126_models.CloseProductResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.close_product_with_options_async(request, headers, runtime)
+
+    def close_product_with_options(
+        self,
+        request: yuqing_20210126_models.CloseProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.CloseProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.product_instance):
+            body['productInstance'] = request.product_instance
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseProduct',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/closeProduct.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.CloseProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_product_with_options_async(
+        self,
+        request: yuqing_20210126_models.CloseProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.CloseProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.product_instance):
+            body['productInstance'] = request.product_instance
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseProduct',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/closeProduct.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.CloseProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_project(
         self,
         request: yuqing_20210126_models.CreateProjectRequest,
@@ -674,6 +766,98 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             yuqing_20210126_models.ListYuqingMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_product(
+        self,
+        request: yuqing_20210126_models.OpenProductRequest,
+    ) -> yuqing_20210126_models.OpenProductResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.open_product_with_options(request, headers, runtime)
+
+    async def open_product_async(
+        self,
+        request: yuqing_20210126_models.OpenProductRequest,
+    ) -> yuqing_20210126_models.OpenProductResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.open_product_with_options_async(request, headers, runtime)
+
+    def open_product_with_options(
+        self,
+        request: yuqing_20210126_models.OpenProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.OpenProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.product_instance):
+            body['productInstance'] = request.product_instance
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OpenProduct',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/openProduct.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.OpenProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_product_with_options_async(
+        self,
+        request: yuqing_20210126_models.OpenProductRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.OpenProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.product_instance):
+            body['productInstance'] = request.product_instance
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OpenProduct',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/openProduct.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.OpenProductResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
