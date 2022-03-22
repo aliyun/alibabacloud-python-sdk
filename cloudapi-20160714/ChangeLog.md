@@ -1,3 +1,6 @@
+2022-03-22 Version: 2.1.3
+- Support the new backend service, EventBridge.
+
 2022-03-17 Version: 2.1.2
 - Add api DetachPlugin.
 

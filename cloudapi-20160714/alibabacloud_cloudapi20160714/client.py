@@ -1018,6 +1018,8 @@ class Client(OpenApiClient):
             query['BackendName'] = request.backend_name
         if not UtilClient.is_unset(request.backend_type):
             query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.create_event_bridge_service_linked_role):
+            query['CreateEventBridgeServiceLinkedRole'] = request.create_event_bridge_service_linked_role
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):
@@ -1052,6 +1054,8 @@ class Client(OpenApiClient):
             query['BackendName'] = request.backend_name
         if not UtilClient.is_unset(request.backend_type):
             query['BackendType'] = request.backend_type
+        if not UtilClient.is_unset(request.create_event_bridge_service_linked_role):
+            query['CreateEventBridgeServiceLinkedRole'] = request.create_event_bridge_service_linked_role
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):
