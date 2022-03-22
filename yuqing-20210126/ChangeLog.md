@@ -1,3 +1,6 @@
+2022-03-22 Version: 1.3.1
+- ADD console proxy api.
+
 2022-03-21 Version: 1.3.0
 - ADD Product api.
 

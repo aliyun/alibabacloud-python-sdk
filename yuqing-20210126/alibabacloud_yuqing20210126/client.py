@@ -233,6 +233,102 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def console_proxy(
+        self,
+        request: yuqing_20210126_models.ConsoleProxyRequest,
+    ) -> yuqing_20210126_models.ConsoleProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.console_proxy_with_options(request, headers, runtime)
+
+    async def console_proxy_async(
+        self,
+        request: yuqing_20210126_models.ConsoleProxyRequest,
+    ) -> yuqing_20210126_models.ConsoleProxyResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.console_proxy_with_options_async(request, headers, runtime)
+
+    def console_proxy_with_options(
+        self,
+        request: yuqing_20210126_models.ConsoleProxyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.ConsoleProxyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.app_code):
+            body['appCode'] = request.app_code
+        if not UtilClient.is_unset(request.interface):
+            body['interface'] = request.interface
+        if not UtilClient.is_unset(request.param_json):
+            body['paramJson'] = request.param_json
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConsoleProxy',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/consoleProxy.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.ConsoleProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def console_proxy_with_options_async(
+        self,
+        request: yuqing_20210126_models.ConsoleProxyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20210126_models.ConsoleProxyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        body = {}
+        if not UtilClient.is_unset(request.app_code):
+            body['appCode'] = request.app_code
+        if not UtilClient.is_unset(request.interface):
+            body['interface'] = request.interface
+        if not UtilClient.is_unset(request.param_json):
+            body['paramJson'] = request.param_json
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConsoleProxy',
+            version='2021-01-26',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/consoleProxy.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20210126_models.ConsoleProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_project(
         self,
         request: yuqing_20210126_models.CreateProjectRequest,
