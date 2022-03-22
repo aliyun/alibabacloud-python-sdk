@@ -11379,6 +11379,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.area):
             query['Area'] = request.area
+        if not UtilClient.is_unset(request.l_2preload):
+            query['L2Preload'] = request.l_2preload
         if not UtilClient.is_unset(request.object_path):
             query['ObjectPath'] = request.object_path
         if not UtilClient.is_unset(request.owner_id):
@@ -11413,6 +11415,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.area):
             query['Area'] = request.area
+        if not UtilClient.is_unset(request.l_2preload):
+            query['L2Preload'] = request.l_2preload
         if not UtilClient.is_unset(request.object_path):
             query['ObjectPath'] = request.object_path
         if not UtilClient.is_unset(request.owner_id):

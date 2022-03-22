@@ -1,3 +1,6 @@
+2022-03-22 Version: 1.0.8
+- Update PushObjectCache.
+
 2022-02-23 Version: 1.0.7
 - Add DescribeCdnComputeUserDomain.
 

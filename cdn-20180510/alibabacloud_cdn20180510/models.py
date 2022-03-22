@@ -26883,11 +26883,13 @@ class PushObjectCacheRequest(TeaModel):
     def __init__(
         self,
         area: str = None,
+        l_2preload: bool = None,
         object_path: str = None,
         owner_id: int = None,
         security_token: str = None,
     ):
         self.area = area
+        self.l_2preload = l_2preload
         self.object_path = object_path
         self.owner_id = owner_id
         self.security_token = security_token
@@ -26903,6 +26905,8 @@ class PushObjectCacheRequest(TeaModel):
         result = dict()
         if self.area is not None:
             result['Area'] = self.area
+        if self.l_2preload is not None:
+            result['L2Preload'] = self.l_2preload
         if self.object_path is not None:
             result['ObjectPath'] = self.object_path
         if self.owner_id is not None:
@@ -26915,6 +26919,8 @@ class PushObjectCacheRequest(TeaModel):
         m = m or dict()
         if m.get('Area') is not None:
             self.area = m.get('Area')
+        if m.get('L2Preload') is not None:
+            self.l_2preload = m.get('L2Preload')
         if m.get('ObjectPath') is not None:
             self.object_path = m.get('ObjectPath')
         if m.get('OwnerId') is not None:
