@@ -2716,6 +2716,7 @@ class ListSnapshotResponseBodySnapshots(TeaModel):
         snapshot_type: str = None,
         source_fs_id: str = None,
         source_fs_size: int = None,
+        source_fs_stripe_width: int = None,
         status: str = None,
     ):
         self.category = category
@@ -2730,6 +2731,7 @@ class ListSnapshotResponseBodySnapshots(TeaModel):
         self.snapshot_type = snapshot_type
         self.source_fs_id = source_fs_id
         self.source_fs_size = source_fs_size
+        self.source_fs_stripe_width = source_fs_stripe_width
         self.status = status
 
     def validate(self):
@@ -2765,6 +2767,8 @@ class ListSnapshotResponseBodySnapshots(TeaModel):
             result['SourceFsId'] = self.source_fs_id
         if self.source_fs_size is not None:
             result['SourceFsSize'] = self.source_fs_size
+        if self.source_fs_stripe_width is not None:
+            result['SourceFsStripeWidth'] = self.source_fs_stripe_width
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -2795,6 +2799,8 @@ class ListSnapshotResponseBodySnapshots(TeaModel):
             self.source_fs_id = m.get('SourceFsId')
         if m.get('SourceFsSize') is not None:
             self.source_fs_size = m.get('SourceFsSize')
+        if m.get('SourceFsStripeWidth') is not None:
+            self.source_fs_stripe_width = m.get('SourceFsStripeWidth')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self

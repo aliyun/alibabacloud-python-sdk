@@ -1,3 +1,6 @@
+2022-03-22 Version: 3.1.1
+- The new return value SourceFsStripeWidth is added to the ListSnapshot interface.
+
 2022-02-28 Version: 3.1.0
 - Fixed the default performance level of CreateDbfs to be PL1.
 
