@@ -5483,6 +5483,227 @@ class DescribeDcdnDomainBpsDataResponse(TeaModel):
         return self
 
 
+class DescribeDcdnDomainBpsDataByLayerRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        interval: str = None,
+        isp_name_en: str = None,
+        layer: str = None,
+        location_name_en: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.interval = interval
+        self.isp_name_en = isp_name_en
+        self.layer = layer
+        self.location_name_en = location_name_en
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule(TeaModel):
+    def __init__(
+        self,
+        time_stamp: str = None,
+        traffic_value: str = None,
+        value: str = None,
+    ):
+        self.time_stamp = time_stamp
+        self.traffic_value = traffic_value
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.traffic_value is not None:
+            result['TrafficValue'] = self.traffic_value
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('TrafficValue') is not None:
+            self.traffic_value = m.get('TrafficValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval(TeaModel):
+    def __init__(
+        self,
+        data_module: List[DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule] = None,
+    ):
+        self.data_module = data_module
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDcdnDomainBpsDataByLayerResponseBody(TeaModel):
+    def __init__(
+        self,
+        bps_data_interval: DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval = None,
+        data_interval: str = None,
+        request_id: str = None,
+    ):
+        self.bps_data_interval = bps_data_interval
+        self.data_interval = data_interval
+        self.request_id = request_id
+
+    def validate(self):
+        if self.bps_data_interval:
+            self.bps_data_interval.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps_data_interval is not None:
+            result['BpsDataInterval'] = self.bps_data_interval.to_map()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BpsDataInterval') is not None:
+            temp_model = DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval()
+            self.bps_data_interval = temp_model.from_map(m['BpsDataInterval'])
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDcdnDomainBpsDataByLayerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDcdnDomainBpsDataByLayerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDcdnDomainBpsDataByLayerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDcdnDomainByCertificateRequest(TeaModel):
     def __init__(
         self,
@@ -7423,6 +7644,227 @@ class DescribeDcdnDomainHttpCodeDataResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeDcdnDomainHttpCodeDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDcdnDomainHttpCodeDataByLayerRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        interval: str = None,
+        isp_name_en: str = None,
+        layer: str = None,
+        location_name_en: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.interval = interval
+        self.isp_name_en = isp_name_en
+        self.layer = layer
+        self.location_name_en = location_name_en
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule(TeaModel):
+    def __init__(
+        self,
+        time_stamp: str = None,
+        total_value: str = None,
+        value: str = None,
+    ):
+        self.time_stamp = time_stamp
+        self.total_value = total_value
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.total_value is not None:
+            result['TotalValue'] = self.total_value
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('TotalValue') is not None:
+            self.total_value = m.get('TotalValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval(TeaModel):
+    def __init__(
+        self,
+        data_module: List[DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule] = None,
+    ):
+        self.data_module = data_module
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDcdnDomainHttpCodeDataByLayerResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: str = None,
+        http_code_data_interval: DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval = None,
+        request_id: str = None,
+    ):
+        self.data_interval = data_interval
+        self.http_code_data_interval = http_code_data_interval
+        self.request_id = request_id
+
+    def validate(self):
+        if self.http_code_data_interval:
+            self.http_code_data_interval.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.http_code_data_interval is not None:
+            result['HttpCodeDataInterval'] = self.http_code_data_interval.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('HttpCodeDataInterval') is not None:
+            temp_model = DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval()
+            self.http_code_data_interval = temp_model.from_map(m['HttpCodeDataInterval'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDcdnDomainHttpCodeDataByLayerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDcdnDomainHttpCodeDataByLayerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDcdnDomainHttpCodeDataByLayerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9884,6 +10326,275 @@ class DescribeDcdnDomainQpsDataResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeDcdnDomainQpsDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDcdnDomainQpsDataByLayerRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        interval: str = None,
+        isp_name_en: str = None,
+        layer: str = None,
+        location_name_en: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.interval = interval
+        self.isp_name_en = isp_name_en
+        self.layer = layer
+        self.location_name_en = location_name_en
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule(TeaModel):
+    def __init__(
+        self,
+        acc_domestic_value: str = None,
+        acc_overseas_value: str = None,
+        acc_value: str = None,
+        domestic_value: str = None,
+        overseas_value: str = None,
+        time_stamp: str = None,
+        value: str = None,
+    ):
+        self.acc_domestic_value = acc_domestic_value
+        self.acc_overseas_value = acc_overseas_value
+        self.acc_value = acc_value
+        self.domestic_value = domestic_value
+        self.overseas_value = overseas_value
+        self.time_stamp = time_stamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acc_domestic_value is not None:
+            result['AccDomesticValue'] = self.acc_domestic_value
+        if self.acc_overseas_value is not None:
+            result['AccOverseasValue'] = self.acc_overseas_value
+        if self.acc_value is not None:
+            result['AccValue'] = self.acc_value
+        if self.domestic_value is not None:
+            result['DomesticValue'] = self.domestic_value
+        if self.overseas_value is not None:
+            result['OverseasValue'] = self.overseas_value
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccDomesticValue') is not None:
+            self.acc_domestic_value = m.get('AccDomesticValue')
+        if m.get('AccOverseasValue') is not None:
+            self.acc_overseas_value = m.get('AccOverseasValue')
+        if m.get('AccValue') is not None:
+            self.acc_value = m.get('AccValue')
+        if m.get('DomesticValue') is not None:
+            self.domestic_value = m.get('DomesticValue')
+        if m.get('OverseasValue') is not None:
+            self.overseas_value = m.get('OverseasValue')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval(TeaModel):
+    def __init__(
+        self,
+        data_module: List[DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule] = None,
+    ):
+        self.data_module = data_module
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDcdnDomainQpsDataByLayerResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: str = None,
+        domain_name: str = None,
+        end_time: str = None,
+        layer: str = None,
+        qps_data_interval: DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.data_interval = data_interval
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.layer = layer
+        self.qps_data_interval = qps_data_interval
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.qps_data_interval:
+            self.qps_data_interval.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.qps_data_interval is not None:
+            result['QpsDataInterval'] = self.qps_data_interval.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('QpsDataInterval') is not None:
+            temp_model = DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval()
+            self.qps_data_interval = temp_model.from_map(m['QpsDataInterval'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDcdnDomainQpsDataByLayerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeDcdnDomainQpsDataByLayerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeDcdnDomainQpsDataByLayerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24186,11 +24897,13 @@ class PreloadDcdnObjectCachesRequest(TeaModel):
     def __init__(
         self,
         area: str = None,
+        l_2preload: bool = None,
         object_path: str = None,
         owner_id: int = None,
         security_token: str = None,
     ):
         self.area = area
+        self.l_2preload = l_2preload
         self.object_path = object_path
         self.owner_id = owner_id
         self.security_token = security_token
@@ -24206,6 +24919,8 @@ class PreloadDcdnObjectCachesRequest(TeaModel):
         result = dict()
         if self.area is not None:
             result['Area'] = self.area
+        if self.l_2preload is not None:
+            result['L2Preload'] = self.l_2preload
         if self.object_path is not None:
             result['ObjectPath'] = self.object_path
         if self.owner_id is not None:
@@ -24218,6 +24933,8 @@ class PreloadDcdnObjectCachesRequest(TeaModel):
         m = m or dict()
         if m.get('Area') is not None:
             self.area = m.get('Area')
+        if m.get('L2Preload') is not None:
+            self.l_2preload = m.get('L2Preload')
         if m.get('ObjectPath') is not None:
             self.object_path = m.get('ObjectPath')
         if m.get('OwnerId') is not None:
