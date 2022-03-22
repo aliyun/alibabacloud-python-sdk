@@ -1,3 +1,7 @@
+2022-03-22 Version: 3.3.4
+- Add Cipher for Trace.
+
+
 2022-02-17 Version: 3.3.32
 - Add Apis for Extract.
 

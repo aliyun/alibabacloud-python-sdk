@@ -399,254 +399,6 @@ class QueryCopyrightExtractResponse(TeaModel):
         return self
 
 
-class QueryImageCopyrightRequest(TeaModel):
-    def __init__(
-        self,
-        create_time_end: int = None,
-        create_time_start: int = None,
-        job_id: str = None,
-        page_number: int = None,
-        page_size: int = None,
-    ):
-        # 创建时间起始
-        self.create_time_end = create_time_end
-        # 创建时间截止
-        self.create_time_start = create_time_start
-        # 任务ID
-        self.job_id = job_id
-        # 页偏移
-        self.page_number = page_number
-        # 每页数量
-        self.page_size = page_size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time_end is not None:
-            result['CreateTimeEnd'] = self.create_time_end
-        if self.create_time_start is not None:
-            result['CreateTimeStart'] = self.create_time_start
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTimeEnd') is not None:
-            self.create_time_end = m.get('CreateTimeEnd')
-        if m.get('CreateTimeStart') is not None:
-            self.create_time_start = m.get('CreateTimeStart')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        return self
-
-
-class QueryImageCopyrightResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        gmt_create: int = None,
-        gmt_modified: int = None,
-        input: str = None,
-        job_id: str = None,
-        level: int = None,
-        message: str = None,
-        message_id: int = None,
-        output: str = None,
-        status: str = None,
-        user_data: str = None,
-        user_id: int = None,
-    ):
-        # 创建时间
-        self.gmt_create = gmt_create
-        # 最后修改时间
-        self.gmt_modified = gmt_modified
-        # 水印图片输入oss地址
-        self.input = input
-        # 任务id
-        self.job_id = job_id
-        # 水印强度
-        self.level = level
-        # 水印信息
-        self.message = message
-        # 水印信息id
-        self.message_id = message_id
-        # 加完水印后的输出oss地址
-        self.output = output
-        # 任务状态
-        self.status = status
-        # 用户自定义数据
-        self.user_data = user_data
-        # uid
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.input is not None:
-            result['Input'] = self.input
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.level is not None:
-            result['Level'] = self.level
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.message_id is not None:
-            result['MessageId'] = self.message_id
-        if self.output is not None:
-            result['Output'] = self.output
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.user_data is not None:
-            result['UserData'] = self.user_data
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('Input') is not None:
-            self.input = m.get('Input')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('MessageId') is not None:
-            self.message_id = m.get('MessageId')
-        if m.get('Output') is not None:
-            self.output = m.get('Output')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('UserData') is not None:
-            self.user_data = m.get('UserData')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        return self
-
-
-class QueryImageCopyrightResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: List[QueryImageCopyrightResponseBodyData] = None,
-        message: str = None,
-        request_id: str = None,
-        status_code: int = None,
-    ):
-        # 返回数据
-        self.data = data
-        # 返回信息
-        self.message = message
-        # 请求id
-        self.request_id = request_id
-        # 状态码
-        self.status_code = status_code
-
-    def validate(self):
-        if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Data'] = []
-        if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestID'] = self.request_id
-        if self.status_code is not None:
-            result['StatusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.data = []
-        if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = QueryImageCopyrightResponseBodyData()
-                self.data.append(temp_model.from_map(k))
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestID') is not None:
-            self.request_id = m.get('RequestID')
-        if m.get('StatusCode') is not None:
-            self.status_code = m.get('StatusCode')
-        return self
-
-
-class QueryImageCopyrightResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: QueryImageCopyrightResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = QueryImageCopyrightResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class QueryTraceAbRequest(TeaModel):
     def __init__(
         self,
@@ -1817,6 +1569,7 @@ class SubmitTraceAbRequest(TeaModel):
     def __init__(
         self,
         call_back: str = None,
+        cipher_base_64ed: str = None,
         input: str = None,
         level: int = None,
         output: str = None,
@@ -1827,6 +1580,8 @@ class SubmitTraceAbRequest(TeaModel):
     ):
         # 任务结果回调
         self.call_back = call_back
+        # 密钥base64串
+        self.cipher_base_64ed = cipher_base_64ed
         # 溯源水印ab流处理视频输入
         self.input = input
         # 水印强度
@@ -1853,6 +1608,8 @@ class SubmitTraceAbRequest(TeaModel):
         result = dict()
         if self.call_back is not None:
             result['CallBack'] = self.call_back
+        if self.cipher_base_64ed is not None:
+            result['CipherBase64ed'] = self.cipher_base_64ed
         if self.input is not None:
             result['Input'] = self.input
         if self.level is not None:
@@ -1873,6 +1630,8 @@ class SubmitTraceAbRequest(TeaModel):
         m = m or dict()
         if m.get('CallBack') is not None:
             self.call_back = m.get('CallBack')
+        if m.get('CipherBase64ed') is not None:
+            self.cipher_base_64ed = m.get('CipherBase64ed')
         if m.get('Input') is not None:
             self.input = m.get('Input')
         if m.get('Level') is not None:

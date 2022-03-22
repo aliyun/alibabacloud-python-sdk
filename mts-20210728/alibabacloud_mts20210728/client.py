@@ -257,98 +257,6 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_image_copyright(
-        self,
-        request: mts_20210728_models.QueryImageCopyrightRequest,
-    ) -> mts_20210728_models.QueryImageCopyrightResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.query_image_copyright_with_options(request, headers, runtime)
-
-    async def query_image_copyright_async(
-        self,
-        request: mts_20210728_models.QueryImageCopyrightRequest,
-    ) -> mts_20210728_models.QueryImageCopyrightResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.query_image_copyright_with_options_async(request, headers, runtime)
-
-    def query_image_copyright_with_options(
-        self,
-        request: mts_20210728_models.QueryImageCopyrightRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> mts_20210728_models.QueryImageCopyrightResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.create_time_end):
-            body['CreateTimeEnd'] = request.create_time_end
-        if not UtilClient.is_unset(request.create_time_start):
-            body['CreateTimeStart'] = request.create_time_start
-        if not UtilClient.is_unset(request.job_id):
-            body['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='QueryImageCopyright',
-            version='2021-07-28',
-            protocol='HTTPS',
-            pathname=f'/queryImageCopyright',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mts_20210728_models.QueryImageCopyrightResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_image_copyright_with_options_async(
-        self,
-        request: mts_20210728_models.QueryImageCopyrightRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> mts_20210728_models.QueryImageCopyrightResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.create_time_end):
-            body['CreateTimeEnd'] = request.create_time_end
-        if not UtilClient.is_unset(request.create_time_start):
-            body['CreateTimeStart'] = request.create_time_start
-        if not UtilClient.is_unset(request.job_id):
-            body['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.page_number):
-            body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='QueryImageCopyright',
-            version='2021-07-28',
-            protocol='HTTPS',
-            pathname=f'/queryImageCopyright',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mts_20210728_models.QueryImageCopyrightResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
     def query_trace_ab(
         self,
         request: mts_20210728_models.QueryTraceAbRequest,
@@ -923,6 +831,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.call_back):
             body['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.cipher_base_64ed):
+            body['CipherBase64ed'] = request.cipher_base_64ed
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
         if not UtilClient.is_unset(request.level):
@@ -967,6 +877,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.call_back):
             body['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.cipher_base_64ed):
+            body['CipherBase64ed'] = request.cipher_base_64ed
         if not UtilClient.is_unset(request.input):
             body['Input'] = request.input
         if not UtilClient.is_unset(request.level):
