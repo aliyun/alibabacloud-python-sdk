@@ -5618,6 +5618,7 @@ class ListFlowJobsRequest(TeaModel):
     def __init__(
         self,
         adhoc: bool = None,
+        exact_name: str = None,
         id: str = None,
         name: str = None,
         page_number: int = None,
@@ -5628,6 +5629,7 @@ class ListFlowJobsRequest(TeaModel):
     ):
         # 是否为临时查询。用于过滤作业。
         self.adhoc = adhoc
+        self.exact_name = exact_name
         # 作业ID。您可以调用ListFlowJob查看作业ID。
         self.id = id
         # 作业名称。
@@ -5654,6 +5656,8 @@ class ListFlowJobsRequest(TeaModel):
         result = dict()
         if self.adhoc is not None:
             result['Adhoc'] = self.adhoc
+        if self.exact_name is not None:
+            result['ExactName'] = self.exact_name
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
@@ -5674,6 +5678,8 @@ class ListFlowJobsRequest(TeaModel):
         m = m or dict()
         if m.get('Adhoc') is not None:
             self.adhoc = m.get('Adhoc')
+        if m.get('ExactName') is not None:
+            self.exact_name = m.get('ExactName')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:

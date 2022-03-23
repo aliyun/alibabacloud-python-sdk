@@ -1874,6 +1874,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.adhoc):
             query['Adhoc'] = request.adhoc
+        if not UtilClient.is_unset(request.exact_name):
+            query['ExactName'] = request.exact_name
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.name):
@@ -1916,6 +1918,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.adhoc):
             query['Adhoc'] = request.adhoc
+        if not UtilClient.is_unset(request.exact_name):
+            query['ExactName'] = request.exact_name
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.name):
