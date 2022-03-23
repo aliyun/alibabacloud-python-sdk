@@ -839,7 +839,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddSSLCertResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -848,7 +856,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -865,7 +873,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddSSLCertResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -874,7 +890,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -899,12 +915,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_sslcert_with_options_async(request, runtime)
 
+    def add_security_group_rule_with_options(
+        self,
+        request: mse_20190531_models.AddSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.AddSecurityGroupRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.port_range):
+            query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSecurityGroupRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.AddSecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_security_group_rule_with_options_async(
+        self,
+        request: mse_20190531_models.AddSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.AddSecurityGroupRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.port_range):
+            query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSecurityGroupRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.AddSecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_security_group_rule(
+        self,
+        request: mse_20190531_models.AddSecurityGroupRuleRequest,
+    ) -> mse_20190531_models.AddSecurityGroupRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_security_group_rule_with_options(request, runtime)
+
+    async def add_security_group_rule_async(
+        self,
+        request: mse_20190531_models.AddSecurityGroupRuleRequest,
+    ) -> mse_20190531_models.AddSecurityGroupRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_security_group_rule_with_options_async(request, runtime)
+
     def add_service_source_with_options(
         self,
-        request: mse_20190531_models.AddServiceSourceRequest,
+        tmp_req: mse_20190531_models.AddServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddServiceSourceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.AddServiceSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ingress_options_request):
+            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -912,6 +1018,8 @@ class Client(OpenApiClient):
             query['Address'] = request.address
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.ingress_options_request_shrink):
+            query['IngressOptionsRequest'] = request.ingress_options_request_shrink
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.source):
@@ -939,10 +1047,14 @@ class Client(OpenApiClient):
 
     async def add_service_source_with_options_async(
         self,
-        request: mse_20190531_models.AddServiceSourceRequest,
+        tmp_req: mse_20190531_models.AddServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddServiceSourceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.AddServiceSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ingress_options_request):
+            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -950,6 +1062,8 @@ class Client(OpenApiClient):
             query['Address'] = request.address
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.ingress_options_request_shrink):
+            query['IngressOptionsRequest'] = request.ingress_options_request_shrink
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.source):
@@ -995,7 +1109,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ApplyGatewayRouteResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1004,7 +1124,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -1021,7 +1141,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ApplyGatewayRouteResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1030,7 +1156,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -1239,124 +1365,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.clone_nacos_config_with_options_async(request, runtime)
 
-    def create_alarm_rule_with_options(
-        self,
-        tmp_req: mse_20190531_models.CreateAlarmRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.CreateAlarmRuleResponse:
-        UtilClient.validate_model(tmp_req)
-        request = mse_20190531_models.CreateAlarmRuleShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.alert_way):
-            request.alert_way_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_way, 'AlertWay', 'json')
-        if not UtilClient.is_unset(tmp_req.contact_group_ids):
-            request.contact_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_group_ids, 'ContactGroupIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.aggregates):
-            query['Aggregates'] = request.aggregates
-        if not UtilClient.is_unset(request.alarm_alias_name):
-            query['AlarmAliasName'] = request.alarm_alias_name
-        if not UtilClient.is_unset(request.alarm_item):
-            query['AlarmItem'] = request.alarm_item
-        if not UtilClient.is_unset(request.alert_way_shrink):
-            query['AlertWay'] = request.alert_way_shrink
-        if not UtilClient.is_unset(request.contact_group_ids_shrink):
-            query['ContactGroupIds'] = request.contact_group_ids_shrink
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.nvalue):
-            query['NValue'] = request.nvalue
-        if not UtilClient.is_unset(request.operator):
-            query['Operator'] = request.operator
-        if not UtilClient.is_unset(request.value):
-            query['Value'] = request.value
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAlarmRule',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.CreateAlarmRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_alarm_rule_with_options_async(
-        self,
-        tmp_req: mse_20190531_models.CreateAlarmRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.CreateAlarmRuleResponse:
-        UtilClient.validate_model(tmp_req)
-        request = mse_20190531_models.CreateAlarmRuleShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.alert_way):
-            request.alert_way_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_way, 'AlertWay', 'json')
-        if not UtilClient.is_unset(tmp_req.contact_group_ids):
-            request.contact_group_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_group_ids, 'ContactGroupIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.aggregates):
-            query['Aggregates'] = request.aggregates
-        if not UtilClient.is_unset(request.alarm_alias_name):
-            query['AlarmAliasName'] = request.alarm_alias_name
-        if not UtilClient.is_unset(request.alarm_item):
-            query['AlarmItem'] = request.alarm_item
-        if not UtilClient.is_unset(request.alert_way_shrink):
-            query['AlertWay'] = request.alert_way_shrink
-        if not UtilClient.is_unset(request.contact_group_ids_shrink):
-            query['ContactGroupIds'] = request.contact_group_ids_shrink
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.nvalue):
-            query['NValue'] = request.nvalue
-        if not UtilClient.is_unset(request.operator):
-            query['Operator'] = request.operator
-        if not UtilClient.is_unset(request.value):
-            query['Value'] = request.value
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAlarmRule',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.CreateAlarmRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_alarm_rule(
-        self,
-        request: mse_20190531_models.CreateAlarmRuleRequest,
-    ) -> mse_20190531_models.CreateAlarmRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_alarm_rule_with_options(request, runtime)
-
-    async def create_alarm_rule_async(
-        self,
-        request: mse_20190531_models.CreateAlarmRuleRequest,
-    ) -> mse_20190531_models.CreateAlarmRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_alarm_rule_with_options_async(request, runtime)
-
     def create_application_with_options(
         self,
         request: mse_20190531_models.CreateApplicationRequest,
@@ -1374,8 +1382,12 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.sentinel_enable):
+            query['SentinelEnable'] = request.sentinel_enable
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.switch_enable):
+            query['SwitchEnable'] = request.switch_enable
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1412,8 +1424,12 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
+        if not UtilClient.is_unset(request.sentinel_enable):
+            query['SentinelEnable'] = request.sentinel_enable
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.switch_enable):
+            query['SwitchEnable'] = request.switch_enable
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2323,91 +2339,19 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_znode_with_options_async(request, runtime)
 
-    def delete_alarm_rule_with_options(
-        self,
-        request: mse_20190531_models.DeleteAlarmRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.DeleteAlarmRuleResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.alarm_rule_id):
-            query['AlarmRuleId'] = request.alarm_rule_id
-        if not UtilClient.is_unset(request.request_pars):
-            query['RequestPars'] = request.request_pars
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteAlarmRule',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.DeleteAlarmRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_alarm_rule_with_options_async(
-        self,
-        request: mse_20190531_models.DeleteAlarmRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.DeleteAlarmRuleResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.alarm_rule_id):
-            query['AlarmRuleId'] = request.alarm_rule_id
-        if not UtilClient.is_unset(request.request_pars):
-            query['RequestPars'] = request.request_pars
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteAlarmRule',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.DeleteAlarmRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_alarm_rule(
-        self,
-        request: mse_20190531_models.DeleteAlarmRuleRequest,
-    ) -> mse_20190531_models.DeleteAlarmRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_alarm_rule_with_options(request, runtime)
-
-    async def delete_alarm_rule_async(
-        self,
-        request: mse_20190531_models.DeleteAlarmRuleRequest,
-    ) -> mse_20190531_models.DeleteAlarmRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_alarm_rule_with_options_async(request, runtime)
-
     def delete_auth_resource_with_options(
         self,
         request: mse_20190531_models.DeleteAuthResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteAuthResourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2416,7 +2360,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2433,7 +2377,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteAuthResourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2442,7 +2392,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2629,7 +2579,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.delete_slb):
+            query['DeleteSlb'] = request.delete_slb
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2638,7 +2594,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2655,7 +2611,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.delete_slb):
+            query['DeleteSlb'] = request.delete_slb
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2664,7 +2626,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2695,7 +2657,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayDomainResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2704,7 +2672,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2721,7 +2689,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayDomainResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2730,7 +2704,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2761,7 +2735,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayRouteResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2770,7 +2750,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2787,7 +2767,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayRouteResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2796,7 +2782,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2820,6 +2806,88 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.DeleteGatewayRouteResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_route_with_options_async(request, runtime)
+
+    def delete_gateway_service_with_options(
+        self,
+        request: mse_20190531_models.DeleteGatewayServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayService',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gateway_service_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteGatewayServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGatewayService',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteGatewayServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gateway_service(
+        self,
+        request: mse_20190531_models.DeleteGatewayServiceRequest,
+    ) -> mse_20190531_models.DeleteGatewayServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_gateway_service_with_options(request, runtime)
+
+    async def delete_gateway_service_async(
+        self,
+        request: mse_20190531_models.DeleteGatewayServiceRequest,
+    ) -> mse_20190531_models.DeleteGatewayServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_gateway_service_with_options_async(request, runtime)
 
     def delete_gateway_service_version_with_options(
         self,
@@ -2909,7 +2977,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewaySlbResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.delete_slb):
+            query['DeleteSlb'] = request.delete_slb
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2918,7 +2994,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -2935,7 +3011,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewaySlbResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.delete_slb):
+            query['DeleteSlb'] = request.delete_slb
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2944,7 +3028,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3329,13 +3413,97 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_nacos_service_with_options_async(request, runtime)
 
+    def delete_security_group_rule_with_options(
+        self,
+        request: mse_20190531_models.DeleteSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteSecurityGroupRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityGroupRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteSecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_security_group_rule_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteSecurityGroupRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityGroupRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteSecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_security_group_rule(
+        self,
+        request: mse_20190531_models.DeleteSecurityGroupRuleRequest,
+    ) -> mse_20190531_models.DeleteSecurityGroupRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_security_group_rule_with_options(request, runtime)
+
+    async def delete_security_group_rule_async(
+        self,
+        request: mse_20190531_models.DeleteSecurityGroupRuleRequest,
+    ) -> mse_20190531_models.DeleteSecurityGroupRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_security_group_rule_with_options_async(request, runtime)
+
     def delete_service_source_with_options(
         self,
         request: mse_20190531_models.DeleteServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteServiceSourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3344,7 +3512,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3361,7 +3529,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteServiceSourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3370,7 +3544,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3725,7 +3899,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.is_white):
+            query['IsWhite'] = request.is_white
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3734,7 +3918,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3751,7 +3935,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.is_white):
+            query['IsWhite'] = request.is_white
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3760,7 +3954,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3873,7 +4067,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3882,7 +4080,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3899,7 +4097,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3908,7 +4110,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3939,7 +4141,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayDomainDetailResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3948,7 +4156,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -3965,7 +4173,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayDomainDetailResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3974,7 +4188,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -4149,7 +4363,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayServiceDetailResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4158,7 +4378,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -4175,7 +4395,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayServiceDetailResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4184,7 +4410,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -4535,7 +4761,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetKubernetesSourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4544,7 +4774,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -4561,7 +4791,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetKubernetesSourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4570,7 +4804,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5332,270 +5566,6 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.ImportServicesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.import_services_with_options_async(request, runtime)
-
-    def list_alarm_contact_groups_with_options(
-        self,
-        request: mse_20190531_models.ListAlarmContactGroupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ListAlarmContactGroupsResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAlarmContactGroups',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ListAlarmContactGroupsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_alarm_contact_groups_with_options_async(
-        self,
-        request: mse_20190531_models.ListAlarmContactGroupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ListAlarmContactGroupsResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAlarmContactGroups',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ListAlarmContactGroupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_alarm_contact_groups(
-        self,
-        request: mse_20190531_models.ListAlarmContactGroupsRequest,
-    ) -> mse_20190531_models.ListAlarmContactGroupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_alarm_contact_groups_with_options(request, runtime)
-
-    async def list_alarm_contact_groups_async(
-        self,
-        request: mse_20190531_models.ListAlarmContactGroupsRequest,
-    ) -> mse_20190531_models.ListAlarmContactGroupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_alarm_contact_groups_with_options_async(request, runtime)
-
-    def list_alarm_histories_with_options(
-        self,
-        request: mse_20190531_models.ListAlarmHistoriesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ListAlarmHistoriesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAlarmHistories',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ListAlarmHistoriesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_alarm_histories_with_options_async(
-        self,
-        request: mse_20190531_models.ListAlarmHistoriesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ListAlarmHistoriesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAlarmHistories',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ListAlarmHistoriesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_alarm_histories(
-        self,
-        request: mse_20190531_models.ListAlarmHistoriesRequest,
-    ) -> mse_20190531_models.ListAlarmHistoriesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_alarm_histories_with_options(request, runtime)
-
-    async def list_alarm_histories_async(
-        self,
-        request: mse_20190531_models.ListAlarmHistoriesRequest,
-    ) -> mse_20190531_models.ListAlarmHistoriesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_alarm_histories_with_options_async(request, runtime)
-
-    def list_alarm_items_with_options(
-        self,
-        request: mse_20190531_models.ListAlarmItemsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ListAlarmItemsResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAlarmItems',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ListAlarmItemsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_alarm_items_with_options_async(
-        self,
-        request: mse_20190531_models.ListAlarmItemsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ListAlarmItemsResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAlarmItems',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ListAlarmItemsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_alarm_items(
-        self,
-        request: mse_20190531_models.ListAlarmItemsRequest,
-    ) -> mse_20190531_models.ListAlarmItemsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_alarm_items_with_options(request, runtime)
-
-    async def list_alarm_items_async(
-        self,
-        request: mse_20190531_models.ListAlarmItemsRequest,
-    ) -> mse_20190531_models.ListAlarmItemsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_alarm_items_with_options_async(request, runtime)
-
-    def list_alarm_rules_with_options(
-        self,
-        request: mse_20190531_models.ListAlarmRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ListAlarmRulesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAlarmRules',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ListAlarmRulesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_alarm_rules_with_options_async(
-        self,
-        request: mse_20190531_models.ListAlarmRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ListAlarmRulesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAlarmRules',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ListAlarmRulesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_alarm_rules(
-        self,
-        request: mse_20190531_models.ListAlarmRulesRequest,
-    ) -> mse_20190531_models.ListAlarmRulesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_alarm_rules_with_options(request, runtime)
-
-    async def list_alarm_rules_async(
-        self,
-        request: mse_20190531_models.ListAlarmRulesRequest,
-    ) -> mse_20190531_models.ListAlarmRulesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_alarm_rules_with_options_async(request, runtime)
 
     def list_ans_instances_with_options(
         self,
@@ -6529,7 +6499,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayDomainResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6538,7 +6514,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -6555,7 +6531,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayDomainResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6564,7 +6546,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -6791,7 +6773,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewaySlbResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6800,7 +6786,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -6817,7 +6803,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewaySlbResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6826,7 +6816,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7245,7 +7235,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSSLCertResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7254,7 +7248,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7271,7 +7265,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSSLCertResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7280,7 +7278,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7305,13 +7303,157 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_sslcert_with_options_async(request, runtime)
 
+    def list_security_group_with_options(
+        self,
+        request: mse_20190531_models.ListSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListSecurityGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_security_group_with_options_async(
+        self,
+        request: mse_20190531_models.ListSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListSecurityGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_security_group(
+        self,
+        request: mse_20190531_models.ListSecurityGroupRequest,
+    ) -> mse_20190531_models.ListSecurityGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_security_group_with_options(request, runtime)
+
+    async def list_security_group_async(
+        self,
+        request: mse_20190531_models.ListSecurityGroupRequest,
+    ) -> mse_20190531_models.ListSecurityGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_security_group_with_options_async(request, runtime)
+
+    def list_security_group_rule_with_options(
+        self,
+        request: mse_20190531_models.ListSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListSecurityGroupRuleResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityGroupRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListSecurityGroupRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_security_group_rule_with_options_async(
+        self,
+        request: mse_20190531_models.ListSecurityGroupRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListSecurityGroupRuleResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSecurityGroupRule',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListSecurityGroupRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_security_group_rule(
+        self,
+        request: mse_20190531_models.ListSecurityGroupRuleRequest,
+    ) -> mse_20190531_models.ListSecurityGroupRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_security_group_rule_with_options(request, runtime)
+
+    async def list_security_group_rule_async(
+        self,
+        request: mse_20190531_models.ListSecurityGroupRuleRequest,
+    ) -> mse_20190531_models.ListSecurityGroupRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_security_group_rule_with_options_async(request, runtime)
+
     def list_service_source_with_options(
         self,
         request: mse_20190531_models.ListServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListServiceSourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7320,7 +7462,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7337,7 +7479,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListServiceSourceResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7346,7 +7492,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7525,7 +7671,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.OfflineGatewayRouteResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7534,7 +7686,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7551,7 +7703,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.OfflineGatewayRouteResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7560,7 +7718,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7591,7 +7749,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.PullServicesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7600,7 +7764,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7617,7 +7781,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.PullServicesResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7626,7 +7796,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -8159,7 +8329,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGatewayRegionResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8168,7 +8340,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -8185,7 +8357,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGatewayRegionResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8194,7 +8368,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -8225,7 +8399,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGatewayTypeResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8234,7 +8410,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -8251,7 +8427,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGatewayTypeResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8260,7 +8438,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -9541,7 +9719,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayNameResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9550,7 +9734,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -9567,7 +9751,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayNameResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9576,7 +9766,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -10279,6 +10469,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_timeout_with_options_async(request, runtime)
 
+    def update_gateway_service_traffic_policy_with_options(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayServiceTrafficPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.gateway_traffic_policy):
+            request.gateway_traffic_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_traffic_policy), 'GatewayTrafficPolicy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_traffic_policy_shrink):
+            query['GatewayTrafficPolicy'] = request.gateway_traffic_policy_shrink
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayServiceTrafficPolicy',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_service_traffic_policy_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayServiceTrafficPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.gateway_traffic_policy):
+            request.gateway_traffic_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_traffic_policy), 'GatewayTrafficPolicy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_traffic_policy_shrink):
+            query['GatewayTrafficPolicy'] = request.gateway_traffic_policy_shrink
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayServiceTrafficPolicy',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_service_traffic_policy(
+        self,
+        request: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
+    ) -> mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_service_traffic_policy_with_options(request, runtime)
+
+    async def update_gateway_service_traffic_policy_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
+    ) -> mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_service_traffic_policy_with_options_async(request, runtime)
+
     def update_gateway_service_version_with_options(
         self,
         request: mse_20190531_models.UpdateGatewayServiceVersionRequest,
@@ -10877,7 +11161,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateSSLCertResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10886,7 +11178,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -10903,7 +11195,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateSSLCertResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10912,7 +11212,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',

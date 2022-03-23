@@ -1,3 +1,6 @@
+2022-03-23 Version: 3.0.14
+- Fix Gateway api.
+
 2022-02-21 Version: 3.0.12
 - Bugfix QueryMoniter.
 
