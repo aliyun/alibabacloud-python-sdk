@@ -1,3 +1,6 @@
+2022-03-23 Version: 2.0.2
+- Add GetAllInstanceId.
+
 2022-02-16 Version: 2.0.1
 - Support domain.
 - Some params added.
