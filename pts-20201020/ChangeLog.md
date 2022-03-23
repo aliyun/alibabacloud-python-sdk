@@ -1,3 +1,6 @@
+2022-03-23 Version: 1.8.13
+- Modify DeletePtsScenes API Param.
+
 2021-12-27 Version: 1.8.11
 - Set JmeterPluginLabel visibel.
 

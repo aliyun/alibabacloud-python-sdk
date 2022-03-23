@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
 
 
 class CreatePtsSceneRequest(TeaModel):
@@ -479,7 +479,7 @@ class DeletePtsSceneBaseLineResponse(TeaModel):
 class DeletePtsScenesRequest(TeaModel):
     def __init__(
         self,
-        scene_ids: Dict[str, Any] = None,
+        scene_ids: List[str] = None,
     ):
         self.scene_ids = scene_ids
 
