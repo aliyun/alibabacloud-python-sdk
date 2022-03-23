@@ -299,92 +299,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_clickhouse_to_rdswith_options_async(request, runtime)
 
-    def check_health_with_options(
-        self,
-        request: clickhouse_20191111_models.CheckHealthRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20191111_models.CheckHealthResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.db_cluster_id):
-            query['DbClusterId'] = request.db_cluster_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CheckHealth',
-            version='2019-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            clickhouse_20191111_models.CheckHealthResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def check_health_with_options_async(
-        self,
-        request: clickhouse_20191111_models.CheckHealthRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20191111_models.CheckHealthResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.db_cluster_id):
-            query['DbClusterId'] = request.db_cluster_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CheckHealth',
-            version='2019-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            clickhouse_20191111_models.CheckHealthResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def check_health(
-        self,
-        request: clickhouse_20191111_models.CheckHealthRequest,
-    ) -> clickhouse_20191111_models.CheckHealthResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.check_health_with_options(request, runtime)
-
-    async def check_health_async(
-        self,
-        request: clickhouse_20191111_models.CheckHealthRequest,
-    ) -> clickhouse_20191111_models.CheckHealthResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.check_health_with_options_async(request, runtime)
-
     def check_monitor_alert_with_options(
         self,
         request: clickhouse_20191111_models.CheckMonitorAlertRequest,
@@ -1106,6 +1020,8 @@ class Client(OpenApiClient):
     ) -> clickhouse_20191111_models.CreateDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_set_id):
+            query['BackupSetID'] = request.backup_set_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_category):
@@ -1128,8 +1044,6 @@ class Client(OpenApiClient):
             query['EncryptionKey'] = request.encryption_key
         if not UtilClient.is_unset(request.encryption_type):
             query['EncryptionType'] = request.encryption_type
-        if not UtilClient.is_unset(request.open_monitor):
-            query['OpenMonitor'] = request.open_monitor
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -1178,6 +1092,8 @@ class Client(OpenApiClient):
     ) -> clickhouse_20191111_models.CreateDBInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_set_id):
+            query['BackupSetID'] = request.backup_set_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbcluster_category):
@@ -1200,8 +1116,6 @@ class Client(OpenApiClient):
             query['EncryptionKey'] = request.encryption_key
         if not UtilClient.is_unset(request.encryption_type):
             query['EncryptionType'] = request.encryption_type
-        if not UtilClient.is_unset(request.open_monitor):
-            query['OpenMonitor'] = request.open_monitor
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4753,198 +4667,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_rdsschemas_with_options_async(request, runtime)
 
-    def describe_rds_vswitchs_with_options(
-        self,
-        request: clickhouse_20191111_models.DescribeRdsVSwitchsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20191111_models.DescribeRdsVSwitchsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.vpc_id):
-            query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRdsVSwitchs',
-            version='2019-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            clickhouse_20191111_models.DescribeRdsVSwitchsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_rds_vswitchs_with_options_async(
-        self,
-        request: clickhouse_20191111_models.DescribeRdsVSwitchsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20191111_models.DescribeRdsVSwitchsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.vpc_id):
-            query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRdsVSwitchs',
-            version='2019-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            clickhouse_20191111_models.DescribeRdsVSwitchsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_rds_vswitchs(
-        self,
-        request: clickhouse_20191111_models.DescribeRdsVSwitchsRequest,
-    ) -> clickhouse_20191111_models.DescribeRdsVSwitchsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rds_vswitchs_with_options(request, runtime)
-
-    async def describe_rds_vswitchs_async(
-        self,
-        request: clickhouse_20191111_models.DescribeRdsVSwitchsRequest,
-    ) -> clickhouse_20191111_models.DescribeRdsVSwitchsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rds_vswitchs_with_options_async(request, runtime)
-
-    def describe_rds_vpcs_with_options(
-        self,
-        request: clickhouse_20191111_models.DescribeRdsVpcsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20191111_models.DescribeRdsVpcsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRdsVpcs',
-            version='2019-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            clickhouse_20191111_models.DescribeRdsVpcsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_rds_vpcs_with_options_async(
-        self,
-        request: clickhouse_20191111_models.DescribeRdsVpcsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20191111_models.DescribeRdsVpcsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRdsVpcs',
-            version='2019-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            clickhouse_20191111_models.DescribeRdsVpcsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_rds_vpcs(
-        self,
-        request: clickhouse_20191111_models.DescribeRdsVpcsRequest,
-    ) -> clickhouse_20191111_models.DescribeRdsVpcsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_rds_vpcs_with_options(request, runtime)
-
-    async def describe_rds_vpcs_async(
-        self,
-        request: clickhouse_20191111_models.DescribeRdsVpcsRequest,
-    ) -> clickhouse_20191111_models.DescribeRdsVpcsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_rds_vpcs_with_options_async(request, runtime)
-
     def describe_regions_with_options(
         self,
         request: clickhouse_20191111_models.DescribeRegionsRequest,
@@ -6092,104 +5814,6 @@ class Client(OpenApiClient):
     ) -> clickhouse_20191111_models.ModifyBackupPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
-
-    def modify_click_house_cluster_server_grpcwith_options(
-        self,
-        request: clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
-        if not UtilClient.is_unset(request.db_cluster_id):
-            query['DbClusterId'] = request.db_cluster_id
-        if not UtilClient.is_unset(request.namespace):
-            query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyClickHouseClusterServerGRPC',
-            version='2019-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_click_house_cluster_server_grpcwith_options_async(
-        self,
-        request: clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
-        if not UtilClient.is_unset(request.db_cluster_id):
-            query['DbClusterId'] = request.db_cluster_id
-        if not UtilClient.is_unset(request.namespace):
-            query['Namespace'] = request.namespace
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyClickHouseClusterServerGRPC',
-            version='2019-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_click_house_cluster_server_grpc(
-        self,
-        request: clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCRequest,
-    ) -> clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_click_house_cluster_server_grpcwith_options(request, runtime)
-
-    async def modify_click_house_cluster_server_grpc_async(
-        self,
-        request: clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCRequest,
-    ) -> clickhouse_20191111_models.ModifyClickHouseClusterServerGRPCResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_click_house_cluster_server_grpcwith_options_async(request, runtime)
 
     def modify_dbcluster_with_options(
         self,
