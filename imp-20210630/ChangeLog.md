@@ -1,3 +1,6 @@
+2022-03-23 Version: 2.8.10
+- Add KickRoomUser Function.
+
 2022-01-10 Version: 2.8.9
 - Add GetLiveRoomDetail Field.
 
