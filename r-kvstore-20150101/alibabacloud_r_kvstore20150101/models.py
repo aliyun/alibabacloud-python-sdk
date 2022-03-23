@@ -2407,7 +2407,7 @@ class DeleteShardingNodeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
-        shard_count: str = None,
+        shard_count: int = None,
     ):
         self.instance_id = instance_id
         self.node_id = node_id
