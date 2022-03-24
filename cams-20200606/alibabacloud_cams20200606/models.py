@@ -4,6 +4,195 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class CheckChatappContactsRequest(TeaModel):
+    def __init__(
+        self,
+        channel_type: str = None,
+        contacts: str = None,
+        from_: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # 通道类型
+        self.channel_type = channel_type
+        # 需要查询的用户列表，JSON格式，单次调用最多查询10个。注意：用户号码必须加国家码
+        self.contacts = contacts
+        # 发送号码
+        self.from_ = from_
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.contacts is not None:
+            result['Contacts'] = self.contacts
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('Contacts') is not None:
+            self.contacts = m.get('Contacts')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CheckChatappContactsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        phone_number: str = None,
+        status: str = None,
+    ):
+        # 号码
+        self.phone_number = phone_number
+        # 状态
+        # 有效账号为"valid"，无法账号为"invalid"，查询失败返回"failed"
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CheckChatappContactsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[CheckChatappContactsResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # 返回结果 OK 为正常
+        self.code = code
+        self.data = data
+        # 提示信息，当返回异常时有值
+        self.message = message
+        # 请求ID
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = CheckChatappContactsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckChatappContactsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CheckChatappContactsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CheckChatappContactsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckContactsRequest(TeaModel):
     def __init__(
         self,
@@ -825,6 +1014,199 @@ class ListChatappTemplateResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListChatappTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendChatappMessageRequest(TeaModel):
+    def __init__(
+        self,
+        channel_type: str = None,
+        content: str = None,
+        from_: str = None,
+        language: str = None,
+        message_type: str = None,
+        owner_id: int = None,
+        payload: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        template_code: str = None,
+        template_params: str = None,
+        to: str = None,
+        type: str = None,
+    ):
+        # 通道类型 whatsapp/viber/line
+        self.channel_type = channel_type
+        # 消息内容
+        self.content = content
+        # 发送方
+        self.from_ = from_
+        # 语言
+        self.language = language
+        # 消息类型
+        self.message_type = message_type
+        self.owner_id = owner_id
+        # 当发送模板消息时，模板中包含按钮类型是QUICK_REPLY时有效，在快速回复的时候会再上行
+        self.payload = payload
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 模板编码
+        self.template_code = template_code
+        # 模板参数
+        self.template_params = template_params
+        # 接收号码
+        self.to = to
+        # 消息大类
+        # template--模板
+        # message--非模板
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.message_type is not None:
+            result['MessageType'] = self.message_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.payload is not None:
+            result['Payload'] = self.payload
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_params is not None:
+            result['TemplateParams'] = self.template_params
+        if self.to is not None:
+            result['To'] = self.to
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('MessageType') is not None:
+            self.message_type = m.get('MessageType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Payload') is not None:
+            self.payload = m.get('Payload')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateParams') is not None:
+            self.template_params = m.get('TemplateParams')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SendChatappMessageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SendChatappMessageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: SendChatappMessageResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = SendChatappMessageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

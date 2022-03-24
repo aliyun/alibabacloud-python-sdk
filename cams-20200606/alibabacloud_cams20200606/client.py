@@ -41,6 +41,96 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def check_chatapp_contacts_with_options(
+        self,
+        request: cams_20200606_models.CheckChatappContactsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CheckChatappContactsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.contacts):
+            query['Contacts'] = request.contacts
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckChatappContacts',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CheckChatappContactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_chatapp_contacts_with_options_async(
+        self,
+        request: cams_20200606_models.CheckChatappContactsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CheckChatappContactsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.contacts):
+            query['Contacts'] = request.contacts
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckChatappContacts',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CheckChatappContactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_chatapp_contacts(
+        self,
+        request: cams_20200606_models.CheckChatappContactsRequest,
+    ) -> cams_20200606_models.CheckChatappContactsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_chatapp_contacts_with_options(request, runtime)
+
+    async def check_chatapp_contacts_async(
+        self,
+        request: cams_20200606_models.CheckChatappContactsRequest,
+    ) -> cams_20200606_models.CheckChatappContactsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_chatapp_contacts_with_options_async(request, runtime)
+
     def check_contacts_with_options(
         self,
         request: cams_20200606_models.CheckContactsRequest,
@@ -498,6 +588,124 @@ class Client(OpenApiClient):
     ) -> cams_20200606_models.ListChatappTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_chatapp_template_with_options_async(request, runtime)
+
+    def send_chatapp_message_with_options(
+        self,
+        request: cams_20200606_models.SendChatappMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.SendChatappMessageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.payload):
+            query['Payload'] = request.payload
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_params):
+            query['TemplateParams'] = request.template_params
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendChatappMessage',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.SendChatappMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_chatapp_message_with_options_async(
+        self,
+        request: cams_20200606_models.SendChatappMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.SendChatappMessageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.payload):
+            query['Payload'] = request.payload
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_params):
+            query['TemplateParams'] = request.template_params
+        if not UtilClient.is_unset(request.to):
+            query['To'] = request.to
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendChatappMessage',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.SendChatappMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_chatapp_message(
+        self,
+        request: cams_20200606_models.SendChatappMessageRequest,
+    ) -> cams_20200606_models.SendChatappMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_chatapp_message_with_options(request, runtime)
+
+    async def send_chatapp_message_async(
+        self,
+        request: cams_20200606_models.SendChatappMessageRequest,
+    ) -> cams_20200606_models.SendChatappMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_chatapp_message_with_options_async(request, runtime)
 
     def send_message_with_options(
         self,
