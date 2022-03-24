@@ -389,6 +389,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_column_sec_level_with_options_async(request, runtime)
 
+    def change_lh_dag_owner_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ChangeLhDagOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ChangeLhDagOwnerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeLhDagOwner',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ChangeLhDagOwnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_lh_dag_owner_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ChangeLhDagOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ChangeLhDagOwnerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeLhDagOwner',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ChangeLhDagOwnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_lh_dag_owner(
+        self,
+        request: dms_enterprise_20181101_models.ChangeLhDagOwnerRequest,
+    ) -> dms_enterprise_20181101_models.ChangeLhDagOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_lh_dag_owner_with_options(request, runtime)
+
+    async def change_lh_dag_owner_async(
+        self,
+        request: dms_enterprise_20181101_models.ChangeLhDagOwnerRequest,
+    ) -> dms_enterprise_20181101_models.ChangeLhDagOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_lh_dag_owner_with_options_async(request, runtime)
+
     def close_order_with_options(
         self,
         request: dms_enterprise_20181101_models.CloseOrderRequest,
@@ -662,104 +740,6 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateDataCronClearOrderResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_data_cron_clear_order_with_options_async(request, runtime)
-
-    def create_data_export_order_with_options(
-        self,
-        tmp_req: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dms_enterprise_20181101_models.CreateDataExportOrderShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
-        if not UtilClient.is_unset(tmp_req.related_user_list):
-            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.attachment_key):
-            query['AttachmentKey'] = request.attachment_key
-        if not UtilClient.is_unset(request.comment):
-            query['Comment'] = request.comment
-        if not UtilClient.is_unset(request.param_shrink):
-            query['Param'] = request.param_shrink
-        if not UtilClient.is_unset(request.related_user_list_shrink):
-            query['RelatedUserList'] = request.related_user_list_shrink
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDataExportOrder',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.CreateDataExportOrderResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_data_export_order_with_options_async(
-        self,
-        tmp_req: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dms_enterprise_20181101_models.CreateDataExportOrderShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
-        if not UtilClient.is_unset(tmp_req.related_user_list):
-            request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.attachment_key):
-            query['AttachmentKey'] = request.attachment_key
-        if not UtilClient.is_unset(request.comment):
-            query['Comment'] = request.comment
-        if not UtilClient.is_unset(request.param_shrink):
-            query['Param'] = request.param_shrink
-        if not UtilClient.is_unset(request.related_user_list_shrink):
-            query['RelatedUserList'] = request.related_user_list_shrink
-        if not UtilClient.is_unset(request.tid):
-            query['Tid'] = request.tid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDataExportOrder',
-            version='2018-11-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dms_enterprise_20181101_models.CreateDataExportOrderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_data_export_order(
-        self,
-        request: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
-    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_data_export_order_with_options(request, runtime)
-
-    async def create_data_export_order_async(
-        self,
-        request: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
-    ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_data_export_order_with_options_async(request, runtime)
 
     def create_data_import_order_with_options(
         self,
@@ -8500,6 +8480,84 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pause_data_correct_sqljob_with_options_async(request, runtime)
+
+    def re_deploy_lh_dag_version_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ReDeployLhDagVersionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_version):
+            query['DagVersion'] = request.dag_version
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReDeployLhDagVersion',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ReDeployLhDagVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def re_deploy_lh_dag_version_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ReDeployLhDagVersionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_version):
+            query['DagVersion'] = request.dag_version
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReDeployLhDagVersion',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ReDeployLhDagVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def re_deploy_lh_dag_version(
+        self,
+        request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
+    ) -> dms_enterprise_20181101_models.ReDeployLhDagVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.re_deploy_lh_dag_version_with_options(request, runtime)
+
+    async def re_deploy_lh_dag_version_async(
+        self,
+        request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
+    ) -> dms_enterprise_20181101_models.ReDeployLhDagVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.re_deploy_lh_dag_version_with_options_async(request, runtime)
 
     def register_instance_with_options(
         self,

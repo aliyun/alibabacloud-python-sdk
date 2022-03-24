@@ -617,6 +617,127 @@ class ChangeColumnSecLevelResponse(TeaModel):
         return self
 
 
+class ChangeLhDagOwnerRequest(TeaModel):
+    def __init__(
+        self,
+        dag_id: int = None,
+        owner_user_id: int = None,
+        tid: int = None,
+    ):
+        self.dag_id = dag_id
+        self.owner_user_id = owner_user_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dag_id is not None:
+            result['DagId'] = self.dag_id
+        if self.owner_user_id is not None:
+            result['OwnerUserId'] = self.owner_user_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DagId') is not None:
+            self.dag_id = m.get('DagId')
+        if m.get('OwnerUserId') is not None:
+            self.owner_user_id = m.get('OwnerUserId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ChangeLhDagOwnerResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ChangeLhDagOwnerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ChangeLhDagOwnerResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ChangeLhDagOwnerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CloseOrderRequest(TeaModel):
     def __init__(
         self,
@@ -1394,279 +1515,6 @@ class CreateDataCronClearOrderResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateDataCronClearOrderResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateDataExportOrderRequestParamDbItemList(TeaModel):
-    def __init__(
-        self,
-        db_id: int = None,
-        logic: bool = None,
-    ):
-        self.db_id = db_id
-        self.logic = logic
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.db_id is not None:
-            result['DbId'] = self.db_id
-        if self.logic is not None:
-            result['Logic'] = self.logic
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DbId') is not None:
-            self.db_id = m.get('DbId')
-        if m.get('Logic') is not None:
-            self.logic = m.get('Logic')
-        return self
-
-
-class CreateDataExportOrderRequestParam(TeaModel):
-    def __init__(
-        self,
-        classify: str = None,
-        db_item_list: List[CreateDataExportOrderRequestParamDbItemList] = None,
-        exec_sql: str = None,
-    ):
-        self.classify = classify
-        self.db_item_list = db_item_list
-        self.exec_sql = exec_sql
-
-    def validate(self):
-        if self.db_item_list:
-            for k in self.db_item_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.classify is not None:
-            result['Classify'] = self.classify
-        result['DbItemList'] = []
-        if self.db_item_list is not None:
-            for k in self.db_item_list:
-                result['DbItemList'].append(k.to_map() if k else None)
-        if self.exec_sql is not None:
-            result['ExecSQL'] = self.exec_sql
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Classify') is not None:
-            self.classify = m.get('Classify')
-        self.db_item_list = []
-        if m.get('DbItemList') is not None:
-            for k in m.get('DbItemList'):
-                temp_model = CreateDataExportOrderRequestParamDbItemList()
-                self.db_item_list.append(temp_model.from_map(k))
-        if m.get('ExecSQL') is not None:
-            self.exec_sql = m.get('ExecSQL')
-        return self
-
-
-class CreateDataExportOrderRequest(TeaModel):
-    def __init__(
-        self,
-        attachment_key: str = None,
-        comment: str = None,
-        param: CreateDataExportOrderRequestParam = None,
-        related_user_list: List[int] = None,
-        tid: int = None,
-    ):
-        self.attachment_key = attachment_key
-        self.comment = comment
-        self.param = param
-        self.related_user_list = related_user_list
-        self.tid = tid
-
-    def validate(self):
-        if self.param:
-            self.param.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.attachment_key is not None:
-            result['AttachmentKey'] = self.attachment_key
-        if self.comment is not None:
-            result['Comment'] = self.comment
-        if self.param is not None:
-            result['Param'] = self.param.to_map()
-        if self.related_user_list is not None:
-            result['RelatedUserList'] = self.related_user_list
-        if self.tid is not None:
-            result['Tid'] = self.tid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AttachmentKey') is not None:
-            self.attachment_key = m.get('AttachmentKey')
-        if m.get('Comment') is not None:
-            self.comment = m.get('Comment')
-        if m.get('Param') is not None:
-            temp_model = CreateDataExportOrderRequestParam()
-            self.param = temp_model.from_map(m['Param'])
-        if m.get('RelatedUserList') is not None:
-            self.related_user_list = m.get('RelatedUserList')
-        if m.get('Tid') is not None:
-            self.tid = m.get('Tid')
-        return self
-
-
-class CreateDataExportOrderShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        attachment_key: str = None,
-        comment: str = None,
-        param_shrink: str = None,
-        related_user_list_shrink: str = None,
-        tid: int = None,
-    ):
-        self.attachment_key = attachment_key
-        self.comment = comment
-        self.param_shrink = param_shrink
-        self.related_user_list_shrink = related_user_list_shrink
-        self.tid = tid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.attachment_key is not None:
-            result['AttachmentKey'] = self.attachment_key
-        if self.comment is not None:
-            result['Comment'] = self.comment
-        if self.param_shrink is not None:
-            result['Param'] = self.param_shrink
-        if self.related_user_list_shrink is not None:
-            result['RelatedUserList'] = self.related_user_list_shrink
-        if self.tid is not None:
-            result['Tid'] = self.tid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AttachmentKey') is not None:
-            self.attachment_key = m.get('AttachmentKey')
-        if m.get('Comment') is not None:
-            self.comment = m.get('Comment')
-        if m.get('Param') is not None:
-            self.param_shrink = m.get('Param')
-        if m.get('RelatedUserList') is not None:
-            self.related_user_list_shrink = m.get('RelatedUserList')
-        if m.get('Tid') is not None:
-            self.tid = m.get('Tid')
-        return self
-
-
-class CreateDataExportOrderResponseBody(TeaModel):
-    def __init__(
-        self,
-        create_order_result: List[int] = None,
-        error_code: str = None,
-        error_message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.create_order_result = create_order_result
-        self.error_code = error_code
-        self.error_message = error_message
-        # Id of the request
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_order_result is not None:
-            result['CreateOrderResult'] = self.create_order_result
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateOrderResult') is not None:
-            self.create_order_result = m.get('CreateOrderResult')
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class CreateDataExportOrderResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CreateDataExportOrderResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CreateDataExportOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18829,23 +18677,23 @@ class ListLhTaskFlowAndScenarioResponseBodyRawDAGList(TeaModel):
             return _map
 
         result = dict()
-        result['dag'] = []
+        result['Dag'] = []
         if self.dag is not None:
             for k in self.dag:
-                result['dag'].append(k.to_map() if k else None)
+                result['Dag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         self.dag = []
-        if m.get('dag') is not None:
-            for k in m.get('dag'):
+        if m.get('Dag') is not None:
+            for k in m.get('Dag'):
                 temp_model = ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag()
                 self.dag.append(temp_model.from_map(k))
         return self
 
 
-class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag(TeaModel):
+class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag(TeaModel):
     def __init__(
         self,
         can_edit: bool = None,
@@ -18950,10 +18798,10 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag(TeaModel):
         return self
 
 
-class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList(TeaModel):
+class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList(TeaModel):
     def __init__(
         self,
-        dag: List[ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag] = None,
+        dag: List[ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag] = None,
     ):
         self.dag = dag
 
@@ -18969,23 +18817,23 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList(TeaModel):
             return _map
 
         result = dict()
-        result['dag'] = []
+        result['Dag'] = []
         if self.dag is not None:
             for k in self.dag:
-                result['dag'].append(k.to_map() if k else None)
+                result['Dag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         self.dag = []
-        if m.get('dag') is not None:
-            for k in m.get('dag'):
-                temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag()
+        if m.get('Dag') is not None:
+            for k in m.get('Dag'):
+                temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag()
                 self.dag.append(temp_model.from_map(k))
         return self
 
 
-class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario(TeaModel):
+class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario(TeaModel):
     def __init__(
         self,
         creator_id: str = None,
@@ -19024,11 +18872,11 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario(TeaModel):
         return self
 
 
-class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList(TeaModel):
+class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG(TeaModel):
     def __init__(
         self,
-        dag_list: ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList = None,
-        scenario: ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario = None,
+        dag_list: ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList = None,
+        scenario: ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario = None,
     ):
         self.dag_list = dag_list
         self.scenario = scenario
@@ -19054,11 +18902,46 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList(TeaModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DagList') is not None:
-            temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList()
+            temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList()
             self.dag_list = temp_model.from_map(m['DagList'])
         if m.get('Scenario') is not None:
-            temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario()
+            temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario()
             self.scenario = temp_model.from_map(m['Scenario'])
+        return self
+
+
+class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList(TeaModel):
+    def __init__(
+        self,
+        scenario_dag: List[ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG] = None,
+    ):
+        self.scenario_dag = scenario_dag
+
+    def validate(self):
+        if self.scenario_dag:
+            for k in self.scenario_dag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ScenarioDAG'] = []
+        if self.scenario_dag is not None:
+            for k in self.scenario_dag:
+                result['ScenarioDAG'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.scenario_dag = []
+        if m.get('ScenarioDAG') is not None:
+            for k in m.get('ScenarioDAG'):
+                temp_model = ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG()
+                self.scenario_dag.append(temp_model.from_map(k))
         return self
 
 
@@ -24524,6 +24407,133 @@ class PauseDataCorrectSQLJobResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = PauseDataCorrectSQLJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReDeployLhDagVersionRequest(TeaModel):
+    def __init__(
+        self,
+        dag_id: int = None,
+        dag_version: int = None,
+        tid: int = None,
+    ):
+        self.dag_id = dag_id
+        self.dag_version = dag_version
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dag_id is not None:
+            result['DagId'] = self.dag_id
+        if self.dag_version is not None:
+            result['DagVersion'] = self.dag_version
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DagId') is not None:
+            self.dag_id = m.get('DagId')
+        if m.get('DagVersion') is not None:
+            self.dag_version = m.get('DagVersion')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ReDeployLhDagVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        deploy_id: int = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.deploy_id = deploy_id
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_id is not None:
+            result['DeployId'] = self.deploy_id
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeployId') is not None:
+            self.deploy_id = m.get('DeployId')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReDeployLhDagVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ReDeployLhDagVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ReDeployLhDagVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
