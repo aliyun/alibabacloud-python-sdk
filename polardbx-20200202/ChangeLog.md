@@ -1,3 +1,6 @@
+2022-03-25 Version: 1.0.10
+- Fixed some bugs.
+
 2022-03-16 Version: 1.0.9
 - Fixed some bugs.
 

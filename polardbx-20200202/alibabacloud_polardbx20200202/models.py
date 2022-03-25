@@ -814,6 +814,7 @@ class CreateDBRequest(TeaModel):
         dbinstance_name: str = None,
         db_description: str = None,
         db_name: str = None,
+        mode: str = None,
         region_id: str = None,
         security_account_name: str = None,
         security_account_password: str = None,
@@ -824,6 +825,8 @@ class CreateDBRequest(TeaModel):
         self.dbinstance_name = dbinstance_name
         self.db_description = db_description
         self.db_name = db_name
+        # drds/auto 用来区分所建库为自动拆分模式，还是手动拆分模式
+        self.mode = mode
         self.region_id = region_id
         self.security_account_name = security_account_name
         self.security_account_password = security_account_password
@@ -849,6 +852,8 @@ class CreateDBRequest(TeaModel):
             result['DbDescription'] = self.db_description
         if self.db_name is not None:
             result['DbName'] = self.db_name
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.security_account_name is not None:
@@ -871,6 +876,8 @@ class CreateDBRequest(TeaModel):
             self.db_description = m.get('DbDescription')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SecurityAccountName') is not None:

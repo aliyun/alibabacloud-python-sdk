@@ -611,6 +611,8 @@ class Client(OpenApiClient):
             query['DbDescription'] = request.db_description
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.security_account_name):
@@ -655,6 +657,8 @@ class Client(OpenApiClient):
             query['DbDescription'] = request.db_description
         if not UtilClient.is_unset(request.db_name):
             query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.security_account_name):
