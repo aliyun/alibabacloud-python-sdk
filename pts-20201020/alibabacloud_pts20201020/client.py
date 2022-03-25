@@ -1983,6 +1983,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.save_open_jmeter_scene_with_options_async(request, runtime)
 
+    def save_pts_scene_with_options(
+        self,
+        tmp_req: pts20201020_models.SavePtsSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.SavePtsSceneResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pts20201020_models.SavePtsSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene):
+            request.scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.scene), 'Scene', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.scene_shrink):
+            query['Scene'] = request.scene_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SavePtsScene',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.SavePtsSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_pts_scene_with_options_async(
+        self,
+        tmp_req: pts20201020_models.SavePtsSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.SavePtsSceneResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pts20201020_models.SavePtsSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scene):
+            request.scene_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.scene), 'Scene', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.scene_shrink):
+            query['Scene'] = request.scene_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SavePtsScene',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.SavePtsSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_pts_scene(
+        self,
+        request: pts20201020_models.SavePtsSceneRequest,
+    ) -> pts20201020_models.SavePtsSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_pts_scene_with_options(request, runtime)
+
+    async def save_pts_scene_async(
+        self,
+        request: pts20201020_models.SavePtsSceneRequest,
+    ) -> pts20201020_models.SavePtsSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_pts_scene_with_options_async(request, runtime)
+
     def start_debug_pts_scene_with_options(
         self,
         request: pts20201020_models.StartDebugPtsSceneRequest,
