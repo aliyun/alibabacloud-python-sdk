@@ -17728,6 +17728,341 @@ class ListInstanceResponse(TeaModel):
         return self
 
 
+class ListInstanceHistoryEventsRequestBody(TeaModel):
+    def __init__(
+        self,
+        desc: bool = None,
+        sort_field: str = None,
+    ):
+        self.desc = desc
+        self.sort_field = sort_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['desc'] = self.desc
+        if self.sort_field is not None:
+            result['sortField'] = self.sort_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+        if m.get('sortField') is not None:
+            self.sort_field = m.get('sortField')
+        return self
+
+
+class ListInstanceHistoryEventsRequest(TeaModel):
+    def __init__(
+        self,
+        body: List[ListInstanceHistoryEventsRequestBody] = None,
+        event_create_end_time: str = None,
+        event_create_start_time: str = None,
+        event_execute_end_time: str = None,
+        event_execute_start_time: str = None,
+        event_finash_end_time: str = None,
+        event_finash_start_time: str = None,
+        event_level: str = None,
+        event_type: str = None,
+        instance_id: str = None,
+        node_ip: str = None,
+    ):
+        self.body = body
+        self.event_create_end_time = event_create_end_time
+        self.event_create_start_time = event_create_start_time
+        self.event_execute_end_time = event_execute_end_time
+        self.event_execute_start_time = event_execute_start_time
+        self.event_finash_end_time = event_finash_end_time
+        self.event_finash_start_time = event_finash_start_time
+        self.event_level = event_level
+        self.event_type = event_type
+        self.instance_id = instance_id
+        self.node_ip = node_ip
+
+    def validate(self):
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        if self.event_create_end_time is not None:
+            result['eventCreateEndTime'] = self.event_create_end_time
+        if self.event_create_start_time is not None:
+            result['eventCreateStartTime'] = self.event_create_start_time
+        if self.event_execute_end_time is not None:
+            result['eventExecuteEndTime'] = self.event_execute_end_time
+        if self.event_execute_start_time is not None:
+            result['eventExecuteStartTime'] = self.event_execute_start_time
+        if self.event_finash_end_time is not None:
+            result['eventFinashEndTime'] = self.event_finash_end_time
+        if self.event_finash_start_time is not None:
+            result['eventFinashStartTime'] = self.event_finash_start_time
+        if self.event_level is not None:
+            result['eventLevel'] = self.event_level
+        if self.event_type is not None:
+            result['eventType'] = self.event_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.node_ip is not None:
+            result['nodeIP'] = self.node_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = ListInstanceHistoryEventsRequestBody()
+                self.body.append(temp_model.from_map(k))
+        if m.get('eventCreateEndTime') is not None:
+            self.event_create_end_time = m.get('eventCreateEndTime')
+        if m.get('eventCreateStartTime') is not None:
+            self.event_create_start_time = m.get('eventCreateStartTime')
+        if m.get('eventExecuteEndTime') is not None:
+            self.event_execute_end_time = m.get('eventExecuteEndTime')
+        if m.get('eventExecuteStartTime') is not None:
+            self.event_execute_start_time = m.get('eventExecuteStartTime')
+        if m.get('eventFinashEndTime') is not None:
+            self.event_finash_end_time = m.get('eventFinashEndTime')
+        if m.get('eventFinashStartTime') is not None:
+            self.event_finash_start_time = m.get('eventFinashStartTime')
+        if m.get('eventLevel') is not None:
+            self.event_level = m.get('eventLevel')
+        if m.get('eventType') is not None:
+            self.event_type = m.get('eventType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('nodeIP') is not None:
+            self.node_ip = m.get('nodeIP')
+        return self
+
+
+class ListInstanceHistoryEventsResponseBodyHeaders(TeaModel):
+    def __init__(
+        self,
+        x_total_count: int = None,
+        x_total_failed: int = None,
+        x_total_success: int = None,
+    ):
+        self.x_total_count = x_total_count
+        self.x_total_failed = x_total_failed
+        self.x_total_success = x_total_success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x_total_count is not None:
+            result['X-Total-Count'] = self.x_total_count
+        if self.x_total_failed is not None:
+            result['X-Total-Failed'] = self.x_total_failed
+        if self.x_total_success is not None:
+            result['X-Total-Success'] = self.x_total_success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X-Total-Count') is not None:
+            self.x_total_count = m.get('X-Total-Count')
+        if m.get('X-Total-Failed') is not None:
+            self.x_total_failed = m.get('X-Total-Failed')
+        if m.get('X-Total-Success') is not None:
+            self.x_total_success = m.get('X-Total-Success')
+        return self
+
+
+class ListInstanceHistoryEventsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        action_list: List[str] = None,
+        event_create_time: str = None,
+        event_cycle_status: str = None,
+        event_execute_time: str = None,
+        event_finash_time: str = None,
+        event_level: str = None,
+        event_type: str = None,
+        instance_id: str = None,
+        node_ip: str = None,
+        region_id: str = None,
+    ):
+        self.action_list = action_list
+        self.event_create_time = event_create_time
+        self.event_cycle_status = event_cycle_status
+        self.event_execute_time = event_execute_time
+        self.event_finash_time = event_finash_time
+        self.event_level = event_level
+        self.event_type = event_type
+        self.instance_id = instance_id
+        self.node_ip = node_ip
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_list is not None:
+            result['actionList'] = self.action_list
+        if self.event_create_time is not None:
+            result['eventCreateTime'] = self.event_create_time
+        if self.event_cycle_status is not None:
+            result['eventCycleStatus'] = self.event_cycle_status
+        if self.event_execute_time is not None:
+            result['eventExecuteTime'] = self.event_execute_time
+        if self.event_finash_time is not None:
+            result['eventFinashTime'] = self.event_finash_time
+        if self.event_level is not None:
+            result['eventLevel'] = self.event_level
+        if self.event_type is not None:
+            result['eventType'] = self.event_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.node_ip is not None:
+            result['nodeIP'] = self.node_ip
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('actionList') is not None:
+            self.action_list = m.get('actionList')
+        if m.get('eventCreateTime') is not None:
+            self.event_create_time = m.get('eventCreateTime')
+        if m.get('eventCycleStatus') is not None:
+            self.event_cycle_status = m.get('eventCycleStatus')
+        if m.get('eventExecuteTime') is not None:
+            self.event_execute_time = m.get('eventExecuteTime')
+        if m.get('eventFinashTime') is not None:
+            self.event_finash_time = m.get('eventFinashTime')
+        if m.get('eventLevel') is not None:
+            self.event_level = m.get('eventLevel')
+        if m.get('eventType') is not None:
+            self.event_type = m.get('eventType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('nodeIP') is not None:
+            self.node_ip = m.get('nodeIP')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class ListInstanceHistoryEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        headers: ListInstanceHistoryEventsResponseBodyHeaders = None,
+        request_id: str = None,
+        result: List[ListInstanceHistoryEventsResponseBodyResult] = None,
+    ):
+        self.headers = headers
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.headers:
+            self.headers.validate()
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['Headers'] = self.headers.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Headers') is not None:
+            temp_model = ListInstanceHistoryEventsResponseBodyHeaders()
+            self.headers = temp_model.from_map(m['Headers'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = ListInstanceHistoryEventsResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        return self
+
+
+class ListInstanceHistoryEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListInstanceHistoryEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListInstanceHistoryEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListInstanceIndicesRequest(TeaModel):
     def __init__(
         self,
@@ -21207,11 +21542,14 @@ class ModifyWhiteIpsRequestWhiteIpGroup(TeaModel):
         self,
         group_name: str = None,
         ips: List[str] = None,
+        white_ip_type: str = None,
     ):
         # 白名单组的组名。如果选填了whiteIpGroup参数，则该参数必填。
         self.group_name = group_name
         # 白名单组中的IP列表。如果选填了whiteIpGroup参数，则该参数必填。
         self.ips = ips
+        # ip白名单的类型
+        self.white_ip_type = white_ip_type
 
     def validate(self):
         pass
@@ -21226,6 +21564,8 @@ class ModifyWhiteIpsRequestWhiteIpGroup(TeaModel):
             result['groupName'] = self.group_name
         if self.ips is not None:
             result['ips'] = self.ips
+        if self.white_ip_type is not None:
+            result['whiteIpType'] = self.white_ip_type
         return result
 
     def from_map(self, m: dict = None):
@@ -21234,6 +21574,8 @@ class ModifyWhiteIpsRequestWhiteIpGroup(TeaModel):
             self.group_name = m.get('groupName')
         if m.get('ips') is not None:
             self.ips = m.get('ips')
+        if m.get('whiteIpType') is not None:
+            self.white_ip_type = m.get('whiteIpType')
         return self
 
 

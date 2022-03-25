@@ -565,7 +565,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname=f'/openapi/assist/actions/capacity-plan',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='json'
@@ -601,7 +601,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname=f'/openapi/assist/actions/capacity-plan',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='json'
@@ -7858,6 +7858,120 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_history_events(
+        self,
+        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instance_history_events_with_options(request, headers, runtime)
+
+    async def list_instance_history_events_async(
+        self,
+        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instance_history_events_with_options_async(request, headers, runtime)
+
+    def list_instance_history_events_with_options(
+        self,
+        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_create_end_time):
+            query['eventCreateEndTime'] = request.event_create_end_time
+        if not UtilClient.is_unset(request.event_create_start_time):
+            query['eventCreateStartTime'] = request.event_create_start_time
+        if not UtilClient.is_unset(request.event_execute_end_time):
+            query['eventExecuteEndTime'] = request.event_execute_end_time
+        if not UtilClient.is_unset(request.event_execute_start_time):
+            query['eventExecuteStartTime'] = request.event_execute_start_time
+        if not UtilClient.is_unset(request.event_finash_end_time):
+            query['eventFinashEndTime'] = request.event_finash_end_time
+        if not UtilClient.is_unset(request.event_finash_start_time):
+            query['eventFinashStartTime'] = request.event_finash_start_time
+        if not UtilClient.is_unset(request.event_level):
+            query['eventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_type):
+            query['eventType'] = request.event_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_ip):
+            query['nodeIP'] = request.node_ip
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceHistoryEvents',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/events',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.ListInstanceHistoryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_history_events_with_options_async(
+        self,
+        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_create_end_time):
+            query['eventCreateEndTime'] = request.event_create_end_time
+        if not UtilClient.is_unset(request.event_create_start_time):
+            query['eventCreateStartTime'] = request.event_create_start_time
+        if not UtilClient.is_unset(request.event_execute_end_time):
+            query['eventExecuteEndTime'] = request.event_execute_end_time
+        if not UtilClient.is_unset(request.event_execute_start_time):
+            query['eventExecuteStartTime'] = request.event_execute_start_time
+        if not UtilClient.is_unset(request.event_finash_end_time):
+            query['eventFinashEndTime'] = request.event_finash_end_time
+        if not UtilClient.is_unset(request.event_finash_start_time):
+            query['eventFinashStartTime'] = request.event_finash_start_time
+        if not UtilClient.is_unset(request.event_level):
+            query['eventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_type):
+            query['eventType'] = request.event_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_ip):
+            query['nodeIP'] = request.node_ip
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceHistoryEvents',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/events',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.ListInstanceHistoryEventsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
