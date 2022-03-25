@@ -7498,6 +7498,7 @@ class UpdateV3InstanceByUserResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
         success: bool = None,
+        user_set: List[str] = None,
         workspace_id: str = None,
     ):
         # 状态码
@@ -7511,6 +7512,7 @@ class UpdateV3InstanceByUserResponseBody(TeaModel):
         self.request_id = request_id
         # 成功标志
         self.success = success
+        self.user_set = user_set
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7534,6 +7536,8 @@ class UpdateV3InstanceByUserResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.user_set is not None:
+            result['UserSet'] = self.user_set
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -7552,6 +7556,8 @@ class UpdateV3InstanceByUserResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('UserSet') is not None:
+            self.user_set = m.get('UserSet')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
