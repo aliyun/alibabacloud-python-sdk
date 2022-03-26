@@ -9,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_sts20150401 import models as sts_20150401_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -83,12 +84,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.duration_seconds):
+            query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.role_session_name):
+            query['RoleSessionName'] = request.role_session_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssumeRole',
+            version='2015-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             sts_20150401_models.AssumeRoleResponse(),
-            self.do_rpcrequest('AssumeRole', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def assume_role_with_options_async(
@@ -97,12 +118,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.duration_seconds):
+            query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.role_session_name):
+            query['RoleSessionName'] = request.role_session_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssumeRole',
+            version='2015-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             sts_20150401_models.AssumeRoleResponse(),
-            await self.do_rpcrequest_async('AssumeRole', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def assume_role(
@@ -125,12 +166,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.duration_seconds):
+            query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.oidcprovider_arn):
+            query['OIDCProviderArn'] = request.oidcprovider_arn
+        if not UtilClient.is_unset(request.oidctoken):
+            query['OIDCToken'] = request.oidctoken
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.role_session_name):
+            query['RoleSessionName'] = request.role_session_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssumeRoleWithOIDC',
+            version='2015-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             sts_20150401_models.AssumeRoleWithOIDCResponse(),
-            self.do_rpcrequest('AssumeRoleWithOIDC', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def assume_role_with_oidcwith_options_async(
@@ -139,12 +204,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleWithOIDCResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.duration_seconds):
+            query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.oidcprovider_arn):
+            query['OIDCProviderArn'] = request.oidcprovider_arn
+        if not UtilClient.is_unset(request.oidctoken):
+            query['OIDCToken'] = request.oidctoken
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.role_session_name):
+            query['RoleSessionName'] = request.role_session_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssumeRoleWithOIDC',
+            version='2015-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             sts_20150401_models.AssumeRoleWithOIDCResponse(),
-            await self.do_rpcrequest_async('AssumeRoleWithOIDC', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def assume_role_with_oidc(
@@ -167,12 +256,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleWithSAMLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.duration_seconds):
+            query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.samlassertion):
+            query['SAMLAssertion'] = request.samlassertion
+        if not UtilClient.is_unset(request.samlprovider_arn):
+            query['SAMLProviderArn'] = request.samlprovider_arn
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssumeRoleWithSAML',
+            version='2015-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             sts_20150401_models.AssumeRoleWithSAMLResponse(),
-            self.do_rpcrequest('AssumeRoleWithSAML', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def assume_role_with_samlwith_options_async(
@@ -181,12 +292,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.AssumeRoleWithSAMLResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.duration_seconds):
+            query['DurationSeconds'] = request.duration_seconds
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.samlassertion):
+            query['SAMLAssertion'] = request.samlassertion
+        if not UtilClient.is_unset(request.samlprovider_arn):
+            query['SAMLProviderArn'] = request.samlprovider_arn
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssumeRoleWithSAML',
+            version='2015-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             sts_20150401_models.AssumeRoleWithSAMLResponse(),
-            await self.do_rpcrequest_async('AssumeRoleWithSAML', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def assume_role_with_saml(
@@ -208,9 +341,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.GetCallerIdentityResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetCallerIdentity',
+            version='2015-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             sts_20150401_models.GetCallerIdentityResponse(),
-            self.do_rpcrequest('GetCallerIdentity', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_caller_identity_with_options_async(
@@ -218,9 +362,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sts_20150401_models.GetCallerIdentityResponse:
         req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetCallerIdentity',
+            version='2015-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
         return TeaCore.from_map(
             sts_20150401_models.GetCallerIdentityResponse(),
-            await self.do_rpcrequest_async('GetCallerIdentity', '2015-04-01', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_caller_identity(self) -> sts_20150401_models.GetCallerIdentityResponse:
