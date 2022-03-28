@@ -1,3 +1,6 @@
+2022-03-28 Version: 1.0.8
+- AMP version.
+
 2022-03-22 Version: 1.0.7
 - Update PreloadDcdnObjectCaches.
 
