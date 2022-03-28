@@ -4,6 +4,63 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class DemoCategory(TeaModel):
+    def __init__(
+        self,
+        category_code: str = None,
+        category_name: str = None,
+        order: int = None,
+        sub_categories: List['DemoCategory'] = None,
+    ):
+        # 目录码
+        self.category_code = category_code
+        # 目录名
+        self.category_name = category_name
+        # 序号
+        self.order = order
+        # 目录列表
+        self.sub_categories = sub_categories
+
+    def validate(self):
+        if self.sub_categories:
+            for k in self.sub_categories:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_code is not None:
+            result['CategoryCode'] = self.category_code
+        if self.category_name is not None:
+            result['CategoryName'] = self.category_name
+        if self.order is not None:
+            result['Order'] = self.order
+        result['SubCategories'] = []
+        if self.sub_categories is not None:
+            for k in self.sub_categories:
+                result['SubCategories'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryCode') is not None:
+            self.category_code = m.get('CategoryCode')
+        if m.get('CategoryName') is not None:
+            self.category_name = m.get('CategoryName')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        self.sub_categories = []
+        if m.get('SubCategories') is not None:
+            for k in m.get('SubCategories'):
+                temp_model = DemoCategory()
+                self.sub_categories.append(temp_model.from_map(k))
+        return self
+
+
 class CreateInstanceRequestDatasets(TeaModel):
     def __init__(
         self,
@@ -179,13 +236,25 @@ class CreateInstanceRequest(TeaModel):
 class CreateInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -196,18 +265,34 @@ class CreateInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -286,13 +371,25 @@ class CreateInstanceShutdownTimerRequest(TeaModel):
 class CreateInstanceShutdownTimerResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -303,18 +400,34 @@ class CreateInstanceShutdownTimerResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -400,16 +513,28 @@ class CreateInstanceSnapshotRequest(TeaModel):
 class CreateInstanceSnapshotResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         request_id: str = None,
         snapshot_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
         # 实例快照Id
         self.snapshot_id = snapshot_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -420,22 +545,38 @@ class CreateInstanceSnapshotResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -479,13 +620,25 @@ class CreateInstanceSnapshotResponse(TeaModel):
 class DeleteInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -496,18 +649,34 @@ class DeleteInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -551,13 +720,25 @@ class DeleteInstanceResponse(TeaModel):
 class DeleteInstanceShutdownTimerResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -568,18 +749,34 @@ class DeleteInstanceShutdownTimerResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -623,16 +820,28 @@ class DeleteInstanceShutdownTimerResponse(TeaModel):
 class DeleteInstanceSnapshotResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         request_id: str = None,
         snapshot_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
         # 实例快照Id
         self.snapshot_id = snapshot_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -643,22 +852,38 @@ class DeleteInstanceSnapshotResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -901,11 +1126,13 @@ class GetInstanceResponseBody(TeaModel):
         accelerator_type: str = None,
         accessibility: str = None,
         accumulated_running_time_in_ms: int = None,
+        code: str = None,
         datasets: List[GetInstanceResponseBodyDatasets] = None,
         ecs_spec: str = None,
         environment_variables: Dict[str, str] = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        http_status_code: int = None,
         image_id: str = None,
         image_name: str = None,
         image_url: str = None,
@@ -915,13 +1142,16 @@ class GetInstanceResponseBody(TeaModel):
         instance_url: str = None,
         jupyterlab_url: str = None,
         latest_snapshot: GetInstanceResponseBodyLatestSnapshot = None,
+        message: str = None,
         payment_type: str = None,
         reason_code: str = None,
         reason_message: str = None,
         request_id: str = None,
         status: str = None,
+        success: bool = None,
         terminal_url: str = None,
         user_id: str = None,
+        user_name: str = None,
         user_vpc: GetInstanceResponseBodyUserVpc = None,
         web_ideurl: str = None,
         workspace_id: str = None,
@@ -933,6 +1163,8 @@ class GetInstanceResponseBody(TeaModel):
         self.accessibility = accessibility
         # 累计运行时间（ms）
         self.accumulated_running_time_in_ms = accumulated_running_time_in_ms
+        # 状态码
+        self.code = code
         # 数据集集合
         self.datasets = datasets
         # 实例对应的Ecs规格
@@ -943,6 +1175,8 @@ class GetInstanceResponseBody(TeaModel):
         self.gmt_create_time = gmt_create_time
         # 实例修改时间
         self.gmt_modified_time = gmt_modified_time
+        # http状态码
+        self.http_status_code = http_status_code
         # 镜像Id
         self.image_id = image_id
         # 镜像名称
@@ -961,6 +1195,8 @@ class GetInstanceResponseBody(TeaModel):
         self.jupyterlab_url = jupyterlab_url
         # 最新保存的用户镜像
         self.latest_snapshot = latest_snapshot
+        # 说明
+        self.message = message
         # 支付类型
         self.payment_type = payment_type
         # 实例错误代码
@@ -971,10 +1207,14 @@ class GetInstanceResponseBody(TeaModel):
         self.request_id = request_id
         # 实例状态
         self.status = status
+        # 成功标志
+        self.success = success
         # 终端url
         self.terminal_url = terminal_url
         # 用户Id
         self.user_id = user_id
+        # 用户名称
+        self.user_name = user_name
         # user vpc配置
         self.user_vpc = user_vpc
         # Web IDE url
@@ -1008,6 +1248,8 @@ class GetInstanceResponseBody(TeaModel):
             result['Accessibility'] = self.accessibility
         if self.accumulated_running_time_in_ms is not None:
             result['AccumulatedRunningTimeInMs'] = self.accumulated_running_time_in_ms
+        if self.code is not None:
+            result['Code'] = self.code
         result['Datasets'] = []
         if self.datasets is not None:
             for k in self.datasets:
@@ -1020,6 +1262,8 @@ class GetInstanceResponseBody(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_name is not None:
@@ -1038,6 +1282,8 @@ class GetInstanceResponseBody(TeaModel):
             result['JupyterlabUrl'] = self.jupyterlab_url
         if self.latest_snapshot is not None:
             result['LatestSnapshot'] = self.latest_snapshot.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
         if self.reason_code is not None:
@@ -1048,10 +1294,14 @@ class GetInstanceResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
         if self.terminal_url is not None:
             result['TerminalUrl'] = self.terminal_url
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
         if self.web_ideurl is not None:
@@ -1070,6 +1320,8 @@ class GetInstanceResponseBody(TeaModel):
             self.accessibility = m.get('Accessibility')
         if m.get('AccumulatedRunningTimeInMs') is not None:
             self.accumulated_running_time_in_ms = m.get('AccumulatedRunningTimeInMs')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         self.datasets = []
         if m.get('Datasets') is not None:
             for k in m.get('Datasets'):
@@ -1083,6 +1335,8 @@ class GetInstanceResponseBody(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
@@ -1103,6 +1357,8 @@ class GetInstanceResponseBody(TeaModel):
         if m.get('LatestSnapshot') is not None:
             temp_model = GetInstanceResponseBodyLatestSnapshot()
             self.latest_snapshot = temp_model.from_map(m['LatestSnapshot'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
         if m.get('ReasonCode') is not None:
@@ -1113,10 +1369,14 @@ class GetInstanceResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TerminalUrl') is not None:
             self.terminal_url = m.get('TerminalUrl')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         if m.get('UserVpc') is not None:
             temp_model = GetInstanceResponseBodyUserVpc()
             self.user_vpc = temp_model.from_map(m['UserVpc'])
@@ -1169,25 +1429,37 @@ class GetInstanceResponse(TeaModel):
 class GetInstanceShutdownTimerResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         due_time: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         remaining_time_in_ms: int = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
         # 设定关机时间
         self.due_time = due_time
         # 创建时间
         self.gmt_create_time = gmt_create_time
         # 修改时间
         self.gmt_modified_time = gmt_modified_time
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 剩余关机时间（ms）
         self.remaining_time_in_ms = remaining_time_in_ms
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -1198,34 +1470,50 @@ class GetInstanceShutdownTimerResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.due_time is not None:
             result['DueTime'] = self.due_time
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.remaining_time_in_ms is not None:
             result['RemainingTimeInMs'] = self.remaining_time_in_ms
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('DueTime') is not None:
             self.due_time = m.get('DueTime')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RemainingTimeInMs') is not None:
             self.remaining_time_in_ms = m.get('RemainingTimeInMs')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -1269,28 +1557,38 @@ class GetInstanceShutdownTimerResponse(TeaModel):
 class GetInstanceSnapshotResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        http_status_code: int = None,
         image_id: str = None,
         image_url: str = None,
         instance_id: str = None,
+        message: str = None,
         reason_code: str = None,
         reason_message: str = None,
         request_id: str = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
         status: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
         # 实例快照创建时间
         self.gmt_create_time = gmt_create_time
         # 实例快照修改时间
         self.gmt_modified_time = gmt_modified_time
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例快照的镜像Id
         self.image_id = image_id
         # 实例快照的镜像地址
         self.image_url = image_url
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 实例快照错误代码
         self.reason_code = reason_code
         # 实例快照错误消息
@@ -1303,6 +1601,8 @@ class GetInstanceSnapshotResponseBody(TeaModel):
         self.snapshot_name = snapshot_name
         # 实例快照状态
         self.status = status
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -1313,16 +1613,22 @@ class GetInstanceSnapshotResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_message is not None:
@@ -1335,20 +1641,28 @@ class GetInstanceSnapshotResponseBody(TeaModel):
             result['SnapshotName'] = self.snapshot_name
         if self.status is not None:
             result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonMessage') is not None:
@@ -1361,6 +1675,8 @@ class GetInstanceSnapshotResponseBody(TeaModel):
             self.snapshot_name = m.get('SnapshotName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -1405,12 +1721,24 @@ class GetUserConfigResponseBody(TeaModel):
     def __init__(
         self,
         account_sufficient: bool = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         # 用户账号金额是否充足
         self.account_sufficient = account_sufficient
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -1423,16 +1751,32 @@ class GetUserConfigResponseBody(TeaModel):
         result = dict()
         if self.account_sufficient is not None:
             result['AccountSufficient'] = self.account_sufficient
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AccountSufficient') is not None:
             self.account_sufficient = m.get('AccountSufficient')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -1469,6 +1813,282 @@ class GetUserConfigResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = GetUserConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDemoCategoriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        categories: List[DemoCategory] = None,
+        request_id: str = None,
+    ):
+        # 样例列表
+        self.categories = categories
+        # 请求Id
+        self.request_id = request_id
+
+    def validate(self):
+        if self.categories:
+            for k in self.categories:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Categories'] = []
+        if self.categories is not None:
+            for k in self.categories:
+                result['Categories'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.categories = []
+        if m.get('Categories') is not None:
+            for k in m.get('Categories'):
+                temp_model = DemoCategory()
+                self.categories.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDemoCategoriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDemoCategoriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDemoCategoriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDemosRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        demo_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # 目录
+        self.category = category
+        self.demo_name = demo_name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.demo_name is not None:
+            result['DemoName'] = self.demo_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DemoName') is not None:
+            self.demo_name = m.get('DemoName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListDemosResponseBodyDemos(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        demo_description: str = None,
+        demo_name: str = None,
+        demo_url: str = None,
+        order: int = None,
+        size: int = None,
+    ):
+        # 所在目录
+        self.categories = categories
+        # 样例描述
+        self.demo_description = demo_description
+        # 样例名称
+        self.demo_name = demo_name
+        # 样例地址
+        self.demo_url = demo_url
+        # 序号
+        self.order = order
+        # 大小
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        if self.demo_description is not None:
+            result['DemoDescription'] = self.demo_description
+        if self.demo_name is not None:
+            result['DemoName'] = self.demo_name
+        if self.demo_url is not None:
+            result['DemoUrl'] = self.demo_url
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        if m.get('DemoDescription') is not None:
+            self.demo_description = m.get('DemoDescription')
+        if m.get('DemoName') is not None:
+            self.demo_name = m.get('DemoName')
+        if m.get('DemoUrl') is not None:
+            self.demo_url = m.get('DemoUrl')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class ListDemosResponseBody(TeaModel):
+    def __init__(
+        self,
+        demos: List[ListDemosResponseBodyDemos] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # 样例列表
+        self.demos = demos
+        # 请求Id
+        self.request_id = request_id
+        # 总数
+        self.total_count = total_count
+
+    def validate(self):
+        if self.demos:
+            for k in self.demos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Demos'] = []
+        if self.demos is not None:
+            for k in self.demos:
+                result['Demos'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.demos = []
+        if m.get('Demos') is not None:
+            for k in m.get('Demos'):
+                temp_model = ListDemosResponseBodyDemos()
+                self.demos.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDemosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDemosResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDemosResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1623,14 +2243,26 @@ class ListEcsSpecsResponseBodyEcsSpecs(TeaModel):
 class ListEcsSpecsResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         ecs_specs: List[ListEcsSpecsResponseBodyEcsSpecs] = None,
+        http_status_code: int = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         total_count: int = None,
     ):
+        # 状态码
+        self.code = code
         # 本分页中请求的实例列表
         self.ecs_specs = ecs_specs
+        # http状态码
+        self.http_status_code = http_status_code
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
         # 实例总数
         self.total_count = total_count
 
@@ -1646,25 +2278,41 @@ class ListEcsSpecsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         result['EcsSpecs'] = []
         if self.ecs_specs is not None:
             for k in self.ecs_specs:
                 result['EcsSpecs'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         self.ecs_specs = []
         if m.get('EcsSpecs') is not None:
             for k in m.get('EcsSpecs'):
                 temp_model = ListEcsSpecsResponseBodyEcsSpecs()
                 self.ecs_specs.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -1846,14 +2494,26 @@ class ListInstanceSnapshotResponseBodySnapshots(TeaModel):
 class ListInstanceSnapshotResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
         request_id: str = None,
         snapshots: List[ListInstanceSnapshotResponseBodySnapshots] = None,
+        success: bool = None,
         total_count: int = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
         # 本分页中请求的实例镜像列表
         self.snapshots = snapshots
+        # 成功标志
+        self.success = success
         # 实例总数
         self.total_count = total_count
 
@@ -1869,18 +2529,32 @@ class ListInstanceSnapshotResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['Snapshots'] = []
         if self.snapshots is not None:
             for k in self.snapshots:
                 result['Snapshots'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.snapshots = []
@@ -1888,6 +2562,8 @@ class ListInstanceSnapshotResponseBody(TeaModel):
             for k in m.get('Snapshots'):
                 temp_model = ListInstanceSnapshotResponseBodySnapshots()
                 self.snapshots.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -1961,13 +2637,25 @@ class ListInstanceStatisticsRequest(TeaModel):
 class ListInstanceStatisticsResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
         request_id: str = None,
         statistics: Dict[str, dict] = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
         # 统计信息
         self.statistics = statistics
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -1978,18 +2666,34 @@ class ListInstanceStatisticsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.statistics is not None:
             result['Statistics'] = self.statistics
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Statistics') is not None:
             self.statistics = m.get('Statistics')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -2340,6 +3044,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         status: str = None,
         terminal_url: str = None,
         user_id: str = None,
+        user_name: str = None,
         user_vpc: ListInstancesResponseBodyInstancesUserVpc = None,
         web_ideurl: str = None,
         workspace_id: str = None,
@@ -2391,6 +3096,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.terminal_url = terminal_url
         # 用户Id
         self.user_id = user_id
+        # 用户名称
+        self.user_name = user_name
         # user vpc配置
         self.user_vpc = user_vpc
         # Web IDE url
@@ -2466,6 +3173,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['TerminalUrl'] = self.terminal_url
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
         if self.web_ideurl is not None:
@@ -2529,6 +3238,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.terminal_url = m.get('TerminalUrl')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         if m.get('UserVpc') is not None:
             temp_model = ListInstancesResponseBodyInstancesUserVpc()
             self.user_vpc = temp_model.from_map(m['UserVpc'])
@@ -2544,14 +3255,26 @@ class ListInstancesResponseBodyInstances(TeaModel):
 class ListInstancesResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instances: List[ListInstancesResponseBodyInstances] = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         total_count: int = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 本分页中请求的实例列表
         self.instances = instances
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
         # 实例总数
         self.total_count = total_count
 
@@ -2567,25 +3290,41 @@ class ListInstancesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         result['Instances'] = []
         if self.instances is not None:
             for k in self.instances:
                 result['Instances'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         self.instances = []
         if m.get('Instances') is not None:
             for k in m.get('Instances'):
                 temp_model = ListInstancesResponseBodyInstances()
                 self.instances.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
         return self
@@ -2631,13 +3370,25 @@ class ListInstancesResponse(TeaModel):
 class StartInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -2648,18 +3399,34 @@ class StartInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -2731,13 +3498,25 @@ class StopInstanceRequest(TeaModel):
 class StopInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -2748,18 +3527,34 @@ class StopInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -2831,13 +3626,25 @@ class UpdateInstanceRequest(TeaModel):
 class UpdateInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        http_status_code: int = None,
         instance_id: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        # 状态码
+        self.code = code
+        # http状态码
+        self.http_status_code = http_status_code
         # 实例Id
         self.instance_id = instance_id
+        # 说明
+        self.message = message
         # 请求Id
         self.request_id = request_id
+        # 成功标志
+        self.success = success
 
     def validate(self):
         pass
@@ -2848,18 +3655,34 @@ class UpdateInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
