@@ -1571,6 +1571,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_flow_job_with_options_async(request, runtime)
 
+    def describe_flow_node_instance_with_options(
+        self,
+        request: ddi_20200617_models.DescribeFlowNodeInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.DescribeFlowNodeInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFlowNodeInstance',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.DescribeFlowNodeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_flow_node_instance_with_options_async(
+        self,
+        request: ddi_20200617_models.DescribeFlowNodeInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddi_20200617_models.DescribeFlowNodeInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFlowNodeInstance',
+            version='2020-06-17',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddi_20200617_models.DescribeFlowNodeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_flow_node_instance(
+        self,
+        request: ddi_20200617_models.DescribeFlowNodeInstanceRequest,
+    ) -> ddi_20200617_models.DescribeFlowNodeInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_flow_node_instance_with_options(request, runtime)
+
+    async def describe_flow_node_instance_async(
+        self,
+        request: ddi_20200617_models.DescribeFlowNodeInstanceRequest,
+    ) -> ddi_20200617_models.DescribeFlowNodeInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_flow_node_instance_with_options_async(request, runtime)
+
     def describe_flow_project_with_options(
         self,
         request: ddi_20200617_models.DescribeFlowProjectRequest,
