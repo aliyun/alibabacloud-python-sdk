@@ -1,3 +1,6 @@
+2022-03-29 Version: 1.0.4
+- Update API UpdateTaskPriority.
+
 2022-03-29 Version: 1.0.3
 - Update API GetOssConfigList.
 

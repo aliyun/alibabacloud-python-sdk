@@ -1539,7 +1539,7 @@ class SaveOssConfigResponse(TeaModel):
 class UpdateTaskPriorityRequest(TeaModel):
     def __init__(
         self,
-        priority: str = None,
+        priority: int = None,
         task_uid: str = None,
     ):
         self.priority = priority
