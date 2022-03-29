@@ -1,3 +1,7 @@
+2022-03-29 Version: 1.0.3
+- Update API Documents.
+- Update DescribeRecords API.
+
 2022-02-21 Version: 1.0.2
 - Update API Documents.
 

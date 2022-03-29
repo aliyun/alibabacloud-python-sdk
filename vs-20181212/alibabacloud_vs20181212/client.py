@@ -41,88 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_device_with_options(
-        self,
-        request: vs_20181212_models.AddDeviceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.AddDeviceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
-        if not UtilClient.is_unset(request.group_id):
-            query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.protocol):
-            query['Protocol'] = request.protocol
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddDevice',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.AddDeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_device_with_options_async(
-        self,
-        request: vs_20181212_models.AddDeviceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.AddDeviceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
-        if not UtilClient.is_unset(request.group_id):
-            query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.protocol):
-            query['Protocol'] = request.protocol
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddDevice',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.AddDeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_device(
-        self,
-        request: vs_20181212_models.AddDeviceRequest,
-    ) -> vs_20181212_models.AddDeviceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_device_with_options(request, runtime)
-
-    async def add_device_async(
-        self,
-        request: vs_20181212_models.AddDeviceRequest,
-    ) -> vs_20181212_models.AddDeviceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_device_with_options_async(request, runtime)
-
     def add_registered_device_with_options(
         self,
         request: vs_20181212_models.AddRegisteredDeviceRequest,
@@ -3046,92 +2964,6 @@ class Client(OpenApiClient):
     ) -> vs_20181212_models.CreateDeviceAlarmResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_device_alarm_with_options_async(request, runtime)
-
-    def create_device_snapshot_with_options(
-        self,
-        request: vs_20181212_models.CreateDeviceSnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CreateDeviceSnapshotResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.mode):
-            query['Mode'] = request.mode
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.snapshot_config):
-            query['SnapshotConfig'] = request.snapshot_config
-        if not UtilClient.is_unset(request.stream_id):
-            query['StreamId'] = request.stream_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDeviceSnapshot',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.CreateDeviceSnapshotResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_device_snapshot_with_options_async(
-        self,
-        request: vs_20181212_models.CreateDeviceSnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CreateDeviceSnapshotResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.mode):
-            query['Mode'] = request.mode
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.snapshot_config):
-            query['SnapshotConfig'] = request.snapshot_config
-        if not UtilClient.is_unset(request.stream_id):
-            query['StreamId'] = request.stream_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDeviceSnapshot',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.CreateDeviceSnapshotResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_device_snapshot(
-        self,
-        request: vs_20181212_models.CreateDeviceSnapshotRequest,
-    ) -> vs_20181212_models.CreateDeviceSnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_device_snapshot_with_options(request, runtime)
-
-    async def create_device_snapshot_async(
-        self,
-        request: vs_20181212_models.CreateDeviceSnapshotRequest,
-    ) -> vs_20181212_models.CreateDeviceSnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_device_snapshot_with_options_async(request, runtime)
 
     def create_directory_with_options(
         self,
@@ -7719,6 +7551,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_templates_with_options_async(request, runtime)
 
+    def describe_user_devices_with_options(
+        self,
+        request: vs_20181212_models.DescribeUserDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribeUserDevicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_instance_ids):
+            query['EnsInstanceIds'] = request.ens_instance_ids
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserDevices',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeUserDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_devices_with_options_async(
+        self,
+        request: vs_20181212_models.DescribeUserDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribeUserDevicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_instance_ids):
+            query['EnsInstanceIds'] = request.ens_instance_ids
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserDevices',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeUserDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_devices(
+        self,
+        request: vs_20181212_models.DescribeUserDevicesRequest,
+    ) -> vs_20181212_models.DescribeUserDevicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_devices_with_options(request, runtime)
+
+    async def describe_user_devices_async(
+        self,
+        request: vs_20181212_models.DescribeUserDevicesRequest,
+    ) -> vs_20181212_models.DescribeUserDevicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_devices_with_options_async(request, runtime)
+
     def describe_vod_stream_urlwith_options(
         self,
         request: vs_20181212_models.DescribeVodStreamURLRequest,
@@ -10480,178 +10390,6 @@ class Client(OpenApiClient):
     ) -> vs_20181212_models.ListBucketsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_buckets_with_options_async(request, runtime)
-
-    def list_device_channels_with_options(
-        self,
-        request: vs_20181212_models.ListDeviceChannelsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ListDeviceChannelsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDeviceChannels',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.ListDeviceChannelsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_device_channels_with_options_async(
-        self,
-        request: vs_20181212_models.ListDeviceChannelsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ListDeviceChannelsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDeviceChannels',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.ListDeviceChannelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_device_channels(
-        self,
-        request: vs_20181212_models.ListDeviceChannelsRequest,
-    ) -> vs_20181212_models.ListDeviceChannelsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_device_channels_with_options(request, runtime)
-
-    async def list_device_channels_async(
-        self,
-        request: vs_20181212_models.ListDeviceChannelsRequest,
-    ) -> vs_20181212_models.ListDeviceChannelsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_device_channels_with_options_async(request, runtime)
-
-    def list_device_records_with_options(
-        self,
-        request: vs_20181212_models.ListDeviceRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ListDeviceRecordsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.search_criteria):
-            query['SearchCriteria'] = request.search_criteria
-        if not UtilClient.is_unset(request.stream_id):
-            query['StreamId'] = request.stream_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDeviceRecords',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.ListDeviceRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_device_records_with_options_async(
-        self,
-        request: vs_20181212_models.ListDeviceRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ListDeviceRecordsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.search_criteria):
-            query['SearchCriteria'] = request.search_criteria
-        if not UtilClient.is_unset(request.stream_id):
-            query['StreamId'] = request.stream_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDeviceRecords',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.ListDeviceRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_device_records(
-        self,
-        request: vs_20181212_models.ListDeviceRecordsRequest,
-    ) -> vs_20181212_models.ListDeviceRecordsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_device_records_with_options(request, runtime)
-
-    async def list_device_records_async(
-        self,
-        request: vs_20181212_models.ListDeviceRecordsRequest,
-    ) -> vs_20181212_models.ListDeviceRecordsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_device_records_with_options_async(request, runtime)
 
     def list_objects_with_options(
         self,
@@ -13505,80 +13243,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.sync_catalogs_with_options_async(request, runtime)
 
-    def sync_device_channels_with_options(
-        self,
-        request: vs_20181212_models.SyncDeviceChannelsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.SyncDeviceChannelsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SyncDeviceChannels',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.SyncDeviceChannelsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def sync_device_channels_with_options_async(
-        self,
-        request: vs_20181212_models.SyncDeviceChannelsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.SyncDeviceChannelsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SyncDeviceChannels',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.SyncDeviceChannelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def sync_device_channels(
-        self,
-        request: vs_20181212_models.SyncDeviceChannelsRequest,
-    ) -> vs_20181212_models.SyncDeviceChannelsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.sync_device_channels_with_options(request, runtime)
-
-    async def sync_device_channels_async(
-        self,
-        request: vs_20181212_models.SyncDeviceChannelsRequest,
-    ) -> vs_20181212_models.SyncDeviceChannelsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.sync_device_channels_with_options_async(request, runtime)
-
     def unbind_directory_with_options(
         self,
         request: vs_20181212_models.UnbindDirectoryRequest,
@@ -14610,101 +14274,3 @@ class Client(OpenApiClient):
     ) -> vs_20181212_models.UpgradeRenderingDevicesImageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_rendering_devices_image_with_options_async(request, runtime)
-
-    def upload_device_record_with_options(
-        self,
-        request: vs_20181212_models.UploadDeviceRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UploadDeviceRecordResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.search_criteria):
-            query['SearchCriteria'] = request.search_criteria
-        if not UtilClient.is_unset(request.stream_id):
-            query['StreamId'] = request.stream_id
-        if not UtilClient.is_unset(request.upload_id):
-            query['UploadId'] = request.upload_id
-        if not UtilClient.is_unset(request.upload_mode):
-            query['UploadMode'] = request.upload_mode
-        if not UtilClient.is_unset(request.upload_params):
-            query['UploadParams'] = request.upload_params
-        if not UtilClient.is_unset(request.upload_type):
-            query['UploadType'] = request.upload_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UploadDeviceRecord',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.UploadDeviceRecordResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def upload_device_record_with_options_async(
-        self,
-        request: vs_20181212_models.UploadDeviceRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UploadDeviceRecordResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.search_criteria):
-            query['SearchCriteria'] = request.search_criteria
-        if not UtilClient.is_unset(request.stream_id):
-            query['StreamId'] = request.stream_id
-        if not UtilClient.is_unset(request.upload_id):
-            query['UploadId'] = request.upload_id
-        if not UtilClient.is_unset(request.upload_mode):
-            query['UploadMode'] = request.upload_mode
-        if not UtilClient.is_unset(request.upload_params):
-            query['UploadParams'] = request.upload_params
-        if not UtilClient.is_unset(request.upload_type):
-            query['UploadType'] = request.upload_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UploadDeviceRecord',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.UploadDeviceRecordResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def upload_device_record(
-        self,
-        request: vs_20181212_models.UploadDeviceRecordRequest,
-    ) -> vs_20181212_models.UploadDeviceRecordResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.upload_device_record_with_options(request, runtime)
-
-    async def upload_device_record_async(
-        self,
-        request: vs_20181212_models.UploadDeviceRecordRequest,
-    ) -> vs_20181212_models.UploadDeviceRecordResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.upload_device_record_with_options_async(request, runtime)

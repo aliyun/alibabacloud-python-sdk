@@ -4,121 +4,6 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
-class AddDeviceRequest(TeaModel):
-    def __init__(
-        self,
-        config: str = None,
-        group_id: str = None,
-        owner_id: int = None,
-        protocol: str = None,
-    ):
-        self.config = config
-        self.group_id = group_id
-        self.owner_id = owner_id
-        self.protocol = protocol
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config is not None:
-            result['Config'] = self.config
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.protocol is not None:
-            result['Protocol'] = self.protocol
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Config') is not None:
-            self.config = m.get('Config')
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('Protocol') is not None:
-            self.protocol = m.get('Protocol')
-        return self
-
-
-class AddDeviceResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        request_id: str = None,
-    ):
-        self.id = id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class AddDeviceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: AddDeviceResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = AddDeviceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class AddRegisteredDeviceRequest(TeaModel):
     def __init__(
         self,
@@ -5296,127 +5181,6 @@ class CreateDeviceAlarmResponse(TeaModel):
         return self
 
 
-class CreateDeviceSnapshotRequest(TeaModel):
-    def __init__(
-        self,
-        device_id: str = None,
-        mode: str = None,
-        owner_id: int = None,
-        snapshot_config: str = None,
-        stream_id: str = None,
-    ):
-        self.device_id = device_id
-        self.mode = mode
-        self.owner_id = owner_id
-        self.snapshot_config = snapshot_config
-        self.stream_id = stream_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_id is not None:
-            result['DeviceId'] = self.device_id
-        if self.mode is not None:
-            result['Mode'] = self.mode
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.snapshot_config is not None:
-            result['SnapshotConfig'] = self.snapshot_config
-        if self.stream_id is not None:
-            result['StreamId'] = self.stream_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceId') is not None:
-            self.device_id = m.get('DeviceId')
-        if m.get('Mode') is not None:
-            self.mode = m.get('Mode')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('SnapshotConfig') is not None:
-            self.snapshot_config = m.get('SnapshotConfig')
-        if m.get('StreamId') is not None:
-            self.stream_id = m.get('StreamId')
-        return self
-
-
-class CreateDeviceSnapshotResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        request_id: str = None,
-    ):
-        self.id = id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CreateDeviceSnapshotResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CreateDeviceSnapshotResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CreateDeviceSnapshotResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateDirectoryRequest(TeaModel):
     def __init__(
         self,
@@ -8856,11 +8620,17 @@ class DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork(TeaModel):
         self,
         container_ports: str = None,
         external_ip: str = None,
+        external_isp: str = None,
         external_ports: str = None,
+        outgoing_ip: str = None,
+        outgoing_isp: str = None,
     ):
         self.container_ports = container_ports
         self.external_ip = external_ip
+        self.external_isp = external_isp
         self.external_ports = external_ports
+        self.outgoing_ip = outgoing_ip
+        self.outgoing_isp = outgoing_isp
 
     def validate(self):
         pass
@@ -8875,8 +8645,14 @@ class DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork(TeaModel):
             result['ContainerPorts'] = self.container_ports
         if self.external_ip is not None:
             result['ExternalIp'] = self.external_ip
+        if self.external_isp is not None:
+            result['ExternalIsp'] = self.external_isp
         if self.external_ports is not None:
             result['ExternalPorts'] = self.external_ports
+        if self.outgoing_ip is not None:
+            result['OutgoingIp'] = self.outgoing_ip
+        if self.outgoing_isp is not None:
+            result['OutgoingIsp'] = self.outgoing_isp
         return result
 
     def from_map(self, m: dict = None):
@@ -8885,8 +8661,14 @@ class DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork(TeaModel):
             self.container_ports = m.get('ContainerPorts')
         if m.get('ExternalIp') is not None:
             self.external_ip = m.get('ExternalIp')
+        if m.get('ExternalIsp') is not None:
+            self.external_isp = m.get('ExternalIsp')
         if m.get('ExternalPorts') is not None:
             self.external_ports = m.get('ExternalPorts')
+        if m.get('OutgoingIp') is not None:
+            self.outgoing_ip = m.get('OutgoingIp')
+        if m.get('OutgoingIsp') is not None:
+            self.outgoing_isp = m.get('OutgoingIsp')
         return self
 
 
@@ -14004,11 +13786,17 @@ class DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork(TeaModel):
         self,
         container_ports: str = None,
         external_ip: str = None,
+        external_isp: str = None,
         external_ports: str = None,
+        outgoing_ip: str = None,
+        outgoing_isp: str = None,
     ):
         self.container_ports = container_ports
         self.external_ip = external_ip
+        self.external_isp = external_isp
         self.external_ports = external_ports
+        self.outgoing_ip = outgoing_ip
+        self.outgoing_isp = outgoing_isp
 
     def validate(self):
         pass
@@ -14023,8 +13811,14 @@ class DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork(TeaModel):
             result['ContainerPorts'] = self.container_ports
         if self.external_ip is not None:
             result['ExternalIp'] = self.external_ip
+        if self.external_isp is not None:
+            result['ExternalIsp'] = self.external_isp
         if self.external_ports is not None:
             result['ExternalPorts'] = self.external_ports
+        if self.outgoing_ip is not None:
+            result['OutgoingIp'] = self.outgoing_ip
+        if self.outgoing_isp is not None:
+            result['OutgoingIsp'] = self.outgoing_isp
         return result
 
     def from_map(self, m: dict = None):
@@ -14033,8 +13827,14 @@ class DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork(TeaModel):
             self.container_ports = m.get('ContainerPorts')
         if m.get('ExternalIp') is not None:
             self.external_ip = m.get('ExternalIp')
+        if m.get('ExternalIsp') is not None:
+            self.external_isp = m.get('ExternalIsp')
         if m.get('ExternalPorts') is not None:
             self.external_ports = m.get('ExternalPorts')
+        if m.get('OutgoingIp') is not None:
+            self.outgoing_ip = m.get('OutgoingIp')
+        if m.get('OutgoingIsp') is not None:
+            self.outgoing_isp = m.get('OutgoingIsp')
         return self
 
 
@@ -15800,6 +15600,192 @@ class DescribeTemplatesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DescribeTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeUserDevicesRequest(TeaModel):
+    def __init__(
+        self,
+        ens_instance_ids: str = None,
+        owner_id: int = None,
+        server_name: str = None,
+    ):
+        self.ens_instance_ids = ens_instance_ids
+        self.owner_id = owner_id
+        self.server_name = server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_instance_ids is not None:
+            result['EnsInstanceIds'] = self.ens_instance_ids
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsInstanceIds') is not None:
+            self.ens_instance_ids = m.get('EnsInstanceIds')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        return self
+
+
+class DescribeUserDevicesResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        ali_uid: str = None,
+        edge_node_name: str = None,
+        instance_id: str = None,
+        mac_address: str = None,
+        matrix_id: str = None,
+        server: str = None,
+        specification: str = None,
+        status: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.edge_node_name = edge_node_name
+        self.instance_id = instance_id
+        self.mac_address = mac_address
+        self.matrix_id = matrix_id
+        self.server = server
+        self.specification = specification
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.edge_node_name is not None:
+            result['EdgeNodeName'] = self.edge_node_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mac_address is not None:
+            result['MacAddress'] = self.mac_address
+        if self.matrix_id is not None:
+            result['MatrixId'] = self.matrix_id
+        if self.server is not None:
+            result['Server'] = self.server
+        if self.specification is not None:
+            result['Specification'] = self.specification
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('EdgeNodeName') is not None:
+            self.edge_node_name = m.get('EdgeNodeName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MacAddress') is not None:
+            self.mac_address = m.get('MacAddress')
+        if m.get('MatrixId') is not None:
+            self.matrix_id = m.get('MatrixId')
+        if m.get('Server') is not None:
+            self.server = m.get('Server')
+        if m.get('Specification') is not None:
+            self.specification = m.get('Specification')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeUserDevicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        list: List[DescribeUserDevicesResponseBodyList] = None,
+        request_id: str = None,
+    ):
+        self.list = list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = DescribeUserDevicesResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeUserDevicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeUserDevicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeUserDevicesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22503,414 +22489,6 @@ class ListBucketsResponse(TeaModel):
         return self
 
 
-class ListDeviceChannelsRequest(TeaModel):
-    def __init__(
-        self,
-        device_id: str = None,
-        owner_id: int = None,
-        page_num: int = None,
-        page_size: int = None,
-    ):
-        self.device_id = device_id
-        self.owner_id = owner_id
-        self.page_num = page_num
-        self.page_size = page_size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_id is not None:
-            result['DeviceId'] = self.device_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.page_num is not None:
-            result['PageNum'] = self.page_num
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceId') is not None:
-            self.device_id = m.get('DeviceId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PageNum') is not None:
-            self.page_num = m.get('PageNum')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        return self
-
-
-class ListDeviceChannelsResponseBodyChannels(TeaModel):
-    def __init__(
-        self,
-        channel_id: int = None,
-        device_id: str = None,
-        device_status: str = None,
-        name: str = None,
-        params: str = None,
-    ):
-        self.channel_id = channel_id
-        self.device_id = device_id
-        self.device_status = device_status
-        self.name = name
-        self.params = params
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_id is not None:
-            result['ChannelId'] = self.channel_id
-        if self.device_id is not None:
-            result['DeviceId'] = self.device_id
-        if self.device_status is not None:
-            result['DeviceStatus'] = self.device_status
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.params is not None:
-            result['Params'] = self.params
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelId') is not None:
-            self.channel_id = m.get('ChannelId')
-        if m.get('DeviceId') is not None:
-            self.device_id = m.get('DeviceId')
-        if m.get('DeviceStatus') is not None:
-            self.device_status = m.get('DeviceStatus')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Params') is not None:
-            self.params = m.get('Params')
-        return self
-
-
-class ListDeviceChannelsResponseBody(TeaModel):
-    def __init__(
-        self,
-        channels: List[ListDeviceChannelsResponseBodyChannels] = None,
-        page_count: int = None,
-        page_num: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.channels = channels
-        self.page_count = page_count
-        self.page_num = page_num
-        self.page_size = page_size
-        self.request_id = request_id
-        self.total_count = total_count
-
-    def validate(self):
-        if self.channels:
-            for k in self.channels:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Channels'] = []
-        if self.channels is not None:
-            for k in self.channels:
-                result['Channels'].append(k.to_map() if k else None)
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
-        if self.page_num is not None:
-            result['PageNum'] = self.page_num
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.channels = []
-        if m.get('Channels') is not None:
-            for k in m.get('Channels'):
-                temp_model = ListDeviceChannelsResponseBodyChannels()
-                self.channels.append(temp_model.from_map(k))
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
-        if m.get('PageNum') is not None:
-            self.page_num = m.get('PageNum')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListDeviceChannelsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListDeviceChannelsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListDeviceChannelsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListDeviceRecordsRequest(TeaModel):
-    def __init__(
-        self,
-        device_id: str = None,
-        owner_id: int = None,
-        page_num: int = None,
-        page_size: int = None,
-        search_criteria: str = None,
-        stream_id: str = None,
-    ):
-        self.device_id = device_id
-        self.owner_id = owner_id
-        self.page_num = page_num
-        self.page_size = page_size
-        self.search_criteria = search_criteria
-        self.stream_id = stream_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_id is not None:
-            result['DeviceId'] = self.device_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.page_num is not None:
-            result['PageNum'] = self.page_num
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.search_criteria is not None:
-            result['SearchCriteria'] = self.search_criteria
-        if self.stream_id is not None:
-            result['StreamId'] = self.stream_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceId') is not None:
-            self.device_id = m.get('DeviceId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PageNum') is not None:
-            self.page_num = m.get('PageNum')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('SearchCriteria') is not None:
-            self.search_criteria = m.get('SearchCriteria')
-        if m.get('StreamId') is not None:
-            self.stream_id = m.get('StreamId')
-        return self
-
-
-class ListDeviceRecordsResponseBodyRecords(TeaModel):
-    def __init__(
-        self,
-        end_time: str = None,
-        file_size: int = None,
-        filename: str = None,
-        record_type: str = None,
-        start_time: str = None,
-    ):
-        self.end_time = end_time
-        self.file_size = file_size
-        self.filename = filename
-        self.record_type = record_type
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.file_size is not None:
-            result['FileSize'] = self.file_size
-        if self.filename is not None:
-            result['Filename'] = self.filename
-        if self.record_type is not None:
-            result['RecordType'] = self.record_type
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('FileSize') is not None:
-            self.file_size = m.get('FileSize')
-        if m.get('Filename') is not None:
-            self.filename = m.get('Filename')
-        if m.get('RecordType') is not None:
-            self.record_type = m.get('RecordType')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class ListDeviceRecordsResponseBody(TeaModel):
-    def __init__(
-        self,
-        page_count: int = None,
-        page_num: int = None,
-        page_size: int = None,
-        records: List[ListDeviceRecordsResponseBodyRecords] = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.page_count = page_count
-        self.page_num = page_num
-        self.page_size = page_size
-        self.records = records
-        self.request_id = request_id
-        self.total_count = total_count
-
-    def validate(self):
-        if self.records:
-            for k in self.records:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.page_count is not None:
-            result['PageCount'] = self.page_count
-        if self.page_num is not None:
-            result['PageNum'] = self.page_num
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        result['Records'] = []
-        if self.records is not None:
-            for k in self.records:
-                result['Records'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PageCount') is not None:
-            self.page_count = m.get('PageCount')
-        if m.get('PageNum') is not None:
-            self.page_num = m.get('PageNum')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        self.records = []
-        if m.get('Records') is not None:
-            for k in m.get('Records'):
-                temp_model = ListDeviceRecordsResponseBodyRecords()
-                self.records.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListDeviceRecordsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListDeviceRecordsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListDeviceRecordsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListObjectsRequest(TeaModel):
     def __init__(
         self,
@@ -27013,109 +26591,6 @@ class SyncCatalogsResponse(TeaModel):
         return self
 
 
-class SyncDeviceChannelsRequest(TeaModel):
-    def __init__(
-        self,
-        device_id: str = None,
-        owner_id: int = None,
-    ):
-        self.device_id = device_id
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_id is not None:
-            result['DeviceId'] = self.device_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceId') is not None:
-            self.device_id = m.get('DeviceId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class SyncDeviceChannelsResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        request_id: str = None,
-    ):
-        self.id = id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SyncDeviceChannelsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: SyncDeviceChannelsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = SyncDeviceChannelsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class UnbindDirectoryRequest(TeaModel):
     def __init__(
         self,
@@ -28522,145 +27997,6 @@ class UpgradeRenderingDevicesImageResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpgradeRenderingDevicesImageResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UploadDeviceRecordRequest(TeaModel):
-    def __init__(
-        self,
-        device_id: str = None,
-        owner_id: int = None,
-        search_criteria: str = None,
-        stream_id: str = None,
-        upload_id: str = None,
-        upload_mode: str = None,
-        upload_params: str = None,
-        upload_type: str = None,
-    ):
-        self.device_id = device_id
-        self.owner_id = owner_id
-        self.search_criteria = search_criteria
-        self.stream_id = stream_id
-        self.upload_id = upload_id
-        self.upload_mode = upload_mode
-        self.upload_params = upload_params
-        self.upload_type = upload_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_id is not None:
-            result['DeviceId'] = self.device_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.search_criteria is not None:
-            result['SearchCriteria'] = self.search_criteria
-        if self.stream_id is not None:
-            result['StreamId'] = self.stream_id
-        if self.upload_id is not None:
-            result['UploadId'] = self.upload_id
-        if self.upload_mode is not None:
-            result['UploadMode'] = self.upload_mode
-        if self.upload_params is not None:
-            result['UploadParams'] = self.upload_params
-        if self.upload_type is not None:
-            result['UploadType'] = self.upload_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceId') is not None:
-            self.device_id = m.get('DeviceId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('SearchCriteria') is not None:
-            self.search_criteria = m.get('SearchCriteria')
-        if m.get('StreamId') is not None:
-            self.stream_id = m.get('StreamId')
-        if m.get('UploadId') is not None:
-            self.upload_id = m.get('UploadId')
-        if m.get('UploadMode') is not None:
-            self.upload_mode = m.get('UploadMode')
-        if m.get('UploadParams') is not None:
-            self.upload_params = m.get('UploadParams')
-        if m.get('UploadType') is not None:
-            self.upload_type = m.get('UploadType')
-        return self
-
-
-class UploadDeviceRecordResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        request_id: str = None,
-    ):
-        self.id = id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UploadDeviceRecordResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: UploadDeviceRecordResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = UploadDeviceRecordResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
