@@ -8553,6 +8553,33 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
         return self
 
 
+class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationOPAScopeInjection(TeaModel):
+    def __init__(
+        self,
+        opascope_injected: bool = None,
+    ):
+        self.opascope_injected = opascope_injected
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.opascope_injected is not None:
+            result['OPAScopeInjected'] = self.opascope_injected
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OPAScopeInjected') is not None:
+            self.opascope_injected = m.get('OPAScopeInjected')
+        return self
+
+
 class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationRateLimit(TeaModel):
     def __init__(
         self,
@@ -8654,6 +8681,7 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
         istio_crhistory: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationIstioCRHistory = None,
         lifecycle: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecycle = None,
         multi_buffer: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationMultiBuffer = None,
+        opascope_injection: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationOPAScopeInjection = None,
         rate_limit: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationRateLimit = None,
         sidecar_proxy_init_resource_limit: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationSidecarProxyInitResourceLimit = None,
         sidecar_proxy_init_resource_request: DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationSidecarProxyInitResourceRequest = None,
@@ -8664,6 +8692,7 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
         self.istio_crhistory = istio_crhistory
         self.lifecycle = lifecycle
         self.multi_buffer = multi_buffer
+        self.opascope_injection = opascope_injection
         self.rate_limit = rate_limit
         self.sidecar_proxy_init_resource_limit = sidecar_proxy_init_resource_limit
         self.sidecar_proxy_init_resource_request = sidecar_proxy_init_resource_request
@@ -8676,6 +8705,8 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
             self.lifecycle.validate()
         if self.multi_buffer:
             self.multi_buffer.validate()
+        if self.opascope_injection:
+            self.opascope_injection.validate()
         if self.rate_limit:
             self.rate_limit.validate()
         if self.sidecar_proxy_init_resource_limit:
@@ -8699,6 +8730,8 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
             result['Lifecycle'] = self.lifecycle.to_map()
         if self.multi_buffer is not None:
             result['MultiBuffer'] = self.multi_buffer.to_map()
+        if self.opascope_injection is not None:
+            result['OPAScopeInjection'] = self.opascope_injection.to_map()
         if self.rate_limit is not None:
             result['RateLimit'] = self.rate_limit.to_map()
         if self.sidecar_proxy_init_resource_limit is not None:
@@ -8724,6 +8757,9 @@ class DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigu
         if m.get('MultiBuffer') is not None:
             temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationMultiBuffer()
             self.multi_buffer = temp_model.from_map(m['MultiBuffer'])
+        if m.get('OPAScopeInjection') is not None:
+            temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationOPAScopeInjection()
+            self.opascope_injection = temp_model.from_map(m['OPAScopeInjection'])
         if m.get('RateLimit') is not None:
             temp_model = DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationRateLimit()
             self.rate_limit = temp_model.from_map(m['RateLimit'])
