@@ -1,3 +1,6 @@
+2022-03-29 Version: 1.0.4
+- Supported SendChannels, AndroidMessageHuaweiUrgency, AndroidMessageHuaweiCategory for Push and MassPush.
+
 2021-09-17 Version: 1.0.3
 - Supported SendChannels, AndroidMessageHuaweiUrgency, AndroidMessageHuaweiCategory for Push and MassPush.
 
