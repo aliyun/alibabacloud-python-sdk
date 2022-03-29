@@ -1850,12 +1850,14 @@ class AppendEntityMemberResponse(TeaModel):
 class AssociateRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         instance_id: str = None,
         perspective: List[str] = None,
         recommend_num: int = None,
         session_id: str = None,
         utterance: str = None,
     ):
+        self.agent_key = agent_key
         self.instance_id = instance_id
         self.perspective = perspective
         self.recommend_num = recommend_num
@@ -1871,6 +1873,8 @@ class AssociateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.perspective is not None:
@@ -1885,6 +1889,8 @@ class AssociateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Perspective') is not None:
@@ -2018,6 +2024,7 @@ class AssociateResponse(TeaModel):
 class ChatRequest(TeaModel):
     def __init__(
         self,
+        agent_key: str = None,
         instance_id: str = None,
         intent_name: str = None,
         knowledge_id: str = None,
@@ -2029,6 +2036,7 @@ class ChatRequest(TeaModel):
         utterance: str = None,
         vendor_param: str = None,
     ):
+        self.agent_key = agent_key
         self.instance_id = instance_id
         self.intent_name = intent_name
         self.knowledge_id = knowledge_id
@@ -2049,6 +2057,8 @@ class ChatRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.intent_name is not None:
@@ -2073,6 +2083,8 @@ class ChatRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('IntentName') is not None:
@@ -10181,6 +10193,7 @@ class QueryIntentsRequest(TeaModel):
         self,
         agent_key: str = None,
         dialog_id: int = None,
+        instance_id: str = None,
         intent_name: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -10188,6 +10201,8 @@ class QueryIntentsRequest(TeaModel):
         # 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
         self.agent_key = agent_key
         self.dialog_id = dialog_id
+        # 机器人实例 ID
+        self.instance_id = instance_id
         self.intent_name = intent_name
         self.page_number = page_number
         self.page_size = page_size
@@ -10205,6 +10220,8 @@ class QueryIntentsRequest(TeaModel):
             result['AgentKey'] = self.agent_key
         if self.dialog_id is not None:
             result['DialogId'] = self.dialog_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.intent_name is not None:
             result['IntentName'] = self.intent_name
         if self.page_number is not None:
@@ -10219,6 +10236,8 @@ class QueryIntentsRequest(TeaModel):
             self.agent_key = m.get('AgentKey')
         if m.get('DialogId') is not None:
             self.dialog_id = m.get('DialogId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('IntentName') is not None:
             self.intent_name = m.get('IntentName')
         if m.get('PageNumber') is not None:

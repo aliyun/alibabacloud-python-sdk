@@ -1,3 +1,6 @@
+2022-03-29 Version: 2.0.4
+- Chat,Associate,Feedback add parameter AgentKey.
+
 2022-03-15 Version: 2.0.3
 - Chat add parameter VoiceTitle and Commands.
 

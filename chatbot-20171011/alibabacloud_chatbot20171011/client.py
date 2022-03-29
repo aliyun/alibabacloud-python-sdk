@@ -290,6 +290,8 @@ class Client(OpenApiClient):
     ) -> chatbot_20171011_models.AssociateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.perspective):
@@ -326,6 +328,8 @@ class Client(OpenApiClient):
     ) -> chatbot_20171011_models.AssociateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.perspective):
@@ -376,6 +380,8 @@ class Client(OpenApiClient):
     ) -> chatbot_20171011_models.ChatResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.intent_name):
@@ -422,6 +428,8 @@ class Client(OpenApiClient):
     ) -> chatbot_20171011_models.ChatResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.intent_name):
@@ -4486,6 +4494,8 @@ class Client(OpenApiClient):
             query['AgentKey'] = request.agent_key
         if not UtilClient.is_unset(request.dialog_id):
             query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.intent_name):
             query['IntentName'] = request.intent_name
         if not UtilClient.is_unset(request.page_number):
@@ -4522,6 +4532,8 @@ class Client(OpenApiClient):
             query['AgentKey'] = request.agent_key
         if not UtilClient.is_unset(request.dialog_id):
             query['DialogId'] = request.dialog_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.intent_name):
             query['IntentName'] = request.intent_name
         if not UtilClient.is_unset(request.page_number):
