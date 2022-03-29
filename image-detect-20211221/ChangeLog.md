@@ -1,3 +1,6 @@
+2022-03-29 Version: 1.0.3
+- Update API GetOssConfigList.
+
 2022-03-28 Version: 1.0.2
 - Add API GetTaskList.
 - Add API GetTaskDetail.

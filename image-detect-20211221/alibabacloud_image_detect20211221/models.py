@@ -685,8 +685,8 @@ class GetOssConfigListRequest(TeaModel):
     def __init__(
         self,
         config_name: str = None,
-        page_index: str = None,
-        page_size: str = None,
+        page_index: int = None,
+        page_size: int = None,
     ):
         self.config_name = config_name
         self.page_index = page_index
