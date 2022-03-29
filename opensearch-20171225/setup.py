@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_opensearch20171225.
 
-Created on 31/12/2021
+Created on 29/03/2022
 
 @author: Alibaba Cloud SDK
 """
