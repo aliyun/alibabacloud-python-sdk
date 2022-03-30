@@ -52,8 +52,6 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.scene):
-            query['Scene'] = request.scene
         if not UtilClient.is_unset(request.source_region_id):
             query['SourceRegionId'] = request.source_region_id
         if not UtilClient.is_unset(request.source_resource_id):
@@ -92,8 +90,6 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.scene):
-            query['Scene'] = request.scene
         if not UtilClient.is_unset(request.source_region_id):
             query['SourceRegionId'] = request.source_region_id
         if not UtilClient.is_unset(request.source_resource_id):

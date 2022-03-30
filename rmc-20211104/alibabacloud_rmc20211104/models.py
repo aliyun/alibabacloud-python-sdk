@@ -9,7 +9,6 @@ class ListResourceRelationshipsRequest(TeaModel):
         self,
         max_results: int = None,
         next_token: str = None,
-        scene: str = None,
         source_region_id: str = None,
         source_resource_id: List[str] = None,
         source_resource_type: str = None,
@@ -17,7 +16,6 @@ class ListResourceRelationshipsRequest(TeaModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
-        self.scene = scene
         self.source_region_id = source_region_id
         self.source_resource_id = source_resource_id
         self.source_resource_type = source_resource_type
@@ -36,8 +34,6 @@ class ListResourceRelationshipsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
-        if self.scene is not None:
-            result['Scene'] = self.scene
         if self.source_region_id is not None:
             result['SourceRegionId'] = self.source_region_id
         if self.source_resource_id is not None:
@@ -54,8 +50,6 @@ class ListResourceRelationshipsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
-        if m.get('Scene') is not None:
-            self.scene = m.get('Scene')
         if m.get('SourceRegionId') is not None:
             self.source_region_id = m.get('SourceRegionId')
         if m.get('SourceResourceId') is not None:
