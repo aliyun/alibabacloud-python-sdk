@@ -1425,6 +1425,7 @@ class MassPushRequestPushTask(TeaModel):
         android_popup_title: str = None,
         android_remind: bool = None,
         android_render_style: str = None,
+        android_vivo_push_mode: int = None,
         android_xiao_mi_activity: str = None,
         android_xiao_mi_notify_body: str = None,
         android_xiao_mi_notify_title: str = None,
@@ -1442,15 +1443,18 @@ class MassPushRequestPushTask(TeaModel):
         target: str = None,
         target_value: str = None,
         title: str = None,
+        trim: bool = None,
         i_osapns_env: str = None,
         i_osbadge: int = None,
         i_osbadge_auto_increment: bool = None,
         i_osext_parameters: str = None,
+        i_osinterruption_level: str = None,
         i_osmusic: str = None,
         i_osmutable_content: bool = None,
         i_osnotification_category: str = None,
         i_osnotification_collapse_id: str = None,
         i_osnotification_thread_id: str = None,
+        i_osrelevance_score: float = None,
         i_osremind: bool = None,
         i_osremind_body: str = None,
         i_ossilent_notification: bool = None,
@@ -1481,6 +1485,7 @@ class MassPushRequestPushTask(TeaModel):
         self.android_popup_title = android_popup_title
         self.android_remind = android_remind
         self.android_render_style = android_render_style
+        self.android_vivo_push_mode = android_vivo_push_mode
         self.android_xiao_mi_activity = android_xiao_mi_activity
         self.android_xiao_mi_notify_body = android_xiao_mi_notify_body
         self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
@@ -1498,15 +1503,18 @@ class MassPushRequestPushTask(TeaModel):
         self.target = target
         self.target_value = target_value
         self.title = title
+        self.trim = trim
         self.i_osapns_env = i_osapns_env
         self.i_osbadge = i_osbadge
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
         self.i_osext_parameters = i_osext_parameters
+        self.i_osinterruption_level = i_osinterruption_level
         self.i_osmusic = i_osmusic
         self.i_osmutable_content = i_osmutable_content
         self.i_osnotification_category = i_osnotification_category
         self.i_osnotification_collapse_id = i_osnotification_collapse_id
         self.i_osnotification_thread_id = i_osnotification_thread_id
+        self.i_osrelevance_score = i_osrelevance_score
         self.i_osremind = i_osremind
         self.i_osremind_body = i_osremind_body
         self.i_ossilent_notification = i_ossilent_notification
@@ -1571,6 +1579,8 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidRemind'] = self.android_remind
         if self.android_render_style is not None:
             result['AndroidRenderStyle'] = self.android_render_style
+        if self.android_vivo_push_mode is not None:
+            result['AndroidVivoPushMode'] = self.android_vivo_push_mode
         if self.android_xiao_mi_activity is not None:
             result['AndroidXiaoMiActivity'] = self.android_xiao_mi_activity
         if self.android_xiao_mi_notify_body is not None:
@@ -1605,6 +1615,8 @@ class MassPushRequestPushTask(TeaModel):
             result['TargetValue'] = self.target_value
         if self.title is not None:
             result['Title'] = self.title
+        if self.trim is not None:
+            result['Trim'] = self.trim
         if self.i_osapns_env is not None:
             result['iOSApnsEnv'] = self.i_osapns_env
         if self.i_osbadge is not None:
@@ -1613,6 +1625,8 @@ class MassPushRequestPushTask(TeaModel):
             result['iOSBadgeAutoIncrement'] = self.i_osbadge_auto_increment
         if self.i_osext_parameters is not None:
             result['iOSExtParameters'] = self.i_osext_parameters
+        if self.i_osinterruption_level is not None:
+            result['iOSInterruptionLevel'] = self.i_osinterruption_level
         if self.i_osmusic is not None:
             result['iOSMusic'] = self.i_osmusic
         if self.i_osmutable_content is not None:
@@ -1623,6 +1637,8 @@ class MassPushRequestPushTask(TeaModel):
             result['iOSNotificationCollapseId'] = self.i_osnotification_collapse_id
         if self.i_osnotification_thread_id is not None:
             result['iOSNotificationThreadId'] = self.i_osnotification_thread_id
+        if self.i_osrelevance_score is not None:
+            result['iOSRelevanceScore'] = self.i_osrelevance_score
         if self.i_osremind is not None:
             result['iOSRemind'] = self.i_osremind
         if self.i_osremind_body is not None:
@@ -1685,6 +1701,8 @@ class MassPushRequestPushTask(TeaModel):
             self.android_remind = m.get('AndroidRemind')
         if m.get('AndroidRenderStyle') is not None:
             self.android_render_style = m.get('AndroidRenderStyle')
+        if m.get('AndroidVivoPushMode') is not None:
+            self.android_vivo_push_mode = m.get('AndroidVivoPushMode')
         if m.get('AndroidXiaoMiActivity') is not None:
             self.android_xiao_mi_activity = m.get('AndroidXiaoMiActivity')
         if m.get('AndroidXiaoMiNotifyBody') is not None:
@@ -1719,6 +1737,8 @@ class MassPushRequestPushTask(TeaModel):
             self.target_value = m.get('TargetValue')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('Trim') is not None:
+            self.trim = m.get('Trim')
         if m.get('iOSApnsEnv') is not None:
             self.i_osapns_env = m.get('iOSApnsEnv')
         if m.get('iOSBadge') is not None:
@@ -1727,6 +1747,8 @@ class MassPushRequestPushTask(TeaModel):
             self.i_osbadge_auto_increment = m.get('iOSBadgeAutoIncrement')
         if m.get('iOSExtParameters') is not None:
             self.i_osext_parameters = m.get('iOSExtParameters')
+        if m.get('iOSInterruptionLevel') is not None:
+            self.i_osinterruption_level = m.get('iOSInterruptionLevel')
         if m.get('iOSMusic') is not None:
             self.i_osmusic = m.get('iOSMusic')
         if m.get('iOSMutableContent') is not None:
@@ -1737,6 +1759,8 @@ class MassPushRequestPushTask(TeaModel):
             self.i_osnotification_collapse_id = m.get('iOSNotificationCollapseId')
         if m.get('iOSNotificationThreadId') is not None:
             self.i_osnotification_thread_id = m.get('iOSNotificationThreadId')
+        if m.get('iOSRelevanceScore') is not None:
+            self.i_osrelevance_score = m.get('iOSRelevanceScore')
         if m.get('iOSRemind') is not None:
             self.i_osremind = m.get('iOSRemind')
         if m.get('iOSRemindBody') is not None:
@@ -1916,6 +1940,7 @@ class PushRequest(TeaModel):
         android_popup_title: str = None,
         android_remind: bool = None,
         android_render_style: int = None,
+        android_vivo_push_mode: int = None,
         android_xiao_mi_activity: str = None,
         android_xiao_mi_notify_body: str = None,
         android_xiao_mi_notify_title: str = None,
@@ -1939,15 +1964,18 @@ class PushRequest(TeaModel):
         target: str = None,
         target_value: str = None,
         title: str = None,
+        trim: bool = None,
         i_osapns_env: str = None,
         i_osbadge: int = None,
         i_osbadge_auto_increment: bool = None,
         i_osext_parameters: str = None,
+        i_osinterruption_level: str = None,
         i_osmusic: str = None,
         i_osmutable_content: bool = None,
         i_osnotification_category: str = None,
         i_osnotification_collapse_id: str = None,
         i_osnotification_thread_id: str = None,
+        i_osrelevance_score: float = None,
         i_osremind: bool = None,
         i_osremind_body: str = None,
         i_ossilent_notification: bool = None,
@@ -1978,6 +2006,7 @@ class PushRequest(TeaModel):
         self.android_popup_title = android_popup_title
         self.android_remind = android_remind
         self.android_render_style = android_render_style
+        self.android_vivo_push_mode = android_vivo_push_mode
         self.android_xiao_mi_activity = android_xiao_mi_activity
         self.android_xiao_mi_notify_body = android_xiao_mi_notify_body
         self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
@@ -2001,15 +2030,18 @@ class PushRequest(TeaModel):
         self.target = target
         self.target_value = target_value
         self.title = title
+        self.trim = trim
         self.i_osapns_env = i_osapns_env
         self.i_osbadge = i_osbadge
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
         self.i_osext_parameters = i_osext_parameters
+        self.i_osinterruption_level = i_osinterruption_level
         self.i_osmusic = i_osmusic
         self.i_osmutable_content = i_osmutable_content
         self.i_osnotification_category = i_osnotification_category
         self.i_osnotification_collapse_id = i_osnotification_collapse_id
         self.i_osnotification_thread_id = i_osnotification_thread_id
+        self.i_osrelevance_score = i_osrelevance_score
         self.i_osremind = i_osremind
         self.i_osremind_body = i_osremind_body
         self.i_ossilent_notification = i_ossilent_notification
@@ -2074,6 +2106,8 @@ class PushRequest(TeaModel):
             result['AndroidRemind'] = self.android_remind
         if self.android_render_style is not None:
             result['AndroidRenderStyle'] = self.android_render_style
+        if self.android_vivo_push_mode is not None:
+            result['AndroidVivoPushMode'] = self.android_vivo_push_mode
         if self.android_xiao_mi_activity is not None:
             result['AndroidXiaoMiActivity'] = self.android_xiao_mi_activity
         if self.android_xiao_mi_notify_body is not None:
@@ -2120,6 +2154,8 @@ class PushRequest(TeaModel):
             result['TargetValue'] = self.target_value
         if self.title is not None:
             result['Title'] = self.title
+        if self.trim is not None:
+            result['Trim'] = self.trim
         if self.i_osapns_env is not None:
             result['iOSApnsEnv'] = self.i_osapns_env
         if self.i_osbadge is not None:
@@ -2128,6 +2164,8 @@ class PushRequest(TeaModel):
             result['iOSBadgeAutoIncrement'] = self.i_osbadge_auto_increment
         if self.i_osext_parameters is not None:
             result['iOSExtParameters'] = self.i_osext_parameters
+        if self.i_osinterruption_level is not None:
+            result['iOSInterruptionLevel'] = self.i_osinterruption_level
         if self.i_osmusic is not None:
             result['iOSMusic'] = self.i_osmusic
         if self.i_osmutable_content is not None:
@@ -2138,6 +2176,8 @@ class PushRequest(TeaModel):
             result['iOSNotificationCollapseId'] = self.i_osnotification_collapse_id
         if self.i_osnotification_thread_id is not None:
             result['iOSNotificationThreadId'] = self.i_osnotification_thread_id
+        if self.i_osrelevance_score is not None:
+            result['iOSRelevanceScore'] = self.i_osrelevance_score
         if self.i_osremind is not None:
             result['iOSRemind'] = self.i_osremind
         if self.i_osremind_body is not None:
@@ -2200,6 +2240,8 @@ class PushRequest(TeaModel):
             self.android_remind = m.get('AndroidRemind')
         if m.get('AndroidRenderStyle') is not None:
             self.android_render_style = m.get('AndroidRenderStyle')
+        if m.get('AndroidVivoPushMode') is not None:
+            self.android_vivo_push_mode = m.get('AndroidVivoPushMode')
         if m.get('AndroidXiaoMiActivity') is not None:
             self.android_xiao_mi_activity = m.get('AndroidXiaoMiActivity')
         if m.get('AndroidXiaoMiNotifyBody') is not None:
@@ -2246,6 +2288,8 @@ class PushRequest(TeaModel):
             self.target_value = m.get('TargetValue')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('Trim') is not None:
+            self.trim = m.get('Trim')
         if m.get('iOSApnsEnv') is not None:
             self.i_osapns_env = m.get('iOSApnsEnv')
         if m.get('iOSBadge') is not None:
@@ -2254,6 +2298,8 @@ class PushRequest(TeaModel):
             self.i_osbadge_auto_increment = m.get('iOSBadgeAutoIncrement')
         if m.get('iOSExtParameters') is not None:
             self.i_osext_parameters = m.get('iOSExtParameters')
+        if m.get('iOSInterruptionLevel') is not None:
+            self.i_osinterruption_level = m.get('iOSInterruptionLevel')
         if m.get('iOSMusic') is not None:
             self.i_osmusic = m.get('iOSMusic')
         if m.get('iOSMutableContent') is not None:
@@ -2264,6 +2310,8 @@ class PushRequest(TeaModel):
             self.i_osnotification_collapse_id = m.get('iOSNotificationCollapseId')
         if m.get('iOSNotificationThreadId') is not None:
             self.i_osnotification_thread_id = m.get('iOSNotificationThreadId')
+        if m.get('iOSRelevanceScore') is not None:
+            self.i_osrelevance_score = m.get('iOSRelevanceScore')
         if m.get('iOSRemind') is not None:
             self.i_osremind = m.get('iOSRemind')
         if m.get('iOSRemindBody') is not None:
