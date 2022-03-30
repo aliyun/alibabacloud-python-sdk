@@ -1,3 +1,6 @@
+2022-03-30 Version: 1.0.5
+- Update algorithm service interface.
+
 2022-03-29 Version: 1.0.4
 - Add algorithm service interface.
 
