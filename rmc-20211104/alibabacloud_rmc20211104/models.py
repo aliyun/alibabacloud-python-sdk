@@ -4,6 +4,228 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class ListResourceRelationshipsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        scene: str = None,
+        source_region_id: str = None,
+        source_resource_id: List[str] = None,
+        source_resource_type: str = None,
+        target_resource_type: List[str] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.scene = scene
+        self.source_region_id = source_region_id
+        self.source_resource_id = source_resource_id
+        self.source_resource_type = source_resource_type
+        self.target_resource_type = target_resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.scene is not None:
+            result['Scene'] = self.scene
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+        if self.source_resource_id is not None:
+            result['SourceResourceId'] = self.source_resource_id
+        if self.source_resource_type is not None:
+            result['SourceResourceType'] = self.source_resource_type
+        if self.target_resource_type is not None:
+            result['TargetResourceType'] = self.target_resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
+        if m.get('SourceResourceId') is not None:
+            self.source_resource_id = m.get('SourceResourceId')
+        if m.get('SourceResourceType') is not None:
+            self.source_resource_type = m.get('SourceResourceType')
+        if m.get('TargetResourceType') is not None:
+            self.target_resource_type = m.get('TargetResourceType')
+        return self
+
+
+class ListResourceRelationshipsResponseBodyResourceRelationships(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        relationship_type: str = None,
+        source_region_id: str = None,
+        source_resource_id: str = None,
+        source_resource_type: str = None,
+        target_region_id: str = None,
+        target_resource_id: str = None,
+        target_resource_type: str = None,
+    ):
+        self.account_id = account_id
+        self.relationship_type = relationship_type
+        self.source_region_id = source_region_id
+        self.source_resource_id = source_resource_id
+        self.source_resource_type = source_resource_type
+        self.target_region_id = target_region_id
+        self.target_resource_id = target_resource_id
+        self.target_resource_type = target_resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.relationship_type is not None:
+            result['RelationshipType'] = self.relationship_type
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+        if self.source_resource_id is not None:
+            result['SourceResourceId'] = self.source_resource_id
+        if self.source_resource_type is not None:
+            result['SourceResourceType'] = self.source_resource_type
+        if self.target_region_id is not None:
+            result['TargetRegionId'] = self.target_region_id
+        if self.target_resource_id is not None:
+            result['TargetResourceId'] = self.target_resource_id
+        if self.target_resource_type is not None:
+            result['TargetResourceType'] = self.target_resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('RelationshipType') is not None:
+            self.relationship_type = m.get('RelationshipType')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
+        if m.get('SourceResourceId') is not None:
+            self.source_resource_id = m.get('SourceResourceId')
+        if m.get('SourceResourceType') is not None:
+            self.source_resource_type = m.get('SourceResourceType')
+        if m.get('TargetRegionId') is not None:
+            self.target_region_id = m.get('TargetRegionId')
+        if m.get('TargetResourceId') is not None:
+            self.target_resource_id = m.get('TargetResourceId')
+        if m.get('TargetResourceType') is not None:
+            self.target_resource_type = m.get('TargetResourceType')
+        return self
+
+
+class ListResourceRelationshipsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        resource_relationships: List[ListResourceRelationshipsResponseBodyResourceRelationships] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.resource_relationships = resource_relationships
+
+    def validate(self):
+        if self.resource_relationships:
+            for k in self.resource_relationships:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceRelationships'] = []
+        if self.resource_relationships is not None:
+            for k in self.resource_relationships:
+                result['ResourceRelationships'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_relationships = []
+        if m.get('ResourceRelationships') is not None:
+            for k in m.get('ResourceRelationships'):
+                temp_model = ListResourceRelationshipsResponseBodyResourceRelationships()
+                self.resource_relationships.append(temp_model.from_map(k))
+        return self
+
+
+class ListResourceRelationshipsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListResourceRelationshipsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListResourceRelationshipsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SearchResourcesRequestFilter(TeaModel):
     def __init__(
         self,
@@ -43,6 +265,39 @@ class SearchResourcesRequestFilter(TeaModel):
         return self
 
 
+class SearchResourcesRequestSortCriterion(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        order: str = None,
+    ):
+        self.key = key
+        self.order = order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.order is not None:
+            result['Order'] = self.order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        return self
+
+
 class SearchResourcesRequest(TeaModel):
     def __init__(
         self,
@@ -50,17 +305,21 @@ class SearchResourcesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         resource_group_id: str = None,
+        sort_criterion: SearchResourcesRequestSortCriterion = None,
     ):
         self.filter = filter
         self.max_results = max_results
         self.next_token = next_token
         self.resource_group_id = resource_group_id
+        self.sort_criterion = sort_criterion
 
     def validate(self):
         if self.filter:
             for k in self.filter:
                 if k:
                     k.validate()
+        if self.sort_criterion:
+            self.sort_criterion.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -78,6 +337,8 @@ class SearchResourcesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.sort_criterion is not None:
+            result['SortCriterion'] = self.sort_criterion.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -93,6 +354,9 @@ class SearchResourcesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SortCriterion') is not None:
+            temp_model = SearchResourcesRequestSortCriterion()
+            self.sort_criterion = temp_model.from_map(m['SortCriterion'])
         return self
 
 
