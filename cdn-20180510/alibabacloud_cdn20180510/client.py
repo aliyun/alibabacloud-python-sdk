@@ -8992,6 +8992,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ip_info_with_options_async(request, runtime)
 
+    def describe_ip_status_with_options(
+        self,
+        request: cdn_20180510_models.DescribeIpStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeIpStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpStatus',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeIpStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ip_status_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeIpStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeIpStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIpStatus',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeIpStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ip_status(
+        self,
+        request: cdn_20180510_models.DescribeIpStatusRequest,
+    ) -> cdn_20180510_models.DescribeIpStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ip_status_with_options(request, runtime)
+
+    async def describe_ip_status_async(
+        self,
+        request: cdn_20180510_models.DescribeIpStatusRequest,
+    ) -> cdn_20180510_models.DescribeIpStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ip_status_with_options_async(request, runtime)
+
     def describe_l2vips_by_domain_with_options(
         self,
         request: cdn_20180510_models.DescribeL2VipsByDomainRequest,
@@ -11015,72 +11081,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.ModifyCdnDomainSchdmByPropertyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_cdn_domain_schdm_by_property_with_options_async(request, runtime)
-
-    def modify_domain_custom_log_config_with_options(
-        self,
-        request: cdn_20180510_models.ModifyDomainCustomLogConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.ModifyDomainCustomLogConfigResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyDomainCustomLogConfig',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.ModifyDomainCustomLogConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_domain_custom_log_config_with_options_async(
-        self,
-        request: cdn_20180510_models.ModifyDomainCustomLogConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.ModifyDomainCustomLogConfigResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyDomainCustomLogConfig',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.ModifyDomainCustomLogConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_domain_custom_log_config(
-        self,
-        request: cdn_20180510_models.ModifyDomainCustomLogConfigRequest,
-    ) -> cdn_20180510_models.ModifyDomainCustomLogConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_domain_custom_log_config_with_options(request, runtime)
-
-    async def modify_domain_custom_log_config_async(
-        self,
-        request: cdn_20180510_models.ModifyDomainCustomLogConfigRequest,
-    ) -> cdn_20180510_models.ModifyDomainCustomLogConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_domain_custom_log_config_with_options_async(request, runtime)
 
     def modify_realtime_log_delivery_with_options(
         self,

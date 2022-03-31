@@ -21694,6 +21694,150 @@ class DescribeIpInfoResponse(TeaModel):
         return self
 
 
+class DescribeIpStatusRequest(TeaModel):
+    def __init__(
+        self,
+        ips: str = None,
+        owner_id: int = None,
+    ):
+        self.ips = ips
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ips is not None:
+            result['Ips'] = self.ips
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ips') is not None:
+            self.ips = m.get('Ips')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class DescribeIpStatusResponseBodyIpStatus(TeaModel):
+    def __init__(
+        self,
+        ip: str = None,
+        status: str = None,
+    ):
+        self.ip = ip
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['ip'] = self.ip
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ip') is not None:
+            self.ip = m.get('ip')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class DescribeIpStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        ip_status: List[DescribeIpStatusResponseBodyIpStatus] = None,
+        request_id: str = None,
+    ):
+        self.ip_status = ip_status
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ip_status:
+            for k in self.ip_status:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IpStatus'] = []
+        if self.ip_status is not None:
+            for k in self.ip_status:
+                result['IpStatus'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ip_status = []
+        if m.get('IpStatus') is not None:
+            for k in m.get('IpStatus'):
+                temp_model = DescribeIpStatusResponseBodyIpStatus()
+                self.ip_status.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeIpStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeIpStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeIpStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeL2VipsByDomainRequest(TeaModel):
     def __init__(
         self,
@@ -26348,109 +26492,6 @@ class ModifyCdnDomainSchdmByPropertyResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ModifyCdnDomainSchdmByPropertyResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ModifyDomainCustomLogConfigRequest(TeaModel):
-    def __init__(
-        self,
-        config_id: str = None,
-        domain_name: str = None,
-        owner_id: int = None,
-    ):
-        self.config_id = config_id
-        self.domain_name = domain_name
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_id is not None:
-            result['ConfigId'] = self.config_id
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigId') is not None:
-            self.config_id = m.get('ConfigId')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class ModifyDomainCustomLogConfigResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ModifyDomainCustomLogConfigResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ModifyDomainCustomLogConfigResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ModifyDomainCustomLogConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
