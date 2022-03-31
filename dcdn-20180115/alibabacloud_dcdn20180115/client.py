@@ -407,6 +407,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_dcdn_domain_with_options_async(request, runtime)
 
+    def batch_create_dcdn_waf_rules_with_options(
+        self,
+        request: dcdn_20180115_models.BatchCreateDcdnWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchCreateDcdnWafRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.rule_configs):
+            body['RuleConfigs'] = request.rule_configs
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateDcdnWafRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchCreateDcdnWafRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_create_dcdn_waf_rules_with_options_async(
+        self,
+        request: dcdn_20180115_models.BatchCreateDcdnWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchCreateDcdnWafRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.rule_configs):
+            body['RuleConfigs'] = request.rule_configs
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchCreateDcdnWafRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchCreateDcdnWafRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_create_dcdn_waf_rules(
+        self,
+        request: dcdn_20180115_models.BatchCreateDcdnWafRulesRequest,
+    ) -> dcdn_20180115_models.BatchCreateDcdnWafRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_create_dcdn_waf_rules_with_options(request, runtime)
+
+    async def batch_create_dcdn_waf_rules_async(
+        self,
+        request: dcdn_20180115_models.BatchCreateDcdnWafRulesRequest,
+    ) -> dcdn_20180115_models.BatchCreateDcdnWafRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_create_dcdn_waf_rules_with_options_async(request, runtime)
+
     def batch_delete_dcdn_domain_configs_with_options(
         self,
         request: dcdn_20180115_models.BatchDeleteDcdnDomainConfigsRequest,
@@ -492,6 +574,84 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.BatchDeleteDcdnDomainConfigsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_dcdn_domain_configs_with_options_async(request, runtime)
+
+    def batch_delete_dcdn_waf_rules_with_options(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.rule_ids):
+            body['RuleIds'] = request.rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteDcdnWafRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_dcdn_waf_rules_with_options_async(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.rule_ids):
+            body['RuleIds'] = request.rule_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteDcdnWafRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_dcdn_waf_rules(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnWafRulesRequest,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_delete_dcdn_waf_rules_with_options(request, runtime)
+
+    async def batch_delete_dcdn_waf_rules_async(
+        self,
+        request: dcdn_20180115_models.BatchDeleteDcdnWafRulesRequest,
+    ) -> dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_delete_dcdn_waf_rules_with_options_async(request, runtime)
 
     def batch_set_dcdn_domain_certificate_with_options(
         self,
@@ -766,6 +926,88 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.BatchSetDcdnIpaDomainConfigsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.batch_set_dcdn_ipa_domain_configs_with_options_async(request, runtime)
+
+    def batch_set_dcdn_waf_domain_configs_with_options(
+        self,
+        request: dcdn_20180115_models.BatchSetDcdnWafDomainConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchSetDcdnWafDomainConfigsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.defense_status):
+            body['DefenseStatus'] = request.defense_status
+        if not UtilClient.is_unset(request.domain_names):
+            body['DomainNames'] = request.domain_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchSetDcdnWafDomainConfigs',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchSetDcdnWafDomainConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_set_dcdn_waf_domain_configs_with_options_async(
+        self,
+        request: dcdn_20180115_models.BatchSetDcdnWafDomainConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchSetDcdnWafDomainConfigsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.defense_status):
+            body['DefenseStatus'] = request.defense_status
+        if not UtilClient.is_unset(request.domain_names):
+            body['DomainNames'] = request.domain_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchSetDcdnWafDomainConfigs',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchSetDcdnWafDomainConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_set_dcdn_waf_domain_configs(
+        self,
+        request: dcdn_20180115_models.BatchSetDcdnWafDomainConfigsRequest,
+    ) -> dcdn_20180115_models.BatchSetDcdnWafDomainConfigsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_set_dcdn_waf_domain_configs_with_options(request, runtime)
+
+    async def batch_set_dcdn_waf_domain_configs_async(
+        self,
+        request: dcdn_20180115_models.BatchSetDcdnWafDomainConfigsRequest,
+    ) -> dcdn_20180115_models.BatchSetDcdnWafDomainConfigsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_set_dcdn_waf_domain_configs_with_options_async(request, runtime)
 
     def batch_start_dcdn_domain_with_options(
         self,
@@ -1454,6 +1696,96 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_dcdn_sub_task_with_options_async(request, runtime)
+
+    def create_dcdn_waf_policy_with_options(
+        self,
+        request: dcdn_20180115_models.CreateDcdnWafPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnWafPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.defense_scene):
+            body['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_status):
+            body['PolicyStatus'] = request.policy_status
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDcdnWafPolicy',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnWafPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dcdn_waf_policy_with_options_async(
+        self,
+        request: dcdn_20180115_models.CreateDcdnWafPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnWafPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.defense_scene):
+            body['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_status):
+            body['PolicyStatus'] = request.policy_status
+        if not UtilClient.is_unset(request.policy_type):
+            body['PolicyType'] = request.policy_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDcdnWafPolicy',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnWafPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dcdn_waf_policy(
+        self,
+        request: dcdn_20180115_models.CreateDcdnWafPolicyRequest,
+    ) -> dcdn_20180115_models.CreateDcdnWafPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dcdn_waf_policy_with_options(request, runtime)
+
+    async def create_dcdn_waf_policy_async(
+        self,
+        request: dcdn_20180115_models.CreateDcdnWafPolicyRequest,
+    ) -> dcdn_20180115_models.CreateDcdnWafPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dcdn_waf_policy_with_options_async(request, runtime)
 
     def create_routine_with_options(
         self,
@@ -2258,6 +2590,84 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DeleteDcdnSubTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_dcdn_sub_task_with_options_async(request, runtime)
+
+    def delete_dcdn_waf_policy_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnWafPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnWafPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDcdnWafPolicy',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnWafPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dcdn_waf_policy_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnWafPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteDcdnWafPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDcdnWafPolicy',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteDcdnWafPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dcdn_waf_policy(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnWafPolicyRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnWafPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dcdn_waf_policy_with_options(request, runtime)
+
+    async def delete_dcdn_waf_policy_async(
+        self,
+        request: dcdn_20180115_models.DeleteDcdnWafPolicyRequest,
+    ) -> dcdn_20180115_models.DeleteDcdnWafPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dcdn_waf_policy_with_options_async(request, runtime)
 
     def delete_routine_with_options(
         self,
@@ -10015,6 +10425,864 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_waf_domain_with_options_async(request, runtime)
 
+    def describe_dcdn_waf_domain_detail_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDomainDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDomainDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafDomainDetail',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafDomainDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_domain_detail_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDomainDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDomainDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafDomainDetail',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafDomainDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_domain_detail(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDomainDetailRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDomainDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_domain_detail_with_options(request, runtime)
+
+    async def describe_dcdn_waf_domain_detail_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDomainDetailRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDomainDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_domain_detail_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_domains_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_domains_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_domains(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_domains_with_options(request, runtime)
+
+    async def describe_dcdn_waf_domains_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_domains_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_filter_info_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafFilterInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafFilterInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.defense_scenes):
+            query['DefenseScenes'] = request.defense_scenes
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafFilterInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafFilterInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_filter_info_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafFilterInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafFilterInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.defense_scenes):
+            query['DefenseScenes'] = request.defense_scenes
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafFilterInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafFilterInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_filter_info(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafFilterInfoRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafFilterInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_filter_info_with_options(request, runtime)
+
+    async def describe_dcdn_waf_filter_info_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafFilterInfoRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafFilterInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_filter_info_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_policies_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafPolicies',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_policies_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPoliciesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafPolicies',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_policies(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPoliciesRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_policies_with_options(request, runtime)
+
+    async def describe_dcdn_waf_policies_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPoliciesRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPoliciesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_policies_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_policy_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafPolicy',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_policy_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafPolicy',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_policy(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_policy_with_options(request, runtime)
+
+    async def describe_dcdn_waf_policy_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_policy_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_policy_domains_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafPolicyDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafPolicyDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_policy_domains_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafPolicyDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafPolicyDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_policy_domains(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_policy_domains_with_options(request, runtime)
+
+    async def describe_dcdn_waf_policy_domains_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_policy_domains_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_policy_valid_domains_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.domain_name_like):
+            query['DomainNameLike'] = request.domain_name_like
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafPolicyValidDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_policy_valid_domains_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.domain_name_like):
+            query['DomainNameLike'] = request.domain_name_like
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafPolicyValidDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_policy_valid_domains(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_policy_valid_domains_with_options(request, runtime)
+
+    async def describe_dcdn_waf_policy_valid_domains_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafPolicyValidDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_policy_valid_domains_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_rule_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafRule',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_rule_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafRule',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_rule(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafRuleRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_rule_with_options(request, runtime)
+
+    async def describe_dcdn_waf_rule_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafRuleRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_rule_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_rules_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_rules_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_args):
+            query['QueryArgs'] = request.query_args
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_rules(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafRulesRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_rules_with_options(request, runtime)
+
+    async def describe_dcdn_waf_rules_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafRulesRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_rules_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_scenes_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafScenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafScenesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.defense_scenes):
+            query['DefenseScenes'] = request.defense_scenes
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafScenes',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafScenesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_scenes_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafScenesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafScenesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.defense_scenes):
+            query['DefenseScenes'] = request.defense_scenes
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafScenes',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafScenesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_scenes(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafScenesRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafScenesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_scenes_with_options(request, runtime)
+
+    async def describe_dcdn_waf_scenes_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafScenesRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafScenesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_scenes_with_options_async(request, runtime)
+
+    def describe_dcdn_waf_spec_info_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafSpecInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafSpecInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafSpecInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafSpecInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_waf_spec_info_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafSpecInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnWafSpecInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnWafSpecInfo',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnWafSpecInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_waf_spec_info(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafSpecInfoRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafSpecInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_waf_spec_info_with_options(request, runtime)
+
+    async def describe_dcdn_waf_spec_info_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnWafSpecInfoRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnWafSpecInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_waf_spec_info_with_options_async(request, runtime)
+
     def describe_dcdnsec_service_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnsecServiceRequest,
@@ -11012,6 +12280,268 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.ModifyDCdnDomainSchdmByPropertyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dcdn_domain_schdm_by_property_with_options_async(request, runtime)
+
+    def modify_dcdn_waf_policy_with_options(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.ModifyDcdnWafPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_status):
+            body['PolicyStatus'] = request.policy_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDcdnWafPolicy',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyDcdnWafPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dcdn_waf_policy_with_options_async(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.ModifyDcdnWafPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            body['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.policy_status):
+            body['PolicyStatus'] = request.policy_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDcdnWafPolicy',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyDcdnWafPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dcdn_waf_policy(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafPolicyRequest,
+    ) -> dcdn_20180115_models.ModifyDcdnWafPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dcdn_waf_policy_with_options(request, runtime)
+
+    async def modify_dcdn_waf_policy_async(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafPolicyRequest,
+    ) -> dcdn_20180115_models.ModifyDcdnWafPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dcdn_waf_policy_with_options_async(request, runtime)
+
+    def modify_dcdn_waf_policy_domains_with_options(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafPolicyDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.ModifyDcdnWafPolicyDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.bind_domains):
+            body['BindDomains'] = request.bind_domains
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.unbind_domains):
+            body['UnbindDomains'] = request.unbind_domains
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDcdnWafPolicyDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyDcdnWafPolicyDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dcdn_waf_policy_domains_with_options_async(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafPolicyDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.ModifyDcdnWafPolicyDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.bind_domains):
+            body['BindDomains'] = request.bind_domains
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.unbind_domains):
+            body['UnbindDomains'] = request.unbind_domains
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDcdnWafPolicyDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyDcdnWafPolicyDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dcdn_waf_policy_domains(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafPolicyDomainsRequest,
+    ) -> dcdn_20180115_models.ModifyDcdnWafPolicyDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dcdn_waf_policy_domains_with_options(request, runtime)
+
+    async def modify_dcdn_waf_policy_domains_async(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafPolicyDomainsRequest,
+    ) -> dcdn_20180115_models.ModifyDcdnWafPolicyDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dcdn_waf_policy_domains_with_options_async(request, runtime)
+
+    def modify_dcdn_waf_rule_with_options(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.ModifyDcdnWafRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.rule_config):
+            body['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            body['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_status):
+            body['RuleStatus'] = request.rule_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDcdnWafRule',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyDcdnWafRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dcdn_waf_rule_with_options_async(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.ModifyDcdnWafRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        body = {}
+        if not UtilClient.is_unset(request.rule_config):
+            body['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_id):
+            body['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            body['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_status):
+            body['RuleStatus'] = request.rule_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyDcdnWafRule',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyDcdnWafRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dcdn_waf_rule(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafRuleRequest,
+    ) -> dcdn_20180115_models.ModifyDcdnWafRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dcdn_waf_rule_with_options(request, runtime)
+
+    async def modify_dcdn_waf_rule_async(
+        self,
+        request: dcdn_20180115_models.ModifyDcdnWafRuleRequest,
+    ) -> dcdn_20180115_models.ModifyDcdnWafRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dcdn_waf_rule_with_options_async(request, runtime)
 
     def open_dcdn_service_with_options(
         self,

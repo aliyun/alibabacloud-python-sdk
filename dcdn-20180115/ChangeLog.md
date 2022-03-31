@@ -1,3 +1,6 @@
+2022-03-31 Version: 1.0.10
+- Add waf api.
+
 2022-03-31 Version: 1.0.9
 - AMP version.
 
