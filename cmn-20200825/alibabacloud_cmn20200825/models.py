@@ -23529,12 +23529,15 @@ class ListDevicesResponseBodyDevices(TeaModel):
 class ListDevicesResponseBody(TeaModel):
     def __init__(
         self,
+        amount_used: int = None,
         devices: List[ListDevicesResponseBodyDevices] = None,
         max_results: int = None,
         next_token: int = None,
         request_id: str = None,
         total_count: int = None,
     ):
+        # 每页数量。
+        self.amount_used = amount_used
         # 数组，返回示例目录。
         self.devices = devices
         # 每页数量。
@@ -23558,6 +23561,8 @@ class ListDevicesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.amount_used is not None:
+            result['AmountUsed'] = self.amount_used
         result['Devices'] = []
         if self.devices is not None:
             for k in self.devices:
@@ -23574,6 +23579,8 @@ class ListDevicesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AmountUsed') is not None:
+            self.amount_used = m.get('AmountUsed')
         self.devices = []
         if m.get('Devices') is not None:
             for k in m.get('Devices'):
@@ -23632,6 +23639,7 @@ class ListEventDefinitionsRequest(TeaModel):
         self,
         event_id: str = None,
         event_name: str = None,
+        event_type: str = None,
         instance_id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -23640,6 +23648,8 @@ class ListEventDefinitionsRequest(TeaModel):
         self.event_id = event_id
         # 事件项名称
         self.event_name = event_name
+        # 事件类型
+        self.event_type = event_type
         # 实例ID
         self.instance_id = instance_id
         # 本次读取的最大数据记录数量
@@ -23660,6 +23670,8 @@ class ListEventDefinitionsRequest(TeaModel):
             result['EventId'] = self.event_id
         if self.event_name is not None:
             result['EventName'] = self.event_name
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.max_results is not None:
@@ -23674,6 +23686,8 @@ class ListEventDefinitionsRequest(TeaModel):
             self.event_id = m.get('EventId')
         if m.get('EventName') is not None:
             self.event_name = m.get('EventName')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MaxResults') is not None:
@@ -25874,6 +25888,7 @@ class ListLinksRequest(TeaModel):
         ip_a: str = None,
         ip_b: str = None,
         link_name: str = None,
+        link_no: str = None,
         link_status: str = None,
         link_type: str = None,
         max_results: int = None,
@@ -25891,6 +25906,7 @@ class ListLinksRequest(TeaModel):
         self.ip_b = ip_b
         # 链路名称
         self.link_name = link_name
+        self.link_no = link_no
         # 链路状态
         self.link_status = link_status
         # 链路类型（单端、双端）
@@ -25923,6 +25939,8 @@ class ListLinksRequest(TeaModel):
             result['IpB'] = self.ip_b
         if self.link_name is not None:
             result['LinkName'] = self.link_name
+        if self.link_no is not None:
+            result['LinkNo'] = self.link_no
         if self.link_status is not None:
             result['LinkStatus'] = self.link_status
         if self.link_type is not None:
@@ -25949,6 +25967,8 @@ class ListLinksRequest(TeaModel):
             self.ip_b = m.get('IpB')
         if m.get('LinkName') is not None:
             self.link_name = m.get('LinkName')
+        if m.get('LinkNo') is not None:
+            self.link_no = m.get('LinkNo')
         if m.get('LinkStatus') is not None:
             self.link_status = m.get('LinkStatus')
         if m.get('LinkType') is not None:
