@@ -3617,6 +3617,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.endpoint):
             query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.partition):
+            query['Partition'] = request.partition
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -3651,6 +3653,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.endpoint):
             query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.partition):
+            query['Partition'] = request.partition
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(

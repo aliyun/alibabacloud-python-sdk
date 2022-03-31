@@ -6171,9 +6171,11 @@ class PreviewMCTableRequest(TeaModel):
     def __init__(
         self,
         endpoint: str = None,
+        partition: str = None,
         workspace_id: str = None,
     ):
         self.endpoint = endpoint
+        self.partition = partition
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -6187,6 +6189,8 @@ class PreviewMCTableRequest(TeaModel):
         result = dict()
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
+        if self.partition is not None:
+            result['Partition'] = self.partition
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -6195,6 +6199,8 @@ class PreviewMCTableRequest(TeaModel):
         m = m or dict()
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
+        if m.get('Partition') is not None:
+            self.partition = m.get('Partition')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self

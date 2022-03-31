@@ -1,3 +1,6 @@
+2022-03-31 Version: 1.0.24
+- Release PAI Studio SDK.
+
 2022-01-04 Version: 1.0.22
 - Release PAI Stduio SDK.
 
