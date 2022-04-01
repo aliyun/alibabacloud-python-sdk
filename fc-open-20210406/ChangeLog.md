@@ -1,3 +1,6 @@
+2022-04-01 Version: 1.0.7
+- Update fc pop sdk.
+
 2022-04-01 Version: 1.0.6
 - Update fc pop sdk.
 
