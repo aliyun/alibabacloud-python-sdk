@@ -7096,156 +7096,6 @@ class DescribeCriteriaResponse(TeaModel):
         return self
 
 
-class DescribeDialogMessagesRequest(TeaModel):
-    def __init__(
-        self,
-        source_ip: str = None,
-    ):
-        self.source_ip = source_ip
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
-        return self
-
-
-class DescribeDialogMessagesResponseBodyDialogList(TeaModel):
-    def __init__(
-        self,
-        dialog_key: str = None,
-        id: int = None,
-        params: str = None,
-    ):
-        self.dialog_key = dialog_key
-        self.id = id
-        self.params = params
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dialog_key is not None:
-            result['DialogKey'] = self.dialog_key
-        if self.id is not None:
-            result['ID'] = self.id
-        if self.params is not None:
-            result['Params'] = self.params
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DialogKey') is not None:
-            self.dialog_key = m.get('DialogKey')
-        if m.get('ID') is not None:
-            self.id = m.get('ID')
-        if m.get('Params') is not None:
-            self.params = m.get('Params')
-        return self
-
-
-class DescribeDialogMessagesResponseBody(TeaModel):
-    def __init__(
-        self,
-        dialog_list: List[DescribeDialogMessagesResponseBodyDialogList] = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.dialog_list = dialog_list
-        self.request_id = request_id
-        self.total_count = total_count
-
-    def validate(self):
-        if self.dialog_list:
-            for k in self.dialog_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['DialogList'] = []
-        if self.dialog_list is not None:
-            for k in self.dialog_list:
-                result['DialogList'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.dialog_list = []
-        if m.get('DialogList') is not None:
-            for k in m.get('DialogList'):
-                temp_model = DescribeDialogMessagesResponseBodyDialogList()
-                self.dialog_list.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class DescribeDialogMessagesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeDialogMessagesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeDialogMessagesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeDingTalkRequest(TeaModel):
     def __init__(
         self,
@@ -13949,6 +13799,257 @@ class DescribeInstanceStatisticsResponse(TeaModel):
         return self
 
 
+class DescribeLoginBaseConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        target: str = None,
+        type: str = None,
+    ):
+        self.current_page = current_page
+        self.page_size = page_size
+        self.target = target
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList(TeaModel):
+    def __init__(
+        self,
+        target: str = None,
+        target_type: str = None,
+    ):
+        self.target = target
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class DescribeLoginBaseConfigsResponseBodyBaseConfigs(TeaModel):
+    def __init__(
+        self,
+        account: str = None,
+        end_time: str = None,
+        ip: str = None,
+        location: str = None,
+        start_time: str = None,
+        target_list: List[DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList] = None,
+        total_count: int = None,
+        uuid_count: int = None,
+    ):
+        self.account = account
+        self.end_time = end_time
+        self.ip = ip
+        self.location = location
+        self.start_time = start_time
+        self.target_list = target_list
+        self.total_count = total_count
+        self.uuid_count = uuid_count
+
+    def validate(self):
+        if self.target_list:
+            for k in self.target_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.location is not None:
+            result['Location'] = self.location
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        result['TargetList'] = []
+        if self.target_list is not None:
+            for k in self.target_list:
+                result['TargetList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.uuid_count is not None:
+            result['UuidCount'] = self.uuid_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Location') is not None:
+            self.location = m.get('Location')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        self.target_list = []
+        if m.get('TargetList') is not None:
+            for k in m.get('TargetList'):
+                temp_model = DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList()
+                self.target_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('UuidCount') is not None:
+            self.uuid_count = m.get('UuidCount')
+        return self
+
+
+class DescribeLoginBaseConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        base_configs: List[DescribeLoginBaseConfigsResponseBodyBaseConfigs] = None,
+        current_page: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.base_configs = base_configs
+        self.current_page = current_page
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.base_configs:
+            for k in self.base_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BaseConfigs'] = []
+        if self.base_configs is not None:
+            for k in self.base_configs:
+                result['BaseConfigs'].append(k.to_map() if k else None)
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.base_configs = []
+        if m.get('BaseConfigs') is not None:
+            for k in m.get('BaseConfigs'):
+                temp_model = DescribeLoginBaseConfigsResponseBodyBaseConfigs()
+                self.base_configs.append(temp_model.from_map(k))
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeLoginBaseConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeLoginBaseConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeLoginBaseConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeLogstoreStorageRequest(TeaModel):
     def __init__(
         self,
@@ -18357,7 +18458,7 @@ class DescribeRiskCheckResultRequest(TeaModel):
 class DescribeRiskCheckResultResponseBodyListRiskItemResources(TeaModel):
     def __init__(
         self,
-        content_resource: str = None,
+        content_resource: Dict[str, str] = None,
         resource_name: str = None,
     ):
         self.content_resource = content_resource
