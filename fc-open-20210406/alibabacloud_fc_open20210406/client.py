@@ -5633,6 +5633,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
         body = {}
+        if not UtilClient.is_unset(request.always_allocate_cpu):
+            body['alwaysAllocateCPU'] = request.always_allocate_cpu
         if not UtilClient.is_unset(request.scheduled_actions):
             body['scheduledActions'] = request.scheduled_actions
         if not UtilClient.is_unset(request.target):
@@ -5684,6 +5686,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
         body = {}
+        if not UtilClient.is_unset(request.always_allocate_cpu):
+            body['alwaysAllocateCPU'] = request.always_allocate_cpu
         if not UtilClient.is_unset(request.scheduled_actions):
             body['scheduledActions'] = request.scheduled_actions
         if not UtilClient.is_unset(request.target):

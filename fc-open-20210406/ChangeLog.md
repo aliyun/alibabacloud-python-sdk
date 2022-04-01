@@ -1,3 +1,6 @@
+2022-04-01 Version: 1.0.8
+- Change qualifier to query.
+
 2022-04-01 Version: 1.0.7
 - Update fc pop sdk.
 
