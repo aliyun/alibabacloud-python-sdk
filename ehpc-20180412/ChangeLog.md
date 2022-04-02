@@ -1,3 +1,6 @@
+2022-04-02 Version: 1.14.14
+- Support Domain for CreateCluster.
+
 2022-01-20 Version: 1.14.13
 - Support JobQueue param for ApplyNodes.
 

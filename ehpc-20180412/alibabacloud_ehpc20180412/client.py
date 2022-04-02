@@ -1955,6 +1955,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_container_app_with_options_async(request, runtime)
 
+    def describe_deploy_process_with_options(
+        self,
+        request: ehpc20180412_models.DescribeDeployProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.DescribeDeployProcessResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDeployProcess',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeDeployProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_deploy_process_with_options_async(
+        self,
+        request: ehpc20180412_models.DescribeDeployProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.DescribeDeployProcessResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDeployProcess',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.DescribeDeployProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_deploy_process(
+        self,
+        request: ehpc20180412_models.DescribeDeployProcessRequest,
+    ) -> ehpc20180412_models.DescribeDeployProcessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_deploy_process_with_options(request, runtime)
+
+    async def describe_deploy_process_async(
+        self,
+        request: ehpc20180412_models.DescribeDeployProcessRequest,
+    ) -> ehpc20180412_models.DescribeDeployProcessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_deploy_process_with_options_async(request, runtime)
+
     def describe_gwscluster_policy_with_options(
         self,
         request: ehpc20180412_models.DescribeGWSClusterPolicyRequest,
@@ -3220,6 +3286,138 @@ class Client(OpenApiClient):
     ) -> ehpc20180412_models.GetIfEcsTypeSupportHtConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_if_ecs_type_support_ht_config_with_options_async(request, runtime)
+
+    def get_post_scripts_with_options(
+        self,
+        request: ehpc20180412_models.GetPostScriptsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.GetPostScriptsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPostScripts',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetPostScriptsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_post_scripts_with_options_async(
+        self,
+        request: ehpc20180412_models.GetPostScriptsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.GetPostScriptsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPostScripts',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetPostScriptsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_post_scripts(
+        self,
+        request: ehpc20180412_models.GetPostScriptsRequest,
+    ) -> ehpc20180412_models.GetPostScriptsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_post_scripts_with_options(request, runtime)
+
+    async def get_post_scripts_async(
+        self,
+        request: ehpc20180412_models.GetPostScriptsRequest,
+    ) -> ehpc20180412_models.GetPostScriptsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_post_scripts_with_options_async(request, runtime)
+
+    def get_queue_conf_with_options(
+        self,
+        request: ehpc20180412_models.GetQueueConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.GetQueueConfResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQueueConf',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetQueueConfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_queue_conf_with_options_async(
+        self,
+        request: ehpc20180412_models.GetQueueConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.GetQueueConfResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetQueueConf',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.GetQueueConfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_queue_conf(
+        self,
+        request: ehpc20180412_models.GetQueueConfRequest,
+    ) -> ehpc20180412_models.GetQueueConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_queue_conf_with_options(request, runtime)
+
+    async def get_queue_conf_async(
+        self,
+        request: ehpc20180412_models.GetQueueConfRequest,
+    ) -> ehpc20180412_models.GetQueueConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_queue_conf_with_options_async(request, runtime)
 
     def get_scheduler_info_with_options(
         self,
@@ -4722,6 +4920,72 @@ class Client(OpenApiClient):
     ) -> ehpc20180412_models.ListJobsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_jobs_with_options_async(request, runtime)
+
+    def list_jobs_with_filters_with_options(
+        self,
+        request: ehpc20180412_models.ListJobsWithFiltersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.ListJobsWithFiltersResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobsWithFilters',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListJobsWithFiltersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_jobs_with_filters_with_options_async(
+        self,
+        request: ehpc20180412_models.ListJobsWithFiltersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.ListJobsWithFiltersResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobsWithFilters',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListJobsWithFiltersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_jobs_with_filters(
+        self,
+        request: ehpc20180412_models.ListJobsWithFiltersRequest,
+    ) -> ehpc20180412_models.ListJobsWithFiltersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_jobs_with_filters_with_options(request, runtime)
+
+    async def list_jobs_with_filters_async(
+        self,
+        request: ehpc20180412_models.ListJobsWithFiltersRequest,
+    ) -> ehpc20180412_models.ListJobsWithFiltersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_jobs_with_filters_with_options_async(request, runtime)
 
     def list_nodes_with_options(
         self,
@@ -6566,6 +6830,72 @@ class Client(OpenApiClient):
     ) -> ehpc20180412_models.SetGWSInstanceUserResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_gwsinstance_user_with_options_async(request, runtime)
+
+    def set_post_scripts_with_options(
+        self,
+        request: ehpc20180412_models.SetPostScriptsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.SetPostScriptsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPostScripts',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetPostScriptsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_post_scripts_with_options_async(
+        self,
+        request: ehpc20180412_models.SetPostScriptsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.SetPostScriptsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetPostScripts',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.SetPostScriptsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_post_scripts(
+        self,
+        request: ehpc20180412_models.SetPostScriptsRequest,
+    ) -> ehpc20180412_models.SetPostScriptsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_post_scripts_with_options(request, runtime)
+
+    async def set_post_scripts_async(
+        self,
+        request: ehpc20180412_models.SetPostScriptsRequest,
+    ) -> ehpc20180412_models.SetPostScriptsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_post_scripts_with_options_async(request, runtime)
 
     def set_queue_with_options(
         self,
