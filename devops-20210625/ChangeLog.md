@@ -1,3 +1,6 @@
+2022-04-02 Version: 1.1.12
+- Add Codeup Api.
+
 2022-03-18 Version: 1.1.11
 - Add Codeup Api.
 
