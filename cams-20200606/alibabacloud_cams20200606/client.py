@@ -43,25 +43,23 @@ class Client(OpenApiClient):
 
     def check_chatapp_contacts_with_options(
         self,
-        request: cams_20200606_models.CheckChatappContactsRequest,
+        tmp_req: cams_20200606_models.CheckChatappContactsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.CheckChatappContactsResponse:
-        UtilClient.validate_model(request)
-        query = {}
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CheckChatappContactsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contacts):
+            request.contacts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contacts, 'Contacts', 'json')
+        body = {}
         if not UtilClient.is_unset(request.channel_type):
-            query['ChannelType'] = request.channel_type
-        if not UtilClient.is_unset(request.contacts):
-            query['Contacts'] = request.contacts
+            body['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.contacts_shrink):
+            body['Contacts'] = request.contacts_shrink
         if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
+            body['From'] = request.from_
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CheckChatappContacts',
@@ -81,25 +79,23 @@ class Client(OpenApiClient):
 
     async def check_chatapp_contacts_with_options_async(
         self,
-        request: cams_20200606_models.CheckChatappContactsRequest,
+        tmp_req: cams_20200606_models.CheckChatappContactsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.CheckChatappContactsResponse:
-        UtilClient.validate_model(request)
-        query = {}
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CheckChatappContactsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contacts):
+            request.contacts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contacts, 'Contacts', 'json')
+        body = {}
         if not UtilClient.is_unset(request.channel_type):
-            query['ChannelType'] = request.channel_type
-        if not UtilClient.is_unset(request.contacts):
-            query['Contacts'] = request.contacts
+            body['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.contacts_shrink):
+            body['Contacts'] = request.contacts_shrink
         if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
+            body['From'] = request.from_
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CheckChatappContacts',
@@ -227,31 +223,31 @@ class Client(OpenApiClient):
 
     def create_chatapp_template_with_options(
         self,
-        request: cams_20200606_models.CreateChatappTemplateRequest,
+        tmp_req: cams_20200606_models.CreateChatappTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.CreateChatappTemplateResponse:
-        UtilClient.validate_model(request)
-        query = {}
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateChatappTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.components):
+            request.components_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        if not UtilClient.is_unset(tmp_req.example):
+            request.example_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.example, 'Example', 'json')
+        body = {}
         if not UtilClient.is_unset(request.category):
-            query['Category'] = request.category
-        if not UtilClient.is_unset(request.components):
-            query['Components'] = request.components
-        if not UtilClient.is_unset(request.example):
-            query['Example'] = request.example
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.components_shrink):
+            body['Components'] = request.components_shrink
+        if not UtilClient.is_unset(request.example_shrink):
+            body['Example'] = request.example_shrink
         if not UtilClient.is_unset(request.language):
-            query['Language'] = request.language
+            body['Language'] = request.language
         if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
+            body['Name'] = request.name
         if not UtilClient.is_unset(request.template_type):
-            query['TemplateType'] = request.template_type
+            body['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateChatappTemplate',
@@ -271,31 +267,31 @@ class Client(OpenApiClient):
 
     async def create_chatapp_template_with_options_async(
         self,
-        request: cams_20200606_models.CreateChatappTemplateRequest,
+        tmp_req: cams_20200606_models.CreateChatappTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.CreateChatappTemplateResponse:
-        UtilClient.validate_model(request)
-        query = {}
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateChatappTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.components):
+            request.components_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        if not UtilClient.is_unset(tmp_req.example):
+            request.example_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.example, 'Example', 'json')
+        body = {}
         if not UtilClient.is_unset(request.category):
-            query['Category'] = request.category
-        if not UtilClient.is_unset(request.components):
-            query['Components'] = request.components
-        if not UtilClient.is_unset(request.example):
-            query['Example'] = request.example
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.components_shrink):
+            body['Components'] = request.components_shrink
+        if not UtilClient.is_unset(request.example_shrink):
+            body['Example'] = request.example_shrink
         if not UtilClient.is_unset(request.language):
-            query['Language'] = request.language
+            body['Language'] = request.language
         if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
+            body['Name'] = request.name
         if not UtilClient.is_unset(request.template_type):
-            query['TemplateType'] = request.template_type
+            body['TemplateType'] = request.template_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateChatappTemplate',
@@ -334,12 +330,6 @@ class Client(OpenApiClient):
     ) -> cams_20200606_models.DeleteChatappTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -368,12 +358,6 @@ class Client(OpenApiClient):
     ) -> cams_20200606_models.DeleteChatappTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -420,10 +404,6 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -456,10 +436,6 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -497,10 +473,14 @@ class Client(OpenApiClient):
 
     def list_chatapp_template_with_options(
         self,
-        request: cams_20200606_models.ListChatappTemplateRequest,
+        tmp_req: cams_20200606_models.ListChatappTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ListChatappTemplateResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatappTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.page), 'Page', 'json')
         query = {}
         if not UtilClient.is_unset(request.audit_status):
             query['AuditStatus'] = request.audit_status
@@ -508,14 +488,8 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page):
-            query['Page'] = request.page
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.page_shrink):
+            query['Page'] = request.page_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -537,10 +511,14 @@ class Client(OpenApiClient):
 
     async def list_chatapp_template_with_options_async(
         self,
-        request: cams_20200606_models.ListChatappTemplateRequest,
+        tmp_req: cams_20200606_models.ListChatappTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ListChatappTemplateResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListChatappTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.page), 'Page', 'json')
         query = {}
         if not UtilClient.is_unset(request.audit_status):
             query['AuditStatus'] = request.audit_status
@@ -548,14 +526,8 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page):
-            query['Page'] = request.page
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.page_shrink):
+            query['Page'] = request.page_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -591,39 +563,41 @@ class Client(OpenApiClient):
 
     def send_chatapp_message_with_options(
         self,
-        request: cams_20200606_models.SendChatappMessageRequest,
+        tmp_req: cams_20200606_models.SendChatappMessageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.SendChatappMessageResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.SendChatappMessageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
+        if not UtilClient.is_unset(tmp_req.template_params):
+            request.template_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_params, 'TemplateParams', 'json')
         query = {}
-        if not UtilClient.is_unset(request.channel_type):
-            query['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.payload_shrink):
+            query['Payload'] = request.payload_shrink
+        body = {}
+        if not UtilClient.is_unset(request.channel_type):
+            body['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
+            body['From'] = request.from_
         if not UtilClient.is_unset(request.language):
-            query['Language'] = request.language
+            body['Language'] = request.language
         if not UtilClient.is_unset(request.message_type):
-            query['MessageType'] = request.message_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.payload):
-            query['Payload'] = request.payload
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
+            body['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.template_code):
-            query['TemplateCode'] = request.template_code
-        if not UtilClient.is_unset(request.template_params):
-            query['TemplateParams'] = request.template_params
+            body['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_params_shrink):
+            body['TemplateParams'] = request.template_params_shrink
         if not UtilClient.is_unset(request.to):
-            query['To'] = request.to
+            body['To'] = request.to
         if not UtilClient.is_unset(request.type):
-            query['Type'] = request.type
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendChatappMessage',
@@ -643,39 +617,41 @@ class Client(OpenApiClient):
 
     async def send_chatapp_message_with_options_async(
         self,
-        request: cams_20200606_models.SendChatappMessageRequest,
+        tmp_req: cams_20200606_models.SendChatappMessageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.SendChatappMessageResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.SendChatappMessageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.payload):
+            request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
+        if not UtilClient.is_unset(tmp_req.template_params):
+            request.template_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_params, 'TemplateParams', 'json')
         query = {}
-        if not UtilClient.is_unset(request.channel_type):
-            query['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.payload_shrink):
+            query['Payload'] = request.payload_shrink
+        body = {}
+        if not UtilClient.is_unset(request.channel_type):
+            body['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.from_):
-            query['From'] = request.from_
+            body['From'] = request.from_
         if not UtilClient.is_unset(request.language):
-            query['Language'] = request.language
+            body['Language'] = request.language
         if not UtilClient.is_unset(request.message_type):
-            query['MessageType'] = request.message_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.payload):
-            query['Payload'] = request.payload
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
+            body['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.template_code):
-            query['TemplateCode'] = request.template_code
-        if not UtilClient.is_unset(request.template_params):
-            query['TemplateParams'] = request.template_params
+            body['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_params_shrink):
+            body['TemplateParams'] = request.template_params_shrink
         if not UtilClient.is_unset(request.to):
-            query['To'] = request.to
+            body['To'] = request.to
         if not UtilClient.is_unset(request.type):
-            query['Type'] = request.type
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SendChatappMessage',
