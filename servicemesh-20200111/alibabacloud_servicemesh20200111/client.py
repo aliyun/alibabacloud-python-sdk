@@ -368,6 +368,10 @@ class Client(OpenApiClient):
             body['Hosts'] = request.hosts
         if not UtilClient.is_unset(request.istio_gateway_name):
             body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.number):
             body['Number'] = request.number
         if not UtilClient.is_unset(request.port_name):
@@ -410,6 +414,10 @@ class Client(OpenApiClient):
             body['Hosts'] = request.hosts
         if not UtilClient.is_unset(request.istio_gateway_name):
             body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.number):
             body['Number'] = request.number
         if not UtilClient.is_unset(request.port_name):
@@ -1046,6 +1054,10 @@ class Client(OpenApiClient):
             body['Hosts'] = request.hosts
         if not UtilClient.is_unset(request.istio_gateway_name):
             body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.port_name):
             body['PortName'] = request.port_name
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -1080,6 +1092,10 @@ class Client(OpenApiClient):
             body['Hosts'] = request.hosts
         if not UtilClient.is_unset(request.istio_gateway_name):
             body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.port_name):
             body['PortName'] = request.port_name
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -2228,6 +2244,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
             body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -2258,6 +2278,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.istio_gateway_name):
             body['IstioGatewayName'] = request.istio_gateway_name
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -2996,8 +3020,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
             query['ServiceMeshId'] = request.service_mesh_id
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.offset):
+            body['Offset'] = request.offset
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DescribeServiceMeshClusters',
@@ -3024,8 +3054,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.service_mesh_id):
             query['ServiceMeshId'] = request.service_mesh_id
+        body = {}
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.offset):
+            body['Offset'] = request.offset
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DescribeServiceMeshClusters',
@@ -5386,6 +5422,8 @@ class Client(OpenApiClient):
             body['AutoInjectionPolicyEnabled'] = request.auto_injection_policy_enabled
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
+        if not UtilClient.is_unset(request.canary_upgrade_enabled):
+            body['CanaryUpgradeEnabled'] = request.canary_upgrade_enabled
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cni_enabled):
@@ -5564,6 +5602,8 @@ class Client(OpenApiClient):
             body['AutoInjectionPolicyEnabled'] = request.auto_injection_policy_enabled
         if not UtilClient.is_unset(request.craggregation_enabled):
             body['CRAggregationEnabled'] = request.craggregation_enabled
+        if not UtilClient.is_unset(request.canary_upgrade_enabled):
+            body['CanaryUpgradeEnabled'] = request.canary_upgrade_enabled
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cni_enabled):

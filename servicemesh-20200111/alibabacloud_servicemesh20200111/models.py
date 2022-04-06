@@ -489,6 +489,8 @@ class CreateIstioGatewayDomainsRequest(TeaModel):
         force_https: bool = None,
         hosts: str = None,
         istio_gateway_name: str = None,
+        limit: str = None,
+        namespace: str = None,
         number: int = None,
         port_name: str = None,
         protocol: str = None,
@@ -498,6 +500,8 @@ class CreateIstioGatewayDomainsRequest(TeaModel):
         self.force_https = force_https
         self.hosts = hosts
         self.istio_gateway_name = istio_gateway_name
+        self.limit = limit
+        self.namespace = namespace
         self.number = number
         self.port_name = port_name
         self.protocol = protocol
@@ -520,6 +524,10 @@ class CreateIstioGatewayDomainsRequest(TeaModel):
             result['Hosts'] = self.hosts
         if self.istio_gateway_name is not None:
             result['IstioGatewayName'] = self.istio_gateway_name
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.number is not None:
             result['Number'] = self.number
         if self.port_name is not None:
@@ -540,6 +548,10 @@ class CreateIstioGatewayDomainsRequest(TeaModel):
             self.hosts = m.get('Hosts')
         if m.get('IstioGatewayName') is not None:
             self.istio_gateway_name = m.get('IstioGatewayName')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('Number') is not None:
             self.number = m.get('Number')
         if m.get('PortName') is not None:
@@ -1348,12 +1360,14 @@ class CreateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
         self,
         httpadvanced_options: CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions = None,
         match_request: CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest = None,
+        namespace: str = None,
         route_destinations: List[CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations] = None,
         route_name: str = None,
         route_type: str = None,
     ):
         self.httpadvanced_options = httpadvanced_options
         self.match_request = match_request
+        self.namespace = namespace
         self.route_destinations = route_destinations
         self.route_name = route_name
         self.route_type = route_type
@@ -1378,6 +1392,8 @@ class CreateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
             result['HTTPAdvancedOptions'] = self.httpadvanced_options.to_map()
         if self.match_request is not None:
             result['MatchRequest'] = self.match_request.to_map()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         result['RouteDestinations'] = []
         if self.route_destinations is not None:
             for k in self.route_destinations:
@@ -1396,6 +1412,8 @@ class CreateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
         if m.get('MatchRequest') is not None:
             temp_model = CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest()
             self.match_request = temp_model.from_map(m['MatchRequest'])
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         self.route_destinations = []
         if m.get('RouteDestinations') is not None:
             for k in m.get('RouteDestinations'):
@@ -2339,11 +2357,15 @@ class DeleteIstioGatewayDomainsRequest(TeaModel):
         self,
         hosts: str = None,
         istio_gateway_name: str = None,
+        limit: str = None,
+        namespace: str = None,
         port_name: str = None,
         service_mesh_id: str = None,
     ):
         self.hosts = hosts
         self.istio_gateway_name = istio_gateway_name
+        self.limit = limit
+        self.namespace = namespace
         self.port_name = port_name
         self.service_mesh_id = service_mesh_id
 
@@ -2360,6 +2382,10 @@ class DeleteIstioGatewayDomainsRequest(TeaModel):
             result['Hosts'] = self.hosts
         if self.istio_gateway_name is not None:
             result['IstioGatewayName'] = self.istio_gateway_name
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.port_name is not None:
             result['PortName'] = self.port_name
         if self.service_mesh_id is not None:
@@ -2372,6 +2398,10 @@ class DeleteIstioGatewayDomainsRequest(TeaModel):
             self.hosts = m.get('Hosts')
         if m.get('IstioGatewayName') is not None:
             self.istio_gateway_name = m.get('IstioGatewayName')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('PortName') is not None:
             self.port_name = m.get('PortName')
         if m.get('ServiceMeshId') is not None:
@@ -4565,9 +4595,13 @@ class DescribeIstioGatewayDomainsRequest(TeaModel):
     def __init__(
         self,
         istio_gateway_name: str = None,
+        limit: str = None,
+        namespace: str = None,
         service_mesh_id: str = None,
     ):
         self.istio_gateway_name = istio_gateway_name
+        self.limit = limit
+        self.namespace = namespace
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -4581,6 +4615,10 @@ class DescribeIstioGatewayDomainsRequest(TeaModel):
         result = dict()
         if self.istio_gateway_name is not None:
             result['IstioGatewayName'] = self.istio_gateway_name
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
         return result
@@ -4589,6 +4627,10 @@ class DescribeIstioGatewayDomainsRequest(TeaModel):
         m = m or dict()
         if m.get('IstioGatewayName') is not None:
             self.istio_gateway_name = m.get('IstioGatewayName')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
         return self
@@ -4600,12 +4642,14 @@ class DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails(TeaModel):
         credential_name: str = None,
         detail: str = None,
         domains: List[str] = None,
+        namespace: str = None,
         port_name: str = None,
         protocol: str = None,
     ):
         self.credential_name = credential_name
         self.detail = detail
         self.domains = domains
+        self.namespace = namespace
         self.port_name = port_name
         self.protocol = protocol
 
@@ -4624,6 +4668,8 @@ class DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails(TeaModel):
             result['Detail'] = self.detail
         if self.domains is not None:
             result['Domains'] = self.domains
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.port_name is not None:
             result['PortName'] = self.port_name
         if self.protocol is not None:
@@ -4638,6 +4684,8 @@ class DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails(TeaModel):
             self.detail = m.get('Detail')
         if m.get('Domains') is not None:
             self.domains = m.get('Domains')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('PortName') is not None:
             self.port_name = m.get('PortName')
         if m.get('Protocol') is not None:
@@ -5725,12 +5773,14 @@ class DescribeIstioGatewayRouteDetailResponseBody(TeaModel):
     def __init__(
         self,
         description: str = None,
+        namespace: str = None,
         priority: int = None,
         request_id: str = None,
         route_detail: DescribeIstioGatewayRouteDetailResponseBodyRouteDetail = None,
         status: int = None,
     ):
         self.description = description
+        self.namespace = namespace
         self.priority = priority
         self.request_id = request_id
         self.route_detail = route_detail
@@ -5748,6 +5798,8 @@ class DescribeIstioGatewayRouteDetailResponseBody(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.request_id is not None:
@@ -5762,6 +5814,8 @@ class DescribeIstioGatewayRouteDetailResponseBody(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RequestId') is not None:
@@ -5849,6 +5903,7 @@ class DescribeIstioGatewayRoutesResponseBodyManagementRoutes(TeaModel):
         self,
         asmgateway_name: str = None,
         description: str = None,
+        namespace: str = None,
         priority: int = None,
         route_name: str = None,
         route_path: str = None,
@@ -5856,6 +5911,7 @@ class DescribeIstioGatewayRoutesResponseBodyManagementRoutes(TeaModel):
     ):
         self.asmgateway_name = asmgateway_name
         self.description = description
+        self.namespace = namespace
         self.priority = priority
         self.route_name = route_name
         self.route_path = route_path
@@ -5874,6 +5930,8 @@ class DescribeIstioGatewayRoutesResponseBodyManagementRoutes(TeaModel):
             result['ASMGatewayName'] = self.asmgateway_name
         if self.description is not None:
             result['Description'] = self.description
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.route_name is not None:
@@ -5890,6 +5948,8 @@ class DescribeIstioGatewayRoutesResponseBodyManagementRoutes(TeaModel):
             self.asmgateway_name = m.get('ASMGatewayName')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RouteName') is not None:
@@ -7526,8 +7586,12 @@ class DescribeServiceMeshAdditionalStatusResponse(TeaModel):
 class DescribeServiceMeshClustersRequest(TeaModel):
     def __init__(
         self,
+        limit: int = None,
+        offset: int = None,
         service_mesh_id: str = None,
     ):
+        self.limit = limit
+        self.offset = offset
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -7539,12 +7603,20 @@ class DescribeServiceMeshClustersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.offset is not None:
+            result['Offset'] = self.offset
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
         return self
@@ -14885,12 +14957,14 @@ class UpdateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
         self,
         httpadvanced_options: UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions = None,
         match_request: UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest = None,
+        namespace: str = None,
         route_destinations: List[UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations] = None,
         route_name: str = None,
         route_type: str = None,
     ):
         self.httpadvanced_options = httpadvanced_options
         self.match_request = match_request
+        self.namespace = namespace
         self.route_destinations = route_destinations
         self.route_name = route_name
         self.route_type = route_type
@@ -14915,6 +14989,8 @@ class UpdateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
             result['HTTPAdvancedOptions'] = self.httpadvanced_options.to_map()
         if self.match_request is not None:
             result['MatchRequest'] = self.match_request.to_map()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
         result['RouteDestinations'] = []
         if self.route_destinations is not None:
             for k in self.route_destinations:
@@ -14933,6 +15009,8 @@ class UpdateIstioGatewayRoutesRequestGatewayRoute(TeaModel):
         if m.get('MatchRequest') is not None:
             temp_model = UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest()
             self.match_request = temp_model.from_map(m['MatchRequest'])
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
         self.route_destinations = []
         if m.get('RouteDestinations') is not None:
             for k in m.get('RouteDestinations'):
@@ -15259,6 +15337,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         audit_project: str = None,
         auto_injection_policy_enabled: bool = None,
         craggregation_enabled: bool = None,
+        canary_upgrade_enabled: bool = None,
         cluster_spec: str = None,
         cni_enabled: bool = None,
         cni_exclude_namespaces: str = None,
@@ -15336,6 +15415,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.audit_project = audit_project
         self.auto_injection_policy_enabled = auto_injection_policy_enabled
         self.craggregation_enabled = craggregation_enabled
+        self.canary_upgrade_enabled = canary_upgrade_enabled
         self.cluster_spec = cluster_spec
         self.cni_enabled = cni_enabled
         self.cni_exclude_namespaces = cni_exclude_namespaces
@@ -15432,6 +15512,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['AutoInjectionPolicyEnabled'] = self.auto_injection_policy_enabled
         if self.craggregation_enabled is not None:
             result['CRAggregationEnabled'] = self.craggregation_enabled
+        if self.canary_upgrade_enabled is not None:
+            result['CanaryUpgradeEnabled'] = self.canary_upgrade_enabled
         if self.cluster_spec is not None:
             result['ClusterSpec'] = self.cluster_spec
         if self.cni_enabled is not None:
@@ -15588,6 +15670,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.auto_injection_policy_enabled = m.get('AutoInjectionPolicyEnabled')
         if m.get('CRAggregationEnabled') is not None:
             self.craggregation_enabled = m.get('CRAggregationEnabled')
+        if m.get('CanaryUpgradeEnabled') is not None:
+            self.canary_upgrade_enabled = m.get('CanaryUpgradeEnabled')
         if m.get('ClusterSpec') is not None:
             self.cluster_spec = m.get('ClusterSpec')
         if m.get('CniEnabled') is not None:
