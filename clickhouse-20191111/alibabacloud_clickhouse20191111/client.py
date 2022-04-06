@@ -934,6 +934,8 @@ class Client(OpenApiClient):
             query['PreferredBackupPeriod'] = request.preferred_backup_period
         if not UtilClient.is_unset(request.preferred_backup_time):
             query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -976,6 +978,8 @@ class Client(OpenApiClient):
             query['PreferredBackupPeriod'] = request.preferred_backup_period
         if not UtilClient.is_unset(request.preferred_backup_time):
             query['PreferredBackupTime'] = request.preferred_backup_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -1058,6 +1062,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbcluster_id):
+            query['SourceDBClusterId'] = request.source_dbcluster_id
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
@@ -1130,6 +1136,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_dbcluster_id):
+            query['SourceDBClusterId'] = request.source_dbcluster_id
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
@@ -4766,10 +4774,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.schema_name):
-            query['SchemaName'] = request.schema_name
-        if not UtilClient.is_unset(request.table_name):
-            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4806,10 +4810,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.schema_name):
-            query['SchemaName'] = request.schema_name
-        if not UtilClient.is_unset(request.table_name):
-            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5250,8 +5250,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.schema_name):
             query['SchemaName'] = request.schema_name
-        if not UtilClient.is_unset(request.table_name):
-            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5290,8 +5288,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.schema_name):
             query['SchemaName'] = request.schema_name
-        if not UtilClient.is_unset(request.table_name):
-            query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

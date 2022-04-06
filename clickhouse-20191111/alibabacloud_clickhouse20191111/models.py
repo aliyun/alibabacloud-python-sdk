@@ -1446,6 +1446,7 @@ class CreateBackupPolicyRequest(TeaModel):
         owner_id: int = None,
         preferred_backup_period: str = None,
         preferred_backup_time: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -1455,6 +1456,7 @@ class CreateBackupPolicyRequest(TeaModel):
         self.owner_id = owner_id
         self.preferred_backup_period = preferred_backup_period
         self.preferred_backup_time = preferred_backup_time
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -1479,6 +1481,8 @@ class CreateBackupPolicyRequest(TeaModel):
             result['PreferredBackupPeriod'] = self.preferred_backup_period
         if self.preferred_backup_time is not None:
             result['PreferredBackupTime'] = self.preferred_backup_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -1499,6 +1503,8 @@ class CreateBackupPolicyRequest(TeaModel):
             self.preferred_backup_period = m.get('PreferredBackupPeriod')
         if m.get('PreferredBackupTime') is not None:
             self.preferred_backup_time = m.get('PreferredBackupTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -1592,6 +1598,7 @@ class CreateDBInstanceRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        source_dbcluster_id: str = None,
         used_time: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
@@ -1616,6 +1623,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.source_dbcluster_id = source_dbcluster_id
         self.used_time = used_time
         self.vpcid = vpcid
         self.v_switch_id = v_switch_id
@@ -1668,6 +1676,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.source_dbcluster_id is not None:
+            result['SourceDBClusterId'] = self.source_dbcluster_id
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.vpcid is not None:
@@ -1718,6 +1728,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SourceDBClusterId') is not None:
+            self.source_dbcluster_id = m.get('SourceDBClusterId')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('VPCId') is not None:
@@ -5810,6 +5822,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         support_backup: int = None,
         support_https_port: bool = None,
         support_mysql_port: bool = None,
+        support_oss: int = None,
         tags: DescribeDBClusterAttributeResponseBodyDBClusterTags = None,
         v_switch_id: str = None,
         vpc_cloud_instance_id: str = None,
@@ -5852,6 +5865,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         self.support_backup = support_backup
         self.support_https_port = support_https_port
         self.support_mysql_port = support_mysql_port
+        self.support_oss = support_oss
         self.tags = tags
         self.v_switch_id = v_switch_id
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
@@ -5941,6 +5955,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             result['SupportHttpsPort'] = self.support_https_port
         if self.support_mysql_port is not None:
             result['SupportMysqlPort'] = self.support_mysql_port
+        if self.support_oss is not None:
+            result['SupportOss'] = self.support_oss
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.v_switch_id is not None:
@@ -6028,6 +6044,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             self.support_https_port = m.get('SupportHttpsPort')
         if m.get('SupportMysqlPort') is not None:
             self.support_mysql_port = m.get('SupportMysqlPort')
+        if m.get('SupportOss') is not None:
+            self.support_oss = m.get('SupportOss')
         if m.get('Tags') is not None:
             temp_model = DescribeDBClusterAttributeResponseBodyDBClusterTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -10458,16 +10476,12 @@ class DescribeSchemasRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        schema_name: str = None,
-        table_name: str = None,
     ):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.schema_name = schema_name
-        self.table_name = table_name
 
     def validate(self):
         pass
@@ -10488,10 +10502,6 @@ class DescribeSchemasRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.schema_name is not None:
-            result['SchemaName'] = self.schema_name
-        if self.table_name is not None:
-            result['TableName'] = self.table_name
         return result
 
     def from_map(self, m: dict = None):
@@ -10506,10 +10516,6 @@ class DescribeSchemasRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SchemaName') is not None:
-            self.schema_name = m.get('SchemaName')
-        if m.get('TableName') is not None:
-            self.table_name = m.get('TableName')
         return self
 
 
@@ -11682,7 +11688,6 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
         self,
         error_msg: str = None,
         rds_id: str = None,
-        rds_password: str = None,
         rds_user_name: str = None,
         rds_vpc_url: str = None,
         syn_db: str = None,
@@ -11690,7 +11695,6 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
     ):
         self.error_msg = error_msg
         self.rds_id = rds_id
-        self.rds_password = rds_password
         self.rds_user_name = rds_user_name
         self.rds_vpc_url = rds_vpc_url
         self.syn_db = syn_db
@@ -11709,8 +11713,6 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
             result['ErrorMsg'] = self.error_msg
         if self.rds_id is not None:
             result['RdsId'] = self.rds_id
-        if self.rds_password is not None:
-            result['RdsPassword'] = self.rds_password
         if self.rds_user_name is not None:
             result['RdsUserName'] = self.rds_user_name
         if self.rds_vpc_url is not None:
@@ -11727,8 +11729,6 @@ class DescribeSynDbsResponseBodySynDbs(TeaModel):
             self.error_msg = m.get('ErrorMsg')
         if m.get('RdsId') is not None:
             self.rds_id = m.get('RdsId')
-        if m.get('RdsPassword') is not None:
-            self.rds_password = m.get('RdsPassword')
         if m.get('RdsUserName') is not None:
             self.rds_user_name = m.get('RdsUserName')
         if m.get('RdsVpcUrl') is not None:
@@ -11827,7 +11827,6 @@ class DescribeTablesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         schema_name: str = None,
-        table_name: str = None,
     ):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
@@ -11835,7 +11834,6 @@ class DescribeTablesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.schema_name = schema_name
-        self.table_name = table_name
 
     def validate(self):
         pass
@@ -11858,8 +11856,6 @@ class DescribeTablesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
-        if self.table_name is not None:
-            result['TableName'] = self.table_name
         return result
 
     def from_map(self, m: dict = None):
@@ -11876,8 +11872,6 @@ class DescribeTablesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
-        if m.get('TableName') is not None:
-            self.table_name = m.get('TableName')
         return self
 
 
