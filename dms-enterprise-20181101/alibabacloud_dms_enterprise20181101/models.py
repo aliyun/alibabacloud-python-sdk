@@ -9523,9 +9523,9 @@ class GetLhSpaceByNameResponseBodyLakehouseSpace(TeaModel):
     def __init__(
         self,
         creator_id: str = None,
-        db_type: str = None,
         description: str = None,
         dev_db_id: int = None,
+        dw_db_type: str = None,
         id: int = None,
         is_deleted: bool = None,
         mode: int = None,
@@ -9535,9 +9535,9 @@ class GetLhSpaceByNameResponseBodyLakehouseSpace(TeaModel):
         tenant_id: str = None,
     ):
         self.creator_id = creator_id
-        self.db_type = db_type
         self.description = description
         self.dev_db_id = dev_db_id
+        self.dw_db_type = dw_db_type
         self.id = id
         self.is_deleted = is_deleted
         self.mode = mode
@@ -9557,12 +9557,12 @@ class GetLhSpaceByNameResponseBodyLakehouseSpace(TeaModel):
         result = dict()
         if self.creator_id is not None:
             result['CreatorId'] = self.creator_id
-        if self.db_type is not None:
-            result['DbType'] = self.db_type
         if self.description is not None:
             result['Description'] = self.description
         if self.dev_db_id is not None:
             result['DevDbId'] = self.dev_db_id
+        if self.dw_db_type is not None:
+            result['DwDbType'] = self.dw_db_type
         if self.id is not None:
             result['Id'] = self.id
         if self.is_deleted is not None:
@@ -9583,12 +9583,12 @@ class GetLhSpaceByNameResponseBodyLakehouseSpace(TeaModel):
         m = m or dict()
         if m.get('CreatorId') is not None:
             self.creator_id = m.get('CreatorId')
-        if m.get('DbType') is not None:
-            self.db_type = m.get('DbType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DevDbId') is not None:
             self.dev_db_id = m.get('DevDbId')
+        if m.get('DwDbType') is not None:
+            self.dw_db_type = m.get('DwDbType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('IsDeleted') is not None:
@@ -19232,6 +19232,8 @@ class ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag(TeaModel):
         can_edit: bool = None,
         creator_id: str = None,
         creator_nick_name: str = None,
+        dag_name: str = None,
+        dag_owner_id: str = None,
         dag_owner_nick_name: str = None,
         data_flow_id: int = None,
         demo_id: str = None,
@@ -19247,6 +19249,8 @@ class ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag(TeaModel):
         self.can_edit = can_edit
         self.creator_id = creator_id
         self.creator_nick_name = creator_nick_name
+        self.dag_name = dag_name
+        self.dag_owner_id = dag_owner_id
         self.dag_owner_nick_name = dag_owner_nick_name
         self.data_flow_id = data_flow_id
         self.demo_id = demo_id
@@ -19274,6 +19278,10 @@ class ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag(TeaModel):
             result['CreatorId'] = self.creator_id
         if self.creator_nick_name is not None:
             result['CreatorNickName'] = self.creator_nick_name
+        if self.dag_name is not None:
+            result['DagName'] = self.dag_name
+        if self.dag_owner_id is not None:
+            result['DagOwnerId'] = self.dag_owner_id
         if self.dag_owner_nick_name is not None:
             result['DagOwnerNickName'] = self.dag_owner_nick_name
         if self.data_flow_id is not None:
@@ -19306,6 +19314,10 @@ class ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag(TeaModel):
             self.creator_id = m.get('CreatorId')
         if m.get('CreatorNickName') is not None:
             self.creator_nick_name = m.get('CreatorNickName')
+        if m.get('DagName') is not None:
+            self.dag_name = m.get('DagName')
+        if m.get('DagOwnerId') is not None:
+            self.dag_owner_id = m.get('DagOwnerId')
         if m.get('DagOwnerNickName') is not None:
             self.dag_owner_nick_name = m.get('DagOwnerNickName')
         if m.get('DataFlowId') is not None:
@@ -19372,6 +19384,8 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag(
         can_edit: bool = None,
         creator_id: str = None,
         creator_nick_name: str = None,
+        dag_name: str = None,
+        dag_owner_id: str = None,
         dag_owner_nick_name: str = None,
         data_flow_id: int = None,
         demo_id: str = None,
@@ -19387,6 +19401,8 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag(
         self.can_edit = can_edit
         self.creator_id = creator_id
         self.creator_nick_name = creator_nick_name
+        self.dag_name = dag_name
+        self.dag_owner_id = dag_owner_id
         self.dag_owner_nick_name = dag_owner_nick_name
         self.data_flow_id = data_flow_id
         self.demo_id = demo_id
@@ -19414,6 +19430,10 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag(
             result['CreatorId'] = self.creator_id
         if self.creator_nick_name is not None:
             result['CreatorNickName'] = self.creator_nick_name
+        if self.dag_name is not None:
+            result['DagName'] = self.dag_name
+        if self.dag_owner_id is not None:
+            result['DagOwnerId'] = self.dag_owner_id
         if self.dag_owner_nick_name is not None:
             result['DagOwnerNickName'] = self.dag_owner_nick_name
         if self.data_flow_id is not None:
@@ -19446,6 +19466,10 @@ class ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag(
             self.creator_id = m.get('CreatorId')
         if m.get('CreatorNickName') is not None:
             self.creator_nick_name = m.get('CreatorNickName')
+        if m.get('DagName') is not None:
+            self.dag_name = m.get('DagName')
+        if m.get('DagOwnerId') is not None:
+            self.dag_owner_id = m.get('DagOwnerId')
         if m.get('DagOwnerNickName') is not None:
             self.dag_owner_nick_name = m.get('DagOwnerNickName')
         if m.get('DataFlowId') is not None:
