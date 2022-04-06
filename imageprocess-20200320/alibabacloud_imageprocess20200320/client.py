@@ -9,13 +9,13 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_imageprocess20200320 import models as imageprocess_20200320_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_rpc import models as rpc_models
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
@@ -48,18 +48,212 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def analyze_chest_vessel_with_options(
+        self,
+        request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeChestVessel',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.AnalyzeChestVesselResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def analyze_chest_vessel_with_options_async(
+        self,
+        request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeChestVessel',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.AnalyzeChestVesselResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def analyze_chest_vessel(
+        self,
+        request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
+    ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.analyze_chest_vessel_with_options(request, runtime)
+
+    async def analyze_chest_vessel_async(
+        self,
+        request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
+    ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.analyze_chest_vessel_with_options_async(request, runtime)
+
+    def calc_cacswith_options(
+        self,
+        request: imageprocess_20200320_models.CalcCACSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.CalcCACSResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CalcCACS',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.CalcCACSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def calc_cacswith_options_async(
+        self,
+        request: imageprocess_20200320_models.CalcCACSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.CalcCACSResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CalcCACS',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.CalcCACSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def calc_cacs(
+        self,
+        request: imageprocess_20200320_models.CalcCACSRequest,
+    ) -> imageprocess_20200320_models.CalcCACSResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.calc_cacswith_options(request, runtime)
+
+    async def calc_cacs_async(
+        self,
+        request: imageprocess_20200320_models.CalcCACSRequest,
+    ) -> imageprocess_20200320_models.CalcCACSResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.calc_cacswith_options_async(request, runtime)
+
     def classify_fnfwith_options(
         self,
         request: imageprocess_20200320_models.ClassifyFNFRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ClassifyFNFResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.tracer_id):
+            body['TracerId'] = request.tracer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ClassifyFNF',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.ClassifyFNFResponse(),
-            self.do_rpcrequest('ClassifyFNF', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def classify_fnfwith_options_async(
@@ -68,12 +262,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.ClassifyFNFResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.tracer_id):
+            body['TracerId'] = request.tracer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ClassifyFNF',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.ClassifyFNFResponse(),
-            await self.do_rpcrequest_async('ClassifyFNF', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def classify_fnf(
@@ -232,257 +448,87 @@ class Client(OpenApiClient):
         classify_fnfresp = await self.classify_fnfwith_options_async(classify_fnfreq, runtime)
         return classify_fnfresp
 
-    def detect_lung_nodule_with_options(
+    def detect_covid_19cad_with_options(
         self,
-        request: imageprocess_20200320_models.DetectLungNoduleRequest,
+        request: imageprocess_20200320_models.DetectCovid19CadRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectCovid19Cad',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
-            imageprocess_20200320_models.DetectLungNoduleResponse(),
-            self.do_rpcrequest('DetectLungNodule', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imageprocess_20200320_models.DetectCovid19CadResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def detect_lung_nodule_with_options_async(
+    async def detect_covid_19cad_with_options_async(
         self,
-        request: imageprocess_20200320_models.DetectLungNoduleRequest,
+        request: imageprocess_20200320_models.DetectCovid19CadRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectCovid19Cad',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
-            imageprocess_20200320_models.DetectLungNoduleResponse(),
-            await self.do_rpcrequest_async('DetectLungNodule', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imageprocess_20200320_models.DetectCovid19CadResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def detect_lung_nodule(
+    def detect_covid_19cad(
         self,
-        request: imageprocess_20200320_models.DetectLungNoduleRequest,
-    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+        request: imageprocess_20200320_models.DetectCovid19CadRequest,
+    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
         runtime = util_models.RuntimeOptions()
-        return self.detect_lung_nodule_with_options(request, runtime)
+        return self.detect_covid_19cad_with_options(request, runtime)
 
-    async def detect_lung_nodule_async(
+    async def detect_covid_19cad_async(
         self,
-        request: imageprocess_20200320_models.DetectLungNoduleRequest,
-    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
+        request: imageprocess_20200320_models.DetectCovid19CadRequest,
+    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.detect_lung_nodule_with_options_async(request, runtime)
-
-    def run_ctregistration_with_options(
-        self,
-        request: imageprocess_20200320_models.RunCTRegistrationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.RunCTRegistrationResponse(),
-            self.do_rpcrequest('RunCTRegistration', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def run_ctregistration_with_options_async(
-        self,
-        request: imageprocess_20200320_models.RunCTRegistrationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.RunCTRegistrationResponse(),
-            await self.do_rpcrequest_async('RunCTRegistration', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def run_ctregistration(
-        self,
-        request: imageprocess_20200320_models.RunCTRegistrationRequest,
-    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.run_ctregistration_with_options(request, runtime)
-
-    async def run_ctregistration_async(
-        self,
-        request: imageprocess_20200320_models.RunCTRegistrationRequest,
-    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.run_ctregistration_with_options_async(request, runtime)
-
-    def analyze_chest_vessel_with_options(
-        self,
-        request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.AnalyzeChestVesselResponse(),
-            self.do_rpcrequest('AnalyzeChestVessel', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def analyze_chest_vessel_with_options_async(
-        self,
-        request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.AnalyzeChestVesselResponse(),
-            await self.do_rpcrequest_async('AnalyzeChestVessel', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def analyze_chest_vessel(
-        self,
-        request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
-    ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.analyze_chest_vessel_with_options(request, runtime)
-
-    async def analyze_chest_vessel_async(
-        self,
-        request: imageprocess_20200320_models.AnalyzeChestVesselRequest,
-    ) -> imageprocess_20200320_models.AnalyzeChestVesselResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.analyze_chest_vessel_with_options_async(request, runtime)
-
-    def translate_med_with_options(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.TranslateMedResponse(),
-            self.do_rpcrequest('TranslateMed', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def translate_med_with_options_async(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.TranslateMedResponse(),
-            await self.do_rpcrequest_async('TranslateMed', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def translate_med(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.translate_med_with_options(request, runtime)
-
-    async def translate_med_async(
-        self,
-        request: imageprocess_20200320_models.TranslateMedRequest,
-    ) -> imageprocess_20200320_models.TranslateMedResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.translate_med_with_options_async(request, runtime)
-
-    def detect_spine_mriwith_options(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectSpineMRIResponse(),
-            self.do_rpcrequest('DetectSpineMRI', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def detect_spine_mriwith_options_async(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectSpineMRIResponse(),
-            await self.do_rpcrequest_async('DetectSpineMRI', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def detect_spine_mri(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_spine_mriwith_options(request, runtime)
-
-    async def detect_spine_mri_async(
-        self,
-        request: imageprocess_20200320_models.DetectSpineMRIRequest,
-    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_spine_mriwith_options_async(request, runtime)
-
-    def calc_cacswith_options(
-        self,
-        request: imageprocess_20200320_models.CalcCACSRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.CalcCACSResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.CalcCACSResponse(),
-            self.do_rpcrequest('CalcCACS', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def calc_cacswith_options_async(
-        self,
-        request: imageprocess_20200320_models.CalcCACSRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.CalcCACSResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.CalcCACSResponse(),
-            await self.do_rpcrequest_async('CalcCACS', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def calc_cacs(
-        self,
-        request: imageprocess_20200320_models.CalcCACSRequest,
-    ) -> imageprocess_20200320_models.CalcCACSResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.calc_cacswith_options(request, runtime)
-
-    async def calc_cacs_async(
-        self,
-        request: imageprocess_20200320_models.CalcCACSRequest,
-    ) -> imageprocess_20200320_models.CalcCACSResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.calc_cacswith_options_async(request, runtime)
+        return await self.detect_covid_19cad_with_options_async(request, runtime)
 
     def detect_hip_keypoint_xray_with_options(
         self,
@@ -490,12 +536,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectHipKeypointXRayResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.tracer_id):
+            body['TracerId'] = request.tracer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectHipKeypointXRay',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectHipKeypointXRayResponse(),
-            self.do_rpcrequest('DetectHipKeypointXRay', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_hip_keypoint_xray_with_options_async(
@@ -504,12 +572,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectHipKeypointXRayResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.tracer_id):
+            body['TracerId'] = request.tracer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectHipKeypointXRay',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectHipKeypointXRayResponse(),
-            await self.do_rpcrequest_async('DetectHipKeypointXRay', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_hip_keypoint_xray(
@@ -674,12 +764,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectKneeKeypointXRayResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.tracer_id):
+            body['TracerId'] = request.tracer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectKneeKeypointXRay',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectKneeKeypointXRayResponse(),
-            self.do_rpcrequest('DetectKneeKeypointXRay', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_knee_keypoint_xray_with_options_async(
@@ -688,12 +800,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectKneeKeypointXRayResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.tracer_id):
+            body['TracerId'] = request.tracer_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectKneeKeypointXRay',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectKneeKeypointXRayResponse(),
-            await self.do_rpcrequest_async('DetectKneeKeypointXRay', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_knee_keypoint_xray(
@@ -852,60 +986,38 @@ class Client(OpenApiClient):
         detect_knee_keypoint_xray_resp = await self.detect_knee_keypoint_xray_with_options_async(detect_knee_keypoint_xray_req, runtime)
         return detect_knee_keypoint_xray_resp
 
-    def run_med_qawith_options(
-        self,
-        request: imageprocess_20200320_models.RunMedQARequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.RunMedQAResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.RunMedQAResponse(),
-            self.do_rpcrequest('RunMedQA', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def run_med_qawith_options_async(
-        self,
-        request: imageprocess_20200320_models.RunMedQARequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.RunMedQAResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.RunMedQAResponse(),
-            await self.do_rpcrequest_async('RunMedQA', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def run_med_qa(
-        self,
-        request: imageprocess_20200320_models.RunMedQARequest,
-    ) -> imageprocess_20200320_models.RunMedQAResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.run_med_qawith_options(request, runtime)
-
-    async def run_med_qa_async(
-        self,
-        request: imageprocess_20200320_models.RunMedQARequest,
-    ) -> imageprocess_20200320_models.RunMedQAResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.run_med_qawith_options_async(request, runtime)
-
     def detect_knee_xray_with_options(
         self,
         request: imageprocess_20200320_models.DetectKneeXRayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectKneeXRayResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectKneeXRay',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectKneeXRayResponse(),
-            self.do_rpcrequest('DetectKneeXRay', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_knee_xray_with_options_async(
@@ -914,12 +1026,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectKneeXRayResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectKneeXRay',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectKneeXRayResponse(),
-            await self.do_rpcrequest_async('DetectKneeXRay', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_knee_xray(
@@ -1078,47 +1210,91 @@ class Client(OpenApiClient):
         detect_knee_xray_resp = await self.detect_knee_xray_with_options_async(detect_knee_xray_req, runtime)
         return detect_knee_xray_resp
 
-    def get_async_job_result_with_options(
+    def detect_lung_nodule_with_options(
         self,
-        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
+        request: imageprocess_20200320_models.DetectLungNoduleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.threshold):
+            body['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectLungNodule',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
-            imageprocess_20200320_models.GetAsyncJobResultResponse(),
-            self.do_rpcrequest('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imageprocess_20200320_models.DetectLungNoduleResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def get_async_job_result_with_options_async(
+    async def detect_lung_nodule_with_options_async(
         self,
-        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
+        request: imageprocess_20200320_models.DetectLungNoduleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.threshold):
+            body['Threshold'] = request.threshold
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectLungNodule',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
-            imageprocess_20200320_models.GetAsyncJobResultResponse(),
-            await self.do_rpcrequest_async('GetAsyncJobResult', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            imageprocess_20200320_models.DetectLungNoduleResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_async_job_result(
+    def detect_lung_nodule(
         self,
-        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
-    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        request: imageprocess_20200320_models.DetectLungNoduleRequest,
+    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_async_job_result_with_options(request, runtime)
+        return self.detect_lung_nodule_with_options(request, runtime)
 
-    async def get_async_job_result_async(
+    async def detect_lung_nodule_async(
         self,
-        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
-    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        request: imageprocess_20200320_models.DetectLungNoduleRequest,
+    ) -> imageprocess_20200320_models.DetectLungNoduleResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_async_job_result_with_options_async(request, runtime)
+        return await self.detect_lung_nodule_with_options_async(request, runtime)
 
     def detect_rib_fracture_with_options(
         self,
@@ -1126,12 +1302,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectRibFractureResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectRibFracture',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectRibFractureResponse(),
-            self.do_rpcrequest('DetectRibFracture', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_rib_fracture_with_options_async(
@@ -1140,12 +1338,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectRibFractureResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectRibFracture',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectRibFractureResponse(),
-            await self.do_rpcrequest_async('DetectRibFracture', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_rib_fracture(
@@ -1162,102 +1382,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_rib_fracture_with_options_async(request, runtime)
 
-    def detect_covid_19cad_with_options(
-        self,
-        request: imageprocess_20200320_models.DetectCovid19CadRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectCovid19CadResponse(),
-            self.do_rpcrequest('DetectCovid19Cad', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def detect_covid_19cad_with_options_async(
-        self,
-        request: imageprocess_20200320_models.DetectCovid19CadRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.DetectCovid19CadResponse(),
-            await self.do_rpcrequest_async('DetectCovid19Cad', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def detect_covid_19cad(
-        self,
-        request: imageprocess_20200320_models.DetectCovid19CadRequest,
-    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.detect_covid_19cad_with_options(request, runtime)
-
-    async def detect_covid_19cad_async(
-        self,
-        request: imageprocess_20200320_models.DetectCovid19CadRequest,
-    ) -> imageprocess_20200320_models.DetectCovid19CadResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.detect_covid_19cad_with_options_async(request, runtime)
-
-    def screen_chest_ctwith_options(
-        self,
-        request: imageprocess_20200320_models.ScreenChestCTRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.ScreenChestCTResponse(),
-            self.do_rpcrequest('ScreenChestCT', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def screen_chest_ctwith_options_async(
-        self,
-        request: imageprocess_20200320_models.ScreenChestCTRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return TeaCore.from_map(
-            imageprocess_20200320_models.ScreenChestCTResponse(),
-            await self.do_rpcrequest_async('ScreenChestCT', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def screen_chest_ct(
-        self,
-        request: imageprocess_20200320_models.ScreenChestCTRequest,
-    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.screen_chest_ctwith_options(request, runtime)
-
-    async def screen_chest_ct_async(
-        self,
-        request: imageprocess_20200320_models.ScreenChestCTRequest,
-    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.screen_chest_ctwith_options_async(request, runtime)
-
     def detect_skin_disease_with_options(
         self,
         request: imageprocess_20200320_models.DetectSkinDiseaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectSkinDiseaseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectSkinDisease',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectSkinDiseaseResponse(),
-            self.do_rpcrequest('DetectSkinDisease', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_skin_disease_with_options_async(
@@ -1266,12 +1420,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imageprocess_20200320_models.DetectSkinDiseaseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectSkinDisease',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             imageprocess_20200320_models.DetectSkinDiseaseResponse(),
-            await self.do_rpcrequest_async('DetectSkinDisease', '2020-03-20', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def detect_skin_disease(
@@ -1429,3 +1601,507 @@ class Client(OpenApiClient):
             detect_skin_disease_req.url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
         detect_skin_disease_resp = await self.detect_skin_disease_with_options_async(detect_skin_disease_req, runtime)
         return detect_skin_disease_resp
+
+    def detect_spine_mriwith_options(
+        self,
+        request: imageprocess_20200320_models.DetectSpineMRIRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectSpineMRI',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectSpineMRIResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_spine_mriwith_options_async(
+        self,
+        request: imageprocess_20200320_models.DetectSpineMRIRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectSpineMRI',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.DetectSpineMRIResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_spine_mri(
+        self,
+        request: imageprocess_20200320_models.DetectSpineMRIRequest,
+    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_spine_mriwith_options(request, runtime)
+
+    async def detect_spine_mri_async(
+        self,
+        request: imageprocess_20200320_models.DetectSpineMRIRequest,
+    ) -> imageprocess_20200320_models.DetectSpineMRIResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_spine_mriwith_options_async(request, runtime)
+
+    def get_async_job_result_with_options(
+        self,
+        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAsyncJobResult',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.GetAsyncJobResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_async_job_result_with_options_async(
+        self,
+        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAsyncJobResult',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.GetAsyncJobResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_async_job_result(
+        self,
+        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
+    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_async_job_result_with_options(request, runtime)
+
+    async def get_async_job_result_async(
+        self,
+        request: imageprocess_20200320_models.GetAsyncJobResultRequest,
+    ) -> imageprocess_20200320_models.GetAsyncJobResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_async_job_result_with_options_async(request, runtime)
+
+    def run_ctregistration_with_options(
+        self,
+        request: imageprocess_20200320_models.RunCTRegistrationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.floating_list):
+            body['FloatingList'] = request.floating_list
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.reference_list):
+            body['ReferenceList'] = request.reference_list
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCTRegistration',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.RunCTRegistrationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_ctregistration_with_options_async(
+        self,
+        request: imageprocess_20200320_models.RunCTRegistrationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.data_source_type):
+            body['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.floating_list):
+            body['FloatingList'] = request.floating_list
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.reference_list):
+            body['ReferenceList'] = request.reference_list
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCTRegistration',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.RunCTRegistrationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_ctregistration(
+        self,
+        request: imageprocess_20200320_models.RunCTRegistrationRequest,
+    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_ctregistration_with_options(request, runtime)
+
+    async def run_ctregistration_async(
+        self,
+        request: imageprocess_20200320_models.RunCTRegistrationRequest,
+    ) -> imageprocess_20200320_models.RunCTRegistrationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_ctregistration_with_options_async(request, runtime)
+
+    def run_med_qawith_options(
+        self,
+        request: imageprocess_20200320_models.RunMedQARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.RunMedQAResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.answer_image_data_list):
+            body['AnswerImageDataList'] = request.answer_image_data_list
+        if not UtilClient.is_unset(request.answer_image_urllist):
+            body['AnswerImageURLList'] = request.answer_image_urllist
+        if not UtilClient.is_unset(request.answer_text_list):
+            body['AnswerTextList'] = request.answer_text_list
+        if not UtilClient.is_unset(request.department):
+            body['Department'] = request.department
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.question_type):
+            body['QuestionType'] = request.question_type
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunMedQA',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.RunMedQAResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_med_qawith_options_async(
+        self,
+        request: imageprocess_20200320_models.RunMedQARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.RunMedQAResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.answer_image_data_list):
+            body['AnswerImageDataList'] = request.answer_image_data_list
+        if not UtilClient.is_unset(request.answer_image_urllist):
+            body['AnswerImageURLList'] = request.answer_image_urllist
+        if not UtilClient.is_unset(request.answer_text_list):
+            body['AnswerTextList'] = request.answer_text_list
+        if not UtilClient.is_unset(request.department):
+            body['Department'] = request.department
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.question_type):
+            body['QuestionType'] = request.question_type
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunMedQA',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.RunMedQAResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_med_qa(
+        self,
+        request: imageprocess_20200320_models.RunMedQARequest,
+    ) -> imageprocess_20200320_models.RunMedQAResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.run_med_qawith_options(request, runtime)
+
+    async def run_med_qa_async(
+        self,
+        request: imageprocess_20200320_models.RunMedQARequest,
+    ) -> imageprocess_20200320_models.RunMedQAResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.run_med_qawith_options_async(request, runtime)
+
+    def screen_chest_ctwith_options(
+        self,
+        request: imageprocess_20200320_models.ScreenChestCTRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.mask):
+            body['Mask'] = request.mask
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScreenChestCT',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenChestCTResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def screen_chest_ctwith_options_async(
+        self,
+        request: imageprocess_20200320_models.ScreenChestCTRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_format):
+            body['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.mask):
+            body['Mask'] = request.mask
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.org_name):
+            body['OrgName'] = request.org_name
+        if not UtilClient.is_unset(request.urllist):
+            body['URLList'] = request.urllist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScreenChestCT',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.ScreenChestCTResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def screen_chest_ct(
+        self,
+        request: imageprocess_20200320_models.ScreenChestCTRequest,
+    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.screen_chest_ctwith_options(request, runtime)
+
+    async def screen_chest_ct_async(
+        self,
+        request: imageprocess_20200320_models.ScreenChestCTRequest,
+    ) -> imageprocess_20200320_models.ScreenChestCTResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.screen_chest_ctwith_options_async(request, runtime)
+
+    def translate_med_with_options(
+        self,
+        request: imageprocess_20200320_models.TranslateMedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.TranslateMedResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.from_language):
+            body['FromLanguage'] = request.from_language
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.to_language):
+            body['ToLanguage'] = request.to_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateMed',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.TranslateMedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def translate_med_with_options_async(
+        self,
+        request: imageprocess_20200320_models.TranslateMedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.TranslateMedResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.from_language):
+            body['FromLanguage'] = request.from_language
+        if not UtilClient.is_unset(request.text):
+            body['Text'] = request.text
+        if not UtilClient.is_unset(request.to_language):
+            body['ToLanguage'] = request.to_language
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateMed',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.TranslateMedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def translate_med(
+        self,
+        request: imageprocess_20200320_models.TranslateMedRequest,
+    ) -> imageprocess_20200320_models.TranslateMedResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.translate_med_with_options(request, runtime)
+
+    async def translate_med_async(
+        self,
+        request: imageprocess_20200320_models.TranslateMedRequest,
+    ) -> imageprocess_20200320_models.TranslateMedResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.translate_med_with_options_async(request, runtime)

@@ -1,3 +1,6 @@
+2022-04-06 Version: 2.0.8
+- Release FeedbackSession.
+
 2021-07-19 Version: 2.0.7
 - Update ScreenChestCT.
 
