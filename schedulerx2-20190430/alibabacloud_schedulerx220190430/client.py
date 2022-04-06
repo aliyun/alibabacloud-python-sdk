@@ -594,6 +594,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
@@ -628,6 +630,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(

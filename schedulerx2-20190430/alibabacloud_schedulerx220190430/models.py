@@ -406,7 +406,6 @@ class BatchEnableJobsResponse(TeaModel):
 class CreateAppGroupRequest(TeaModel):
     def __init__(
         self,
-        alarm_json: str = None,
         app_key: str = None,
         app_name: str = None,
         description: str = None,
@@ -418,8 +417,8 @@ class CreateAppGroupRequest(TeaModel):
         namespace_name: str = None,
         namespace_source: str = None,
         region_id: str = None,
+        schedule_busy_workers: bool = None,
     ):
-        self.alarm_json = alarm_json
         self.app_key = app_key
         self.app_name = app_name
         self.description = description
@@ -431,6 +430,7 @@ class CreateAppGroupRequest(TeaModel):
         self.namespace_name = namespace_name
         self.namespace_source = namespace_source
         self.region_id = region_id
+        self.schedule_busy_workers = schedule_busy_workers
 
     def validate(self):
         pass
@@ -441,8 +441,6 @@ class CreateAppGroupRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.alarm_json is not None:
-            result['AlarmJson'] = self.alarm_json
         if self.app_key is not None:
             result['AppKey'] = self.app_key
         if self.app_name is not None:
@@ -465,12 +463,12 @@ class CreateAppGroupRequest(TeaModel):
             result['NamespaceSource'] = self.namespace_source
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.schedule_busy_workers is not None:
+            result['ScheduleBusyWorkers'] = self.schedule_busy_workers
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AlarmJson') is not None:
-            self.alarm_json = m.get('AlarmJson')
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
         if m.get('AppName') is not None:
@@ -493,6 +491,8 @@ class CreateAppGroupRequest(TeaModel):
             self.namespace_source = m.get('NamespaceSource')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ScheduleBusyWorkers') is not None:
+            self.schedule_busy_workers = m.get('ScheduleBusyWorkers')
         return self
 
 
@@ -1008,11 +1008,13 @@ class CreateNamespaceRequest(TeaModel):
         description: str = None,
         name: str = None,
         region_id: str = None,
+        source: str = None,
         uid: str = None,
     ):
         self.description = description
         self.name = name
         self.region_id = region_id
+        self.source = source
         self.uid = uid
 
     def validate(self):
@@ -1030,6 +1032,8 @@ class CreateNamespaceRequest(TeaModel):
             result['Name'] = self.name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.source is not None:
+            result['Source'] = self.source
         if self.uid is not None:
             result['Uid'] = self.uid
         return result
@@ -1042,6 +1046,8 @@ class CreateNamespaceRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('Uid') is not None:
             self.uid = m.get('Uid')
         return self
