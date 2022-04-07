@@ -27996,6 +27996,150 @@ class InstallBackupClientResponse(TeaModel):
         return self
 
 
+class InstallCloudMonitorRequest(TeaModel):
+    def __init__(
+        self,
+        agent_access_key: str = None,
+        agent_secret_key: str = None,
+        argus_version: str = None,
+        instance_id_list: List[str] = None,
+        uuid_list: List[str] = None,
+    ):
+        # 非阿里云主机安装云监控插件时所需要的AccessKey
+        self.agent_access_key = agent_access_key
+        # 非阿里云主机安装云监控插件时所需要的AccessSecret
+        self.agent_secret_key = agent_secret_key
+        # 云监控版本
+        self.argus_version = argus_version
+        # 实例 instanceId
+        self.instance_id_list = instance_id_list
+        # uuid 列表
+        self.uuid_list = uuid_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_access_key is not None:
+            result['AgentAccessKey'] = self.agent_access_key
+        if self.agent_secret_key is not None:
+            result['AgentSecretKey'] = self.agent_secret_key
+        if self.argus_version is not None:
+            result['ArgusVersion'] = self.argus_version
+        if self.instance_id_list is not None:
+            result['InstanceIdList'] = self.instance_id_list
+        if self.uuid_list is not None:
+            result['UuidList'] = self.uuid_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentAccessKey') is not None:
+            self.agent_access_key = m.get('AgentAccessKey')
+        if m.get('AgentSecretKey') is not None:
+            self.agent_secret_key = m.get('AgentSecretKey')
+        if m.get('ArgusVersion') is not None:
+            self.argus_version = m.get('ArgusVersion')
+        if m.get('InstanceIdList') is not None:
+            self.instance_id_list = m.get('InstanceIdList')
+        if m.get('UuidList') is not None:
+            self.uuid_list = m.get('UuidList')
+        return self
+
+
+class InstallCloudMonitorResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class InstallCloudMonitorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: InstallCloudMonitorResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = InstallCloudMonitorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAntiBruteForceRuleRequest(TeaModel):
     def __init__(
         self,

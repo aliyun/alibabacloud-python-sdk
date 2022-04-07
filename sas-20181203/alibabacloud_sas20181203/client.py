@@ -11050,6 +11050,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.install_backup_client_with_options_async(request, runtime)
 
+    def install_cloud_monitor_with_options(
+        self,
+        request: sas_20181203_models.InstallCloudMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.InstallCloudMonitorResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_access_key):
+            query['AgentAccessKey'] = request.agent_access_key
+        if not UtilClient.is_unset(request.agent_secret_key):
+            query['AgentSecretKey'] = request.agent_secret_key
+        if not UtilClient.is_unset(request.argus_version):
+            query['ArgusVersion'] = request.argus_version
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InstallCloudMonitor',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.InstallCloudMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_cloud_monitor_with_options_async(
+        self,
+        request: sas_20181203_models.InstallCloudMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.InstallCloudMonitorResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_access_key):
+            query['AgentAccessKey'] = request.agent_access_key
+        if not UtilClient.is_unset(request.agent_secret_key):
+            query['AgentSecretKey'] = request.agent_secret_key
+        if not UtilClient.is_unset(request.argus_version):
+            query['ArgusVersion'] = request.argus_version
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InstallCloudMonitor',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.InstallCloudMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_cloud_monitor(
+        self,
+        request: sas_20181203_models.InstallCloudMonitorRequest,
+    ) -> sas_20181203_models.InstallCloudMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.install_cloud_monitor_with_options(request, runtime)
+
+    async def install_cloud_monitor_async(
+        self,
+        request: sas_20181203_models.InstallCloudMonitorRequest,
+    ) -> sas_20181203_models.InstallCloudMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.install_cloud_monitor_with_options_async(request, runtime)
+
     def modify_anti_brute_force_rule_with_options(
         self,
         request: sas_20181203_models.ModifyAntiBruteForceRuleRequest,
