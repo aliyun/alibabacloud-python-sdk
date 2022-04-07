@@ -31,55 +31,13 @@ class Client(OpenApiClient):
             'cn-hongkong': 'pai-eas.cn-hongkong.aliyuncs.com',
             'ap-southeast-1': 'pai-eas.ap-southeast-1.aliyuncs.com',
             'ap-southeast-5': 'pai-eas.ap-southeast-5.aliyuncs.com',
-            'us-west-1': 'pai-eas.us-west-1.aliyuncs.com',
             'us-east-1': 'pai-eas.us-east-1.aliyuncs.com',
+            'us-west-1': 'pai-eas.us-west-1.aliyuncs.com',
             'eu-central-1': 'pai-eas.eu-central-1.aliyuncs.com',
             'ap-south-1': 'pai-eas.ap-south-1.aliyuncs.com',
             'cn-shanghai-finance-1': 'pai-eas.cn-shanghai-finance-1.aliyuncs.com',
             'cn-north-2-gov-1': 'pai-eas.cn-north-2-gov-1.aliyuncs.com',
-            'ap-northeast-1': 'eas.aliyuncs.com',
-            'ap-northeast-2-pop': 'eas.aliyuncs.com',
-            'ap-southeast-2': 'eas.aliyuncs.com',
-            'ap-southeast-3': 'eas.aliyuncs.com',
-            'cn-beijing-finance-1': 'eas.aliyuncs.com',
-            'cn-beijing-finance-pop': 'eas.aliyuncs.com',
-            'cn-beijing-gov-1': 'eas.aliyuncs.com',
-            'cn-beijing-nu16-b01': 'eas.aliyuncs.com',
-            'cn-chengdu': 'pai-eas.cn-chengdu.aliyuncs.com',
-            'cn-edge-1': 'eas.aliyuncs.com',
-            'cn-fujian': 'eas.aliyuncs.com',
-            'cn-haidian-cm12-c01': 'eas.aliyuncs.com',
-            'cn-hangzhou-bj-b01': 'eas.aliyuncs.com',
-            'cn-hangzhou-finance': 'eas.aliyuncs.com',
-            'cn-hangzhou-internal-prod-1': 'eas.aliyuncs.com',
-            'cn-hangzhou-internal-test-1': 'eas.aliyuncs.com',
-            'cn-hangzhou-internal-test-2': 'eas.aliyuncs.com',
-            'cn-hangzhou-internal-test-3': 'eas.aliyuncs.com',
-            'cn-hangzhou-test-306': 'eas.aliyuncs.com',
-            'cn-hongkong-finance-pop': 'eas.aliyuncs.com',
-            'cn-huhehaote': 'eas.aliyuncs.com',
-            'cn-huhehaote-nebula-1': 'eas.aliyuncs.com',
-            'cn-qingdao': 'eas.aliyuncs.com',
-            'cn-qingdao-nebula': 'eas.aliyuncs.com',
-            'cn-shanghai-et15-b01': 'eas.aliyuncs.com',
-            'cn-shanghai-et2-b01': 'eas.aliyuncs.com',
-            'cn-shanghai-inner': 'eas.aliyuncs.com',
-            'cn-shanghai-internal-test-1': 'eas.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'eas.aliyuncs.com',
-            'cn-shenzhen-inner': 'eas.aliyuncs.com',
-            'cn-shenzhen-st4-d01': 'eas.aliyuncs.com',
-            'cn-shenzhen-su18-b01': 'eas.aliyuncs.com',
-            'cn-wuhan': 'eas.aliyuncs.com',
-            'cn-wulanchabu': 'eas.aliyuncs.com',
-            'cn-yushanfang': 'eas.aliyuncs.com',
-            'cn-zhangbei': 'eas.aliyuncs.com',
-            'cn-zhangbei-na61-b01': 'eas.aliyuncs.com',
-            'cn-zhangjiakou-na62-a01': 'eas.aliyuncs.com',
-            'cn-zhengzhou-nebula-1': 'eas.aliyuncs.com',
-            'eu-west-1': 'eas.aliyuncs.com',
-            'eu-west-1-oxs': 'eas.aliyuncs.com',
-            'me-east-1': 'eas.aliyuncs.com',
-            'rus-west-1-pop': 'eas.aliyuncs.com'
+            'cn-chengdu': 'pai-eas.cn-chengdu.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1429,6 +1387,64 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eas_20210701_models.DeleteServiceMirrorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_regions(self) -> eas_20210701_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_regions_with_options(headers, runtime)
+
+    async def describe_regions_async(self) -> eas_20210701_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_regions_with_options_async(headers, runtime)
+
+    def describe_regions_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeRegionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeRegionsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeRegionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
