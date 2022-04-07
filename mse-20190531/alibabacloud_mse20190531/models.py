@@ -1526,6 +1526,7 @@ class AddGatewayRouteRequest(TeaModel):
         direct_response_json: AddGatewayRouteRequestDirectResponseJSON = None,
         domain_id: int = None,
         domain_id_list_json: str = None,
+        enable_waf: bool = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
         name: str = None,
@@ -1539,6 +1540,7 @@ class AddGatewayRouteRequest(TeaModel):
         self.direct_response_json = direct_response_json
         self.domain_id = domain_id
         self.domain_id_list_json = domain_id_list_json
+        self.enable_waf = enable_waf
         self.gateway_id = gateway_id
         self.gateway_unique_id = gateway_unique_id
         self.name = name
@@ -1575,6 +1577,8 @@ class AddGatewayRouteRequest(TeaModel):
             result['DomainId'] = self.domain_id
         if self.domain_id_list_json is not None:
             result['DomainIdListJSON'] = self.domain_id_list_json
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_unique_id is not None:
@@ -1606,6 +1610,8 @@ class AddGatewayRouteRequest(TeaModel):
             self.domain_id = m.get('DomainId')
         if m.get('DomainIdListJSON') is not None:
             self.domain_id_list_json = m.get('DomainIdListJSON')
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayUniqueId') is not None:
@@ -1636,6 +1642,7 @@ class AddGatewayRouteShrinkRequest(TeaModel):
         direct_response_jsonshrink: str = None,
         domain_id: int = None,
         domain_id_list_json: str = None,
+        enable_waf: bool = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
         name: str = None,
@@ -1649,6 +1656,7 @@ class AddGatewayRouteShrinkRequest(TeaModel):
         self.direct_response_jsonshrink = direct_response_jsonshrink
         self.domain_id = domain_id
         self.domain_id_list_json = domain_id_list_json
+        self.enable_waf = enable_waf
         self.gateway_id = gateway_id
         self.gateway_unique_id = gateway_unique_id
         self.name = name
@@ -1676,6 +1684,8 @@ class AddGatewayRouteShrinkRequest(TeaModel):
             result['DomainId'] = self.domain_id
         if self.domain_id_list_json is not None:
             result['DomainIdListJSON'] = self.domain_id_list_json
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_unique_id is not None:
@@ -1704,6 +1714,8 @@ class AddGatewayRouteShrinkRequest(TeaModel):
             self.domain_id = m.get('DomainId')
         if m.get('DomainIdListJSON') is not None:
             self.domain_id_list_json = m.get('DomainIdListJSON')
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayUniqueId') is not None:
@@ -8918,6 +8930,186 @@ class ExportNacosConfigResponse(TeaModel):
         return self
 
 
+class GetAppMessageQueueRouteRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        region: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.region is not None:
+            result['Region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        return self
+
+
+class GetAppMessageQueueRouteResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        enable: bool = None,
+        region: str = None,
+        tags: List[str] = None,
+    ):
+        self.app_id = app_id
+        self.enable = enable
+        self.region = region
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class GetAppMessageQueueRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAppMessageQueueRouteResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAppMessageQueueRouteResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAppMessageQueueRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAppMessageQueueRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAppMessageQueueRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetBlackWhiteListRequest(TeaModel):
     def __init__(
         self,
@@ -10735,6 +10927,7 @@ class GetGatewayRouteDetailResponseBodyData(TeaModel):
         domain_id_list: List[int] = None,
         domain_name: str = None,
         domain_name_list: List[str] = None,
+        enable_waf: bool = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
         gmt_create: str = None,
@@ -10762,6 +10955,7 @@ class GetGatewayRouteDetailResponseBodyData(TeaModel):
         self.domain_id_list = domain_id_list
         self.domain_name = domain_name
         self.domain_name_list = domain_name_list
+        self.enable_waf = enable_waf
         self.gateway_id = gateway_id
         self.gateway_unique_id = gateway_unique_id
         self.gmt_create = gmt_create
@@ -10826,6 +11020,8 @@ class GetGatewayRouteDetailResponseBodyData(TeaModel):
             result['DomainName'] = self.domain_name
         if self.domain_name_list is not None:
             result['DomainNameList'] = self.domain_name_list
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_unique_id is not None:
@@ -10886,6 +11082,8 @@ class GetGatewayRouteDetailResponseBodyData(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('DomainNameList') is not None:
             self.domain_name_list = m.get('DomainNameList')
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayUniqueId') is not None:
@@ -17515,6 +17713,39 @@ class ListGatewayShrinkRequest(TeaModel):
         return self
 
 
+class ListGatewayResponseBodyDataResultInitConfig(TeaModel):
+    def __init__(
+        self,
+        enable_waf: bool = None,
+        support_waf: bool = None,
+    ):
+        self.enable_waf = enable_waf
+        self.support_waf = support_waf
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
+        if self.support_waf is not None:
+            result['SupportWaf'] = self.support_waf
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
+        if m.get('SupportWaf') is not None:
+            self.support_waf = m.get('SupportWaf')
+        return self
+
+
 class ListGatewayResponseBodyDataResultInternetSlb(TeaModel):
     def __init__(
         self,
@@ -17672,6 +17903,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         gmt_create: str = None,
         gmt_modified: str = None,
         id: int = None,
+        init_config: ListGatewayResponseBodyDataResultInitConfig = None,
         instance_id: str = None,
         internet_slb: List[ListGatewayResponseBodyDataResultInternetSlb] = None,
         latest_version: str = None,
@@ -17698,6 +17930,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.id = id
+        self.init_config = init_config
         self.instance_id = instance_id
         self.internet_slb = internet_slb
         self.latest_version = latest_version
@@ -17715,6 +17948,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         self.vswitch_2 = vswitch_2
 
     def validate(self):
+        if self.init_config:
+            self.init_config.validate()
         if self.internet_slb:
             for k in self.internet_slb:
                 if k:
@@ -17750,6 +17985,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.id is not None:
             result['Id'] = self.id
+        if self.init_config is not None:
+            result['InitConfig'] = self.init_config.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         result['InternetSlb'] = []
@@ -17808,6 +18045,9 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('InitConfig') is not None:
+            temp_model = ListGatewayResponseBodyDataResultInitConfig()
+            self.init_config = temp_model.from_map(m['InitConfig'])
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         self.internet_slb = []
@@ -18808,6 +19048,7 @@ class ListGatewayRouteResponseBodyDataResult(TeaModel):
         domain_id_list: List[int] = None,
         domain_name: str = None,
         domain_name_list: List[str] = None,
+        enable_waf: str = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
         gmt_create: str = None,
@@ -18832,6 +19073,7 @@ class ListGatewayRouteResponseBodyDataResult(TeaModel):
         self.domain_id_list = domain_id_list
         self.domain_name = domain_name
         self.domain_name_list = domain_name_list
+        self.enable_waf = enable_waf
         self.gateway_id = gateway_id
         self.gateway_unique_id = gateway_unique_id
         self.gmt_create = gmt_create
@@ -18885,6 +19127,8 @@ class ListGatewayRouteResponseBodyDataResult(TeaModel):
             result['DomainName'] = self.domain_name
         if self.domain_name_list is not None:
             result['DomainNameList'] = self.domain_name_list
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_unique_id is not None:
@@ -18939,6 +19183,8 @@ class ListGatewayRouteResponseBodyDataResult(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('DomainNameList') is not None:
             self.domain_name_list = m.get('DomainNameList')
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayUniqueId') is not None:
@@ -19327,6 +19573,7 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
         gmt_create: str = None,
         gmt_modified: str = None,
         group_name: str = None,
+        healeh_status: str = None,
         id: int = None,
         ips: List[str] = None,
         meta_info: str = None,
@@ -19344,6 +19591,7 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.group_name = group_name
+        self.healeh_status = healeh_status
         self.id = id
         self.ips = ips
         self.meta_info = meta_info
@@ -19378,6 +19626,8 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
             result['GmtModified'] = self.gmt_modified
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.healeh_status is not None:
+            result['HealehStatus'] = self.healeh_status
         if self.id is not None:
             result['Id'] = self.id
         if self.ips is not None:
@@ -19416,6 +19666,8 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
             self.gmt_modified = m.get('GmtModified')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('HealehStatus') is not None:
+            self.healeh_status = m.get('HealehStatus')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Ips') is not None:
@@ -27364,6 +27616,7 @@ class UpdateGatewayRouteRequest(TeaModel):
         destination_type: str = None,
         direct_response_json: UpdateGatewayRouteRequestDirectResponseJSON = None,
         domain_id_list_json: str = None,
+        enable_waf: bool = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
         id: int = None,
@@ -27377,6 +27630,7 @@ class UpdateGatewayRouteRequest(TeaModel):
         self.destination_type = destination_type
         self.direct_response_json = direct_response_json
         self.domain_id_list_json = domain_id_list_json
+        self.enable_waf = enable_waf
         self.gateway_id = gateway_id
         self.gateway_unique_id = gateway_unique_id
         self.id = id
@@ -27412,6 +27666,8 @@ class UpdateGatewayRouteRequest(TeaModel):
             result['DirectResponseJSON'] = self.direct_response_json.to_map()
         if self.domain_id_list_json is not None:
             result['DomainIdListJSON'] = self.domain_id_list_json
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_unique_id is not None:
@@ -27443,6 +27699,8 @@ class UpdateGatewayRouteRequest(TeaModel):
             self.direct_response_json = temp_model.from_map(m['DirectResponseJSON'])
         if m.get('DomainIdListJSON') is not None:
             self.domain_id_list_json = m.get('DomainIdListJSON')
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayUniqueId') is not None:
@@ -27474,6 +27732,7 @@ class UpdateGatewayRouteShrinkRequest(TeaModel):
         destination_type: str = None,
         direct_response_jsonshrink: str = None,
         domain_id_list_json: str = None,
+        enable_waf: bool = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
         id: int = None,
@@ -27487,6 +27746,7 @@ class UpdateGatewayRouteShrinkRequest(TeaModel):
         self.destination_type = destination_type
         self.direct_response_jsonshrink = direct_response_jsonshrink
         self.domain_id_list_json = domain_id_list_json
+        self.enable_waf = enable_waf
         self.gateway_id = gateway_id
         self.gateway_unique_id = gateway_unique_id
         self.id = id
@@ -27513,6 +27773,8 @@ class UpdateGatewayRouteShrinkRequest(TeaModel):
             result['DirectResponseJSON'] = self.direct_response_jsonshrink
         if self.domain_id_list_json is not None:
             result['DomainIdListJSON'] = self.domain_id_list_json
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_unique_id is not None:
@@ -27541,6 +27803,8 @@ class UpdateGatewayRouteShrinkRequest(TeaModel):
             self.direct_response_jsonshrink = m.get('DirectResponseJSON')
         if m.get('DomainIdListJSON') is not None:
             self.domain_id_list_json = m.get('DomainIdListJSON')
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayUniqueId') is not None:
@@ -28697,6 +28961,982 @@ class UpdateGatewayRouteTimeoutResponse(TeaModel):
         return self
 
 
+class UpdateGatewayRouteWafStatusRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        enable_waf: bool = None,
+        gateway_unique_id: str = None,
+        route_id: int = None,
+    ):
+        self.accept_language = accept_language
+        self.enable_waf = enable_waf
+        self.gateway_unique_id = gateway_unique_id
+        self.route_id = route_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.route_id is not None:
+            result['RouteId'] = self.route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('RouteId') is not None:
+            self.route_id = m.get('RouteId')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataCors(TeaModel):
+    def __init__(
+        self,
+        allow_credentials: bool = None,
+        allow_headers: str = None,
+        allow_methods: str = None,
+        allow_origins: str = None,
+        expose_headers: str = None,
+        status: str = None,
+        time_unit: str = None,
+        unit_num: int = None,
+    ):
+        self.allow_credentials = allow_credentials
+        self.allow_headers = allow_headers
+        self.allow_methods = allow_methods
+        self.allow_origins = allow_origins
+        self.expose_headers = expose_headers
+        self.status = status
+        self.time_unit = time_unit
+        self.unit_num = unit_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_credentials is not None:
+            result['AllowCredentials'] = self.allow_credentials
+        if self.allow_headers is not None:
+            result['AllowHeaders'] = self.allow_headers
+        if self.allow_methods is not None:
+            result['AllowMethods'] = self.allow_methods
+        if self.allow_origins is not None:
+            result['AllowOrigins'] = self.allow_origins
+        if self.expose_headers is not None:
+            result['ExposeHeaders'] = self.expose_headers
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.time_unit is not None:
+            result['TimeUnit'] = self.time_unit
+        if self.unit_num is not None:
+            result['UnitNum'] = self.unit_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCredentials') is not None:
+            self.allow_credentials = m.get('AllowCredentials')
+        if m.get('AllowHeaders') is not None:
+            self.allow_headers = m.get('AllowHeaders')
+        if m.get('AllowMethods') is not None:
+            self.allow_methods = m.get('AllowMethods')
+        if m.get('AllowOrigins') is not None:
+            self.allow_origins = m.get('AllowOrigins')
+        if m.get('ExposeHeaders') is not None:
+            self.expose_headers = m.get('ExposeHeaders')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TimeUnit') is not None:
+            self.time_unit = m.get('TimeUnit')
+        if m.get('UnitNum') is not None:
+            self.unit_num = m.get('UnitNum')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse(TeaModel):
+    def __init__(
+        self,
+        body: str = None,
+        code: int = None,
+    ):
+        self.body = body
+        self.code = code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.code is not None:
+            result['Code'] = self.code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite(TeaModel):
+    def __init__(
+        self,
+        host: str = None,
+        path: str = None,
+        path_type: str = None,
+        pattern: str = None,
+        status: str = None,
+        substitution: str = None,
+    ):
+        self.host = host
+        self.path = path
+        self.path_type = path_type
+        self.pattern = pattern
+        self.status = status
+        self.substitution = substitution
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.path_type is not None:
+            result['PathType'] = self.path_type
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.substitution is not None:
+            result['Substitution'] = self.substitution
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('PathType') is not None:
+            self.path_type = m.get('PathType')
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Substitution') is not None:
+            self.substitution = m.get('Substitution')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems(TeaModel):
+    def __init__(
+        self,
+        direction_type: str = None,
+        key: str = None,
+        op_type: str = None,
+        value: str = None,
+    ):
+        self.direction_type = direction_type
+        self.key = key
+        self.op_type = op_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction_type is not None:
+            result['DirectionType'] = self.direction_type
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.op_type is not None:
+            result['OpType'] = self.op_type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DirectionType') is not None:
+            self.direction_type = m.get('DirectionType')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OpType') is not None:
+            self.op_type = m.get('OpType')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp(TeaModel):
+    def __init__(
+        self,
+        header_op_items: List[UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems] = None,
+        status: str = None,
+    ):
+        self.header_op_items = header_op_items
+        self.status = status
+
+    def validate(self):
+        if self.header_op_items:
+            for k in self.header_op_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HeaderOpItems'] = []
+        if self.header_op_items is not None:
+            for k in self.header_op_items:
+                result['HeaderOpItems'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.header_op_items = []
+        if m.get('HeaderOpItems') is not None:
+            for k in m.get('HeaderOpItems'):
+                temp_model = UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems()
+                self.header_op_items.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataRedirect(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        host: str = None,
+        path: str = None,
+    ):
+        self.code = code
+        self.host = host
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataRetry(TeaModel):
+    def __init__(
+        self,
+        attempts: int = None,
+        http_codes: List[str] = None,
+        retry_on: List[str] = None,
+        status: str = None,
+    ):
+        self.attempts = attempts
+        self.http_codes = http_codes
+        self.retry_on = retry_on
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attempts is not None:
+            result['Attempts'] = self.attempts
+        if self.http_codes is not None:
+            result['HttpCodes'] = self.http_codes
+        if self.retry_on is not None:
+            result['RetryOn'] = self.retry_on
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attempts') is not None:
+            self.attempts = m.get('Attempts')
+        if m.get('HttpCodes') is not None:
+            self.http_codes = m.get('HttpCodes')
+        if m.get('RetryOn') is not None:
+            self.retry_on = m.get('RetryOn')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates(TeaModel):
+    def __init__(
+        self,
+        ignore_case: bool = None,
+        path: str = None,
+        type: str = None,
+    ):
+        self.ignore_case = ignore_case
+        self.path = path
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ignore_case is not None:
+            result['IgnoreCase'] = self.ignore_case
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IgnoreCase') is not None:
+            self.ignore_case = m.get('IgnoreCase')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates(TeaModel):
+    def __init__(
+        self,
+        header_predicates: List[UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates] = None,
+        method_predicates: List[str] = None,
+        path_predicates: UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates = None,
+        query_predicates: List[UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates] = None,
+    ):
+        self.header_predicates = header_predicates
+        self.method_predicates = method_predicates
+        self.path_predicates = path_predicates
+        self.query_predicates = query_predicates
+
+    def validate(self):
+        if self.header_predicates:
+            for k in self.header_predicates:
+                if k:
+                    k.validate()
+        if self.path_predicates:
+            self.path_predicates.validate()
+        if self.query_predicates:
+            for k in self.query_predicates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HeaderPredicates'] = []
+        if self.header_predicates is not None:
+            for k in self.header_predicates:
+                result['HeaderPredicates'].append(k.to_map() if k else None)
+        if self.method_predicates is not None:
+            result['MethodPredicates'] = self.method_predicates
+        if self.path_predicates is not None:
+            result['PathPredicates'] = self.path_predicates.to_map()
+        result['QueryPredicates'] = []
+        if self.query_predicates is not None:
+            for k in self.query_predicates:
+                result['QueryPredicates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.header_predicates = []
+        if m.get('HeaderPredicates') is not None:
+            for k in m.get('HeaderPredicates'):
+                temp_model = UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates()
+                self.header_predicates.append(temp_model.from_map(k))
+        if m.get('MethodPredicates') is not None:
+            self.method_predicates = m.get('MethodPredicates')
+        if m.get('PathPredicates') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates()
+            self.path_predicates = temp_model.from_map(m['PathPredicates'])
+        self.query_predicates = []
+        if m.get('QueryPredicates') is not None:
+            for k in m.get('QueryPredicates'):
+                temp_model = UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates()
+                self.query_predicates.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataRouteServices(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+        name: str = None,
+        namespace: str = None,
+        percent: int = None,
+        service_id: int = None,
+        service_name: str = None,
+        source_type: str = None,
+        version: str = None,
+    ):
+        self.group_name = group_name
+        self.name = name
+        self.namespace = namespace
+        self.percent = percent
+        self.service_id = service_id
+        self.service_name = service_name
+        self.source_type = source_type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyDataTimeout(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        time_unit: str = None,
+        unit_num: int = None,
+    ):
+        self.status = status
+        self.time_unit = time_unit
+        self.unit_num = unit_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.time_unit is not None:
+            result['TimeUnit'] = self.time_unit
+        if self.unit_num is not None:
+            result['UnitNum'] = self.unit_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TimeUnit') is not None:
+            self.time_unit = m.get('TimeUnit')
+        if m.get('UnitNum') is not None:
+            self.unit_num = m.get('UnitNum')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cors: UpdateGatewayRouteWafStatusResponseBodyDataCors = None,
+        default_service_id: int = None,
+        default_service_name: str = None,
+        destination_type: str = None,
+        direct_response: UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse = None,
+        domain_id: int = None,
+        domain_id_list: List[int] = None,
+        domain_name: str = None,
+        domain_name_list: List[str] = None,
+        enable_waf: bool = None,
+        gateway_id: int = None,
+        gateway_unique_id: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        httprewrite: UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite = None,
+        header_op: UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp = None,
+        id: int = None,
+        name: str = None,
+        predicates: str = None,
+        redirect: UpdateGatewayRouteWafStatusResponseBodyDataRedirect = None,
+        retry: UpdateGatewayRouteWafStatusResponseBodyDataRetry = None,
+        route_order: int = None,
+        route_predicates: UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates = None,
+        route_services: List[UpdateGatewayRouteWafStatusResponseBodyDataRouteServices] = None,
+        services: str = None,
+        status: int = None,
+        timeout: UpdateGatewayRouteWafStatusResponseBodyDataTimeout = None,
+    ):
+        self.cors = cors
+        self.default_service_id = default_service_id
+        self.default_service_name = default_service_name
+        self.destination_type = destination_type
+        self.direct_response = direct_response
+        self.domain_id = domain_id
+        self.domain_id_list = domain_id_list
+        self.domain_name = domain_name
+        self.domain_name_list = domain_name_list
+        self.enable_waf = enable_waf
+        self.gateway_id = gateway_id
+        self.gateway_unique_id = gateway_unique_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.httprewrite = httprewrite
+        self.header_op = header_op
+        self.id = id
+        self.name = name
+        self.predicates = predicates
+        self.redirect = redirect
+        self.retry = retry
+        self.route_order = route_order
+        self.route_predicates = route_predicates
+        self.route_services = route_services
+        self.services = services
+        self.status = status
+        self.timeout = timeout
+
+    def validate(self):
+        if self.cors:
+            self.cors.validate()
+        if self.direct_response:
+            self.direct_response.validate()
+        if self.httprewrite:
+            self.httprewrite.validate()
+        if self.header_op:
+            self.header_op.validate()
+        if self.redirect:
+            self.redirect.validate()
+        if self.retry:
+            self.retry.validate()
+        if self.route_predicates:
+            self.route_predicates.validate()
+        if self.route_services:
+            for k in self.route_services:
+                if k:
+                    k.validate()
+        if self.timeout:
+            self.timeout.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cors is not None:
+            result['Cors'] = self.cors.to_map()
+        if self.default_service_id is not None:
+            result['DefaultServiceId'] = self.default_service_id
+        if self.default_service_name is not None:
+            result['DefaultServiceName'] = self.default_service_name
+        if self.destination_type is not None:
+            result['DestinationType'] = self.destination_type
+        if self.direct_response is not None:
+            result['DirectResponse'] = self.direct_response.to_map()
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+        if self.domain_id_list is not None:
+            result['DomainIdList'] = self.domain_id_list
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.domain_name_list is not None:
+            result['DomainNameList'] = self.domain_name_list
+        if self.enable_waf is not None:
+            result['EnableWaf'] = self.enable_waf
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.httprewrite is not None:
+            result['HTTPRewrite'] = self.httprewrite.to_map()
+        if self.header_op is not None:
+            result['HeaderOp'] = self.header_op.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.predicates is not None:
+            result['Predicates'] = self.predicates
+        if self.redirect is not None:
+            result['Redirect'] = self.redirect.to_map()
+        if self.retry is not None:
+            result['Retry'] = self.retry.to_map()
+        if self.route_order is not None:
+            result['RouteOrder'] = self.route_order
+        if self.route_predicates is not None:
+            result['RoutePredicates'] = self.route_predicates.to_map()
+        result['RouteServices'] = []
+        if self.route_services is not None:
+            for k in self.route_services:
+                result['RouteServices'].append(k.to_map() if k else None)
+        if self.services is not None:
+            result['Services'] = self.services
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cors') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyDataCors()
+            self.cors = temp_model.from_map(m['Cors'])
+        if m.get('DefaultServiceId') is not None:
+            self.default_service_id = m.get('DefaultServiceId')
+        if m.get('DefaultServiceName') is not None:
+            self.default_service_name = m.get('DefaultServiceName')
+        if m.get('DestinationType') is not None:
+            self.destination_type = m.get('DestinationType')
+        if m.get('DirectResponse') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse()
+            self.direct_response = temp_model.from_map(m['DirectResponse'])
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+        if m.get('DomainIdList') is not None:
+            self.domain_id_list = m.get('DomainIdList')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('DomainNameList') is not None:
+            self.domain_name_list = m.get('DomainNameList')
+        if m.get('EnableWaf') is not None:
+            self.enable_waf = m.get('EnableWaf')
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('HTTPRewrite') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite()
+            self.httprewrite = temp_model.from_map(m['HTTPRewrite'])
+        if m.get('HeaderOp') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp()
+            self.header_op = temp_model.from_map(m['HeaderOp'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Predicates') is not None:
+            self.predicates = m.get('Predicates')
+        if m.get('Redirect') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyDataRedirect()
+            self.redirect = temp_model.from_map(m['Redirect'])
+        if m.get('Retry') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyDataRetry()
+            self.retry = temp_model.from_map(m['Retry'])
+        if m.get('RouteOrder') is not None:
+            self.route_order = m.get('RouteOrder')
+        if m.get('RoutePredicates') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates()
+            self.route_predicates = temp_model.from_map(m['RoutePredicates'])
+        self.route_services = []
+        if m.get('RouteServices') is not None:
+            for k in m.get('RouteServices'):
+                temp_model = UpdateGatewayRouteWafStatusResponseBodyDataRouteServices()
+                self.route_services.append(temp_model.from_map(k))
+        if m.get('Services') is not None:
+            self.services = m.get('Services')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Timeout') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyDataTimeout()
+            self.timeout = temp_model.from_map(m['Timeout'])
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: UpdateGatewayRouteWafStatusResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateGatewayRouteWafStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateGatewayRouteWafStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateGatewayRouteWafStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateGatewayServiceTrafficPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -29158,6 +30398,202 @@ class UpdateImageResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateImageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMessageQueueRouteRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        enable: bool = None,
+        region: str = None,
+        tags: List[str] = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.enable = enable
+        self.region = region
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class UpdateMessageQueueRouteShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        enable: bool = None,
+        region: str = None,
+        tags_shrink: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.enable = enable
+        self.region = region
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class UpdateMessageQueueRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateMessageQueueRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateMessageQueueRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateMessageQueueRouteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

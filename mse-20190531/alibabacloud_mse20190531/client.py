@@ -448,6 +448,8 @@ class Client(OpenApiClient):
             query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.domain_id_list_json):
             query['DomainIdListJSON'] = request.domain_id_list_json
+        if not UtilClient.is_unset(request.enable_waf):
+            query['EnableWaf'] = request.enable_waf
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
@@ -508,6 +510,8 @@ class Client(OpenApiClient):
             query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.domain_id_list_json):
             query['DomainIdListJSON'] = request.domain_id_list_json
+        if not UtilClient.is_unset(request.enable_waf):
+            query['EnableWaf'] = request.enable_waf
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
@@ -3893,6 +3897,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_nacos_config_with_options_async(request, runtime)
 
+    def get_app_message_queue_route_with_options(
+        self,
+        request: mse_20190531_models.GetAppMessageQueueRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetAppMessageQueueRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppMessageQueueRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetAppMessageQueueRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_message_queue_route_with_options_async(
+        self,
+        request: mse_20190531_models.GetAppMessageQueueRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetAppMessageQueueRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppMessageQueueRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetAppMessageQueueRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_message_queue_route(
+        self,
+        request: mse_20190531_models.GetAppMessageQueueRouteRequest,
+    ) -> mse_20190531_models.GetAppMessageQueueRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_app_message_queue_route_with_options(request, runtime)
+
+    async def get_app_message_queue_route_async(
+        self,
+        request: mse_20190531_models.GetAppMessageQueueRouteRequest,
+    ) -> mse_20190531_models.GetAppMessageQueueRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_app_message_queue_route_with_options_async(request, runtime)
+
     def get_black_white_list_with_options(
         self,
         request: mse_20190531_models.GetBlackWhiteListRequest,
@@ -4297,7 +4379,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4306,7 +4394,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -4323,7 +4411,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4332,7 +4426,7 @@ class Client(OpenApiClient):
             version='2019-05-31',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -9906,6 +10000,8 @@ class Client(OpenApiClient):
             query['DirectResponseJSON'] = request.direct_response_jsonshrink
         if not UtilClient.is_unset(request.domain_id_list_json):
             query['DomainIdListJSON'] = request.domain_id_list_json
+        if not UtilClient.is_unset(request.enable_waf):
+            query['EnableWaf'] = request.enable_waf
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
@@ -9966,6 +10062,8 @@ class Client(OpenApiClient):
             query['DirectResponseJSON'] = request.direct_response_jsonshrink
         if not UtilClient.is_unset(request.domain_id_list_json):
             query['DomainIdListJSON'] = request.domain_id_list_json
+        if not UtilClient.is_unset(request.enable_waf):
+            query['EnableWaf'] = request.enable_waf
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
@@ -10469,6 +10567,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_timeout_with_options_async(request, runtime)
 
+    def update_gateway_route_waf_status_with_options(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable_waf):
+            query['EnableWaf'] = request.enable_waf
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteWafStatus',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteWafStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_gateway_route_waf_status_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable_waf):
+            query['EnableWaf'] = request.enable_waf
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.route_id):
+            query['RouteId'] = request.route_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGatewayRouteWafStatus',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateGatewayRouteWafStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_gateway_route_waf_status(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_gateway_route_waf_status_with_options(request, runtime)
+
+    async def update_gateway_route_waf_status_async(
+        self,
+        request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
+    ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_gateway_route_waf_status_with_options_async(request, runtime)
+
     def update_gateway_service_traffic_policy_with_options(
         self,
         tmp_req: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
@@ -10722,6 +10902,100 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.UpdateImageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_image_with_options_async(request, runtime)
+
+    def update_message_queue_route_with_options(
+        self,
+        tmp_req: mse_20190531_models.UpdateMessageQueueRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateMessageQueueRouteResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateMessageQueueRouteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMessageQueueRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateMessageQueueRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_message_queue_route_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.UpdateMessageQueueRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateMessageQueueRouteResponse:
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateMessageQueueRouteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMessageQueueRoute',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateMessageQueueRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_message_queue_route(
+        self,
+        request: mse_20190531_models.UpdateMessageQueueRouteRequest,
+    ) -> mse_20190531_models.UpdateMessageQueueRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_message_queue_route_with_options(request, runtime)
+
+    async def update_message_queue_route_async(
+        self,
+        request: mse_20190531_models.UpdateMessageQueueRouteRequest,
+    ) -> mse_20190531_models.UpdateMessageQueueRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_message_queue_route_with_options_async(request, runtime)
 
     def update_nacos_cluster_with_options(
         self,

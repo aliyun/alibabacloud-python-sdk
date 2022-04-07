@@ -1,3 +1,6 @@
+2022-04-07 Version: 3.0.16
+- Add Message Queue Route API.
+
 2022-03-23 Version: 3.0.14
 - Fix Gateway api.
 
