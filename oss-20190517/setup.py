@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_oss20190517.
 
-Created on 31/12/2021
+Created on 07/04/2022
 
 @author: Alibaba Cloud SDK
 """
@@ -39,7 +39,7 @@ VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "alibabacloud_tea_util>=0.3.5, <1.0.0",
     "alibabacloud_gateway_spi>=0.0.1, <1.0.0",
-    "alibabacloud_gateway_oss>=0.0.3, <1.0.0",
+    "alibabacloud_gateway_oss>=0.0.4, <1.0.0",
     "alibabacloud_tea_openapi>=0.3.1, <1.0.0",
     "alibabacloud_openapi_util>=0.1.6, <1.0.0"
 ]
