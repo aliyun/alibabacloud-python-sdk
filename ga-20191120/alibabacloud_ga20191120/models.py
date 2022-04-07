@@ -1081,6 +1081,33 @@ class ConfigEndpointProbeResponse(TeaModel):
         return self
 
 
+class CreateAcceleratorRequestIpSetConfig(TeaModel):
+    def __init__(
+        self,
+        access_mode: str = None,
+    ):
+        self.access_mode = access_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_mode is not None:
+            result['AccessMode'] = self.access_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessMode') is not None:
+            self.access_mode = m.get('AccessMode')
+        return self
+
+
 class CreateAcceleratorRequest(TeaModel):
     def __init__(
         self,
@@ -1090,6 +1117,7 @@ class CreateAcceleratorRequest(TeaModel):
         auto_use_coupon: str = None,
         client_token: str = None,
         duration: int = None,
+        ip_set_config: CreateAcceleratorRequestIpSetConfig = None,
         name: str = None,
         pricing_cycle: str = None,
         region_id: str = None,
@@ -1101,13 +1129,15 @@ class CreateAcceleratorRequest(TeaModel):
         self.auto_use_coupon = auto_use_coupon
         self.client_token = client_token
         self.duration = duration
+        self.ip_set_config = ip_set_config
         self.name = name
         self.pricing_cycle = pricing_cycle
         self.region_id = region_id
         self.spec = spec
 
     def validate(self):
-        pass
+        if self.ip_set_config:
+            self.ip_set_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1127,6 +1157,8 @@ class CreateAcceleratorRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.ip_set_config is not None:
+            result['IpSetConfig'] = self.ip_set_config.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.pricing_cycle is not None:
@@ -1151,6 +1183,9 @@ class CreateAcceleratorRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('IpSetConfig') is not None:
+            temp_model = CreateAcceleratorRequestIpSetConfig()
+            self.ip_set_config = temp_model.from_map(m['IpSetConfig'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PricingCycle') is not None:
@@ -2858,10 +2893,12 @@ class CreateForwardingRulesRequestForwardingRulesRuleActions(TeaModel):
         forward_group_config: CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig = None,
         order: int = None,
         rule_action_type: str = None,
+        rule_action_value: str = None,
     ):
         self.forward_group_config = forward_group_config
         self.order = order
         self.rule_action_type = rule_action_type
+        self.rule_action_value = rule_action_value
 
     def validate(self):
         if self.forward_group_config:
@@ -2879,6 +2916,8 @@ class CreateForwardingRulesRequestForwardingRulesRuleActions(TeaModel):
             result['Order'] = self.order
         if self.rule_action_type is not None:
             result['RuleActionType'] = self.rule_action_type
+        if self.rule_action_value is not None:
+            result['RuleActionValue'] = self.rule_action_value
         return result
 
     def from_map(self, m: dict = None):
@@ -2890,6 +2929,8 @@ class CreateForwardingRulesRequestForwardingRulesRuleActions(TeaModel):
             self.order = m.get('Order')
         if m.get('RuleActionType') is not None:
             self.rule_action_type = m.get('RuleActionType')
+        if m.get('RuleActionValue') is not None:
+            self.rule_action_value = m.get('RuleActionValue')
         return self
 
 
@@ -2953,10 +2994,12 @@ class CreateForwardingRulesRequestForwardingRulesRuleConditions(TeaModel):
         host_config: CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig = None,
         path_config: CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig = None,
         rule_condition_type: str = None,
+        rule_condition_value: str = None,
     ):
         self.host_config = host_config
         self.path_config = path_config
         self.rule_condition_type = rule_condition_type
+        self.rule_condition_value = rule_condition_value
 
     def validate(self):
         if self.host_config:
@@ -2976,6 +3019,8 @@ class CreateForwardingRulesRequestForwardingRulesRuleConditions(TeaModel):
             result['PathConfig'] = self.path_config.to_map()
         if self.rule_condition_type is not None:
             result['RuleConditionType'] = self.rule_condition_type
+        if self.rule_condition_value is not None:
+            result['RuleConditionValue'] = self.rule_condition_value
         return result
 
     def from_map(self, m: dict = None):
@@ -2988,6 +3033,8 @@ class CreateForwardingRulesRequestForwardingRulesRuleConditions(TeaModel):
             self.path_config = temp_model.from_map(m['PathConfig'])
         if m.get('RuleConditionType') is not None:
             self.rule_condition_type = m.get('RuleConditionType')
+        if m.get('RuleConditionValue') is not None:
+            self.rule_condition_value = m.get('RuleConditionValue')
         return self
 
 
@@ -2998,11 +3045,13 @@ class CreateForwardingRulesRequestForwardingRules(TeaModel):
         priority: int = None,
         rule_actions: List[CreateForwardingRulesRequestForwardingRulesRuleActions] = None,
         rule_conditions: List[CreateForwardingRulesRequestForwardingRulesRuleConditions] = None,
+        rule_direction: str = None,
     ):
         self.forwarding_rule_name = forwarding_rule_name
         self.priority = priority
         self.rule_actions = rule_actions
         self.rule_conditions = rule_conditions
+        self.rule_direction = rule_direction
 
     def validate(self):
         if self.rule_actions:
@@ -3032,6 +3081,8 @@ class CreateForwardingRulesRequestForwardingRules(TeaModel):
         if self.rule_conditions is not None:
             for k in self.rule_conditions:
                 result['RuleConditions'].append(k.to_map() if k else None)
+        if self.rule_direction is not None:
+            result['RuleDirection'] = self.rule_direction
         return result
 
     def from_map(self, m: dict = None):
@@ -3050,6 +3101,8 @@ class CreateForwardingRulesRequestForwardingRules(TeaModel):
             for k in m.get('RuleConditions'):
                 temp_model = CreateForwardingRulesRequestForwardingRulesRuleConditions()
                 self.rule_conditions.append(temp_model.from_map(k))
+        if m.get('RuleDirection') is not None:
+            self.rule_direction = m.get('RuleDirection')
         return self
 
 
@@ -5486,6 +5539,33 @@ class DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage(TeaModel):
         return self
 
 
+class DescribeAcceleratorResponseBodyIpSetConfig(TeaModel):
+    def __init__(
+        self,
+        access_mode: str = None,
+    ):
+        self.access_mode = access_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_mode is not None:
+            result['AccessMode'] = self.access_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessMode') is not None:
+            self.access_mode = m.get('AccessMode')
+        return self
+
+
 class DescribeAcceleratorResponseBody(TeaModel):
     def __init__(
         self,
@@ -5499,6 +5579,7 @@ class DescribeAcceleratorResponseBody(TeaModel):
         dns_name: str = None,
         expired_time: int = None,
         instance_charge_type: str = None,
+        ip_set_config: DescribeAcceleratorResponseBodyIpSetConfig = None,
         name: str = None,
         region_id: str = None,
         request_id: str = None,
@@ -5516,6 +5597,7 @@ class DescribeAcceleratorResponseBody(TeaModel):
         self.dns_name = dns_name
         self.expired_time = expired_time
         self.instance_charge_type = instance_charge_type
+        self.ip_set_config = ip_set_config
         self.name = name
         self.region_id = region_id
         self.request_id = request_id
@@ -5528,6 +5610,8 @@ class DescribeAcceleratorResponseBody(TeaModel):
             self.basic_bandwidth_package.validate()
         if self.cross_domain_bandwidth_package:
             self.cross_domain_bandwidth_package.validate()
+        if self.ip_set_config:
+            self.ip_set_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5555,6 +5639,8 @@ class DescribeAcceleratorResponseBody(TeaModel):
             result['ExpiredTime'] = self.expired_time
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
+        if self.ip_set_config is not None:
+            result['IpSetConfig'] = self.ip_set_config.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.region_id is not None:
@@ -5593,6 +5679,9 @@ class DescribeAcceleratorResponseBody(TeaModel):
             self.expired_time = m.get('ExpiredTime')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('IpSetConfig') is not None:
+            temp_model = DescribeAcceleratorResponseBodyIpSetConfig()
+            self.ip_set_config = temp_model.from_map(m['IpSetConfig'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
@@ -9501,6 +9590,34 @@ class ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage(TeaMod
         return self
 
 
+class ListAcceleratorsResponseBodyAcceleratorsIpSetConfig(TeaModel):
+    def __init__(
+        self,
+        access_mode: str = None,
+    ):
+        # 加速区接入方式
+        self.access_mode = access_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_mode is not None:
+            result['AccessMode'] = self.access_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessMode') is not None:
+            self.access_mode = m.get('AccessMode')
+        return self
+
+
 class ListAcceleratorsResponseBodyAccelerators(TeaModel):
     def __init__(
         self,
@@ -9515,6 +9632,7 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
         dns_name: str = None,
         expired_time: int = None,
         instance_charge_type: str = None,
+        ip_set_config: ListAcceleratorsResponseBodyAcceleratorsIpSetConfig = None,
         name: str = None,
         region_id: str = None,
         second_dns_name: str = None,
@@ -9533,6 +9651,8 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
         self.dns_name = dns_name
         self.expired_time = expired_time
         self.instance_charge_type = instance_charge_type
+        # 加速区配置
+        self.ip_set_config = ip_set_config
         self.name = name
         self.region_id = region_id
         self.second_dns_name = second_dns_name
@@ -9545,6 +9665,8 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
             self.basic_bandwidth_package.validate()
         if self.cross_domain_bandwidth_package:
             self.cross_domain_bandwidth_package.validate()
+        if self.ip_set_config:
+            self.ip_set_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9574,6 +9696,8 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
             result['ExpiredTime'] = self.expired_time
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
+        if self.ip_set_config is not None:
+            result['IpSetConfig'] = self.ip_set_config.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.region_id is not None:
@@ -9614,6 +9738,9 @@ class ListAcceleratorsResponseBodyAccelerators(TeaModel):
             self.expired_time = m.get('ExpiredTime')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
+        if m.get('IpSetConfig') is not None:
+            temp_model = ListAcceleratorsResponseBodyAcceleratorsIpSetConfig()
+            self.ip_set_config = temp_model.from_map(m['IpSetConfig'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
@@ -12221,10 +12348,12 @@ class ListForwardingRulesResponseBodyForwardingRulesRuleActions(TeaModel):
         forward_group_config: ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfig = None,
         order: int = None,
         rule_action_type: str = None,
+        rule_action_value: str = None,
     ):
         self.forward_group_config = forward_group_config
         self.order = order
         self.rule_action_type = rule_action_type
+        self.rule_action_value = rule_action_value
 
     def validate(self):
         if self.forward_group_config:
@@ -12242,6 +12371,8 @@ class ListForwardingRulesResponseBodyForwardingRulesRuleActions(TeaModel):
             result['Order'] = self.order
         if self.rule_action_type is not None:
             result['RuleActionType'] = self.rule_action_type
+        if self.rule_action_value is not None:
+            result['RuleActionValue'] = self.rule_action_value
         return result
 
     def from_map(self, m: dict = None):
@@ -12253,6 +12384,8 @@ class ListForwardingRulesResponseBodyForwardingRulesRuleActions(TeaModel):
             self.order = m.get('Order')
         if m.get('RuleActionType') is not None:
             self.rule_action_type = m.get('RuleActionType')
+        if m.get('RuleActionValue') is not None:
+            self.rule_action_value = m.get('RuleActionValue')
         return self
 
 
@@ -12316,10 +12449,12 @@ class ListForwardingRulesResponseBodyForwardingRulesRuleConditions(TeaModel):
         host_config: ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig = None,
         path_config: ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig = None,
         rule_condition_type: str = None,
+        rule_condition_value: str = None,
     ):
         self.host_config = host_config
         self.path_config = path_config
         self.rule_condition_type = rule_condition_type
+        self.rule_condition_value = rule_condition_value
 
     def validate(self):
         if self.host_config:
@@ -12339,6 +12474,8 @@ class ListForwardingRulesResponseBodyForwardingRulesRuleConditions(TeaModel):
             result['PathConfig'] = self.path_config.to_map()
         if self.rule_condition_type is not None:
             result['RuleConditionType'] = self.rule_condition_type
+        if self.rule_condition_value is not None:
+            result['RuleConditionValue'] = self.rule_condition_value
         return result
 
     def from_map(self, m: dict = None):
@@ -12351,12 +12488,15 @@ class ListForwardingRulesResponseBodyForwardingRulesRuleConditions(TeaModel):
             self.path_config = temp_model.from_map(m['PathConfig'])
         if m.get('RuleConditionType') is not None:
             self.rule_condition_type = m.get('RuleConditionType')
+        if m.get('RuleConditionValue') is not None:
+            self.rule_condition_value = m.get('RuleConditionValue')
         return self
 
 
 class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
     def __init__(
         self,
+        forwarding_rule_direction: str = None,
         forwarding_rule_id: str = None,
         forwarding_rule_name: str = None,
         forwarding_rule_status: str = None,
@@ -12365,6 +12505,7 @@ class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
         rule_actions: List[ListForwardingRulesResponseBodyForwardingRulesRuleActions] = None,
         rule_conditions: List[ListForwardingRulesResponseBodyForwardingRulesRuleConditions] = None,
     ):
+        self.forwarding_rule_direction = forwarding_rule_direction
         self.forwarding_rule_id = forwarding_rule_id
         self.forwarding_rule_name = forwarding_rule_name
         self.forwarding_rule_status = forwarding_rule_status
@@ -12389,6 +12530,8 @@ class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
             return _map
 
         result = dict()
+        if self.forwarding_rule_direction is not None:
+            result['ForwardingRuleDirection'] = self.forwarding_rule_direction
         if self.forwarding_rule_id is not None:
             result['ForwardingRuleId'] = self.forwarding_rule_id
         if self.forwarding_rule_name is not None:
@@ -12411,6 +12554,8 @@ class ListForwardingRulesResponseBodyForwardingRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ForwardingRuleDirection') is not None:
+            self.forwarding_rule_direction = m.get('ForwardingRuleDirection')
         if m.get('ForwardingRuleId') is not None:
             self.forwarding_rule_id = m.get('ForwardingRuleId')
         if m.get('ForwardingRuleName') is not None:
@@ -15751,10 +15896,12 @@ class UpdateForwardingRulesRequestForwardingRulesRuleActions(TeaModel):
         forward_group_config: UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig = None,
         order: int = None,
         rule_action_type: str = None,
+        rule_action_value: str = None,
     ):
         self.forward_group_config = forward_group_config
         self.order = order
         self.rule_action_type = rule_action_type
+        self.rule_action_value = rule_action_value
 
     def validate(self):
         if self.forward_group_config:
@@ -15772,6 +15919,8 @@ class UpdateForwardingRulesRequestForwardingRulesRuleActions(TeaModel):
             result['Order'] = self.order
         if self.rule_action_type is not None:
             result['RuleActionType'] = self.rule_action_type
+        if self.rule_action_value is not None:
+            result['RuleActionValue'] = self.rule_action_value
         return result
 
     def from_map(self, m: dict = None):
@@ -15783,6 +15932,8 @@ class UpdateForwardingRulesRequestForwardingRulesRuleActions(TeaModel):
             self.order = m.get('Order')
         if m.get('RuleActionType') is not None:
             self.rule_action_type = m.get('RuleActionType')
+        if m.get('RuleActionValue') is not None:
+            self.rule_action_value = m.get('RuleActionValue')
         return self
 
 
@@ -15846,10 +15997,12 @@ class UpdateForwardingRulesRequestForwardingRulesRuleConditions(TeaModel):
         host_config: UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig = None,
         path_config: UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig = None,
         rule_condition_type: str = None,
+        rule_condition_value: str = None,
     ):
         self.host_config = host_config
         self.path_config = path_config
         self.rule_condition_type = rule_condition_type
+        self.rule_condition_value = rule_condition_value
 
     def validate(self):
         if self.host_config:
@@ -15869,6 +16022,8 @@ class UpdateForwardingRulesRequestForwardingRulesRuleConditions(TeaModel):
             result['PathConfig'] = self.path_config.to_map()
         if self.rule_condition_type is not None:
             result['RuleConditionType'] = self.rule_condition_type
+        if self.rule_condition_value is not None:
+            result['RuleConditionValue'] = self.rule_condition_value
         return result
 
     def from_map(self, m: dict = None):
@@ -15881,6 +16036,8 @@ class UpdateForwardingRulesRequestForwardingRulesRuleConditions(TeaModel):
             self.path_config = temp_model.from_map(m['PathConfig'])
         if m.get('RuleConditionType') is not None:
             self.rule_condition_type = m.get('RuleConditionType')
+        if m.get('RuleConditionValue') is not None:
+            self.rule_condition_value = m.get('RuleConditionValue')
         return self
 
 
@@ -15892,12 +16049,14 @@ class UpdateForwardingRulesRequestForwardingRules(TeaModel):
         priority: int = None,
         rule_actions: List[UpdateForwardingRulesRequestForwardingRulesRuleActions] = None,
         rule_conditions: List[UpdateForwardingRulesRequestForwardingRulesRuleConditions] = None,
+        rule_direction: str = None,
     ):
         self.forwarding_rule_id = forwarding_rule_id
         self.forwarding_rule_name = forwarding_rule_name
         self.priority = priority
         self.rule_actions = rule_actions
         self.rule_conditions = rule_conditions
+        self.rule_direction = rule_direction
 
     def validate(self):
         if self.rule_actions:
@@ -15929,6 +16088,8 @@ class UpdateForwardingRulesRequestForwardingRules(TeaModel):
         if self.rule_conditions is not None:
             for k in self.rule_conditions:
                 result['RuleConditions'].append(k.to_map() if k else None)
+        if self.rule_direction is not None:
+            result['RuleDirection'] = self.rule_direction
         return result
 
     def from_map(self, m: dict = None):
@@ -15949,6 +16110,8 @@ class UpdateForwardingRulesRequestForwardingRules(TeaModel):
             for k in m.get('RuleConditions'):
                 temp_model = UpdateForwardingRulesRequestForwardingRulesRuleConditions()
                 self.rule_conditions.append(temp_model.from_map(k))
+        if m.get('RuleDirection') is not None:
+            self.rule_direction = m.get('RuleDirection')
         return self
 
 

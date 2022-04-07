@@ -1,3 +1,7 @@
+2022-04-07 Version: 1.0.10
+- Add Anycast Api.
+- Add 7 laryer forward rule.
+
 2022-01-06 Version: 1.0.9
 - Add Application Monitor Api.
 

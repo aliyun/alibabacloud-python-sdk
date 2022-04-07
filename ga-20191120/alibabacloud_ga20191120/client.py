@@ -756,6 +756,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.ip_set_config):
+            query['IpSetConfig'] = request.ip_set_config
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.pricing_cycle):
@@ -802,6 +804,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.duration):
             query['Duration'] = request.duration
+        if not UtilClient.is_unset(request.ip_set_config):
+            query['IpSetConfig'] = request.ip_set_config
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.pricing_cycle):
