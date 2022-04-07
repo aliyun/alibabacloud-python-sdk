@@ -48971,3 +48971,120 @@ class UpdateUdfFileResponse(TeaModel):
         return self
 
 
+class UpdateWorkbenchEventResultRequest(TeaModel):
+    def __init__(
+        self,
+        check_result: str = None,
+        check_result_tip: str = None,
+        extension_code: str = None,
+        message_id: str = None,
+    ):
+        self.check_result = check_result
+        self.check_result_tip = check_result_tip
+        self.extension_code = extension_code
+        self.message_id = message_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_result is not None:
+            result['CheckResult'] = self.check_result
+        if self.check_result_tip is not None:
+            result['CheckResultTip'] = self.check_result_tip
+        if self.extension_code is not None:
+            result['ExtensionCode'] = self.extension_code
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckResult') is not None:
+            self.check_result = m.get('CheckResult')
+        if m.get('CheckResultTip') is not None:
+            self.check_result_tip = m.get('CheckResultTip')
+        if m.get('ExtensionCode') is not None:
+            self.extension_code = m.get('ExtensionCode')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        return self
+
+
+class UpdateWorkbenchEventResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # 成功标识
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateWorkbenchEventResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: UpdateWorkbenchEventResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = UpdateWorkbenchEventResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+

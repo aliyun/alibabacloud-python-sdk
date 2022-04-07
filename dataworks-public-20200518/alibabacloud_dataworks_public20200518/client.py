@@ -18757,3 +18757,85 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.UpdateUdfFileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_udf_file_with_options_async(request, runtime)
+
+    def update_workbench_event_result_with_options(
+        self,
+        request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_result):
+            query['CheckResult'] = request.check_result
+        if not UtilClient.is_unset(request.check_result_tip):
+            query['CheckResultTip'] = request.check_result_tip
+        if not UtilClient.is_unset(request.extension_code):
+            query['ExtensionCode'] = request.extension_code
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkbenchEventResult',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workbench_event_result_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_result):
+            query['CheckResult'] = request.check_result
+        if not UtilClient.is_unset(request.check_result_tip):
+            query['CheckResultTip'] = request.check_result_tip
+        if not UtilClient.is_unset(request.extension_code):
+            query['ExtensionCode'] = request.extension_code
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkbenchEventResult',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workbench_event_result(
+        self,
+        request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
+    ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_workbench_event_result_with_options(request, runtime)
+
+    async def update_workbench_event_result_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
+    ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_workbench_event_result_with_options_async(request, runtime)
