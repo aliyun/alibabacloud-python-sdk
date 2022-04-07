@@ -65,11 +65,15 @@ class Client(OpenApiClient):
     ) -> yuqing_20220301_models.CloseProductResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
         if not UtilClient.is_unset(request.product_instance):
-            query['productInstance'] = request.product_instance
+            body['productInstance'] = request.product_instance
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CloseProduct',
@@ -79,7 +83,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -95,11 +99,15 @@ class Client(OpenApiClient):
     ) -> yuqing_20220301_models.CloseProductResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
         if not UtilClient.is_unset(request.product_instance):
-            query['productInstance'] = request.product_instance
+            body['productInstance'] = request.product_instance
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CloseProduct',
@@ -109,7 +117,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -141,15 +149,21 @@ class Client(OpenApiClient):
     ) -> yuqing_20220301_models.ConsoleProxyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
         if not UtilClient.is_unset(request.app_code):
-            query['appCode'] = request.app_code
+            body['appCode'] = request.app_code
         if not UtilClient.is_unset(request.interface_name):
-            query['interfaceName'] = request.interface_name
+            body['interfaceName'] = request.interface_name
         if not UtilClient.is_unset(request.param_json):
-            query['paramJson'] = request.param_json
+            body['paramJson'] = request.param_json
+        if not UtilClient.is_unset(request.team_hash_id):
+            body['teamHashId'] = request.team_hash_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ConsoleProxy',
@@ -159,7 +173,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -175,15 +189,21 @@ class Client(OpenApiClient):
     ) -> yuqing_20220301_models.ConsoleProxyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
         if not UtilClient.is_unset(request.app_code):
-            query['appCode'] = request.app_code
+            body['appCode'] = request.app_code
         if not UtilClient.is_unset(request.interface_name):
-            query['interfaceName'] = request.interface_name
+            body['interfaceName'] = request.interface_name
         if not UtilClient.is_unset(request.param_json):
-            query['paramJson'] = request.param_json
+            body['paramJson'] = request.param_json
+        if not UtilClient.is_unset(request.team_hash_id):
+            body['teamHashId'] = request.team_hash_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ConsoleProxy',
@@ -193,11 +213,95 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
             yuqing_20220301_models.ConsoleProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_analysis_task_result(
+        self,
+        request: yuqing_20220301_models.GetAnalysisTaskResultRequest,
+    ) -> yuqing_20220301_models.GetAnalysisTaskResultResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_analysis_task_result_with_options(request, headers, runtime)
+
+    async def get_analysis_task_result_async(
+        self,
+        request: yuqing_20220301_models.GetAnalysisTaskResultRequest,
+    ) -> yuqing_20220301_models.GetAnalysisTaskResultResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_analysis_task_result_with_options_async(request, headers, runtime)
+
+    def get_analysis_task_result_with_options(
+        self,
+        request: yuqing_20220301_models.GetAnalysisTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.GetAnalysisTaskResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.analysis_id):
+            query['analysisId'] = request.analysis_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAnalysisTaskResult',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/getAnalysisComponentResult.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.GetAnalysisTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_analysis_task_result_with_options_async(
+        self,
+        request: yuqing_20220301_models.GetAnalysisTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.GetAnalysisTaskResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.analysis_id):
+            query['analysisId'] = request.analysis_id
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.team_hash_id):
+            query['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAnalysisTaskResult',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/getAnalysisComponentResult.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.GetAnalysisTaskResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -225,13 +329,17 @@ class Client(OpenApiClient):
     ) -> yuqing_20220301_models.OpenProductResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
         if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
+            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.product_instance):
-            query['productInstance'] = request.product_instance
+            body['productInstance'] = request.product_instance
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='OpenProduct',
@@ -241,7 +349,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -257,13 +365,17 @@ class Client(OpenApiClient):
     ) -> yuqing_20220301_models.OpenProductResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
         if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
+            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.product_instance):
-            query['productInstance'] = request.product_instance
+            body['productInstance'] = request.product_instance
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='OpenProduct',
@@ -273,10 +385,282 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
             yuqing_20220301_models.OpenProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_product_instance_list(
+        self,
+        request: yuqing_20220301_models.QueryProductInstanceListRequest,
+    ) -> yuqing_20220301_models.QueryProductInstanceListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_product_instance_list_with_options(request, headers, runtime)
+
+    async def query_product_instance_list_async(
+        self,
+        request: yuqing_20220301_models.QueryProductInstanceListRequest,
+    ) -> yuqing_20220301_models.QueryProductInstanceListResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_product_instance_list_with_options_async(request, headers, runtime)
+
+    def query_product_instance_list_with_options(
+        self,
+        request: yuqing_20220301_models.QueryProductInstanceListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.QueryProductInstanceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_code):
+            query['appCode'] = request.app_code
+        if not UtilClient.is_unset(request.from_time):
+            query['fromTime'] = request.from_time
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.tenant_uid):
+            query['tenantUid'] = request.tenant_uid
+        if not UtilClient.is_unset(request.to_time):
+            query['toTime'] = request.to_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProductInstanceList',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryProductInstanceList.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.QueryProductInstanceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_product_instance_list_with_options_async(
+        self,
+        request: yuqing_20220301_models.QueryProductInstanceListRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.QueryProductInstanceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_code):
+            query['appCode'] = request.app_code
+        if not UtilClient.is_unset(request.from_time):
+            query['fromTime'] = request.from_time
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        if not UtilClient.is_unset(request.tenant_uid):
+            query['tenantUid'] = request.tenant_uid
+        if not UtilClient.is_unset(request.to_time):
+            query['toTime'] = request.to_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryProductInstanceList',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryProductInstanceList.json',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.QueryProductInstanceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_yuqing_message(
+        self,
+        request: yuqing_20220301_models.QueryYuqingMessageRequest,
+    ) -> yuqing_20220301_models.QueryYuqingMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_yuqing_message_with_options(request, headers, runtime)
+
+    async def query_yuqing_message_async(
+        self,
+        request: yuqing_20220301_models.QueryYuqingMessageRequest,
+    ) -> yuqing_20220301_models.QueryYuqingMessageResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_yuqing_message_with_options_async(request, headers, runtime)
+
+    def query_yuqing_message_with_options(
+        self,
+        request: yuqing_20220301_models.QueryYuqingMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.QueryYuqingMessageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
+        if not UtilClient.is_unset(request.team_hash_id):
+            body['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryYuqingMessage',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryYuqingMessage.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.QueryYuqingMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_yuqing_message_with_options_async(
+        self,
+        request: yuqing_20220301_models.QueryYuqingMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.QueryYuqingMessageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
+        if not UtilClient.is_unset(request.team_hash_id):
+            body['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryYuqingMessage',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/queryYuqingMessage.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.QueryYuqingMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_analysis_task(
+        self,
+        request: yuqing_20220301_models.SubmitAnalysisTaskRequest,
+    ) -> yuqing_20220301_models.SubmitAnalysisTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_analysis_task_with_options(request, headers, runtime)
+
+    async def submit_analysis_task_async(
+        self,
+        request: yuqing_20220301_models.SubmitAnalysisTaskRequest,
+    ) -> yuqing_20220301_models.SubmitAnalysisTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_analysis_task_with_options_async(request, headers, runtime)
+
+    def submit_analysis_task_with_options(
+        self,
+        request: yuqing_20220301_models.SubmitAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.SubmitAnalysisTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.analyse_type):
+            body['analyseType'] = request.analyse_type
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
+        if not UtilClient.is_unset(request.team_hash_id):
+            body['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitAnalysisTask',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/submitAnalysisComponent.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.SubmitAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_analysis_task_with_options_async(
+        self,
+        request: yuqing_20220301_models.SubmitAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> yuqing_20220301_models.SubmitAnalysisTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['requestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.analyse_type):
+            body['analyseType'] = request.analyse_type
+        if not UtilClient.is_unset(request.search_condition):
+            body['searchCondition'] = request.search_condition
+        if not UtilClient.is_unset(request.team_hash_id):
+            body['teamHashId'] = request.team_hash_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitAnalysisTask',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/openapi/aliyun/submitAnalysisComponent.json',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yuqing_20220301_models.SubmitAnalysisTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
