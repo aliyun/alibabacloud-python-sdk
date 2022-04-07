@@ -1795,6 +1795,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cr_templates_with_options_async(request, runtime)
 
+    def describe_eip_resources_with_options(
+        self,
+        request: servicemesh_20200111_models.DescribeEipResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DescribeEipResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeEipResources',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DescribeEipResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_eip_resources_with_options_async(
+        self,
+        request: servicemesh_20200111_models.DescribeEipResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DescribeEipResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeEipResources',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DescribeEipResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_eip_resources(
+        self,
+        request: servicemesh_20200111_models.DescribeEipResourcesRequest,
+    ) -> servicemesh_20200111_models.DescribeEipResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_eip_resources_with_options(request, runtime)
+
+    async def describe_eip_resources_async(
+        self,
+        request: servicemesh_20200111_models.DescribeEipResourcesRequest,
+    ) -> servicemesh_20200111_models.DescribeEipResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_eip_resources_with_options_async(request, runtime)
+
     def describe_gateway_secret_details_with_options(
         self,
         request: servicemesh_20200111_models.DescribeGatewaySecretDetailsRequest,
@@ -4574,6 +4652,84 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.ListDashboardResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_dashboard_with_options_async(request, runtime)
+
+    def modify_api_server_eip_resource_with_options(
+        self,
+        request: servicemesh_20200111_models.ModifyApiServerEipResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ModifyApiServerEipResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_server_eip_id):
+            body['ApiServerEipId'] = request.api_server_eip_id
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiServerEipResource',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ModifyApiServerEipResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_api_server_eip_resource_with_options_async(
+        self,
+        request: servicemesh_20200111_models.ModifyApiServerEipResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ModifyApiServerEipResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_server_eip_id):
+            body['ApiServerEipId'] = request.api_server_eip_id
+        if not UtilClient.is_unset(request.operation):
+            body['Operation'] = request.operation
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiServerEipResource',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ModifyApiServerEipResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_api_server_eip_resource(
+        self,
+        request: servicemesh_20200111_models.ModifyApiServerEipResourceRequest,
+    ) -> servicemesh_20200111_models.ModifyApiServerEipResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_api_server_eip_resource_with_options(request, runtime)
+
+    async def modify_api_server_eip_resource_async(
+        self,
+        request: servicemesh_20200111_models.ModifyApiServerEipResourceRequest,
+    ) -> servicemesh_20200111_models.ModifyApiServerEipResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_api_server_eip_resource_with_options_async(request, runtime)
 
     def modify_service_mesh_name_with_options(
         self,

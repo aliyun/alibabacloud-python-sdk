@@ -3731,6 +3731,216 @@ class DescribeCrTemplatesResponse(TeaModel):
         return self
 
 
+class DescribeEipResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        page_num: int = None,
+        page_size: int = None,
+        service_mesh_id: str = None,
+    ):
+        self.page_num = page_num
+        self.page_size = page_size
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class DescribeEipResourcesResponseBodyEipList(TeaModel):
+    def __init__(
+        self,
+        allocation_id: str = None,
+        instance_type: str = None,
+        ip_address: str = None,
+        status: str = None,
+    ):
+        self.allocation_id = allocation_id
+        self.instance_type = instance_type
+        self.ip_address = ip_address
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocation_id is not None:
+            result['AllocationId'] = self.allocation_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocationId') is not None:
+            self.allocation_id = m.get('AllocationId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeEipResourcesResponseBodyPageResult(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeEipResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        eip_list: List[DescribeEipResourcesResponseBodyEipList] = None,
+        page_result: DescribeEipResourcesResponseBodyPageResult = None,
+        request_id: str = None,
+    ):
+        self.eip_list = eip_list
+        self.page_result = page_result
+        self.request_id = request_id
+
+    def validate(self):
+        if self.eip_list:
+            for k in self.eip_list:
+                if k:
+                    k.validate()
+        if self.page_result:
+            self.page_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EipList'] = []
+        if self.eip_list is not None:
+            for k in self.eip_list:
+                result['EipList'].append(k.to_map() if k else None)
+        if self.page_result is not None:
+            result['PageResult'] = self.page_result.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.eip_list = []
+        if m.get('EipList') is not None:
+            for k in m.get('EipList'):
+                temp_model = DescribeEipResourcesResponseBodyEipList()
+                self.eip_list.append(temp_model.from_map(k))
+        if m.get('PageResult') is not None:
+            temp_model = DescribeEipResourcesResponseBodyPageResult()
+            self.page_result = temp_model.from_map(m['PageResult'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeEipResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeEipResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeEipResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeGatewaySecretDetailsRequest(TeaModel):
     def __init__(
         self,
@@ -13365,6 +13575,109 @@ class ListDashboardResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListDashboardResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyApiServerEipResourceRequest(TeaModel):
+    def __init__(
+        self,
+        api_server_eip_id: str = None,
+        operation: str = None,
+        service_mesh_id: str = None,
+    ):
+        self.api_server_eip_id = api_server_eip_id
+        self.operation = operation
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_server_eip_id is not None:
+            result['ApiServerEipId'] = self.api_server_eip_id
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiServerEipId') is not None:
+            self.api_server_eip_id = m.get('ApiServerEipId')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class ModifyApiServerEipResourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyApiServerEipResourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyApiServerEipResourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyApiServerEipResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
