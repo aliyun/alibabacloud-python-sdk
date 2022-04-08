@@ -1,1041 +1,25 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any
-
-
-class GetAddressDivisionCodeRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class GetAddressDivisionCodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class GetAddressDivisionCodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetAddressDivisionCodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetAddressDivisionCodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class StructureAddressRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class StructureAddressResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class StructureAddressResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: StructureAddressResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = StructureAddressResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ExtractExpressRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class ExtractExpressResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class ExtractExpressResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ExtractExpressResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ExtractExpressResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ExtractNameRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class ExtractNameResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class ExtractNameResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ExtractNameResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ExtractNameResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetAddressBlockMappingRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class GetAddressBlockMappingResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class GetAddressBlockMappingResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetAddressBlockMappingResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetAddressBlockMappingResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetAddressSearchRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class GetAddressSearchResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class GetAddressSearchResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetAddressSearchResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetAddressSearchResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class PredictPOIRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class PredictPOIResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class PredictPOIResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: PredictPOIResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = PredictPOIResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ClassifyPOIRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class ClassifyPOIResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class ClassifyPOIResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ClassifyPOIResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ClassifyPOIResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
+from typing import Dict
 
 
 class CorrectAddressRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
+        app_key: str = None,
         default_city: str = None,
         default_district: str = None,
-        app_key: str = None,
+        default_province: str = None,
+        service_code: str = None,
+        text: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
+        self.app_key = app_key
         self.default_city = default_city
         self.default_district = default_district
-        self.app_key = app_key
+        self.default_province = default_province
+        self.service_code = service_code
+        self.text = text
 
     def validate(self):
         pass
@@ -1046,45 +30,45 @@ class CorrectAddressRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         if self.default_city is not None:
             result['DefaultCity'] = self.default_city
         if self.default_district is not None:
             result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
+        if self.default_province is not None:
+            result['DefaultProvince'] = self.default_province
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('DefaultCity') is not None:
             self.default_city = m.get('DefaultCity')
         if m.get('DefaultDistrict') is not None:
             self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
+        if m.get('DefaultProvince') is not None:
+            self.default_province = m.get('DefaultProvince')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         return self
 
 
 class CorrectAddressResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1095,18 +79,18 @@ class CorrectAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -1147,22 +131,22 @@ class CorrectAddressResponse(TeaModel):
         return self
 
 
-class GetZipcodeRequest(TeaModel):
+class ExtractAddressRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
+        app_key: str = None,
         default_city: str = None,
         default_district: str = None,
-        app_key: str = None,
+        default_province: str = None,
+        service_code: str = None,
+        text: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
+        self.app_key = app_key
         self.default_city = default_city
         self.default_district = default_district
-        self.app_key = app_key
+        self.default_province = default_province
+        self.service_code = service_code
+        self.text = text
 
     def validate(self):
         pass
@@ -1173,172 +157,45 @@ class GetZipcodeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         if self.default_city is not None:
             result['DefaultCity'] = self.default_city
         if self.default_district is not None:
             result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class GetZipcodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class GetZipcodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetZipcodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetZipcodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CompleteAddressRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
+        if self.default_province is not None:
+            result['DefaultProvince'] = self.default_province
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('DefaultCity') is not None:
             self.default_city = m.get('DefaultCity')
         if m.get('DefaultDistrict') is not None:
             self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
+        if m.get('DefaultProvince') is not None:
+            self.default_province = m.get('DefaultProvince')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         return self
 
 
-class CompleteAddressResponseBody(TeaModel):
+class ExtractAddressResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1349,26 +206,26 @@ class CompleteAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
-class CompleteAddressResponse(TeaModel):
+class ExtractAddressResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: CompleteAddressResponseBody = None,
+        body: ExtractAddressResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -1396,27 +253,27 @@ class CompleteAddressResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = CompleteAddressResponseBody()
+            temp_model = ExtractAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
 
-class GetAddressSimilarityRequest(TeaModel):
+class ExtractNameRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
+        app_key: str = None,
         default_city: str = None,
         default_district: str = None,
-        app_key: str = None,
+        default_province: str = None,
+        service_code: str = None,
+        text: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
+        self.app_key = app_key
         self.default_city = default_city
         self.default_district = default_district
-        self.app_key = app_key
+        self.default_province = default_province
+        self.service_code = service_code
+        self.text = text
 
     def validate(self):
         pass
@@ -1427,172 +284,45 @@ class GetAddressSimilarityRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.default_city is not None:
+            result['DefaultCity'] = self.default_city
+        if self.default_district is not None:
+            result['DefaultDistrict'] = self.default_district
+        if self.default_province is not None:
+            result['DefaultProvince'] = self.default_province
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.text is not None:
             result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('DefaultCity') is not None:
             self.default_city = m.get('DefaultCity')
         if m.get('DefaultDistrict') is not None:
             self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class GetAddressSimilarityResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class GetAddressSimilarityResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetAddressSimilarityResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetAddressSimilarityResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetAddressGeocodeRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
+        if m.get('DefaultProvince') is not None:
+            self.default_province = m.get('DefaultProvince')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('Text') is not None:
             self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
         return self
 
 
-class GetAddressGeocodeResponseBody(TeaModel):
+class ExtractNameResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1603,26 +333,26 @@ class GetAddressGeocodeResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
-class GetAddressGeocodeResponse(TeaModel):
+class ExtractNameResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: GetAddressGeocodeResponseBody = None,
+        body: ExtractNameResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -1650,276 +380,7 @@ class GetAddressGeocodeResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = GetAddressGeocodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class TransferCoordRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        text: str = None,
-        src_coord: str = None,
-        default_province: str = None,
-        default_city: str = None,
-        default_district: str = None,
-        app_key: str = None,
-    ):
-        self.service_code = service_code
-        self.text = text
-        self.src_coord = src_coord
-        self.default_province = default_province
-        self.default_city = default_city
-        self.default_district = default_district
-        self.app_key = app_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.src_coord is not None:
-            result['SrcCoord'] = self.src_coord
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
-        if self.default_city is not None:
-            result['DefaultCity'] = self.default_city
-        if self.default_district is not None:
-            result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('SrcCoord') is not None:
-            self.src_coord = m.get('SrcCoord')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
-        if m.get('DefaultCity') is not None:
-            self.default_city = m.get('DefaultCity')
-        if m.get('DefaultDistrict') is not None:
-            self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
-        return self
-
-
-class TransferCoordResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class TransferCoordResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: TransferCoordResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = TransferCoordResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateProjectRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        parameters: Dict[str, Any] = None,
-    ):
-        self.service_code = service_code
-        self.parameters = parameters
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.parameters is not None:
-            result['Parameters'] = self.parameters
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Parameters') is not None:
-            self.parameters = m.get('Parameters')
-        return self
-
-
-class UpdateProjectShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        service_code: str = None,
-        parameters_shrink: str = None,
-    ):
-        self.service_code = service_code
-        self.parameters_shrink = parameters_shrink
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.parameters_shrink is not None:
-            result['Parameters'] = self.parameters_shrink
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Parameters') is not None:
-            self.parameters_shrink = m.get('Parameters')
-        return self
-
-
-class UpdateProjectResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: str = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class UpdateProjectResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: UpdateProjectResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = UpdateProjectResponseBody()
+            temp_model = ExtractNameResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1927,19 +388,19 @@ class UpdateProjectResponse(TeaModel):
 class ExtractPhoneRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
+        app_key: str = None,
         default_city: str = None,
         default_district: str = None,
-        app_key: str = None,
+        default_province: str = None,
+        service_code: str = None,
+        text: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
+        self.app_key = app_key
         self.default_city = default_city
         self.default_district = default_district
-        self.app_key = app_key
+        self.default_province = default_province
+        self.service_code = service_code
+        self.text = text
 
     def validate(self):
         pass
@@ -1950,45 +411,45 @@ class ExtractPhoneRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         if self.default_city is not None:
             result['DefaultCity'] = self.default_city
         if self.default_district is not None:
             result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
+        if self.default_province is not None:
+            result['DefaultProvince'] = self.default_province
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('DefaultCity') is not None:
             self.default_city = m.get('DefaultCity')
         if m.get('DefaultDistrict') is not None:
             self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
+        if m.get('DefaultProvince') is not None:
+            self.default_province = m.get('DefaultProvince')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         return self
 
 
 class ExtractPhoneResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -1999,18 +460,18 @@ class ExtractPhoneResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -2051,22 +512,22 @@ class ExtractPhoneResponse(TeaModel):
         return self
 
 
-class GetInputSearchRequest(TeaModel):
+class GetAddressDivisionCodeRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
+        app_key: str = None,
         default_city: str = None,
         default_district: str = None,
-        app_key: str = None,
+        default_province: str = None,
+        service_code: str = None,
+        text: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
+        self.app_key = app_key
         self.default_city = default_city
         self.default_district = default_district
-        self.app_key = app_key
+        self.default_province = default_province
+        self.service_code = service_code
+        self.text = text
 
     def validate(self):
         pass
@@ -2077,45 +538,45 @@ class GetInputSearchRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         if self.default_city is not None:
             result['DefaultCity'] = self.default_city
         if self.default_district is not None:
             result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
+        if self.default_province is not None:
+            result['DefaultProvince'] = self.default_province
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('DefaultCity') is not None:
             self.default_city = m.get('DefaultCity')
         if m.get('DefaultDistrict') is not None:
             self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
+        if m.get('DefaultProvince') is not None:
+            self.default_province = m.get('DefaultProvince')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         return self
 
 
-class GetInputSearchResponseBody(TeaModel):
+class GetAddressDivisionCodeResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2126,26 +587,26 @@ class GetInputSearchResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
-class GetInputSearchResponse(TeaModel):
+class GetAddressDivisionCodeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: GetInputSearchResponseBody = None,
+        body: GetAddressDivisionCodeResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -2173,27 +634,27 @@ class GetInputSearchResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = GetInputSearchResponseBody()
+            temp_model = GetAddressDivisionCodeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
 
-class GetAddressEvaluateRequest(TeaModel):
+class GetAddressSimilarityRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
+        app_key: str = None,
         default_city: str = None,
         default_district: str = None,
-        app_key: str = None,
+        default_province: str = None,
+        service_code: str = None,
+        text: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
+        self.app_key = app_key
         self.default_city = default_city
         self.default_district = default_district
-        self.app_key = app_key
+        self.default_province = default_province
+        self.service_code = service_code
+        self.text = text
 
     def validate(self):
         pass
@@ -2204,45 +665,45 @@ class GetAddressEvaluateRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         if self.default_city is not None:
             result['DefaultCity'] = self.default_city
         if self.default_district is not None:
             result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
+        if self.default_province is not None:
+            result['DefaultProvince'] = self.default_province
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('DefaultCity') is not None:
             self.default_city = m.get('DefaultCity')
         if m.get('DefaultDistrict') is not None:
             self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
+        if m.get('DefaultProvince') is not None:
+            self.default_province = m.get('DefaultProvince')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         return self
 
 
-class GetAddressEvaluateResponseBody(TeaModel):
+class GetAddressSimilarityResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2253,26 +714,26 @@ class GetAddressEvaluateResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
-class GetAddressEvaluateResponse(TeaModel):
+class GetAddressSimilarityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: GetAddressEvaluateResponseBody = None,
+        body: GetAddressSimilarityResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -2300,27 +761,27 @@ class GetAddressEvaluateResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = GetAddressEvaluateResponseBody()
+            temp_model = GetAddressSimilarityResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
 
-class ExtractAddressRequest(TeaModel):
+class GetZipcodeRequest(TeaModel):
     def __init__(
         self,
-        service_code: str = None,
-        text: str = None,
-        default_province: str = None,
+        app_key: str = None,
         default_city: str = None,
         default_district: str = None,
-        app_key: str = None,
+        default_province: str = None,
+        service_code: str = None,
+        text: str = None,
     ):
-        self.service_code = service_code
-        self.text = text
-        self.default_province = default_province
+        self.app_key = app_key
         self.default_city = default_city
         self.default_district = default_district
-        self.app_key = app_key
+        self.default_province = default_province
+        self.service_code = service_code
+        self.text = text
 
     def validate(self):
         pass
@@ -2331,45 +792,45 @@ class ExtractAddressRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        if self.text is not None:
-            result['Text'] = self.text
-        if self.default_province is not None:
-            result['DefaultProvince'] = self.default_province
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
         if self.default_city is not None:
             result['DefaultCity'] = self.default_city
         if self.default_district is not None:
             result['DefaultDistrict'] = self.default_district
-        if self.app_key is not None:
-            result['AppKey'] = self.app_key
+        if self.default_province is not None:
+            result['DefaultProvince'] = self.default_province
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
-        if m.get('DefaultProvince') is not None:
-            self.default_province = m.get('DefaultProvince')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
         if m.get('DefaultCity') is not None:
             self.default_city = m.get('DefaultCity')
         if m.get('DefaultDistrict') is not None:
             self.default_district = m.get('DefaultDistrict')
-        if m.get('AppKey') is not None:
-            self.app_key = m.get('AppKey')
+        if m.get('DefaultProvince') is not None:
+            self.default_province = m.get('DefaultProvince')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
         return self
 
 
-class ExtractAddressResponseBody(TeaModel):
+class GetZipcodeResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2380,26 +841,26 @@ class ExtractAddressResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
-class ExtractAddressResponse(TeaModel):
+class GetZipcodeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: ExtractAddressResponseBody = None,
+        body: GetZipcodeResponseBody = None,
     ):
         self.headers = headers
         self.body = body
@@ -2427,7 +888,134 @@ class ExtractAddressResponse(TeaModel):
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('body') is not None:
-            temp_model = ExtractAddressResponseBody()
+            temp_model = GetZipcodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StructureAddressRequest(TeaModel):
+    def __init__(
+        self,
+        app_key: str = None,
+        default_city: str = None,
+        default_district: str = None,
+        default_province: str = None,
+        service_code: str = None,
+        text: str = None,
+    ):
+        self.app_key = app_key
+        self.default_city = default_city
+        self.default_district = default_district
+        self.default_province = default_province
+        self.service_code = service_code
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.default_city is not None:
+            result['DefaultCity'] = self.default_city
+        if self.default_district is not None:
+            result['DefaultDistrict'] = self.default_district
+        if self.default_province is not None:
+            result['DefaultProvince'] = self.default_province
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('DefaultCity') is not None:
+            self.default_city = m.get('DefaultCity')
+        if m.get('DefaultDistrict') is not None:
+            self.default_district = m.get('DefaultDistrict')
+        if m.get('DefaultProvince') is not None:
+            self.default_province = m.get('DefaultProvince')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class StructureAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StructureAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: StructureAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = StructureAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
