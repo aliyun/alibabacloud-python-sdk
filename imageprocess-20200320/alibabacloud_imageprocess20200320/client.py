@@ -1684,6 +1684,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detect_spine_mriwith_options_async(request, runtime)
 
+    def feedback_session_with_options(
+        self,
+        request: imageprocess_20200320_models.FeedbackSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.FeedbackSessionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.feedback):
+            body['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FeedbackSession',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.FeedbackSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def feedback_session_with_options_async(
+        self,
+        request: imageprocess_20200320_models.FeedbackSessionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imageprocess_20200320_models.FeedbackSessionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.feedback):
+            body['Feedback'] = request.feedback
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='FeedbackSession',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imageprocess_20200320_models.FeedbackSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def feedback_session(
+        self,
+        request: imageprocess_20200320_models.FeedbackSessionRequest,
+    ) -> imageprocess_20200320_models.FeedbackSessionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.feedback_session_with_options(request, runtime)
+
+    async def feedback_session_async(
+        self,
+        request: imageprocess_20200320_models.FeedbackSessionRequest,
+    ) -> imageprocess_20200320_models.FeedbackSessionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.feedback_session_with_options_async(request, runtime)
+
     def get_async_job_result_with_options(
         self,
         request: imageprocess_20200320_models.GetAsyncJobResultRequest,
