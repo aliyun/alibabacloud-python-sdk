@@ -267,170 +267,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_network_interface_to_instance_with_options_async(request, runtime)
 
-    def allocate_eip_address_with_options(
-        self,
-        request: ens_20171110_models.AllocateEipAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.AllocateEipAddressResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.count):
-            query['Count'] = request.count
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.min_count):
-            query['MinCount'] = request.min_count
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AllocateEipAddress',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.AllocateEipAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def allocate_eip_address_with_options_async(
-        self,
-        request: ens_20171110_models.AllocateEipAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.AllocateEipAddressResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.count):
-            query['Count'] = request.count
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.min_count):
-            query['MinCount'] = request.min_count
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AllocateEipAddress',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.AllocateEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def allocate_eip_address(
-        self,
-        request: ens_20171110_models.AllocateEipAddressRequest,
-    ) -> ens_20171110_models.AllocateEipAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.allocate_eip_address_with_options(request, runtime)
-
-    async def allocate_eip_address_async(
-        self,
-        request: ens_20171110_models.AllocateEipAddressRequest,
-    ) -> ens_20171110_models.AllocateEipAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.allocate_eip_address_with_options_async(request, runtime)
-
-    def associate_eip_address_with_options(
-        self,
-        request: ens_20171110_models.AssociateEipAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.AssociateEipAddressResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.eip):
-            query['Eip'] = request.eip
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.instance_id_internet_ip):
-            query['InstanceIdInternetIp'] = request.instance_id_internet_ip
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AssociateEipAddress',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.AssociateEipAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def associate_eip_address_with_options_async(
-        self,
-        request: ens_20171110_models.AssociateEipAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.AssociateEipAddressResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.eip):
-            query['Eip'] = request.eip
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.instance_id_internet_ip):
-            query['InstanceIdInternetIp'] = request.instance_id_internet_ip
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AssociateEipAddress',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.AssociateEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def associate_eip_address(
-        self,
-        request: ens_20171110_models.AssociateEipAddressRequest,
-    ) -> ens_20171110_models.AssociateEipAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.associate_eip_address_with_options(request, runtime)
-
-    async def associate_eip_address_async(
-        self,
-        request: ens_20171110_models.AssociateEipAddressRequest,
-    ) -> ens_20171110_models.AssociateEipAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.associate_eip_address_with_options_async(request, runtime)
-
     def associate_ens_eip_address_with_options(
         self,
         request: ens_20171110_models.AssociateEnsEipAddressRequest,
@@ -861,88 +697,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.authorize_security_group_egress_with_options_async(request, runtime)
 
-    def check_quota_with_options(
-        self,
-        request: ens_20171110_models.CheckQuotaRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.CheckQuotaResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.group_uuid):
-            query['GroupUuid'] = request.group_uuid
-        body = {}
-        if not UtilClient.is_unset(request.resource_attribute):
-            body['ResourceAttribute'] = request.resource_attribute
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CheckQuota',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.CheckQuotaResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def check_quota_with_options_async(
-        self,
-        request: ens_20171110_models.CheckQuotaRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.CheckQuotaResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.group_uuid):
-            query['GroupUuid'] = request.group_uuid
-        body = {}
-        if not UtilClient.is_unset(request.resource_attribute):
-            body['ResourceAttribute'] = request.resource_attribute
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CheckQuota',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.CheckQuotaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def check_quota(
-        self,
-        request: ens_20171110_models.CheckQuotaRequest,
-    ) -> ens_20171110_models.CheckQuotaResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.check_quota_with_options(request, runtime)
-
-    async def check_quota_async(
-        self,
-        request: ens_20171110_models.CheckQuotaRequest,
-    ) -> ens_20171110_models.CheckQuotaResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.check_quota_with_options_async(request, runtime)
-
     def create_application_with_options(
         self,
         request: ens_20171110_models.CreateApplicationRequest,
@@ -1189,6 +943,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_eip_instance_with_options_async(request, runtime)
 
+    def create_ens_route_entry_with_options(
+        self,
+        request: ens_20171110_models.CreateEnsRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateEnsRouteEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.next_hop_id):
+            query['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.route_entry_name):
+            query['RouteEntryName'] = request.route_entry_name
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEnsRouteEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateEnsRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ens_route_entry_with_options_async(
+        self,
+        request: ens_20171110_models.CreateEnsRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateEnsRouteEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.next_hop_id):
+            query['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.route_entry_name):
+            query['RouteEntryName'] = request.route_entry_name
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateEnsRouteEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateEnsRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ens_route_entry(
+        self,
+        request: ens_20171110_models.CreateEnsRouteEntryRequest,
+    ) -> ens_20171110_models.CreateEnsRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_ens_route_entry_with_options(request, runtime)
+
+    async def create_ens_route_entry_async(
+        self,
+        request: ens_20171110_models.CreateEnsRouteEntryRequest,
+    ) -> ens_20171110_models.CreateEnsRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ens_route_entry_with_options_async(request, runtime)
+
     def create_ens_service_with_options(
         self,
         request: ens_20171110_models.CreateEnsServiceRequest,
@@ -1353,6 +1197,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_epn_instance_with_options_async(request, runtime)
 
+    def create_forward_entry_with_options(
+        self,
+        request: ens_20171110_models.CreateForwardEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateForwardEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ip):
+            query['ExternalIp'] = request.external_ip
+        if not UtilClient.is_unset(request.external_port):
+            query['ExternalPort'] = request.external_port
+        if not UtilClient.is_unset(request.forward_entry_name):
+            query['ForwardEntryName'] = request.forward_entry_name
+        if not UtilClient.is_unset(request.internal_ip):
+            query['InternalIp'] = request.internal_ip
+        if not UtilClient.is_unset(request.internal_port):
+            query['InternalPort'] = request.internal_port
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateForwardEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateForwardEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_forward_entry_with_options_async(
+        self,
+        request: ens_20171110_models.CreateForwardEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateForwardEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ip):
+            query['ExternalIp'] = request.external_ip
+        if not UtilClient.is_unset(request.external_port):
+            query['ExternalPort'] = request.external_port
+        if not UtilClient.is_unset(request.forward_entry_name):
+            query['ForwardEntryName'] = request.forward_entry_name
+        if not UtilClient.is_unset(request.internal_ip):
+            query['InternalIp'] = request.internal_ip
+        if not UtilClient.is_unset(request.internal_port):
+            query['InternalPort'] = request.internal_port
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateForwardEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateForwardEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_forward_entry(
+        self,
+        request: ens_20171110_models.CreateForwardEntryRequest,
+    ) -> ens_20171110_models.CreateForwardEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_forward_entry_with_options(request, runtime)
+
+    async def create_forward_entry_async(
+        self,
+        request: ens_20171110_models.CreateForwardEntryRequest,
+    ) -> ens_20171110_models.CreateForwardEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_forward_entry_with_options_async(request, runtime)
+
     def create_image_with_options(
         self,
         request: ens_20171110_models.CreateImageRequest,
@@ -1466,6 +1404,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
+        if not UtilClient.is_unset(request.password_inherit):
+            query['PasswordInherit'] = request.password_inherit
         if not UtilClient.is_unset(request.payment_type):
             query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.period):
@@ -1536,6 +1476,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
+        if not UtilClient.is_unset(request.password_inherit):
+            query['PasswordInherit'] = request.password_inherit
         if not UtilClient.is_unset(request.payment_type):
             query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.period):
@@ -2301,6 +2243,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_load_balancer_udplistener_with_options_async(request, runtime)
 
+    def create_nat_gateway_with_options(
+        self,
+        request: ens_20171110_models.CreateNatGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateNatGatewayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNatGateway',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateNatGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_nat_gateway_with_options_async(
+        self,
+        request: ens_20171110_models.CreateNatGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateNatGatewayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNatGateway',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateNatGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_nat_gateway(
+        self,
+        request: ens_20171110_models.CreateNatGatewayRequest,
+    ) -> ens_20171110_models.CreateNatGatewayResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_nat_gateway_with_options(request, runtime)
+
+    async def create_nat_gateway_async(
+        self,
+        request: ens_20171110_models.CreateNatGatewayRequest,
+    ) -> ens_20171110_models.CreateNatGatewayResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_nat_gateway_with_options_async(request, runtime)
+
     def create_network_with_options(
         self,
         request: ens_20171110_models.CreateNetworkRequest,
@@ -2461,6 +2485,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_security_group_with_options_async(request, runtime)
 
+    def create_snat_entry_with_options(
+        self,
+        request: ens_20171110_models.CreateSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.snat_entry_name):
+            query['SnatEntryName'] = request.snat_entry_name
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        if not UtilClient.is_unset(request.source_cidr):
+            query['SourceCIDR'] = request.source_cidr
+        if not UtilClient.is_unset(request.source_vswitch_id):
+            query['SourceVSwitchId'] = request.source_vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateSnatEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_snat_entry_with_options_async(
+        self,
+        request: ens_20171110_models.CreateSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.snat_entry_name):
+            query['SnatEntryName'] = request.snat_entry_name
+        if not UtilClient.is_unset(request.snat_ip):
+            query['SnatIp'] = request.snat_ip
+        if not UtilClient.is_unset(request.source_cidr):
+            query['SourceCIDR'] = request.source_cidr
+        if not UtilClient.is_unset(request.source_vswitch_id):
+            query['SourceVSwitchId'] = request.source_vswitch_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateSnatEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_snat_entry(
+        self,
+        request: ens_20171110_models.CreateSnatEntryRequest,
+    ) -> ens_20171110_models.CreateSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_snat_entry_with_options(request, runtime)
+
+    async def create_snat_entry_async(
+        self,
+        request: ens_20171110_models.CreateSnatEntryRequest,
+    ) -> ens_20171110_models.CreateSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_snat_entry_with_options_async(request, runtime)
+
     def create_vswitch_with_options(
         self,
         request: ens_20171110_models.CreateVSwitchRequest,
@@ -2550,96 +2660,6 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.CreateVSwitchResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_vswitch_with_options_async(request, runtime)
-
-    def create_vm_and_save_stock_with_options(
-        self,
-        request: ens_20171110_models.CreateVmAndSaveStockRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.CreateVmAndSaveStockResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.group_uuid):
-            query['GroupUuid'] = request.group_uuid
-        if not UtilClient.is_unset(request.tenant):
-            query['Tenant'] = request.tenant
-        if not UtilClient.is_unset(request.workload_uuid):
-            query['WorkloadUuid'] = request.workload_uuid
-        body = {}
-        if not UtilClient.is_unset(request.resource_attribute):
-            body['ResourceAttribute'] = request.resource_attribute
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateVmAndSaveStock',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.CreateVmAndSaveStockResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_vm_and_save_stock_with_options_async(
-        self,
-        request: ens_20171110_models.CreateVmAndSaveStockRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.CreateVmAndSaveStockResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.group_uuid):
-            query['GroupUuid'] = request.group_uuid
-        if not UtilClient.is_unset(request.tenant):
-            query['Tenant'] = request.tenant
-        if not UtilClient.is_unset(request.workload_uuid):
-            query['WorkloadUuid'] = request.workload_uuid
-        body = {}
-        if not UtilClient.is_unset(request.resource_attribute):
-            body['ResourceAttribute'] = request.resource_attribute
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateVmAndSaveStock',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.CreateVmAndSaveStockResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_vm_and_save_stock(
-        self,
-        request: ens_20171110_models.CreateVmAndSaveStockRequest,
-    ) -> ens_20171110_models.CreateVmAndSaveStockResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_vm_and_save_stock_with_options(request, runtime)
-
-    async def create_vm_and_save_stock_async(
-        self,
-        request: ens_20171110_models.CreateVmAndSaveStockRequest,
-    ) -> ens_20171110_models.CreateVmAndSaveStockResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_vm_and_save_stock_with_options_async(request, runtime)
 
     def delete_application_with_options(
         self,
@@ -2781,6 +2801,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_device_internet_port_with_options_async(request, runtime)
 
+    def delete_ens_route_entry_with_options(
+        self,
+        request: ens_20171110_models.DeleteEnsRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteEnsRouteEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.route_entry_id):
+            query['RouteEntryId'] = request.route_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnsRouteEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteEnsRouteEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ens_route_entry_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteEnsRouteEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteEnsRouteEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.route_entry_id):
+            query['RouteEntryId'] = request.route_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEnsRouteEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteEnsRouteEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ens_route_entry(
+        self,
+        request: ens_20171110_models.DeleteEnsRouteEntryRequest,
+    ) -> ens_20171110_models.DeleteEnsRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ens_route_entry_with_options(request, runtime)
+
+    async def delete_ens_route_entry_async(
+        self,
+        request: ens_20171110_models.DeleteEnsRouteEntryRequest,
+    ) -> ens_20171110_models.DeleteEnsRouteEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ens_route_entry_with_options_async(request, runtime)
+
     def delete_epn_instance_with_options(
         self,
         request: ens_20171110_models.DeleteEpnInstanceRequest,
@@ -2850,6 +2940,76 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DeleteEpnInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_epn_instance_with_options_async(request, runtime)
+
+    def delete_forward_entry_with_options(
+        self,
+        request: ens_20171110_models.DeleteForwardEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteForwardEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteForwardEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteForwardEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_forward_entry_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteForwardEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteForwardEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteForwardEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteForwardEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_forward_entry(
+        self,
+        request: ens_20171110_models.DeleteForwardEntryRequest,
+    ) -> ens_20171110_models.DeleteForwardEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_forward_entry_with_options(request, runtime)
+
+    async def delete_forward_entry_async(
+        self,
+        request: ens_20171110_models.DeleteForwardEntryRequest,
+    ) -> ens_20171110_models.DeleteForwardEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_forward_entry_with_options_async(request, runtime)
 
     def delete_key_pairs_with_options(
         self,
@@ -2999,6 +3159,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_load_balancer_listener_with_options_async(request, runtime)
 
+    def delete_nat_gateway_with_options(
+        self,
+        request: ens_20171110_models.DeleteNatGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteNatGatewayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNatGateway',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteNatGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_nat_gateway_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteNatGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteNatGatewayResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNatGateway',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteNatGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_nat_gateway(
+        self,
+        request: ens_20171110_models.DeleteNatGatewayRequest,
+    ) -> ens_20171110_models.DeleteNatGatewayResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_nat_gateway_with_options(request, runtime)
+
+    async def delete_nat_gateway_async(
+        self,
+        request: ens_20171110_models.DeleteNatGatewayRequest,
+    ) -> ens_20171110_models.DeleteNatGatewayResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_nat_gateway_with_options_async(request, runtime)
+
     def delete_network_with_options(
         self,
         request: ens_20171110_models.DeleteNetworkRequest,
@@ -3143,6 +3373,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_group_with_options_async(request, runtime)
 
+    def delete_snat_entry_with_options(
+        self,
+        request: ens_20171110_models.DeleteSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSnatEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_snat_entry_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteSnatEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSnatEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snat_entry_id):
+            query['SnatEntryId'] = request.snat_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnatEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSnatEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_snat_entry(
+        self,
+        request: ens_20171110_models.DeleteSnatEntryRequest,
+    ) -> ens_20171110_models.DeleteSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_snat_entry_with_options(request, runtime)
+
+    async def delete_snat_entry_async(
+        self,
+        request: ens_20171110_models.DeleteSnatEntryRequest,
+    ) -> ens_20171110_models.DeleteSnatEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_snat_entry_with_options_async(request, runtime)
+
     def delete_vswitch_with_options(
         self,
         request: ens_20171110_models.DeleteVSwitchRequest,
@@ -3216,80 +3516,6 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DeleteVSwitchResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_vswitch_with_options_async(request, runtime)
-
-    def delete_vm_with_options(
-        self,
-        request: ens_20171110_models.DeleteVmRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DeleteVmResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.workload_uuid):
-            query['WorkloadUuid'] = request.workload_uuid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteVm',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.DeleteVmResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_vm_with_options_async(
-        self,
-        request: ens_20171110_models.DeleteVmRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DeleteVmResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.workload_uuid):
-            query['WorkloadUuid'] = request.workload_uuid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteVm',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.DeleteVmResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_vm(
-        self,
-        request: ens_20171110_models.DeleteVmRequest,
-    ) -> ens_20171110_models.DeleteVmResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_vm_with_options(request, runtime)
-
-    async def delete_vm_async(
-        self,
-        request: ens_20171110_models.DeleteVmRequest,
-    ) -> ens_20171110_models.DeleteVmResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_vm_with_options_async(request, runtime)
 
     def describe_application_with_options(
         self,
@@ -5131,6 +5357,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_resource_usage_with_options_async(request, runtime)
 
+    def describe_ens_route_entry_list_with_options(
+        self,
+        request: ens_20171110_models.DescribeEnsRouteEntryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsRouteEntryListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.next_hop_id):
+            query['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.route_entry_id):
+            query['RouteEntryId'] = request.route_entry_id
+        if not UtilClient.is_unset(request.route_entry_name):
+            query['RouteEntryName'] = request.route_entry_name
+        if not UtilClient.is_unset(request.route_entry_type):
+            query['RouteEntryType'] = request.route_entry_type
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsRouteEntryList',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsRouteEntryListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ens_route_entry_list_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeEnsRouteEntryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeEnsRouteEntryListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.next_hop_id):
+            query['NextHopId'] = request.next_hop_id
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.route_entry_id):
+            query['RouteEntryId'] = request.route_entry_id
+        if not UtilClient.is_unset(request.route_entry_name):
+            query['RouteEntryName'] = request.route_entry_name
+        if not UtilClient.is_unset(request.route_entry_type):
+            query['RouteEntryType'] = request.route_entry_type
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnsRouteEntryList',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeEnsRouteEntryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ens_route_entry_list(
+        self,
+        request: ens_20171110_models.DescribeEnsRouteEntryListRequest,
+    ) -> ens_20171110_models.DescribeEnsRouteEntryListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ens_route_entry_list_with_options(request, runtime)
+
+    async def describe_ens_route_entry_list_async(
+        self,
+        request: ens_20171110_models.DescribeEnsRouteEntryListRequest,
+    ) -> ens_20171110_models.DescribeEnsRouteEntryListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ens_route_entry_list_with_options_async(request, runtime)
+
     def describe_epn_band_width_data_with_options(
         self,
         request: ens_20171110_models.DescribeEpnBandWidthDataRequest,
@@ -5708,6 +6036,104 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeExportImageStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_export_image_status_with_options_async(request, runtime)
+
+    def describe_forward_table_entries_with_options(
+        self,
+        request: ens_20171110_models.DescribeForwardTableEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeForwardTableEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ip):
+            query['ExternalIp'] = request.external_ip
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        if not UtilClient.is_unset(request.forward_entry_name):
+            query['ForwardEntryName'] = request.forward_entry_name
+        if not UtilClient.is_unset(request.internal_ip):
+            query['InternalIp'] = request.internal_ip
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeForwardTableEntries',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeForwardTableEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_forward_table_entries_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeForwardTableEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeForwardTableEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.external_ip):
+            query['ExternalIp'] = request.external_ip
+        if not UtilClient.is_unset(request.forward_entry_id):
+            query['ForwardEntryId'] = request.forward_entry_id
+        if not UtilClient.is_unset(request.forward_entry_name):
+            query['ForwardEntryName'] = request.forward_entry_name
+        if not UtilClient.is_unset(request.internal_ip):
+            query['InternalIp'] = request.internal_ip
+        if not UtilClient.is_unset(request.ip_protocol):
+            query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeForwardTableEntries',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeForwardTableEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_forward_table_entries(
+        self,
+        request: ens_20171110_models.DescribeForwardTableEntriesRequest,
+    ) -> ens_20171110_models.DescribeForwardTableEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_forward_table_entries_with_options(request, runtime)
+
+    async def describe_forward_table_entries_async(
+        self,
+        request: ens_20171110_models.DescribeForwardTableEntriesRequest,
+    ) -> ens_20171110_models.DescribeForwardTableEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_forward_table_entries_with_options_async(request, runtime)
 
     def describe_image_infos_with_options(
         self,
@@ -7125,6 +7551,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_measurement_data_with_options_async(request, runtime)
 
+    def describe_nat_gateways_with_options(
+        self,
+        request: ens_20171110_models.DescribeNatGatewaysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeNatGatewaysResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatGateways',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeNatGatewaysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nat_gateways_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeNatGatewaysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeNatGatewaysResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatGateways',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeNatGatewaysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nat_gateways(
+        self,
+        request: ens_20171110_models.DescribeNatGatewaysRequest,
+    ) -> ens_20171110_models.DescribeNatGatewaysResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nat_gateways_with_options(request, runtime)
+
+    async def describe_nat_gateways_async(
+        self,
+        request: ens_20171110_models.DescribeNatGatewaysRequest,
+    ) -> ens_20171110_models.DescribeNatGatewaysResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nat_gateways_with_options_async(request, runtime)
+
     def describe_network_attribute_with_options(
         self,
         request: ens_20171110_models.DescribeNetworkAttributeRequest,
@@ -7937,6 +8429,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_servcie_schedule_with_options_async(request, runtime)
 
+    def describe_snat_table_entries_with_options(
+        self,
+        request: ens_20171110_models.DescribeSnatTableEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSnatTableEntriesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSnatTableEntries',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSnatTableEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_snat_table_entries_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeSnatTableEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSnatTableEntriesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSnatTableEntries',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSnatTableEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_snat_table_entries(
+        self,
+        request: ens_20171110_models.DescribeSnatTableEntriesRequest,
+    ) -> ens_20171110_models.DescribeSnatTableEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_snat_table_entries_with_options(request, runtime)
+
+    async def describe_snat_table_entries_async(
+        self,
+        request: ens_20171110_models.DescribeSnatTableEntriesRequest,
+    ) -> ens_20171110_models.DescribeSnatTableEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_snat_table_entries_with_options_async(request, runtime)
+
     def describe_user_band_width_data_with_options(
         self,
         request: ens_20171110_models.DescribeUserBandWidthDataRequest,
@@ -8581,72 +9139,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_device_internet_port_with_options_async(request, runtime)
 
-    def get_vm_list_with_options(
-        self,
-        request: ens_20171110_models.GetVmListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.GetVmListResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetVmList',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.GetVmListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_vm_list_with_options_async(
-        self,
-        request: ens_20171110_models.GetVmListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.GetVmListResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetVmList',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.GetVmListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_vm_list(
-        self,
-        request: ens_20171110_models.GetVmListRequest,
-    ) -> ens_20171110_models.GetVmListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_vm_list_with_options(request, runtime)
-
-    async def get_vm_list_async(
-        self,
-        request: ens_20171110_models.GetVmListRequest,
-    ) -> ens_20171110_models.GetVmListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_vm_list_with_options_async(request, runtime)
-
     def import_key_pair_with_options(
         self,
         request: ens_20171110_models.ImportKeyPairRequest,
@@ -9126,92 +9618,6 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.ListApplicationsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_with_options_async(request, runtime)
-
-    def migrate_vm_with_options(
-        self,
-        request: ens_20171110_models.MigrateVmRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.MigrateVmResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.group_uuid):
-            query['GroupUuid'] = request.group_uuid
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.tenant):
-            query['Tenant'] = request.tenant
-        body = {}
-        if not UtilClient.is_unset(request.instances):
-            body['Instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='MigrateVm',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.MigrateVmResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def migrate_vm_with_options_async(
-        self,
-        request: ens_20171110_models.MigrateVmRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.MigrateVmResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.group_uuid):
-            query['GroupUuid'] = request.group_uuid
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.tenant):
-            query['Tenant'] = request.tenant
-        body = {}
-        if not UtilClient.is_unset(request.instances):
-            body['Instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='MigrateVm',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.MigrateVmResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def migrate_vm(
-        self,
-        request: ens_20171110_models.MigrateVmRequest,
-    ) -> ens_20171110_models.MigrateVmResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.migrate_vm_with_options(request, runtime)
-
-    async def migrate_vm_async(
-        self,
-        request: ens_20171110_models.MigrateVmRequest,
-    ) -> ens_20171110_models.MigrateVmResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.migrate_vm_with_options_async(request, runtime)
 
     def modify_ens_eip_address_attribute_with_options(
         self,
@@ -10450,84 +10856,6 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.RebootInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.reboot_instance_with_options_async(request, runtime)
-
-    def release_eip_address_with_options(
-        self,
-        request: ens_20171110_models.ReleaseEipAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.ReleaseEipAddressResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.eips):
-            query['Eips'] = request.eips
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ReleaseEipAddress',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.ReleaseEipAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def release_eip_address_with_options_async(
-        self,
-        request: ens_20171110_models.ReleaseEipAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.ReleaseEipAddressResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.eips):
-            query['Eips'] = request.eips
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ReleaseEipAddress',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.ReleaseEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def release_eip_address(
-        self,
-        request: ens_20171110_models.ReleaseEipAddressRequest,
-    ) -> ens_20171110_models.ReleaseEipAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.release_eip_address_with_options(request, runtime)
-
-    async def release_eip_address_async(
-        self,
-        request: ens_20171110_models.ReleaseEipAddressRequest,
-    ) -> ens_20171110_models.ReleaseEipAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.release_eip_address_with_options_async(request, runtime)
 
     def release_instance_with_options(
         self,
@@ -11941,116 +12269,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_service_schedule_with_options_async(request, runtime)
 
-    def schedule_pod_with_options(
-        self,
-        request: ens_20171110_models.SchedulePodRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.SchedulePodResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.area_codes):
-            query['AreaCodes'] = request.area_codes
-        if not UtilClient.is_unset(request.group_uuid):
-            query['GroupUuid'] = request.group_uuid
-        if not UtilClient.is_unset(request.isps):
-            query['Isps'] = request.isps
-        if not UtilClient.is_unset(request.labels):
-            query['Labels'] = request.labels
-        if not UtilClient.is_unset(request.regions):
-            query['Regions'] = request.regions
-        if not UtilClient.is_unset(request.tenant):
-            query['Tenant'] = request.tenant
-        if not UtilClient.is_unset(request.workload_uuid):
-            query['WorkloadUuid'] = request.workload_uuid
-        body = {}
-        if not UtilClient.is_unset(request.requirements):
-            body['Requirements'] = request.requirements
-        if not UtilClient.is_unset(request.resource_attribute):
-            body['ResourceAttribute'] = request.resource_attribute
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SchedulePod',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.SchedulePodResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def schedule_pod_with_options_async(
-        self,
-        request: ens_20171110_models.SchedulePodRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.SchedulePodResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.area_codes):
-            query['AreaCodes'] = request.area_codes
-        if not UtilClient.is_unset(request.group_uuid):
-            query['GroupUuid'] = request.group_uuid
-        if not UtilClient.is_unset(request.isps):
-            query['Isps'] = request.isps
-        if not UtilClient.is_unset(request.labels):
-            query['Labels'] = request.labels
-        if not UtilClient.is_unset(request.regions):
-            query['Regions'] = request.regions
-        if not UtilClient.is_unset(request.tenant):
-            query['Tenant'] = request.tenant
-        if not UtilClient.is_unset(request.workload_uuid):
-            query['WorkloadUuid'] = request.workload_uuid
-        body = {}
-        if not UtilClient.is_unset(request.requirements):
-            body['Requirements'] = request.requirements
-        if not UtilClient.is_unset(request.resource_attribute):
-            body['ResourceAttribute'] = request.resource_attribute
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SchedulePod',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.SchedulePodResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def schedule_pod(
-        self,
-        request: ens_20171110_models.SchedulePodRequest,
-    ) -> ens_20171110_models.SchedulePodResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.schedule_pod_with_options(request, runtime)
-
-    async def schedule_pod_async(
-        self,
-        request: ens_20171110_models.SchedulePodRequest,
-    ) -> ens_20171110_models.SchedulePodResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.schedule_pod_with_options_async(request, runtime)
-
     def set_backend_servers_with_options(
         self,
         tmp_req: ens_20171110_models.SetBackendServersRequest,
@@ -13224,88 +13442,6 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.UnAssociateEnsEipAddressResponse:
         runtime = util_models.RuntimeOptions()
         return await self.un_associate_ens_eip_address_with_options_async(request, runtime)
-
-    def unassociate_eip_address_with_options(
-        self,
-        request: ens_20171110_models.UnassociateEipAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.UnassociateEipAddressResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.eip):
-            query['Eip'] = request.eip
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.instance_id_internet_ip):
-            query['InstanceIdInternetIp'] = request.instance_id_internet_ip
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UnassociateEipAddress',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.UnassociateEipAddressResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def unassociate_eip_address_with_options_async(
-        self,
-        request: ens_20171110_models.UnassociateEipAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.UnassociateEipAddressResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.eip):
-            query['Eip'] = request.eip
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.instance_id_internet_ip):
-            query['InstanceIdInternetIp'] = request.instance_id_internet_ip
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UnassociateEipAddress',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.UnassociateEipAddressResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def unassociate_eip_address(
-        self,
-        request: ens_20171110_models.UnassociateEipAddressRequest,
-    ) -> ens_20171110_models.UnassociateEipAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.unassociate_eip_address_with_options(request, runtime)
-
-    async def unassociate_eip_address_async(
-        self,
-        request: ens_20171110_models.UnassociateEipAddressRequest,
-    ) -> ens_20171110_models.UnassociateEipAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.unassociate_eip_address_with_options_async(request, runtime)
 
     def upgrade_application_with_options(
         self,
