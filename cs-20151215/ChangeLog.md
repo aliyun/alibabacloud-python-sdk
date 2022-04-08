@@ -1,3 +1,6 @@
+2022-04-08 Version: 3.0.11
+- Update DeleteClusterNodepool.
+
 2022-04-08 Version: 3.0.10
 - Update DeleteClusterNodepool.
 - Update UpgradeClusterAddons.

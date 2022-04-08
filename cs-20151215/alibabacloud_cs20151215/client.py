@@ -1659,12 +1659,12 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.force):
-            body['force'] = request.force
+            query['force'] = request.force
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteClusterNodepool',
@@ -1693,12 +1693,12 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.force):
-            body['force'] = request.force
+            query['force'] = request.force
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteClusterNodepool',
