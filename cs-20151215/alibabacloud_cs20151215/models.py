@@ -3064,6 +3064,34 @@ class DeleteClusterResponse(TeaModel):
         return self
 
 
+class DeleteClusterNodepoolRequest(TeaModel):
+    def __init__(
+        self,
+        force: bool = None,
+    ):
+        # 是否强制删除。
+        self.force = force
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.force is not None:
+            result['force'] = self.force
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('force') is not None:
+            self.force = m.get('force')
+        return self
+
+
 class DeleteClusterNodepoolResponseBody(TeaModel):
     def __init__(
         self,
@@ -15583,11 +15611,14 @@ class UpgradeClusterAddonsRequestBody(TeaModel):
     def __init__(
         self,
         component_name: str = None,
+        config: str = None,
         next_version: str = None,
         version: str = None,
     ):
         # 组件名称
         self.component_name = component_name
+        # 组件自定义参数
+        self.config = config
         # 可升级版本
         self.next_version = next_version
         # 当前版本
@@ -15604,6 +15635,8 @@ class UpgradeClusterAddonsRequestBody(TeaModel):
         result = dict()
         if self.component_name is not None:
             result['component_name'] = self.component_name
+        if self.config is not None:
+            result['config'] = self.config
         if self.next_version is not None:
             result['next_version'] = self.next_version
         if self.version is not None:
@@ -15614,6 +15647,8 @@ class UpgradeClusterAddonsRequestBody(TeaModel):
         m = m or dict()
         if m.get('component_name') is not None:
             self.component_name = m.get('component_name')
+        if m.get('config') is not None:
+            self.config = m.get('config')
         if m.get('next_version') is not None:
             self.next_version = m.get('next_version')
         if m.get('version') is not None:

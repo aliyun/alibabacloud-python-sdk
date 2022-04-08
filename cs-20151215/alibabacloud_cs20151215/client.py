@@ -1632,31 +1632,39 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         nodepool_id: str,
+        request: cs20151215_models.DeleteClusterNodepoolRequest,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_cluster_nodepool_with_options(cluster_id, nodepool_id, headers, runtime)
+        return self.delete_cluster_nodepool_with_options(cluster_id, nodepool_id, request, headers, runtime)
 
     async def delete_cluster_nodepool_async(
         self,
         cluster_id: str,
         nodepool_id: str,
+        request: cs20151215_models.DeleteClusterNodepoolRequest,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_cluster_nodepool_with_options_async(cluster_id, nodepool_id, headers, runtime)
+        return await self.delete_cluster_nodepool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
 
     def delete_cluster_nodepool_with_options(
         self,
         cluster_id: str,
         nodepool_id: str,
+        request: cs20151215_models.DeleteClusterNodepoolRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
+        UtilClient.validate_model(request)
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
+        body = {}
+        if not UtilClient.is_unset(request.force):
+            body['force'] = request.force
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteClusterNodepool',
@@ -1678,13 +1686,19 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         nodepool_id: str,
+        request: cs20151215_models.DeleteClusterNodepoolRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
+        UtilClient.validate_model(request)
         cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
+        body = {}
+        if not UtilClient.is_unset(request.force):
+            body['force'] = request.force
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DeleteClusterNodepool',
