@@ -2963,12 +2963,13 @@ class FeedbackSessionRequest(TeaModel):
         return self
 
 
-class FeedbackSessionResponseBodyData(TeaModel):
+class FeedbackSessionResponseBody(TeaModel):
     def __init__(
         self,
-        data: str = None,
+        request_id: str = None,
     ):
-        self.data = data
+        # Id of the request
+        self.request_id = request_id
 
     def validate(self):
         pass
@@ -2979,48 +2980,12 @@ class FeedbackSessionResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        return self
-
-
-class FeedbackSessionResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: FeedbackSessionResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = FeedbackSessionResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
