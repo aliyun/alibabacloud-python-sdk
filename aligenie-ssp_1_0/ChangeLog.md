@@ -1,3 +1,6 @@
+2022-04-11 Version: 1.0.7
+- List methods result changed.
+
 2021-12-09 Version: 1.0.6
 - Init for new api.
 
