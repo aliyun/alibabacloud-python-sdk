@@ -620,15 +620,21 @@ class CreateAutoscalingConfigRequest(TeaModel):
     def __init__(
         self,
         cool_down_duration: str = None,
+        expander: str = None,
         gpu_utilization_threshold: str = None,
+        scale_down_enabled: bool = None,
         scan_interval: str = None,
         unneeded_duration: str = None,
         utilization_threshold: str = None,
     ):
         # 静默时间，扩容出的节点，在静默时间过后，方可进入缩容判断
         self.cool_down_duration = cool_down_duration
+        # 节点池扩容顺序策略
+        self.expander = expander
         # GPU缩容阈值，节点上 Request 的资源与总资源量的比值
         self.gpu_utilization_threshold = gpu_utilization_threshold
+        # 是否允许缩容
+        self.scale_down_enabled = scale_down_enabled
         # 弹性灵敏度，判断伸缩的间隔时间
         self.scan_interval = scan_interval
         # 缩容触发时延，节点缩容时需要连续满足触发时延所设定的时间，方可进行缩容
@@ -647,8 +653,12 @@ class CreateAutoscalingConfigRequest(TeaModel):
         result = dict()
         if self.cool_down_duration is not None:
             result['cool_down_duration'] = self.cool_down_duration
+        if self.expander is not None:
+            result['expander'] = self.expander
         if self.gpu_utilization_threshold is not None:
             result['gpu_utilization_threshold'] = self.gpu_utilization_threshold
+        if self.scale_down_enabled is not None:
+            result['scale_down_enabled'] = self.scale_down_enabled
         if self.scan_interval is not None:
             result['scan_interval'] = self.scan_interval
         if self.unneeded_duration is not None:
@@ -661,8 +671,12 @@ class CreateAutoscalingConfigRequest(TeaModel):
         m = m or dict()
         if m.get('cool_down_duration') is not None:
             self.cool_down_duration = m.get('cool_down_duration')
+        if m.get('expander') is not None:
+            self.expander = m.get('expander')
         if m.get('gpu_utilization_threshold') is not None:
             self.gpu_utilization_threshold = m.get('gpu_utilization_threshold')
+        if m.get('scale_down_enabled') is not None:
+            self.scale_down_enabled = m.get('scale_down_enabled')
         if m.get('scan_interval') is not None:
             self.scan_interval = m.get('scan_interval')
         if m.get('unneeded_duration') is not None:
@@ -4701,40 +4715,6 @@ class DescribeClusterLogsResponse(TeaModel):
             for k in m.get('body'):
                 temp_model = DescribeClusterLogsResponseBody()
                 self.body.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeClusterNamespacesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: List[str] = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            self.body = m.get('body')
         return self
 
 

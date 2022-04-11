@@ -1,3 +1,6 @@
+2022-04-11 Version: 3.0.12
+- Update CreateAutoscalingConfig.
+
 2022-04-08 Version: 3.0.11
 - Update DeleteClusterNodepool.
 

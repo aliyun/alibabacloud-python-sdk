@@ -462,8 +462,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cool_down_duration):
             body['cool_down_duration'] = request.cool_down_duration
+        if not UtilClient.is_unset(request.expander):
+            body['expander'] = request.expander
         if not UtilClient.is_unset(request.gpu_utilization_threshold):
             body['gpu_utilization_threshold'] = request.gpu_utilization_threshold
+        if not UtilClient.is_unset(request.scale_down_enabled):
+            body['scale_down_enabled'] = request.scale_down_enabled
         if not UtilClient.is_unset(request.scan_interval):
             body['scan_interval'] = request.scan_interval
         if not UtilClient.is_unset(request.unneeded_duration):
@@ -502,8 +506,12 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cool_down_duration):
             body['cool_down_duration'] = request.cool_down_duration
+        if not UtilClient.is_unset(request.expander):
+            body['expander'] = request.expander
         if not UtilClient.is_unset(request.gpu_utilization_threshold):
             body['gpu_utilization_threshold'] = request.gpu_utilization_threshold
+        if not UtilClient.is_unset(request.scale_down_enabled):
+            body['scale_down_enabled'] = request.scale_down_enabled
         if not UtilClient.is_unset(request.scan_interval):
             body['scan_interval'] = request.scan_interval
         if not UtilClient.is_unset(request.unneeded_duration):
@@ -2977,74 +2985,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.DescribeClusterLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_cluster_namespaces(
-        self,
-        cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterNamespacesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.describe_cluster_namespaces_with_options(cluster_id, headers, runtime)
-
-    async def describe_cluster_namespaces_async(
-        self,
-        cluster_id: str,
-    ) -> cs20151215_models.DescribeClusterNamespacesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.describe_cluster_namespaces_with_options_async(cluster_id, headers, runtime)
-
-    def describe_cluster_namespaces_with_options(
-        self,
-        cluster_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DescribeClusterNamespacesResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeClusterNamespaces',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/k8s/{cluster_id}/namespaces',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='array'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.DescribeClusterNamespacesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_cluster_namespaces_with_options_async(
-        self,
-        cluster_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> cs20151215_models.DescribeClusterNamespacesResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DescribeClusterNamespaces',
-            version='2015-12-15',
-            protocol='HTTPS',
-            pathname=f'/k8s/{cluster_id}/namespaces',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='array'
-        )
-        return TeaCore.from_map(
-            cs20151215_models.DescribeClusterNamespacesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
