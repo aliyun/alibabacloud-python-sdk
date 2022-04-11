@@ -1,3 +1,6 @@
+2022-04-11 Version: 2.16.9
+- Set multiple apis to public.
+
 2022-02-11 Version: 2.16.8
 - Add media entity APIs.
 

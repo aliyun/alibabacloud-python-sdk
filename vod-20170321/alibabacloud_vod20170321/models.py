@@ -479,152 +479,6 @@ class AddEditingProjectResponse(TeaModel):
         return self
 
 
-class AddFileInfoRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        business_type: int = None,
-        file_type: int = None,
-        file_url: str = None,
-        filename: str = None,
-        media_id: str = None,
-    ):
-        # 应用
-        self.app_id = app_id
-        # 文件业务类型
-        self.business_type = business_type
-        # 文件类型
-        self.file_type = file_type
-        # 文件oss地址
-        self.file_url = file_url
-        # 文件标题
-        self.filename = filename
-        # 媒资Id
-        self.media_id = media_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.business_type is not None:
-            result['BusinessType'] = self.business_type
-        if self.file_type is not None:
-            result['FileType'] = self.file_type
-        if self.file_url is not None:
-            result['FileUrl'] = self.file_url
-        if self.filename is not None:
-            result['Filename'] = self.filename
-        if self.media_id is not None:
-            result['MediaId'] = self.media_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('BusinessType') is not None:
-            self.business_type = m.get('BusinessType')
-        if m.get('FileType') is not None:
-            self.file_type = m.get('FileType')
-        if m.get('FileUrl') is not None:
-            self.file_url = m.get('FileUrl')
-        if m.get('Filename') is not None:
-            self.filename = m.get('Filename')
-        if m.get('MediaId') is not None:
-            self.media_id = m.get('MediaId')
-        return self
-
-
-class AddFileInfoResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        file_id: str = None,
-        request_id: str = None,
-        success: str = None,
-    ):
-        self.code = code
-        # 文件Id
-        self.file_id = file_id
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.file_id is not None:
-            result['FileId'] = self.file_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('FileId') is not None:
-            self.file_id = m.get('FileId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class AddFileInfoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: AddFileInfoResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = AddFileInfoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class AddTranscodeTemplateGroupRequest(TeaModel):
     def __init__(
         self,
@@ -2444,121 +2298,6 @@ class CreateUploadVideoResponse(TeaModel):
         return self
 
 
-class CreateVodRealTimeLogDeliveryRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        logstore: str = None,
-        owner_id: int = None,
-        project: str = None,
-        region: str = None,
-    ):
-        self.domain_name = domain_name
-        self.logstore = logstore
-        self.owner_id = owner_id
-        self.project = project
-        self.region = region
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.logstore is not None:
-            result['Logstore'] = self.logstore
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.project is not None:
-            result['Project'] = self.project
-        if self.region is not None:
-            result['Region'] = self.region
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('Logstore') is not None:
-            self.logstore = m.get('Logstore')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('Project') is not None:
-            self.project = m.get('Project')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        return self
-
-
-class CreateVodRealTimeLogDeliveryResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CreateVodRealTimeLogDeliveryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CreateVodRealTimeLogDeliveryResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CreateVodRealTimeLogDeliveryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteAIImageInfosRequest(TeaModel):
     def __init__(
         self,
@@ -3353,116 +3092,6 @@ class DeleteImageResponse(TeaModel):
         return self
 
 
-class DeleteMediaInfoRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        media_id: str = None,
-    ):
-        self.app_id = app_id
-        # 媒资Id
-        self.media_id = media_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.media_id is not None:
-            result['MediaId'] = self.media_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MediaId') is not None:
-            self.media_id = m.get('MediaId')
-        return self
-
-
-class DeleteMediaInfoResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        request_id: str = None,
-        success: str = None,
-    ):
-        self.code = code
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DeleteMediaInfoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DeleteMediaInfoResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DeleteMediaInfoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteMessageCallbackRequest(TeaModel):
     def __init__(
         self,
@@ -4186,121 +3815,6 @@ class DeleteVodDomainResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteVodDomainResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteVodRealtimeLogDeliveryRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        logstore: str = None,
-        owner_id: int = None,
-        project: str = None,
-        region: str = None,
-    ):
-        self.domain_name = domain_name
-        self.logstore = logstore
-        self.owner_id = owner_id
-        self.project = project
-        self.region = region
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.logstore is not None:
-            result['Logstore'] = self.logstore
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.project is not None:
-            result['Project'] = self.project
-        if self.region is not None:
-            result['Region'] = self.region
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('Logstore') is not None:
-            self.logstore = m.get('Logstore')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('Project') is not None:
-            self.project = m.get('Project')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        return self
-
-
-class DeleteVodRealtimeLogDeliveryResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteVodRealtimeLogDeliveryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DeleteVodRealtimeLogDeliveryResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DeleteVodRealtimeLogDeliveryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7396,569 +6910,6 @@ class DescribeVodDomainLogResponse(TeaModel):
         return self
 
 
-class DescribeVodDomainRealtimeLogDeliveryRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        owner_id: int = None,
-    ):
-        self.domain_name = domain_name
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class DescribeVodDomainRealtimeLogDeliveryResponseBody(TeaModel):
-    def __init__(
-        self,
-        logstore: str = None,
-        project: str = None,
-        region: str = None,
-        request_id: str = None,
-        status: str = None,
-    ):
-        self.logstore = logstore
-        self.project = project
-        self.region = region
-        self.request_id = request_id
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.logstore is not None:
-            result['Logstore'] = self.logstore
-        if self.project is not None:
-            result['Project'] = self.project
-        if self.region is not None:
-            result['Region'] = self.region
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Logstore') is not None:
-            self.logstore = m.get('Logstore')
-        if m.get('Project') is not None:
-            self.project = m.get('Project')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class DescribeVodDomainRealtimeLogDeliveryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeVodDomainRealtimeLogDeliveryResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeVodDomainRealtimeLogDeliveryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeVodDomainSrcBpsDataRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        end_time: str = None,
-        interval: str = None,
-        owner_id: int = None,
-        start_time: str = None,
-    ):
-        self.domain_name = domain_name
-        self.end_time = end_time
-        self.interval = interval
-        self.owner_id = owner_id
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.interval is not None:
-            result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('Interval') is not None:
-            self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule(TeaModel):
-    def __init__(
-        self,
-        https_value: str = None,
-        time_stamp: str = None,
-        value: str = None,
-    ):
-        self.https_value = https_value
-        self.time_stamp = time_stamp
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.https_value is not None:
-            result['HttpsValue'] = self.https_value
-        if self.time_stamp is not None:
-            result['TimeStamp'] = self.time_stamp
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('HttpsValue') is not None:
-            self.https_value = m.get('HttpsValue')
-        if m.get('TimeStamp') is not None:
-            self.time_stamp = m.get('TimeStamp')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval(TeaModel):
-    def __init__(
-        self,
-        data_module: List[DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule] = None,
-    ):
-        self.data_module = data_module
-
-    def validate(self):
-        if self.data_module:
-            for k in self.data_module:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['DataModule'] = []
-        if self.data_module is not None:
-            for k in self.data_module:
-                result['DataModule'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.data_module = []
-        if m.get('DataModule') is not None:
-            for k in m.get('DataModule'):
-                temp_model = DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule()
-                self.data_module.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeVodDomainSrcBpsDataResponseBody(TeaModel):
-    def __init__(
-        self,
-        data_interval: str = None,
-        domain_name: str = None,
-        end_time: str = None,
-        request_id: str = None,
-        src_bps_data_per_interval: DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval = None,
-        start_time: str = None,
-    ):
-        self.data_interval = data_interval
-        self.domain_name = domain_name
-        self.end_time = end_time
-        self.request_id = request_id
-        self.src_bps_data_per_interval = src_bps_data_per_interval
-        self.start_time = start_time
-
-    def validate(self):
-        if self.src_bps_data_per_interval:
-            self.src_bps_data_per_interval.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data_interval is not None:
-            result['DataInterval'] = self.data_interval
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.src_bps_data_per_interval is not None:
-            result['SrcBpsDataPerInterval'] = self.src_bps_data_per_interval.to_map()
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DataInterval') is not None:
-            self.data_interval = m.get('DataInterval')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('SrcBpsDataPerInterval') is not None:
-            temp_model = DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval()
-            self.src_bps_data_per_interval = temp_model.from_map(m['SrcBpsDataPerInterval'])
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeVodDomainSrcBpsDataResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeVodDomainSrcBpsDataResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeVodDomainSrcBpsDataResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeVodDomainSrcTrafficDataRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        end_time: str = None,
-        interval: str = None,
-        owner_id: int = None,
-        start_time: str = None,
-    ):
-        self.domain_name = domain_name
-        self.end_time = end_time
-        self.interval = interval
-        self.owner_id = owner_id
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.interval is not None:
-            result['Interval'] = self.interval
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('Interval') is not None:
-            self.interval = m.get('Interval')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule(TeaModel):
-    def __init__(
-        self,
-        https_value: str = None,
-        time_stamp: str = None,
-        value: str = None,
-    ):
-        self.https_value = https_value
-        self.time_stamp = time_stamp
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.https_value is not None:
-            result['HttpsValue'] = self.https_value
-        if self.time_stamp is not None:
-            result['TimeStamp'] = self.time_stamp
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('HttpsValue') is not None:
-            self.https_value = m.get('HttpsValue')
-        if m.get('TimeStamp') is not None:
-            self.time_stamp = m.get('TimeStamp')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval(TeaModel):
-    def __init__(
-        self,
-        data_module: List[DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule] = None,
-    ):
-        self.data_module = data_module
-
-    def validate(self):
-        if self.data_module:
-            for k in self.data_module:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['DataModule'] = []
-        if self.data_module is not None:
-            for k in self.data_module:
-                result['DataModule'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.data_module = []
-        if m.get('DataModule') is not None:
-            for k in m.get('DataModule'):
-                temp_model = DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule()
-                self.data_module.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeVodDomainSrcTrafficDataResponseBody(TeaModel):
-    def __init__(
-        self,
-        data_interval: str = None,
-        domain_name: str = None,
-        end_time: str = None,
-        request_id: str = None,
-        src_traffic_data_per_interval: DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval = None,
-        start_time: str = None,
-    ):
-        self.data_interval = data_interval
-        self.domain_name = domain_name
-        self.end_time = end_time
-        self.request_id = request_id
-        self.src_traffic_data_per_interval = src_traffic_data_per_interval
-        self.start_time = start_time
-
-    def validate(self):
-        if self.src_traffic_data_per_interval:
-            self.src_traffic_data_per_interval.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data_interval is not None:
-            result['DataInterval'] = self.data_interval
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.src_traffic_data_per_interval is not None:
-            result['SrcTrafficDataPerInterval'] = self.src_traffic_data_per_interval.to_map()
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DataInterval') is not None:
-            self.data_interval = m.get('DataInterval')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('SrcTrafficDataPerInterval') is not None:
-            temp_model = DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval()
-            self.src_traffic_data_per_interval = temp_model.from_map(m['SrcTrafficDataPerInterval'])
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        return self
-
-
-class DescribeVodDomainSrcTrafficDataResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeVodDomainSrcTrafficDataResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeVodDomainSrcTrafficDataResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeVodDomainTrafficDataRequest(TeaModel):
     def __init__(
         self,
@@ -8128,6 +7079,7 @@ class DescribeVodDomainTrafficDataResponseBody(TeaModel):
         end_time: str = None,
         request_id: str = None,
         start_time: str = None,
+        total_traffic: str = None,
         traffic_data_per_interval: DescribeVodDomainTrafficDataResponseBodyTrafficDataPerInterval = None,
     ):
         self.data_interval = data_interval
@@ -8135,6 +7087,7 @@ class DescribeVodDomainTrafficDataResponseBody(TeaModel):
         self.end_time = end_time
         self.request_id = request_id
         self.start_time = start_time
+        self.total_traffic = total_traffic
         self.traffic_data_per_interval = traffic_data_per_interval
 
     def validate(self):
@@ -8157,6 +7110,8 @@ class DescribeVodDomainTrafficDataResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.total_traffic is not None:
+            result['TotalTraffic'] = self.total_traffic
         if self.traffic_data_per_interval is not None:
             result['TrafficDataPerInterval'] = self.traffic_data_per_interval.to_map()
         return result
@@ -8173,6 +7128,8 @@ class DescribeVodDomainTrafficDataResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TotalTraffic') is not None:
+            self.total_traffic = m.get('TotalTraffic')
         if m.get('TrafficDataPerInterval') is not None:
             temp_model = DescribeVodDomainTrafficDataResponseBodyTrafficDataPerInterval()
             self.traffic_data_per_interval = temp_model.from_map(m['TrafficDataPerInterval'])
@@ -9084,244 +8041,6 @@ class DescribeVodStorageDataResponse(TeaModel):
         return self
 
 
-class DescribeVodTagResourcesRequestTag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class DescribeVodTagResourcesRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-        resource_id: List[str] = None,
-        resource_type: str = None,
-        tag: List[DescribeVodTagResourcesRequestTag] = None,
-    ):
-        self.owner_id = owner_id
-        self.resource_id = resource_id
-        self.resource_type = resource_type
-        self.tag = tag
-
-    def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = DescribeVodTagResourcesRequestTag()
-                self.tag.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeVodTagResourcesResponseBodyTagResourcesTag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class DescribeVodTagResourcesResponseBodyTagResources(TeaModel):
-    def __init__(
-        self,
-        resource_id: str = None,
-        tag: List[DescribeVodTagResourcesResponseBodyTagResourcesTag] = None,
-    ):
-        self.resource_id = resource_id
-        self.tag = tag
-
-    def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = DescribeVodTagResourcesResponseBodyTagResourcesTag()
-                self.tag.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeVodTagResourcesResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        tag_resources: List[DescribeVodTagResourcesResponseBodyTagResources] = None,
-    ):
-        self.request_id = request_id
-        self.tag_resources = tag_resources
-
-    def validate(self):
-        if self.tag_resources:
-            for k in self.tag_resources:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['TagResources'] = []
-        if self.tag_resources is not None:
-            for k in self.tag_resources:
-                result['TagResources'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.tag_resources = []
-        if m.get('TagResources') is not None:
-            for k in m.get('TagResources'):
-                temp_model = DescribeVodTagResourcesResponseBodyTagResources()
-                self.tag_resources.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeVodTagResourcesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeVodTagResourcesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeVodTagResourcesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeVodTranscodeDataRequest(TeaModel):
     def __init__(
         self,
@@ -9993,144 +8712,6 @@ class DescribeVodUserDomainsResponse(TeaModel):
         return self
 
 
-class DescribeVodUserTagsRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-    ):
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class DescribeVodUserTagsResponseBodyTags(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: List[str] = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class DescribeVodUserTagsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        tags: List[DescribeVodUserTagsResponseBodyTags] = None,
-    ):
-        self.request_id = request_id
-        self.tags = tags
-
-    def validate(self):
-        if self.tags:
-            for k in self.tags:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['Tags'] = []
-        if self.tags is not None:
-            for k in self.tags:
-                result['Tags'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.tags = []
-        if m.get('Tags') is not None:
-            for k in m.get('Tags'):
-                temp_model = DescribeVodUserTagsResponseBodyTags()
-                self.tags.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeVodUserTagsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DescribeVodUserTagsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DescribeVodUserTagsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeVodVerifyContentRequest(TeaModel):
     def __init__(
         self,
@@ -10351,200 +8932,6 @@ class DetachAppPolicyFromIdentityResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DetachAppPolicyFromIdentityResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DisableVodRealtimeLogDeliveryRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        owner_id: int = None,
-    ):
-        self.domain_name = domain_name
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class DisableVodRealtimeLogDeliveryResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DisableVodRealtimeLogDeliveryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: DisableVodRealtimeLogDeliveryResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = DisableVodRealtimeLogDeliveryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class EnableVodRealtimeLogDeliveryRequest(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        owner_id: int = None,
-    ):
-        self.domain_name = domain_name
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class EnableVodRealtimeLogDeliveryResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class EnableVodRealtimeLogDeliveryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: EnableVodRealtimeLogDeliveryResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = EnableVodRealtimeLogDeliveryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16910,6 +15297,212 @@ class GetMediaDNAResultResponse(TeaModel):
         return self
 
 
+class GetMediaRefreshJobsRequest(TeaModel):
+    def __init__(
+        self,
+        media_id: str = None,
+        media_refresh_job_id: str = None,
+    ):
+        # 媒资ID
+        self.media_id = media_id
+        # 媒资刷新预热任务ID
+        self.media_refresh_job_id = media_refresh_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.media_refresh_job_id is not None:
+            result['MediaRefreshJobId'] = self.media_refresh_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('MediaRefreshJobId') is not None:
+            self.media_refresh_job_id = m.get('MediaRefreshJobId')
+        return self
+
+
+class GetMediaRefreshJobsResponseBodyMediaRefreshJobs(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        filter_policy: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        media_id: str = None,
+        media_refresh_job_id: str = None,
+        status: str = None,
+        success_play_urls: str = None,
+        task_ids: str = None,
+        task_type: str = None,
+        user_data: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.filter_policy = filter_policy
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.media_id = media_id
+        self.media_refresh_job_id = media_refresh_job_id
+        self.status = status
+        self.success_play_urls = success_play_urls
+        self.task_ids = task_ids
+        self.task_type = task_type
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.filter_policy is not None:
+            result['FilterPolicy'] = self.filter_policy
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.media_refresh_job_id is not None:
+            result['MediaRefreshJobId'] = self.media_refresh_job_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success_play_urls is not None:
+            result['SuccessPlayUrls'] = self.success_play_urls
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('FilterPolicy') is not None:
+            self.filter_policy = m.get('FilterPolicy')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('MediaRefreshJobId') is not None:
+            self.media_refresh_job_id = m.get('MediaRefreshJobId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SuccessPlayUrls') is not None:
+            self.success_play_urls = m.get('SuccessPlayUrls')
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class GetMediaRefreshJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        media_refresh_jobs: List[GetMediaRefreshJobsResponseBodyMediaRefreshJobs] = None,
+        request_id: str = None,
+    ):
+        self.media_refresh_jobs = media_refresh_jobs
+        self.request_id = request_id
+
+    def validate(self):
+        if self.media_refresh_jobs:
+            for k in self.media_refresh_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MediaRefreshJobs'] = []
+        if self.media_refresh_jobs is not None:
+            for k in self.media_refresh_jobs:
+                result['MediaRefreshJobs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.media_refresh_jobs = []
+        if m.get('MediaRefreshJobs') is not None:
+            for k in m.get('MediaRefreshJobs'):
+                temp_model = GetMediaRefreshJobsResponseBodyMediaRefreshJobs()
+                self.media_refresh_jobs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetMediaRefreshJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetMediaRefreshJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetMediaRefreshJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMessageCallbackRequest(TeaModel):
     def __init__(
         self,
@@ -22408,257 +21001,6 @@ class ListLiveRecordVideoResponse(TeaModel):
         return self
 
 
-class ListMediaDNADeleteJobRequest(TeaModel):
-    def __init__(
-        self,
-        job_ids: str = None,
-        owner_account: str = None,
-        owner_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: str = None,
-    ):
-        self.job_ids = job_ids
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_ids is not None:
-            result['JobIds'] = self.job_ids
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobIds') is not None:
-            self.job_ids = m.get('JobIds')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class ListMediaDNADeleteJobResponseBodyAIJobListAIJob(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        fp_dbid: str = None,
-        job_id: str = None,
-        media_id: str = None,
-        message: str = None,
-        status: str = None,
-    ):
-        self.code = code
-        self.fp_dbid = fp_dbid
-        self.job_id = job_id
-        self.media_id = media_id
-        self.message = message
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.fp_dbid is not None:
-            result['FpDBId'] = self.fp_dbid
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.media_id is not None:
-            result['MediaId'] = self.media_id
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('FpDBId') is not None:
-            self.fp_dbid = m.get('FpDBId')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('MediaId') is not None:
-            self.media_id = m.get('MediaId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class ListMediaDNADeleteJobResponseBodyAIJobList(TeaModel):
-    def __init__(
-        self,
-        aijob: List[ListMediaDNADeleteJobResponseBodyAIJobListAIJob] = None,
-    ):
-        self.aijob = aijob
-
-    def validate(self):
-        if self.aijob:
-            for k in self.aijob:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['AIJob'] = []
-        if self.aijob is not None:
-            for k in self.aijob:
-                result['AIJob'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.aijob = []
-        if m.get('AIJob') is not None:
-            for k in m.get('AIJob'):
-                temp_model = ListMediaDNADeleteJobResponseBodyAIJobListAIJob()
-                self.aijob.append(temp_model.from_map(k))
-        return self
-
-
-class ListMediaDNADeleteJobResponseBodyNonExistAIJobIds(TeaModel):
-    def __init__(
-        self,
-        string: List[str] = None,
-    ):
-        self.string = string
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.string is not None:
-            result['String'] = self.string
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('String') is not None:
-            self.string = m.get('String')
-        return self
-
-
-class ListMediaDNADeleteJobResponseBody(TeaModel):
-    def __init__(
-        self,
-        aijob_list: ListMediaDNADeleteJobResponseBodyAIJobList = None,
-        non_exist_aijob_ids: ListMediaDNADeleteJobResponseBodyNonExistAIJobIds = None,
-        request_id: str = None,
-    ):
-        self.aijob_list = aijob_list
-        self.non_exist_aijob_ids = non_exist_aijob_ids
-        self.request_id = request_id
-
-    def validate(self):
-        if self.aijob_list:
-            self.aijob_list.validate()
-        if self.non_exist_aijob_ids:
-            self.non_exist_aijob_ids.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.aijob_list is not None:
-            result['AIJobList'] = self.aijob_list.to_map()
-        if self.non_exist_aijob_ids is not None:
-            result['NonExistAIJobIds'] = self.non_exist_aijob_ids.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AIJobList') is not None:
-            temp_model = ListMediaDNADeleteJobResponseBodyAIJobList()
-            self.aijob_list = temp_model.from_map(m['AIJobList'])
-        if m.get('NonExistAIJobIds') is not None:
-            temp_model = ListMediaDNADeleteJobResponseBodyNonExistAIJobIds()
-            self.non_exist_aijob_ids = temp_model.from_map(m['NonExistAIJobIds'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ListMediaDNADeleteJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListMediaDNADeleteJobResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListMediaDNADeleteJobResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListSnapshotsRequest(TeaModel):
     def __init__(
         self,
@@ -23263,364 +21605,6 @@ class ListTranscodeTemplateGroupResponse(TeaModel):
         return self
 
 
-class ListVodRealtimeLogDeliveryDomainsRequest(TeaModel):
-    def __init__(
-        self,
-        logstore: str = None,
-        owner_id: int = None,
-        project: str = None,
-        region: str = None,
-    ):
-        self.logstore = logstore
-        self.owner_id = owner_id
-        self.project = project
-        self.region = region
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.logstore is not None:
-            result['Logstore'] = self.logstore
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.project is not None:
-            result['Project'] = self.project
-        if self.region is not None:
-            result['Region'] = self.region
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Logstore') is not None:
-            self.logstore = m.get('Logstore')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('Project') is not None:
-            self.project = m.get('Project')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        return self
-
-
-class ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains(TeaModel):
-    def __init__(
-        self,
-        domain_name: str = None,
-        status: str = None,
-    ):
-        self.domain_name = domain_name
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class ListVodRealtimeLogDeliveryDomainsResponseBodyContent(TeaModel):
-    def __init__(
-        self,
-        domains: List[ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains] = None,
-    ):
-        self.domains = domains
-
-    def validate(self):
-        if self.domains:
-            for k in self.domains:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Domains'] = []
-        if self.domains is not None:
-            for k in self.domains:
-                result['Domains'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.domains = []
-        if m.get('Domains') is not None:
-            for k in m.get('Domains'):
-                temp_model = ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains()
-                self.domains.append(temp_model.from_map(k))
-        return self
-
-
-class ListVodRealtimeLogDeliveryDomainsResponseBody(TeaModel):
-    def __init__(
-        self,
-        content: ListVodRealtimeLogDeliveryDomainsResponseBodyContent = None,
-        request_id: str = None,
-    ):
-        self.content = content
-        self.request_id = request_id
-
-    def validate(self):
-        if self.content:
-            self.content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            temp_model = ListVodRealtimeLogDeliveryDomainsResponseBodyContent()
-            self.content = temp_model.from_map(m['Content'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ListVodRealtimeLogDeliveryDomainsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListVodRealtimeLogDeliveryDomainsResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListVodRealtimeLogDeliveryDomainsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListVodRealtimeLogDeliveryInfosRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-    ):
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos(TeaModel):
-    def __init__(
-        self,
-        logstore: str = None,
-        project: str = None,
-        region: str = None,
-    ):
-        self.logstore = logstore
-        self.project = project
-        self.region = region
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.logstore is not None:
-            result['Logstore'] = self.logstore
-        if self.project is not None:
-            result['Project'] = self.project
-        if self.region is not None:
-            result['Region'] = self.region
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Logstore') is not None:
-            self.logstore = m.get('Logstore')
-        if m.get('Project') is not None:
-            self.project = m.get('Project')
-        if m.get('Region') is not None:
-            self.region = m.get('Region')
-        return self
-
-
-class ListVodRealtimeLogDeliveryInfosResponseBodyContent(TeaModel):
-    def __init__(
-        self,
-        realtime_log_delivery_infos: List[ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos] = None,
-    ):
-        self.realtime_log_delivery_infos = realtime_log_delivery_infos
-
-    def validate(self):
-        if self.realtime_log_delivery_infos:
-            for k in self.realtime_log_delivery_infos:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['RealtimeLogDeliveryInfos'] = []
-        if self.realtime_log_delivery_infos is not None:
-            for k in self.realtime_log_delivery_infos:
-                result['RealtimeLogDeliveryInfos'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.realtime_log_delivery_infos = []
-        if m.get('RealtimeLogDeliveryInfos') is not None:
-            for k in m.get('RealtimeLogDeliveryInfos'):
-                temp_model = ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos()
-                self.realtime_log_delivery_infos.append(temp_model.from_map(k))
-        return self
-
-
-class ListVodRealtimeLogDeliveryInfosResponseBody(TeaModel):
-    def __init__(
-        self,
-        content: ListVodRealtimeLogDeliveryInfosResponseBodyContent = None,
-        request_id: str = None,
-    ):
-        self.content = content
-        self.request_id = request_id
-
-    def validate(self):
-        if self.content:
-            self.content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            temp_model = ListVodRealtimeLogDeliveryInfosResponseBodyContent()
-            self.content = temp_model.from_map(m['Content'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ListVodRealtimeLogDeliveryInfosResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListVodRealtimeLogDeliveryInfosResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListVodRealtimeLogDeliveryInfosResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListVodTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -23971,194 +21955,6 @@ class ListWatermarkResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListWatermarkResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ModifyMediaInfoRequest(TeaModel):
-    def __init__(
-        self,
-        ai_label_url: str = None,
-        app_id: str = None,
-        business_type: int = None,
-        cate_id: int = None,
-        description: str = None,
-        dynamic_data: str = None,
-        entity_id: str = None,
-        label: str = None,
-        media_id: str = None,
-        media_type: int = None,
-        source: int = None,
-        tags: str = None,
-        title: str = None,
-    ):
-        # OSS存储地址
-        self.ai_label_url = ai_label_url
-        # 应用
-        self.app_id = app_id
-        # 媒资业务类型
-        self.business_type = business_type
-        # 分类ID
-        self.cate_id = cate_id
-        # 描述
-        self.description = description
-        # 动态数据
-        self.dynamic_data = dynamic_data
-        # 元数据实体ID
-        self.entity_id = entity_id
-        # 智能标签，json结构
-        self.label = label
-        # 媒资Id
-        self.media_id = media_id
-        # 媒资类型
-        self.media_type = media_type
-        # 媒资来源
-        self.source = source
-        # 视频标签
-        self.tags = tags
-        # 标题
-        self.title = title
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ai_label_url is not None:
-            result['AiLabelUrl'] = self.ai_label_url
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.business_type is not None:
-            result['BusinessType'] = self.business_type
-        if self.cate_id is not None:
-            result['CateId'] = self.cate_id
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.dynamic_data is not None:
-            result['DynamicData'] = self.dynamic_data
-        if self.entity_id is not None:
-            result['EntityId'] = self.entity_id
-        if self.label is not None:
-            result['Label'] = self.label
-        if self.media_id is not None:
-            result['MediaId'] = self.media_id
-        if self.media_type is not None:
-            result['MediaType'] = self.media_type
-        if self.source is not None:
-            result['Source'] = self.source
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        if self.title is not None:
-            result['Title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AiLabelUrl') is not None:
-            self.ai_label_url = m.get('AiLabelUrl')
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('BusinessType') is not None:
-            self.business_type = m.get('BusinessType')
-        if m.get('CateId') is not None:
-            self.cate_id = m.get('CateId')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('DynamicData') is not None:
-            self.dynamic_data = m.get('DynamicData')
-        if m.get('EntityId') is not None:
-            self.entity_id = m.get('EntityId')
-        if m.get('Label') is not None:
-            self.label = m.get('Label')
-        if m.get('MediaId') is not None:
-            self.media_id = m.get('MediaId')
-        if m.get('MediaType') is not None:
-            self.media_type = m.get('MediaType')
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        return self
-
-
-class ModifyMediaInfoResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        request_id: str = None,
-        success: str = None,
-    ):
-        self.code = code
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ModifyMediaInfoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ModifyMediaInfoResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ModifyMediaInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24546,6 +22342,175 @@ class ProduceEditingProjectVideoResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ProduceEditingProjectVideoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RefreshMediaPlayUrlsRequest(TeaModel):
+    def __init__(
+        self,
+        definitions: str = None,
+        formats: str = None,
+        media_ids: str = None,
+        result_type: str = None,
+        slice_count: int = None,
+        slice_flag: bool = None,
+        stream_type: str = None,
+        task_type: str = None,
+        user_data: str = None,
+    ):
+        # 播放流清晰度
+        self.definitions = definitions
+        # 播放流格式
+        self.formats = formats
+        # 媒资ID列表
+        self.media_ids = media_ids
+        # 结果类型：Single或Multiple
+        self.result_type = result_type
+        # M3U8文件的ts链接数量
+        self.slice_count = slice_count
+        # M3U8文件是否获取ts链接
+        self.slice_flag = slice_flag
+        # 播放流类型：视频或音频
+        self.stream_type = stream_type
+        # Refresh: 刷新。Preload: 预热
+        self.task_type = task_type
+        # 回调设置
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.definitions is not None:
+            result['Definitions'] = self.definitions
+        if self.formats is not None:
+            result['Formats'] = self.formats
+        if self.media_ids is not None:
+            result['MediaIds'] = self.media_ids
+        if self.result_type is not None:
+            result['ResultType'] = self.result_type
+        if self.slice_count is not None:
+            result['SliceCount'] = self.slice_count
+        if self.slice_flag is not None:
+            result['SliceFlag'] = self.slice_flag
+        if self.stream_type is not None:
+            result['StreamType'] = self.stream_type
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Definitions') is not None:
+            self.definitions = m.get('Definitions')
+        if m.get('Formats') is not None:
+            self.formats = m.get('Formats')
+        if m.get('MediaIds') is not None:
+            self.media_ids = m.get('MediaIds')
+        if m.get('ResultType') is not None:
+            self.result_type = m.get('ResultType')
+        if m.get('SliceCount') is not None:
+            self.slice_count = m.get('SliceCount')
+        if m.get('SliceFlag') is not None:
+            self.slice_flag = m.get('SliceFlag')
+        if m.get('StreamType') is not None:
+            self.stream_type = m.get('StreamType')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class RefreshMediaPlayUrlsResponseBody(TeaModel):
+    def __init__(
+        self,
+        forbidden_media_ids: str = None,
+        media_refresh_job_id: str = None,
+        non_exist_media_ids: str = None,
+        request_id: str = None,
+    ):
+        # 没有多应用权限的视频ID
+        self.forbidden_media_ids = forbidden_media_ids
+        # 刷新预热任务ID
+        self.media_refresh_job_id = media_refresh_job_id
+        # 不存在的媒资ID
+        self.non_exist_media_ids = non_exist_media_ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.forbidden_media_ids is not None:
+            result['ForbiddenMediaIds'] = self.forbidden_media_ids
+        if self.media_refresh_job_id is not None:
+            result['MediaRefreshJobId'] = self.media_refresh_job_id
+        if self.non_exist_media_ids is not None:
+            result['NonExistMediaIds'] = self.non_exist_media_ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ForbiddenMediaIds') is not None:
+            self.forbidden_media_ids = m.get('ForbiddenMediaIds')
+        if m.get('MediaRefreshJobId') is not None:
+            self.media_refresh_job_id = m.get('MediaRefreshJobId')
+        if m.get('NonExistMediaIds') is not None:
+            self.non_exist_media_ids = m.get('NonExistMediaIds')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RefreshMediaPlayUrlsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RefreshMediaPlayUrlsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RefreshMediaPlayUrlsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27637,182 +25602,6 @@ class SubmitDynamicImageJobResponse(TeaModel):
         return self
 
 
-class SubmitLiveEditingRequest(TeaModel):
-    def __init__(
-        self,
-        app_name: str = None,
-        clips: str = None,
-        cover_url: str = None,
-        description: str = None,
-        domain_name: str = None,
-        media_metadata: str = None,
-        owner_id: int = None,
-        produce_config: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-        stream_name: str = None,
-        title: str = None,
-        user_data: str = None,
-    ):
-        self.app_name = app_name
-        self.clips = clips
-        self.cover_url = cover_url
-        self.description = description
-        self.domain_name = domain_name
-        self.media_metadata = media_metadata
-        self.owner_id = owner_id
-        self.produce_config = produce_config
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        self.stream_name = stream_name
-        self.title = title
-        self.user_data = user_data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_name is not None:
-            result['AppName'] = self.app_name
-        if self.clips is not None:
-            result['Clips'] = self.clips
-        if self.cover_url is not None:
-            result['CoverURL'] = self.cover_url
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        if self.media_metadata is not None:
-            result['MediaMetadata'] = self.media_metadata
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.produce_config is not None:
-            result['ProduceConfig'] = self.produce_config
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.stream_name is not None:
-            result['StreamName'] = self.stream_name
-        if self.title is not None:
-            result['Title'] = self.title
-        if self.user_data is not None:
-            result['UserData'] = self.user_data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppName') is not None:
-            self.app_name = m.get('AppName')
-        if m.get('Clips') is not None:
-            self.clips = m.get('Clips')
-        if m.get('CoverURL') is not None:
-            self.cover_url = m.get('CoverURL')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        if m.get('MediaMetadata') is not None:
-            self.media_metadata = m.get('MediaMetadata')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ProduceConfig') is not None:
-            self.produce_config = m.get('ProduceConfig')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('StreamName') is not None:
-            self.stream_name = m.get('StreamName')
-        if m.get('Title') is not None:
-            self.title = m.get('Title')
-        if m.get('UserData') is not None:
-            self.user_data = m.get('UserData')
-        return self
-
-
-class SubmitLiveEditingResponseBody(TeaModel):
-    def __init__(
-        self,
-        media_id: str = None,
-        project_id: str = None,
-        request_id: str = None,
-    ):
-        self.media_id = media_id
-        self.project_id = project_id
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.media_id is not None:
-            result['MediaId'] = self.media_id
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MediaId') is not None:
-            self.media_id = m.get('MediaId')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SubmitLiveEditingResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: SubmitLiveEditingResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = SubmitLiveEditingResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class SubmitMediaDNADeleteJobRequest(TeaModel):
     def __init__(
         self,
@@ -28575,271 +26364,6 @@ class SubmitWorkflowJobResponse(TeaModel):
         return self
 
 
-class TagVodResourcesRequestTag(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['Key'] = self.key
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class TagVodResourcesRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-        resource_id: List[str] = None,
-        resource_type: str = None,
-        tag: List[TagVodResourcesRequestTag] = None,
-    ):
-        self.owner_id = owner_id
-        self.resource_id = resource_id
-        self.resource_type = resource_type
-        self.tag = tag
-
-    def validate(self):
-        if self.tag:
-            for k in self.tag:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        result['Tag'] = []
-        if self.tag is not None:
-            for k in self.tag:
-                result['Tag'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        self.tag = []
-        if m.get('Tag') is not None:
-            for k in m.get('Tag'):
-                temp_model = TagVodResourcesRequestTag()
-                self.tag.append(temp_model.from_map(k))
-        return self
-
-
-class TagVodResourcesResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class TagVodResourcesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: TagVodResourcesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = TagVodResourcesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UnTagVodResourcesRequest(TeaModel):
-    def __init__(
-        self,
-        all: bool = None,
-        owner_id: int = None,
-        resource_id: List[str] = None,
-        resource_type: str = None,
-        tag_key: List[str] = None,
-    ):
-        self.all = all
-        self.owner_id = owner_id
-        self.resource_id = resource_id
-        self.resource_type = resource_type
-        self.tag_key = tag_key
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.all is not None:
-            result['All'] = self.all
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_id is not None:
-            result['ResourceId'] = self.resource_id
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        if self.tag_key is not None:
-            result['TagKey'] = self.tag_key
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('All') is not None:
-            self.all = m.get('All')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceId') is not None:
-            self.resource_id = m.get('ResourceId')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        if m.get('TagKey') is not None:
-            self.tag_key = m.get('TagKey')
-        return self
-
-
-class UnTagVodResourcesResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UnTagVodResourcesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: UnTagVodResourcesResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = UnTagVodResourcesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class UpdateAITemplateRequest(TeaModel):
     def __init__(
         self,
@@ -29513,105 +27037,6 @@ class UpdateImageInfosResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = UpdateImageInfosResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateStreamInfoRequest(TeaModel):
-    def __init__(
-        self,
-        job_id: str = None,
-        media_id: str = None,
-    ):
-        # 视频流ID
-        self.job_id = job_id
-        # 视频ID
-        self.media_id = media_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.media_id is not None:
-            result['MediaId'] = self.media_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('MediaId') is not None:
-            self.media_id = m.get('MediaId')
-        return self
-
-
-class UpdateStreamInfoResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateStreamInfoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: UpdateStreamInfoResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = UpdateStreamInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
