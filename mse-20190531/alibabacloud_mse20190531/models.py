@@ -4096,6 +4096,7 @@ class CreateEngineNamespaceRequest(TeaModel):
         accept_language: str = None,
         cluster_id: str = None,
         desc: str = None,
+        id: str = None,
         instance_id: str = None,
         name: str = None,
         service_count: int = None,
@@ -4103,6 +4104,7 @@ class CreateEngineNamespaceRequest(TeaModel):
         self.accept_language = accept_language
         self.cluster_id = cluster_id
         self.desc = desc
+        self.id = id
         self.instance_id = instance_id
         self.name = name
         self.service_count = service_count
@@ -4122,6 +4124,8 @@ class CreateEngineNamespaceRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.desc is not None:
             result['Desc'] = self.desc
+        if self.id is not None:
+            result['Id'] = self.id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.name is not None:
@@ -4138,6 +4142,8 @@ class CreateEngineNamespaceRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('Desc') is not None:
             self.desc = m.get('Desc')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Name') is not None:
@@ -25640,145 +25646,6 @@ class RetryClusterResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = RetryClusterResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ScalingClusterRequest(TeaModel):
-    def __init__(
-        self,
-        accept_language: str = None,
-        cluster_specification: str = None,
-        cpu: int = None,
-        instance_count: int = None,
-        instance_id: str = None,
-        memory_capacity: int = None,
-    ):
-        self.accept_language = accept_language
-        self.cluster_specification = cluster_specification
-        self.cpu = cpu
-        self.instance_count = instance_count
-        self.instance_id = instance_id
-        self.memory_capacity = memory_capacity
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.accept_language is not None:
-            result['AcceptLanguage'] = self.accept_language
-        if self.cluster_specification is not None:
-            result['ClusterSpecification'] = self.cluster_specification
-        if self.cpu is not None:
-            result['Cpu'] = self.cpu
-        if self.instance_count is not None:
-            result['InstanceCount'] = self.instance_count
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.memory_capacity is not None:
-            result['MemoryCapacity'] = self.memory_capacity
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AcceptLanguage') is not None:
-            self.accept_language = m.get('AcceptLanguage')
-        if m.get('ClusterSpecification') is not None:
-            self.cluster_specification = m.get('ClusterSpecification')
-        if m.get('Cpu') is not None:
-            self.cpu = m.get('Cpu')
-        if m.get('InstanceCount') is not None:
-            self.instance_count = m.get('InstanceCount')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('MemoryCapacity') is not None:
-            self.memory_capacity = m.get('MemoryCapacity')
-        return self
-
-
-class ScalingClusterResponseBody(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.error_code = error_code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ScalingClusterResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ScalingClusterResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ScalingClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

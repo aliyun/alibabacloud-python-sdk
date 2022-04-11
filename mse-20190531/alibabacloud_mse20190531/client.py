@@ -1610,6 +1610,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.desc):
             query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
@@ -1648,6 +1650,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.desc):
             query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
@@ -9058,96 +9062,6 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.RetryClusterResponse:
         runtime = util_models.RuntimeOptions()
         return await self.retry_cluster_with_options_async(request, runtime)
-
-    def scaling_cluster_with_options(
-        self,
-        request: mse_20190531_models.ScalingClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ScalingClusterResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.cluster_specification):
-            query['ClusterSpecification'] = request.cluster_specification
-        if not UtilClient.is_unset(request.cpu):
-            query['Cpu'] = request.cpu
-        if not UtilClient.is_unset(request.instance_count):
-            query['InstanceCount'] = request.instance_count
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.memory_capacity):
-            query['MemoryCapacity'] = request.memory_capacity
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ScalingCluster',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ScalingClusterResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def scaling_cluster_with_options_async(
-        self,
-        request: mse_20190531_models.ScalingClusterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ScalingClusterResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.cluster_specification):
-            query['ClusterSpecification'] = request.cluster_specification
-        if not UtilClient.is_unset(request.cpu):
-            query['Cpu'] = request.cpu
-        if not UtilClient.is_unset(request.instance_count):
-            query['InstanceCount'] = request.instance_count
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.memory_capacity):
-            query['MemoryCapacity'] = request.memory_capacity
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ScalingCluster',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ScalingClusterResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def scaling_cluster(
-        self,
-        request: mse_20190531_models.ScalingClusterRequest,
-    ) -> mse_20190531_models.ScalingClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.scaling_cluster_with_options(request, runtime)
-
-    async def scaling_cluster_async(
-        self,
-        request: mse_20190531_models.ScalingClusterRequest,
-    ) -> mse_20190531_models.ScalingClusterResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.scaling_cluster_with_options_async(request, runtime)
 
     def select_gateway_slb_with_options(
         self,
