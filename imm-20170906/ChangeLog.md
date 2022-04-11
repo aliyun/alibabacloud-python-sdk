@@ -1,3 +1,6 @@
+2022-04-11 Version: 1.23.8
+- Drop Content parameter for DecodeBlindWatermark.
+
 2021-11-25 Version: 1.23.7
 - Minor changes.
 
