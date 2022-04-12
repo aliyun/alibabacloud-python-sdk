@@ -4,6 +4,136 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class AdjustJMeterSceneSpeedRequest(TeaModel):
+    def __init__(
+        self,
+        report_id: str = None,
+        speed: int = None,
+    ):
+        # 报告id
+        self.report_id = report_id
+        # 要调整到的压力值
+        self.speed = speed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.speed is not None:
+            result['Speed'] = self.speed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
+        return self
+
+
+class AdjustJMeterSceneSpeedResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        report_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        # 报告ID
+        self.report_id = report_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AdjustJMeterSceneSpeedResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AdjustJMeterSceneSpeedResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AdjustJMeterSceneSpeedResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePtsSceneRequest(TeaModel):
     def __init__(
         self,
@@ -614,6 +744,100 @@ class DeletePtsScenesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeletePtsScenesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAllRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        all_regions: Dict[str, str] = None,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.all_regions = all_regions
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_regions is not None:
+            result['AllRegions'] = self.all_regions
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllRegions') is not None:
+            self.all_regions = m.get('AllRegions')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAllRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetAllRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetAllRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1646,11 +1870,16 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         environment_id: str = None,
         file_list: List[GetOpenJMeterSceneResponseBodySceneFileList] = None,
         is_vpc_test: bool = None,
+        max_rps: int = None,
+        mode: str = None,
+        pool: str = None,
         ramp_up: int = None,
         region_id: str = None,
         scene_id: str = None,
         scene_name: str = None,
         security_group_id: str = None,
+        start_concurrency: int = None,
+        start_rps: int = None,
         steps: int = None,
         sync_timer_type: str = None,
         test_file: str = None,
@@ -1661,7 +1890,7 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         self.agent_count = agent_count
         # 基本信息
         self.base_info = base_info
-        # 最大并发
+        # 最大并发，并发模式下生效
         self.concurrency = concurrency
         # constantThroughputTimerType
         self.constant_throughput_timer_type = constant_throughput_timer_type
@@ -1675,6 +1904,11 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         self.file_list = file_list
         # 是否为VPC压测
         self.is_vpc_test = is_vpc_test
+        self.max_rps = max_rps
+        # 施压模式，concurrency_mode表示并发压测,tps_mode表示RPS压测
+        self.mode = mode
+        # 压力来源。“”表示公网，intranet-vpc表示VPC
+        self.pool = pool
         # 递增时间，单位s
         self.ramp_up = ramp_up
         # VPC压测时配置
@@ -1685,6 +1919,8 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
         self.scene_name = scene_name
         # 安全组id，VPC压测时配置
         self.security_group_id = security_group_id
+        self.start_concurrency = start_concurrency
+        self.start_rps = start_rps
         # 递增阶梯数。预热时间和预热阶段数都不配置时 使用固定压力值 只配置预热时间，不配置阶段数时 使用均匀递增 预热时间和阶段数都配置时，并且steps<rampUp 使用阶梯递增 不能只配置steps，不配置rampUp 如果这样配置，默认使用固定压力值
         self.steps = steps
         # synchronizing timer 类型
@@ -1732,6 +1968,12 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
                 result['FileList'].append(k.to_map() if k else None)
         if self.is_vpc_test is not None:
             result['IsVpcTest'] = self.is_vpc_test
+        if self.max_rps is not None:
+            result['MaxRps'] = self.max_rps
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.pool is not None:
+            result['Pool'] = self.pool
         if self.ramp_up is not None:
             result['RampUp'] = self.ramp_up
         if self.region_id is not None:
@@ -1742,6 +1984,10 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
             result['SceneName'] = self.scene_name
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.start_concurrency is not None:
+            result['StartConcurrency'] = self.start_concurrency
+        if self.start_rps is not None:
+            result['StartRps'] = self.start_rps
         if self.steps is not None:
             result['Steps'] = self.steps
         if self.sync_timer_type is not None:
@@ -1779,6 +2025,12 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
                 self.file_list.append(temp_model.from_map(k))
         if m.get('IsVpcTest') is not None:
             self.is_vpc_test = m.get('IsVpcTest')
+        if m.get('MaxRps') is not None:
+            self.max_rps = m.get('MaxRps')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Pool') is not None:
+            self.pool = m.get('Pool')
         if m.get('RampUp') is not None:
             self.ramp_up = m.get('RampUp')
         if m.get('RegionId') is not None:
@@ -1789,6 +2041,10 @@ class GetOpenJMeterSceneResponseBodyScene(TeaModel):
             self.scene_name = m.get('SceneName')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('StartConcurrency') is not None:
+            self.start_concurrency = m.get('StartConcurrency')
+        if m.get('StartRps') is not None:
+            self.start_rps = m.get('StartRps')
         if m.get('Steps') is not None:
             self.steps = m.get('Steps')
         if m.get('SyncTimerType') is not None:
@@ -5212,6 +5468,969 @@ class GetPtsSceneRunningStatusResponse(TeaModel):
         return self
 
 
+class GetUserVpcSecurityGroupRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetUserVpcSecurityGroupResponseBodySecurityGroupListTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetUserVpcSecurityGroupResponseBodySecurityGroupList(TeaModel):
+    def __init__(
+        self,
+        available_instance_amount: int = None,
+        creation_time: str = None,
+        description: str = None,
+        ecs_count: int = None,
+        resource_group_id: str = None,
+        security_group_id: str = None,
+        security_group_name: str = None,
+        tags: List[GetUserVpcSecurityGroupResponseBodySecurityGroupListTags] = None,
+        vpc_id: str = None,
+    ):
+        self.available_instance_amount = available_instance_amount
+        self.creation_time = creation_time
+        self.description = description
+        self.ecs_count = ecs_count
+        self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
+        self.security_group_name = security_group_name
+        self.tags = tags
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_instance_amount is not None:
+            result['AvailableInstanceAmount'] = self.available_instance_amount
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ecs_count is not None:
+            result['EcsCount'] = self.ecs_count
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_group_name is not None:
+            result['SecurityGroupName'] = self.security_group_name
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableInstanceAmount') is not None:
+            self.available_instance_amount = m.get('AvailableInstanceAmount')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EcsCount') is not None:
+            self.ecs_count = m.get('EcsCount')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityGroupName') is not None:
+            self.security_group_name = m.get('SecurityGroupName')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetUserVpcSecurityGroupResponseBodySecurityGroupListTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetUserVpcSecurityGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        security_group_count: int = None,
+        security_group_list: List[GetUserVpcSecurityGroupResponseBodySecurityGroupList] = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.security_group_count = security_group_count
+        self.security_group_list = security_group_list
+        self.success = success
+
+    def validate(self):
+        if self.security_group_list:
+            for k in self.security_group_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.security_group_count is not None:
+            result['SecurityGroupCount'] = self.security_group_count
+        result['SecurityGroupList'] = []
+        if self.security_group_list is not None:
+            for k in self.security_group_list:
+                result['SecurityGroupList'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SecurityGroupCount') is not None:
+            self.security_group_count = m.get('SecurityGroupCount')
+        self.security_group_list = []
+        if m.get('SecurityGroupList') is not None:
+            for k in m.get('SecurityGroupList'):
+                temp_model = GetUserVpcSecurityGroupResponseBodySecurityGroupList()
+                self.security_group_list.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetUserVpcSecurityGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetUserVpcSecurityGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetUserVpcSecurityGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUserVpcVSwitchRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetUserVpcVSwitchResponseBodyVSwitchListRouteTable(TeaModel):
+    def __init__(
+        self,
+        route_table_id: str = None,
+        route_table_type: str = None,
+    ):
+        self.route_table_id = route_table_id
+        self.route_table_type = route_table_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        if self.route_table_type is not None:
+            result['RouteTableType'] = self.route_table_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        if m.get('RouteTableType') is not None:
+            self.route_table_type = m.get('RouteTableType')
+        return self
+
+
+class GetUserVpcVSwitchResponseBodyVSwitchListTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetUserVpcVSwitchResponseBodyVSwitchList(TeaModel):
+    def __init__(
+        self,
+        available_ip_address_count: int = None,
+        cidr_block: str = None,
+        creation_time: str = None,
+        description: str = None,
+        ipv_6cidr_block: str = None,
+        is_default: bool = None,
+        max_agent_count: int = None,
+        resource_group_id: str = None,
+        route_table: List[GetUserVpcVSwitchResponseBodyVSwitchListRouteTable] = None,
+        status: str = None,
+        tags: List[GetUserVpcVSwitchResponseBodyVSwitchListTags] = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.available_ip_address_count = available_ip_address_count
+        self.cidr_block = cidr_block
+        self.creation_time = creation_time
+        self.description = description
+        self.ipv_6cidr_block = ipv_6cidr_block
+        self.is_default = is_default
+        self.max_agent_count = max_agent_count
+        self.resource_group_id = resource_group_id
+        self.route_table = route_table
+        self.status = status
+        self.tags = tags
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.route_table:
+            for k in self.route_table:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_ip_address_count is not None:
+            result['AvailableIpAddressCount'] = self.available_ip_address_count
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ipv_6cidr_block is not None:
+            result['Ipv6CidrBlock'] = self.ipv_6cidr_block
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.max_agent_count is not None:
+            result['MaxAgentCount'] = self.max_agent_count
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['RouteTable'] = []
+        if self.route_table is not None:
+            for k in self.route_table:
+                result['RouteTable'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableIpAddressCount') is not None:
+            self.available_ip_address_count = m.get('AvailableIpAddressCount')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Ipv6CidrBlock') is not None:
+            self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('MaxAgentCount') is not None:
+            self.max_agent_count = m.get('MaxAgentCount')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.route_table = []
+        if m.get('RouteTable') is not None:
+            for k in m.get('RouteTable'):
+                temp_model = GetUserVpcVSwitchResponseBodyVSwitchListRouteTable()
+                self.route_table.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetUserVpcVSwitchResponseBodyVSwitchListTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class GetUserVpcVSwitchResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        v_switch_count: int = None,
+        v_switch_list: List[GetUserVpcVSwitchResponseBodyVSwitchList] = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.v_switch_count = v_switch_count
+        self.v_switch_list = v_switch_list
+
+    def validate(self):
+        if self.v_switch_list:
+            for k in self.v_switch_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.v_switch_count is not None:
+            result['VSwitchCount'] = self.v_switch_count
+        result['VSwitchList'] = []
+        if self.v_switch_list is not None:
+            for k in self.v_switch_list:
+                result['VSwitchList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('VSwitchCount') is not None:
+            self.v_switch_count = m.get('VSwitchCount')
+        self.v_switch_list = []
+        if m.get('VSwitchList') is not None:
+            for k in m.get('VSwitchList'):
+                temp_model = GetUserVpcVSwitchResponseBodyVSwitchList()
+                self.v_switch_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetUserVpcVSwitchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetUserVpcVSwitchResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetUserVpcVSwitchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetUserVpcsRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class GetUserVpcsResponseBodyVpcsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetUserVpcsResponseBodyVpcs(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        creation_time: str = None,
+        description: str = None,
+        ipv_6cidr_block: str = None,
+        is_default: bool = None,
+        nat_gateway_ids: List[str] = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        router_table_ids: List[str] = None,
+        status: str = None,
+        tags: List[GetUserVpcsResponseBodyVpcsTags] = None,
+        user_cidrs: List[str] = None,
+        vrouter_id: str = None,
+        v_switch_ids: List[str] = None,
+        vpc_id: str = None,
+        vpc_name: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.creation_time = creation_time
+        self.description = description
+        self.ipv_6cidr_block = ipv_6cidr_block
+        self.is_default = is_default
+        self.nat_gateway_ids = nat_gateway_ids
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.router_table_ids = router_table_ids
+        self.status = status
+        self.tags = tags
+        self.user_cidrs = user_cidrs
+        self.vrouter_id = vrouter_id
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+        self.vpc_name = vpc_name
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ipv_6cidr_block is not None:
+            result['Ipv6CidrBlock'] = self.ipv_6cidr_block
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+        if self.nat_gateway_ids is not None:
+            result['NatGatewayIds'] = self.nat_gateway_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.router_table_ids is not None:
+            result['RouterTableIds'] = self.router_table_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.user_cidrs is not None:
+            result['UserCidrs'] = self.user_cidrs
+        if self.vrouter_id is not None:
+            result['VRouterId'] = self.vrouter_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_name is not None:
+            result['VpcName'] = self.vpc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Ipv6CidrBlock') is not None:
+            self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+        if m.get('NatGatewayIds') is not None:
+            self.nat_gateway_ids = m.get('NatGatewayIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('RouterTableIds') is not None:
+            self.router_table_ids = m.get('RouterTableIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetUserVpcsResponseBodyVpcsTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('UserCidrs') is not None:
+            self.user_cidrs = m.get('UserCidrs')
+        if m.get('VRouterId') is not None:
+            self.vrouter_id = m.get('VRouterId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcName') is not None:
+            self.vpc_name = m.get('VpcName')
+        return self
+
+
+class GetUserVpcsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+        vpcs: List[GetUserVpcsResponseBodyVpcs] = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+        self.vpcs = vpcs
+
+    def validate(self):
+        if self.vpcs:
+            for k in self.vpcs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Vpcs'] = []
+        if self.vpcs is not None:
+            for k in self.vpcs:
+                result['Vpcs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.vpcs = []
+        if m.get('Vpcs') is not None:
+            for k in m.get('Vpcs'):
+                temp_model = GetUserVpcsResponseBodyVpcs()
+                self.vpcs.append(temp_model.from_map(k))
+        return self
+
+
+class GetUserVpcsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: GetUserVpcsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = GetUserVpcsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListEnvsRequest(TeaModel):
     def __init__(
         self,
@@ -7024,11 +8243,15 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         is_vpc_test: bool = None,
         jmeter_properties: List[SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties] = None,
         jmeter_plugin_label: str = None,
+        max_rps: int = None,
+        mode: str = None,
         ramp_up: int = None,
         region_id: str = None,
         scene_id: str = None,
         scene_name: str = None,
         security_group_id: str = None,
+        start_concurrency: int = None,
+        start_rps: int = None,
         steps: int = None,
         sync_timer_type: str = None,
         test_file: str = None,
@@ -7055,6 +8278,9 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         self.jmeter_properties = jmeter_properties
         # jmeter插件的环境标签
         self.jmeter_plugin_label = jmeter_plugin_label
+        self.max_rps = max_rps
+        # 压力模式
+        self.mode = mode
         # 预热时间
         self.ramp_up = ramp_up
         # region的id，VPC压测时配置
@@ -7065,6 +8291,8 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
         self.scene_name = scene_name
         # 安全组id，VPC压测时配置
         self.security_group_id = security_group_id
+        self.start_concurrency = start_concurrency
+        self.start_rps = start_rps
         # 预热阶段
         self.steps = steps
         # synchronizing timer 类型
@@ -7118,6 +8346,10 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
                 result['JMeterProperties'].append(k.to_map() if k else None)
         if self.jmeter_plugin_label is not None:
             result['JmeterPluginLabel'] = self.jmeter_plugin_label
+        if self.max_rps is not None:
+            result['MaxRps'] = self.max_rps
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.ramp_up is not None:
             result['RampUp'] = self.ramp_up
         if self.region_id is not None:
@@ -7128,6 +8360,10 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             result['SceneName'] = self.scene_name
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.start_concurrency is not None:
+            result['StartConcurrency'] = self.start_concurrency
+        if self.start_rps is not None:
+            result['StartRps'] = self.start_rps
         if self.steps is not None:
             result['Steps'] = self.steps
         if self.sync_timer_type is not None:
@@ -7169,6 +8405,10 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
                 self.jmeter_properties.append(temp_model.from_map(k))
         if m.get('JmeterPluginLabel') is not None:
             self.jmeter_plugin_label = m.get('JmeterPluginLabel')
+        if m.get('MaxRps') is not None:
+            self.max_rps = m.get('MaxRps')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('RampUp') is not None:
             self.ramp_up = m.get('RampUp')
         if m.get('RegionId') is not None:
@@ -7179,6 +8419,10 @@ class SaveOpenJMeterSceneRequestOpenJMeterScene(TeaModel):
             self.scene_name = m.get('SceneName')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('StartConcurrency') is not None:
+            self.start_concurrency = m.get('StartConcurrency')
+        if m.get('StartRps') is not None:
+            self.start_rps = m.get('StartRps')
         if m.get('Steps') is not None:
             self.steps = m.get('Steps')
         if m.get('SyncTimerType') is not None:
@@ -7697,6 +8941,7 @@ class SavePtsSceneRequestSceneLoadConfig(TeaModel):
         auto_step: bool = None,
         configuration: SavePtsSceneRequestSceneLoadConfigConfiguration = None,
         increment: int = None,
+        is_vpc_test: str = None,
         keep_time: int = None,
         max_running_time: int = None,
         relation_load_config_list: List[SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList] = None,
@@ -7713,6 +8958,8 @@ class SavePtsSceneRequestSceneLoadConfig(TeaModel):
         self.configuration = configuration
         # 递增百分比，取值范围[10,100]，且是整十倍；只有在并发模式且是自动递增模式下有效，即 testMode=concurrency_mode 且 autoStep=true 时
         self.increment = increment
+        # 是否为VPC测试。默认为false，表示公网测试。当此值为true时，VPC相关配置才会生效。
+        self.is_vpc_test = is_vpc_test
         # 单量级持续时长，单位分钟，一定是小于施压时长 maxRunningTime
         self.keep_time = keep_time
         # 施压时长，单位分钟，[1-1440]
@@ -7756,6 +9003,8 @@ class SavePtsSceneRequestSceneLoadConfig(TeaModel):
             result['Configuration'] = self.configuration.to_map()
         if self.increment is not None:
             result['Increment'] = self.increment
+        if self.is_vpc_test is not None:
+            result['IsVpcTest'] = self.is_vpc_test
         if self.keep_time is not None:
             result['KeepTime'] = self.keep_time
         if self.max_running_time is not None:
@@ -7786,6 +9035,8 @@ class SavePtsSceneRequestSceneLoadConfig(TeaModel):
             self.configuration = temp_model.from_map(m['Configuration'])
         if m.get('Increment') is not None:
             self.increment = m.get('Increment')
+        if m.get('IsVpcTest') is not None:
+            self.is_vpc_test = m.get('IsVpcTest')
         if m.get('KeepTime') is not None:
             self.keep_time = m.get('KeepTime')
         if m.get('MaxRunningTime') is not None:

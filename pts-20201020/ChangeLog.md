@@ -1,3 +1,6 @@
+2022-04-12 Version: 1.8.12
+- Add VpcInfo API.
+
 2022-03-25 Version: 1.8.14
 - Add SavePtsScene API.
 

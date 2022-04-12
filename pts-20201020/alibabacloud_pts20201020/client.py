@@ -41,6 +41,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def adjust_jmeter_scene_speed_with_options(
+        self,
+        request: pts20201020_models.AdjustJMeterSceneSpeedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.AdjustJMeterSceneSpeedResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AdjustJMeterSceneSpeed',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.AdjustJMeterSceneSpeedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def adjust_jmeter_scene_speed_with_options_async(
+        self,
+        request: pts20201020_models.AdjustJMeterSceneSpeedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.AdjustJMeterSceneSpeedResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AdjustJMeterSceneSpeed',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.AdjustJMeterSceneSpeedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def adjust_jmeter_scene_speed(
+        self,
+        request: pts20201020_models.AdjustJMeterSceneSpeedRequest,
+    ) -> pts20201020_models.AdjustJMeterSceneSpeedResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.adjust_jmeter_scene_speed_with_options(request, runtime)
+
+    async def adjust_jmeter_scene_speed_async(
+        self,
+        request: pts20201020_models.AdjustJMeterSceneSpeedRequest,
+    ) -> pts20201020_models.AdjustJMeterSceneSpeedResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.adjust_jmeter_scene_speed_with_options_async(request, runtime)
+
     def create_pts_scene_with_options(
         self,
         request: pts20201020_models.CreatePtsSceneRequest,
@@ -402,6 +476,56 @@ class Client(OpenApiClient):
     ) -> pts20201020_models.DeletePtsScenesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_pts_scenes_with_options_async(request, runtime)
+
+    def get_all_regions_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetAllRegionsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAllRegions',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetAllRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_all_regions_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetAllRegionsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAllRegions',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetAllRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_all_regions(self) -> pts20201020_models.GetAllRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_all_regions_with_options(runtime)
+
+    async def get_all_regions_async(self) -> pts20201020_models.GetAllRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_all_regions_with_options_async(runtime)
 
     def get_jmeter_logs_with_options(
         self,
@@ -1280,6 +1404,252 @@ class Client(OpenApiClient):
     ) -> pts20201020_models.GetPtsSceneRunningStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_pts_scene_running_status_with_options_async(request, runtime)
+
+    def get_user_vpc_security_group_with_options(
+        self,
+        request: pts20201020_models.GetUserVpcSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetUserVpcSecurityGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserVpcSecurityGroup',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetUserVpcSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_vpc_security_group_with_options_async(
+        self,
+        request: pts20201020_models.GetUserVpcSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetUserVpcSecurityGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserVpcSecurityGroup',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetUserVpcSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_vpc_security_group(
+        self,
+        request: pts20201020_models.GetUserVpcSecurityGroupRequest,
+    ) -> pts20201020_models.GetUserVpcSecurityGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_vpc_security_group_with_options(request, runtime)
+
+    async def get_user_vpc_security_group_async(
+        self,
+        request: pts20201020_models.GetUserVpcSecurityGroupRequest,
+    ) -> pts20201020_models.GetUserVpcSecurityGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_vpc_security_group_with_options_async(request, runtime)
+
+    def get_user_vpc_vswitch_with_options(
+        self,
+        request: pts20201020_models.GetUserVpcVSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetUserVpcVSwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserVpcVSwitch',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetUserVpcVSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_vpc_vswitch_with_options_async(
+        self,
+        request: pts20201020_models.GetUserVpcVSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetUserVpcVSwitchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserVpcVSwitch',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetUserVpcVSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_vpc_vswitch(
+        self,
+        request: pts20201020_models.GetUserVpcVSwitchRequest,
+    ) -> pts20201020_models.GetUserVpcVSwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_vpc_vswitch_with_options(request, runtime)
+
+    async def get_user_vpc_vswitch_async(
+        self,
+        request: pts20201020_models.GetUserVpcVSwitchRequest,
+    ) -> pts20201020_models.GetUserVpcVSwitchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_vpc_vswitch_with_options_async(request, runtime)
+
+    def get_user_vpcs_with_options(
+        self,
+        request: pts20201020_models.GetUserVpcsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetUserVpcsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserVpcs',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetUserVpcsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_vpcs_with_options_async(
+        self,
+        request: pts20201020_models.GetUserVpcsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pts20201020_models.GetUserVpcsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserVpcs',
+            version='2020-10-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pts20201020_models.GetUserVpcsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_vpcs(
+        self,
+        request: pts20201020_models.GetUserVpcsRequest,
+    ) -> pts20201020_models.GetUserVpcsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_vpcs_with_options(request, runtime)
+
+    async def get_user_vpcs_async(
+        self,
+        request: pts20201020_models.GetUserVpcsRequest,
+    ) -> pts20201020_models.GetUserVpcsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_vpcs_with_options_async(request, runtime)
 
     def list_envs_with_options(
         self,
