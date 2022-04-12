@@ -1,3 +1,6 @@
+2022-04-12 Version: 1.8.15
+- Add VpcInfo and Ajust Speed API.
+
 2022-04-12 Version: 1.8.12
 - Add VpcInfo API.
 
