@@ -6049,6 +6049,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_columns_with_options_async(request, runtime)
 
+    def list_dagversions_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDAGVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDAGVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDAGVersions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDAGVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_dagversions_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDAGVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDAGVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDAGVersions',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDAGVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_dagversions(
+        self,
+        request: dms_enterprise_20181101_models.ListDAGVersionsRequest,
+    ) -> dms_enterprise_20181101_models.ListDAGVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_dagversions_with_options(request, runtime)
+
+    async def list_dagversions_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDAGVersionsRequest,
+    ) -> dms_enterprise_20181101_models.ListDAGVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_dagversions_with_options_async(request, runtime)
+
     def list_dbtask_sqljob_with_options(
         self,
         request: dms_enterprise_20181101_models.ListDBTaskSQLJobRequest,
@@ -8210,10 +8292,6 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListTaskFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.dag_id):
-            query['DagId'] = request.dag_id
-        if not UtilClient.is_unset(request.dag_instance_id):
-            query['DagInstanceId'] = request.dag_instance_id
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -8242,10 +8320,6 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListTaskFlowResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.dag_id):
-            query['DagId'] = request.dag_id
-        if not UtilClient.is_unset(request.dag_instance_id):
-            query['DagInstanceId'] = request.dag_instance_id
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(

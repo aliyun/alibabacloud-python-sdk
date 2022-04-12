@@ -15944,6 +15944,239 @@ class ListColumnsResponse(TeaModel):
         return self
 
 
+class ListDAGVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        dag_id: int = None,
+        page_index: int = None,
+        page_size: int = None,
+        tid: int = None,
+    ):
+        self.dag_id = dag_id
+        self.page_index = page_index
+        self.page_size = page_size
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dag_id is not None:
+            result['DagId'] = self.dag_id
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DagId') is not None:
+            self.dag_id = m.get('DagId')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListDAGVersionsResponseBodyDagVersionListDagVersion(TeaModel):
+    def __init__(
+        self,
+        dag_name: str = None,
+        dag_owner_id: str = None,
+        dag_owner_nick_name: str = None,
+        last_version_id: int = None,
+        version_comments: str = None,
+        version_id: int = None,
+    ):
+        self.dag_name = dag_name
+        self.dag_owner_id = dag_owner_id
+        self.dag_owner_nick_name = dag_owner_nick_name
+        self.last_version_id = last_version_id
+        self.version_comments = version_comments
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dag_name is not None:
+            result['DagName'] = self.dag_name
+        if self.dag_owner_id is not None:
+            result['DagOwnerId'] = self.dag_owner_id
+        if self.dag_owner_nick_name is not None:
+            result['DagOwnerNickName'] = self.dag_owner_nick_name
+        if self.last_version_id is not None:
+            result['LastVersionId'] = self.last_version_id
+        if self.version_comments is not None:
+            result['VersionComments'] = self.version_comments
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DagName') is not None:
+            self.dag_name = m.get('DagName')
+        if m.get('DagOwnerId') is not None:
+            self.dag_owner_id = m.get('DagOwnerId')
+        if m.get('DagOwnerNickName') is not None:
+            self.dag_owner_nick_name = m.get('DagOwnerNickName')
+        if m.get('LastVersionId') is not None:
+            self.last_version_id = m.get('LastVersionId')
+        if m.get('VersionComments') is not None:
+            self.version_comments = m.get('VersionComments')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class ListDAGVersionsResponseBodyDagVersionList(TeaModel):
+    def __init__(
+        self,
+        dag_version: List[ListDAGVersionsResponseBodyDagVersionListDagVersion] = None,
+    ):
+        self.dag_version = dag_version
+
+    def validate(self):
+        if self.dag_version:
+            for k in self.dag_version:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DagVersion'] = []
+        if self.dag_version is not None:
+            for k in self.dag_version:
+                result['DagVersion'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dag_version = []
+        if m.get('DagVersion') is not None:
+            for k in m.get('DagVersion'):
+                temp_model = ListDAGVersionsResponseBodyDagVersionListDagVersion()
+                self.dag_version.append(temp_model.from_map(k))
+        return self
+
+
+class ListDAGVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        dag_version_list: ListDAGVersionsResponseBodyDagVersionList = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.dag_version_list = dag_version_list
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.dag_version_list:
+            self.dag_version_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dag_version_list is not None:
+            result['DagVersionList'] = self.dag_version_list.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DagVersionList') is not None:
+            temp_model = ListDAGVersionsResponseBodyDagVersionList()
+            self.dag_version_list = temp_model.from_map(m['DagVersionList'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDAGVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDAGVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDAGVersionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDBTaskSQLJobRequest(TeaModel):
     def __init__(
         self,
@@ -23276,12 +23509,8 @@ class ListTablesResponse(TeaModel):
 class ListTaskFlowRequest(TeaModel):
     def __init__(
         self,
-        dag_id: int = None,
-        dag_instance_id: int = None,
         tid: int = None,
     ):
-        self.dag_id = dag_id
-        self.dag_instance_id = dag_instance_id
         self.tid = tid
 
     def validate(self):
@@ -23293,20 +23522,12 @@ class ListTaskFlowRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.dag_id is not None:
-            result['DagId'] = self.dag_id
-        if self.dag_instance_id is not None:
-            result['DagInstanceId'] = self.dag_instance_id
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DagId') is not None:
-            self.dag_id = m.get('DagId')
-        if m.get('DagInstanceId') is not None:
-            self.dag_instance_id = m.get('DagInstanceId')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
