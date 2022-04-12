@@ -79,6 +79,7 @@ class QueryCopyrightResponseBodyData(TeaModel):
         message: str = None,
         message_id: int = None,
         output: str = None,
+        result: str = None,
         status: str = None,
         user_data: str = None,
         user_id: int = None,
@@ -101,6 +102,8 @@ class QueryCopyrightResponseBodyData(TeaModel):
         self.message_id = message_id
         # 水印视频输出
         self.output = output
+        # 任务结果
+        self.result = result
         # 状态
         self.status = status
         # 用户数据
@@ -135,6 +138,8 @@ class QueryCopyrightResponseBodyData(TeaModel):
             result['MessageId'] = self.message_id
         if self.output is not None:
             result['Output'] = self.output
+        if self.result is not None:
+            result['Result'] = self.result
         if self.status is not None:
             result['Status'] = self.status
         if self.user_data is not None:
@@ -163,6 +168,8 @@ class QueryCopyrightResponseBodyData(TeaModel):
             self.message_id = m.get('MessageId')
         if m.get('Output') is not None:
             self.output = m.get('Output')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('UserData') is not None:
@@ -445,6 +452,7 @@ class QueryTraceAbResponseBodyData(TeaModel):
         level: int = None,
         media_id: str = None,
         output: str = None,
+        result: str = None,
         status: str = None,
         user_data: str = None,
         user_id: int = None,
@@ -465,6 +473,8 @@ class QueryTraceAbResponseBodyData(TeaModel):
         self.media_id = media_id
         # 输出地址
         self.output = output
+        # 任务结果
+        self.result = result
         # 任务状态
         self.status = status
         # 用户数据
@@ -497,6 +507,8 @@ class QueryTraceAbResponseBodyData(TeaModel):
             result['MediaId'] = self.media_id
         if self.output is not None:
             result['Output'] = self.output
+        if self.result is not None:
+            result['Result'] = self.result
         if self.status is not None:
             result['Status'] = self.status
         if self.user_data is not None:
@@ -523,6 +535,8 @@ class QueryTraceAbResponseBodyData(TeaModel):
             self.media_id = m.get('MediaId')
         if m.get('Output') is not None:
             self.output = m.get('Output')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('UserData') is not None:

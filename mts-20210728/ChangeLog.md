@@ -1,3 +1,7 @@
+2022-04-12 Version: 3.3.6
+- Add Cipher for Trace.
+
+
 2022-03-31 Version: 3.3.5
 - Add Cipher for Trace.
 
