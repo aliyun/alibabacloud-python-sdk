@@ -1,3 +1,7 @@
+2022-04-13 Version: 4.24.17
+- Support throughput for API DescribeDisks.
+
+
 2021-08-27 Version: 2.1.0
 - DescribeSecurityGroups support query by next token.
 
