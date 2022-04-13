@@ -1,3 +1,6 @@
+2022-04-13 Version: 1.0.9
+- Support HTTP Trigger invocation.
+
 2022-04-01 Version: 1.0.8
 - Change qualifier to query.
 

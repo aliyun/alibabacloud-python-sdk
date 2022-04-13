@@ -1914,6 +1914,41 @@ class StatefulAsyncInvocation(TeaModel):
         return self
 
 
+class TLSConfig(TeaModel):
+    def __init__(
+        self,
+        cipher_suites: List[str] = None,
+        min_version: str = None,
+    ):
+        # TLS加密套件列表
+        self.cipher_suites = cipher_suites
+        # TLS最小版本号
+        self.min_version = min_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cipher_suites is not None:
+            result['cipherSuites'] = self.cipher_suites
+        if self.min_version is not None:
+            result['minVersion'] = self.min_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cipherSuites') is not None:
+            self.cipher_suites = m.get('cipherSuites')
+        if m.get('minVersion') is not None:
+            self.min_version = m.get('minVersion')
+        return self
+
+
 class TargetTrackingPolicies(TeaModel):
     def __init__(
         self,
@@ -2364,17 +2399,21 @@ class CreateCustomDomainRequest(TeaModel):
         domain_name: str = None,
         protocol: str = None,
         route_config: RouteConfig = None,
+        tls_config: TLSConfig = None,
     ):
         self.cert_config = cert_config
         self.domain_name = domain_name
         self.protocol = protocol
         self.route_config = route_config
+        self.tls_config = tls_config
 
     def validate(self):
         if self.cert_config:
             self.cert_config.validate()
         if self.route_config:
             self.route_config.validate()
+        if self.tls_config:
+            self.tls_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2390,6 +2429,8 @@ class CreateCustomDomainRequest(TeaModel):
             result['protocol'] = self.protocol
         if self.route_config is not None:
             result['routeConfig'] = self.route_config.to_map()
+        if self.tls_config is not None:
+            result['tlsConfig'] = self.tls_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2404,6 +2445,9 @@ class CreateCustomDomainRequest(TeaModel):
         if m.get('routeConfig') is not None:
             temp_model = RouteConfig()
             self.route_config = temp_model.from_map(m['routeConfig'])
+        if m.get('tlsConfig') is not None:
+            temp_model = TLSConfig()
+            self.tls_config = temp_model.from_map(m['tlsConfig'])
         return self
 
 
@@ -2418,6 +2462,7 @@ class CreateCustomDomainResponseBody(TeaModel):
         last_modified_time: str = None,
         protocol: str = None,
         route_config: RouteConfig = None,
+        tls_config: TLSConfig = None,
     ):
         self.account_id = account_id
         self.api_version = api_version
@@ -2428,12 +2473,15 @@ class CreateCustomDomainResponseBody(TeaModel):
         self.last_modified_time = last_modified_time
         self.protocol = protocol
         self.route_config = route_config
+        self.tls_config = tls_config
 
     def validate(self):
         if self.cert_config:
             self.cert_config.validate()
         if self.route_config:
             self.route_config.validate()
+        if self.tls_config:
+            self.tls_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2457,6 +2505,8 @@ class CreateCustomDomainResponseBody(TeaModel):
             result['protocol'] = self.protocol
         if self.route_config is not None:
             result['routeConfig'] = self.route_config.to_map()
+        if self.tls_config is not None:
+            result['tlsConfig'] = self.tls_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2479,6 +2529,9 @@ class CreateCustomDomainResponseBody(TeaModel):
         if m.get('routeConfig') is not None:
             temp_model = RouteConfig()
             self.route_config = temp_model.from_map(m['routeConfig'])
+        if m.get('tlsConfig') is not None:
+            temp_model = TLSConfig()
+            self.tls_config = temp_model.from_map(m['tlsConfig'])
         return self
 
 
@@ -4984,6 +5037,7 @@ class GetCustomDomainResponseBody(TeaModel):
         last_modified_time: str = None,
         protocol: str = None,
         route_config: RouteConfig = None,
+        tls_config: TLSConfig = None,
     ):
         self.account_id = account_id
         self.api_version = api_version
@@ -4994,12 +5048,15 @@ class GetCustomDomainResponseBody(TeaModel):
         self.last_modified_time = last_modified_time
         self.protocol = protocol
         self.route_config = route_config
+        self.tls_config = tls_config
 
     def validate(self):
         if self.cert_config:
             self.cert_config.validate()
         if self.route_config:
             self.route_config.validate()
+        if self.tls_config:
+            self.tls_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5023,6 +5080,8 @@ class GetCustomDomainResponseBody(TeaModel):
             result['protocol'] = self.protocol
         if self.route_config is not None:
             result['routeConfig'] = self.route_config.to_map()
+        if self.tls_config is not None:
+            result['tlsConfig'] = self.tls_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -5045,6 +5104,9 @@ class GetCustomDomainResponseBody(TeaModel):
         if m.get('routeConfig') is not None:
             temp_model = RouteConfig()
             self.route_config = temp_model.from_map(m['routeConfig'])
+        if m.get('tlsConfig') is not None:
+            temp_model = TLSConfig()
+            self.tls_config = temp_model.from_map(m['tlsConfig'])
         return self
 
 
@@ -7274,6 +7336,7 @@ class ListCustomDomainsResponseBodyCustomDomains(TeaModel):
         last_modified_time: str = None,
         protocol: str = None,
         route_config: RouteConfig = None,
+        tls_config: TLSConfig = None,
     ):
         self.account_id = account_id
         self.api_version = api_version
@@ -7283,12 +7346,15 @@ class ListCustomDomainsResponseBodyCustomDomains(TeaModel):
         self.last_modified_time = last_modified_time
         self.protocol = protocol
         self.route_config = route_config
+        self.tls_config = tls_config
 
     def validate(self):
         if self.cert_config:
             self.cert_config.validate()
         if self.route_config:
             self.route_config.validate()
+        if self.tls_config:
+            self.tls_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7312,6 +7378,8 @@ class ListCustomDomainsResponseBodyCustomDomains(TeaModel):
             result['protocol'] = self.protocol
         if self.route_config is not None:
             result['routeConfig'] = self.route_config.to_map()
+        if self.tls_config is not None:
+            result['tlsConfig'] = self.tls_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -7334,6 +7402,9 @@ class ListCustomDomainsResponseBodyCustomDomains(TeaModel):
         if m.get('routeConfig') is not None:
             temp_model = RouteConfig()
             self.route_config = temp_model.from_map(m['routeConfig'])
+        if m.get('tlsConfig') is not None:
+            temp_model = TLSConfig()
+            self.tls_config = temp_model.from_map(m['tlsConfig'])
         return self
 
 
@@ -12040,16 +12111,20 @@ class UpdateCustomDomainRequest(TeaModel):
         cert_config: CertConfig = None,
         protocol: str = None,
         route_config: RouteConfig = None,
+        tls_config: TLSConfig = None,
     ):
         self.cert_config = cert_config
         self.protocol = protocol
         self.route_config = route_config
+        self.tls_config = tls_config
 
     def validate(self):
         if self.cert_config:
             self.cert_config.validate()
         if self.route_config:
             self.route_config.validate()
+        if self.tls_config:
+            self.tls_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12063,6 +12138,8 @@ class UpdateCustomDomainRequest(TeaModel):
             result['protocol'] = self.protocol
         if self.route_config is not None:
             result['routeConfig'] = self.route_config.to_map()
+        if self.tls_config is not None:
+            result['tlsConfig'] = self.tls_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -12075,6 +12152,9 @@ class UpdateCustomDomainRequest(TeaModel):
         if m.get('routeConfig') is not None:
             temp_model = RouteConfig()
             self.route_config = temp_model.from_map(m['routeConfig'])
+        if m.get('tlsConfig') is not None:
+            temp_model = TLSConfig()
+            self.tls_config = temp_model.from_map(m['tlsConfig'])
         return self
 
 
@@ -12089,6 +12169,7 @@ class UpdateCustomDomainResponseBody(TeaModel):
         last_modified_time: str = None,
         protocol: str = None,
         route_config: RouteConfig = None,
+        tls_config: TLSConfig = None,
     ):
         self.account_id = account_id
         self.api_version = api_version
@@ -12098,12 +12179,15 @@ class UpdateCustomDomainResponseBody(TeaModel):
         self.last_modified_time = last_modified_time
         self.protocol = protocol
         self.route_config = route_config
+        self.tls_config = tls_config
 
     def validate(self):
         if self.cert_config:
             self.cert_config.validate()
         if self.route_config:
             self.route_config.validate()
+        if self.tls_config:
+            self.tls_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12127,6 +12211,8 @@ class UpdateCustomDomainResponseBody(TeaModel):
             result['protocol'] = self.protocol
         if self.route_config is not None:
             result['routeConfig'] = self.route_config.to_map()
+        if self.tls_config is not None:
+            result['tlsConfig'] = self.tls_config.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -12149,6 +12235,9 @@ class UpdateCustomDomainResponseBody(TeaModel):
         if m.get('routeConfig') is not None:
             temp_model = RouteConfig()
             self.route_config = temp_model.from_map(m['routeConfig'])
+        if m.get('tlsConfig') is not None:
+            temp_model = TLSConfig()
+            self.tls_config = temp_model.from_map(m['tlsConfig'])
         return self
 
 
