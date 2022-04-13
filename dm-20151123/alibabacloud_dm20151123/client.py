@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -8,6 +9,7 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dm20151123 import models as dm_20151123_models
 from alibabacloud_tea_util import models as util_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -39,97 +41,38 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_ipfilter_with_options(
-        self,
-        request: dm_20151123_models.AddIpfilterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.AddIpfilterResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.AddIpfilterResponse().from_map(
-            self.do_rpcrequest('AddIpfilter', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def add_ipfilter_with_options_async(
-        self,
-        request: dm_20151123_models.AddIpfilterRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.AddIpfilterResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.AddIpfilterResponse().from_map(
-            await self.do_rpcrequest_async('AddIpfilter', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def add_ipfilter(
-        self,
-        request: dm_20151123_models.AddIpfilterRequest,
-    ) -> dm_20151123_models.AddIpfilterResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_ipfilter_with_options(request, runtime)
-
-    async def add_ipfilter_async(
-        self,
-        request: dm_20151123_models.AddIpfilterRequest,
-    ) -> dm_20151123_models.AddIpfilterResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_ipfilter_with_options_async(request, runtime)
-
-    def approve_mail_template_with_options(
-        self,
-        request: dm_20151123_models.ApproveMailTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ApproveMailTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ApproveMailTemplateResponse().from_map(
-            self.do_rpcrequest('ApproveMailTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def approve_mail_template_with_options_async(
-        self,
-        request: dm_20151123_models.ApproveMailTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ApproveMailTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ApproveMailTemplateResponse().from_map(
-            await self.do_rpcrequest_async('ApproveMailTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def approve_mail_template(
-        self,
-        request: dm_20151123_models.ApproveMailTemplateRequest,
-    ) -> dm_20151123_models.ApproveMailTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.approve_mail_template_with_options(request, runtime)
-
-    async def approve_mail_template_async(
-        self,
-        request: dm_20151123_models.ApproveMailTemplateRequest,
-    ) -> dm_20151123_models.ApproveMailTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.approve_mail_template_with_options_async(request, runtime)
-
     def approve_reply_mail_address_with_options(
         self,
         request: dm_20151123_models.ApproveReplyMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ApproveReplyMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ticket):
+            query['Ticket'] = request.ticket
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.ApproveReplyMailAddressResponse().from_map(
-            self.do_rpcrequest('ApproveReplyMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApproveReplyMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ApproveReplyMailAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def approve_reply_mail_address_with_options_async(
@@ -138,11 +81,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ApproveReplyMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.ticket):
+            query['Ticket'] = request.ticket
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.ApproveReplyMailAddressResponse().from_map(
-            await self.do_rpcrequest_async('ApproveReplyMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ApproveReplyMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ApproveReplyMailAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def approve_reply_mail_address(
@@ -159,97 +123,52 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.approve_reply_mail_address_with_options_async(request, runtime)
 
-    def approve_sms_template_with_options(
-        self,
-        request: dm_20151123_models.ApproveSmsTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ApproveSmsTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ApproveSmsTemplateResponse().from_map(
-            self.do_rpcrequest('ApproveSmsTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def approve_sms_template_with_options_async(
-        self,
-        request: dm_20151123_models.ApproveSmsTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ApproveSmsTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ApproveSmsTemplateResponse().from_map(
-            await self.do_rpcrequest_async('ApproveSmsTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def approve_sms_template(
-        self,
-        request: dm_20151123_models.ApproveSmsTemplateRequest,
-    ) -> dm_20151123_models.ApproveSmsTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.approve_sms_template_with_options(request, runtime)
-
-    async def approve_sms_template_async(
-        self,
-        request: dm_20151123_models.ApproveSmsTemplateRequest,
-    ) -> dm_20151123_models.ApproveSmsTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.approve_sms_template_with_options_async(request, runtime)
-
-    def approve_template_with_options(
-        self,
-        request: dm_20151123_models.ApproveTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ApproveTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ApproveTemplateResponse().from_map(
-            self.do_rpcrequest('ApproveTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def approve_template_with_options_async(
-        self,
-        request: dm_20151123_models.ApproveTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ApproveTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ApproveTemplateResponse().from_map(
-            await self.do_rpcrequest_async('ApproveTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def approve_template(
-        self,
-        request: dm_20151123_models.ApproveTemplateRequest,
-    ) -> dm_20151123_models.ApproveTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.approve_template_with_options(request, runtime)
-
-    async def approve_template_async(
-        self,
-        request: dm_20151123_models.ApproveTemplateRequest,
-    ) -> dm_20151123_models.ApproveTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.approve_template_with_options_async(request, runtime)
-
     def batch_send_mail_with_options(
         self,
         request: dm_20151123_models.BatchSendMailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.BatchSendMailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.click_trace):
+            query['ClickTrace'] = request.click_trace
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receivers_name):
+            query['ReceiversName'] = request.receivers_name
+        if not UtilClient.is_unset(request.reply_address):
+            query['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.reply_address_alias):
+            query['ReplyAddressAlias'] = request.reply_address_alias
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.BatchSendMailResponse().from_map(
-            self.do_rpcrequest('BatchSendMail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BatchSendMail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.BatchSendMailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def batch_send_mail_with_options_async(
@@ -258,11 +177,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.BatchSendMailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.click_trace):
+            query['ClickTrace'] = request.click_trace
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receivers_name):
+            query['ReceiversName'] = request.receivers_name
+        if not UtilClient.is_unset(request.reply_address):
+            query['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.reply_address_alias):
+            query['ReplyAddressAlias'] = request.reply_address_alias
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.BatchSendMailResponse().from_map(
-            await self.do_rpcrequest_async('BatchSendMail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='BatchSendMail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.BatchSendMailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def batch_send_mail(
@@ -285,11 +239,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CheckDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CheckDomainResponse().from_map(
-            self.do_rpcrequest('CheckDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CheckDomainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_domain_with_options_async(
@@ -298,11 +273,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CheckDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CheckDomainResponse().from_map(
-            await self.do_rpcrequest_async('CheckDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CheckDomainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_domain(
@@ -319,57 +315,42 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_domain_with_options_async(request, runtime)
 
-    def check_invalid_address_with_options(
-        self,
-        request: dm_20151123_models.CheckInvalidAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.CheckInvalidAddressResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.CheckInvalidAddressResponse().from_map(
-            self.do_rpcrequest('CheckInvalidAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def check_invalid_address_with_options_async(
-        self,
-        request: dm_20151123_models.CheckInvalidAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.CheckInvalidAddressResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.CheckInvalidAddressResponse().from_map(
-            await self.do_rpcrequest_async('CheckInvalidAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def check_invalid_address(
-        self,
-        request: dm_20151123_models.CheckInvalidAddressRequest,
-    ) -> dm_20151123_models.CheckInvalidAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.check_invalid_address_with_options(request, runtime)
-
-    async def check_invalid_address_async(
-        self,
-        request: dm_20151123_models.CheckInvalidAddressRequest,
-    ) -> dm_20151123_models.CheckInvalidAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.check_invalid_address_with_options_async(request, runtime)
-
     def check_reply_to_mail_address_with_options(
         self,
         request: dm_20151123_models.CheckReplyToMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CheckReplyToMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.mail_address_id):
+            query['MailAddressId'] = request.mail_address_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CheckReplyToMailAddressResponse().from_map(
-            self.do_rpcrequest('CheckReplyToMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckReplyToMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CheckReplyToMailAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def check_reply_to_mail_address_with_options_async(
@@ -378,11 +359,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CheckReplyToMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.mail_address_id):
+            query['MailAddressId'] = request.mail_address_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CheckReplyToMailAddressResponse().from_map(
-            await self.do_rpcrequest_async('CheckReplyToMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CheckReplyToMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CheckReplyToMailAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_reply_to_mail_address(
@@ -399,57 +405,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_reply_to_mail_address_with_options_async(request, runtime)
 
-    def create_dayu_with_options(
-        self,
-        request: dm_20151123_models.CreateDayuRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.CreateDayuResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.CreateDayuResponse().from_map(
-            self.do_rpcrequest('CreateDayu', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_dayu_with_options_async(
-        self,
-        request: dm_20151123_models.CreateDayuRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.CreateDayuResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.CreateDayuResponse().from_map(
-            await self.do_rpcrequest_async('CreateDayu', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_dayu(
-        self,
-        request: dm_20151123_models.CreateDayuRequest,
-    ) -> dm_20151123_models.CreateDayuResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_dayu_with_options(request, runtime)
-
-    async def create_dayu_async(
-        self,
-        request: dm_20151123_models.CreateDayuRequest,
-    ) -> dm_20151123_models.CreateDayuResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_dayu_with_options_async(request, runtime)
-
     def create_domain_with_options(
         self,
         request: dm_20151123_models.CreateDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CreateDomainResponse().from_map(
-            self.do_rpcrequest('CreateDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateDomainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_domain_with_options_async(
@@ -458,11 +445,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CreateDomainResponse().from_map(
-            await self.do_rpcrequest_async('CreateDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateDomainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_domain(
@@ -485,11 +493,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.reply_address):
+            query['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sendtype):
+            query['Sendtype'] = request.sendtype
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CreateMailAddressResponse().from_map(
-            self.do_rpcrequest('CreateMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateMailAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_mail_address_with_options_async(
@@ -498,11 +531,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.reply_address):
+            query['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sendtype):
+            query['Sendtype'] = request.sendtype
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CreateMailAddressResponse().from_map(
-            await self.do_rpcrequest_async('CreateMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateMailAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_mail_address(
@@ -525,11 +583,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateReceiverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receivers_alias):
+            query['ReceiversAlias'] = request.receivers_alias
+        if not UtilClient.is_unset(request.receivers_name):
+            query['ReceiversName'] = request.receivers_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CreateReceiverResponse().from_map(
-            self.do_rpcrequest('CreateReceiver', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateReceiver',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateReceiverResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_receiver_with_options_async(
@@ -538,11 +621,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateReceiverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receivers_alias):
+            query['ReceiversAlias'] = request.receivers_alias
+        if not UtilClient.is_unset(request.receivers_name):
+            query['ReceiversName'] = request.receivers_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CreateReceiverResponse().from_map(
-            await self.do_rpcrequest_async('CreateReceiver', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateReceiver',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateReceiverResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_receiver(
@@ -559,57 +667,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_receiver_with_options_async(request, runtime)
 
-    def create_sign_with_options(
-        self,
-        request: dm_20151123_models.CreateSignRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.CreateSignResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.CreateSignResponse().from_map(
-            self.do_rpcrequest('CreateSign', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_sign_with_options_async(
-        self,
-        request: dm_20151123_models.CreateSignRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.CreateSignResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.CreateSignResponse().from_map(
-            await self.do_rpcrequest_async('CreateSign', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_sign(
-        self,
-        request: dm_20151123_models.CreateSignRequest,
-    ) -> dm_20151123_models.CreateSignResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_sign_with_options(request, runtime)
-
-    async def create_sign_async(
-        self,
-        request: dm_20151123_models.CreateSignRequest,
-    ) -> dm_20151123_models.CreateSignResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_sign_with_options_async(request, runtime)
-
     def create_tag_with_options(
         self,
         request: dm_20151123_models.CreateTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CreateTagResponse().from_map(
-            self.do_rpcrequest('CreateTag', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateTagResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_tag_with_options_async(
@@ -618,11 +707,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.CreateTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.CreateTagResponse().from_map(
-            await self.do_rpcrequest_async('CreateTag', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.CreateTagResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_tag(
@@ -639,57 +749,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_tag_with_options_async(request, runtime)
 
-    def create_template_with_options(
-        self,
-        request: dm_20151123_models.CreateTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.CreateTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.CreateTemplateResponse().from_map(
-            self.do_rpcrequest('CreateTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def create_template_with_options_async(
-        self,
-        request: dm_20151123_models.CreateTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.CreateTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.CreateTemplateResponse().from_map(
-            await self.do_rpcrequest_async('CreateTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def create_template(
-        self,
-        request: dm_20151123_models.CreateTemplateRequest,
-    ) -> dm_20151123_models.CreateTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_template_with_options(request, runtime)
-
-    async def create_template_async(
-        self,
-        request: dm_20151123_models.CreateTemplateRequest,
-    ) -> dm_20151123_models.CreateTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_template_with_options_async(request, runtime)
-
     def delete_domain_with_options(
         self,
         request: dm_20151123_models.DeleteDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteDomainResponse().from_map(
-            self.do_rpcrequest('DeleteDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteDomainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_domain_with_options_async(
@@ -698,11 +789,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteDomainResponse().from_map(
-            await self.do_rpcrequest_async('DeleteDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteDomainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_domain(
@@ -719,97 +831,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_with_options_async(request, runtime)
 
-    def delete_invalid_address_with_options(
-        self,
-        request: dm_20151123_models.DeleteInvalidAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DeleteInvalidAddressResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DeleteInvalidAddressResponse().from_map(
-            self.do_rpcrequest('DeleteInvalidAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_invalid_address_with_options_async(
-        self,
-        request: dm_20151123_models.DeleteInvalidAddressRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DeleteInvalidAddressResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DeleteInvalidAddressResponse().from_map(
-            await self.do_rpcrequest_async('DeleteInvalidAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_invalid_address(
-        self,
-        request: dm_20151123_models.DeleteInvalidAddressRequest,
-    ) -> dm_20151123_models.DeleteInvalidAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_invalid_address_with_options(request, runtime)
-
-    async def delete_invalid_address_async(
-        self,
-        request: dm_20151123_models.DeleteInvalidAddressRequest,
-    ) -> dm_20151123_models.DeleteInvalidAddressResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_invalid_address_with_options_async(request, runtime)
-
-    def delete_ipfilter_by_edm_id_with_options(
-        self,
-        request: dm_20151123_models.DeleteIpfilterByEdmIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DeleteIpfilterByEdmIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DeleteIpfilterByEdmIdResponse().from_map(
-            self.do_rpcrequest('DeleteIpfilterByEdmId', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_ipfilter_by_edm_id_with_options_async(
-        self,
-        request: dm_20151123_models.DeleteIpfilterByEdmIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DeleteIpfilterByEdmIdResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DeleteIpfilterByEdmIdResponse().from_map(
-            await self.do_rpcrequest_async('DeleteIpfilterByEdmId', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_ipfilter_by_edm_id(
-        self,
-        request: dm_20151123_models.DeleteIpfilterByEdmIdRequest,
-    ) -> dm_20151123_models.DeleteIpfilterByEdmIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_ipfilter_by_edm_id_with_options(request, runtime)
-
-    async def delete_ipfilter_by_edm_id_async(
-        self,
-        request: dm_20151123_models.DeleteIpfilterByEdmIdRequest,
-    ) -> dm_20151123_models.DeleteIpfilterByEdmIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_ipfilter_by_edm_id_with_options_async(request, runtime)
-
     def delete_mail_address_with_options(
         self,
         request: dm_20151123_models.DeleteMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_address_id):
+            query['MailAddressId'] = request.mail_address_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteMailAddressResponse().from_map(
-            self.do_rpcrequest('DeleteMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteMailAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_mail_address_with_options_async(
@@ -818,11 +871,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_address_id):
+            query['MailAddressId'] = request.mail_address_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteMailAddressResponse().from_map(
-            await self.do_rpcrequest_async('DeleteMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteMailAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_mail_address(
@@ -845,11 +919,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteReceiverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteReceiverResponse().from_map(
-            self.do_rpcrequest('DeleteReceiver', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteReceiver',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteReceiverResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_receiver_with_options_async(
@@ -858,11 +953,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteReceiverResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteReceiverResponse().from_map(
-            await self.do_rpcrequest_async('DeleteReceiver', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteReceiver',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteReceiverResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_receiver(
@@ -885,11 +1001,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteReceiverDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteReceiverDetailResponse().from_map(
-            self.do_rpcrequest('DeleteReceiverDetail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteReceiverDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteReceiverDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_receiver_detail_with_options_async(
@@ -898,11 +1037,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteReceiverDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteReceiverDetailResponse().from_map(
-            await self.do_rpcrequest_async('DeleteReceiverDetail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteReceiverDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteReceiverDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_receiver_detail(
@@ -919,57 +1081,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_receiver_detail_with_options_async(request, runtime)
 
-    def delete_sign_with_options(
-        self,
-        request: dm_20151123_models.DeleteSignRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DeleteSignResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DeleteSignResponse().from_map(
-            self.do_rpcrequest('DeleteSign', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_sign_with_options_async(
-        self,
-        request: dm_20151123_models.DeleteSignRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DeleteSignResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DeleteSignResponse().from_map(
-            await self.do_rpcrequest_async('DeleteSign', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_sign(
-        self,
-        request: dm_20151123_models.DeleteSignRequest,
-    ) -> dm_20151123_models.DeleteSignResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_sign_with_options(request, runtime)
-
-    async def delete_sign_async(
-        self,
-        request: dm_20151123_models.DeleteSignRequest,
-    ) -> dm_20151123_models.DeleteSignResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_sign_with_options_async(request, runtime)
-
     def delete_tag_with_options(
         self,
         request: dm_20151123_models.DeleteTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteTagResponse().from_map(
-            self.do_rpcrequest('DeleteTag', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteTagResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_tag_with_options_async(
@@ -978,11 +1121,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DeleteTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DeleteTagResponse().from_map(
-            await self.do_rpcrequest_async('DeleteTag', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DeleteTagResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_tag(
@@ -999,57 +1163,36 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_tag_with_options_async(request, runtime)
 
-    def delete_template_with_options(
-        self,
-        request: dm_20151123_models.DeleteTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DeleteTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DeleteTemplateResponse().from_map(
-            self.do_rpcrequest('DeleteTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def delete_template_with_options_async(
-        self,
-        request: dm_20151123_models.DeleteTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DeleteTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DeleteTemplateResponse().from_map(
-            await self.do_rpcrequest_async('DeleteTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def delete_template(
-        self,
-        request: dm_20151123_models.DeleteTemplateRequest,
-    ) -> dm_20151123_models.DeleteTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_template_with_options(request, runtime)
-
-    async def delete_template_async(
-        self,
-        request: dm_20151123_models.DeleteTemplateRequest,
-    ) -> dm_20151123_models.DeleteTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_template_with_options_async(request, runtime)
-
     def desc_account_summary_with_options(
         self,
         request: dm_20151123_models.DescAccountSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DescAccountSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DescAccountSummaryResponse().from_map(
-            self.do_rpcrequest('DescAccountSummary', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescAccountSummary',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DescAccountSummaryResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def desc_account_summary_with_options_async(
@@ -1058,11 +1201,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DescAccountSummaryResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DescAccountSummaryResponse().from_map(
-            await self.do_rpcrequest_async('DescAccountSummary', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescAccountSummary',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DescAccountSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def desc_account_summary(
@@ -1079,57 +1241,38 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.desc_account_summary_with_options_async(request, runtime)
 
-    def desc_account_summary_2with_options(
-        self,
-        request: dm_20151123_models.DescAccountSummary2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DescAccountSummary2Response:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DescAccountSummary2Response().from_map(
-            self.do_rpcrequest('DescAccountSummary2', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def desc_account_summary_2with_options_async(
-        self,
-        request: dm_20151123_models.DescAccountSummary2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DescAccountSummary2Response:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DescAccountSummary2Response().from_map(
-            await self.do_rpcrequest_async('DescAccountSummary2', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def desc_account_summary_2(
-        self,
-        request: dm_20151123_models.DescAccountSummary2Request,
-    ) -> dm_20151123_models.DescAccountSummary2Response:
-        runtime = util_models.RuntimeOptions()
-        return self.desc_account_summary_2with_options(request, runtime)
-
-    async def desc_account_summary_2_async(
-        self,
-        request: dm_20151123_models.DescAccountSummary2Request,
-    ) -> dm_20151123_models.DescAccountSummary2Response:
-        runtime = util_models.RuntimeOptions()
-        return await self.desc_account_summary_2with_options_async(request, runtime)
-
     def desc_domain_with_options(
         self,
         request: dm_20151123_models.DescDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DescDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DescDomainResponse().from_map(
-            self.do_rpcrequest('DescDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DescDomainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def desc_domain_with_options_async(
@@ -1138,11 +1281,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.DescDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.DescDomainResponse().from_map(
-            await self.do_rpcrequest_async('DescDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DescDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.DescDomainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def desc_domain(
@@ -1159,257 +1323,48 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.desc_domain_with_options_async(request, runtime)
 
-    def desc_template_with_options(
-        self,
-        request: dm_20151123_models.DescTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DescTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DescTemplateResponse().from_map(
-            self.do_rpcrequest('DescTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def desc_template_with_options_async(
-        self,
-        request: dm_20151123_models.DescTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.DescTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.DescTemplateResponse().from_map(
-            await self.do_rpcrequest_async('DescTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def desc_template(
-        self,
-        request: dm_20151123_models.DescTemplateRequest,
-    ) -> dm_20151123_models.DescTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.desc_template_with_options(request, runtime)
-
-    async def desc_template_async(
-        self,
-        request: dm_20151123_models.DescTemplateRequest,
-    ) -> dm_20151123_models.DescTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.desc_template_with_options_async(request, runtime)
-
-    def enable_account_with_options(
-        self,
-        request: dm_20151123_models.EnableAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.EnableAccountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.EnableAccountResponse().from_map(
-            self.do_rpcrequest('EnableAccount', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def enable_account_with_options_async(
-        self,
-        request: dm_20151123_models.EnableAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.EnableAccountResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.EnableAccountResponse().from_map(
-            await self.do_rpcrequest_async('EnableAccount', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def enable_account(
-        self,
-        request: dm_20151123_models.EnableAccountRequest,
-    ) -> dm_20151123_models.EnableAccountResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.enable_account_with_options(request, runtime)
-
-    async def enable_account_async(
-        self,
-        request: dm_20151123_models.EnableAccountRequest,
-    ) -> dm_20151123_models.EnableAccountResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.enable_account_with_options_async(request, runtime)
-
-    def get_account_list_with_options(
-        self,
-        request: dm_20151123_models.GetAccountListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetAccountListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetAccountListResponse().from_map(
-            self.do_rpcrequest('GetAccountList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_account_list_with_options_async(
-        self,
-        request: dm_20151123_models.GetAccountListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetAccountListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetAccountListResponse().from_map(
-            await self.do_rpcrequest_async('GetAccountList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_account_list(
-        self,
-        request: dm_20151123_models.GetAccountListRequest,
-    ) -> dm_20151123_models.GetAccountListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_account_list_with_options(request, runtime)
-
-    async def get_account_list_async(
-        self,
-        request: dm_20151123_models.GetAccountListRequest,
-    ) -> dm_20151123_models.GetAccountListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_account_list_with_options_async(request, runtime)
-
-    def get_ipfilter_list_with_options(
-        self,
-        request: dm_20151123_models.GetIpfilterListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetIpfilterListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetIpfilterListResponse().from_map(
-            self.do_rpcrequest('GetIpfilterList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_ipfilter_list_with_options_async(
-        self,
-        request: dm_20151123_models.GetIpfilterListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetIpfilterListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetIpfilterListResponse().from_map(
-            await self.do_rpcrequest_async('GetIpfilterList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_ipfilter_list(
-        self,
-        request: dm_20151123_models.GetIpfilterListRequest,
-    ) -> dm_20151123_models.GetIpfilterListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_ipfilter_list_with_options(request, runtime)
-
-    async def get_ipfilter_list_async(
-        self,
-        request: dm_20151123_models.GetIpfilterListRequest,
-    ) -> dm_20151123_models.GetIpfilterListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_ipfilter_list_with_options_async(request, runtime)
-
-    def get_ip_protection_with_options(
-        self,
-        request: dm_20151123_models.GetIpProtectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetIpProtectionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetIpProtectionResponse().from_map(
-            self.do_rpcrequest('GetIpProtection', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_ip_protection_with_options_async(
-        self,
-        request: dm_20151123_models.GetIpProtectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetIpProtectionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetIpProtectionResponse().from_map(
-            await self.do_rpcrequest_async('GetIpProtection', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_ip_protection(
-        self,
-        request: dm_20151123_models.GetIpProtectionRequest,
-    ) -> dm_20151123_models.GetIpProtectionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_ip_protection_with_options(request, runtime)
-
-    async def get_ip_protection_async(
-        self,
-        request: dm_20151123_models.GetIpProtectionRequest,
-    ) -> dm_20151123_models.GetIpProtectionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_ip_protection_with_options_async(request, runtime)
-
-    def get_mail_address_msg_call_back_url_with_options(
-        self,
-        request: dm_20151123_models.GetMailAddressMsgCallBackUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetMailAddressMsgCallBackUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetMailAddressMsgCallBackUrlResponse().from_map(
-            self.do_rpcrequest('GetMailAddressMsgCallBackUrl', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_mail_address_msg_call_back_url_with_options_async(
-        self,
-        request: dm_20151123_models.GetMailAddressMsgCallBackUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetMailAddressMsgCallBackUrlResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetMailAddressMsgCallBackUrlResponse().from_map(
-            await self.do_rpcrequest_async('GetMailAddressMsgCallBackUrl', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_mail_address_msg_call_back_url(
-        self,
-        request: dm_20151123_models.GetMailAddressMsgCallBackUrlRequest,
-    ) -> dm_20151123_models.GetMailAddressMsgCallBackUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_mail_address_msg_call_back_url_with_options(request, runtime)
-
-    async def get_mail_address_msg_call_back_url_async(
-        self,
-        request: dm_20151123_models.GetMailAddressMsgCallBackUrlRequest,
-    ) -> dm_20151123_models.GetMailAddressMsgCallBackUrlResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_mail_address_msg_call_back_url_with_options_async(request, runtime)
-
     def get_region_list_with_options(
         self,
         request: dm_20151123_models.GetRegionListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetRegionListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.offset_create_time):
+            query['OffsetCreateTime'] = request.offset_create_time
+        if not UtilClient.is_unset(request.offset_create_time_desc):
+            query['OffsetCreateTimeDesc'] = request.offset_create_time_desc
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.total):
+            query['Total'] = request.total
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.GetRegionListResponse().from_map(
-            self.do_rpcrequest('GetRegionList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetRegionList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetRegionListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_region_list_with_options_async(
@@ -1418,11 +1373,42 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetRegionListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.offset_create_time):
+            query['OffsetCreateTime'] = request.offset_create_time
+        if not UtilClient.is_unset(request.offset_create_time_desc):
+            query['OffsetCreateTimeDesc'] = request.offset_create_time_desc
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.total):
+            query['Total'] = request.total
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.GetRegionListResponse().from_map(
-            await self.do_rpcrequest_async('GetRegionList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetRegionList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetRegionListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_region_list(
@@ -1439,57 +1425,52 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_region_list_with_options_async(request, runtime)
 
-    def get_sender_address_list_with_options(
-        self,
-        request: dm_20151123_models.GetSenderAddressListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetSenderAddressListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetSenderAddressListResponse().from_map(
-            self.do_rpcrequest('GetSenderAddressList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_sender_address_list_with_options_async(
-        self,
-        request: dm_20151123_models.GetSenderAddressListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.GetSenderAddressListResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.GetSenderAddressListResponse().from_map(
-            await self.do_rpcrequest_async('GetSenderAddressList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_sender_address_list(
-        self,
-        request: dm_20151123_models.GetSenderAddressListRequest,
-    ) -> dm_20151123_models.GetSenderAddressListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_sender_address_list_with_options(request, runtime)
-
-    async def get_sender_address_list_async(
-        self,
-        request: dm_20151123_models.GetSenderAddressListRequest,
-    ) -> dm_20151123_models.GetSenderAddressListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_sender_address_list_with_options_async(request, runtime)
-
     def get_track_list_with_options(
         self,
         request: dm_20151123_models.GetTrackListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetTrackListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.offset_create_time):
+            query['OffsetCreateTime'] = request.offset_create_time
+        if not UtilClient.is_unset(request.offset_create_time_desc):
+            query['OffsetCreateTimeDesc'] = request.offset_create_time_desc
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total):
+            query['Total'] = request.total
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.GetTrackListResponse().from_map(
-            self.do_rpcrequest('GetTrackList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTrackList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetTrackListResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_track_list_with_options_async(
@@ -1498,11 +1479,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetTrackListResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.offset_create_time):
+            query['OffsetCreateTime'] = request.offset_create_time
+        if not UtilClient.is_unset(request.offset_create_time_desc):
+            query['OffsetCreateTimeDesc'] = request.offset_create_time_desc
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total):
+            query['Total'] = request.total
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.GetTrackListResponse().from_map(
-            await self.do_rpcrequest_async('GetTrackList', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTrackList',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetTrackListResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_track_list(
@@ -1525,11 +1541,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetTrackListByMailFromAndTagNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.offset_create_time):
+            query['OffsetCreateTime'] = request.offset_create_time
+        if not UtilClient.is_unset(request.offset_create_time_desc):
+            query['OffsetCreateTimeDesc'] = request.offset_create_time_desc
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.total):
+            query['Total'] = request.total
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.GetTrackListByMailFromAndTagNameResponse().from_map(
-            self.do_rpcrequest('GetTrackListByMailFromAndTagName', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTrackListByMailFromAndTagName',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetTrackListByMailFromAndTagNameResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_track_list_by_mail_from_and_tag_name_with_options_async(
@@ -1538,11 +1593,50 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.GetTrackListByMailFromAndTagNameResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.offset_create_time):
+            query['OffsetCreateTime'] = request.offset_create_time
+        if not UtilClient.is_unset(request.offset_create_time_desc):
+            query['OffsetCreateTimeDesc'] = request.offset_create_time_desc
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.total):
+            query['Total'] = request.total
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.GetTrackListByMailFromAndTagNameResponse().from_map(
-            await self.do_rpcrequest_async('GetTrackListByMailFromAndTagName', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetTrackListByMailFromAndTagName',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetTrackListByMailFromAndTagNameResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_track_list_by_mail_from_and_tag_name(
@@ -1559,97 +1653,42 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_track_list_by_mail_from_and_tag_name_with_options_async(request, runtime)
 
-    def migrate_market_with_options(
-        self,
-        request: dm_20151123_models.MigrateMarketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.MigrateMarketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.MigrateMarketResponse().from_map(
-            self.do_rpcrequest('MigrateMarket', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def migrate_market_with_options_async(
-        self,
-        request: dm_20151123_models.MigrateMarketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.MigrateMarketResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.MigrateMarketResponse().from_map(
-            await self.do_rpcrequest_async('MigrateMarket', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def migrate_market(
-        self,
-        request: dm_20151123_models.MigrateMarketRequest,
-    ) -> dm_20151123_models.MigrateMarketResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.migrate_market_with_options(request, runtime)
-
-    async def migrate_market_async(
-        self,
-        request: dm_20151123_models.MigrateMarketRequest,
-    ) -> dm_20151123_models.MigrateMarketResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.migrate_market_with_options_async(request, runtime)
-
-    def modify_account_notification_with_options(
-        self,
-        request: dm_20151123_models.ModifyAccountNotificationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ModifyAccountNotificationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ModifyAccountNotificationResponse().from_map(
-            self.do_rpcrequest('ModifyAccountNotification', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_account_notification_with_options_async(
-        self,
-        request: dm_20151123_models.ModifyAccountNotificationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ModifyAccountNotificationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ModifyAccountNotificationResponse().from_map(
-            await self.do_rpcrequest_async('ModifyAccountNotification', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_account_notification(
-        self,
-        request: dm_20151123_models.ModifyAccountNotificationRequest,
-    ) -> dm_20151123_models.ModifyAccountNotificationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_account_notification_with_options(request, runtime)
-
-    async def modify_account_notification_async(
-        self,
-        request: dm_20151123_models.ModifyAccountNotificationRequest,
-    ) -> dm_20151123_models.ModifyAccountNotificationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_account_notification_with_options_async(request, runtime)
-
     def modify_mail_address_with_options(
         self,
         request: dm_20151123_models.ModifyMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_address_id):
+            query['MailAddressId'] = request.mail_address_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.reply_address):
+            query['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.ModifyMailAddressResponse().from_map(
-            self.do_rpcrequest('ModifyMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ModifyMailAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_mail_address_with_options_async(
@@ -1658,11 +1697,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyMailAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_address_id):
+            query['MailAddressId'] = request.mail_address_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.reply_address):
+            query['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.ModifyMailAddressResponse().from_map(
-            await self.do_rpcrequest_async('ModifyMailAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyMailAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ModifyMailAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_mail_address(
@@ -1685,11 +1749,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyPWByDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.ModifyPWByDomainResponse().from_map(
-            self.do_rpcrequest('ModifyPWByDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyPWByDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ModifyPWByDomainResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_pwby_domain_with_options_async(
@@ -1698,11 +1781,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyPWByDomainResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.ModifyPWByDomainResponse().from_map(
-            await self.do_rpcrequest_async('ModifyPWByDomain', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyPWByDomain',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ModifyPWByDomainResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_pwby_domain(
@@ -1719,57 +1821,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_pwby_domain_with_options_async(request, runtime)
 
-    def modify_sender_address_notification_with_options(
-        self,
-        request: dm_20151123_models.ModifySenderAddressNotificationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ModifySenderAddressNotificationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ModifySenderAddressNotificationResponse().from_map(
-            self.do_rpcrequest('ModifySenderAddressNotification', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_sender_address_notification_with_options_async(
-        self,
-        request: dm_20151123_models.ModifySenderAddressNotificationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ModifySenderAddressNotificationResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ModifySenderAddressNotificationResponse().from_map(
-            await self.do_rpcrequest_async('ModifySenderAddressNotification', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_sender_address_notification(
-        self,
-        request: dm_20151123_models.ModifySenderAddressNotificationRequest,
-    ) -> dm_20151123_models.ModifySenderAddressNotificationResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_sender_address_notification_with_options(request, runtime)
-
-    async def modify_sender_address_notification_async(
-        self,
-        request: dm_20151123_models.ModifySenderAddressNotificationRequest,
-    ) -> dm_20151123_models.ModifySenderAddressNotificationResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_sender_address_notification_with_options_async(request, runtime)
-
     def modify_tag_with_options(
         self,
         request: dm_20151123_models.ModifyTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.ModifyTagResponse().from_map(
-            self.do_rpcrequest('ModifyTag', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyTag',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ModifyTagResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def modify_tag_with_options_async(
@@ -1778,11 +1863,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.ModifyTagResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.ModifyTagResponse().from_map(
-            await self.do_rpcrequest_async('ModifyTag', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ModifyTag',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.ModifyTagResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def modify_tag(
@@ -1799,57 +1907,44 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_tag_with_options_async(request, runtime)
 
-    def modify_template_with_options(
-        self,
-        request: dm_20151123_models.ModifyTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ModifyTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ModifyTemplateResponse().from_map(
-            self.do_rpcrequest('ModifyTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def modify_template_with_options_async(
-        self,
-        request: dm_20151123_models.ModifyTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.ModifyTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.ModifyTemplateResponse().from_map(
-            await self.do_rpcrequest_async('ModifyTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def modify_template(
-        self,
-        request: dm_20151123_models.ModifyTemplateRequest,
-    ) -> dm_20151123_models.ModifyTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_template_with_options(request, runtime)
-
-    async def modify_template_async(
-        self,
-        request: dm_20151123_models.ModifyTemplateRequest,
-    ) -> dm_20151123_models.ModifyTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_template_with_options_async(request, runtime)
-
     def query_domain_by_param_with_options(
         self,
         request: dm_20151123_models.QueryDomainByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryDomainByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryDomainByParamResponse().from_map(
-            self.do_rpcrequest('QueryDomainByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDomainByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryDomainByParamResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_domain_by_param_with_options_async(
@@ -1858,11 +1953,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryDomainByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryDomainByParamResponse().from_map(
-            await self.do_rpcrequest_async('QueryDomainByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryDomainByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryDomainByParamResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_domain_by_param(
@@ -1885,11 +2007,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryInvalidAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.length):
+            query['Length'] = request.length
+        if not UtilClient.is_unset(request.next_start):
+            query['NextStart'] = request.next_start
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryInvalidAddressResponse().from_map(
-            self.do_rpcrequest('QueryInvalidAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryInvalidAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryInvalidAddressResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_invalid_address_with_options_async(
@@ -1898,11 +2049,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryInvalidAddressResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.length):
+            query['Length'] = request.length
+        if not UtilClient.is_unset(request.next_start):
+            query['NextStart'] = request.next_start
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryInvalidAddressResponse().from_map(
-            await self.do_rpcrequest_async('QueryInvalidAddress', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryInvalidAddress',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryInvalidAddressResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_invalid_address(
@@ -1919,17 +2099,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_invalid_address_with_options_async(request, runtime)
 
+    def query_mail_address_by_param_with_options(
+        self,
+        request: dm_20151123_models.QueryMailAddressByParamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.QueryMailAddressByParamResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sendtype):
+            query['Sendtype'] = request.sendtype
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMailAddressByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryMailAddressByParamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_mail_address_by_param_with_options_async(
+        self,
+        request: dm_20151123_models.QueryMailAddressByParamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.QueryMailAddressByParamResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sendtype):
+            query['Sendtype'] = request.sendtype
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMailAddressByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryMailAddressByParamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_mail_address_by_param(
+        self,
+        request: dm_20151123_models.QueryMailAddressByParamRequest,
+    ) -> dm_20151123_models.QueryMailAddressByParamResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_mail_address_by_param_with_options(request, runtime)
+
+    async def query_mail_address_by_param_async(
+        self,
+        request: dm_20151123_models.QueryMailAddressByParamRequest,
+    ) -> dm_20151123_models.QueryMailAddressByParamResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_mail_address_by_param_with_options_async(request, runtime)
+
     def query_receiver_by_param_with_options(
         self,
         request: dm_20151123_models.QueryReceiverByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryReceiverByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryReceiverByParamResponse().from_map(
-            self.do_rpcrequest('QueryReceiverByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryReceiverByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryReceiverByParamResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_receiver_by_param_with_options_async(
@@ -1938,11 +2239,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryReceiverByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryReceiverByParamResponse().from_map(
-            await self.do_rpcrequest_async('QueryReceiverByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryReceiverByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryReceiverByParamResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_receiver_by_param(
@@ -1965,11 +2293,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryReceiverDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.next_start):
+            query['NextStart'] = request.next_start
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryReceiverDetailResponse().from_map(
-            self.do_rpcrequest('QueryReceiverDetail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryReceiverDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryReceiverDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_receiver_detail_with_options_async(
@@ -1978,11 +2333,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryReceiverDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.next_start):
+            query['NextStart'] = request.next_start
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryReceiverDetailResponse().from_map(
-            await self.do_rpcrequest_async('QueryReceiverDetail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryReceiverDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryReceiverDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_receiver_detail(
@@ -1999,97 +2381,42 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_receiver_detail_with_options_async(request, runtime)
 
-    def query_sign_by_param_with_options(
-        self,
-        request: dm_20151123_models.QuerySignByParamRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.QuerySignByParamResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.QuerySignByParamResponse().from_map(
-            self.do_rpcrequest('QuerySignByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_sign_by_param_with_options_async(
-        self,
-        request: dm_20151123_models.QuerySignByParamRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.QuerySignByParamResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.QuerySignByParamResponse().from_map(
-            await self.do_rpcrequest_async('QuerySignByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_sign_by_param(
-        self,
-        request: dm_20151123_models.QuerySignByParamRequest,
-    ) -> dm_20151123_models.QuerySignByParamResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_sign_by_param_with_options(request, runtime)
-
-    async def query_sign_by_param_async(
-        self,
-        request: dm_20151123_models.QuerySignByParamRequest,
-    ) -> dm_20151123_models.QuerySignByParamResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_sign_by_param_with_options_async(request, runtime)
-
-    def query_sms_statistics_with_options(
-        self,
-        request: dm_20151123_models.QuerySmsStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.QuerySmsStatisticsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.QuerySmsStatisticsResponse().from_map(
-            self.do_rpcrequest('QuerySmsStatistics', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_sms_statistics_with_options_async(
-        self,
-        request: dm_20151123_models.QuerySmsStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.QuerySmsStatisticsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.QuerySmsStatisticsResponse().from_map(
-            await self.do_rpcrequest_async('QuerySmsStatistics', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_sms_statistics(
-        self,
-        request: dm_20151123_models.QuerySmsStatisticsRequest,
-    ) -> dm_20151123_models.QuerySmsStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_sms_statistics_with_options(request, runtime)
-
-    async def query_sms_statistics_async(
-        self,
-        request: dm_20151123_models.QuerySmsStatisticsRequest,
-    ) -> dm_20151123_models.QuerySmsStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_sms_statistics_with_options_async(request, runtime)
-
     def query_tag_by_param_with_options(
         self,
         request: dm_20151123_models.QueryTagByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTagByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryTagByParamResponse().from_map(
-            self.do_rpcrequest('QueryTagByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTagByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryTagByParamResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_tag_by_param_with_options_async(
@@ -2098,11 +2425,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTagByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryTagByParamResponse().from_map(
-            await self.do_rpcrequest_async('QueryTagByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTagByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryTagByParamResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_tag_by_param(
@@ -2125,11 +2477,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryTaskByParamResponse().from_map(
-            self.do_rpcrequest('QueryTaskByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTaskByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryTaskByParamResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def query_task_by_param_with_options_async(
@@ -2138,11 +2517,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.QueryTaskByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.QueryTaskByParamResponse().from_map(
-            await self.do_rpcrequest_async('QueryTaskByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='QueryTaskByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.QueryTaskByParamResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def query_task_by_param(
@@ -2159,57 +2565,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_task_by_param_with_options_async(request, runtime)
 
-    def query_template_by_param_with_options(
-        self,
-        request: dm_20151123_models.QueryTemplateByParamRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.QueryTemplateByParamResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.QueryTemplateByParamResponse().from_map(
-            self.do_rpcrequest('QueryTemplateByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def query_template_by_param_with_options_async(
-        self,
-        request: dm_20151123_models.QueryTemplateByParamRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.QueryTemplateByParamResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.QueryTemplateByParamResponse().from_map(
-            await self.do_rpcrequest_async('QueryTemplateByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def query_template_by_param(
-        self,
-        request: dm_20151123_models.QueryTemplateByParamRequest,
-    ) -> dm_20151123_models.QueryTemplateByParamResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_template_by_param_with_options(request, runtime)
-
-    async def query_template_by_param_async(
-        self,
-        request: dm_20151123_models.QueryTemplateByParamRequest,
-    ) -> dm_20151123_models.QueryTemplateByParamResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_template_by_param_with_options_async(request, runtime)
-
     def save_receiver_detail_with_options(
         self,
         request: dm_20151123_models.SaveReceiverDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SaveReceiverDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.SaveReceiverDetailResponse().from_map(
-            self.do_rpcrequest('SaveReceiverDetail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SaveReceiverDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SaveReceiverDetailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def save_receiver_detail_with_options_async(
@@ -2218,11 +2607,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SaveReceiverDetailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.detail):
+            query['Detail'] = request.detail
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.SaveReceiverDetailResponse().from_map(
-            await self.do_rpcrequest_async('SaveReceiverDetail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SaveReceiverDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SaveReceiverDetailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def save_receiver_detail(
@@ -2239,17 +2651,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.save_receiver_detail_with_options_async(request, runtime)
 
+    def send_test_by_template_with_options(
+        self,
+        request: dm_20151123_models.SendTestByTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.SendTestByTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.birthday):
+            query['Birthday'] = request.birthday
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.gender):
+            query['Gender'] = request.gender
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendTestByTemplate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SendTestByTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_test_by_template_with_options_async(
+        self,
+        request: dm_20151123_models.SendTestByTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.SendTestByTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.birthday):
+            query['Birthday'] = request.birthday
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.gender):
+            query['Gender'] = request.gender
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.nick_name):
+            query['NickName'] = request.nick_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendTestByTemplate',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SendTestByTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_test_by_template(
+        self,
+        request: dm_20151123_models.SendTestByTemplateRequest,
+    ) -> dm_20151123_models.SendTestByTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.send_test_by_template_with_options(request, runtime)
+
+    async def send_test_by_template_async(
+        self,
+        request: dm_20151123_models.SendTestByTemplateRequest,
+    ) -> dm_20151123_models.SendTestByTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.send_test_by_template_with_options_async(request, runtime)
+
     def sender_statistics_by_tag_name_and_batch_idwith_options(
         self,
         request: dm_20151123_models.SenderStatisticsByTagNameAndBatchIDRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse().from_map(
-            self.do_rpcrequest('SenderStatisticsByTagNameAndBatchID', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SenderStatisticsByTagNameAndBatchID',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def sender_statistics_by_tag_name_and_batch_idwith_options_async(
@@ -2258,11 +2807,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse().from_map(
-            await self.do_rpcrequest_async('SenderStatisticsByTagNameAndBatchID', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SenderStatisticsByTagNameAndBatchID',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SenderStatisticsByTagNameAndBatchIDResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def sender_statistics_by_tag_name_and_batch_id(
@@ -2285,11 +2861,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SenderStatisticsDetailByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            query['Length'] = request.length
+        if not UtilClient.is_unset(request.next_start):
+            query['NextStart'] = request.next_start
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.to_address):
+            query['ToAddress'] = request.to_address
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.SenderStatisticsDetailByParamResponse().from_map(
-            self.do_rpcrequest('SenderStatisticsDetailByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SenderStatisticsDetailByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SenderStatisticsDetailByParamResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def sender_statistics_detail_by_param_with_options_async(
@@ -2298,11 +2909,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SenderStatisticsDetailByParamResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            query['Length'] = request.length
+        if not UtilClient.is_unset(request.next_start):
+            query['NextStart'] = request.next_start
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.to_address):
+            query['ToAddress'] = request.to_address
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.SenderStatisticsDetailByParamResponse().from_map(
-            await self.do_rpcrequest_async('SenderStatisticsDetailByParam', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SenderStatisticsDetailByParam',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SenderStatisticsDetailByParamResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def sender_statistics_detail_by_param(
@@ -2319,57 +2965,60 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.sender_statistics_detail_by_param_with_options_async(request, runtime)
 
-    def send_test_by_template_with_options(
-        self,
-        request: dm_20151123_models.SendTestByTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.SendTestByTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.SendTestByTemplateResponse().from_map(
-            self.do_rpcrequest('SendTestByTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def send_test_by_template_with_options_async(
-        self,
-        request: dm_20151123_models.SendTestByTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.SendTestByTemplateResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.SendTestByTemplateResponse().from_map(
-            await self.do_rpcrequest_async('SendTestByTemplate', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def send_test_by_template(
-        self,
-        request: dm_20151123_models.SendTestByTemplateRequest,
-    ) -> dm_20151123_models.SendTestByTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.send_test_by_template_with_options(request, runtime)
-
-    async def send_test_by_template_async(
-        self,
-        request: dm_20151123_models.SendTestByTemplateRequest,
-    ) -> dm_20151123_models.SendTestByTemplateResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.send_test_by_template_with_options_async(request, runtime)
-
     def single_send_mail_with_options(
         self,
         request: dm_20151123_models.SingleSendMailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SingleSendMailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.click_trace):
+            query['ClickTrace'] = request.click_trace
+        if not UtilClient.is_unset(request.from_alias):
+            query['FromAlias'] = request.from_alias
+        if not UtilClient.is_unset(request.html_body):
+            query['HtmlBody'] = request.html_body
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.reply_address):
+            query['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.reply_address_alias):
+            query['ReplyAddressAlias'] = request.reply_address_alias
+        if not UtilClient.is_unset(request.reply_to_address):
+            query['ReplyToAddress'] = request.reply_to_address
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.text_body):
+            query['TextBody'] = request.text_body
+        if not UtilClient.is_unset(request.to_address):
+            query['ToAddress'] = request.to_address
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.SingleSendMailResponse().from_map(
-            self.do_rpcrequest('SingleSendMail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SingleSendMail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SingleSendMailResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def single_send_mail_with_options_async(
@@ -2378,11 +3027,54 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.SingleSendMailResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.click_trace):
+            query['ClickTrace'] = request.click_trace
+        if not UtilClient.is_unset(request.from_alias):
+            query['FromAlias'] = request.from_alias
+        if not UtilClient.is_unset(request.html_body):
+            query['HtmlBody'] = request.html_body
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.reply_address):
+            query['ReplyAddress'] = request.reply_address
+        if not UtilClient.is_unset(request.reply_address_alias):
+            query['ReplyAddressAlias'] = request.reply_address_alias
+        if not UtilClient.is_unset(request.reply_to_address):
+            query['ReplyToAddress'] = request.reply_to_address
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.subject):
+            query['Subject'] = request.subject
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        if not UtilClient.is_unset(request.text_body):
+            query['TextBody'] = request.text_body
+        if not UtilClient.is_unset(request.to_address):
+            query['ToAddress'] = request.to_address
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.SingleSendMailResponse().from_map(
-            await self.do_rpcrequest_async('SingleSendMail', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='SingleSendMail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.SingleSendMailResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def single_send_mail(
@@ -2399,137 +3091,40 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.single_send_mail_with_options_async(request, runtime)
 
-    def single_send_sms_with_options(
-        self,
-        request: dm_20151123_models.SingleSendSmsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.SingleSendSmsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.SingleSendSmsResponse().from_map(
-            self.do_rpcrequest('SingleSendSms', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def single_send_sms_with_options_async(
-        self,
-        request: dm_20151123_models.SingleSendSmsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.SingleSendSmsResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.SingleSendSmsResponse().from_map(
-            await self.do_rpcrequest_async('SingleSendSms', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def single_send_sms(
-        self,
-        request: dm_20151123_models.SingleSendSmsRequest,
-    ) -> dm_20151123_models.SingleSendSmsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.single_send_sms_with_options(request, runtime)
-
-    async def single_send_sms_async(
-        self,
-        request: dm_20151123_models.SingleSendSmsRequest,
-    ) -> dm_20151123_models.SingleSendSmsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.single_send_sms_with_options_async(request, runtime)
-
-    def update_domain_track_name_with_options(
-        self,
-        request: dm_20151123_models.UpdateDomainTrackNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.UpdateDomainTrackNameResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.UpdateDomainTrackNameResponse().from_map(
-            self.do_rpcrequest('UpdateDomainTrackName', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_domain_track_name_with_options_async(
-        self,
-        request: dm_20151123_models.UpdateDomainTrackNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.UpdateDomainTrackNameResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.UpdateDomainTrackNameResponse().from_map(
-            await self.do_rpcrequest_async('UpdateDomainTrackName', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_domain_track_name(
-        self,
-        request: dm_20151123_models.UpdateDomainTrackNameRequest,
-    ) -> dm_20151123_models.UpdateDomainTrackNameResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_domain_track_name_with_options(request, runtime)
-
-    async def update_domain_track_name_async(
-        self,
-        request: dm_20151123_models.UpdateDomainTrackNameRequest,
-    ) -> dm_20151123_models.UpdateDomainTrackNameResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_domain_track_name_with_options_async(request, runtime)
-
-    def update_ip_protection_with_options(
-        self,
-        request: dm_20151123_models.UpdateIpProtectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.UpdateIpProtectionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.UpdateIpProtectionResponse().from_map(
-            self.do_rpcrequest('UpdateIpProtection', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def update_ip_protection_with_options_async(
-        self,
-        request: dm_20151123_models.UpdateIpProtectionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dm_20151123_models.UpdateIpProtectionResponse:
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
-        )
-        return dm_20151123_models.UpdateIpProtectionResponse().from_map(
-            await self.do_rpcrequest_async('UpdateIpProtection', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def update_ip_protection(
-        self,
-        request: dm_20151123_models.UpdateIpProtectionRequest,
-    ) -> dm_20151123_models.UpdateIpProtectionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_ip_protection_with_options(request, runtime)
-
-    async def update_ip_protection_async(
-        self,
-        request: dm_20151123_models.UpdateIpProtectionRequest,
-    ) -> dm_20151123_models.UpdateIpProtectionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_ip_protection_with_options_async(request, runtime)
-
     def update_mail_address_msg_call_back_url_with_options(
         self,
         request: dm_20151123_models.UpdateMailAddressMsgCallBackUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.UpdateMailAddressMsgCallBackUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_from):
+            query['MailFrom'] = request.mail_from
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.UpdateMailAddressMsgCallBackUrlResponse().from_map(
-            self.do_rpcrequest('UpdateMailAddressMsgCallBackUrl', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateMailAddressMsgCallBackUrl',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.UpdateMailAddressMsgCallBackUrlResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def update_mail_address_msg_call_back_url_with_options_async(
@@ -2538,11 +3133,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20151123_models.UpdateMailAddressMsgCallBackUrlResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.mail_from):
+            query['MailFrom'] = request.mail_from
+        if not UtilClient.is_unset(request.notify_url):
+            query['NotifyUrl'] = request.notify_url
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
-        return dm_20151123_models.UpdateMailAddressMsgCallBackUrlResponse().from_map(
-            await self.do_rpcrequest_async('UpdateMailAddressMsgCallBackUrl', '2015-11-23', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='UpdateMailAddressMsgCallBackUrl',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.UpdateMailAddressMsgCallBackUrlResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def update_mail_address_msg_call_back_url(
