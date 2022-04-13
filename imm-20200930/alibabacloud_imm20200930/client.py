@@ -958,11 +958,19 @@ class Client(OpenApiClient):
 
     def create_story_with_options(
         self,
-        request: imm_20200930_models.CreateStoryRequest,
+        tmp_req: imm_20200930_models.CreateStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateStoryResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateStoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_labels):
+            request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
         body = {}
+        if not UtilClient.is_unset(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not UtilClient.is_unset(request.custom_labels_shrink):
+            body['CustomLabels'] = request.custom_labels_shrink
         if not UtilClient.is_unset(request.dataset_name):
             body['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.max_file_count):
@@ -1008,11 +1016,19 @@ class Client(OpenApiClient):
 
     async def create_story_with_options_async(
         self,
-        request: imm_20200930_models.CreateStoryRequest,
+        tmp_req: imm_20200930_models.CreateStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateStoryResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateStoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_labels):
+            request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
         body = {}
+        if not UtilClient.is_unset(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not UtilClient.is_unset(request.custom_labels_shrink):
+            body['CustomLabels'] = request.custom_labels_shrink
         if not UtilClient.is_unset(request.dataset_name):
             body['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.max_file_count):
@@ -1452,6 +1468,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_story_with_options_async(request, runtime)
 
+    def detect_image_faces_with_options(
+        self,
+        request: imm_20200930_models.DetectImageFacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageFacesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageFaces',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageFacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_image_faces_with_options_async(
+        self,
+        request: imm_20200930_models.DetectImageFacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageFacesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageFaces',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageFacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_image_faces(
+        self,
+        request: imm_20200930_models.DetectImageFacesRequest,
+    ) -> imm_20200930_models.DetectImageFacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_image_faces_with_options(request, runtime)
+
+    async def detect_image_faces_async(
+        self,
+        request: imm_20200930_models.DetectImageFacesRequest,
+    ) -> imm_20200930_models.DetectImageFacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_image_faces_with_options_async(request, runtime)
+
     def detect_image_labels_with_options(
         self,
         request: imm_20200930_models.DetectImageLabelsRequest,
@@ -1529,6 +1619,80 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.DetectImageLabelsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_labels_with_options_async(request, runtime)
+
+    def detect_image_score_with_options(
+        self,
+        request: imm_20200930_models.DetectImageScoreRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageScoreResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageScore',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageScoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_image_score_with_options_async(
+        self,
+        request: imm_20200930_models.DetectImageScoreRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DetectImageScoreResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetectImageScore',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DetectImageScoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detect_image_score(
+        self,
+        request: imm_20200930_models.DetectImageScoreRequest,
+    ) -> imm_20200930_models.DetectImageScoreResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detect_image_score_with_options(request, runtime)
+
+    async def detect_image_score_async(
+        self,
+        request: imm_20200930_models.DetectImageScoreRequest,
+    ) -> imm_20200930_models.DetectImageScoreResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detect_image_score_with_options_async(request, runtime)
 
     def fuzzy_query_with_options(
         self,
@@ -3011,6 +3175,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.create_time_range_shrink):
             query['CreateTimeRange'] = request.create_time_range_shrink
+        if not UtilClient.is_unset(request.custom_labels):
+            query['CustomLabels'] = request.custom_labels
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.figure_cluster_ids_shrink):
@@ -3033,6 +3199,8 @@ class Client(OpenApiClient):
             query['StorySubType'] = request.story_sub_type
         if not UtilClient.is_unset(request.story_type):
             query['StoryType'] = request.story_type
+        if not UtilClient.is_unset(request.with_empty_stories):
+            query['WithEmptyStories'] = request.with_empty_stories
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3071,6 +3239,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.create_time_range_shrink):
             query['CreateTimeRange'] = request.create_time_range_shrink
+        if not UtilClient.is_unset(request.custom_labels):
+            query['CustomLabels'] = request.custom_labels
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.figure_cluster_ids_shrink):
@@ -3093,6 +3263,8 @@ class Client(OpenApiClient):
             query['StorySubType'] = request.story_sub_type
         if not UtilClient.is_unset(request.story_type):
             query['StoryType'] = request.story_type
+        if not UtilClient.is_unset(request.with_empty_stories):
+            query['WithEmptyStories'] = request.with_empty_stories
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3392,6 +3564,8 @@ class Client(OpenApiClient):
             request.aggregations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregations, 'Aggregations', 'json')
         if not UtilClient.is_unset(tmp_req.query):
             request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.query), 'Query', 'json')
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.aggregations_shrink):
             query['Aggregations'] = request.aggregations_shrink
@@ -3409,6 +3583,8 @@ class Client(OpenApiClient):
             query['Query'] = request.query_shrink
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3440,6 +3616,8 @@ class Client(OpenApiClient):
             request.aggregations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregations, 'Aggregations', 'json')
         if not UtilClient.is_unset(tmp_req.query):
             request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.query), 'Query', 'json')
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.aggregations_shrink):
             query['Aggregations'] = request.aggregations_shrink
@@ -3457,6 +3635,8 @@ class Client(OpenApiClient):
             query['Query'] = request.query_shrink
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3959,3 +4139,101 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.UpdateProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_project_with_options_async(request, runtime)
+
+    def update_story_with_options(
+        self,
+        tmp_req: imm_20200930_models.UpdateStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.UpdateStoryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateStoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_labels):
+            request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not UtilClient.is_unset(request.custom_labels_shrink):
+            body['CustomLabels'] = request.custom_labels_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            body['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.story_name):
+            body['StoryName'] = request.story_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.UpdateStoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_story_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.UpdateStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.UpdateStoryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateStoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_labels):
+            request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not UtilClient.is_unset(request.custom_labels_shrink):
+            body['CustomLabels'] = request.custom_labels_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            body['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.story_name):
+            body['StoryName'] = request.story_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.UpdateStoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_story(
+        self,
+        request: imm_20200930_models.UpdateStoryRequest,
+    ) -> imm_20200930_models.UpdateStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_story_with_options(request, runtime)
+
+    async def update_story_async(
+        self,
+        request: imm_20200930_models.UpdateStoryRequest,
+    ) -> imm_20200930_models.UpdateStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_story_with_options_async(request, runtime)

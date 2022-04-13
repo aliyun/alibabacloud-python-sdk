@@ -1,3 +1,6 @@
+2022-04-13 Version: 1.26.7
+- Init latest API version.
+
 2022-01-19 Version: 1.26.6
 - Change SimpleQuery aggregation result to string.
 
