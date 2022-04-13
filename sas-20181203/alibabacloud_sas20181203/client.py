@@ -1273,6 +1273,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeAffectedMaliciousFileImagesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.image_digest):
@@ -1323,6 +1325,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeAffectedMaliciousFileImagesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.image_digest):
@@ -2641,6 +2645,12 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeCheckWarningSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.container_field_name):
+            query['ContainerFieldName'] = request.container_field_name
+        if not UtilClient.is_unset(request.container_field_value):
+            query['ContainerFieldValue'] = request.container_field_value
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.lang):
@@ -2657,6 +2667,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.strategy_id):
             query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.type_name):
             query['TypeName'] = request.type_name
         if not UtilClient.is_unset(request.uuids):
@@ -2687,6 +2699,12 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeCheckWarningSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.container_field_name):
+            query['ContainerFieldName'] = request.container_field_name
+        if not UtilClient.is_unset(request.container_field_value):
+            query['ContainerFieldValue'] = request.container_field_value
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.lang):
@@ -2703,6 +2721,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.strategy_id):
             query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.type_name):
             query['TypeName'] = request.type_name
         if not UtilClient.is_unset(request.uuids):
@@ -4315,6 +4335,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeGroupedMaliciousFilesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.fuzzy_malicious_name):
@@ -4367,6 +4389,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeGroupedMaliciousFilesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.fuzzy_malicious_name):
@@ -4737,6 +4761,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeImageBaselineCheckSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.criteria):
             query['Criteria'] = request.criteria
         if not UtilClient.is_unset(request.criteria_type):
@@ -4775,6 +4801,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeImageBaselineCheckSummaryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.criteria):
             query['Criteria'] = request.criteria
         if not UtilClient.is_unset(request.criteria_type):
@@ -4915,6 +4943,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alias_name):
             query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.cve_id):
@@ -4981,6 +5011,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alias_name):
             query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.cve_id):
@@ -5061,6 +5093,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.baseline_name_key):
             query['BaselineNameKey'] = request.baseline_name_key
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.criteria):
             query['Criteria'] = request.criteria
         if not UtilClient.is_unset(request.criteria_type):
@@ -5107,6 +5141,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.baseline_name_key):
             query['BaselineNameKey'] = request.baseline_name_key
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.criteria):
             query['Criteria'] = request.criteria
         if not UtilClient.is_unset(request.criteria_type):
@@ -5267,6 +5303,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alias_name):
             query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.dealed):
@@ -5335,6 +5373,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alias_name):
             query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.dealed):

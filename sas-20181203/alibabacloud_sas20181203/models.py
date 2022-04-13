@@ -1807,6 +1807,7 @@ class DescribeAccesskeyLeakListResponse(TeaModel):
 class DescribeAffectedMaliciousFileImagesRequest(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
         current_page: int = None,
         image_digest: str = None,
         image_layer: str = None,
@@ -1820,6 +1821,7 @@ class DescribeAffectedMaliciousFileImagesRequest(TeaModel):
         repo_namespace: str = None,
         repo_region_id: str = None,
     ):
+        self.cluster_id = cluster_id
         self.current_page = current_page
         self.image_digest = image_digest
         self.image_layer = image_layer
@@ -1842,6 +1844,8 @@ class DescribeAffectedMaliciousFileImagesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.image_digest is not None:
@@ -1870,6 +1874,8 @@ class DescribeAffectedMaliciousFileImagesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('ImageDigest') is not None:
@@ -1901,8 +1907,10 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
     def __init__(
         self,
         digest: str = None,
+        download_url: str = None,
         file_path: str = None,
         first_scan_timestamp: int = None,
+        high_light: str = None,
         image_uuid: str = None,
         latest_scan_timestamp: int = None,
         latest_verify_timestamp: int = None,
@@ -1918,8 +1926,10 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
         tag: str = None,
     ):
         self.digest = digest
+        self.download_url = download_url
         self.file_path = file_path
         self.first_scan_timestamp = first_scan_timestamp
+        self.high_light = high_light
         self.image_uuid = image_uuid
         self.latest_scan_timestamp = latest_scan_timestamp
         self.latest_verify_timestamp = latest_verify_timestamp
@@ -1945,10 +1955,14 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
         result = dict()
         if self.digest is not None:
             result['Digest'] = self.digest
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
         if self.file_path is not None:
             result['FilePath'] = self.file_path
         if self.first_scan_timestamp is not None:
             result['FirstScanTimestamp'] = self.first_scan_timestamp
+        if self.high_light is not None:
+            result['HighLight'] = self.high_light
         if self.image_uuid is not None:
             result['ImageUuid'] = self.image_uuid
         if self.latest_scan_timestamp is not None:
@@ -1981,10 +1995,14 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
         m = m or dict()
         if m.get('Digest') is not None:
             self.digest = m.get('Digest')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
         if m.get('FilePath') is not None:
             self.file_path = m.get('FilePath')
         if m.get('FirstScanTimestamp') is not None:
             self.first_scan_timestamp = m.get('FirstScanTimestamp')
+        if m.get('HighLight') is not None:
+            self.high_light = m.get('HighLight')
         if m.get('ImageUuid') is not None:
             self.image_uuid = m.get('ImageUuid')
         if m.get('LatestScanTimestamp') is not None:
@@ -5571,6 +5589,9 @@ class DescribeCheckWarningDetailResponse(TeaModel):
 class DescribeCheckWarningSummaryRequest(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
+        container_field_name: str = None,
+        container_field_value: str = None,
         current_page: int = None,
         lang: str = None,
         page_size: int = None,
@@ -5579,9 +5600,13 @@ class DescribeCheckWarningSummaryRequest(TeaModel):
         source_ip: str = None,
         status: str = None,
         strategy_id: int = None,
+        target_type: str = None,
         type_name: str = None,
         uuids: str = None,
     ):
+        self.cluster_id = cluster_id
+        self.container_field_name = container_field_name
+        self.container_field_value = container_field_value
         self.current_page = current_page
         self.lang = lang
         self.page_size = page_size
@@ -5590,6 +5615,7 @@ class DescribeCheckWarningSummaryRequest(TeaModel):
         self.source_ip = source_ip
         self.status = status
         self.strategy_id = strategy_id
+        self.target_type = target_type
         self.type_name = type_name
         self.uuids = uuids
 
@@ -5602,6 +5628,12 @@ class DescribeCheckWarningSummaryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.container_field_name is not None:
+            result['ContainerFieldName'] = self.container_field_name
+        if self.container_field_value is not None:
+            result['ContainerFieldValue'] = self.container_field_value
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.lang is not None:
@@ -5618,6 +5650,8 @@ class DescribeCheckWarningSummaryRequest(TeaModel):
             result['Status'] = self.status
         if self.strategy_id is not None:
             result['StrategyId'] = self.strategy_id
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
         if self.type_name is not None:
             result['TypeName'] = self.type_name
         if self.uuids is not None:
@@ -5626,6 +5660,12 @@ class DescribeCheckWarningSummaryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ContainerFieldName') is not None:
+            self.container_field_name = m.get('ContainerFieldName')
+        if m.get('ContainerFieldValue') is not None:
+            self.container_field_value = m.get('ContainerFieldValue')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('Lang') is not None:
@@ -5642,6 +5682,8 @@ class DescribeCheckWarningSummaryRequest(TeaModel):
             self.status = m.get('Status')
         if m.get('StrategyId') is not None:
             self.strategy_id = m.get('StrategyId')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
         if m.get('TypeName') is not None:
             self.type_name = m.get('TypeName')
         if m.get('Uuids') is not None:
@@ -10272,6 +10314,7 @@ class DescribeGroupedInstancesResponse(TeaModel):
 class DescribeGroupedMaliciousFilesRequest(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
         current_page: int = None,
         fuzzy_malicious_name: str = None,
         image_digest: str = None,
@@ -10286,6 +10329,7 @@ class DescribeGroupedMaliciousFilesRequest(TeaModel):
         repo_namespace: str = None,
         repo_region_id: str = None,
     ):
+        self.cluster_id = cluster_id
         self.current_page = current_page
         self.fuzzy_malicious_name = fuzzy_malicious_name
         self.image_digest = image_digest
@@ -10309,6 +10353,8 @@ class DescribeGroupedMaliciousFilesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.fuzzy_malicious_name is not None:
@@ -10339,6 +10385,8 @@ class DescribeGroupedMaliciousFilesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('FuzzyMaliciousName') is not None:
@@ -11236,6 +11284,7 @@ class DescribeHoneyPotSuspStatisticsResponse(TeaModel):
 class DescribeImageBaselineCheckSummaryRequest(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
         criteria: str = None,
         criteria_type: str = None,
         current_page: int = None,
@@ -11243,6 +11292,7 @@ class DescribeImageBaselineCheckSummaryRequest(TeaModel):
         page_size: int = None,
         risk_level: str = None,
     ):
+        self.cluster_id = cluster_id
         self.criteria = criteria
         self.criteria_type = criteria_type
         self.current_page = current_page
@@ -11259,6 +11309,8 @@ class DescribeImageBaselineCheckSummaryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.criteria is not None:
             result['Criteria'] = self.criteria
         if self.criteria_type is not None:
@@ -11275,6 +11327,8 @@ class DescribeImageBaselineCheckSummaryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('Criteria') is not None:
             self.criteria = m.get('Criteria')
         if m.get('CriteriaType') is not None:
@@ -11790,6 +11844,7 @@ class DescribeImageGroupedVulListRequest(TeaModel):
     def __init__(
         self,
         alias_name: str = None,
+        cluster_id: str = None,
         current_page: int = None,
         cve_id: str = None,
         group_id: str = None,
@@ -11811,6 +11866,7 @@ class DescribeImageGroupedVulListRequest(TeaModel):
         uuids: str = None,
     ):
         self.alias_name = alias_name
+        self.cluster_id = cluster_id
         self.current_page = current_page
         self.cve_id = cve_id
         self.group_id = group_id
@@ -11842,6 +11898,8 @@ class DescribeImageGroupedVulListRequest(TeaModel):
         result = dict()
         if self.alias_name is not None:
             result['AliasName'] = self.alias_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.cve_id is not None:
@@ -11886,6 +11944,8 @@ class DescribeImageGroupedVulListRequest(TeaModel):
         m = m or dict()
         if m.get('AliasName') is not None:
             self.alias_name = m.get('AliasName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('CveId') is not None:
@@ -12108,6 +12168,7 @@ class DescribeImageListWithBaselineNameRequest(TeaModel):
     def __init__(
         self,
         baseline_name_key: str = None,
+        cluster_id: str = None,
         criteria: str = None,
         criteria_type: str = None,
         current_page: int = None,
@@ -12119,6 +12180,7 @@ class DescribeImageListWithBaselineNameRequest(TeaModel):
         repo_namespace: str = None,
     ):
         self.baseline_name_key = baseline_name_key
+        self.cluster_id = cluster_id
         self.criteria = criteria
         self.criteria_type = criteria_type
         self.current_page = current_page
@@ -12140,6 +12202,8 @@ class DescribeImageListWithBaselineNameRequest(TeaModel):
         result = dict()
         if self.baseline_name_key is not None:
             result['BaselineNameKey'] = self.baseline_name_key
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.criteria is not None:
             result['Criteria'] = self.criteria
         if self.criteria_type is not None:
@@ -12164,6 +12228,8 @@ class DescribeImageListWithBaselineNameRequest(TeaModel):
         m = m or dict()
         if m.get('BaselineNameKey') is not None:
             self.baseline_name_key = m.get('BaselineNameKey')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('Criteria') is not None:
             self.criteria = m.get('Criteria')
         if m.get('CriteriaType') is not None:
@@ -12643,6 +12709,7 @@ class DescribeImageVulListRequest(TeaModel):
     def __init__(
         self,
         alias_name: str = None,
+        cluster_id: str = None,
         current_page: int = None,
         dealed: str = None,
         digest: str = None,
@@ -12663,6 +12730,7 @@ class DescribeImageVulListRequest(TeaModel):
         uuids: str = None,
     ):
         self.alias_name = alias_name
+        self.cluster_id = cluster_id
         self.current_page = current_page
         self.dealed = dealed
         self.digest = digest
@@ -12693,6 +12761,8 @@ class DescribeImageVulListRequest(TeaModel):
         result = dict()
         if self.alias_name is not None:
             result['AliasName'] = self.alias_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.dealed is not None:
@@ -12735,6 +12805,8 @@ class DescribeImageVulListRequest(TeaModel):
         m = m or dict()
         if m.get('AliasName') is not None:
             self.alias_name = m.get('AliasName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('Dealed') is not None:
@@ -14802,7 +14874,6 @@ class DescribePropertyCronDetailResponseBodyPropertys(TeaModel):
     def __init__(
         self,
         cmd: str = None,
-        create: str = None,
         create_timestamp: int = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -14816,7 +14887,6 @@ class DescribePropertyCronDetailResponseBodyPropertys(TeaModel):
         uuid: str = None,
     ):
         self.cmd = cmd
-        self.create = create
         self.create_timestamp = create_timestamp
         self.instance_id = instance_id
         self.instance_name = instance_name
@@ -14840,8 +14910,6 @@ class DescribePropertyCronDetailResponseBodyPropertys(TeaModel):
         result = dict()
         if self.cmd is not None:
             result['Cmd'] = self.cmd
-        if self.create is not None:
-            result['Create'] = self.create
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
         if self.instance_id is not None:
@@ -14870,8 +14938,6 @@ class DescribePropertyCronDetailResponseBodyPropertys(TeaModel):
         m = m or dict()
         if m.get('Cmd') is not None:
             self.cmd = m.get('Cmd')
-        if m.get('Create') is not None:
-            self.create = m.get('Create')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
         if m.get('InstanceId') is not None:
@@ -15102,7 +15168,6 @@ class DescribePropertyPortDetailResponseBodyPropertys(TeaModel):
     def __init__(
         self,
         bind_ip: str = None,
-        create: str = None,
         create_timestamp: int = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -15116,7 +15181,6 @@ class DescribePropertyPortDetailResponseBodyPropertys(TeaModel):
         uuid: str = None,
     ):
         self.bind_ip = bind_ip
-        self.create = create
         self.create_timestamp = create_timestamp
         self.instance_id = instance_id
         self.instance_name = instance_name
@@ -15140,8 +15204,6 @@ class DescribePropertyPortDetailResponseBodyPropertys(TeaModel):
         result = dict()
         if self.bind_ip is not None:
             result['BindIp'] = self.bind_ip
-        if self.create is not None:
-            result['Create'] = self.create
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
         if self.instance_id is not None:
@@ -15170,8 +15232,6 @@ class DescribePropertyPortDetailResponseBodyPropertys(TeaModel):
         m = m or dict()
         if m.get('BindIp') is not None:
             self.bind_ip = m.get('BindIp')
-        if m.get('Create') is not None:
-            self.create = m.get('Create')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
         if m.get('InstanceId') is not None:
@@ -15630,7 +15690,6 @@ class DescribePropertyProcDetailResponseBodyPropertys(TeaModel):
     def __init__(
         self,
         cmdline: str = None,
-        create: str = None,
         create_timestamp: int = None,
         euid_name: str = None,
         instance_id: str = None,
@@ -15650,7 +15709,6 @@ class DescribePropertyProcDetailResponseBodyPropertys(TeaModel):
         uuid: str = None,
     ):
         self.cmdline = cmdline
-        self.create = create
         self.create_timestamp = create_timestamp
         self.euid_name = euid_name
         self.instance_id = instance_id
@@ -15680,8 +15738,6 @@ class DescribePropertyProcDetailResponseBodyPropertys(TeaModel):
         result = dict()
         if self.cmdline is not None:
             result['Cmdline'] = self.cmdline
-        if self.create is not None:
-            result['Create'] = self.create
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
         if self.euid_name is not None:
@@ -15722,8 +15778,6 @@ class DescribePropertyProcDetailResponseBodyPropertys(TeaModel):
         m = m or dict()
         if m.get('Cmdline') is not None:
             self.cmdline = m.get('Cmdline')
-        if m.get('Create') is not None:
-            self.create = m.get('Create')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
         if m.get('EuidName') is not None:
@@ -16252,7 +16306,6 @@ class DescribePropertyScaDetailResponseBodyPropertys(TeaModel):
         cmdline: str = None,
         config_path: str = None,
         container_name: str = None,
-        create: str = None,
         create_timestamp: int = None,
         image_name: str = None,
         instance_id: str = None,
@@ -16271,6 +16324,7 @@ class DescribePropertyScaDetailResponseBodyPropertys(TeaModel):
         process_started: int = None,
         process_user: str = None,
         proof: str = None,
+        runtime_env_version: str = None,
         type: str = None,
         uuid: str = None,
         version: str = None,
@@ -16281,7 +16335,6 @@ class DescribePropertyScaDetailResponseBodyPropertys(TeaModel):
         self.cmdline = cmdline
         self.config_path = config_path
         self.container_name = container_name
-        self.create = create
         self.create_timestamp = create_timestamp
         self.image_name = image_name
         self.instance_id = instance_id
@@ -16300,6 +16353,7 @@ class DescribePropertyScaDetailResponseBodyPropertys(TeaModel):
         self.process_started = process_started
         self.process_user = process_user
         self.proof = proof
+        self.runtime_env_version = runtime_env_version
         self.type = type
         self.uuid = uuid
         self.version = version
@@ -16324,8 +16378,6 @@ class DescribePropertyScaDetailResponseBodyPropertys(TeaModel):
             result['ConfigPath'] = self.config_path
         if self.container_name is not None:
             result['ContainerName'] = self.container_name
-        if self.create is not None:
-            result['Create'] = self.create
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
         if self.image_name is not None:
@@ -16362,6 +16414,8 @@ class DescribePropertyScaDetailResponseBodyPropertys(TeaModel):
             result['ProcessUser'] = self.process_user
         if self.proof is not None:
             result['Proof'] = self.proof
+        if self.runtime_env_version is not None:
+            result['RuntimeEnvVersion'] = self.runtime_env_version
         if self.type is not None:
             result['Type'] = self.type
         if self.uuid is not None:
@@ -16384,8 +16438,6 @@ class DescribePropertyScaDetailResponseBodyPropertys(TeaModel):
             self.config_path = m.get('ConfigPath')
         if m.get('ContainerName') is not None:
             self.container_name = m.get('ContainerName')
-        if m.get('Create') is not None:
-            self.create = m.get('Create')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
         if m.get('ImageName') is not None:
@@ -16422,6 +16474,8 @@ class DescribePropertyScaDetailResponseBodyPropertys(TeaModel):
             self.process_user = m.get('ProcessUser')
         if m.get('Proof') is not None:
             self.proof = m.get('Proof')
+        if m.get('RuntimeEnvVersion') is not None:
+            self.runtime_env_version = m.get('RuntimeEnvVersion')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Uuid') is not None:
@@ -16649,7 +16703,6 @@ class DescribePropertySoftwareDetailResponseBodyPageInfo(TeaModel):
 class DescribePropertySoftwareDetailResponseBodyPropertys(TeaModel):
     def __init__(
         self,
-        create: int = None,
         create_timestamp: int = None,
         install_time: str = None,
         install_time_dt: int = None,
@@ -16663,7 +16716,6 @@ class DescribePropertySoftwareDetailResponseBodyPropertys(TeaModel):
         uuid: str = None,
         version: str = None,
     ):
-        self.create = create
         self.create_timestamp = create_timestamp
         self.install_time = install_time
         self.install_time_dt = install_time_dt
@@ -16686,8 +16738,6 @@ class DescribePropertySoftwareDetailResponseBodyPropertys(TeaModel):
             return _map
 
         result = dict()
-        if self.create is not None:
-            result['Create'] = self.create
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
         if self.install_time is not None:
@@ -16716,8 +16766,6 @@ class DescribePropertySoftwareDetailResponseBodyPropertys(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Create') is not None:
-            self.create = m.get('Create')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
         if m.get('InstallTime') is not None:
@@ -17316,7 +17364,6 @@ class DescribePropertyUserDetailResponseBodyPropertys(TeaModel):
     def __init__(
         self,
         accounts_expiration_date: str = None,
-        create: str = None,
         create_timestamp: int = None,
         group_names: List[str] = None,
         instance_id: str = None,
@@ -17340,7 +17387,6 @@ class DescribePropertyUserDetailResponseBodyPropertys(TeaModel):
         uuid: str = None,
     ):
         self.accounts_expiration_date = accounts_expiration_date
-        self.create = create
         self.create_timestamp = create_timestamp
         self.group_names = group_names
         self.instance_id = instance_id
@@ -17374,8 +17420,6 @@ class DescribePropertyUserDetailResponseBodyPropertys(TeaModel):
         result = dict()
         if self.accounts_expiration_date is not None:
             result['AccountsExpirationDate'] = self.accounts_expiration_date
-        if self.create is not None:
-            result['Create'] = self.create
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
         if self.group_names is not None:
@@ -17424,8 +17468,6 @@ class DescribePropertyUserDetailResponseBodyPropertys(TeaModel):
         m = m or dict()
         if m.get('AccountsExpirationDate') is not None:
             self.accounts_expiration_date = m.get('AccountsExpirationDate')
-        if m.get('Create') is not None:
-            self.create = m.get('Create')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
         if m.get('GroupNames') is not None:
@@ -23124,6 +23166,7 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         last_time: str = None,
         last_time_stamp: int = None,
         level: str = None,
+        malicious_rule_status: str = None,
         mark_mis_rules: str = None,
         name: str = None,
         occurrence_time: str = None,
@@ -23173,6 +23216,7 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
         self.last_time = last_time
         self.last_time_stamp = last_time_stamp
         self.level = level
+        self.malicious_rule_status = malicious_rule_status
         self.mark_mis_rules = mark_mis_rules
         self.name = name
         self.occurrence_time = occurrence_time
@@ -23282,6 +23326,8 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
             result['LastTimeStamp'] = self.last_time_stamp
         if self.level is not None:
             result['Level'] = self.level
+        if self.malicious_rule_status is not None:
+            result['MaliciousRuleStatus'] = self.malicious_rule_status
         if self.mark_mis_rules is not None:
             result['MarkMisRules'] = self.mark_mis_rules
         if self.name is not None:
@@ -23390,6 +23436,8 @@ class DescribeSuspEventsResponseBodySuspEvents(TeaModel):
             self.last_time_stamp = m.get('LastTimeStamp')
         if m.get('Level') is not None:
             self.level = m.get('Level')
+        if m.get('MaliciousRuleStatus') is not None:
+            self.malicious_rule_status = m.get('MaliciousRuleStatus')
         if m.get('MarkMisRules') is not None:
             self.mark_mis_rules = m.get('MarkMisRules')
         if m.get('Name') is not None:
