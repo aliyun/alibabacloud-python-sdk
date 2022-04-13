@@ -1,3 +1,6 @@
+2022-04-13 Version: 1.1.13
+- Update Projex Workitem API.
+
 2022-04-02 Version: 1.1.12
 - Add Codeup Api.
 
