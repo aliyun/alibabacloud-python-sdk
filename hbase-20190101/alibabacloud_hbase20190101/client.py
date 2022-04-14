@@ -238,6 +238,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_public_network_address_with_options_async(request, runtime)
 
+    def cancel_active_operation_tasks_with_options(
+        self,
+        request: hbase_20190101_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.CancelActiveOperationTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CancelActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_active_operation_tasks_with_options_async(
+        self,
+        request: hbase_20190101_models.CancelActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.CancelActiveOperationTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelActiveOperationTasks',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.CancelActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_active_operation_tasks(
+        self,
+        request: hbase_20190101_models.CancelActiveOperationTasksRequest,
+    ) -> hbase_20190101_models.CancelActiveOperationTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_active_operation_tasks_with_options(request, runtime)
+
+    async def cancel_active_operation_tasks_async(
+        self,
+        request: hbase_20190101_models.CancelActiveOperationTasksRequest,
+    ) -> hbase_20190101_models.CancelActiveOperationTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
+
     def check_components_version_with_options(
         self,
         request: hbase_20190101_models.CheckComponentsVersionRequest,
@@ -1943,6 +2033,226 @@ class Client(OpenApiClient):
     ) -> hbase_20190101_models.DeleteUserHdfsInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_hdfs_info_with_options_async(request, runtime)
+
+    def describe_active_operation_task_type_with_options(
+        self,
+        request: hbase_20190101_models.DescribeActiveOperationTaskTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeActiveOperationTaskTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_history):
+            query['IsHistory'] = request.is_history
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTaskType',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeActiveOperationTaskTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_task_type_with_options_async(
+        self,
+        request: hbase_20190101_models.DescribeActiveOperationTaskTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeActiveOperationTaskTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.is_history):
+            query['IsHistory'] = request.is_history
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTaskType',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeActiveOperationTaskTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_task_type(
+        self,
+        request: hbase_20190101_models.DescribeActiveOperationTaskTypeRequest,
+    ) -> hbase_20190101_models.DescribeActiveOperationTaskTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_active_operation_task_type_with_options(request, runtime)
+
+    async def describe_active_operation_task_type_async(
+        self,
+        request: hbase_20190101_models.DescribeActiveOperationTaskTypeRequest,
+    ) -> hbase_20190101_models.DescribeActiveOperationTaskTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_active_operation_task_type_with_options_async(request, runtime)
+
+    def describe_active_operation_tasks_with_options(
+        self,
+        request: hbase_20190101_models.DescribeActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeActiveOperationTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_cancel):
+            query['AllowCancel'] = request.allow_cancel
+        if not UtilClient.is_unset(request.allow_change):
+            query['AllowChange'] = request.allow_change
+        if not UtilClient.is_unset(request.change_level):
+            query['ChangeLevel'] = request.change_level
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTasks',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_tasks_with_options_async(
+        self,
+        request: hbase_20190101_models.DescribeActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.DescribeActiveOperationTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_cancel):
+            query['AllowCancel'] = request.allow_cancel
+        if not UtilClient.is_unset(request.allow_change):
+            query['AllowChange'] = request.allow_change
+        if not UtilClient.is_unset(request.change_level):
+            query['ChangeLevel'] = request.change_level
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.ins_name):
+            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeActiveOperationTasks',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.DescribeActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_tasks(
+        self,
+        request: hbase_20190101_models.DescribeActiveOperationTasksRequest,
+    ) -> hbase_20190101_models.DescribeActiveOperationTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_active_operation_tasks_with_options(request, runtime)
+
+    async def describe_active_operation_tasks_async(
+        self,
+        request: hbase_20190101_models.DescribeActiveOperationTasksRequest,
+    ) -> hbase_20190101_models.DescribeActiveOperationTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_active_operation_tasks_with_options_async(request, runtime)
 
     def describe_available_resource_with_options(
         self,
@@ -5065,6 +5375,104 @@ class Client(OpenApiClient):
     ) -> hbase_20190101_models.ListTagsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_tags_with_options_async(request, runtime)
+
+    def modify_active_operation_tasks_with_options(
+        self,
+        request: hbase_20190101_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.ModifyActiveOperationTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyActiveOperationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_active_operation_tasks_with_options_async(
+        self,
+        request: hbase_20190101_models.ModifyActiveOperationTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hbase_20190101_models.ModifyActiveOperationTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.immediate_start):
+            query['ImmediateStart'] = request.immediate_start
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyActiveOperationTasks',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hbase_20190101_models.ModifyActiveOperationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_active_operation_tasks(
+        self,
+        request: hbase_20190101_models.ModifyActiveOperationTasksRequest,
+    ) -> hbase_20190101_models.ModifyActiveOperationTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_active_operation_tasks_with_options(request, runtime)
+
+    async def modify_active_operation_tasks_async(
+        self,
+        request: hbase_20190101_models.ModifyActiveOperationTasksRequest,
+    ) -> hbase_20190101_models.ModifyActiveOperationTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_active_operation_tasks_with_options_async(request, runtime)
 
     def modify_backup_plan_config_with_options(
         self,

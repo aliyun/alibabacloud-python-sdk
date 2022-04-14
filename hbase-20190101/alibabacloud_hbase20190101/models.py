@@ -204,6 +204,133 @@ class AllocatePublicNetworkAddressResponse(TeaModel):
         return self
 
 
+class CancelActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.ids = ids
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class CancelActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        request_id: str = None,
+    ):
+        self.ids = ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CancelActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CancelActiveOperationTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckComponentsVersionRequest(TeaModel):
     def __init__(
         self,
@@ -2617,6 +2744,576 @@ class DeleteUserHdfsInfoResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteUserHdfsInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeActiveOperationTaskTypeRequest(TeaModel):
+    def __init__(
+        self,
+        is_history: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.is_history = is_history
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_history is not None:
+            result['IsHistory'] = self.is_history
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsHistory') is not None:
+            self.is_history = m.get('IsHistory')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeActiveOperationTaskTypeResponseBodyTypeList(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        task_type: str = None,
+        task_type_info_en: str = None,
+        task_type_info_zh: str = None,
+    ):
+        self.count = count
+        self.task_type = task_type
+        self.task_type_info_en = task_type_info_en
+        self.task_type_info_zh = task_type_info_zh
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.task_type_info_en is not None:
+            result['TaskTypeInfoEn'] = self.task_type_info_en
+        if self.task_type_info_zh is not None:
+            result['TaskTypeInfoZh'] = self.task_type_info_zh
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TaskTypeInfoEn') is not None:
+            self.task_type_info_en = m.get('TaskTypeInfoEn')
+        if m.get('TaskTypeInfoZh') is not None:
+            self.task_type_info_zh = m.get('TaskTypeInfoZh')
+        return self
+
+
+class DescribeActiveOperationTaskTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        type_list: List[DescribeActiveOperationTaskTypeResponseBodyTypeList] = None,
+    ):
+        self.request_id = request_id
+        self.type_list = type_list
+
+    def validate(self):
+        if self.type_list:
+            for k in self.type_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TypeList'] = []
+        if self.type_list is not None:
+            for k in self.type_list:
+                result['TypeList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.type_list = []
+        if m.get('TypeList') is not None:
+            for k in m.get('TypeList'):
+                temp_model = DescribeActiveOperationTaskTypeResponseBodyTypeList()
+                self.type_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeActiveOperationTaskTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeActiveOperationTaskTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeActiveOperationTaskTypeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        allow_cancel: int = None,
+        allow_change: int = None,
+        change_level: str = None,
+        db_type: str = None,
+        ins_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        product_id: str = None,
+        region: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        status: int = None,
+        task_type: str = None,
+    ):
+        self.allow_cancel = allow_cancel
+        self.allow_change = allow_change
+        self.change_level = change_level
+        self.db_type = db_type
+        self.ins_name = ins_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.product_id = product_id
+        self.region = region
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.status = status
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_cancel is not None:
+            result['AllowCancel'] = self.allow_cancel
+        if self.allow_change is not None:
+            result['AllowChange'] = self.allow_change
+        if self.change_level is not None:
+            result['ChangeLevel'] = self.change_level
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCancel') is not None:
+            self.allow_cancel = m.get('AllowCancel')
+        if m.get('AllowChange') is not None:
+            self.allow_change = m.get('AllowChange')
+        if m.get('ChangeLevel') is not None:
+            self.change_level = m.get('ChangeLevel')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        allow_cancel: str = None,
+        allow_change: str = None,
+        change_level: str = None,
+        change_level_en: str = None,
+        change_level_zh: str = None,
+        created_time: str = None,
+        current_avz: str = None,
+        db_type: str = None,
+        db_version: str = None,
+        deadline: str = None,
+        id: int = None,
+        impact_en: str = None,
+        impact_zh: str = None,
+        ins_comment: str = None,
+        ins_name: str = None,
+        modified_time: str = None,
+        prepare_interval: str = None,
+        region: str = None,
+        result_info: str = None,
+        start_time: str = None,
+        status: int = None,
+        sub_ins_names: List[str] = None,
+        switch_time: str = None,
+        task_type: str = None,
+        task_type_en: str = None,
+        task_type_zh: str = None,
+    ):
+        self.allow_cancel = allow_cancel
+        self.allow_change = allow_change
+        self.change_level = change_level
+        self.change_level_en = change_level_en
+        self.change_level_zh = change_level_zh
+        self.created_time = created_time
+        self.current_avz = current_avz
+        self.db_type = db_type
+        self.db_version = db_version
+        self.deadline = deadline
+        self.id = id
+        self.impact_en = impact_en
+        self.impact_zh = impact_zh
+        self.ins_comment = ins_comment
+        self.ins_name = ins_name
+        self.modified_time = modified_time
+        self.prepare_interval = prepare_interval
+        self.region = region
+        self.result_info = result_info
+        self.start_time = start_time
+        self.status = status
+        self.sub_ins_names = sub_ins_names
+        self.switch_time = switch_time
+        self.task_type = task_type
+        self.task_type_en = task_type_en
+        self.task_type_zh = task_type_zh
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_cancel is not None:
+            result['AllowCancel'] = self.allow_cancel
+        if self.allow_change is not None:
+            result['AllowChange'] = self.allow_change
+        if self.change_level is not None:
+            result['ChangeLevel'] = self.change_level
+        if self.change_level_en is not None:
+            result['ChangeLevelEn'] = self.change_level_en
+        if self.change_level_zh is not None:
+            result['ChangeLevelZh'] = self.change_level_zh
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.current_avz is not None:
+            result['CurrentAVZ'] = self.current_avz
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.db_version is not None:
+            result['DbVersion'] = self.db_version
+        if self.deadline is not None:
+            result['Deadline'] = self.deadline
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.impact_en is not None:
+            result['ImpactEn'] = self.impact_en
+        if self.impact_zh is not None:
+            result['ImpactZh'] = self.impact_zh
+        if self.ins_comment is not None:
+            result['InsComment'] = self.ins_comment
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.prepare_interval is not None:
+            result['PrepareInterval'] = self.prepare_interval
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.result_info is not None:
+            result['ResultInfo'] = self.result_info
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_ins_names is not None:
+            result['SubInsNames'] = self.sub_ins_names
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.task_type_en is not None:
+            result['TaskTypeEn'] = self.task_type_en
+        if self.task_type_zh is not None:
+            result['TaskTypeZh'] = self.task_type_zh
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCancel') is not None:
+            self.allow_cancel = m.get('AllowCancel')
+        if m.get('AllowChange') is not None:
+            self.allow_change = m.get('AllowChange')
+        if m.get('ChangeLevel') is not None:
+            self.change_level = m.get('ChangeLevel')
+        if m.get('ChangeLevelEn') is not None:
+            self.change_level_en = m.get('ChangeLevelEn')
+        if m.get('ChangeLevelZh') is not None:
+            self.change_level_zh = m.get('ChangeLevelZh')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('CurrentAVZ') is not None:
+            self.current_avz = m.get('CurrentAVZ')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('DbVersion') is not None:
+            self.db_version = m.get('DbVersion')
+        if m.get('Deadline') is not None:
+            self.deadline = m.get('Deadline')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ImpactEn') is not None:
+            self.impact_en = m.get('ImpactEn')
+        if m.get('ImpactZh') is not None:
+            self.impact_zh = m.get('ImpactZh')
+        if m.get('InsComment') is not None:
+            self.ins_comment = m.get('InsComment')
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('PrepareInterval') is not None:
+            self.prepare_interval = m.get('PrepareInterval')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResultInfo') is not None:
+            self.result_info = m.get('ResultInfo')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubInsNames') is not None:
+            self.sub_ins_names = m.get('SubInsNames')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TaskTypeEn') is not None:
+            self.task_type_en = m.get('TaskTypeEn')
+        if m.get('TaskTypeZh') is not None:
+            self.task_type_zh = m.get('TaskTypeZh')
+        return self
+
+
+class DescribeActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeActiveOperationTasksResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeActiveOperationTasksResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DescribeActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DescribeActiveOperationTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13076,6 +13773,145 @@ class ListTagsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListTagsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        immediate_start: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        switch_time: str = None,
+    ):
+        self.ids = ids
+        self.immediate_start = immediate_start
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.switch_time = switch_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.immediate_start is not None:
+            result['ImmediateStart'] = self.immediate_start
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('ImmediateStart') is not None:
+            self.immediate_start = m.get('ImmediateStart')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        return self
+
+
+class ModifyActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        request_id: str = None,
+    ):
+        self.ids = ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyActiveOperationTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
