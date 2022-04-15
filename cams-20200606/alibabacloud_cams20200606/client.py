@@ -56,6 +56,8 @@ class Client(OpenApiClient):
             body['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.contacts_shrink):
             body['Contacts'] = request.contacts_shrink
+        if not UtilClient.is_unset(request.cust_waba_id):
+            body['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         req = open_api_models.OpenApiRequest(
@@ -92,6 +94,8 @@ class Client(OpenApiClient):
             body['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.contacts_shrink):
             body['Contacts'] = request.contacts_shrink
+        if not UtilClient.is_unset(request.cust_waba_id):
+            body['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         req = open_api_models.OpenApiRequest(
@@ -238,6 +242,8 @@ class Client(OpenApiClient):
             body['Category'] = request.category
         if not UtilClient.is_unset(request.components_shrink):
             body['Components'] = request.components_shrink
+        if not UtilClient.is_unset(request.cust_waba_id):
+            body['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.example_shrink):
             body['Example'] = request.example_shrink
         if not UtilClient.is_unset(request.language):
@@ -282,6 +288,8 @@ class Client(OpenApiClient):
             body['Category'] = request.category
         if not UtilClient.is_unset(request.components_shrink):
             body['Components'] = request.components_shrink
+        if not UtilClient.is_unset(request.cust_waba_id):
+            body['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.example_shrink):
             body['Example'] = request.example_shrink
         if not UtilClient.is_unset(request.language):
@@ -330,6 +338,8 @@ class Client(OpenApiClient):
     ) -> cams_20200606_models.DeleteChatappTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -358,6 +368,8 @@ class Client(OpenApiClient):
     ) -> cams_20200606_models.DeleteChatappTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -400,10 +412,10 @@ class Client(OpenApiClient):
     ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -432,10 +444,10 @@ class Client(OpenApiClient):
     ) -> cams_20200606_models.GetChatappTemplateDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -484,6 +496,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.audit_status):
             query['AuditStatus'] = request.audit_status
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.name):
@@ -522,6 +536,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.audit_status):
             query['AuditStatus'] = request.audit_status
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.name):
@@ -581,6 +597,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.channel_type):
             body['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_waba_id):
+            body['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.language):
@@ -635,6 +653,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.channel_type):
             body['ChannelType'] = request.channel_type
+        if not UtilClient.is_unset(request.cust_waba_id):
+            body['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.language):

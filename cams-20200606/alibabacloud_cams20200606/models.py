@@ -9,12 +9,15 @@ class CheckChatappContactsRequest(TeaModel):
         self,
         channel_type: str = None,
         contacts: List[str] = None,
+        cust_waba_id: str = None,
         from_: str = None,
     ):
         # 通道类型
         self.channel_type = channel_type
         # 需要查询的用户列表,单次调用最多查询10个。注意：用户号码必须加国家码
         self.contacts = contacts
+        # ISV客户wabaId
+        self.cust_waba_id = cust_waba_id
         # 发送号码,所选择ChannelType下的Business账号，即在控制台上审核通过的Number
         self.from_ = from_
 
@@ -31,6 +34,8 @@ class CheckChatappContactsRequest(TeaModel):
             result['ChannelType'] = self.channel_type
         if self.contacts is not None:
             result['Contacts'] = self.contacts
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.from_ is not None:
             result['From'] = self.from_
         return result
@@ -41,6 +46,8 @@ class CheckChatappContactsRequest(TeaModel):
             self.channel_type = m.get('ChannelType')
         if m.get('Contacts') is not None:
             self.contacts = m.get('Contacts')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         return self
@@ -51,12 +58,15 @@ class CheckChatappContactsShrinkRequest(TeaModel):
         self,
         channel_type: str = None,
         contacts_shrink: str = None,
+        cust_waba_id: str = None,
         from_: str = None,
     ):
         # 通道类型
         self.channel_type = channel_type
         # 需要查询的用户列表,单次调用最多查询10个。注意：用户号码必须加国家码
         self.contacts_shrink = contacts_shrink
+        # ISV客户wabaId
+        self.cust_waba_id = cust_waba_id
         # 发送号码,所选择ChannelType下的Business账号，即在控制台上审核通过的Number
         self.from_ = from_
 
@@ -73,6 +83,8 @@ class CheckChatappContactsShrinkRequest(TeaModel):
             result['ChannelType'] = self.channel_type
         if self.contacts_shrink is not None:
             result['Contacts'] = self.contacts_shrink
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.from_ is not None:
             result['From'] = self.from_
         return result
@@ -83,6 +95,8 @@ class CheckChatappContactsShrinkRequest(TeaModel):
             self.channel_type = m.get('ChannelType')
         if m.get('Contacts') is not None:
             self.contacts_shrink = m.get('Contacts')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         return self
@@ -458,6 +472,8 @@ class CreateChatappTemplateRequestComponents(TeaModel):
     def __init__(
         self,
         buttons: List[CreateChatappTemplateRequestComponentsButtons] = None,
+        caption: str = None,
+        file_name: str = None,
         format: str = None,
         text: str = None,
         type: str = None,
@@ -465,6 +481,10 @@ class CreateChatappTemplateRequestComponents(TeaModel):
     ):
         # 按钮
         self.buttons = buttons
+        # 描述，当Type为Header，且Format为IMGAGE/DOCUMENT/VIDEO 可以增加描述
+        self.caption = caption
+        # 文件名称，当Type为Header，且Format为DOCUMENT时可以给文件指定名称
+        self.file_name = file_name
         # 格式
         # TEXT-文本 IMGAGE-图片 DOCUMENT-文档 VIDEO-视频
         self.format = format
@@ -492,6 +512,10 @@ class CreateChatappTemplateRequestComponents(TeaModel):
         if self.buttons is not None:
             for k in self.buttons:
                 result['Buttons'].append(k.to_map() if k else None)
+        if self.caption is not None:
+            result['Caption'] = self.caption
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
         if self.format is not None:
             result['Format'] = self.format
         if self.text is not None:
@@ -509,6 +533,10 @@ class CreateChatappTemplateRequestComponents(TeaModel):
             for k in m.get('Buttons'):
                 temp_model = CreateChatappTemplateRequestComponentsButtons()
                 self.buttons.append(temp_model.from_map(k))
+        if m.get('Caption') is not None:
+            self.caption = m.get('Caption')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
         if m.get('Format') is not None:
             self.format = m.get('Format')
         if m.get('Text') is not None:
@@ -525,6 +553,7 @@ class CreateChatappTemplateRequest(TeaModel):
         self,
         category: str = None,
         components: List[CreateChatappTemplateRequestComponents] = None,
+        cust_waba_id: str = None,
         example: Dict[str, str] = None,
         language: str = None,
         name: str = None,
@@ -533,6 +562,8 @@ class CreateChatappTemplateRequest(TeaModel):
         # 模板分类
         self.category = category
         self.components = components
+        # ISV客户WabaId
+        self.cust_waba_id = cust_waba_id
         # 变量，KEY-VALUE结构
         self.example = example
         # 语言
@@ -560,6 +591,8 @@ class CreateChatappTemplateRequest(TeaModel):
         if self.components is not None:
             for k in self.components:
                 result['Components'].append(k.to_map() if k else None)
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.example is not None:
             result['Example'] = self.example
         if self.language is not None:
@@ -579,6 +612,8 @@ class CreateChatappTemplateRequest(TeaModel):
             for k in m.get('Components'):
                 temp_model = CreateChatappTemplateRequestComponents()
                 self.components.append(temp_model.from_map(k))
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('Example') is not None:
             self.example = m.get('Example')
         if m.get('Language') is not None:
@@ -595,6 +630,7 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         self,
         category: str = None,
         components_shrink: str = None,
+        cust_waba_id: str = None,
         example_shrink: str = None,
         language: str = None,
         name: str = None,
@@ -603,6 +639,8 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         # 模板分类
         self.category = category
         self.components_shrink = components_shrink
+        # ISV客户WabaId
+        self.cust_waba_id = cust_waba_id
         # 变量，KEY-VALUE结构
         self.example_shrink = example_shrink
         # 语言
@@ -625,6 +663,8 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
             result['Category'] = self.category
         if self.components_shrink is not None:
             result['Components'] = self.components_shrink
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.example_shrink is not None:
             result['Example'] = self.example_shrink
         if self.language is not None:
@@ -641,6 +681,8 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
             self.category = m.get('Category')
         if m.get('Components') is not None:
             self.components_shrink = m.get('Components')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('Example') is not None:
             self.example_shrink = m.get('Example')
         if m.get('Language') is not None:
@@ -777,8 +819,11 @@ class CreateChatappTemplateResponse(TeaModel):
 class DeleteChatappTemplateRequest(TeaModel):
     def __init__(
         self,
+        cust_waba_id: str = None,
         template_code: str = None,
     ):
+        # ISV客户wabaId
+        self.cust_waba_id = cust_waba_id
         # 模板编码
         self.template_code = template_code
 
@@ -791,12 +836,16 @@ class DeleteChatappTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.template_code is not None:
             result['TemplateCode'] = self.template_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('TemplateCode') is not None:
             self.template_code = m.get('TemplateCode')
         return self
@@ -884,13 +933,14 @@ class DeleteChatappTemplateResponse(TeaModel):
 class GetChatappTemplateDetailRequest(TeaModel):
     def __init__(
         self,
+        cust_waba_id: str = None,
         language: str = None,
-        owner_id: int = None,
         template_code: str = None,
     ):
+        # ISV客户WabaId
+        self.cust_waba_id = cust_waba_id
         # 语言
         self.language = language
-        self.owner_id = owner_id
         # 模板分类
         self.template_code = template_code
 
@@ -903,20 +953,20 @@ class GetChatappTemplateDetailRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.language is not None:
             result['Language'] = self.language
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
         if self.template_code is not None:
             result['TemplateCode'] = self.template_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
         if m.get('TemplateCode') is not None:
             self.template_code = m.get('TemplateCode')
         return self
@@ -985,6 +1035,8 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
     def __init__(
         self,
         buttons: List[GetChatappTemplateDetailResponseBodyDataComponentsButtons] = None,
+        caption: str = None,
+        file_name: str = None,
         text: str = None,
         type: str = None,
         url: str = None,
@@ -992,6 +1044,10 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
         # 仅适用于 BUTTONS 类型。
         # 与按钮相关的参数。
         self.buttons = buttons
+        # 描述，当Type为Header，且Format为IMGAGE/DOCUMENT/VIDEO 可以增加描述
+        self.caption = caption
+        # 文件名称，当Type为Header，且Format为DOCUMENT时可以给文件指定名称
+        self.file_name = file_name
         # 所发送消息的文本
         self.text = text
         # 组件类型
@@ -1015,6 +1071,10 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
         if self.buttons is not None:
             for k in self.buttons:
                 result['Buttons'].append(k.to_map() if k else None)
+        if self.caption is not None:
+            result['Caption'] = self.caption
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
         if self.text is not None:
             result['Text'] = self.text
         if self.type is not None:
@@ -1030,6 +1090,10 @@ class GetChatappTemplateDetailResponseBodyDataComponents(TeaModel):
             for k in m.get('Buttons'):
                 temp_model = GetChatappTemplateDetailResponseBodyDataComponentsButtons()
                 self.buttons.append(temp_model.from_map(k))
+        if m.get('Caption') is not None:
+            self.caption = m.get('Caption')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
         if m.get('Text') is not None:
             self.text = m.get('Text')
         if m.get('Type') is not None:
@@ -1243,12 +1307,15 @@ class ListChatappTemplateRequest(TeaModel):
     def __init__(
         self,
         audit_status: str = None,
+        cust_waba_id: str = None,
         language: str = None,
         name: str = None,
         page: ListChatappTemplateRequestPage = None,
     ):
         # 审核状态
         self.audit_status = audit_status
+        # ISV客户WabaId
+        self.cust_waba_id = cust_waba_id
         # 语言
         self.language = language
         # 模板名称
@@ -1267,6 +1334,8 @@ class ListChatappTemplateRequest(TeaModel):
         result = dict()
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.language is not None:
             result['Language'] = self.language
         if self.name is not None:
@@ -1279,6 +1348,8 @@ class ListChatappTemplateRequest(TeaModel):
         m = m or dict()
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('Name') is not None:
@@ -1293,12 +1364,15 @@ class ListChatappTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
         audit_status: str = None,
+        cust_waba_id: str = None,
         language: str = None,
         name: str = None,
         page_shrink: str = None,
     ):
         # 审核状态
         self.audit_status = audit_status
+        # ISV客户WabaId
+        self.cust_waba_id = cust_waba_id
         # 语言
         self.language = language
         # 模板名称
@@ -1316,6 +1390,8 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         result = dict()
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.language is not None:
             result['Language'] = self.language
         if self.name is not None:
@@ -1328,6 +1404,8 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('Name') is not None:
@@ -1489,6 +1567,7 @@ class SendChatappMessageRequest(TeaModel):
         self,
         channel_type: str = None,
         content: str = None,
+        cust_waba_id: str = None,
         from_: str = None,
         language: str = None,
         message_type: str = None,
@@ -1502,6 +1581,8 @@ class SendChatappMessageRequest(TeaModel):
         self.channel_type = channel_type
         # 消息内容
         self.content = content
+        # ISV客户wabaId
+        self.cust_waba_id = cust_waba_id
         # 发送方
         self.from_ = from_
         # 语言
@@ -1532,6 +1613,8 @@ class SendChatappMessageRequest(TeaModel):
             result['ChannelType'] = self.channel_type
         if self.content is not None:
             result['Content'] = self.content
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.from_ is not None:
             result['From'] = self.from_
         if self.language is not None:
@@ -1556,6 +1639,8 @@ class SendChatappMessageRequest(TeaModel):
             self.channel_type = m.get('ChannelType')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('Language') is not None:
@@ -1580,6 +1665,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self,
         channel_type: str = None,
         content: str = None,
+        cust_waba_id: str = None,
         from_: str = None,
         language: str = None,
         message_type: str = None,
@@ -1593,6 +1679,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self.channel_type = channel_type
         # 消息内容
         self.content = content
+        # ISV客户wabaId
+        self.cust_waba_id = cust_waba_id
         # 发送方
         self.from_ = from_
         # 语言
@@ -1623,6 +1711,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             result['ChannelType'] = self.channel_type
         if self.content is not None:
             result['Content'] = self.content
+        if self.cust_waba_id is not None:
+            result['CustWabaId'] = self.cust_waba_id
         if self.from_ is not None:
             result['From'] = self.from_
         if self.language is not None:
@@ -1647,6 +1737,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             self.channel_type = m.get('ChannelType')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CustWabaId') is not None:
+            self.cust_waba_id = m.get('CustWabaId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('Language') is not None:

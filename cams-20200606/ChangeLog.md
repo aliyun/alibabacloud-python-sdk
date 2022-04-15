@@ -1,3 +1,6 @@
+2022-04-15 Version: 1.0.7
+- Added WabaId input parameter.
+
 2022-04-02 Version: 1.0.6
 - Fixed API response deserialization issues.
 
