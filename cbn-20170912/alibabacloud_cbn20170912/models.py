@@ -607,6 +607,145 @@ class AssociateTransitRouterAttachmentWithRouteTableResponse(TeaModel):
         return self
 
 
+class AssociateTransitRouterMulticastDomainRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_attachment_id: str = None,
+        transit_router_multicast_domain_id: str = None,
+        v_switch_ids: List[str] = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_attachment_id = transit_router_attachment_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_attachment_id is not None:
+            result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterAttachmentId') is not None:
+            self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
+class AssociateTransitRouterMulticastDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateTransitRouterMulticastDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: AssociateTransitRouterMulticastDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = AssociateTransitRouterMulticastDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AttachCenChildInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -1738,6 +1877,7 @@ class CreateCenRouteMapRequest(TeaModel):
         source_instance_ids_reverse_match: bool = None,
         source_region_ids: List[str] = None,
         source_route_table_ids: List[str] = None,
+        transit_router_route_table_id: str = None,
         transmit_direction: str = None,
     ):
         self.as_path_match_mode = as_path_match_mode
@@ -1770,6 +1910,7 @@ class CreateCenRouteMapRequest(TeaModel):
         self.source_instance_ids_reverse_match = source_instance_ids_reverse_match
         self.source_region_ids = source_region_ids
         self.source_route_table_ids = source_route_table_ids
+        self.transit_router_route_table_id = transit_router_route_table_id
         self.transmit_direction = transmit_direction
 
     def validate(self):
@@ -1841,6 +1982,8 @@ class CreateCenRouteMapRequest(TeaModel):
             result['SourceRegionIds'] = self.source_region_ids
         if self.source_route_table_ids is not None:
             result['SourceRouteTableIds'] = self.source_route_table_ids
+        if self.transit_router_route_table_id is not None:
+            result['TransitRouterRouteTableId'] = self.transit_router_route_table_id
         if self.transmit_direction is not None:
             result['TransmitDirection'] = self.transmit_direction
         return result
@@ -1907,6 +2050,8 @@ class CreateCenRouteMapRequest(TeaModel):
             self.source_region_ids = m.get('SourceRegionIds')
         if m.get('SourceRouteTableIds') is not None:
             self.source_route_table_ids = m.get('SourceRouteTableIds')
+        if m.get('TransitRouterRouteTableId') is not None:
+            self.transit_router_route_table_id = m.get('TransitRouterRouteTableId')
         if m.get('TransmitDirection') is not None:
             self.transmit_direction = m.get('TransmitDirection')
         return self
@@ -2396,6 +2541,7 @@ class CreateTransitRouterRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        support_multicast: bool = None,
         transit_router_description: str = None,
         transit_router_name: str = None,
     ):
@@ -2407,6 +2553,7 @@ class CreateTransitRouterRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.support_multicast = support_multicast
         self.transit_router_description = transit_router_description
         self.transit_router_name = transit_router_name
 
@@ -2435,6 +2582,8 @@ class CreateTransitRouterRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.support_multicast is not None:
+            result['SupportMulticast'] = self.support_multicast
         if self.transit_router_description is not None:
             result['TransitRouterDescription'] = self.transit_router_description
         if self.transit_router_name is not None:
@@ -2459,6 +2608,8 @@ class CreateTransitRouterRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SupportMulticast') is not None:
+            self.support_multicast = m.get('SupportMulticast')
         if m.get('TransitRouterDescription') is not None:
             self.transit_router_description = m.get('TransitRouterDescription')
         if m.get('TransitRouterName') is not None:
@@ -2532,6 +2683,163 @@ class CreateTransitRouterResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = CreateTransitRouterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateTransitRouterMulticastDomainRequest(TeaModel):
+    def __init__(
+        self,
+        cen_id: str = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_id: str = None,
+        transit_router_multicast_domain_description: str = None,
+        transit_router_multicast_domain_name: str = None,
+    ):
+        self.cen_id = cen_id
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_id = transit_router_id
+        self.transit_router_multicast_domain_description = transit_router_multicast_domain_description
+        self.transit_router_multicast_domain_name = transit_router_multicast_domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cen_id is not None:
+            result['CenId'] = self.cen_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_id is not None:
+            result['TransitRouterId'] = self.transit_router_id
+        if self.transit_router_multicast_domain_description is not None:
+            result['TransitRouterMulticastDomainDescription'] = self.transit_router_multicast_domain_description
+        if self.transit_router_multicast_domain_name is not None:
+            result['TransitRouterMulticastDomainName'] = self.transit_router_multicast_domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenId') is not None:
+            self.cen_id = m.get('CenId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterId') is not None:
+            self.transit_router_id = m.get('TransitRouterId')
+        if m.get('TransitRouterMulticastDomainDescription') is not None:
+            self.transit_router_multicast_domain_description = m.get('TransitRouterMulticastDomainDescription')
+        if m.get('TransitRouterMulticastDomainName') is not None:
+            self.transit_router_multicast_domain_name = m.get('TransitRouterMulticastDomainName')
+        return self
+
+
+class CreateTransitRouterMulticastDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        transit_router_multicast_domain_id: str = None,
+    ):
+        self.request_id = request_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        return self
+
+
+class CreateTransitRouterMulticastDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateTransitRouterMulticastDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateTransitRouterMulticastDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5012,6 +5320,133 @@ class DeleteTransitRouterResponse(TeaModel):
         return self
 
 
+class DeleteTransitRouterMulticastDomainRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_multicast_domain_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        return self
+
+
+class DeleteTransitRouterMulticastDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTransitRouterMulticastDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeleteTransitRouterMulticastDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeleteTransitRouterMulticastDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteTransitRouterPeerAttachmentRequest(TeaModel):
     def __init__(
         self,
@@ -5667,6 +6102,290 @@ class DeleteTransitRouterVpcAttachmentResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = DeleteTransitRouterVpcAttachmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeregisterTransitRouterMulticastGroupMembersRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        group_ip_address: str = None,
+        network_interface_ids: List[str] = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        peer_transit_router_multicast_domains: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_multicast_domain_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.group_ip_address = group_ip_address
+        self.network_interface_ids = network_interface_ids
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.peer_transit_router_multicast_domains = peer_transit_router_multicast_domains
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.group_ip_address is not None:
+            result['GroupIpAddress'] = self.group_ip_address
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.peer_transit_router_multicast_domains is not None:
+            result['PeerTransitRouterMulticastDomains'] = self.peer_transit_router_multicast_domains
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('GroupIpAddress') is not None:
+            self.group_ip_address = m.get('GroupIpAddress')
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids = m.get('NetworkInterfaceIds')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PeerTransitRouterMulticastDomains') is not None:
+            self.peer_transit_router_multicast_domains = m.get('PeerTransitRouterMulticastDomains')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        return self
+
+
+class DeregisterTransitRouterMulticastGroupMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeregisterTransitRouterMulticastGroupMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeregisterTransitRouterMulticastGroupMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeregisterTransitRouterMulticastGroupMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeregisterTransitRouterMulticastGroupSourcesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        group_ip_address: str = None,
+        network_interface_ids: List[str] = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_multicast_domain_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.group_ip_address = group_ip_address
+        self.network_interface_ids = network_interface_ids
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.group_ip_address is not None:
+            result['GroupIpAddress'] = self.group_ip_address
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('GroupIpAddress') is not None:
+            self.group_ip_address = m.get('GroupIpAddress')
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids = m.get('NetworkInterfaceIds')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        return self
+
+
+class DeregisterTransitRouterMulticastGroupSourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeregisterTransitRouterMulticastGroupSourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DeregisterTransitRouterMulticastGroupSourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DeregisterTransitRouterMulticastGroupSourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9820,8 +10539,10 @@ class DescribeCensResponseBodyCensCen(TeaModel):
         cen_id: str = None,
         creation_time: str = None,
         description: str = None,
+        ipv_6level: str = None,
         name: str = None,
         protection_level: str = None,
+        resource_group_id: str = None,
         status: str = None,
         tags: DescribeCensResponseBodyCensCenTags = None,
     ):
@@ -9829,8 +10550,10 @@ class DescribeCensResponseBodyCensCen(TeaModel):
         self.cen_id = cen_id
         self.creation_time = creation_time
         self.description = description
+        self.ipv_6level = ipv_6level
         self.name = name
         self.protection_level = protection_level
+        self.resource_group_id = resource_group_id
         self.status = status
         self.tags = tags
 
@@ -9854,10 +10577,14 @@ class DescribeCensResponseBodyCensCen(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.ipv_6level is not None:
+            result['Ipv6Level'] = self.ipv_6level
         if self.name is not None:
             result['Name'] = self.name
         if self.protection_level is not None:
             result['ProtectionLevel'] = self.protection_level
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.tags is not None:
@@ -9875,10 +10602,14 @@ class DescribeCensResponseBodyCensCen(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Ipv6Level') is not None:
+            self.ipv_6level = m.get('Ipv6Level')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProtectionLevel') is not None:
             self.protection_level = m.get('ProtectionLevel')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tags') is not None:
@@ -12309,6 +13040,145 @@ class DisableTransitRouterRouteTablePropagationResponse(TeaModel):
         return self
 
 
+class DisassociateTransitRouterMulticastDomainRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_attachment_id: str = None,
+        transit_router_multicast_domain_id: str = None,
+        v_switch_ids: List[str] = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_attachment_id = transit_router_attachment_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_attachment_id is not None:
+            result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterAttachmentId') is not None:
+            self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
+class DisassociateTransitRouterMulticastDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisassociateTransitRouterMulticastDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: DisassociateTransitRouterMulticastDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = DisassociateTransitRouterMulticastDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DissociateTransitRouterAttachmentFromRouteTableRequest(TeaModel):
     def __init__(
         self,
@@ -13176,6 +14046,204 @@ class ListCenInterRegionTrafficQosPoliciesResponse(TeaModel):
         return self
 
 
+class ListGrantVSwitchEnisRequest(TeaModel):
+    def __init__(
+        self,
+        cen_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.cen_id = cen_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cen_id is not None:
+            result['CenId'] = self.cen_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenId') is not None:
+            self.cen_id = m.get('CenId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        network_interface_id: str = None,
+        transit_router_flag: bool = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.description = description
+        self.network_interface_id = network_interface_id
+        self.transit_router_flag = transit_router_flag
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.transit_router_flag is not None:
+            result['TransitRouterFlag'] = self.transit_router_flag
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('TransitRouterFlag') is not None:
+            self.transit_router_flag = m.get('TransitRouterFlag')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListGrantVSwitchEnisResponseBody(TeaModel):
+    def __init__(
+        self,
+        grant_vswitch_enis: List[ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.grant_vswitch_enis = grant_vswitch_enis
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.grant_vswitch_enis:
+            for k in self.grant_vswitch_enis:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GrantVSwitchEnis'] = []
+        if self.grant_vswitch_enis is not None:
+            for k in self.grant_vswitch_enis:
+                result['GrantVSwitchEnis'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.grant_vswitch_enis = []
+        if m.get('GrantVSwitchEnis') is not None:
+            for k in m.get('GrantVSwitchEnis'):
+                temp_model = ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis()
+                self.grant_vswitch_enis.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListGrantVSwitchEnisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListGrantVSwitchEnisResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListGrantVSwitchEnisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListGrantVSwitchesToCenRequest(TeaModel):
     def __init__(
         self,
@@ -14003,12 +15071,14 @@ class ListTransitRouterAvailableResourceRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        support_multicast: bool = None,
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.support_multicast = support_multicast
 
     def validate(self):
         pass
@@ -14029,6 +15099,8 @@ class ListTransitRouterAvailableResourceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.support_multicast is not None:
+            result['SupportMulticast'] = self.support_multicast
         return result
 
     def from_map(self, m: dict = None):
@@ -14043,6 +15115,8 @@ class ListTransitRouterAvailableResourceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SupportMulticast') is not None:
+            self.support_multicast = m.get('SupportMulticast')
         return self
 
 
@@ -14118,6 +15192,798 @@ class ListTransitRouterAvailableResourceResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListTransitRouterAvailableResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTransitRouterMulticastDomainAssociationsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        transit_router_attachment_id: str = None,
+        transit_router_multicast_domain_id: str = None,
+        v_switch_ids: List[str] = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.max_results = max_results
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.transit_router_attachment_id = transit_router_attachment_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.transit_router_attachment_id is not None:
+            result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TransitRouterAttachmentId') is not None:
+            self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
+class ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        status: str = None,
+        transit_router_attachment_id: str = None,
+        transit_router_multicast_domain_id: str = None,
+        v_switch_id: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.status = status
+        self.transit_router_attachment_id = transit_router_attachment_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.transit_router_attachment_id is not None:
+            result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TransitRouterAttachmentId') is not None:
+            self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class ListTransitRouterMulticastDomainAssociationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        transit_router_multicast_associations: List[ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+        self.transit_router_multicast_associations = transit_router_multicast_associations
+
+    def validate(self):
+        if self.transit_router_multicast_associations:
+            for k in self.transit_router_multicast_associations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['TransitRouterMulticastAssociations'] = []
+        if self.transit_router_multicast_associations is not None:
+            for k in self.transit_router_multicast_associations:
+                result['TransitRouterMulticastAssociations'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.transit_router_multicast_associations = []
+        if m.get('TransitRouterMulticastAssociations') is not None:
+            for k in m.get('TransitRouterMulticastAssociations'):
+                temp_model = ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations()
+                self.transit_router_multicast_associations.append(temp_model.from_map(k))
+        return self
+
+
+class ListTransitRouterMulticastDomainAssociationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTransitRouterMulticastDomainAssociationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListTransitRouterMulticastDomainAssociationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTransitRouterMulticastDomainsRequest(TeaModel):
+    def __init__(
+        self,
+        cen_id: str = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_id: str = None,
+        transit_router_multicast_domain_id: str = None,
+    ):
+        self.cen_id = cen_id
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.max_results = max_results
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_id = transit_router_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cen_id is not None:
+            result['CenId'] = self.cen_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_id is not None:
+            result['TransitRouterId'] = self.transit_router_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CenId') is not None:
+            self.cen_id = m.get('CenId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterId') is not None:
+            self.transit_router_id = m.get('TransitRouterId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        return self
+
+
+class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        transit_router_multicast_domain_description: str = None,
+        transit_router_multicast_domain_id: str = None,
+        transit_router_multicast_domain_name: str = None,
+    ):
+        self.status = status
+        self.transit_router_multicast_domain_description = transit_router_multicast_domain_description
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+        self.transit_router_multicast_domain_name = transit_router_multicast_domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.transit_router_multicast_domain_description is not None:
+            result['TransitRouterMulticastDomainDescription'] = self.transit_router_multicast_domain_description
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        if self.transit_router_multicast_domain_name is not None:
+            result['TransitRouterMulticastDomainName'] = self.transit_router_multicast_domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TransitRouterMulticastDomainDescription') is not None:
+            self.transit_router_multicast_domain_description = m.get('TransitRouterMulticastDomainDescription')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        if m.get('TransitRouterMulticastDomainName') is not None:
+            self.transit_router_multicast_domain_name = m.get('TransitRouterMulticastDomainName')
+        return self
+
+
+class ListTransitRouterMulticastDomainsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        transit_router_multicast_domains: List[ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+        self.transit_router_multicast_domains = transit_router_multicast_domains
+
+    def validate(self):
+        if self.transit_router_multicast_domains:
+            for k in self.transit_router_multicast_domains:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['TransitRouterMulticastDomains'] = []
+        if self.transit_router_multicast_domains is not None:
+            for k in self.transit_router_multicast_domains:
+                result['TransitRouterMulticastDomains'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.transit_router_multicast_domains = []
+        if m.get('TransitRouterMulticastDomains') is not None:
+            for k in m.get('TransitRouterMulticastDomains'):
+                temp_model = ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains()
+                self.transit_router_multicast_domains.append(temp_model.from_map(k))
+        return self
+
+
+class ListTransitRouterMulticastDomainsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTransitRouterMulticastDomainsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListTransitRouterMulticastDomainsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTransitRouterMulticastGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        group_ip_address: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        peer_transit_router_multicast_domains: List[str] = None,
+        resource_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        transit_router_attachment_id: str = None,
+        transit_router_multicast_domain_id: str = None,
+        v_switch_ids: List[str] = None,
+    ):
+        self.client_token = client_token
+        self.group_ip_address = group_ip_address
+        self.max_results = max_results
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.peer_transit_router_multicast_domains = peer_transit_router_multicast_domains
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.transit_router_attachment_id = transit_router_attachment_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.group_ip_address is not None:
+            result['GroupIpAddress'] = self.group_ip_address
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.peer_transit_router_multicast_domains is not None:
+            result['PeerTransitRouterMulticastDomains'] = self.peer_transit_router_multicast_domains
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.transit_router_attachment_id is not None:
+            result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('GroupIpAddress') is not None:
+            self.group_ip_address = m.get('GroupIpAddress')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PeerTransitRouterMulticastDomains') is not None:
+            self.peer_transit_router_multicast_domains = m.get('PeerTransitRouterMulticastDomains')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TransitRouterAttachmentId') is not None:
+            self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
+class ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups(TeaModel):
+    def __init__(
+        self,
+        group_ip_address: str = None,
+        group_member: bool = None,
+        group_source: bool = None,
+        member_type: str = None,
+        network_interface_id: str = None,
+        peer_transit_router_multicast_domain_id: str = None,
+        resource_id: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        source_type: str = None,
+        status: str = None,
+        transit_router_attachment_id: str = None,
+        v_switch_id: str = None,
+    ):
+        self.group_ip_address = group_ip_address
+        self.group_member = group_member
+        self.group_source = group_source
+        self.member_type = member_type
+        self.network_interface_id = network_interface_id
+        self.peer_transit_router_multicast_domain_id = peer_transit_router_multicast_domain_id
+        self.resource_id = resource_id
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.source_type = source_type
+        self.status = status
+        self.transit_router_attachment_id = transit_router_attachment_id
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_ip_address is not None:
+            result['GroupIpAddress'] = self.group_ip_address
+        if self.group_member is not None:
+            result['GroupMember'] = self.group_member
+        if self.group_source is not None:
+            result['GroupSource'] = self.group_source
+        if self.member_type is not None:
+            result['MemberType'] = self.member_type
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.peer_transit_router_multicast_domain_id is not None:
+            result['PeerTransitRouterMulticastDomainId'] = self.peer_transit_router_multicast_domain_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.transit_router_attachment_id is not None:
+            result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupIpAddress') is not None:
+            self.group_ip_address = m.get('GroupIpAddress')
+        if m.get('GroupMember') is not None:
+            self.group_member = m.get('GroupMember')
+        if m.get('GroupSource') is not None:
+            self.group_source = m.get('GroupSource')
+        if m.get('MemberType') is not None:
+            self.member_type = m.get('MemberType')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('PeerTransitRouterMulticastDomainId') is not None:
+            self.peer_transit_router_multicast_domain_id = m.get('PeerTransitRouterMulticastDomainId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TransitRouterAttachmentId') is not None:
+            self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class ListTransitRouterMulticastGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        transit_router_multicast_groups: List[ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+        self.transit_router_multicast_groups = transit_router_multicast_groups
+
+    def validate(self):
+        if self.transit_router_multicast_groups:
+            for k in self.transit_router_multicast_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['TransitRouterMulticastGroups'] = []
+        if self.transit_router_multicast_groups is not None:
+            for k in self.transit_router_multicast_groups:
+                result['TransitRouterMulticastGroups'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.transit_router_multicast_groups = []
+        if m.get('TransitRouterMulticastGroups') is not None:
+            for k in m.get('TransitRouterMulticastGroups'):
+                temp_model = ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups()
+                self.transit_router_multicast_groups.append(temp_model.from_map(k))
+        return self
+
+
+class ListTransitRouterMulticastGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListTransitRouterMulticastGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListTransitRouterMulticastGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16004,6 +17870,7 @@ class ListTransitRoutersResponseBodyTransitRouters(TeaModel):
         creation_time: str = None,
         region_id: str = None,
         status: str = None,
+        support_multicast: bool = None,
         transit_router_description: str = None,
         transit_router_id: str = None,
         transit_router_name: str = None,
@@ -16014,6 +17881,7 @@ class ListTransitRoutersResponseBodyTransitRouters(TeaModel):
         self.creation_time = creation_time
         self.region_id = region_id
         self.status = status
+        self.support_multicast = support_multicast
         self.transit_router_description = transit_router_description
         self.transit_router_id = transit_router_id
         self.transit_router_name = transit_router_name
@@ -16038,6 +17906,8 @@ class ListTransitRoutersResponseBodyTransitRouters(TeaModel):
             result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.support_multicast is not None:
+            result['SupportMulticast'] = self.support_multicast
         if self.transit_router_description is not None:
             result['TransitRouterDescription'] = self.transit_router_description
         if self.transit_router_id is not None:
@@ -16060,6 +17930,8 @@ class ListTransitRoutersResponseBodyTransitRouters(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SupportMulticast') is not None:
+            self.support_multicast = m.get('SupportMulticast')
         if m.get('TransitRouterDescription') is not None:
             self.transit_router_description = m.get('TransitRouterDescription')
         if m.get('TransitRouterId') is not None:
@@ -16970,6 +18842,145 @@ class ModifyFlowLogAttributeResponse(TeaModel):
         return self
 
 
+class ModifyTransitRouterMulticastDomainRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_multicast_domain_description: str = None,
+        transit_router_multicast_domain_id: str = None,
+        transit_router_multicast_domain_name: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_multicast_domain_description = transit_router_multicast_domain_description
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+        self.transit_router_multicast_domain_name = transit_router_multicast_domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_multicast_domain_description is not None:
+            result['TransitRouterMulticastDomainDescription'] = self.transit_router_multicast_domain_description
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        if self.transit_router_multicast_domain_name is not None:
+            result['TransitRouterMulticastDomainName'] = self.transit_router_multicast_domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterMulticastDomainDescription') is not None:
+            self.transit_router_multicast_domain_description = m.get('TransitRouterMulticastDomainDescription')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        if m.get('TransitRouterMulticastDomainName') is not None:
+            self.transit_router_multicast_domain_name = m.get('TransitRouterMulticastDomainName')
+        return self
+
+
+class ModifyTransitRouterMulticastDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyTransitRouterMulticastDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ModifyTransitRouterMulticastDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ModifyTransitRouterMulticastDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class MoveResourceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -17359,6 +19370,290 @@ class PublishRouteEntriesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = PublishRouteEntriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RegisterTransitRouterMulticastGroupMembersRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        group_ip_address: str = None,
+        network_interface_ids: List[str] = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        peer_transit_router_multicast_domains: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_multicast_domain_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.group_ip_address = group_ip_address
+        self.network_interface_ids = network_interface_ids
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.peer_transit_router_multicast_domains = peer_transit_router_multicast_domains
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.group_ip_address is not None:
+            result['GroupIpAddress'] = self.group_ip_address
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.peer_transit_router_multicast_domains is not None:
+            result['PeerTransitRouterMulticastDomains'] = self.peer_transit_router_multicast_domains
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('GroupIpAddress') is not None:
+            self.group_ip_address = m.get('GroupIpAddress')
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids = m.get('NetworkInterfaceIds')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PeerTransitRouterMulticastDomains') is not None:
+            self.peer_transit_router_multicast_domains = m.get('PeerTransitRouterMulticastDomains')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        return self
+
+
+class RegisterTransitRouterMulticastGroupMembersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RegisterTransitRouterMulticastGroupMembersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RegisterTransitRouterMulticastGroupMembersResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RegisterTransitRouterMulticastGroupMembersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RegisterTransitRouterMulticastGroupSourcesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        group_ip_address: str = None,
+        network_interface_ids: List[str] = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_multicast_domain_id: str = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.group_ip_address = group_ip_address
+        self.network_interface_ids = network_interface_ids
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.group_ip_address is not None:
+            result['GroupIpAddress'] = self.group_ip_address
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('GroupIpAddress') is not None:
+            self.group_ip_address = m.get('GroupIpAddress')
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids = m.get('NetworkInterfaceIds')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+        return self
+
+
+class RegisterTransitRouterMulticastGroupSourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RegisterTransitRouterMulticastGroupSourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: RegisterTransitRouterMulticastGroupSourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = RegisterTransitRouterMulticastGroupSourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
