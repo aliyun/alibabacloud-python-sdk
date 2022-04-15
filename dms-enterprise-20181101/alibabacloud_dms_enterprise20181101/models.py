@@ -23533,7 +23533,7 @@ class ListTaskFlowRequest(TeaModel):
         return self
 
 
-class ListTaskFlowResponseBodyTaskFlowListDAGInstance(TeaModel):
+class ListTaskFlowResponseBodyTaskFlowListTaskFlow(TeaModel):
     def __init__(
         self,
         creator_id: str = None,
@@ -23605,13 +23605,13 @@ class ListTaskFlowResponseBodyTaskFlowListDAGInstance(TeaModel):
 class ListTaskFlowResponseBodyTaskFlowList(TeaModel):
     def __init__(
         self,
-        daginstance: List[ListTaskFlowResponseBodyTaskFlowListDAGInstance] = None,
+        task_flow: List[ListTaskFlowResponseBodyTaskFlowListTaskFlow] = None,
     ):
-        self.daginstance = daginstance
+        self.task_flow = task_flow
 
     def validate(self):
-        if self.daginstance:
-            for k in self.daginstance:
+        if self.task_flow:
+            for k in self.task_flow:
                 if k:
                     k.validate()
 
@@ -23621,19 +23621,19 @@ class ListTaskFlowResponseBodyTaskFlowList(TeaModel):
             return _map
 
         result = dict()
-        result['DAGInstance'] = []
-        if self.daginstance is not None:
-            for k in self.daginstance:
-                result['DAGInstance'].append(k.to_map() if k else None)
+        result['TaskFlow'] = []
+        if self.task_flow is not None:
+            for k in self.task_flow:
+                result['TaskFlow'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.daginstance = []
-        if m.get('DAGInstance') is not None:
-            for k in m.get('DAGInstance'):
-                temp_model = ListTaskFlowResponseBodyTaskFlowListDAGInstance()
-                self.daginstance.append(temp_model.from_map(k))
+        self.task_flow = []
+        if m.get('TaskFlow') is not None:
+            for k in m.get('TaskFlow'):
+                temp_model = ListTaskFlowResponseBodyTaskFlowListTaskFlow()
+                self.task_flow.append(temp_model.from_map(k))
         return self
 
 
