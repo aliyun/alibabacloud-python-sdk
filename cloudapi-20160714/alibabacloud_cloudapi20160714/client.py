@@ -11722,6 +11722,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vpc_target_host_name):
+            query['VpcTargetHostName'] = request.vpc_target_host_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11760,6 +11762,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.vpc_target_host_name):
+            query['VpcTargetHostName'] = request.vpc_target_host_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

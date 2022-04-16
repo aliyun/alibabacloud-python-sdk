@@ -1,3 +1,6 @@
+2022-04-16 Version: 2.1.4
+- Support customized host header in vpc access.
+
 2022-03-22 Version: 2.1.3
 - Support the new backend service, EventBridge.
 

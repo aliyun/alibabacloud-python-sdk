@@ -23049,6 +23049,7 @@ class DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute(TeaMo
         region_id: str = None,
         vpc_access_id: str = None,
         vpc_id: str = None,
+        vpc_target_host_name: str = None,
     ):
         # VPC授权的创建时间
         self.created_time = created_time
@@ -23066,6 +23067,7 @@ class DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute(TeaMo
         self.vpc_access_id = vpc_access_id
         # VPC的ID
         self.vpc_id = vpc_id
+        self.vpc_target_host_name = vpc_target_host_name
 
     def validate(self):
         pass
@@ -23092,6 +23094,8 @@ class DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute(TeaMo
             result['VpcAccessId'] = self.vpc_access_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.vpc_target_host_name is not None:
+            result['VpcTargetHostName'] = self.vpc_target_host_name
         return result
 
     def from_map(self, m: dict = None):
@@ -23112,6 +23116,8 @@ class DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute(TeaMo
             self.vpc_access_id = m.get('VpcAccessId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('VpcTargetHostName') is not None:
+            self.vpc_target_host_name = m.get('VpcTargetHostName')
         return self
 
 
@@ -29399,6 +29405,7 @@ class SetVpcAccessRequest(TeaModel):
         port: int = None,
         security_token: str = None,
         vpc_id: str = None,
+        vpc_target_host_name: str = None,
     ):
         self.description = description
         self.instance_id = instance_id
@@ -29406,6 +29413,7 @@ class SetVpcAccessRequest(TeaModel):
         self.port = port
         self.security_token = security_token
         self.vpc_id = vpc_id
+        self.vpc_target_host_name = vpc_target_host_name
 
     def validate(self):
         pass
@@ -29428,6 +29436,8 @@ class SetVpcAccessRequest(TeaModel):
             result['SecurityToken'] = self.security_token
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.vpc_target_host_name is not None:
+            result['VpcTargetHostName'] = self.vpc_target_host_name
         return result
 
     def from_map(self, m: dict = None):
@@ -29444,6 +29454,8 @@ class SetVpcAccessRequest(TeaModel):
             self.security_token = m.get('SecurityToken')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('VpcTargetHostName') is not None:
+            self.vpc_target_host_name = m.get('VpcTargetHostName')
         return self
 
 
