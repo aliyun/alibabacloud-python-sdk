@@ -1,3 +1,6 @@
+2022-04-18 Version: 1.0.6
+- Change DescribeEventDetail Data.
+
 2021-12-29 Version: 1.0.5
 - Make CreateSlrRole Public.
 - Add ModifyReportTaskStatus Api.

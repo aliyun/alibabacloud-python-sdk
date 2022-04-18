@@ -3508,8 +3508,8 @@ class DescribeEventDetailRequest(TeaModel):
 class DescribeEventDetailResponseBodyEventDetailChartData(TeaModel):
     def __init__(
         self,
-        x: str = None,
-        y: str = None,
+        x: List[str] = None,
+        y: List[str] = None,
     ):
         self.x = x
         self.y = y
@@ -4653,20 +4653,30 @@ class DescribeEventsResponse(TeaModel):
 class DescribeInstanceSourcesRequest(TeaModel):
     def __init__(
         self,
+        audit_status: int = None,
+        auth_status: int = None,
         current_page: int = None,
         engine_type: str = None,
         instance_id: str = None,
         lang: str = None,
         page_size: int = None,
+        product_code: str = None,
         product_id: int = None,
+        search_key: str = None,
+        search_type: str = None,
         service_region_id: str = None,
     ):
+        self.audit_status = audit_status
+        self.auth_status = auth_status
         self.current_page = current_page
         self.engine_type = engine_type
         self.instance_id = instance_id
         self.lang = lang
         self.page_size = page_size
+        self.product_code = product_code
         self.product_id = product_id
+        self.search_key = search_key
+        self.search_type = search_type
         self.service_region_id = service_region_id
 
     def validate(self):
@@ -4678,6 +4688,10 @@ class DescribeInstanceSourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+        if self.auth_status is not None:
+            result['AuthStatus'] = self.auth_status
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.engine_type is not None:
@@ -4688,14 +4702,24 @@ class DescribeInstanceSourcesRequest(TeaModel):
             result['Lang'] = self.lang
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
         if self.product_id is not None:
             result['ProductId'] = self.product_id
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.search_type is not None:
+            result['SearchType'] = self.search_type
         if self.service_region_id is not None:
             result['ServiceRegionId'] = self.service_region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+        if m.get('AuthStatus') is not None:
+            self.auth_status = m.get('AuthStatus')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('EngineType') is not None:
@@ -4706,8 +4730,14 @@ class DescribeInstanceSourcesRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('SearchType') is not None:
+            self.search_type = m.get('SearchType')
         if m.get('ServiceRegionId') is not None:
             self.service_region_id = m.get('ServiceRegionId')
         return self
@@ -4719,9 +4749,12 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
         audit_status: int = None,
         auto_scan: int = None,
         can_modify_user_name: bool = None,
+        check_status: int = None,
+        datamask_status: int = None,
         db_name: str = None,
         enable: int = None,
         engine_type: str = None,
+        error_message: str = None,
         gmt_create: int = None,
         id: int = None,
         instance_description: str = None,
@@ -4734,6 +4767,7 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
         product_id: int = None,
         region_id: str = None,
         region_name: str = None,
+        sampling_size: int = None,
         tenant_id: str = None,
         tenant_name: str = None,
         user_name: str = None,
@@ -4741,9 +4775,12 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
         self.audit_status = audit_status
         self.auto_scan = auto_scan
         self.can_modify_user_name = can_modify_user_name
+        self.check_status = check_status
+        self.datamask_status = datamask_status
         self.db_name = db_name
         self.enable = enable
         self.engine_type = engine_type
+        self.error_message = error_message
         self.gmt_create = gmt_create
         self.id = id
         self.instance_description = instance_description
@@ -4756,6 +4793,7 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
         self.product_id = product_id
         self.region_id = region_id
         self.region_name = region_name
+        self.sampling_size = sampling_size
         self.tenant_id = tenant_id
         self.tenant_name = tenant_name
         self.user_name = user_name
@@ -4775,12 +4813,18 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
             result['AutoScan'] = self.auto_scan
         if self.can_modify_user_name is not None:
             result['CanModifyUserName'] = self.can_modify_user_name
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.datamask_status is not None:
+            result['DatamaskStatus'] = self.datamask_status
         if self.db_name is not None:
             result['DbName'] = self.db_name
         if self.enable is not None:
             result['Enable'] = self.enable
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.id is not None:
@@ -4805,6 +4849,8 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
             result['RegionId'] = self.region_id
         if self.region_name is not None:
             result['RegionName'] = self.region_name
+        if self.sampling_size is not None:
+            result['SamplingSize'] = self.sampling_size
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.tenant_name is not None:
@@ -4821,12 +4867,18 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
             self.auto_scan = m.get('AutoScan')
         if m.get('CanModifyUserName') is not None:
             self.can_modify_user_name = m.get('CanModifyUserName')
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('DatamaskStatus') is not None:
+            self.datamask_status = m.get('DatamaskStatus')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('Id') is not None:
@@ -4851,6 +4903,8 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RegionName') is not None:
             self.region_name = m.get('RegionName')
+        if m.get('SamplingSize') is not None:
+            self.sampling_size = m.get('SamplingSize')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('TenantName') is not None:

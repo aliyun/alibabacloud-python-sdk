@@ -1829,6 +1829,10 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeInstanceSourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.audit_status):
+            query['AuditStatus'] = request.audit_status
+        if not UtilClient.is_unset(request.auth_status):
+            query['AuthStatus'] = request.auth_status
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.engine_type):
@@ -1839,8 +1843,14 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_id):
             query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.search_type):
+            query['SearchType'] = request.search_type
         if not UtilClient.is_unset(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
         req = open_api_models.OpenApiRequest(
@@ -1869,6 +1879,10 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeInstanceSourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.audit_status):
+            query['AuditStatus'] = request.audit_status
+        if not UtilClient.is_unset(request.auth_status):
+            query['AuthStatus'] = request.auth_status
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.engine_type):
@@ -1879,8 +1893,14 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_id):
             query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.search_type):
+            query['SearchType'] = request.search_type
         if not UtilClient.is_unset(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
         req = open_api_models.OpenApiRequest(
