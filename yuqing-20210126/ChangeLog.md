@@ -1,3 +1,6 @@
+2022-04-19 Version: 1.3.2
+- Update SearchCondition.
+
 2022-03-22 Version: 1.3.1
 - ADD console proxy api.
 

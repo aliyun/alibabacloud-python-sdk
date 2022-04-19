@@ -1204,104 +1204,6 @@ class HotspotSearchCondition(TeaModel):
         return self
 
 
-class ProductInstance(TeaModel):
-    def __init__(
-        self,
-        app_code: str = None,
-        channel: str = None,
-        config: str = None,
-        end: int = None,
-        instance_id: str = None,
-        order_no: str = None,
-        product_code: str = None,
-        product_spec_code: str = None,
-        start: int = None,
-        tenant_name: str = None,
-        tenant_uid: str = None,
-    ):
-        # 应用码
-        self.app_code = app_code
-        # 渠道码
-        self.channel = channel
-        # 实例配置
-        self.config = config
-        # 结束时间戳
-        self.end = end
-        # 实例id
-        self.instance_id = instance_id
-        # 订单号
-        self.order_no = order_no
-        # 产品码
-        self.product_code = product_code
-        # 产品规格码
-        self.product_spec_code = product_spec_code
-        # 开始生效时间戳
-        self.start = start
-        # 租户账号名称
-        self.tenant_name = tenant_name
-        # 租户账号uid
-        self.tenant_uid = tenant_uid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_code is not None:
-            result['appCode'] = self.app_code
-        if self.channel is not None:
-            result['channel'] = self.channel
-        if self.config is not None:
-            result['config'] = self.config
-        if self.end is not None:
-            result['end'] = self.end
-        if self.instance_id is not None:
-            result['instanceId'] = self.instance_id
-        if self.order_no is not None:
-            result['orderNo'] = self.order_no
-        if self.product_code is not None:
-            result['productCode'] = self.product_code
-        if self.product_spec_code is not None:
-            result['productSpecCode'] = self.product_spec_code
-        if self.start is not None:
-            result['start'] = self.start
-        if self.tenant_name is not None:
-            result['tenantName'] = self.tenant_name
-        if self.tenant_uid is not None:
-            result['tenantUid'] = self.tenant_uid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('appCode') is not None:
-            self.app_code = m.get('appCode')
-        if m.get('channel') is not None:
-            self.channel = m.get('channel')
-        if m.get('config') is not None:
-            self.config = m.get('config')
-        if m.get('end') is not None:
-            self.end = m.get('end')
-        if m.get('instanceId') is not None:
-            self.instance_id = m.get('instanceId')
-        if m.get('orderNo') is not None:
-            self.order_no = m.get('orderNo')
-        if m.get('productCode') is not None:
-            self.product_code = m.get('productCode')
-        if m.get('productSpecCode') is not None:
-            self.product_spec_code = m.get('productSpecCode')
-        if m.get('start') is not None:
-            self.start = m.get('start')
-        if m.get('tenantName') is not None:
-            self.tenant_name = m.get('tenantName')
-        if m.get('tenantUid') is not None:
-            self.tenant_uid = m.get('tenantUid')
-        return self
-
-
 class Project(TeaModel):
     def __init__(
         self,
@@ -1665,6 +1567,8 @@ class SearchCondition(TeaModel):
         advertisement_filter: bool = None,
         alipay_account_filter: str = None,
         ass_keywords_idx: str = None,
+        audio_count_max_filter: int = None,
+        audio_count_min_filter: int = None,
         author_followers_count_max_filter: int = None,
         author_followers_count_min_filter: int = None,
         author_name_idx: str = None,
@@ -1693,7 +1597,9 @@ class SearchCondition(TeaModel):
         eroticism_filter: bool = None,
         exclude_author_name_idx: str = None,
         excluding_media_hosts_filter: str = None,
+        excluding_media_name_filter: str = None,
         excluding_media_pool_ids_filter: str = None,
+        excluding_message_type_filter: str = None,
         filter_id: int = None,
         finance_entity_area_filter: str = None,
         finance_entity_relevance_score_max_filter: float = None,
@@ -1702,6 +1608,10 @@ class SearchCondition(TeaModel):
         gambling_filter: bool = None,
         hotspot_title_idx: str = None,
         illegal_advertisement_filter: bool = None,
+        image_count_max_filter: int = None,
+        image_count_min_filter: int = None,
+        keyword_tree_ids_exclude_idx: str = None,
+        keyword_tree_ids_idx: str = None,
         likes_count_max_filter: int = None,
         likes_count_min_filter: int = None,
         media_hosts_filter: str = None,
@@ -1735,6 +1645,8 @@ class SearchCondition(TeaModel):
         title_including_words_idx: str = None,
         topic_idx: str = None,
         used_index_mode_switch: str = None,
+        video_count_max_filter: int = None,
+        video_count_min_filter: int = None,
     ):
         # 广告取值true or false
         self.advertisement_filter = advertisement_filter
@@ -1742,6 +1654,10 @@ class SearchCondition(TeaModel):
         self.alipay_account_filter = alipay_account_filter
         # 搭配词，json字符串数组
         self.ass_keywords_idx = ass_keywords_idx
+        # 音频数量上限
+        self.audio_count_max_filter = audio_count_max_filter
+        # 音频数量下限
+        self.audio_count_min_filter = audio_count_min_filter
         # 粉丝数上限
         self.author_followers_count_max_filter = author_followers_count_max_filter
         # 粉丝数下限
@@ -1782,7 +1698,7 @@ class SearchCondition(TeaModel):
         self.doc_update_time_end_filter = doc_update_time_end_filter
         # 更新时间戳下限
         self.doc_update_time_start_filter = doc_update_time_start_filter
-        # 返回的数据是否去重，默认true
+        # 返回的数据是否去重
         self.duplicate_removal = duplicate_removal
         # 情感分值上限，范围-10~10
         self.emotion_score_max_filter = emotion_score_max_filter
@@ -1798,8 +1714,12 @@ class SearchCondition(TeaModel):
         self.exclude_author_name_idx = exclude_author_name_idx
         # 排除指定Host
         self.excluding_media_hosts_filter = excluding_media_hosts_filter
+        # 排除媒体名称
+        self.excluding_media_name_filter = excluding_media_name_filter
         # 排除指定媒体库ids，媒体库在舆情平台上定义
         self.excluding_media_pool_ids_filter = excluding_media_pool_ids_filter
+        # 排除媒体消息类型
+        self.excluding_message_type_filter = excluding_message_type_filter
         # 舆情筛选模板Id
         self.filter_id = filter_id
         # 实体所在地，主要指的是公司
@@ -1816,6 +1736,14 @@ class SearchCondition(TeaModel):
         self.hotspot_title_idx = hotspot_title_idx
         # 违规广告取值true or false
         self.illegal_advertisement_filter = illegal_advertisement_filter
+        # 图片数上限
+        self.image_count_max_filter = image_count_max_filter
+        # 图片数下限
+        self.image_count_min_filter = image_count_min_filter
+        # 排除关键词标签
+        self.keyword_tree_ids_exclude_idx = keyword_tree_ids_exclude_idx
+        # 关键词标签
+        self.keyword_tree_ids_idx = keyword_tree_ids_idx
         # 点赞数上限
         self.likes_count_max_filter = likes_count_max_filter
         # 点赞数下限
@@ -1868,7 +1796,7 @@ class SearchCondition(TeaModel):
         self.reprint_from_filter = reprint_from_filter
         # 排序字段枚举
         self.sort_by = sort_by
-        # 如'+'是升序，'-'是降序
+        # 如+是升序，-是降序
         self.sort_by_direction = sort_by_direction
         # 垃圾取值true or false
         self.spam_filter = spam_filter
@@ -1882,6 +1810,10 @@ class SearchCondition(TeaModel):
         self.topic_idx = topic_idx
         # 指定索引模式,KEYWORD|CREATE_TIME
         self.used_index_mode_switch = used_index_mode_switch
+        # 视频数量上限
+        self.video_count_max_filter = video_count_max_filter
+        # 视频数量下限
+        self.video_count_min_filter = video_count_min_filter
 
     def validate(self):
         pass
@@ -1898,6 +1830,10 @@ class SearchCondition(TeaModel):
             result['alipayAccountFilter'] = self.alipay_account_filter
         if self.ass_keywords_idx is not None:
             result['assKeywordsIdx'] = self.ass_keywords_idx
+        if self.audio_count_max_filter is not None:
+            result['audioCountMaxFilter'] = self.audio_count_max_filter
+        if self.audio_count_min_filter is not None:
+            result['audioCountMinFilter'] = self.audio_count_min_filter
         if self.author_followers_count_max_filter is not None:
             result['authorFollowersCountMaxFilter'] = self.author_followers_count_max_filter
         if self.author_followers_count_min_filter is not None:
@@ -1954,8 +1890,12 @@ class SearchCondition(TeaModel):
             result['excludeAuthorNameIdx'] = self.exclude_author_name_idx
         if self.excluding_media_hosts_filter is not None:
             result['excludingMediaHostsFilter'] = self.excluding_media_hosts_filter
+        if self.excluding_media_name_filter is not None:
+            result['excludingMediaNameFilter'] = self.excluding_media_name_filter
         if self.excluding_media_pool_ids_filter is not None:
             result['excludingMediaPoolIdsFilter'] = self.excluding_media_pool_ids_filter
+        if self.excluding_message_type_filter is not None:
+            result['excludingMessageTypeFilter'] = self.excluding_message_type_filter
         if self.filter_id is not None:
             result['filterId'] = self.filter_id
         if self.finance_entity_area_filter is not None:
@@ -1972,6 +1912,14 @@ class SearchCondition(TeaModel):
             result['hotspotTitleIdx'] = self.hotspot_title_idx
         if self.illegal_advertisement_filter is not None:
             result['illegalAdvertisementFilter'] = self.illegal_advertisement_filter
+        if self.image_count_max_filter is not None:
+            result['imageCountMaxFilter'] = self.image_count_max_filter
+        if self.image_count_min_filter is not None:
+            result['imageCountMinFilter'] = self.image_count_min_filter
+        if self.keyword_tree_ids_exclude_idx is not None:
+            result['keywordTreeIdsExcludeIdx'] = self.keyword_tree_ids_exclude_idx
+        if self.keyword_tree_ids_idx is not None:
+            result['keywordTreeIdsIdx'] = self.keyword_tree_ids_idx
         if self.likes_count_max_filter is not None:
             result['likesCountMaxFilter'] = self.likes_count_max_filter
         if self.likes_count_min_filter is not None:
@@ -2038,6 +1986,10 @@ class SearchCondition(TeaModel):
             result['topicIdx'] = self.topic_idx
         if self.used_index_mode_switch is not None:
             result['usedIndexModeSwitch'] = self.used_index_mode_switch
+        if self.video_count_max_filter is not None:
+            result['videoCountMaxFilter'] = self.video_count_max_filter
+        if self.video_count_min_filter is not None:
+            result['videoCountMinFilter'] = self.video_count_min_filter
         return result
 
     def from_map(self, m: dict = None):
@@ -2048,6 +2000,10 @@ class SearchCondition(TeaModel):
             self.alipay_account_filter = m.get('alipayAccountFilter')
         if m.get('assKeywordsIdx') is not None:
             self.ass_keywords_idx = m.get('assKeywordsIdx')
+        if m.get('audioCountMaxFilter') is not None:
+            self.audio_count_max_filter = m.get('audioCountMaxFilter')
+        if m.get('audioCountMinFilter') is not None:
+            self.audio_count_min_filter = m.get('audioCountMinFilter')
         if m.get('authorFollowersCountMaxFilter') is not None:
             self.author_followers_count_max_filter = m.get('authorFollowersCountMaxFilter')
         if m.get('authorFollowersCountMinFilter') is not None:
@@ -2104,8 +2060,12 @@ class SearchCondition(TeaModel):
             self.exclude_author_name_idx = m.get('excludeAuthorNameIdx')
         if m.get('excludingMediaHostsFilter') is not None:
             self.excluding_media_hosts_filter = m.get('excludingMediaHostsFilter')
+        if m.get('excludingMediaNameFilter') is not None:
+            self.excluding_media_name_filter = m.get('excludingMediaNameFilter')
         if m.get('excludingMediaPoolIdsFilter') is not None:
             self.excluding_media_pool_ids_filter = m.get('excludingMediaPoolIdsFilter')
+        if m.get('excludingMessageTypeFilter') is not None:
+            self.excluding_message_type_filter = m.get('excludingMessageTypeFilter')
         if m.get('filterId') is not None:
             self.filter_id = m.get('filterId')
         if m.get('financeEntityAreaFilter') is not None:
@@ -2122,6 +2082,14 @@ class SearchCondition(TeaModel):
             self.hotspot_title_idx = m.get('hotspotTitleIdx')
         if m.get('illegalAdvertisementFilter') is not None:
             self.illegal_advertisement_filter = m.get('illegalAdvertisementFilter')
+        if m.get('imageCountMaxFilter') is not None:
+            self.image_count_max_filter = m.get('imageCountMaxFilter')
+        if m.get('imageCountMinFilter') is not None:
+            self.image_count_min_filter = m.get('imageCountMinFilter')
+        if m.get('keywordTreeIdsExcludeIdx') is not None:
+            self.keyword_tree_ids_exclude_idx = m.get('keywordTreeIdsExcludeIdx')
+        if m.get('keywordTreeIdsIdx') is not None:
+            self.keyword_tree_ids_idx = m.get('keywordTreeIdsIdx')
         if m.get('likesCountMaxFilter') is not None:
             self.likes_count_max_filter = m.get('likesCountMaxFilter')
         if m.get('likesCountMinFilter') is not None:
@@ -2188,6 +2156,10 @@ class SearchCondition(TeaModel):
             self.topic_idx = m.get('topicIdx')
         if m.get('usedIndexModeSwitch') is not None:
             self.used_index_mode_switch = m.get('usedIndexModeSwitch')
+        if m.get('videoCountMaxFilter') is not None:
+            self.video_count_max_filter = m.get('videoCountMaxFilter')
+        if m.get('videoCountMinFilter') is not None:
+            self.video_count_min_filter = m.get('videoCountMinFilter')
         return self
 
 
@@ -2577,255 +2549,6 @@ class AggregateSearchYuqingResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = AggregateSearchYuqingResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CloseProductRequest(TeaModel):
-    def __init__(
-        self,
-        client_token: str = None,
-        product_instance: ProductInstance = None,
-        request_id: str = None,
-        team_hash_id: str = None,
-    ):
-        # 幂等参数
-        self.client_token = client_token
-        self.product_instance = product_instance
-        # 请求id
-        self.request_id = request_id
-        # 舆情团队HashId
-        self.team_hash_id = team_hash_id
-
-    def validate(self):
-        if self.product_instance:
-            self.product_instance.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.product_instance is not None:
-            result['productInstance'] = self.product_instance.to_map()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.team_hash_id is not None:
-            result['teamHashId'] = self.team_hash_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('productInstance') is not None:
-            temp_model = ProductInstance()
-            self.product_instance = temp_model.from_map(m['productInstance'])
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('teamHashId') is not None:
-            self.team_hash_id = m.get('teamHashId')
-        return self
-
-
-class CloseProductResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        request_id: str = None,
-    ):
-        # 关闭结果id
-        self.id = id
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['id'] = self.id
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class CloseProductResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: CloseProductResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = CloseProductResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ConsoleProxyRequest(TeaModel):
-    def __init__(
-        self,
-        app_code: str = None,
-        interface: str = None,
-        param_json: str = None,
-        request_id: str = None,
-        team_hash_id: str = None,
-    ):
-        # 应用码
-        self.app_code = app_code
-        # 请求接口名
-        self.interface = interface
-        # 实际对象的参数json字符串
-        self.param_json = param_json
-        # 请求id
-        self.request_id = request_id
-        # 舆情团队HashId
-        self.team_hash_id = team_hash_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_code is not None:
-            result['appCode'] = self.app_code
-        if self.interface is not None:
-            result['interface'] = self.interface
-        if self.param_json is not None:
-            result['paramJson'] = self.param_json
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.team_hash_id is not None:
-            result['teamHashId'] = self.team_hash_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('appCode') is not None:
-            self.app_code = m.get('appCode')
-        if m.get('interface') is not None:
-            self.interface = m.get('interface')
-        if m.get('paramJson') is not None:
-            self.param_json = m.get('paramJson')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('teamHashId') is not None:
-            self.team_hash_id = m.get('teamHashId')
-        return self
-
-
-class ConsoleProxyResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_json: str = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-        self.result_json = result_json
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_json is not None:
-            result['resultJson'] = self.result_json
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultJson') is not None:
-            self.result_json = m.get('resultJson')
-        return self
-
-
-class ConsoleProxyResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ConsoleProxyResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ConsoleProxyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3581,128 +3304,6 @@ class ListYuqingMessagesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListYuqingMessagesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenProductRequest(TeaModel):
-    def __init__(
-        self,
-        client_token: str = None,
-        product_instance: ProductInstance = None,
-        request_id: str = None,
-        team_hash_id: str = None,
-    ):
-        # 幂等参数
-        self.client_token = client_token
-        self.product_instance = product_instance
-        # 请求id
-        self.request_id = request_id
-        # 舆情团队HashId
-        self.team_hash_id = team_hash_id
-
-    def validate(self):
-        if self.product_instance:
-            self.product_instance.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.product_instance is not None:
-            result['productInstance'] = self.product_instance.to_map()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.team_hash_id is not None:
-            result['teamHashId'] = self.team_hash_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('productInstance') is not None:
-            temp_model = ProductInstance()
-            self.product_instance = temp_model.from_map(m['productInstance'])
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('teamHashId') is not None:
-            self.team_hash_id = m.get('teamHashId')
-        return self
-
-
-class OpenProductResponseBody(TeaModel):
-    def __init__(
-        self,
-        id: int = None,
-        request_id: str = None,
-    ):
-        # 开通结果id
-        self.id = id
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['id'] = self.id
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class OpenProductResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: OpenProductResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = OpenProductResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
