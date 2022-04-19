@@ -109,8 +109,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.vpc_switch_id):
-            query['VpcSwitchId'] = request.vpc_switch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -139,8 +137,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.vpc_switch_id):
-            query['VpcSwitchId'] = request.vpc_switch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -649,6 +645,84 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CreateSimilarSecurityEventsQueryTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_similar_security_events_query_task_with_options_async(request, runtime)
+
+    def create_vul_auto_repair_config_with_options(
+        self,
+        request: sas_20181203_models.CreateVulAutoRepairConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateVulAutoRepairConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.vul_auto_repair_config_list):
+            query['VulAutoRepairConfigList'] = request.vul_auto_repair_config_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVulAutoRepairConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateVulAutoRepairConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_vul_auto_repair_config_with_options_async(
+        self,
+        request: sas_20181203_models.CreateVulAutoRepairConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateVulAutoRepairConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.vul_auto_repair_config_list):
+            query['VulAutoRepairConfigList'] = request.vul_auto_repair_config_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVulAutoRepairConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateVulAutoRepairConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_vul_auto_repair_config(
+        self,
+        request: sas_20181203_models.CreateVulAutoRepairConfigRequest,
+    ) -> sas_20181203_models.CreateVulAutoRepairConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_vul_auto_repair_config_with_options(request, runtime)
+
+    async def create_vul_auto_repair_config_async(
+        self,
+        request: sas_20181203_models.CreateVulAutoRepairConfigRequest,
+    ) -> sas_20181203_models.CreateVulAutoRepairConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_vul_auto_repair_config_with_options_async(request, runtime)
 
     def delete_backup_policy_with_options(
         self,
@@ -14001,6 +14075,108 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.QueryGroupIdByGroupNameResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_group_id_by_group_name_with_options_async(request, runtime)
+
+    def query_grouped_security_event_mark_miss_list_with_options(
+        self,
+        request: sas_20181203_models.QueryGroupedSecurityEventMarkMissListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryGroupedSecurityEventMarkMissListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_name):
+            body['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.from_):
+            body['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.max_id):
+            body['MaxId'] = request.max_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            body['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryGroupedSecurityEventMarkMissList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryGroupedSecurityEventMarkMissListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_grouped_security_event_mark_miss_list_with_options_async(
+        self,
+        request: sas_20181203_models.QueryGroupedSecurityEventMarkMissListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryGroupedSecurityEventMarkMissListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_name):
+            body['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.from_):
+            body['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.max_id):
+            body['MaxId'] = request.max_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            body['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryGroupedSecurityEventMarkMissList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryGroupedSecurityEventMarkMissListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_grouped_security_event_mark_miss_list(
+        self,
+        request: sas_20181203_models.QueryGroupedSecurityEventMarkMissListRequest,
+    ) -> sas_20181203_models.QueryGroupedSecurityEventMarkMissListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_grouped_security_event_mark_miss_list_with_options(request, runtime)
+
+    async def query_grouped_security_event_mark_miss_list_async(
+        self,
+        request: sas_20181203_models.QueryGroupedSecurityEventMarkMissListRequest,
+    ) -> sas_20181203_models.QueryGroupedSecurityEventMarkMissListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_grouped_security_event_mark_miss_list_with_options_async(request, runtime)
 
     def refresh_assets_with_options(
         self,
