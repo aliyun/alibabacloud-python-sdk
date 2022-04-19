@@ -629,8 +629,6 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
-        if not UtilClient.is_unset(request.hidden_zone_id):
-            query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.owner_account):
@@ -653,8 +651,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.restore_time):
             query['RestoreTime'] = request.restore_time
-        if not UtilClient.is_unset(request.secondary_zone_id):
-            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.security_token):
@@ -723,8 +719,6 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
-        if not UtilClient.is_unset(request.hidden_zone_id):
-            query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.owner_account):
@@ -747,8 +741,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.restore_time):
             query['RestoreTime'] = request.restore_time
-        if not UtilClient.is_unset(request.secondary_zone_id):
-            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.security_token):
@@ -1031,108 +1023,6 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.CreateNodeBatchResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_node_batch_with_options_async(request, runtime)
-
-    def create_recommendation_task_with_options(
-        self,
-        request: dds_20151201_models.CreateRecommendationTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.CreateRecommendationTaskResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.node_id):
-            query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateRecommendationTask',
-            version='2015-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.CreateRecommendationTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_recommendation_task_with_options_async(
-        self,
-        request: dds_20151201_models.CreateRecommendationTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.CreateRecommendationTaskResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.node_id):
-            query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateRecommendationTask',
-            version='2015-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.CreateRecommendationTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_recommendation_task(
-        self,
-        request: dds_20151201_models.CreateRecommendationTaskRequest,
-    ) -> dds_20151201_models.CreateRecommendationTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_recommendation_task_with_options(request, runtime)
-
-    async def create_recommendation_task_async(
-        self,
-        request: dds_20151201_models.CreateRecommendationTaskRequest,
-    ) -> dds_20151201_models.CreateRecommendationTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_recommendation_task_with_options_async(request, runtime)
 
     def create_serverless_dbinstance_with_options(
         self,
@@ -1932,108 +1822,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_operation_task_type_with_options_async(request, runtime)
 
-    def describe_audit_files_with_options(
-        self,
-        request: dds_20151201_models.DescribeAuditFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeAuditFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.node_id):
-            query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAuditFiles',
-            version='2015-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeAuditFilesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_audit_files_with_options_async(
-        self,
-        request: dds_20151201_models.DescribeAuditFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeAuditFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.node_id):
-            query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAuditFiles',
-            version='2015-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeAuditFilesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_audit_files(
-        self,
-        request: dds_20151201_models.DescribeAuditFilesRequest,
-    ) -> dds_20151201_models.DescribeAuditFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_audit_files_with_options(request, runtime)
-
-    async def describe_audit_files_async(
-        self,
-        request: dds_20151201_models.DescribeAuditFilesRequest,
-    ) -> dds_20151201_models.DescribeAuditFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_audit_files_with_options_async(request, runtime)
-
     def describe_audit_log_filter_with_options(
         self,
         request: dds_20151201_models.DescribeAuditLogFilterRequest,
@@ -2543,100 +2331,6 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DescribeAvailableResourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_resource_with_options_async(request, runtime)
-
-    def describe_available_time_range_with_options(
-        self,
-        request: dds_20151201_models.DescribeAvailableTimeRangeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeAvailableTimeRangeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.node_id):
-            query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAvailableTimeRange',
-            version='2015-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeAvailableTimeRangeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_available_time_range_with_options_async(
-        self,
-        request: dds_20151201_models.DescribeAvailableTimeRangeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dds_20151201_models.DescribeAvailableTimeRangeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.node_id):
-            query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAvailableTimeRange',
-            version='2015-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dds_20151201_models.DescribeAvailableTimeRangeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_available_time_range(
-        self,
-        request: dds_20151201_models.DescribeAvailableTimeRangeRequest,
-    ) -> dds_20151201_models.DescribeAvailableTimeRangeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_available_time_range_with_options(request, runtime)
-
-    async def describe_available_time_range_async(
-        self,
-        request: dds_20151201_models.DescribeAvailableTimeRangeRequest,
-    ) -> dds_20151201_models.DescribeAvailableTimeRangeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_available_time_range_with_options_async(request, runtime)
 
     def describe_backup_dbs_with_options(
         self,
@@ -4801,6 +4495,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4839,6 +4535,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
