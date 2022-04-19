@@ -2986,6 +2986,147 @@ class CreateCoreWordResponse(TeaModel):
         return self
 
 
+class CreateDSEntityRequest(TeaModel):
+    def __init__(
+        self,
+        entity_name: str = None,
+        entity_type: str = None,
+        instance_id: str = None,
+    ):
+        # 实体名称，仅支持中文、大小写字母、数字、下划线
+        self.entity_name = entity_name
+        # 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
+        self.entity_type = entity_type
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_name is not None:
+            result['EntityName'] = self.entity_name
+        if self.entity_type is not None:
+            result['EntityType'] = self.entity_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityName') is not None:
+            self.entity_name = m.get('EntityName')
+        if m.get('EntityType') is not None:
+            self.entity_type = m.get('EntityType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateDSEntityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        entity_id: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.entity_id = entity_id
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDSEntityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: CreateDSEntityResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = CreateDSEntityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDialogRequest(TeaModel):
     def __init__(
         self,
@@ -3485,9 +3626,11 @@ class CreateKnowledgeRequestKnowledgeOutlines(TeaModel):
     def __init__(
         self,
         knowledge_id: int = None,
+        outline_id: int = None,
         title: str = None,
     ):
         self.knowledge_id = knowledge_id
+        self.outline_id = outline_id
         self.title = title
 
     def validate(self):
@@ -3501,6 +3644,8 @@ class CreateKnowledgeRequestKnowledgeOutlines(TeaModel):
         result = dict()
         if self.knowledge_id is not None:
             result['KnowledgeId'] = self.knowledge_id
+        if self.outline_id is not None:
+            result['OutlineId'] = self.outline_id
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -3509,6 +3654,8 @@ class CreateKnowledgeRequestKnowledgeOutlines(TeaModel):
         m = m or dict()
         if m.get('KnowledgeId') is not None:
             self.knowledge_id = m.get('KnowledgeId')
+        if m.get('OutlineId') is not None:
+            self.outline_id = m.get('OutlineId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -8839,6 +8986,411 @@ class ListConversationLogsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('body') is not None:
             temp_model = ListConversationLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDSEntityRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        keyword: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.instance_id = instance_id
+        # 筛选项，contains匹配，范围：实体名称、实体成员、同义词
+        self.keyword = keyword
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListDSEntityResponseBodyDataEntities(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        app_key: str = None,
+        caller_bid: str = None,
+        caller_bid_login_email: str = None,
+        caller_uid: int = None,
+        caller_uid_login_email: str = None,
+        channel: str = None,
+        client_ip: str = None,
+        create_time: str = None,
+        create_user_id: str = None,
+        create_user_name: str = None,
+        enable: bool = None,
+        entity_id: int = None,
+        entity_name: str = None,
+        entity_type: str = None,
+        modify_time: str = None,
+        modify_user_id: str = None,
+        modify_user_name: str = None,
+        operator: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        owner_id_login_email: str = None,
+        proxy_id: str = None,
+        request_content: str = None,
+        request_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tenant_id: int = None,
+        token: str = None,
+        user_id: int = None,
+        user_nick: str = None,
+    ):
+        self.action = action
+        self.app_key = app_key
+        self.caller_bid = caller_bid
+        self.caller_bid_login_email = caller_bid_login_email
+        self.caller_uid = caller_uid
+        self.caller_uid_login_email = caller_uid_login_email
+        self.channel = channel
+        self.client_ip = client_ip
+        self.create_time = create_time
+        self.create_user_id = create_user_id
+        self.create_user_name = create_user_name
+        self.enable = enable
+        # 实体ID
+        self.entity_id = entity_id
+        # 实体名称，仅支持中文、大小写字母、数字、下划线
+        self.entity_name = entity_name
+        # 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
+        self.entity_type = entity_type
+        self.modify_time = modify_time
+        self.modify_user_id = modify_user_id
+        self.modify_user_name = modify_user_name
+        self.operator = operator
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.owner_id_login_email = owner_id_login_email
+        self.proxy_id = proxy_id
+        self.request_content = request_content
+        self.request_id = request_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.tenant_id = tenant_id
+        self.token = token
+        self.user_id = user_id
+        self.user_nick = user_nick
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.caller_bid is not None:
+            result['CallerBid'] = self.caller_bid
+        if self.caller_bid_login_email is not None:
+            result['CallerBidLoginEmail'] = self.caller_bid_login_email
+        if self.caller_uid is not None:
+            result['CallerUid'] = self.caller_uid
+        if self.caller_uid_login_email is not None:
+            result['CallerUidLoginEmail'] = self.caller_uid_login_email
+        if self.channel is not None:
+            result['Channel'] = self.channel
+        if self.client_ip is not None:
+            result['ClientIP'] = self.client_ip
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.create_user_name is not None:
+            result['CreateUserName'] = self.create_user_name
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.entity_name is not None:
+            result['EntityName'] = self.entity_name
+        if self.entity_type is not None:
+            result['EntityType'] = self.entity_type
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user_id is not None:
+            result['ModifyUserId'] = self.modify_user_id
+        if self.modify_user_name is not None:
+            result['ModifyUserName'] = self.modify_user_name
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.owner_id_login_email is not None:
+            result['OwnerIdLoginEmail'] = self.owner_id_login_email
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.request_content is not None:
+            result['RequestContent'] = self.request_content
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_nick is not None:
+            result['UserNick'] = self.user_nick
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('CallerBid') is not None:
+            self.caller_bid = m.get('CallerBid')
+        if m.get('CallerBidLoginEmail') is not None:
+            self.caller_bid_login_email = m.get('CallerBidLoginEmail')
+        if m.get('CallerUid') is not None:
+            self.caller_uid = m.get('CallerUid')
+        if m.get('CallerUidLoginEmail') is not None:
+            self.caller_uid_login_email = m.get('CallerUidLoginEmail')
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+        if m.get('ClientIP') is not None:
+            self.client_ip = m.get('ClientIP')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('CreateUserName') is not None:
+            self.create_user_name = m.get('CreateUserName')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('EntityName') is not None:
+            self.entity_name = m.get('EntityName')
+        if m.get('EntityType') is not None:
+            self.entity_type = m.get('EntityType')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUserId') is not None:
+            self.modify_user_id = m.get('ModifyUserId')
+        if m.get('ModifyUserName') is not None:
+            self.modify_user_name = m.get('ModifyUserName')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('OwnerIdLoginEmail') is not None:
+            self.owner_id_login_email = m.get('OwnerIdLoginEmail')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('RequestContent') is not None:
+            self.request_content = m.get('RequestContent')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserNick') is not None:
+            self.user_nick = m.get('UserNick')
+        return self
+
+
+class ListDSEntityResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        entities: List[ListDSEntityResponseBodyDataEntities] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.entities = entities
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.entities:
+            for k in self.entities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Entities'] = []
+        if self.entities is not None:
+            for k in self.entities:
+                result['Entities'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.entities = []
+        if m.get('Entities') is not None:
+            for k in m.get('Entities'):
+                temp_model = ListDSEntityResponseBodyDataEntities()
+                self.entities.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDSEntityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListDSEntityResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListDSEntityResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDSEntityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        body: ListDSEntityResponseBody = None,
+    ):
+        self.headers = headers
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('body') is not None:
+            temp_model = ListDSEntityResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
