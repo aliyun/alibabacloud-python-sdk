@@ -950,14 +950,20 @@ class Client(OpenApiClient):
             query['Address'] = request.address
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.detect_enable):
+            query['DetectEnable'] = request.detect_enable
         if not UtilClient.is_unset(request.detect_threshold):
             query['DetectThreshold'] = request.detect_threshold
+        if not UtilClient.is_unset(request.detect_times):
+            query['DetectTimes'] = request.detect_times
         if not UtilClient.is_unset(request.listener_id):
             query['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.options_json):
             query['OptionsJson'] = request.options_json
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
         if not UtilClient.is_unset(request.task_name):
             query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
@@ -992,14 +998,20 @@ class Client(OpenApiClient):
             query['Address'] = request.address
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.detect_enable):
+            query['DetectEnable'] = request.detect_enable
         if not UtilClient.is_unset(request.detect_threshold):
             query['DetectThreshold'] = request.detect_threshold
+        if not UtilClient.is_unset(request.detect_times):
+            query['DetectTimes'] = request.detect_times
         if not UtilClient.is_unset(request.listener_id):
             query['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.options_json):
             query['OptionsJson'] = request.options_json
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
         if not UtilClient.is_unset(request.task_name):
             query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
@@ -6792,14 +6804,20 @@ class Client(OpenApiClient):
             query['Address'] = request.address
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.detect_enable):
+            query['DetectEnable'] = request.detect_enable
         if not UtilClient.is_unset(request.detect_threshold):
             query['DetectThreshold'] = request.detect_threshold
+        if not UtilClient.is_unset(request.detect_times):
+            query['DetectTimes'] = request.detect_times
         if not UtilClient.is_unset(request.listener_id):
             query['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.options_json):
             query['OptionsJson'] = request.options_json
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_name):
@@ -6834,14 +6852,20 @@ class Client(OpenApiClient):
             query['Address'] = request.address
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.detect_enable):
+            query['DetectEnable'] = request.detect_enable
         if not UtilClient.is_unset(request.detect_threshold):
             query['DetectThreshold'] = request.detect_threshold
+        if not UtilClient.is_unset(request.detect_times):
+            query['DetectTimes'] = request.detect_times
         if not UtilClient.is_unset(request.listener_id):
             query['ListenerId'] = request.listener_id
         if not UtilClient.is_unset(request.options_json):
             query['OptionsJson'] = request.options_json
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.silence_time):
+            query['SilenceTime'] = request.silence_time
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_name):
