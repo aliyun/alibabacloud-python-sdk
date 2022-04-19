@@ -161,43 +161,43 @@ class ProductInstance(TeaModel):
 class SearchCondition(TeaModel):
     def __init__(
         self,
-        ass_keywords: str = None,
-        at_author_name: str = None,
-        author_name: str = None,
+        ass_keyword_list: List[str] = None,
+        at_author_name_list: List[str] = None,
+        author_name_list: List[str] = None,
         comments_level: int = None,
         content_len_level: int = None,
         create_time_end: int = None,
         create_time_start: int = None,
         doc_content_sign: str = None,
-        doc_id: str = None,
+        doc_id_list: List[str] = None,
         duplicate_removal: bool = None,
         emotion_type: int = None,
         enable_keyword_highlight: bool = None,
-        exclude_at_author_name: str = None,
-        exclude_author_name: str = None,
-        exclude_host_name: str = None,
-        exclude_keyword_tag_ids: str = None,
-        exclude_keywords: str = None,
-        exclude_keywords_in_title: str = None,
-        exclude_media_library_ids: str = None,
-        exclude_media_name: str = None,
-        exclude_media_type: str = None,
-        exclude_message_type: str = None,
+        exclude_at_author_name_list: List[str] = None,
+        exclude_author_name_list: List[str] = None,
+        exclude_host_name_list: List[str] = None,
+        exclude_keyword_list: List[str] = None,
+        exclude_keyword_list_in_title: List[str] = None,
+        exclude_keyword_tag_ids: List[int] = None,
+        exclude_media_library_id_list: List[int] = None,
+        exclude_media_name_list: List[str] = None,
+        exclude_media_type_list: List[str] = None,
+        exclude_message_type_list: List[str] = None,
         field_conditions: List[FieldCondition] = None,
         has_image: bool = None,
         has_video: bool = None,
-        host_name: str = None,
-        keyword_tag_ids: str = None,
+        host_name_list: List[str] = None,
+        keyword_tag_ids: List[int] = None,
         likes_level: int = None,
-        media_library_ids: str = None,
-        media_name: str = None,
-        media_type: str = None,
-        message_type: str = None,
+        media_library_id_list: List[int] = None,
+        media_name_list: List[str] = None,
+        media_type_list: List[str] = None,
+        message_type_list: List[str] = None,
         page_now: int = None,
         page_size: int = None,
         parent_doc_id: str = None,
-        pos_keywords: str = None,
-        pos_keywords_in_title: str = None,
+        pos_keyword_list: List[str] = None,
+        pos_keyword_list_in_title: List[str] = None,
         publish_time_end: int = None,
         publish_time_start: int = None,
         reads_level: int = None,
@@ -205,16 +205,16 @@ class SearchCondition(TeaModel):
         repost_level: int = None,
         sort_by: str = None,
         sort_by_direction: str = None,
-        topics: str = None,
+        topic_list: List[str] = None,
         update_time_end: int = None,
         update_time_start: int = None,
     ):
         # 搭配词
-        self.ass_keywords = ass_keywords
+        self.ass_keyword_list = ass_keyword_list
         # 被@的用户名称
-        self.at_author_name = at_author_name
+        self.at_author_name_list = at_author_name_list
         # 作者名称
-        self.author_name = author_name
+        self.author_name_list = author_name_list
         # 评论级别，1：100以内，2：100-1k，3：1k-1w以内，4：1w-10w，5，10w+\
         self.comments_level = comments_level
         # 内容长度级别，1：100以内，2：100-1k，3：1k-1w以内，4：1w-10w，5，10w+\
@@ -226,7 +226,7 @@ class SearchCondition(TeaModel):
         # 文章签名
         self.doc_content_sign = doc_content_sign
         # 舆情文章唯一docId
-        self.doc_id = doc_id
+        self.doc_id_list = doc_id_list
         # 是否去重
         self.duplicate_removal = duplicate_removal
         # 情感类型，1非负，-1负面
@@ -234,25 +234,25 @@ class SearchCondition(TeaModel):
         # 是否高亮关键词
         self.enable_keyword_highlight = enable_keyword_highlight
         # 排除被@的用户名称
-        self.exclude_at_author_name = exclude_at_author_name
+        self.exclude_at_author_name_list = exclude_at_author_name_list
         # 排除作者名称
-        self.exclude_author_name = exclude_author_name
+        self.exclude_author_name_list = exclude_author_name_list
         # 排除网站域名
-        self.exclude_host_name = exclude_host_name
+        self.exclude_host_name_list = exclude_host_name_list
+        # 排除词
+        self.exclude_keyword_list = exclude_keyword_list
+        # 标题排除词
+        self.exclude_keyword_list_in_title = exclude_keyword_list_in_title
         # 排除关键词标签Id列表
         self.exclude_keyword_tag_ids = exclude_keyword_tag_ids
-        # 排除词
-        self.exclude_keywords = exclude_keywords
-        # 标题排除词
-        self.exclude_keywords_in_title = exclude_keywords_in_title
         # 排除媒体库id列表
-        self.exclude_media_library_ids = exclude_media_library_ids
+        self.exclude_media_library_id_list = exclude_media_library_id_list
         # 排除媒体名称
-        self.exclude_media_name = exclude_media_name
+        self.exclude_media_name_list = exclude_media_name_list
         # 排除媒体类型，枚举值
-        self.exclude_media_type = exclude_media_type
+        self.exclude_media_type_list = exclude_media_type_list
         # 排除消息类型，枚举值
-        self.exclude_message_type = exclude_message_type
+        self.exclude_message_type_list = exclude_message_type_list
         # 其他过滤条件
         self.field_conditions = field_conditions
         # 文章是否含有图片
@@ -260,19 +260,19 @@ class SearchCondition(TeaModel):
         # 是否含有视频
         self.has_video = has_video
         # 网站域名
-        self.host_name = host_name
+        self.host_name_list = host_name_list
         # 关键词标签Id列表
         self.keyword_tag_ids = keyword_tag_ids
         # 点赞级别，1：100以内，2：100-1k，3：1k-1w以内，4：1w-10w，5，10w+\
         self.likes_level = likes_level
         # 媒体库id列表
-        self.media_library_ids = media_library_ids
+        self.media_library_id_list = media_library_id_list
         # 媒体名称
-        self.media_name = media_name
+        self.media_name_list = media_name_list
         # 媒体类型，枚举值
-        self.media_type = media_type
+        self.media_type_list = media_type_list
         # 消息类型，枚举值
-        self.message_type = message_type
+        self.message_type_list = message_type_list
         # 当前页
         self.page_now = page_now
         # 页大小
@@ -280,9 +280,9 @@ class SearchCondition(TeaModel):
         # 舆情父文章的docId，一般用于查看某篇文章的评论
         self.parent_doc_id = parent_doc_id
         # 关键词
-        self.pos_keywords = pos_keywords
+        self.pos_keyword_list = pos_keyword_list
         # 标题关键词
-        self.pos_keywords_in_title = pos_keywords_in_title
+        self.pos_keyword_list_in_title = pos_keyword_list_in_title
         # 截止发布时间
         self.publish_time_end = publish_time_end
         # 起始发布时间
@@ -298,7 +298,7 @@ class SearchCondition(TeaModel):
         # 指定正反向排序
         self.sort_by_direction = sort_by_direction
         # #话题
-        self.topics = topics
+        self.topic_list = topic_list
         # 舆情文章截止更新时间
         self.update_time_end = update_time_end
         # 舆情文章起始更新时间
@@ -316,12 +316,12 @@ class SearchCondition(TeaModel):
             return _map
 
         result = dict()
-        if self.ass_keywords is not None:
-            result['assKeywords'] = self.ass_keywords
-        if self.at_author_name is not None:
-            result['atAuthorName'] = self.at_author_name
-        if self.author_name is not None:
-            result['authorName'] = self.author_name
+        if self.ass_keyword_list is not None:
+            result['assKeywordList'] = self.ass_keyword_list
+        if self.at_author_name_list is not None:
+            result['atAuthorNameList'] = self.at_author_name_list
+        if self.author_name_list is not None:
+            result['authorNameList'] = self.author_name_list
         if self.comments_level is not None:
             result['commentsLevel'] = self.comments_level
         if self.content_len_level is not None:
@@ -332,34 +332,34 @@ class SearchCondition(TeaModel):
             result['createTimeStart'] = self.create_time_start
         if self.doc_content_sign is not None:
             result['docContentSign'] = self.doc_content_sign
-        if self.doc_id is not None:
-            result['docId'] = self.doc_id
+        if self.doc_id_list is not None:
+            result['docIdList'] = self.doc_id_list
         if self.duplicate_removal is not None:
             result['duplicateRemoval'] = self.duplicate_removal
         if self.emotion_type is not None:
             result['emotionType'] = self.emotion_type
         if self.enable_keyword_highlight is not None:
             result['enableKeywordHighlight'] = self.enable_keyword_highlight
-        if self.exclude_at_author_name is not None:
-            result['excludeAtAuthorName'] = self.exclude_at_author_name
-        if self.exclude_author_name is not None:
-            result['excludeAuthorName'] = self.exclude_author_name
-        if self.exclude_host_name is not None:
-            result['excludeHostName'] = self.exclude_host_name
+        if self.exclude_at_author_name_list is not None:
+            result['excludeAtAuthorNameList'] = self.exclude_at_author_name_list
+        if self.exclude_author_name_list is not None:
+            result['excludeAuthorNameList'] = self.exclude_author_name_list
+        if self.exclude_host_name_list is not None:
+            result['excludeHostNameList'] = self.exclude_host_name_list
+        if self.exclude_keyword_list is not None:
+            result['excludeKeywordList'] = self.exclude_keyword_list
+        if self.exclude_keyword_list_in_title is not None:
+            result['excludeKeywordListInTitle'] = self.exclude_keyword_list_in_title
         if self.exclude_keyword_tag_ids is not None:
             result['excludeKeywordTagIds'] = self.exclude_keyword_tag_ids
-        if self.exclude_keywords is not None:
-            result['excludeKeywords'] = self.exclude_keywords
-        if self.exclude_keywords_in_title is not None:
-            result['excludeKeywordsInTitle'] = self.exclude_keywords_in_title
-        if self.exclude_media_library_ids is not None:
-            result['excludeMediaLibraryIds'] = self.exclude_media_library_ids
-        if self.exclude_media_name is not None:
-            result['excludeMediaName'] = self.exclude_media_name
-        if self.exclude_media_type is not None:
-            result['excludeMediaType'] = self.exclude_media_type
-        if self.exclude_message_type is not None:
-            result['excludeMessageType'] = self.exclude_message_type
+        if self.exclude_media_library_id_list is not None:
+            result['excludeMediaLibraryIdList'] = self.exclude_media_library_id_list
+        if self.exclude_media_name_list is not None:
+            result['excludeMediaNameList'] = self.exclude_media_name_list
+        if self.exclude_media_type_list is not None:
+            result['excludeMediaTypeList'] = self.exclude_media_type_list
+        if self.exclude_message_type_list is not None:
+            result['excludeMessageTypeList'] = self.exclude_message_type_list
         result['fieldConditions'] = []
         if self.field_conditions is not None:
             for k in self.field_conditions:
@@ -368,30 +368,30 @@ class SearchCondition(TeaModel):
             result['hasImage'] = self.has_image
         if self.has_video is not None:
             result['hasVideo'] = self.has_video
-        if self.host_name is not None:
-            result['hostName'] = self.host_name
+        if self.host_name_list is not None:
+            result['hostNameList'] = self.host_name_list
         if self.keyword_tag_ids is not None:
             result['keywordTagIds'] = self.keyword_tag_ids
         if self.likes_level is not None:
             result['likesLevel'] = self.likes_level
-        if self.media_library_ids is not None:
-            result['mediaLibraryIds'] = self.media_library_ids
-        if self.media_name is not None:
-            result['mediaName'] = self.media_name
-        if self.media_type is not None:
-            result['mediaType'] = self.media_type
-        if self.message_type is not None:
-            result['messageType'] = self.message_type
+        if self.media_library_id_list is not None:
+            result['mediaLibraryIdList'] = self.media_library_id_list
+        if self.media_name_list is not None:
+            result['mediaNameList'] = self.media_name_list
+        if self.media_type_list is not None:
+            result['mediaTypeList'] = self.media_type_list
+        if self.message_type_list is not None:
+            result['messageTypeList'] = self.message_type_list
         if self.page_now is not None:
             result['pageNow'] = self.page_now
         if self.page_size is not None:
             result['pageSize'] = self.page_size
         if self.parent_doc_id is not None:
             result['parentDocId'] = self.parent_doc_id
-        if self.pos_keywords is not None:
-            result['posKeywords'] = self.pos_keywords
-        if self.pos_keywords_in_title is not None:
-            result['posKeywordsInTitle'] = self.pos_keywords_in_title
+        if self.pos_keyword_list is not None:
+            result['posKeywordList'] = self.pos_keyword_list
+        if self.pos_keyword_list_in_title is not None:
+            result['posKeywordListInTitle'] = self.pos_keyword_list_in_title
         if self.publish_time_end is not None:
             result['publishTimeEnd'] = self.publish_time_end
         if self.publish_time_start is not None:
@@ -406,8 +406,8 @@ class SearchCondition(TeaModel):
             result['sortBy'] = self.sort_by
         if self.sort_by_direction is not None:
             result['sortByDirection'] = self.sort_by_direction
-        if self.topics is not None:
-            result['topics'] = self.topics
+        if self.topic_list is not None:
+            result['topicList'] = self.topic_list
         if self.update_time_end is not None:
             result['updateTimeEnd'] = self.update_time_end
         if self.update_time_start is not None:
@@ -416,12 +416,12 @@ class SearchCondition(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('assKeywords') is not None:
-            self.ass_keywords = m.get('assKeywords')
-        if m.get('atAuthorName') is not None:
-            self.at_author_name = m.get('atAuthorName')
-        if m.get('authorName') is not None:
-            self.author_name = m.get('authorName')
+        if m.get('assKeywordList') is not None:
+            self.ass_keyword_list = m.get('assKeywordList')
+        if m.get('atAuthorNameList') is not None:
+            self.at_author_name_list = m.get('atAuthorNameList')
+        if m.get('authorNameList') is not None:
+            self.author_name_list = m.get('authorNameList')
         if m.get('commentsLevel') is not None:
             self.comments_level = m.get('commentsLevel')
         if m.get('contentLenLevel') is not None:
@@ -432,34 +432,34 @@ class SearchCondition(TeaModel):
             self.create_time_start = m.get('createTimeStart')
         if m.get('docContentSign') is not None:
             self.doc_content_sign = m.get('docContentSign')
-        if m.get('docId') is not None:
-            self.doc_id = m.get('docId')
+        if m.get('docIdList') is not None:
+            self.doc_id_list = m.get('docIdList')
         if m.get('duplicateRemoval') is not None:
             self.duplicate_removal = m.get('duplicateRemoval')
         if m.get('emotionType') is not None:
             self.emotion_type = m.get('emotionType')
         if m.get('enableKeywordHighlight') is not None:
             self.enable_keyword_highlight = m.get('enableKeywordHighlight')
-        if m.get('excludeAtAuthorName') is not None:
-            self.exclude_at_author_name = m.get('excludeAtAuthorName')
-        if m.get('excludeAuthorName') is not None:
-            self.exclude_author_name = m.get('excludeAuthorName')
-        if m.get('excludeHostName') is not None:
-            self.exclude_host_name = m.get('excludeHostName')
+        if m.get('excludeAtAuthorNameList') is not None:
+            self.exclude_at_author_name_list = m.get('excludeAtAuthorNameList')
+        if m.get('excludeAuthorNameList') is not None:
+            self.exclude_author_name_list = m.get('excludeAuthorNameList')
+        if m.get('excludeHostNameList') is not None:
+            self.exclude_host_name_list = m.get('excludeHostNameList')
+        if m.get('excludeKeywordList') is not None:
+            self.exclude_keyword_list = m.get('excludeKeywordList')
+        if m.get('excludeKeywordListInTitle') is not None:
+            self.exclude_keyword_list_in_title = m.get('excludeKeywordListInTitle')
         if m.get('excludeKeywordTagIds') is not None:
             self.exclude_keyword_tag_ids = m.get('excludeKeywordTagIds')
-        if m.get('excludeKeywords') is not None:
-            self.exclude_keywords = m.get('excludeKeywords')
-        if m.get('excludeKeywordsInTitle') is not None:
-            self.exclude_keywords_in_title = m.get('excludeKeywordsInTitle')
-        if m.get('excludeMediaLibraryIds') is not None:
-            self.exclude_media_library_ids = m.get('excludeMediaLibraryIds')
-        if m.get('excludeMediaName') is not None:
-            self.exclude_media_name = m.get('excludeMediaName')
-        if m.get('excludeMediaType') is not None:
-            self.exclude_media_type = m.get('excludeMediaType')
-        if m.get('excludeMessageType') is not None:
-            self.exclude_message_type = m.get('excludeMessageType')
+        if m.get('excludeMediaLibraryIdList') is not None:
+            self.exclude_media_library_id_list = m.get('excludeMediaLibraryIdList')
+        if m.get('excludeMediaNameList') is not None:
+            self.exclude_media_name_list = m.get('excludeMediaNameList')
+        if m.get('excludeMediaTypeList') is not None:
+            self.exclude_media_type_list = m.get('excludeMediaTypeList')
+        if m.get('excludeMessageTypeList') is not None:
+            self.exclude_message_type_list = m.get('excludeMessageTypeList')
         self.field_conditions = []
         if m.get('fieldConditions') is not None:
             for k in m.get('fieldConditions'):
@@ -469,30 +469,30 @@ class SearchCondition(TeaModel):
             self.has_image = m.get('hasImage')
         if m.get('hasVideo') is not None:
             self.has_video = m.get('hasVideo')
-        if m.get('hostName') is not None:
-            self.host_name = m.get('hostName')
+        if m.get('hostNameList') is not None:
+            self.host_name_list = m.get('hostNameList')
         if m.get('keywordTagIds') is not None:
             self.keyword_tag_ids = m.get('keywordTagIds')
         if m.get('likesLevel') is not None:
             self.likes_level = m.get('likesLevel')
-        if m.get('mediaLibraryIds') is not None:
-            self.media_library_ids = m.get('mediaLibraryIds')
-        if m.get('mediaName') is not None:
-            self.media_name = m.get('mediaName')
-        if m.get('mediaType') is not None:
-            self.media_type = m.get('mediaType')
-        if m.get('messageType') is not None:
-            self.message_type = m.get('messageType')
+        if m.get('mediaLibraryIdList') is not None:
+            self.media_library_id_list = m.get('mediaLibraryIdList')
+        if m.get('mediaNameList') is not None:
+            self.media_name_list = m.get('mediaNameList')
+        if m.get('mediaTypeList') is not None:
+            self.media_type_list = m.get('mediaTypeList')
+        if m.get('messageTypeList') is not None:
+            self.message_type_list = m.get('messageTypeList')
         if m.get('pageNow') is not None:
             self.page_now = m.get('pageNow')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
         if m.get('parentDocId') is not None:
             self.parent_doc_id = m.get('parentDocId')
-        if m.get('posKeywords') is not None:
-            self.pos_keywords = m.get('posKeywords')
-        if m.get('posKeywordsInTitle') is not None:
-            self.pos_keywords_in_title = m.get('posKeywordsInTitle')
+        if m.get('posKeywordList') is not None:
+            self.pos_keyword_list = m.get('posKeywordList')
+        if m.get('posKeywordListInTitle') is not None:
+            self.pos_keyword_list_in_title = m.get('posKeywordListInTitle')
         if m.get('publishTimeEnd') is not None:
             self.publish_time_end = m.get('publishTimeEnd')
         if m.get('publishTimeStart') is not None:
@@ -507,8 +507,8 @@ class SearchCondition(TeaModel):
             self.sort_by = m.get('sortBy')
         if m.get('sortByDirection') is not None:
             self.sort_by_direction = m.get('sortByDirection')
-        if m.get('topics') is not None:
-            self.topics = m.get('topics')
+        if m.get('topicList') is not None:
+            self.topic_list = m.get('topicList')
         if m.get('updateTimeEnd') is not None:
             self.update_time_end = m.get('updateTimeEnd')
         if m.get('updateTimeStart') is not None:

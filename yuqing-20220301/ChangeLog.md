@@ -1,3 +1,6 @@
+2022-04-19 Version: 1.0.14
+- Update SearchCondition .
+
 2022-04-07 Version: 1.0.13
 - Publish prod api .
 
